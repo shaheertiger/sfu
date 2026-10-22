@@ -98,7 +98,7 @@ export default class LiveDashboard extends Base {
       ...this.state,
       loading: true, posts: [], accounts: [], library: [], keys: [], invites: [], notes: {}, templates: [], tagGroups: [],
       folders: [], labelList: [], bulkAccs: [], csv: 'date,time,accounts,caption\n', bulkFiles: [],
-      wsId: null, wsList: [], members: [], pendingInvites: [], platforms: {}, storage: false, plan: 'trial', accountLimit: 15, modal: null, billing: null, planPicker: false,
+      wsId: null, wsList: [], members: [], pendingInvites: [], platforms: {}, storage: false, plan: 'trial', accountLimit: 15, modal: null, billing: null, planPicker: false, shareLink: null,
     };
     this._srv = new Map(); // post id → JSON of what the server has
     this._srvStatus = new Map(); // post id → server status
@@ -421,6 +421,20 @@ export default class LiveDashboard extends Base {
     });
   }
 
+  /* ---------- client preview link ---------- */
+  async shareDraft() {
+    const id = this.state.draft?.id;
+    if (!id) return;
+    try {
+      // Save pending edits first so the client sees the latest version.
+      await Promise.all([...this._queue.values()]);
+      const r = await api(`/api/v1/posts/${id}/share`, { method: 'POST' });
+      super.setState({ shareLink: r });
+    } catch (e) {
+      this.flash(e.message, true);
+    }
+  }
+
   /* ---------- billing ---------- */
   openBilling() {
     const b = this.state.billing;
@@ -462,6 +476,7 @@ export default class LiveDashboard extends Base {
     v.workspaces = [
       ...s.wsList.map((w) => ({ name: w.name, sub: w.role === 'owner' ? 'Owner' : 'Member', tone: wsTone(w.id), mark: w.id === s.wsId ? '✓' : '', bg: w.id === s.wsId ? '#22252a' : 'transparent', pick: () => (w.id === s.wsId ? super.setState({ wsOpen: false }) : this.switchWorkspace(w.id).catch((e) => this.flash(e.message, true))) })),
       { name: '+ New workspace', sub: 'For a client or brand', tone: '#2a2e34', mark: '', bg: 'transparent', pick: () => this.newWorkspace() },
+      { name: 'Automations', sub: 'Signature, RSS, webhooks', tone: '#2a2e34', mark: '', bg: 'transparent', pick: () => { window.location.href = '/app/automations'; } },
       ...(s.billing?.enabled && cur?.role === 'owner'
         ? [{ name: 'Billing', sub: billingLine(s.billing), tone: '#2a2e34', mark: '', bg: 'transparent', pick: () => { super.setState({ wsOpen: false }); this.openBilling(); } }]
         : []),
@@ -599,6 +614,13 @@ export default class LiveDashboard extends Base {
             onChoose={() => this.openBilling()}
           />
         )}
+        {!this.state.loading && this.state.screen === 'compose' && this.state.draft?.id && this._srv.has(this.state.draft.id) && (
+          <button type="button" className="sfy-share-btn" onClick={() => this.shareDraft()} style={{ position: 'fixed', right: 20, zIndex: 70, padding: '10px 14px', borderRadius: 12, border: '1px solid #141619', background: '#fff', color: '#141619', font: '600 14px Geist, system-ui, sans-serif', cursor: 'pointer', boxShadow: '0 8px 24px rgba(20,22,25,.15)' }}>
+            <style>{'.sfy-share-btn{bottom:20px}@media (max-width:760px){.sfy-share-btn{bottom:140px}}'}</style>
+            Share for review
+          </button>
+        )}
+        {this.state.shareLink && <ShareDialog link={this.state.shareLink} onClose={() => super.setState({ shareLink: null })} />}
         {this.state.planPicker && (
           <PlanDialog
             billing={this.state.billing}
@@ -725,6 +747,30 @@ function PlanDialog({ billing: b, onPick, onClose }) {
               </button>
             </div>
           ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+function ShareDialog({ link, onClose }) {
+  const [copied, setCopied] = React.useState(false);
+  const copy = async () => {
+    try { await navigator.clipboard.writeText(link.url); setCopied(true); } catch { setCopied(false); }
+  };
+  return (
+    <div role="dialog" aria-modal="true" aria-label="Share for review" onClick={(e) => e.target === e.currentTarget && onClose()} style={{ position: 'fixed', inset: 0, zIndex: 95, display: 'grid', placeItems: 'center', padding: 16, background: 'rgba(20,22,25,.45)', fontFamily: 'Geist, system-ui, sans-serif' }}>
+      <div style={{ width: 'min(480px, 100%)', background: '#fff', borderRadius: 18, padding: 22, display: 'grid', gap: 12, boxShadow: '0 24px 60px rgba(20,22,25,.25)' }}>
+        <strong style={{ fontSize: 18, letterSpacing: '-0.02em' }}>Share for review</strong>
+        <p style={{ margin: 0, fontSize: 14, color: '#677184', lineHeight: 1.5 }}>
+          Anyone with this link can see the post, approve it, ask for changes or comment. No account needed. You&apos;ll get an email for each response. The link works until {new Date(link.expires_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}.
+        </p>
+        <input readOnly value={link.url} onFocus={(e) => e.target.select()} style={{ font: '13px "Geist Mono", ui-monospace, monospace', padding: '10px 12px', borderRadius: 10, border: '1px solid #dcdad3', width: '100%', boxSizing: 'border-box' }} />
+        <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end', flexWrap: 'wrap' }}>
+          <a href={link.url} target="_blank" rel="noreferrer" style={{ padding: '9px 14px', borderRadius: 10, border: '1px solid #dcdad3', color: '#141619', textDecoration: 'none', fontWeight: 600, fontSize: 14 }}>Open</a>
+          <button type="button" onClick={copy} style={{ padding: '9px 16px', borderRadius: 10, border: 0, background: '#141619', color: '#fff', cursor: 'pointer', fontWeight: 600 }}>{copied ? 'Copied' : 'Copy link'}</button>
+          <button type="button" onClick={onClose} style={{ padding: '9px 14px', borderRadius: 10, border: '1px solid #dcdad3', background: '#fff', cursor: 'pointer', fontWeight: 600 }}>Done</button>
         </div>
       </div>
     </div>
