@@ -1,35 +1,29 @@
 import 'server-only';
 import pg from 'pg';
-import { Pool as NeonPool, neonConfig } from '@neondatabase/serverless';
-import ws from 'ws';
+import { attachDatabasePool } from '@vercel/functions';
 
 /**
- * Postgres access. On Neon we use the serverless driver (WebSockets, works well on Vercel);
- * anywhere else (local Postgres, tests) we use node-postgres. Both expose the same query API.
+ * Postgres access with node-postgres, as Neon recommends for Vercel (Fluid compute):
+ * one pool per function instance over Neon's pooled (-pooler) DATABASE_URL, and
+ * attachDatabasePool so Vercel closes idle connections before an instance is suspended.
  */
-type Queryable = { query: (text: string, params?: any[]) => Promise<{ rows: any[]; rowCount: number | null }> };
-type PoolLike = Queryable & { connect: () => Promise<Queryable & { release: () => void }> };
-
 declare global {
   // eslint-disable-next-line no-var
-  var __sfyPool: PoolLike | undefined;
+  var __sfyPool: pg.Pool | undefined;
 }
 
 // BIGINT (int8) columns hold epoch milliseconds; return them as numbers.
 pg.types.setTypeParser(20, (v: string) => Number(v));
 
-function makePool(): PoolLike {
+function makePool(): pg.Pool {
   const url = process.env.DATABASE_URL;
   if (!url) throw new Error('DATABASE_URL is not set');
-  if (/\.neon\.tech/.test(url)) {
-    neonConfig.webSocketConstructor = ws;
-    const pool = new NeonPool({ connectionString: url, max: 5 });
-    return pool as unknown as PoolLike;
-  }
-  return new pg.Pool({ connectionString: url, max: 5 }) as unknown as PoolLike;
+  const p = new pg.Pool({ connectionString: url, max: 5, idleTimeoutMillis: 5_000 });
+  attachDatabasePool(p);
+  return p;
 }
 
-export function pool(): PoolLike {
+export function pool(): pg.Pool {
   if (!global.__sfyPool) global.__sfyPool = makePool();
   return global.__sfyPool;
 }

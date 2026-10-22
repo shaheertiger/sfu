@@ -4,8 +4,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pg from 'pg';
-import { Pool as NeonPool, neonConfig } from '@neondatabase/serverless';
-import ws from 'ws';
 
 // Local runs: read .env.local like Next.js does (Vercel provides real env vars).
 const envFile = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '.env.local');
@@ -20,13 +18,8 @@ if (!url) {
   console.log('[migrate] DATABASE_URL not set, skipping migrations');
   process.exit(0);
 }
-let pool;
-if (/\.neon\.tech/.test(url)) {
-  neonConfig.webSocketConstructor = ws;
-  pool = new NeonPool({ connectionString: url });
-} else {
-  pool = new pg.Pool({ connectionString: url });
-}
+// Migrations use the direct (non -pooler) URL: PgBouncer transaction mode breaks session state like advisory locks.
+const pool = new pg.Pool({ connectionString: url });
 
 const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'db', 'migrations');
 const files = fs.readdirSync(dir).filter((f) => f.endsWith('.sql')).sort();
