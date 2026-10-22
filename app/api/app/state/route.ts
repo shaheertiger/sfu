@@ -3,7 +3,7 @@ import { workspacesForUser } from '@/lib/server/auth';
 import { query } from '@/lib/server/db';
 import { listAccounts, listPosts } from '@/lib/server/posts';
 import { PLATFORM_LIST, platformConfigured } from '@/lib/server/platforms';
-import { r2Configured } from '@/lib/server/r2';
+import { storageConfigured } from '@/lib/server/storage';
 import { publicMedia } from '@/lib/server/media';
 
 export const dynamic = 'force-dynamic';
@@ -13,7 +13,7 @@ export const GET = handler(async ({ user, workspace }) => {
   const [accounts, posts, mediaRows, keys, members, workspaces] = await Promise.all([
     listAccounts(workspace.id),
     listPosts(workspace.id, { limit: 2000 }),
-    r2Configured() ? query('SELECT * FROM media WHERE workspace_id=$1 AND uploaded ORDER BY created_at DESC LIMIT 500', [workspace.id]) : Promise.resolve([]),
+    storageConfigured() ? query('SELECT * FROM media WHERE workspace_id=$1 AND uploaded ORDER BY created_at DESC LIMIT 500', [workspace.id]) : Promise.resolve([]),
     query('SELECT id,name,prefix,created_at,last_used_at FROM api_keys WHERE workspace_id=$1 ORDER BY created_at DESC', [workspace.id]),
     query('SELECT u.id,u.email,u.name,m.role FROM workspace_members m JOIN users u ON u.id=m.user_id WHERE m.workspace_id=$1', [workspace.id]),
     workspacesForUser(user!.id),
@@ -27,7 +27,7 @@ export const GET = handler(async ({ user, workspace }) => {
     media: await Promise.all(mediaRows.map(publicMedia)),
     mediaUsage: Object.fromEntries(usage.map((u) => [u.id, u.n])),
     platforms: PLATFORM_LIST.map((p) => ({ id: p.id, authMode: p.authMode, configured: platformConfigured(p) })),
-    storage: r2Configured(),
+    storage: storageConfigured(),
     now: Date.now(),
   };
 }, { sessionOnly: true });

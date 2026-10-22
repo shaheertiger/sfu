@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { body, handler, json } from '@/lib/server/api';
 import { now, query, uid } from '@/lib/server/db';
-import { presignUpload } from '@/lib/server/r2';
+import { presignUpload } from '@/lib/server/storage';
 import { publicMedia } from '@/lib/server/media';
 
 const TYPES: Record<string, number> = {

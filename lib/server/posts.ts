@@ -1,7 +1,7 @@
 import 'server-only';
 import { exec, now, one, query, tx, uid } from './db';
 import { decrypt } from './crypto';
-import { getBytes, readUrl } from './r2';
+import { getBytes, readUrl } from './storage';
 import { PLATFORMS, type PlatformId } from './platforms';
 import type { MediaFile, SocialAccount } from './adapters/types';
 

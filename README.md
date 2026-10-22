@@ -1,6 +1,6 @@
 # Schedule For You
 
-Post scheduler: write once, publish to ten social platforms from one queue. Next.js 15 on **Vercel Pro**, **Neon Postgres** for data, **Vercel Cron** for publishing, **Cloudflare R2** for media.
+Post scheduler: write once, publish to ten social platforms from one queue. Next.js 15 on **Vercel Pro**, **Neon Postgres** for data, **Vercel Cron** for publishing, **Neon Object Storage** for media.
 
 | Route              | What it is                                                                                     |
 | ------------------ | ---------------------------------------------------------------------------------------------- |
@@ -18,7 +18,7 @@ On phones the dashboard switches to a top bar, a bottom tab bar and a slide-in m
 
 1. A post is saved in Postgres with one *target* per social account.
 2. Every minute Vercel Cron calls `/api/cron/publish` (with `CRON_SECRET`). It claims due posts with `FOR UPDATE SKIP LOCKED`, so overlapping runs never post twice.
-3. Each target is published through its platform adapter (`lib/server/adapters`). Media is read from R2. Tokens are refreshed when close to expiry.
+3. Each target is published through its platform adapter (`lib/server/adapters`). Media is read from the storage bucket. Tokens are refreshed when close to expiry.
 4. Failures retry up to 3 times, 2 minutes apart. Auth errors mark the account "Reconnect needed". Repeating (weekly/monthly) and evergreen posts get their next copy scheduled after publishing.
 5. Posts waiting for approval and workspaces with a paused queue are skipped.
 
@@ -28,11 +28,11 @@ On phones the dashboard switches to a top bar, a bottom tab bar and a slide-in m
 
 1. **Neon:** in the Vercel project, add the Neon integration (Storage → Neon). It sets `DATABASE_URL` and `DATABASE_URL_UNPOOLED`. Migrations run automatically on every build (`scripts/migrate.mjs`).
 2. **Secrets:** add `TOKEN_ENCRYPTION_KEY` (`openssl rand -base64 32`; don't change it later or saved platform logins stop working) and `CRON_SECRET` (any long random string).
-3. **R2:** in Cloudflare, create a bucket (e.g. `sfy-media`) and an R2 API token with Object Read & Write on it. Add `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET`. Then set the bucket's CORS policy so browsers can upload directly:
+3. **Media storage (Neon Object Storage):** the private bucket `sfy-media` is declared in `neon.ts` (`neon deploy` creates it). In the Neon Console, open **Connect → Storage** and add the values to Vercel under these names (Vercel reserves the `AWS_*` names Neon shows): `STORAGE_ENDPOINT` (= `AWS_ENDPOINT_URL_S3`), `STORAGE_ACCESS_KEY_ID` (= `AWS_ACCESS_KEY_ID`), `STORAGE_SECRET_ACCESS_KEY` (= `AWS_SECRET_ACCESS_KEY`), `STORAGE_REGION` (= `AWS_REGION`). Set `STORAGE_BUCKET` only if you use a different bucket name. Browsers upload with presigned URLs, so the bucket needs this CORS rule (already set on the production branch):
    ```json
-   [{ "AllowedOrigins": ["https://your-domain.com"], "AllowedMethods": ["PUT", "GET", "HEAD"], "AllowedHeaders": ["content-type"], "MaxAgeSeconds": 3600 }]
+   [{ "AllowedOrigins": ["*"], "AllowedMethods": ["PUT", "GET", "HEAD"], "AllowedHeaders": ["*"], "ExposeHeaders": ["ETag"], "MaxAgeSeconds": 3600 }]
    ```
-   Recommended: connect a public domain to the bucket and set `R2_PUBLIC_URL`. Instagram, Threads, TikTok photos and Google Business fetch media by URL; without it they get 24-hour signed URLs.
+   Instagram, Threads, TikTok photos and Google Business fetch media by URL; they get 24-hour signed URLs. To serve media from a CDN instead, set `STORAGE_PUBLIC_URL`. Locally, Neon's own `AWS_*` names also work. Cloudflare R2 still works: leave the storage variables unset and set `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET`.
 4. **Domain:** set `APP_URL` to your production URL (used for OAuth callbacks and invite links).
 5. **Cron:** `vercel.json` already schedules `/api/cron/publish` every minute. Every-minute crons need the Pro plan.
 6. **Platforms:** add the developer keys for each platform you want (see below). Bluesky needs none.
@@ -62,7 +62,7 @@ The adapters were ported from the Fanout codebase and follow each platform's pub
 
 ```bash
 npm install
-cp .env.example .env.local     # fill in DATABASE_URL, TOKEN_ENCRYPTION_KEY, CRON_SECRET (R2 optional)
+cp .env.example .env.local     # fill in DATABASE_URL, TOKEN_ENCRYPTION_KEY, CRON_SECRET (storage optional)
 npm run db:migrate
 npm run dev                    # http://localhost:3000
 ```
@@ -110,7 +110,7 @@ Tools: `list_accounts`, `create_post`, `list_posts`, `publish_post`, `delete_pos
 
 - `components/DashboardView.jsx`, `LandingView.jsx`, `BrandView.jsx`, `Dashboard.jsx`, `Landing.jsx`, `Brand.jsx`: generated from `design/*.dc.html` by `npm run design:convert`. Don't hand-edit; change the design file and regenerate.
 - `components/LiveDashboard.jsx`: runs the generated dashboard on real data. It loads `/api/app/state`, saves changes (posts, settings, media folders, accounts) and swaps the demo actions for real ones.
-- `lib/server/`: database, auth, encryption, R2, posts, publisher and platform adapters.
+- `lib/server/`: database, auth, encryption, media storage, posts, publisher and platform adapters.
 - `db/migrations/`: SQL migrations, applied in order on each build.
 
 ## Security notes
