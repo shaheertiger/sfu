@@ -5,7 +5,7 @@ import { exec, now, query } from '@/lib/server/db';
 export const dynamic = 'force-dynamic';
 
 /**
- * Stripe webhook (Stripe Dashboard → Developers → Webhooks → https://www.scheduleforyou.com/api/stripe/webhook).
+ * Stripe webhook (Stripe Dashboard → Developers → Webhooks → https://scheduleforyou.com/api/stripe/webhook).
  * Events: checkout.session.completed, customer.subscription.created/updated/deleted.
  * The Stripe account also serves other businesses, so anything that isn't a Schedule For You subscription is ignored.
  */
