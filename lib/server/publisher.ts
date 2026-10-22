@@ -4,6 +4,7 @@ import { encrypt } from './crypto';
 import { adapterFor } from './adapters';
 import { PublishError } from './adapters/types';
 import { mediaFiles, rowToAccount } from './posts';
+import { notifyFailures, type Failure } from './notify';
 
 const MAX_ATTEMPTS = 3;
 const DRY_RUN = process.env.SFY_DRY_RUN === '1';
@@ -29,6 +30,7 @@ export async function publishPost(postId: string) {
   const targets = await query('SELECT * FROM post_targets WHERE post_id=$1', [postId]);
   const media = await mediaFiles(post.workspace_id, post.media || []);
 
+  const failures: Failure[] = [];
   for (const target of targets) {
     if (target.status === 'published') continue;
     if (target.status === 'failed' && target.attempts >= MAX_ATTEMPTS) continue;
@@ -48,7 +50,11 @@ export async function publishPost(postId: string) {
       const msg = String(e?.message || e).slice(0, 1000);
       const retryable = e instanceof PublishError ? e.retryable : true;
       const final = !retryable || attempts >= MAX_ATTEMPTS;
-      await exec('UPDATE post_targets SET status=$1, error=$2 WHERE id=$3', [final ? 'failed' : 'pending', msg, target.id]);
+      await exec('UPDATE post_targets SET status=$1, error=$2, failed_at=$3 WHERE id=$4', [final ? 'failed' : 'pending', msg, final ? now() : null, target.id]);
+      if (final) {
+        const acc = await one('SELECT platform, username FROM social_accounts WHERE id=$1', [target.account_id]).catch(() => null);
+        failures.push({ platform: acc?.platform || '', username: acc?.username || '', error: msg });
+      }
       if (isAuthError(msg)) await exec(`UPDATE social_accounts SET status='error', last_error=$1 WHERE id=$2`, [msg, target.account_id]);
       console.error(`[publish] ${postId} → ${target.account_id} failed (attempt ${attempts}):`, msg);
     }
@@ -63,6 +69,7 @@ export async function publishPost(postId: string) {
   await exec('UPDATE posts SET status=$1, scheduled_at=CASE WHEN $1=\'scheduled\' THEN $2::bigint ELSE scheduled_at END, updated_at=$3 WHERE id=$4',
     [status, now() + 2 * 60_000, now(), postId]);
   if (status === 'published' || status === 'partial') await scheduleFollowUps(post);
+  await notifyFailures(post, failures);
   return status;
 }
 
