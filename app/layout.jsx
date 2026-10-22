@@ -1,18 +1,28 @@
 import './globals.css';
 import { Analytics } from '@vercel/analytics/next';
 import { siteUrl } from '@/lib/site';
+import { DESCRIPTION, SITE_NAME, TAGLINE } from '@/lib/seo';
 
-const description = 'Write once, schedule everywhere. Plan, preview and publish to ten social platforms from one queue.';
+/** Search Console / Bing Webmaster Tools ownership tags, when the codes are set in the environment. */
+function verification() {
+  const v = {};
+  if (process.env.GOOGLE_SITE_VERIFICATION) v.google = process.env.GOOGLE_SITE_VERIFICATION;
+  if (process.env.BING_SITE_VERIFICATION) v.other = { 'msvalidate.01': process.env.BING_SITE_VERIFICATION };
+  return v;
+}
 
 export const metadata = {
   metadataBase: new URL(siteUrl()),
-  title: { default: 'Schedule For You', template: '%s · Schedule For You' },
-  description,
-  applicationName: 'Schedule For You',
-  icons: { icon: '/logos/schedule-for-you.svg' },
-  openGraph: { type: 'website', siteName: 'Schedule For You', title: 'Schedule For You', description, url: '/' },
-  twitter: { card: 'summary', title: 'Schedule For You', description },
-  robots: { index: true, follow: true },
+  title: { default: SITE_NAME, template: `%s · ${SITE_NAME}` },
+  description: DESCRIPTION,
+  applicationName: SITE_NAME,
+  category: 'business',
+  icons: { icon: '/logos/schedule-for-you.svg', apple: '/apple-icon.png' },
+  openGraph: { type: 'website', siteName: SITE_NAME, locale: 'en_US', title: TAGLINE, description: DESCRIPTION, url: '/' },
+  twitter: { card: 'summary_large_image', title: TAGLINE, description: DESCRIPTION },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
+  formatDetection: { telephone: false },
+  verification: verification(),
 };
 
 export const viewport = {

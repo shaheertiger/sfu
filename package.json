@@ -11,6 +11,7 @@
     "check": "npm run typecheck && npm test",
     "db:migrate": "node scripts/migrate.mjs",
     "mcp": "node mcp/server.mjs",
+    "seo:indexnow": "node scripts/indexnow.mjs",
     "design:convert": "node scripts/convert-design.mjs \"design/Schedule For You.dc.html\" components Dashboard && node scripts/convert-design.mjs \"design/Landing Page.dc.html\" components Landing && node scripts/convert-design.mjs \"design/Landing Page Mobile.dc.html\" components LandingMobile && node scripts/convert-design.mjs design/Logo.dc.html components Brand"
   },
   "dependencies": {
