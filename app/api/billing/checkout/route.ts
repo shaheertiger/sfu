@@ -1,8 +1,8 @@
 import { z } from 'zod';
 import { body, handler, json } from '@/lib/server/api';
 import { HttpError } from '@/lib/server/auth';
-import { accessFor, PLANS, stripe } from '@/lib/server/billing';
-import { exec, now, one } from '@/lib/server/db';
+import { accessFor, PLANS, stripe, TRIAL_DAYS } from '@/lib/server/billing';
+import { exec, one } from '@/lib/server/db';
 import { appUrl } from '@/lib/server/url';
 
 /** Starts Stripe Checkout for a plan. Returns { url } to redirect to. Owners only. */
@@ -14,7 +14,7 @@ export const POST = handler(async ({ req, workspace, user }) => {
   const base = appUrl(req);
 
   // Already subscribed: plan changes, cards and cancelling happen in the billing portal.
-  if (ws.stripe_subscription_id && accessFor(ws).state !== 'expired' && ws.subscription_status !== 'canceled') {
+  if (ws.stripe_subscription_id && accessFor(ws).canPublish) {
     const portal = await s.billingPortal.sessions.create({
       customer: ws.stripe_customer_id,
       return_url: `${base}/app`,
@@ -31,8 +31,8 @@ export const POST = handler(async ({ req, workspace, user }) => {
     customer = (await one('SELECT stripe_customer_id FROM workspaces WHERE id=$1', [ws.id])).stripe_customer_id;
   }
 
-  // Unused trial days carry over: no charge until the free trial ends (Checkout needs 48h+).
-  const trialEnd = ws.trial_ends_at && Number(ws.trial_ends_at) - now() > 49 * 3600_000 ? Math.floor(Number(ws.trial_ends_at) / 1000) : undefined;
+  // One 7-day free trial per workspace. Checkout always collects a card; Stripe charges when the trial ends.
+  const trial = !ws.trial_used && !ws.stripe_subscription_id;
   const session = await s.checkout.sessions.create({
     mode: 'subscription',
     customer: customer!,
@@ -40,7 +40,11 @@ export const POST = handler(async ({ req, workspace, user }) => {
     line_items: [{ price: PLANS[plan].price(), quantity: 1 }],
     allow_promotion_codes: true,
     metadata: { workspace_id: ws.id, app: 'schedule-for-you' },
-    subscription_data: { metadata: { workspace_id: ws.id, app: 'schedule-for-you' }, ...(trialEnd ? { trial_end: trialEnd } : {}) },
+    payment_method_collection: 'always',
+    subscription_data: {
+      metadata: { workspace_id: ws.id, app: 'schedule-for-you' },
+      ...(trial ? { trial_period_days: TRIAL_DAYS, trial_settings: { end_behavior: { missing_payment_method: 'cancel' } } } : {}),
+    },
     success_url: `${base}/app?billing=success`,
     cancel_url: `${base}/app?billing=cancel`,
   });

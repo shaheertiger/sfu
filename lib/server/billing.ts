@@ -7,14 +7,16 @@ import { exec, now, one } from './db';
  * Stripe billing: one subscription per workspace.
  * STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET; optional STRIPE_PRICE_SOLO / STRIPE_PRICE_STUDIO
  * (default to the live prices created for Schedule For You) and STRIPE_PORTAL_CONFIGURATION.
- * Until STRIPE_SECRET_KEY is set, billing is off: trials never expire and nothing is blocked.
+ * The 7-day free trial needs a card: the owner starts it in Checkout and Stripe charges on day 8.
+ * Until STRIPE_SECRET_KEY is set, billing is off and nothing is blocked.
  */
 export const PLANS = {
   solo: { id: 'solo', name: 'Solo', amount: 19, accountLimit: 15, team: false, price: () => process.env.STRIPE_PRICE_SOLO || 'price_1UTMrgPgKI4BZbGFEDOyBeTF' },
   studio: { id: 'studio', name: 'Studio', amount: 59, accountLimit: 100, team: true, price: () => process.env.STRIPE_PRICE_STUDIO || 'price_1UTMrhPgKI4BZbGF1pB8lYJf' },
 } as const;
 export type PlanId = keyof typeof PLANS;
-const TRIAL_ACCOUNT_LIMIT = 15;
+const DEFAULT_ACCOUNT_LIMIT = 15;
+export const TRIAL_DAYS = 7;
 
 export const billingEnabled = () => !!process.env.STRIPE_SECRET_KEY;
 
@@ -32,10 +34,12 @@ export const planForPrice = (priceId?: string | null): PlanId | null =>
 const PAID = ['active', 'trialing', 'past_due', 'comped'];
 
 export type Access = {
-  state: 'trial' | 'active' | 'past_due' | 'expired';
+  /** needs_card: no plan yet (start the free trial). trial: Stripe trial. expired: plan ended. */
+  state: 'needs_card' | 'trial' | 'active' | 'past_due' | 'expired';
   plan: string;
   trialEndsAt: number | null;
   daysLeft: number | null;
+  trialEligible: boolean;
   canPublish: boolean;
   canInvite: boolean;
 };
@@ -43,23 +47,39 @@ export type Access = {
 export function accessFor(ws: any): Access {
   const status = ws.subscription_status as string | null;
   const trialEndsAt = ws.trial_ends_at ? Number(ws.trial_ends_at) : null;
-  const daysLeft = trialEndsAt ? Math.max(0, Math.ceil((trialEndsAt - now()) / 86400000)) : null;
-  if (status && PAID.includes(status)) {
-    return { state: status === 'past_due' ? 'past_due' : 'active', plan: ws.plan, trialEndsAt, daysLeft: null, canPublish: true, canInvite: ws.plan === 'studio' };
+  const trialEligible = !ws.trial_used && status !== 'comped';
+  if (!billingEnabled()) {
+    return { state: 'active', plan: ws.plan, trialEndsAt: null, daysLeft: null, trialEligible, canPublish: true, canInvite: true };
   }
-  const inTrial = !billingEnabled() || !trialEndsAt || trialEndsAt > now();
-  return { state: inTrial ? 'trial' : 'expired', plan: ws.plan, trialEndsAt, daysLeft, canPublish: inTrial, canInvite: inTrial };
+  if (status && PAID.includes(status)) {
+    const trialing = status === 'trialing';
+    return {
+      state: status === 'past_due' ? 'past_due' : trialing ? 'trial' : 'active',
+      plan: ws.plan,
+      trialEndsAt,
+      daysLeft: trialing && trialEndsAt ? Math.max(0, Math.ceil((trialEndsAt - now()) / 86400000)) : null,
+      trialEligible,
+      canPublish: true,
+      // Team members are a Studio feature, including during a Studio trial.
+      canInvite: ws.plan === 'studio',
+    };
+  }
+  const never = !ws.stripe_subscription_id && !ws.trial_used;
+  return { state: never ? 'needs_card' : 'expired', plan: ws.plan, trialEndsAt, daysLeft: null, trialEligible, canPublish: false, canInvite: false };
 }
 
-/** SQL condition (workspace alias `w`) matching accessFor(...).canPublish. $1 must be now(). */
+/** SQL condition (workspace alias `w`) matching accessFor(...).canPublish. */
 export const canPublishSql = () =>
   billingEnabled()
-    ? `(w.subscription_status IN ('active','trialing','past_due','comped') OR w.trial_ends_at IS NULL OR w.trial_ends_at > $1::bigint)`
+    ? `w.subscription_status IN ('active','trialing','past_due','comped')`
     : 'true';
 
 export async function requireCanPublish(workspaceId: string) {
   const ws = await one('SELECT * FROM workspaces WHERE id=$1', [workspaceId]);
-  if (ws && !accessFor(ws).canPublish) throw new HttpError(402, 'Your trial has ended. Choose a plan to keep publishing.');
+  if (!ws) return;
+  const a = accessFor(ws);
+  if (a.state === 'needs_card') throw new HttpError(402, 'Start your 7-day free trial to publish. Add a card in Billing; you are not charged until the trial ends.');
+  if (!a.canPublish) throw new HttpError(402, 'Your plan has ended. Choose a plan to keep publishing.');
 }
 
 /** Writes a Stripe subscription's state onto its workspace. Ignores subscriptions that aren't Schedule For You's. */
@@ -77,13 +97,16 @@ export async function syncSubscription(sub: Stripe.Subscription) {
   const p = plan ? PLANS[plan] : null;
   await exec(
     `UPDATE workspaces SET stripe_customer_id=COALESCE(stripe_customer_id,$1), stripe_subscription_id=$2, subscription_status=$3,
-       plan=$4, account_limit=$5, current_period_end=$6, cancel_at_period_end=$7 WHERE id=$8`,
+       plan=$4, account_limit=$5, current_period_end=$6, cancel_at_period_end=$7,
+       trial_ends_at=$9, trial_used = trial_used OR $10 WHERE id=$8`,
     [
       customerId ?? null, sub.id, sub.status,
-      live && p ? p.id : 'trial',
-      live && p ? p.accountLimit : TRIAL_ACCOUNT_LIMIT,
+      live && p ? p.id : 'none',
+      live && p ? p.accountLimit : DEFAULT_ACCOUNT_LIMIT,
       item?.current_period_end ? item.current_period_end * 1000 : null,
       !!sub.cancel_at_period_end, ws.id,
+      sub.status === 'trialing' && sub.trial_end ? sub.trial_end * 1000 : null,
+      !!sub.trial_end,
     ],
   );
   return ws.id;

@@ -44,12 +44,12 @@ On phones the dashboard switches to a top bar, a bottom tab bar and a slide-in m
    - a daily digest after 6 PM workspace time when something published or failed (to the owner),
    - team invite emails (the invite link is still shown in the dashboard).
    Without `RESEND_API_KEY` these are skipped and logged. Optional: use Resend for Neon Auth's emails too (Neon Console → Auth → Email/SMTP: host `smtp.resend.com`, port 465, user `resend`, password = a Resend API key, sender on your verified domain).
-8. **Billing (Stripe):** every workspace starts with a 7-day trial (no card). Plans: Solo $19/mo (15 accounts) and Studio $59/mo (100 accounts, team members), one subscription per workspace.
+8. **Billing (Stripe):** plans Solo $19/mo (15 accounts) and Studio $59/mo (100 accounts, team members), one subscription per workspace. The 7-day free trial needs a card: after signing up, the owner picks a plan in Stripe Checkout (card required), Stripe runs the trial and charges on day 8 unless they cancel. One free trial per workspace.
    - Add `STRIPE_SECRET_KEY` (Stripe → Developers → API keys). Until it is set, billing is off and nothing is blocked.
    - Stripe → Developers → Webhooks → add endpoint `https://scheduleforyou.com/api/stripe/webhook` with events `checkout.session.completed`, `customer.subscription.created`, `customer.subscription.updated`, `customer.subscription.deleted`. Put its signing secret in `STRIPE_WEBHOOK_SECRET`.
    - Stripe → Settings → Billing → Customer portal: save the settings once (the portal needs a saved configuration), and under "Subscriptions → Customers can switch plans" list only the Solo and Studio prices.
-   - The owner picks a plan from the workspace menu → Billing (or the banner near the end of the trial). Unused trial days carry over: Checkout starts the subscription at the trial's end.
-   - After the trial with no active subscription, scheduled posts wait (nothing is deleted) and "publish now" is refused until a plan is chosen. Failed payments (`past_due`) keep publishing while Stripe retries. Team invites need Studio (or the trial).
+   - Until a card is added, the dashboard opens the plan picker and a banner explains publishing is off; workspaces can still connect accounts and draft. Billing lives in the workspace menu → Billing.
+   - Without an active or trialing subscription, scheduled posts wait (nothing is deleted) and "publish now" is refused. Failed payments (`past_due`) keep publishing while Stripe retries. Team invites need Studio.
    - Free access by hand: `UPDATE workspaces SET subscription_status='comped', plan='studio', account_limit=100 WHERE id='…';`
 9. **Platforms:** add the developer keys for each platform you want (see below). Bluesky needs none.
 

@@ -133,6 +133,8 @@ export default class LiveDashboard extends Base {
       if (!first && (this._busy > 0 || this._queue.size > 0)) return;
       this.applyServer(d, first);
       if (first) this.handleReturnParams(d);
+      // New workspace without a card: offer the free trial right away (owners only, once per page load).
+      if (first && d.billing?.enabled && d.billing.state === 'needs_card' && d.workspace.role === 'owner' && !/billing=/.test(window.location.search)) super.setState({ planPicker: true });
     } catch (e) {
       if (first) this.flash(e.message || 'Could not load your workspace', true);
     }
@@ -422,7 +424,7 @@ export default class LiveDashboard extends Base {
   /* ---------- billing ---------- */
   openBilling() {
     const b = this.state.billing;
-    if (b && (b.state === 'active' || b.state === 'past_due') && b.hasCustomer) return this.goBilling('/api/billing/portal');
+    if (b && ['trial', 'active', 'past_due'].includes(b.state) && b.hasCustomer) return this.goBilling('/api/billing/portal');
     super.setState({ planPicker: true });
   }
 
@@ -466,7 +468,7 @@ export default class LiveDashboard extends Base {
       { name: 'Sign out', sub: this.userEmail || '', tone: '#2a2e34', mark: '', bg: 'transparent', pick: () => this.signOut() },
     ];
     v.wsName = cur?.name || 'Workspace';
-    v.wsSub = `${planName(s.plan)} · ${s.accounts.length} account${s.accounts.length === 1 ? '' : 's'}`;
+    v.wsSub = `${s.billing?.enabled ? stateName(s.billing) : planName(s.plan)} · ${s.accounts.length} account${s.accounts.length === 1 ? '' : 's'}`;
     v.wsTone = '#d9ff35';
     v.greetName = this.userName || '';
     if (typeof v.greeting === 'string') v.greeting = v.greeting.replace(/, [^,]*$/, `, ${this.userName || 'there'}`);
@@ -649,13 +651,16 @@ function FormDialog({ modal, onClose }) {
 
 
 /* ---------- billing UI ---------- */
-const planName = (p) => ({ trial: 'Trial', solo: 'Solo', studio: 'Studio' })[p] || p;
+const planName = (p) => ({ trial: 'Trial', none: 'No plan', solo: 'Solo', studio: 'Studio' })[p] || p;
+const stateName = (b) => ({ needs_card: 'No plan yet', trial: `${planName(b.plan)} trial`, expired: 'Plan ended', past_due: planName(b.plan) })[b.state] || planName(b.plan);
 
 function billingLine(b) {
-  if (b.state === 'trial') return b.daysLeft != null ? `Trial · ${b.daysLeft} day${b.daysLeft === 1 ? '' : 's'} left` : 'Trial';
-  if (b.state === 'expired') return 'Trial ended · choose a plan';
+  const day = (t) => new Date(t).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  if (b.state === 'needs_card') return 'Start your 7-day free trial';
+  if (b.state === 'trial') return b.daysLeft != null ? `${planName(b.plan)} trial · ${b.daysLeft} day${b.daysLeft === 1 ? '' : 's'} left` : `${planName(b.plan)} trial`;
+  if (b.state === 'expired') return 'Plan ended · choose a plan';
   if (b.state === 'past_due') return 'Payment failed · update card';
-  if (b.cancelAtPeriodEnd && b.periodEnd) return `${planName(b.plan)} · ends ${new Date(b.periodEnd).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
+  if (b.cancelAtPeriodEnd && b.periodEnd) return `${planName(b.plan)} · ends ${day(b.periodEnd)}`;
   return `${planName(b.plan)} plan`;
 }
 
@@ -664,9 +669,12 @@ function BillingBanner({ billing: b, owner, onChoose }) {
   if (!b?.enabled) return null;
   let text = '';
   let tone = 'calm';
-  if (b.state === 'trial' && b.daysLeft != null && b.daysLeft <= 3) text = `Your free trial ends in ${b.daysLeft} day${b.daysLeft === 1 ? '' : 's'}.`;
-  else if (b.state === 'expired') { text = 'Your trial has ended. Scheduled posts are paused.'; tone = 'alert'; }
-  else if (b.state === 'past_due') { text = 'Your last payment failed. Update your card to avoid interruption.'; tone = 'alert'; }
+  let cta = 'Choose a plan';
+  const price = b.plans?.find((p) => p.id === b.plan)?.amount;
+  if (b.state === 'needs_card') { text = 'Add a card to start your 7-day free trial. Publishing is off until then.'; cta = 'Start free trial'; }
+  else if (b.state === 'trial' && b.daysLeft != null && b.daysLeft <= 2 && !b.cancelAtPeriodEnd) { text = `Your free trial ends in ${b.daysLeft} day${b.daysLeft === 1 ? '' : 's'}${price ? `. Your card will be charged $${price}` : ''}.`; cta = 'Manage billing'; }
+  else if (b.state === 'expired') { text = 'Your plan has ended. Scheduled posts are paused.'; tone = 'alert'; }
+  else if (b.state === 'past_due') { text = 'Your last payment failed. Update your card to avoid interruption.'; tone = 'alert'; cta = 'Update card'; }
   if (!text) return null;
   const alert = tone === 'alert';
   return (
@@ -675,7 +683,7 @@ function BillingBanner({ billing: b, owner, onChoose }) {
       <span>{text}{!owner && ' Ask the workspace owner to choose a plan.'}</span>
       {owner && (
         <button type="button" onClick={onChoose} style={{ flex: 'none', padding: '7px 12px', borderRadius: 10, border: 0, background: '#dcff2e', color: '#15171a', fontWeight: 600, cursor: 'pointer' }}>
-          {b.state === 'past_due' ? 'Update card' : 'Choose a plan'}
+          {cta}
         </button>
       )}
     </div>
@@ -694,11 +702,13 @@ function PlanDialog({ billing: b, onPick, onClose }) {
     <div role="dialog" aria-modal="true" aria-label="Choose a plan" onClick={(e) => e.target === e.currentTarget && onClose()} style={{ position: 'fixed', inset: 0, zIndex: 95, display: 'grid', placeItems: 'center', padding: 16, background: 'rgba(20,22,25,.45)', fontFamily: 'Geist, system-ui, sans-serif' }}>
       <div style={{ width: 'min(560px, 100%)', background: '#fff', borderRadius: 18, padding: 22, display: 'grid', gap: 14, boxShadow: '0 24px 60px rgba(20,22,25,.25)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
-          <strong style={{ fontSize: 18, letterSpacing: '-0.02em' }}>Choose a plan</strong>
+          <strong style={{ fontSize: 18, letterSpacing: '-0.02em' }}>{b?.trialEligible ? 'Start your 7-day free trial' : 'Choose a plan'}</strong>
           <button type="button" onClick={onClose} aria-label="Close" style={{ border: 0, background: 'transparent', fontSize: 20, cursor: 'pointer', color: '#677184' }}>×</button>
         </div>
         <p style={{ margin: 0, fontSize: 14, color: '#677184', lineHeight: 1.5 }}>
-          {b?.state === 'trial' && b?.daysLeft > 2 ? `You won't be charged until your trial ends in ${b.daysLeft} days. ` : ''}Cancel anytime. Payments are handled by Stripe.
+          {b?.trialEligible
+            ? '7 days free, then billed monthly. A card is required to start; you are not charged until day 8, and you can cancel before then.'
+            : 'Billed monthly. Cancel anytime.'}{' '}Payments are handled by Stripe.
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12 }}>
           {plans.map((p) => (
@@ -711,7 +721,7 @@ function PlanDialog({ billing: b, onPick, onClose }) {
                 {(features[p.id] || []).map((f) => <li key={f}>{f}</li>)}
               </ul>
               <button type="button" disabled={!!busy} onClick={() => pick(p.id)} style={{ padding: '10px 14px', borderRadius: 10, border: 0, background: p.id === 'studio' ? '#dcff2e' : '#141619', color: p.id === 'studio' ? '#15171a' : '#fff', fontWeight: 600, cursor: 'pointer', opacity: busy && busy !== p.id ? 0.5 : 1 }}>
-                {busy === p.id ? 'Opening checkout…' : `Choose ${p.name}`}
+                {busy === p.id ? 'Opening checkout…' : b?.trialEligible ? `Try ${p.name} free` : `Choose ${p.name}`}
               </button>
             </div>
           ))}
