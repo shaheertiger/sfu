@@ -55,7 +55,7 @@ export default function AuthForm({ mode }) {
         )}
         <label>
           <span>Email</span>
-          <input name="email" type="email" required autoComplete="email" placeholder="you@company.com" />
+          <input name="email" type="email" required autoComplete="email" placeholder="you@company.com" defaultValue={params.get('email') || ''} />
         </label>
         <label>
           <span>Password</span>

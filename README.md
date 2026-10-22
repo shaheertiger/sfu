@@ -4,7 +4,7 @@ Post scheduler: write once, publish to ten social platforms from one queue. Next
 
 | Route              | What it is                                                                                     |
 | ------------------ | ---------------------------------------------------------------------------------------------- |
-| `/`                | Landing page                                                                                   |
+| `/`                | Landing page. Phones (≤640px) get the mobile design (`LandingMobile`); `/?desktop=1` shows the full one |
 | `/signup`, `/login` | Email + password accounts (Neon Auth)                                                         |
 | `/app`             | The dashboard on your real data (signed in)                                                    |
 | `/demo`            | The same dashboard with sample data, nothing saved                                             |
@@ -145,7 +145,7 @@ Tools: `list_accounts`, `create_post`, `list_posts`, `publish_post`, `delete_pos
 
 ## Code map
 
-- `components/DashboardView.jsx`, `LandingView.jsx`, `BrandView.jsx`, `Dashboard.jsx`, `Landing.jsx`, `Brand.jsx`: generated from `design/*.dc.html` by `npm run design:convert`. Don't hand-edit; change the design file and regenerate.
+- `components/DashboardView.jsx`, `LandingView.jsx`, `LandingMobileView.jsx`, `BrandView.jsx`, `Dashboard.jsx`, `Landing.jsx`, `LandingMobile.jsx`, `Brand.jsx`: generated from `design/*.dc.html` by `npm run design:convert`. Don't hand-edit; change the design file and regenerate.
 - `components/LiveDashboard.jsx`: runs the generated dashboard on real data. It loads `/api/app/state`, saves changes (posts, settings, media folders, accounts) and swaps the demo actions for real ones.
 - `lib/server/`: database, auth, encryption, media storage, posts, publisher and platform adapters.
 - `db/migrations/`: SQL migrations, applied in order on each build.
