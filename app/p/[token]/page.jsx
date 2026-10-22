@@ -3,7 +3,7 @@ import ShareActions from '@/components/share/ShareActions';
 import styles from '@/components/share/share.module.css';
 
 export const dynamic = 'force-dynamic';
-export const metadata = { title: 'Post preview · Schedule For You', robots: { index: false, follow: false } };
+export const metadata = { title: 'Post preview', robots: { index: false, follow: false } };
 
 function when(at, tz) {
   try {

@@ -4,7 +4,7 @@ Post scheduler: write once, publish to ten social platforms from one queue. Next
 
 | Route              | What it is                                                                                     |
 | ------------------ | ---------------------------------------------------------------------------------------------- |
-| `/`                | Landing page. Phones (≤640px) get the mobile design (`LandingMobile`); `/?desktop=1` shows the full one |
+| `/`                | Landing page, server-rendered. Phones get the mobile design (`LandingMobile`, chosen by user agent, then kept in step with the viewport); `/?desktop=1` shows the full one |
 | `/signup`, `/login` | Email + password accounts (Neon Auth)                                                         |
 | `/app`             | The dashboard on your real data (signed in)                                                    |
 | `/demo`            | The same dashboard with sample data, nothing saved                                             |
@@ -23,6 +23,7 @@ On phones the dashboard switches to a top bar, a bottom tab bar and a slide-in m
 3. Each target is published through its platform adapter (`lib/server/adapters`). Media is read from the storage bucket. Tokens are refreshed when close to expiry.
 4. Failures retry up to 3 times, 2 minutes apart. Auth errors mark the account "Reconnect needed". Repeating (weekly/monthly) and evergreen posts get their next copy scheduled after publishing.
 5. Posts waiting for approval and workspaces with a paused queue are skipped.
+6. The same run sends reminder and digest emails, checks RSS feeds (with a time budget so the function never overruns its limit) and removes stale rows (uploads that never finished, abandoned OAuth handshakes, long-expired preview links).
 
 "Publish now" in the dashboard publishes immediately in the request instead of waiting for the cron.
 
@@ -91,6 +92,17 @@ Set `SFY_DRY_RUN=1` to "publish" without calling any platform. To run the publis
 curl -H "Authorization: Bearer $CRON_SECRET" http://localhost:3000/api/cron/publish
 ```
 
+## Checks
+
+```bash
+npm run typecheck   # tsc over the app, server code and tests
+npm test            # unit tests (node:test) for the pure server logic: post bodies, URL safety, billing access, signatures, webhooks, RSS templates
+npm run check       # both
+npm run build       # production build; migrations are skipped when DATABASE_URL is unset
+```
+
+`.github/workflows/ci.yml` runs all of these on every push and pull request. Tests live in `tests/` and load the TypeScript server modules directly (Node 22 strips the types; `tests/hooks.mjs` resolves extensionless imports and stubs `server-only`).
+
 ## REST API
 
 Create a key in **Settings → API keys**, then:
@@ -153,11 +165,16 @@ Tools: `list_accounts`, `create_post`, `list_posts`, `publish_post`, `delete_pos
 ## Security notes
 
 - Sign-in: Neon Auth (Managed Better Auth) stores users, passwords and sessions; the app keeps httpOnly session cookies on its own domain.
+- Cross-site requests: every cookie-authenticated write (dashboard API, login, logout, signup) must carry an `Origin` matching the site's host; other origins get 403. API-key requests are exempt (a Bearer token can't be forged by another site).
+- Response headers (`next.config.mjs`): HSTS, `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, a strict referrer policy, a locked-down `Permissions-Policy`, and `Cache-Control: no-store` on every API response.
+- Errors: only messages written for the user (`HttpError`) are returned; database and network errors are logged and answered with a generic message.
+- Request bodies: post writes are validated with a schema (`lib/server/posts.ts` → `PostBody`); malformed input answers 400 with the first problem named.
 - Platform tokens: AES-256-GCM encrypted at rest with `TOKEN_ENCRYPTION_KEY`.
 - API keys: only their SHA-256 is stored; shown once.
 - Login: at most 10 failed attempts per email per 15 minutes (per server instance), on top of Neon Auth's own limits.
-- Webhooks and RSS: outbound requests only to public addresses, size and time limited.
-- Preview links: unguessable tokens, expire after 30 days, rate limited, not indexed by search engines.
+- Webhooks and RSS: outbound requests only to public addresses (IPv4 and IPv6, including IPv4-mapped, NAT64 and 6to4 forms), each redirect re-checked, size and time limited.
+- Platform calls time out (60 s for API calls, 180 s for uploads) so a hung platform never stalls the publishing run; timeouts count as retryable failures.
+- Preview links: unguessable tokens, expire after 30 days, rate limited, not indexed by search engines. `/app`, `/api`, `/p` and `/invite` are excluded in `robots.txt`.
 
 ## Not built yet
 

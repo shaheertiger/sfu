@@ -1,5 +1,6 @@
 import 'server-only';
-import { HttpError, type Workspace } from './auth';
+import type { Workspace } from './auth';
+import { HttpError } from './http-error';
 
 /** Owners, editors and API keys can change workspace automations; members can only look. */
 export function requireEditor(workspace: Workspace) {

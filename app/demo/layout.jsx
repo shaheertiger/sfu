@@ -1,2 +1,2 @@
-export const metadata = { title: 'Schedule For You · Demo' };
+export const metadata = { title: 'Demo' };
 export default function Layout({ children }) { return children; }

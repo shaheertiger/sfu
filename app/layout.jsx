@@ -1,10 +1,18 @@
 import './globals.css';
 import { Analytics } from '@vercel/analytics/next';
+import { siteUrl } from '@/lib/site';
+
+const description = 'Write once, schedule everywhere. Plan, preview and publish to ten social platforms from one queue.';
 
 export const metadata = {
-  title: 'Schedule For You',
-  description: 'Write once, schedule everywhere. Plan, preview and publish to ten social platforms from one queue.',
+  metadataBase: new URL(siteUrl()),
+  title: { default: 'Schedule For You', template: '%s · Schedule For You' },
+  description,
+  applicationName: 'Schedule For You',
   icons: { icon: '/logos/schedule-for-you.svg' },
+  openGraph: { type: 'website', siteName: 'Schedule For You', title: 'Schedule For You', description, url: '/' },
+  twitter: { card: 'summary', title: 'Schedule For You', description },
+  robots: { index: true, follow: true },
 };
 
 export const viewport = {

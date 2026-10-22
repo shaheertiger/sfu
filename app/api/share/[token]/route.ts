@@ -2,14 +2,19 @@ import { z } from 'zod';
 import { body, errorResponse, json } from '@/lib/server/api';
 import { actOnShare } from '@/lib/server/shares';
 
-// Simple abuse guard per link: at most 20 actions per 10 minutes.
+// Simple abuse guard per link (per server instance): at most 20 actions per 10 minutes.
 const WINDOW = 10 * 60_000, MAX = 20;
 const hits = new Map<string, number[]>();
+function prune(nowMs: number) {
+  if (hits.size < 1000) return;
+  for (const [k, v] of hits) if (!v.some((t) => t > nowMs - WINDOW)) hits.delete(k);
+}
 
 /** Public: comment on, approve or request changes to a shared post. No account needed. */
 export async function POST(req: Request, ctx: { params: Promise<{ token: string }> }) {
   try {
     const { token } = await ctx.params;
+    prune(Date.now());
     const recent = (hits.get(token) || []).filter((t) => t > Date.now() - WINDOW);
     if (recent.length >= MAX) return json({ error: 'Too many requests. Try again in a few minutes.' }, 429);
     hits.set(token, [...recent, Date.now()]);

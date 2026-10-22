@@ -2,14 +2,9 @@ import 'server-only';
 import { exec, now, one, query, tx, uid } from './db';
 import { randomToken, sha256 } from './crypto';
 import { neonAuth } from './neon-auth';
+import { HttpError } from './http-error';
 
-export class HttpError extends Error {
-  status: number;
-  constructor(status: number, message: string) {
-    super(message);
-    this.status = status;
-  }
-}
+export { HttpError };
 
 export type User = { id: string; email: string; name: string };
 export type Workspace = { id: string; name: string; plan: string; account_limit: number; owner_id: string; prefs: any; role: string };
@@ -96,6 +91,7 @@ export async function requireWorkspace(req?: Request): Promise<{ workspace: Work
     if (!row) throw new HttpError(401, 'Invalid API key');
     await exec('UPDATE api_keys SET last_used_at=$1 WHERE id=$2', [now(), row.id]);
     const ws = await one('SELECT * FROM workspaces WHERE id=$1', [row.workspace_id]);
+    if (!ws) throw new HttpError(401, 'This API key belongs to a workspace that no longer exists');
     return { workspace: { ...ws, role: 'api' }, user: null };
   }
   const u = await sessionUser();

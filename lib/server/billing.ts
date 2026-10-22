@@ -1,6 +1,6 @@
 import 'server-only';
 import Stripe from 'stripe';
-import { HttpError } from './auth';
+import { HttpError } from './http-error';
 import { exec, now, one } from './db';
 
 /**

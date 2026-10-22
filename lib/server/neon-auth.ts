@@ -1,5 +1,6 @@
 import 'server-only';
 import { createNeonAuth, type NeonAuth } from '@neondatabase/auth/next/server';
+import { HttpError } from './http-error';
 
 /**
  * Neon Auth (Managed Better Auth). Created on first use so builds without the env vars still work.
@@ -11,7 +12,7 @@ export function neonAuth(): NeonAuth {
   if (instance) return instance;
   const baseUrl = process.env.NEON_AUTH_BASE_URL;
   const secret = process.env.NEON_AUTH_COOKIE_SECRET;
-  if (!baseUrl || !secret) throw new Error('Neon Auth is not configured. Set NEON_AUTH_BASE_URL and NEON_AUTH_COOKIE_SECRET.');
+  if (!baseUrl || !secret) throw new HttpError(503, 'Sign-in is not configured. Set NEON_AUTH_BASE_URL and NEON_AUTH_COOKIE_SECRET.');
   instance = createNeonAuth({ baseUrl, cookies: { secret } });
   return instance;
 }

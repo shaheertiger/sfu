@@ -1,7 +1,7 @@
 import 'server-only';
 import { now, one, query, uid } from './db';
 import { encrypt } from './crypto';
-import { HttpError } from './auth';
+import { HttpError } from './http-error';
 import type { ConnectedAccountFields } from './adapters/types';
 
 /** Inserts or refreshes a connected account, enforcing the workspace's account limit. */

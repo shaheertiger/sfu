@@ -1,2 +1,2 @@
-export const metadata = { title: 'Schedule For You · Dashboard' };
+export const metadata = { title: 'Dashboard', robots: { index: false, follow: false } };
 export default function Layout({ children }) { return children; }

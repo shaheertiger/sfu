@@ -4,7 +4,7 @@
  * "wired but unverified until you plug in real keys" and check the README per platform.
  */
 import type { PlatformAdapter, PublishInput, PublishResult, ConnectedAccountFields, SocialAccount } from './types';
-import { PublishError, jsonFetch } from './types';
+import { PublishError, UPLOAD_TIMEOUT_MS, jsonFetch, timedFetch } from './types';
 
 const env = (k: string) => process.env[k] || '';
 const q = (o: Record<string, string>) => new URLSearchParams(o).toString();
@@ -93,12 +93,13 @@ export const linkedin: PlatformAdapter = {
         const init = await jsonFetch('https://api.linkedin.com/rest/images?action=initializeUpload', {
           method: 'POST', headers: auth, body: JSON.stringify({ initializeUploadRequest: { owner: author } }),
         });
-        await fetch(init.value.uploadUrl, { method: 'PUT', headers: { authorization: `Bearer ${account.access_token}` }, body: new Uint8Array(await img.bytes()) });
+        const put = await timedFetch(init.value.uploadUrl, { method: 'PUT', headers: { authorization: `Bearer ${account.access_token}` }, body: new Uint8Array(await img.bytes()), timeoutMs: UPLOAD_TIMEOUT_MS });
+        if (!put.ok) throw new PublishError(`LinkedIn image upload failed: ${put.status}`, put.status >= 500);
         urns.push(init.value.image);
       }
       content = urns.length === 1 ? { media: { id: urns[0] } } : { multiImage: { images: urns.map((id) => ({ id })) } };
     }
-    const res = await fetch('https://api.linkedin.com/rest/posts', {
+    const res = await timedFetch('https://api.linkedin.com/rest/posts', {
       method: 'POST', headers: auth,
       body: JSON.stringify({ author, commentary: caption, visibility: 'PUBLIC', distribution: { feedDistribution: 'MAIN_FEED', targetEntities: [], thirdPartyDistributionChannels: [] }, lifecycleState: 'PUBLISHED', isReshareDisabledByAuthor: false, ...(content ? { content } : {}) }),
     });
@@ -198,12 +199,14 @@ export const instagram: PlatformAdapter = {
       creationId = await mk({ media_type: 'CAROUSEL', children: children.join(','), caption });
     }
     // wait for container to be ready (videos take a while)
-    for (let i = 0; i < 20; i++) {
+    let ready = false;
+    for (let i = 0; i < 20 && !ready; i++) {
       const st = await jsonFetch(`${GRAPH}/${creationId}?fields=status_code&access_token=${token}`);
-      if (st.status_code === 'FINISHED') break;
-      if (st.status_code === 'ERROR') throw new PublishError('Instagram could not process the media', false);
-      await new Promise((r) => setTimeout(r, 5000));
+      if (st.status_code === 'FINISHED') ready = true;
+      else if (st.status_code === 'ERROR' || st.status_code === 'EXPIRED') throw new PublishError('Instagram could not process the media', false);
+      else await new Promise((r) => setTimeout(r, 5000));
     }
+    if (!ready) throw new PublishError('Instagram is still processing the media. It will be retried.', true);
     const pub = await jsonFetch(`${GRAPH}/${igId}/media_publish`, { method: 'POST', form: { creation_id: creationId, access_token: token } });
     const info = await jsonFetch(`${GRAPH}/${pub.id}?fields=permalink&access_token=${token}`);
     return { externalId: pub.id, url: info.permalink };
@@ -283,7 +286,7 @@ export const tiktok: PlatformAdapter = {
         method: 'POST', headers: auth,
         body: JSON.stringify({ post_info: { title: caption.slice(0, 2200), privacy_level: privacy }, source_info: { source: 'FILE_UPLOAD', video_size: size, chunk_size: size, total_chunk_count: 1 } }),
       });
-      const up = await fetch(init.data.upload_url, { method: 'PUT', headers: { 'content-type': video.mime, 'content-range': `bytes 0-${size - 1}/${size}` }, body: new Uint8Array(await video.bytes()) });
+      const up = await timedFetch(init.data.upload_url, { method: 'PUT', headers: { 'content-type': video.mime, 'content-range': `bytes 0-${size - 1}/${size}` }, body: new Uint8Array(await video.bytes()), timeoutMs: UPLOAD_TIMEOUT_MS });
       if (!up.ok) throw new PublishError(`TikTok upload failed: ${up.status}`);
       return { externalId: init.data.publish_id };
     }
@@ -326,12 +329,13 @@ export const youtube: PlatformAdapter = {
     if (!video) throw new PublishError('YouTube requires a video', false);
     const { title, body } = splitTitle(caption, 'Untitled video');
     const meta = { snippet: { title: options.title || title, description: options.title ? caption : body }, status: { privacyStatus: options.privacy || 'public', selfDeclaredMadeForKids: false } };
-    const init = await fetch('https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status', {
+    const init = await timedFetch('https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status', {
       method: 'POST', headers: { authorization: `Bearer ${account.access_token}`, 'content-type': 'application/json', 'x-upload-content-type': video.mime }, body: JSON.stringify(meta),
     });
     if (!init.ok) throw new PublishError(`YouTube init ${init.status}: ${await init.text()}`, init.status >= 500);
-    const loc = init.headers.get('location')!;
-    const up = await jsonFetch(loc, { method: 'PUT', headers: { 'content-type': video.mime }, body: new Uint8Array(await video.bytes()) });
+    const loc = init.headers.get('location');
+    if (!loc) throw new PublishError('YouTube did not return an upload URL', true);
+    const up = await jsonFetch(loc, { method: 'PUT', headers: { 'content-type': video.mime }, body: new Uint8Array(await video.bytes()), timeoutMs: UPLOAD_TIMEOUT_MS });
     return { externalId: up.id, url: `https://www.youtube.com/watch?v=${up.id}` };
   },
 };
