@@ -9,6 +9,7 @@
     "design:convert": "node scripts/convert-design.mjs \"design/Schedule For You.dc.html\" components Dashboard && node scripts/convert-design.mjs \"design/Landing Page.dc.html\" components Landing && node scripts/convert-design.mjs design/Logo.dc.html components Brand"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "next": "15.5.28",
     "react": "19.3.1",
     "react-dom": "19.3.1"
