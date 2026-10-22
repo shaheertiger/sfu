@@ -162,6 +162,19 @@ Tools: `list_accounts`, `create_post`, `list_posts`, `publish_post`, `delete_pos
 - `lib/server/`: database, auth, encryption, media storage, posts, publisher and platform adapters.
 - `db/migrations/`: SQL migrations, applied in order on each build.
 
+## Search engines
+
+What Google and Bing get, and where it lives:
+
+- **Server-rendered landing page** (`app/page.jsx`): the full HTML for both the desktop and the phone design, picked by user agent.
+- **Structured data** (`lib/seo.js`, rendered by `components/JsonLd.jsx`): `Organization`, `WebSite` and `SoftwareApplication` (with the Solo and Studio prices) on `/`, plus `FAQPage` on the phone design, which is the one that shows the FAQ. A test checks the prices against `lib/server/billing.ts` and the FAQ against the landing component, so the markup can never drift from what the page shows.
+- **Titles and descriptions** per public page, canonical URLs, Open Graph and Twitter cards with a generated preview image (`app/opengraph-image.jsx`), a web manifest and PNG icons (`public/brand/`, `app/apple-icon.png`; regenerate from the SVG glyph if the logo changes).
+- **Indexing rules**: `robots.txt` and `sitemap.xml` (`app/robots.js`, `app/sitemap.js`) list `/` and `/signup`; the dashboard, API, preview links, invites, sign-in and the logo sheet are `noindex`. API responses also send `X-Robots-Tag: noindex`.
+- **Ownership**: set `GOOGLE_SITE_VERIFICATION` (Search Console → HTML tag) and `BING_SITE_VERIFICATION` (Bing Webmaster Tools → meta tag) and the tags are rendered. Bing can also import the Search Console property directly.
+- **IndexNow (Bing)**: set `INDEXNOW_KEY` (`openssl rand -hex 16`), deploy, then run `npm run seo:indexnow` after changing public pages so Bing recrawls within minutes. The key is served at `/indexnow-key.txt`.
+
+After the first deploy: submit `https://scheduleforyou.com/sitemap.xml` in Search Console and Bing Webmaster Tools, and check `/` with Google's Rich Results Test and Bing's URL Inspection.
+
 ## Security notes
 
 - Sign-in: Neon Auth (Managed Better Auth) stores users, passwords and sessions; the app keeps httpOnly session cookies on its own domain.

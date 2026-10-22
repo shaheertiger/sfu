@@ -21,7 +21,7 @@ const nextConfig = {
     return [
       { source: '/(.*)', headers: securityHeaders },
       // API responses are never cacheable by shared caches.
-      { source: '/api/(.*)', headers: [{ key: 'Cache-Control', value: 'no-store' }] },
+      { source: '/api/(.*)', headers: [{ key: 'Cache-Control', value: 'no-store' }, { key: 'X-Robots-Tag', value: 'noindex' }] },
     ];
   },
 };
