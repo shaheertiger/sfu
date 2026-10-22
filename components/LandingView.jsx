@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import { $arr, $t, $sx, $dv } from '../lib/dc';
 
 export const css =
-  '\n*{box-sizing:border-box}\nhtml{scroll-behavior:smooth}\nhtml,body{margin:0;padding:0;background:#0c0d0f;color:#f6f5f1;font:16px/1.55 "Geist",ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}\na{color:#f6f5f1;text-decoration:none}\na:hover{color:#dcff2e}\nbutton{font:inherit;color:inherit}\n::selection{background:#dcff2e;color:#15171a}\n@keyframes sfyMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}\n@keyframes sfyBob{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-14px) rotate(var(--r,0deg))}}\n@keyframes sfyPulse{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}\n@keyframes sfyShine{from{background-position:200% 0}to{background-position:-200% 0}}\n@keyframes sfyArrive{0%,84%{box-shadow:0 0 0 0 rgba(220,255,46,0)}88%{box-shadow:0 0 0 0 rgba(220,255,46,.75)}100%{box-shadow:0 0 0 12px rgba(220,255,46,0)}}\n@keyframes sfyPing{0%{box-shadow:0 0 0 0 rgba(220,255,46,.5)}100%{box-shadow:0 0 0 14px rgba(220,255,46,0)}}\n\n.landing-hover-0:hover{color:#f6f5f1 !important}\n.landing-hover-1:hover{transform:translateY(-1px) !important;color:#15171a !important}\n.landing-hover-2:hover{transform:translateY(-2px) !important;color:#15171a !important}\n.landing-hover-3:hover{border-color:#6b7079 !important;color:#f6f5f1 !important}\n.landing-hover-4:hover{border-color:#dcff2e !important;transform:translateY(-3px) !important}\n.landing-hover-5:hover{filter:brightness(1.15) !important}\n.landing-hover-6:hover{border-color:#dcff2e !important;color:#f6f5f1 !important}\n.landing-hover-7:hover{border-color:#3a3e45 !important;transform:translateY(-3px) !important}\n.landing-hover-8:hover{border-color:#f6f5f1 !important;color:#f6f5f1 !important}\n.landing-hover-9:hover{transform:translateY(-2px) !important;color:#dcff2e !important}\n.landing-hover-a:hover{background:rgba(21,23,26,.08) !important;color:#15171a !important}';
+  '\n*{box-sizing:border-box}\nhtml{scroll-behavior:smooth}\nhtml,body{margin:0;padding:0;background:#0c0d0f;color:#f6f5f1;font:16px/1.55 "Geist",ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}\na{color:#f6f5f1;text-decoration:none}\na:hover{color:#dcff2e}\nbutton{font:inherit;color:inherit}\n::selection{background:#dcff2e;color:#15171a}\n@keyframes sfyMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}\n@keyframes sfyBob{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-14px) rotate(var(--r,0deg))}}\n@keyframes sfyPulse{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}\n@keyframes sfyShine{from{background-position:200% 0}to{background-position:-200% 0}}\n@keyframes sfyArrive{0%,84%{box-shadow:0 0 0 0 rgba(220,255,46,0)}88%{box-shadow:0 0 0 0 rgba(220,255,46,.75)}100%{box-shadow:0 0 0 12px rgba(220,255,46,0)}}\n@keyframes sfyPing{0%{box-shadow:0 0 0 0 rgba(220,255,46,.5)}100%{box-shadow:0 0 0 14px rgba(220,255,46,0)}}\n.sfy-fan-m{display:none}\n@media (max-width:640px){\n  .sfy-nav-in{padding:10px 16px !important;gap:10px !important}\n  .sfy-brand{gap:8px !important;min-width:0}\n  .sfy-brand-img{width:28px !important;height:28px !important}\n  .sfy-brand-name{font-size:17px !important;white-space:nowrap}\n  .sfy-nav-links{flex-wrap:nowrap !important;gap:2px !important}\n  .sfy-hide-sm{display:none !important}\n  .sfy-nav-cta{padding:10px 14px !important}\n  .sfy-hero{padding:40px 16px 24px !important}\n  .sfy-sec{padding-left:16px !important;padding-right:16px !important}\n  .sfy-sec-gap{padding-top:64px !important}\n  .sfy-feat-in{padding:56px 16px !important}\n  .sfy-feat-vis{height:440px !important}\n  .sfy-fan{display:none !important}\n  .sfy-fan-m{display:flex !important}\n  .sfy-foot{padding:24px 16px 36px !important}\n  .sfy-foot-links a{display:inline-block;padding:10px 0}\n}\n@media (max-width:360px){\n  .sfy-brand-name{display:none}\n}\n\n.landing-hover-0:hover{color:#f6f5f1 !important}\n.landing-hover-1:hover{transform:translateY(-1px) !important;color:#15171a !important}\n.landing-hover-2:hover{transform:translateY(-2px) !important;color:#15171a !important}\n.landing-hover-3:hover{border-color:#6b7079 !important;color:#f6f5f1 !important}\n.landing-hover-4:hover{border-color:#dcff2e !important;transform:translateY(-3px) !important}\n.landing-hover-5:hover{filter:brightness(1.15) !important}\n.landing-hover-6:hover{border-color:#dcff2e !important;color:#f6f5f1 !important}\n.landing-hover-7:hover{border-color:#3a3e45 !important;transform:translateY(-3px) !important}\n.landing-hover-8:hover{border-color:#f6f5f1 !important;color:#f6f5f1 !important}\n.landing-hover-9:hover{transform:translateY(-2px) !important;color:#dcff2e !important}\n.landing-hover-a:hover{background:rgba(21,23,26,.08) !important;color:#15171a !important}';
 
 export function renderLanding($v) {
   return (
@@ -32,9 +32,14 @@ export function renderLanding($v) {
               justifyContent: 'space-between',
               gap: '16px',
             }}
+            className="sfy-nav-in"
           >
             {' '}
-            <a href="#top" style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#f6f5f1' }}>
+            <a
+              href="#top"
+              style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#f6f5f1' }}
+              className="sfy-brand"
+            >
               {' '}
               <img
                 src="/logos/schedule-for-you-glyph.svg"
@@ -42,8 +47,12 @@ export function renderLanding($v) {
                 width="32"
                 height="32"
                 style={{ display: 'block' }}
+                className="sfy-brand-img"
               />{' '}
-              <span style={{ fontWeight: '800', letterSpacing: '-0.055em', fontSize: '20px', lineHeight: '1' }}>
+              <span
+                style={{ fontWeight: '800', letterSpacing: '-0.055em', fontSize: '20px', lineHeight: '1' }}
+                className="sfy-brand-name"
+              >
                 {'schedule for you'}
               </span>{' '}
             </a>{' '}
@@ -55,26 +64,27 @@ export function renderLanding($v) {
                 flexWrap: 'wrap',
                 justifyContent: 'flex-end',
               }}
+              className="sfy-nav-links"
             >
               {' '}
               <a
                 href="#features"
                 style={{ padding: '8px 12px', fontSize: '14px', color: '#a7abb2', borderRadius: '8px' }}
-                className="landing-hover-0"
+                className="sfy-hide-sm landing-hover-0"
               >
                 {'Features'}
               </a>{' '}
               <a
                 href="#pricing"
                 style={{ padding: '8px 12px', fontSize: '14px', color: '#a7abb2', borderRadius: '8px' }}
-                className="landing-hover-0"
+                className="sfy-hide-sm landing-hover-0"
               >
                 {'Pricing'}
               </a>{' '}
               <a
                 href="/login"
                 style={{ padding: '8px 12px', fontSize: '14px', color: '#a7abb2', borderRadius: '8px' }}
-                className="landing-hover-0"
+                className="sfy-nav-cta landing-hover-0"
               >
                 {'Sign in'}
               </a>{' '}
@@ -88,8 +98,9 @@ export function renderLanding($v) {
                   background: '#dcff2e',
                   color: '#15171a',
                   transition: 'transform .15s',
+                  whiteSpace: 'nowrap',
                 }}
-                className="landing-hover-1"
+                className="sfy-nav-cta landing-hover-1"
               >
                 {'Start free'}
               </a>{' '}
@@ -101,6 +112,7 @@ export function renderLanding($v) {
           data-screen-label="Hero"
           onMouseMove={$v['onHeroMove']}
           style={{ position: 'relative', padding: '96px 24px 40px' }}
+          className="sfy-hero"
         >
           {' '}
           {$v['wide'] ? (
@@ -253,7 +265,9 @@ export function renderLanding($v) {
                 {'See how it works'}
               </a>{' '}
             </div>{' '}
-            <span style={{ fontSize: '13px', color: '#6b7079' }}>{'7-day free trial · Card required · Cancel anytime'}</span>{' '}
+            <span style={{ fontSize: '13px', color: '#6b7079' }}>
+              {'7-day free trial · Card required · Cancel anytime'}
+            </span>{' '}
           </div>{' '}
           <div
             id="how"
@@ -807,7 +821,7 @@ export function renderLanding($v) {
             </div>{' '}
           </div>{' '}
         </section>{' '}
-        <section data-screen-label="Fan-out" style={{ padding: '120px 24px 40px' }}>
+        <section data-screen-label="Fan-out" style={{ padding: '120px 24px 40px' }} className="sfy-sec sfy-sec-gap">
           {' '}
           <div style={{ maxWidth: '1120px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '48px' }}>
             {' '}
@@ -848,6 +862,7 @@ export function renderLanding($v) {
                 background: 'radial-gradient(120% 90% at 30% 50%,#121417 0%,#0c0d0f 70%)',
                 overflow: 'hidden',
               }}
+              className="sfy-fan"
             >
               {' '}
               {$t($v['fanSvg'])}{' '}
@@ -996,9 +1011,119 @@ export function renderLanding($v) {
                 </Fragment>
               ))}{' '}
             </div>{' '}
+            <div style={{ flexDirection: 'column', gap: '14px' }} className="sfy-fan-m">
+              {' '}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '12px',
+                  padding: '16px',
+                  borderRadius: '18px',
+                  border: '1px solid #2a2e34',
+                  background: '#15171a',
+                }}
+              >
+                {' '}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  {' '}
+                  <span
+                    style={{
+                      width: '34px',
+                      height: '34px',
+                      borderRadius: '50%',
+                      background: 'linear-gradient(160deg,#9a7a58,#5d4a36)',
+                      flex: 'none',
+                    }}
+                  />{' '}
+                  <span
+                    style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.25', flex: '1', minWidth: '0' }}
+                  >
+                    {' '}
+                    <span style={{ fontWeight: '600', fontSize: '15px' }}>{'Field & Co.'}</span>{' '}
+                    <span style={{ font: "12px 'Geist Mono',monospace", color: '#6b7079' }}>
+                      {'Tue · 9:00 AM'}
+                    </span>{' '}
+                  </span>{' '}
+                  <span
+                    style={{
+                      padding: '3px 9px',
+                      borderRadius: '999px',
+                      background: '#dcff2e',
+                      color: '#15171a',
+                      fontSize: '12px',
+                      fontWeight: '600',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {'10 accounts'}
+                  </span>{' '}
+                </div>{' '}
+                <span style={{ fontSize: '15px', lineHeight: '1.5' }}>
+                  {'The Fall field kit is live. Waxed canvas, brass hardware, built to take a beating.'}
+                </span>{' '}
+              </div>{' '}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,minmax(0,1fr))', gap: '8px' }}>
+                {' '}
+                {$arr($v['fanNodes']).map((n, $index) => (
+                  <Fragment key={$index}>
+                    {' '}
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '10px',
+                        padding: '10px',
+                        borderRadius: '12px',
+                        border: '1px solid #1f2227',
+                        background: '#0f1113',
+                        minWidth: '0',
+                      }}
+                    >
+                      {' '}
+                      <span
+                        style={{
+                          width: '30px',
+                          height: '30px',
+                          borderRadius: '28%',
+                          background: `${n?.tile ?? ''}`,
+                          display: 'grid',
+                          placeItems: 'center',
+                          flex: 'none',
+                          animation: `sfyArrive 2.4s ease-out ${n?.delay ?? ''}s infinite`,
+                        }}
+                      >
+                        <span
+                          style={{
+                            width: '50%',
+                            height: '50%',
+                            background: '#ffffff',
+                            WebkitMask: `${n?.logo ?? ''} center/contain no-repeat`,
+                            mask: `${n?.logo ?? ''} center/contain no-repeat`,
+                          }}
+                        />
+                      </span>{' '}
+                      <span
+                        style={{
+                          fontSize: '14px',
+                          fontWeight: '600',
+                          color: '#f6f5f1',
+                          minWidth: '0',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {$t(n?.label)}
+                      </span>{' '}
+                    </div>{' '}
+                  </Fragment>
+                ))}{' '}
+              </div>{' '}
+            </div>{' '}
           </div>{' '}
         </section>{' '}
-        <section data-screen-label="Value" style={{ padding: '120px 24px 60px' }}>
+        <section data-screen-label="Value" style={{ padding: '120px 24px 60px' }} className="sfy-sec sfy-sec-gap">
           {' '}
           <div style={{ maxWidth: '1120px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '48px' }}>
             {' '}
@@ -1200,12 +1325,19 @@ export function renderLanding($v) {
                         display: 'flex',
                         alignItems: 'center',
                         gap: '10px',
+                        rowGap: '10px',
+                        flexWrap: 'wrap',
                         paddingTop: '12px',
                         borderTop: '1px solid #22252a',
                       }}
                     >
                       {' '}
-                      <span style={{ fontSize: '13px', color: '#a7abb2' }}>{'Tue, Oct 27 · 9:00 AM'}</span>{' '}
+                      <span
+                        style={{ fontSize: '13px', color: '#a7abb2', whiteSpace: 'nowrap' }}
+                        className="sfy-hide-sm"
+                      >
+                        {'Tue, Oct 27 · 9:00 AM'}
+                      </span>{' '}
                       <span style={{ flex: '1' }} />{' '}
                       <span
                         style={{
@@ -1215,6 +1347,7 @@ export function renderLanding($v) {
                           color: '#15171a',
                           fontWeight: '600',
                           fontSize: '13px',
+                          whiteSpace: 'nowrap',
                         }}
                       >
                         {'Schedule 5 posts'}
@@ -1462,6 +1595,7 @@ export function renderLanding($v) {
                             textOverflow: 'ellipsis',
                             transition: 'color .3s',
                           }}
+                          className="sfy-hide-sm"
                         >
                           {$t(c?.note)}
                         </span>{' '}
@@ -1500,6 +1634,7 @@ export function renderLanding($v) {
               alignItems: 'center',
               padding: '72px 24px',
             }}
+            className="sfy-feat-in"
           >
             {' '}
             <div
@@ -1616,7 +1751,7 @@ export function renderLanding($v) {
                   ))}{' '}
                 </div>{' '}
               </div>{' '}
-              <div style={{ position: 'relative', height: '500px', minWidth: '0' }}>
+              <div style={{ position: 'relative', height: '500px', minWidth: '0' }} className="sfy-feat-vis">
                 {' '}
                 <div
                   style={{
@@ -2105,7 +2240,7 @@ export function renderLanding($v) {
         {$v['showTestimonials'] ? (
           <>
             {' '}
-            <section data-screen-label="Testimonials" style={{ padding: '80px 24px' }}>
+            <section data-screen-label="Testimonials" style={{ padding: '80px 24px' }} className="sfy-sec sfy-sec-gap">
               {' '}
               <div
                 style={{ maxWidth: '1120px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '40px' }}
@@ -2184,7 +2319,12 @@ export function renderLanding($v) {
             </section>{' '}
           </>
         ) : null}{' '}
-        <section id="pricing" data-screen-label="Pricing" style={{ padding: '80px 24px' }}>
+        <section
+          id="pricing"
+          data-screen-label="Pricing"
+          style={{ padding: '80px 24px' }}
+          className="sfy-sec sfy-sec-gap"
+        >
           {' '}
           <div
             style={{
@@ -2211,7 +2351,9 @@ export function renderLanding($v) {
               >
                 {'Simple pricing'}
               </h2>{' '}
-              <p style={{ margin: '0', color: '#a7abb2' }}>{'Unlimited posts on every plan. 7-day free trial, card required. Cancel anytime.'}</p>{' '}
+              <p style={{ margin: '0', color: '#a7abb2' }}>
+                {'Unlimited posts on every plan. 7-day free trial, card required. Cancel anytime.'}
+              </p>{' '}
             </div>{' '}
             <div
               data-reveal=""
@@ -2370,7 +2512,7 @@ export function renderLanding($v) {
             </div>{' '}
           </div>{' '}
         </section>{' '}
-        <section data-screen-label="CTA" style={{ padding: '60px 24px 100px' }}>
+        <section data-screen-label="CTA" style={{ padding: '60px 24px 100px' }} className="sfy-sec sfy-sec-gap">
           {' '}
           <div
             data-reveal=""
@@ -2435,7 +2577,7 @@ export function renderLanding($v) {
             </div>{' '}
           </div>{' '}
         </section>{' '}
-        <footer style={{ borderTop: '1px solid #1f2227', padding: '28px 24px 44px' }}>
+        <footer style={{ borderTop: '1px solid #1f2227', padding: '28px 24px 44px' }} className="sfy-foot">
           {' '}
           <div
             style={{
@@ -2454,7 +2596,7 @@ export function renderLanding($v) {
               <img src="/logos/schedule-for-you-glyph.svg" alt="" width="20" height="20" style={{ display: 'block' }} />
               {'© 2026 Schedule For You'}
             </span>{' '}
-            <span style={{ display: 'flex', gap: '18px' }}>
+            <span style={{ display: 'flex', gap: '18px' }} className="sfy-foot-links">
               <a href="#features" style={{ color: '#6b7079' }}>
                 {'Features'}
               </a>
