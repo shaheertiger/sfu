@@ -93,6 +93,8 @@ export async function syncSubscription(sub: Stripe.Subscription) {
   if (!ws || (!plan && !sub.metadata?.workspace_id)) return null; // another business on this Stripe account
   // An older subscription's events must not overwrite a newer one.
   if (ws.stripe_subscription_id && ws.stripe_subscription_id !== sub.id && ['canceled', 'incomplete_expired'].includes(sub.status)) return ws.id;
+  // Newer API versions keep the period on the item; webhooks in older account versions keep it on the subscription.
+  const periodEnd: number | undefined = item?.current_period_end ?? (sub as any).current_period_end;
   const live = PAID.includes(sub.status);
   const p = plan ? PLANS[plan] : null;
   await exec(
@@ -103,7 +105,7 @@ export async function syncSubscription(sub: Stripe.Subscription) {
       customerId ?? null, sub.id, sub.status,
       live && p ? p.id : 'none',
       live && p ? p.accountLimit : DEFAULT_ACCOUNT_LIMIT,
-      item?.current_period_end ? item.current_period_end * 1000 : null,
+      periodEnd ? periodEnd * 1000 : null,
       !!sub.cancel_at_period_end, ws.id,
       sub.status === 'trialing' && sub.trial_end ? sub.trial_end * 1000 : null,
       !!sub.trial_end,
