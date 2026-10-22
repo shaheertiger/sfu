@@ -4,7 +4,7 @@ Post scheduler: write once, publish to ten social platforms from one queue. Next
 
 | Route              | What it is                                                                                     |
 | ------------------ | ---------------------------------------------------------------------------------------------- |
-| `/`                | Landing page. Phones (≤640px) get the mobile design (`LandingMobile`); `/?desktop=1` shows the full one |
+| `/`                | Landing page, server-rendered. Phones get the mobile design (`LandingMobile`, chosen by user agent, then kept in step with the viewport); `/?desktop=1` shows the full one |
 | `/signup`, `/login` | Email + password accounts (Neon Auth)                                                         |
 | `/app`             | The dashboard on your real data (signed in)                                                    |
 | `/demo`            | The same dashboard with sample data, nothing saved                                             |
