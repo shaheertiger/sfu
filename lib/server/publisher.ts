@@ -6,6 +6,8 @@ import { PublishError } from './adapters/types';
 import { mediaFiles, rowToAccount } from './posts';
 import { notifyFailures, type Failure } from './notify';
 import { canPublishSql } from './billing';
+import { firePostEvent } from './webhooks';
+import { withSignature } from './signature';
 
 const MAX_ATTEMPTS = 3;
 const DRY_RUN = process.env.SFY_DRY_RUN === '1';
@@ -30,6 +32,7 @@ export async function publishPost(postId: string) {
   if (!post) return null;
   const targets = await query('SELECT * FROM post_targets WHERE post_id=$1', [postId]);
   const media = await mediaFiles(post.workspace_id, post.media || []);
+  const signature = post.signature === false ? '' : ((await one('SELECT signature FROM workspaces WHERE id=$1', [post.workspace_id]))?.signature || '').trim();
 
   const failures: Failure[] = [];
   for (const target of targets) {
@@ -41,7 +44,7 @@ export async function publishPost(postId: string) {
       const accRow = await one('SELECT * FROM social_accounts WHERE id=$1 AND workspace_id=$2', [target.account_id, post.workspace_id]);
       if (!accRow) throw new PublishError('Account was disconnected', false);
       const account = await freshAccount(accRow);
-      const caption = target.caption_override ?? post.caption;
+      const caption = withSignature(target.caption_override ?? post.caption, signature, account.platform);
       const result = DRY_RUN
         ? { externalId: 'dry_' + uid(), url: `https://example.com/${account.platform}/${account.username}/dry-run` }
         : await adapterFor(account.platform).publish({ account, caption, media, options: target.options || {} });
@@ -71,6 +74,7 @@ export async function publishPost(postId: string) {
     [status, now() + 2 * 60_000, now(), postId]);
   if (status === 'published' || status === 'partial') await scheduleFollowUps(post);
   await notifyFailures(post, failures);
+  if (status !== 'scheduled') await firePostEvent(post.workspace_id, postId, `post.${status}`);
   return status;
 }
 
@@ -89,8 +93,8 @@ async function scheduleFollowUps(post: any) {
   if (!at) return;
   const id = uid('post');
   // parent_id is unique, so a retried post never spawns a second copy.
-  const made = await exec(`INSERT INTO posts (id, workspace_id, caption, media, scheduled_at, status, labels, repeat, evergreen, approval, remind, note, created_by, parent_id, created_at, updated_at)
-              SELECT $1, workspace_id, caption, media, $2, 'scheduled', labels, repeat, evergreen, CASE WHEN approval='approved' THEN 'approved' ELSE NULL END, remind, note, created_by, id, $3, $3 FROM posts WHERE id=$4
+  const made = await exec(`INSERT INTO posts (id, workspace_id, caption, media, scheduled_at, status, labels, repeat, evergreen, approval, remind, note, signature, created_by, parent_id, created_at, updated_at)
+              SELECT $1, workspace_id, caption, media, $2, 'scheduled', labels, repeat, evergreen, CASE WHEN approval='approved' THEN 'approved' ELSE NULL END, remind, note, signature, created_by, id, $3, $3 FROM posts WHERE id=$4
               ON CONFLICT (parent_id) WHERE parent_id IS NOT NULL DO NOTHING`,
     [id, at, now(), post.id]);
   if (!made) return;

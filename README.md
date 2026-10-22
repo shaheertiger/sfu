@@ -8,6 +8,8 @@ Post scheduler: write once, publish to ten social platforms from one queue. Next
 | `/signup`, `/login` | Email + password accounts (Neon Auth)                                                         |
 | `/app`             | The dashboard on your real data (signed in)                                                    |
 | `/demo`            | The same dashboard with sample data, nothing saved                                             |
+| `/app/automations` | Signature, RSS auto-post, webhooks (workspace menu → Automations)                              |
+| `/p/<token>`       | Client preview link: view a post, approve, ask for changes or comment (no account)             |
 | `/brand`           | Logo sheet                                                                                     |
 | `/api/v1/*`        | REST API (session or `Authorization: Bearer sfy_…` API key)                                    |
 | `/api/cron/publish` | Publishing job, run by Vercel Cron every minute                                               |
@@ -112,6 +114,25 @@ curl -H "Authorization: Bearer sfy_..." -H "Content-Type: application/json" \
 | GET / POST | `/api/v1/media` | POST `{filename, mime, size, folder?}` returns `upload_url`; PUT the file there, then PATCH `/api/v1/media/:id {uploaded:true}` |
 | PATCH / DELETE | `/api/v1/media/:id` | Confirm upload, move folder, delete |
 | GET | `/api/v1/keys` | Keys can only be created or revoked from the dashboard |
+| POST | `/api/v1/posts/:id/share` | Client preview link `{ url, expires_at }` (30 days; reused while valid) |
+| GET | `/api/v1/posts/:id/comments` | Comments, approvals and change requests left on the preview link |
+| PUT | `/api/v1/signature` | `{ signature }` added to every post when it publishes; `""` turns it off. Per post: `signature: false` |
+| GET / POST | `/api/v1/webhooks` | POST `{ url, events?: ["post.published","post.partial","post.failed"] }`; the secret is returned once |
+| PATCH / DELETE | `/api/v1/webhooks/:id` | `{ active?, events? }` |
+| POST | `/api/v1/webhooks/:id/test` | Sends a `ping` event |
+| GET / POST | `/api/v1/feeds` | POST `{ url, mode: "draft" \| "queue", template?, account_ids? }`; items already in the feed are skipped |
+| PATCH / DELETE | `/api/v1/feeds/:id` | `{ active?, mode?, template?, account_ids? }` |
+| POST | `/api/v1/feeds/:id/check` | Check now instead of waiting for the 15-minute run |
+
+Owners, editors and API keys can change signature, webhooks and feeds; members can only read them.
+
+## Automations
+
+- **Signature:** added on its own paragraph when a post publishes; skipped if the post already contains it or it would exceed the platform's character limit.
+- **RSS auto-post:** each feed is checked every 15 minutes by the publishing cron. The first check only records what's already there. New items (up to 5 per check) become drafts, or queued posts in the next open posting slot, for the chosen accounts. Template placeholders: `{title}`, `{link}`, `{description}` (HTML stripped, 280 characters).
+- **Webhooks:** a JSON POST per event with `X-SFY-Event` and `X-SFY-Signature: t=<unix>,v1=<hex HMAC-SHA256 of "<t>.<body>">`. One attempt, 5-second timeout; the last result shows in Automations.
+- **Client preview links:** "Share for review" on a saved post in the composer. Approving clears the post's approval hold; "Request changes" puts it back on hold. The owner and the post's author get an email for each response.
+- Webhook and feed URLs must be public `https://` addresses; private and internal addresses are refused, and each redirect is checked. For local testing only, `ALLOW_PRIVATE_URLS=1` lifts this.
 
 ## MCP server (Claude, Cursor…)
 
@@ -131,14 +152,15 @@ Tools: `list_accounts`, `create_post`, `list_posts`, `publish_post`, `delete_pos
 
 ## Security notes
 
-- Passwords: scrypt. Sessions: random tokens, only their SHA-256 is stored; httpOnly, SameSite=Lax cookies.
+- Sign-in: Neon Auth (Managed Better Auth) stores users, passwords and sessions; the app keeps httpOnly session cookies on its own domain.
 - Platform tokens: AES-256-GCM encrypted at rest with `TOKEN_ENCRYPTION_KEY`.
 - API keys: only their SHA-256 is stored; shown once.
-- Login: at most 10 failed attempts per email per 15 minutes (per server instance).
+- Login: at most 10 failed attempts per email per 15 minutes (per server instance), on top of Neon Auth's own limits.
+- Webhooks and RSS: outbound requests only to public addresses, size and time limited.
+- Preview links: unguessable tokens, expire after 30 days, rate limited, not indexed by search engines.
 
 ## Not built yet
 
-- Billing (Stripe): plans, checkout, limits per plan.
-- Email: password reset, reminders before posts, failure alerts and digests (the settings are saved but nothing sends yet).
+- Password reset (Neon Auth supports it; the app has no "forgot password" screen yet).
 - Engagement analytics from the platforms (Analytics shows publishing stats; impressions show "—").
 - Real image thumbnails in the queue and calendar (they show coloured tiles).

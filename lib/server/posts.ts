@@ -21,6 +21,8 @@ export type PostInput = {
   remind?: boolean;
   note?: string;
   batch?: string | null;
+  /** false: don't add the workspace signature to this post. */
+  signature?: boolean;
 };
 
 /* ---------- accounts ---------- */
@@ -120,15 +122,16 @@ export async function savePost(workspaceId: string, input: PostInput, userId: st
     JSON.stringify(input.labels ?? existing?.labels ?? []), input.repeat ?? existing?.repeat ?? 'none', input.evergreen ?? existing?.evergreen ?? false,
     input.approval === undefined ? existing?.approval ?? null : input.approval, input.remind ?? existing?.remind ?? true, input.note ?? existing?.note ?? '',
     input.batch === undefined ? existing?.batch ?? null : input.batch,
+    input.signature ?? existing?.signature ?? true,
   ];
   await tx(async (q) => {
     if (existing) {
       if (existing.status === 'published' && status !== 'published') throw new Error('Published posts cannot be rescheduled. Duplicate it instead.');
-      await q(`UPDATE posts SET caption=$1, media=$2, scheduled_at=$3, status=$4, labels=$5, repeat=$6, evergreen=$7, approval=$8, remind=$9, note=$10, batch=$11, updated_at=$12 WHERE id=$13 AND workspace_id=$14`,
+      await q(`UPDATE posts SET caption=$1, media=$2, scheduled_at=$3, status=$4, labels=$5, repeat=$6, evergreen=$7, approval=$8, remind=$9, note=$10, batch=$11, signature=$12, updated_at=$13 WHERE id=$14 AND workspace_id=$15`,
         [...fields, t, id, workspaceId]);
     } else {
-      await q(`INSERT INTO posts (caption, media, scheduled_at, status, labels, repeat, evergreen, approval, remind, note, batch, id, workspace_id, created_by, created_at, updated_at)
-               VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$15)`, [...fields, id, workspaceId, userId, t]);
+      await q(`INSERT INTO posts (caption, media, scheduled_at, status, labels, repeat, evergreen, approval, remind, note, batch, signature, id, workspace_id, created_by, created_at, updated_at)
+               VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$16)`, [...fields, id, workspaceId, userId, t]);
     }
     if (input.targets) {
       const keep = new Map<string, any>((existing?.targets || []).map((x: any) => [x.account_id, x]));
