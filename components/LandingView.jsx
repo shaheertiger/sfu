@@ -253,7 +253,7 @@ export function renderLanding($v) {
                 {'See how it works'}
               </a>{' '}
             </div>{' '}
-            <span style={{ fontSize: '13px', color: '#6b7079' }}>{'7-day trial · No card to start'}</span>{' '}
+            <span style={{ fontSize: '13px', color: '#6b7079' }}>{'7-day free trial · Cancel anytime'}</span>{' '}
           </div>{' '}
           <div
             id="how"
