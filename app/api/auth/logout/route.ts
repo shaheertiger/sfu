@@ -1,7 +1,11 @@
-import { endSession } from '@/lib/server/auth';
-import { json } from '@/lib/server/api';
+import { errorResponse, json } from '@/lib/server/api';
+import { neonAuth } from '@/lib/server/neon-auth';
 
 export async function POST() {
-  await endSession();
-  return json({ ok: true });
+  try {
+    await neonAuth().signOut();
+    return json({ ok: true });
+  } catch (e) {
+    return errorResponse(e);
+  }
 }

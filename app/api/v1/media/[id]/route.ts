@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { body, handler, json } from '@/lib/server/api';
 import { exec, one } from '@/lib/server/db';
-import { head, remove } from '@/lib/server/r2';
+import { head, remove } from '@/lib/server/storage';
 import { publicMedia } from '@/lib/server/media';
 
 export const PATCH = handler(async ({ req, workspace, params }) => {

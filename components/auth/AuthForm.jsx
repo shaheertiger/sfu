@@ -8,6 +8,7 @@ export default function AuthForm({ mode }) {
   const params = useSearchParams();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const [notice, setNotice] = useState('');
   const signup = mode === 'signup';
   const next = params.get('next') || '/app';
 
@@ -24,6 +25,11 @@ export default function AuthForm({ mode }) {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.error || 'Something went wrong');
+      if (data.verify) {
+        setNotice(data.message);
+        setBusy(false);
+        return;
+      }
       router.replace(next.startsWith('/') ? next : '/app');
       router.refresh();
     } catch (err) {
@@ -56,6 +62,7 @@ export default function AuthForm({ mode }) {
           <input name="password" type="password" required minLength={signup ? 8 : undefined} autoComplete={signup ? 'new-password' : 'current-password'} placeholder={signup ? 'At least 8 characters' : ''} />
         </label>
         {error && <p className={styles.error} role="alert">{error}</p>}
+        {notice && <p className={styles.sub} role="status">{notice}</p>}
         <button type="submit" disabled={busy}>{busy ? 'One moment…' : signup ? 'Create account' : 'Sign in'}</button>
         <p className={styles.switch}>
           {signup ? <>Have an account? <a href={`/login${params.toString() ? `?${params}` : ''}`}>Sign in</a></> : <>New here? <a href={`/signup${params.toString() ? `?${params}` : ''}`}>Create an account</a></>}

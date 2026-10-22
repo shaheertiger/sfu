@@ -18,12 +18,12 @@ export type SocialAccount = {
 
 export type MediaFile = {
   id: string;
-  key: string;       // object key in R2
-  url: string;       // URL platforms can fetch (public R2 domain or signed URL)
+  key: string;       // object key in the media bucket
+  url: string;       // URL platforms can fetch (public base URL or signed URL)
   mime: string;
   size: number;
   filename: string;
-  bytes: () => Promise<Buffer>; // downloads the file from R2 (cached per publish)
+  bytes: () => Promise<Buffer>; // downloads the file from storage (cached per publish)
 };
 
 export type PublishInput = {

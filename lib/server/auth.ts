@@ -1,11 +1,7 @@
 import 'server-only';
-import crypto from 'node:crypto';
-import { cookies } from 'next/headers';
 import { exec, now, one, query, tx, uid } from './db';
 import { randomToken, sha256 } from './crypto';
-
-export const SESSION_COOKIE = 'sfy_session';
-const SESSION_TTL = 1000 * 60 * 60 * 24 * 30;
+import { neonAuth } from './neon-auth';
 
 export class HttpError extends Error {
   status: number;
@@ -17,19 +13,6 @@ export class HttpError extends Error {
 
 export type User = { id: string; email: string; name: string };
 export type Workspace = { id: string; name: string; plan: string; account_limit: number; owner_id: string; prefs: any; role: string };
-
-/* ---------- passwords (scrypt) ---------- */
-export function hashPassword(pw: string) {
-  const salt = crypto.randomBytes(16).toString('hex');
-  return `${salt}:${crypto.scryptSync(pw, salt, 64).toString('hex')}`;
-}
-export function verifyPassword(pw: string, stored: string) {
-  const [salt, hash] = (stored || '').split(':');
-  if (!salt || !hash) return false;
-  const test = crypto.scryptSync(pw, salt, 64);
-  const want = Buffer.from(hash, 'hex');
-  return want.length === test.length && crypto.timingSafeEqual(want, test);
-}
 
 /* ---------- users + workspaces ---------- */
 export const DEFAULT_PREFS = {
@@ -50,53 +33,44 @@ export const DEFAULT_PREFS = {
   notes: {},
 };
 
-export async function createUser(email: string, password: string, name?: string) {
-  const id = uid('usr');
+type NeonUser = { id: string; email: string; name?: string | null };
+
+/**
+ * Returns the app's profile row for a Neon Auth user, creating it (with a first workspace) on first sign-in.
+ * Neon Auth owns passwords and sessions; `users` keeps the profile that workspaces and posts point at.
+ */
+export async function ensureUser(nu: NeonUser): Promise<User & { active_workspace_id: string | null }> {
+  const found = await one('SELECT id,email,name,active_workspace_id FROM users WHERE id=$1', [nu.id]);
+  if (found) return found;
+  const email = nu.email.toLowerCase();
+  if (await one('SELECT 1 FROM users WHERE email=$1 AND id<>$2', [email, nu.id])) {
+    throw new HttpError(409, 'An older account already uses this email. Contact support to move it to the new sign-in.');
+  }
+  const display = (nu.name || email.split('@')[0]).trim().slice(0, 80);
   const wsId = uid('ws');
   const t = now();
-  const display = (name || email.split('@')[0]).trim().slice(0, 80);
   await tx(async (q) => {
-    await q('INSERT INTO users (id,email,name,password_hash,created_at) VALUES ($1,$2,$3,$4,$5)', [id, email.toLowerCase(), display, hashPassword(password), t]);
-    await q('INSERT INTO workspaces (id,name,plan,account_limit,owner_id,prefs,created_at) VALUES ($1,$2,$3,$4,$5,$6,$7)', [wsId, `${display}'s workspace`, 'trial', 15, id, JSON.stringify(DEFAULT_PREFS), t]);
-    await q('INSERT INTO workspace_members (workspace_id,user_id,role) VALUES ($1,$2,$3)', [wsId, id, 'owner']);
+    // ON CONFLICT: two first requests can race; only the one that inserts creates the workspace.
+    const ins = await q('INSERT INTO users (id,email,name,created_at,active_workspace_id) VALUES ($1,$2,$3,$4,NULL) ON CONFLICT (id) DO NOTHING RETURNING id', [nu.id, email, display, t]);
+    if (!ins.length) return;
+    await q('INSERT INTO workspaces (id,name,plan,account_limit,owner_id,prefs,created_at) VALUES ($1,$2,$3,$4,$5,$6,$7)', [wsId, `${display}'s workspace`, 'trial', 15, nu.id, JSON.stringify(DEFAULT_PREFS), t]);
+    await q('INSERT INTO workspace_members (workspace_id,user_id,role) VALUES ($1,$2,$3)', [wsId, nu.id, 'owner']);
+    await q('UPDATE users SET active_workspace_id=$1 WHERE id=$2', [wsId, nu.id]);
   });
-  return { id, email, workspaceId: wsId };
+  return (await one('SELECT id,email,name,active_workspace_id FROM users WHERE id=$1', [nu.id]))!;
 }
 
-/* ---------- sessions ---------- */
-export async function createSession(userId: string, workspaceId: string | null = null) {
-  const token = randomToken(32);
-  await exec('INSERT INTO sessions (token_hash,user_id,workspace_id,expires_at) VALUES ($1,$2,$3,$4)', [sha256(token), userId, workspaceId, now() + SESSION_TTL]);
-  return token;
-}
-export async function setSessionCookie(token: string) {
-  (await cookies()).set(SESSION_COOKIE, token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
-    path: '/',
-    maxAge: SESSION_TTL / 1000,
-  });
-}
-export async function endSession() {
-  const c = await cookies();
-  const token = c.get(SESSION_COOKIE)?.value;
-  if (token) await exec('DELETE FROM sessions WHERE token_hash=$1', [sha256(token)]);
-  c.delete(SESSION_COOKIE);
-}
-
-async function sessionRow() {
-  const token = (await cookies()).get(SESSION_COOKIE)?.value;
-  if (!token) return null;
-  const s = await one('SELECT token_hash, user_id, workspace_id, expires_at FROM sessions WHERE token_hash=$1', [sha256(token)]);
-  if (!s || s.expires_at < now()) return null;
-  return s;
+/* ---------- sessions (Neon Auth) ---------- */
+async function sessionUser() {
+  const { data, error } = await neonAuth().getSession();
+  if (error) console.error('[auth] getSession failed:', error.message);
+  const nu = data?.user;
+  return nu ? ensureUser(nu) : null;
 }
 
 export async function currentUser(): Promise<User | null> {
-  const s = await sessionRow();
-  if (!s) return null;
-  return one<User>('SELECT id,email,name FROM users WHERE id=$1', [s.user_id]);
+  const u = await sessionUser();
+  return u && { id: u.id, email: u.email, name: u.name };
 }
 
 export async function workspacesForUser(userId: string): Promise<Workspace[]> {
@@ -107,12 +81,11 @@ export async function workspacesForUser(userId: string): Promise<Workspace[]> {
   );
 }
 
-/** Switch the session's active workspace (must be a member). */
+/** Switch the user's active workspace (must be a member). */
 export async function switchWorkspace(userId: string, workspaceId: string) {
-  const token = (await cookies()).get(SESSION_COOKIE)?.value;
   const m = await one('SELECT 1 FROM workspace_members WHERE user_id=$1 AND workspace_id=$2', [userId, workspaceId]);
-  if (!token || !m) throw new HttpError(403, 'Not a member of that workspace');
-  await exec('UPDATE sessions SET workspace_id=$1 WHERE token_hash=$2', [workspaceId, sha256(token)]);
+  if (!m) throw new HttpError(403, 'Not a member of that workspace');
+  await exec('UPDATE users SET active_workspace_id=$1 WHERE id=$2', [workspaceId, userId]);
 }
 
 /** Resolves the acting workspace from an API key (Bearer) or the session cookie. */
@@ -125,12 +98,11 @@ export async function requireWorkspace(req?: Request): Promise<{ workspace: Work
     const ws = await one('SELECT * FROM workspaces WHERE id=$1', [row.workspace_id]);
     return { workspace: { ...ws, role: 'api' }, user: null };
   }
-  const s = await sessionRow();
-  if (!s) throw new HttpError(401, 'Not signed in');
-  const user = await one<User>('SELECT id,email,name FROM users WHERE id=$1', [s.user_id]);
-  if (!user) throw new HttpError(401, 'Not signed in');
+  const u = await sessionUser();
+  if (!u) throw new HttpError(401, 'Not signed in');
+  const user = { id: u.id, email: u.email, name: u.name };
   const all = await workspacesForUser(user.id);
-  const workspace = all.find((w) => w.id === s.workspace_id) || all[0];
+  const workspace = all.find((w) => w.id === u.active_workspace_id) || all[0];
   if (!workspace) throw new HttpError(403, 'No workspace');
   return { workspace, user };
 }
