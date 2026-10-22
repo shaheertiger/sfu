@@ -569,7 +569,7 @@ class Component extends DCLogic {
     );
   }
   newPost(when) {
-    this.setState({ draft: Component.blank(when), screen: 'compose' });
+    this.setState({ draft: Component.blank(when), screen: 'compose', drawer: false });
   }
   editPost(p) {
     if (p.src) p = this.state.posts.find((x) => x.id === p.src) || p;
@@ -976,7 +976,7 @@ class Component extends DCLogic {
         label,
       icon: `url(/icons/${id}${screen === id ? '-on' : ''}.svg)`,
       count,
-      go: () => this.setState({ screen: id, selecting: false, selected: [] }),
+      go: () => this.setState({ screen: id, selecting: false, selected: [], drawer: false }),
       hasAlert: id === 'queue' && failedPosts.length > 0,
       alert: failedPosts.length,
       bg: screen === id ? '#1f2226' : 'transparent',
@@ -1968,7 +1968,10 @@ class Component extends DCLogic {
       emptyTitle: s.tab === 'upcoming' ? 'Nothing scheduled' : `No ${s.tab} posts`,
       rowPad,
       nextUp,
-      dows: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      dows:
+        typeof window !== 'undefined' && window.innerWidth <= 760
+          ? ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+          : ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
       calDays,
       monthLabel: first.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
       prevMonth: () => this.setState({ cursor: cm === 0 ? [cy - 1, 11] : [cy, cm - 1] }),
@@ -3509,11 +3512,52 @@ class Component extends DCLogic {
         { title: 'Manage', items: ['library', 'accounts', 'analytics'] },
       ].map((g) => ({ title: g.title, items: g.items.map((id) => nav.find((n) => n.id === id)).filter(Boolean) })),
       navBottom: nav.filter((n) => n.id === 'settings'),
-      sideCols: S0.collapsed ? '64px minmax(0,1fr)' : '236px minmax(0,1fr)',
-      sideTxt: S0.collapsed ? 'none' : 'inline',
-      sideBlock: S0.collapsed ? 'none' : 'flex',
-      sideArrow: S0.collapsed ? '»' : '«',
-      sideToggleLabel: S0.collapsed ? 'Expand sidebar' : 'Collapse sidebar',
+      ...(() => {
+        // Phones: the sidebar becomes a slide-in drawer, so it is never collapsed there.
+        const phone = typeof window !== 'undefined' && window.innerWidth <= 760,
+          col = S0.collapsed && !phone;
+        const more = ['bulk', 'library', 'accounts', 'analytics', 'settings'].includes(screen);
+        const tab = (id, label, kind, go, on, badge) => ({
+          label,
+          kind,
+          go,
+          on: on ? 'true' : 'false',
+          current: on ? 'page' : 'false',
+          badge: badge || 0,
+          icon: kind === 'nav' ? `url(/icons/${id}${on ? '-on' : ''}.svg)` : 'none',
+        });
+        const goTo = (id) => () => this.setState({ screen: id, selecting: false, selected: [], drawer: false });
+        return {
+          sideCols: col ? '64px minmax(0,1fr)' : '236px minmax(0,1fr)',
+          sideTxt: col ? 'none' : 'inline',
+          sideBlock: col ? 'none' : 'flex',
+          sideArrow: col ? '»' : '«',
+          sideToggleLabel: col ? 'Expand sidebar' : 'Collapse sidebar',
+          drawerAttr: S0.drawer ? 'open' : 'closed',
+          drawerOpen: S0.drawer ? 'true' : 'false',
+          toggleDrawer: () => this.setState((st) => ({ drawer: !st.drawer })),
+          closeDrawer: () => this.setState({ drawer: false }),
+          screenTitle:
+            {
+              home: 'Overview',
+              queue: 'Queue',
+              calendar: 'Calendar',
+              bulk: 'Bulk scheduling',
+              library: 'Media library',
+              compose: S0.draft && S0.draft.id ? 'Edit post' : 'New post',
+              accounts: 'Social accounts',
+              analytics: 'Analytics',
+              settings: 'Settings',
+            }[screen] || 'Schedule For You',
+          mobTabs: [
+            tab('home', 'Home', 'nav', goTo('home'), screen === 'home'),
+            tab('queue', 'Queue', 'nav', goTo('queue'), screen === 'queue', failedPosts.length),
+            tab('create', 'Create', 'create', () => this.newPost(), screen === 'compose'),
+            tab('calendar', 'Calendar', 'nav', goTo('calendar'), screen === 'calendar'),
+            tab('more', 'More', 'more', () => this.setState((st) => ({ drawer: !st.drawer })), more),
+          ],
+        };
+      })(),
       toggleSide: () => this.setState((st) => ({ collapsed: !st.collapsed })),
       ...(() => {
         const p = S0.posts.find((x) => x.id === S0.calPost);

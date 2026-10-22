@@ -20,11 +20,67 @@ textarea{resize:vertical}
 ::selection{background:#d9ff35;color:#141619}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @keyframes dashIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+/* ---- Phone layout ---- */
+.sfy-top,.sfy-tabs,.sfy-scrim{display:none}
+@media (max-width:760px){
+  html,body{overscroll-behavior-y:none}
+  .sfy-shell{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto 1fr;align-content:start}
+  .sfy-side{position:fixed!important;top:0;left:0;bottom:0;width:min(84vw,300px);height:100dvh!important;z-index:70;transform:translateX(-104%);transition:transform .28s cubic-bezier(.2,.8,.2,1);padding-top:calc(14px + env(safe-area-inset-top))!important;padding-bottom:calc(14px + env(safe-area-inset-bottom))!important}
+  .sfy-shell[data-drawer="open"] .sfy-side{transform:none;box-shadow:24px 0 60px -20px rgba(0,0,0,.6)}
+  .sfy-side .sfy-collapse{display:none!important}
+  .sfy-side button{min-height:40px}
+  .sfy-scrim{display:block;position:fixed;inset:0;z-index:65;background:rgba(10,11,13,.55);opacity:0;pointer-events:none;transition:opacity .25s}
+  .sfy-shell[data-drawer="open"] .sfy-scrim{opacity:1;pointer-events:auto}
+  .sfy-top{display:flex;align-items:center;gap:8px;position:sticky;top:0;z-index:40;padding:calc(8px + env(safe-area-inset-top)) 12px 8px;background:rgba(15,16,18,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:#f8f9f6;border-bottom:1px solid #1c1f23}
+  .sfy-iconbtn{width:40px;height:40px;flex:none;display:grid;place-items:center;border:0;border-radius:10px;background:transparent;color:inherit;cursor:pointer}
+  .sfy-iconbtn:active{background:#1c1f23}
+  .sfy-burger,.sfy-burger::before,.sfy-burger::after{display:block;width:18px;height:2px;border-radius:2px;background:#f8f9f6}
+  .sfy-burger{position:relative}
+  .sfy-burger::before,.sfy-burger::after{content:"";position:absolute;left:0}
+  .sfy-burger::before{top:-6px}.sfy-burger::after{top:6px}
+  .sfy-top-title{flex:1;min-width:0;display:flex;align-items:center;gap:9px;border:0;background:transparent;color:inherit;padding:0;cursor:pointer;text-align:left}
+  .sfy-top-title > span{font-weight:800;letter-spacing:-0.04em;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sfy-plus{width:40px;height:40px;flex:none;border:0;border-radius:11px;background:#d9ff35;color:#141619;font-size:22px;font-weight:600;line-height:1;cursor:pointer}
+  .sfy-main{padding:18px 16px calc(104px + env(safe-area-inset-bottom))!important}
+  .sfy-main h1{font-size:26px!important}
+  .sfy-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:50;padding:6px 6px calc(6px + env(safe-area-inset-bottom));background:rgba(15,16,18,.96);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid #1c1f23}
+  .sfy-tab{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;border:0;border-radius:10px;background:transparent;color:#a3a9b4;font-size:11px;font-weight:500;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .sfy-tab[data-on="true"]{color:#f8f9f6}
+  .sfy-tab-ic{width:22px;height:22px;background:center/contain no-repeat}
+  .sfy-tab[data-kind="create"] .sfy-tab-ic{width:40px;height:28px;border-radius:9px;background:#d9ff35;display:grid;place-items:center}
+  .sfy-tab[data-kind="create"] .sfy-tab-ic::after{content:"+";color:#141619;font-size:20px;font-weight:600;line-height:1}
+  .sfy-tab[data-kind="more"] .sfy-tab-ic{display:grid;place-items:center}
+  .sfy-tab[data-kind="more"] .sfy-tab-ic::after{content:"•••";color:currentColor;font-size:11px;letter-spacing:1px}
+  .sfy-tab-badge{position:absolute;top:2px;left:calc(50% + 6px);min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:#dc3545;color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center}
+  .sfy-toast{bottom:calc(86px + env(safe-area-inset-bottom))!important;max-width:calc(100vw - 32px)}
+  input,select,textarea{font-size:16px!important}
+}
+@media (max-width:760px){
+  .sfy-g2{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .sfy-qrow{grid-template-columns:auto minmax(0,1fr) auto!important;row-gap:10px!important;padding:14px!important}
+  .sfy-qbody{grid-column:1/-1;grid-row:2}
+  .sfy-qact{grid-column:3;grid-row:1;justify-self:end}
+  .sfy-qtools{min-width:0;max-width:100%}
+  .sfy-scrollx{max-width:100%;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .sfy-scrollx::-webkit-scrollbar{display:none}
+  .sfy-month .sfy-mcell{min-height:78px!important;padding:5px 3px!important;gap:3px!important}
+  .sfy-mcell > div > button{display:none!important}
+  .sfy-mcell > div > span{font-size:12px!important;min-width:22px!important;height:22px!important}
+  .sfy-month > div:nth-child(-n+7){padding:8px 2px!important;font-size:11px!important}
+  .sfy-mchip{justify-content:center;gap:2px!important;padding:3px 2px!important}
+  .sfy-mchip > span:nth-child(2),.sfy-mchip > span:nth-child(4){display:none!important}
+  .sfy-tscroll{overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+  .sfy-trow{min-width:560px;grid-template-columns:minmax(180px,1fr) 80px 96px 80px 64px!important}
+  .sfy-stack{grid-template-columns:minmax(0,1fr)!important}
+  .sfy-arow{flex-wrap:wrap!important;row-gap:8px!important;padding:14px!important}
+  .sfy-arow > div{flex:1 1 calc(100% - 52px)!important}
+  .sfy-arow > div + span{margin-left:48px}
+}
 @keyframes toastIn{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}
 </style>
 </helmet>
-<div style="display:grid;grid-template-columns:{{ sideCols }};min-height:100vh;transition:grid-template-columns .2s">
-  <aside data-screen-label="Sidebar" aria-label="Main navigation" style="background:#0f1012;color:#f8f9f6;padding:14px 10px;position:sticky;top:0;height:100vh;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;display:flex;flex-direction:column;gap:2px;border-right:1px solid #1c1f23">
+<div class="sfy-shell" data-drawer="{{ drawerAttr }}" style="display:grid;grid-template-columns:{{ sideCols }};min-height:100vh;transition:grid-template-columns .2s">
+  <aside class="sfy-side" data-screen-label="Sidebar" aria-label="Main navigation" style="background:#0f1012;color:#f8f9f6;padding:14px 10px;position:sticky;top:0;height:100vh;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;display:flex;flex-direction:column;gap:2px;border-right:1px solid #1c1f23">
     <div style="display:flex;align-items:center;gap:8px;padding:4px 4px 12px">
       <button onClick="{{ toggleWs }}" style="flex:1;min-width:0;display:flex;align-items:center;gap:9px;padding:5px;border-radius:8px;border:0;background:transparent;color:#f8f9f6;cursor:pointer;text-align:left" style-hover="background:#1c1f23">
         <img src="logos/schedule-for-you-glyph.svg" alt="" width="26" height="26" style="display:block;flex:none">
@@ -56,7 +112,7 @@ textarea{resize:vertical}
           <sc-if value="{{ n.hasAlert }}" hint-placeholder-val="{{ false }}"><span title="Failed posts" style="min-width:18px;height:18px;padding:0 5px;border-radius:6px;background:#3a1d1f;color:#ff8a8f;font-size:11px;font-weight:600;display:grid;place-items:center">{{ n.alert }}</span></sc-if>
         </button>
     </sc-for>
-    <button onClick="{{ toggleSide }}" aria-label="{{ sideToggleLabel }}" title="{{ sideToggleLabel }}" style="display:flex;align-items:center;gap:11px;padding:7px 9px;border-radius:8px;border:0;cursor:pointer;text-align:left;font-weight:500;font-size:14px;background:transparent;color:#a3a9b4" style-hover="background:#1c1f23;color:#f8f9f6">
+    <button class="sfy-collapse" onClick="{{ toggleSide }}" aria-label="{{ sideToggleLabel }}" title="{{ sideToggleLabel }}" style="display:flex;align-items:center;gap:11px;padding:7px 9px;border-radius:8px;border:0;cursor:pointer;text-align:left;font-weight:500;font-size:14px;background:transparent;color:#a3a9b4" style-hover="background:#1c1f23;color:#f8f9f6">
       <span style="width:18px;text-align:center;flex:none">{{ sideArrow }}</span><span style="display:{{ sideTxt }}">Collapse</span>
     </button>
     <div style="display:{{ sideBlock }};padding:12px 9px 4px;margin-top:6px;font-size:13px;color:#a7abb2;flex-direction:column;gap:10px;border-top:1px solid #1c1f23">
@@ -89,7 +145,13 @@ textarea{resize:vertical}
     </div>
   </aside>
 
-  <main style="padding:28px 36px 96px;max-width:1240px;width:100%;min-width:0">
+  <div class="sfy-scrim" onClick="{{ closeDrawer }}"></div>
+  <header class="sfy-top">
+    <button class="sfy-iconbtn" onClick="{{ toggleDrawer }}" aria-label="Open menu" aria-expanded="{{ drawerOpen }}"><span class="sfy-burger"></span></button>
+    <button class="sfy-top-title" onClick="{{ toggleDrawer }}"><img src="logos/schedule-for-you-glyph.svg" alt="" width="24" height="24"><span>{{ screenTitle }}</span></button>
+    <button class="sfy-plus" onClick="{{ goCompose }}" aria-label="Create post">+</button>
+  </header>
+  <main class="sfy-main" style="padding:28px 36px 96px;max-width:1240px;width:100%;min-width:0">
 
     <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
       <section data-screen-label="Home" style="display:flex;flex-direction:column;gap:36px;animation:dashIn .5s cubic-bezier(.2,.8,.2,1)">
@@ -104,7 +166,7 @@ textarea{resize:vertical}
             <button onClick="{{ goCompose }}" style="padding:9px 16px;border-radius:10px;border:0;background:#d9ff35;color:#141619;cursor:pointer;font-weight:600;font-size:14px" style-hover="background:#e6ff6e">+ Create post</button>
           </div>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px">
+        <div class="sfy-g2" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px">
           <sc-for list="{{ homeStats }}" as="h" hint-placeholder-count="4">
             <button onClick="{{ h.go }}" style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;border:1px solid #e7e5df;background:#fff;cursor:pointer;text-align:left;transition:border-color .15s" style-hover="border-color:#141619">
               <span style="width:32px;height:32px;border-radius:9px;background:#f3f4f0;display:grid;place-items:center;flex:none"><span style="width:18px;height:18px;background:{{ h.icon }} center/contain no-repeat"></span></span>
@@ -199,13 +261,13 @@ textarea{resize:vertical}
             <h1 style="margin:0;font-size:30px;line-height:1.1;letter-spacing:-0.03em;font-weight:700">Queue</h1>
             <p style="margin:8px 0 0;color:#677184;font-size:15px">{{ nextUp }}</p>
           </div>
-          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <div class="sfy-qtools" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
             <button onClick="{{ exportCsv }}" title="Download scheduled posts as CSV" style="padding:7px 12px;border-radius:10px;border:1px solid #e7e5df;background:#fff;cursor:pointer;font-weight:500;font-size:14px" style-hover="border-color:#141619">Export CSV</button>
             <button onClick="{{ togglePause }}" style="padding:7px 12px;border-radius:10px;border:1px solid {{ pauseBorder }};background:{{ pauseBg }};color:{{ pauseColor }};cursor:pointer;font-weight:500;font-size:14px">{{ pauseLabel }}</button>
             <sc-if value="{{ canSelect }}" hint-placeholder-val="{{ true }}">
               <button onClick="{{ toggleSelect }}" style="padding:7px 12px;border-radius:10px;border:1px solid {{ selectBorder }};background:{{ selectBg }};color:{{ selectColor }};cursor:pointer;font-weight:500;font-size:14px">{{ selectLabel }}</button>
             </sc-if>
-            <div style="display:inline-flex;border:1px solid #e5e3dc;border-radius:10px;background:#fff;padding:3px;gap:2px">
+            <div class="sfy-scrollx" style="display:inline-flex;border:1px solid #e5e3dc;border-radius:10px;background:#fff;padding:3px;gap:2px">
               <sc-for list="{{ queueTabs }}" as="t" hint-placeholder-count="4">
                 <button onClick="{{ t.select }}" style="white-space:nowrap;border:0;padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:500;display:flex;gap:6px;align-items:center;background:{{ t.bg }};color:{{ t.color }}">{{ t.label }}<span style="font:500 12px 'Geist Mono',monospace;opacity:.65">{{ t.count }}</span></button>
               </sc-for>
@@ -276,12 +338,12 @@ textarea{resize:vertical}
             </div>
             <div style="background:#fff;border:1px solid #e7e5df;border-radius:12px;box-shadow:0 1px 0 rgba(20,23,26,.03),0 16px 40px -28px rgba(20,23,26,.3);overflow:hidden">
               <sc-for list="{{ g.items }}" as="p" hint-placeholder-count="2">
-                <div style="display:grid;grid-template-columns:{{ rowCols }};gap:16px;border-top:{{ p.divider }};padding:{{ rowPad }};background:{{ p.rowBg }};transition:background .2s" style-hover="background:#fcfbf8">
+                <div class="sfy-qrow" style="display:grid;grid-template-columns:{{ rowCols }};gap:16px;border-top:{{ p.divider }};padding:{{ rowPad }};background:{{ p.rowBg }};transition:background .2s" style-hover="background:#fcfbf8">
                   <sc-if value="{{ p.selecting }}" hint-placeholder-val="{{ false }}">
                     <button onClick="{{ p.toggleSel }}" aria-label="Select post" style="width:20px;height:20px;margin-top:1px;border-radius:6px;border:1.5px solid {{ p.selBorder }};background:{{ p.selBg }};color:#141619;cursor:pointer;display:grid;place-items:center;font-size:12px;font-weight:800;padding:0">{{ p.selMark }}</button>
                   </sc-if>
                   <div style="font:500 13px 'Geist Mono',monospace;padding-top:2px">{{ p.time }}</div>
-                  <div style="min-width:0;display:flex;flex-direction:column;gap:8px">
+                  <div class="sfy-qbody" style="min-width:0;display:flex;flex-direction:column;gap:8px">
                     <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
                       <span style="padding:1px 9px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid {{ p.st.border }};background:{{ p.st.bg }};color:{{ p.st.color }}">{{ p.status }}</span>
                       <span style="font-size:13px;color:#677184">{{ p.meta }}</span>
@@ -312,7 +374,7 @@ textarea{resize:vertical}
                       <div style="font-size:13px;color:#dc3545">{{ p.error }}</div>
                     </sc-if>
                   </div>
-                  <div style="position:relative;display:flex;gap:6px;align-items:flex-start">
+                  <div class="sfy-qact" style="position:relative;display:flex;gap:6px;align-items:flex-start">
                     <button onClick="{{ p.primary }}" style="white-space:nowrap;padding:6px 12px;font-size:13px;border-radius:8px;border:1px solid {{ p.primBorder }};background:{{ p.primBg }};color:{{ p.primFg }};cursor:pointer;font-weight:600;white-space:nowrap">{{ p.primLabel }}</button>
                     <button onClick="{{ p.toggleMenu }}" aria-label="More actions" aria-expanded="{{ p.menuOpen }}" style="width:32px;height:32px;border-radius:8px;border:1px solid #e7e5df;background:#fff;cursor:pointer;font-size:16px;line-height:1;color:#677184" style-hover="border-color:#141619;color:#141619">⋯</button>
                     <sc-if value="{{ p.showMenu }}" hint-placeholder-val="{{ false }}">
@@ -366,19 +428,19 @@ textarea{resize:vertical}
           </div>
         </sc-if>
         <sc-if value="{{ isMonth }}" hint-placeholder-val="{{ true }}">
-        <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border:1px solid #e7e5df;border-radius:12px;overflow:hidden;background:#fff">
+        <div class="sfy-month" style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border:1px solid #e7e5df;border-radius:12px;overflow:hidden;background:#fff">
           <sc-for list="{{ dows }}" as="d" hint-placeholder-count="7">
             <div style="padding:9px 10px;font-size:12px;font-weight:500;color:#677184;text-align:center;border-bottom:1px solid #e7e5df">{{ d }}</div>
           </sc-for>
           <sc-for list="{{ calDays }}" as="d" hint-placeholder-count="35">
-            <div onDragOver="{{ d.over }}" onDrop="{{ d.drop }}" onDoubleClick="{{ d.editNote }}" style="min-height:118px;padding:8px;display:flex;flex-direction:column;gap:4px;min-width:0;background:{{ d.bg }};color:{{ d.color }};box-shadow:{{ d.ring }};border-right:1px solid #efefea;border-bottom:1px solid #efefea;transition:background .15s">
+            <div class="sfy-mcell" onDragOver="{{ d.over }}" onDrop="{{ d.drop }}" onDoubleClick="{{ d.editNote }}" style="min-height:118px;padding:8px;display:flex;flex-direction:column;gap:4px;min-width:0;background:{{ d.bg }};color:{{ d.color }};box-shadow:{{ d.ring }};border-right:1px solid #efefea;border-bottom:1px solid #efefea;transition:background .15s">
               <div style="display:flex;align-items:center;justify-content:space-between">
                 <span style="font-size:13px;font-weight:600;min-width:24px;height:24px;padding:0 4px;border-radius:999px;display:grid;place-items:center;background:{{ d.numBg }};color:{{ d.numColor }}">{{ d.num }}</span>
                 <button onClick="{{ d.add }}" aria-label="Create post on this day" title="Create post" style="border:0;background:transparent;color:#a3a9b4;cursor:pointer;font-size:15px;width:22px;height:22px;border-radius:6px" style-hover="background:#D9FF35;color:#141619">+</button>
               </div>
               <button onClick="{{ d.editNote }}" title="{{ d.note }}" style="display:{{ d.noteDisplay }};text-align:left;border:0;padding:2px 6px;border-radius:5px;background:#fff6e0;color:#8a5a00;font-size:11px;font-weight:500;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ d.note }}</button>
               <sc-for list="{{ d.shown }}" as="e" hint-placeholder-count="0">
-                <button onClick="{{ e.open }}" draggable="{{ e.draggable }}" onDragStart="{{ e.dragStart }}" onDragEnd="{{ e.dragEnd }}" title="{{ e.title }}" style="opacity:{{ e.op }};display:flex;align-items:center;gap:5px;font-size:12px;font-weight:500;padding:3px 4px 3px 4px;border-radius:7px;border:1px solid {{ e.border }};cursor:{{ e.cursor }};text-align:left;min-width:0;color:#141619;background:#fff;transition:border-color .15s" style-hover="border-color:#141619">
+                <button class="sfy-mchip" onClick="{{ e.open }}" draggable="{{ e.draggable }}" onDragStart="{{ e.dragStart }}" onDragEnd="{{ e.dragEnd }}" title="{{ e.title }}" style="opacity:{{ e.op }};display:flex;align-items:center;gap:5px;font-size:12px;font-weight:500;padding:3px 4px 3px 4px;border-radius:7px;border:1px solid {{ e.border }};cursor:{{ e.cursor }};text-align:left;min-width:0;color:#141619;background:#fff;transition:border-color .15s" style-hover="border-color:#141619">
                   <span style="width:16px;height:16px;border-radius:50%;flex:none;background:{{ e.c1 }};display:grid;place-items:center"><span style="width:60%;height:60%;background:{{ e.l1 }} center/contain no-repeat"></span></span>
                   <span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:clip">{{ e.timeShort }}</span>
                   <span style="font-size:10px;color:#677184;flex:none">{{ e.plus }}</span>
@@ -839,7 +901,7 @@ textarea{resize:vertical}
             <input type="file" multiple="{{ true }}" accept="image/*,video/*" onChange="{{ onLibFiles }}" style="display:none">Upload to {{ folderName }}
           </label>
         </div>
-        <div style="display:grid;grid-template-columns:190px minmax(0,1fr);gap:18px;align-items:start">
+        <div class="sfy-stack" style="display:grid;grid-template-columns:190px minmax(0,1fr);gap:18px;align-items:start">
           <div style="background:#fff;border:1px solid #e7e5df;border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:2px">
             <sc-for list="{{ folderTabs }}" as="f" hint-placeholder-count="5">
               <button onClick="{{ f.pick }}" style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;border:0;background:{{ f.navBg }};cursor:pointer;text-align:left;font-weight:500;font-size:14px" style-hover="background:#f6f5f1">
@@ -913,7 +975,7 @@ textarea{resize:vertical}
         </div>
         <div style="background:#fff;border:1px solid #e7e5df;border-radius:12px;box-shadow:0 1px 0 rgba(20,23,26,.03),0 16px 40px -28px rgba(20,23,26,.3);overflow:hidden">
           <sc-for list="{{ connected }}" as="a" hint-placeholder-count="5">
-            <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;border-top:{{ a.divider }}">
+            <div class="sfy-arow" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border-top:{{ a.divider }}">
               <span style="width:36px;height:36px;border-radius:50%;background:{{ a.color }};display:grid;place-items:center;flex:none"><span style="width:58%;height:58%;background:{{ a.logo }} center/contain no-repeat"></span></span></span>
               <div style="flex:1;min-width:0;display:flex;flex-direction:column">
                 <span style="font-weight:600">{{ a.display }}</span>
@@ -960,7 +1022,7 @@ textarea{resize:vertical}
           <select value="{{ aPlat }}" onChange="{{ onAPlat }}" aria-label="Platform" style="padding:7px 10px;border:1px solid #e7e5df;border-radius:9px;background:#fff;font-size:13px"><sc-for list="{{ calPlatOpts }}" as="o" hint-placeholder-count="0"><option value="{{ o.v }}">{{ o.l }}</option></sc-for></select>
           <span style="font-size:12px;color:#677184" title="Success rate = published attempts ÷ (published + failed attempts) for posts whose time has passed, counted per account. Scheduled and draft posts are excluded.">ⓘ Success rate = published ÷ (published + failed) attempts in the period, per account. Scheduled posts are excluded.</span>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:#e7e5df;border:1px solid #e7e5df;border-radius:12px;overflow:hidden;box-shadow:0 16px 40px -28px rgba(20,23,26,.3)">
+        <div class="sfy-g2" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:#e7e5df;border:1px solid #e7e5df;border-radius:12px;overflow:hidden;box-shadow:0 16px 40px -28px rgba(20,23,26,.3)">
           <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
             <div style="background:#fff;padding:22px 24px;display:flex;flex-direction:column;gap:6px">
               <span style="font-size:13px;color:#677184">{{ s.label }}</span>
@@ -1001,12 +1063,12 @@ textarea{resize:vertical}
             </div>
           </sc-for>
         </div>
-        <div style="background:#fff;border:1px solid #e7e5df;border-radius:12px;overflow:hidden">
-          <div style="display:grid;grid-template-columns:minmax(0,1fr) 90px 100px 90px 70px;gap:12px;padding:10px 18px;background:#faf9f6;border-bottom:1px solid #e5e3dc;font-size:12px;font-weight:600;color:#677184">
+        <div class="sfy-tscroll" style="background:#fff;border:1px solid #e7e5df;border-radius:12px;overflow:hidden">
+          <div class="sfy-trow" style="display:grid;grid-template-columns:minmax(0,1fr) 90px 100px 90px 70px;gap:12px;padding:10px 18px;background:#faf9f6;border-bottom:1px solid #e5e3dc;font-size:12px;font-weight:600;color:#677184">
             <span title="Shown only where the platform API reports the metric">Recent posts · metrics as reported by each platform</span><span style="text-align:right">Impressions</span><span style="text-align:right">Engagements</span><span style="text-align:right">Link clicks</span><span style="text-align:right">Rate</span>
           </div>
           <sc-for list="{{ postStats }}" as="r" hint-placeholder-count="5">
-            <div style="display:grid;grid-template-columns:minmax(0,1fr) 90px 100px 90px 70px;gap:12px;align-items:center;padding:11px 18px;border-top:{{ r.divider }}">
+            <div class="sfy-trow" style="display:grid;grid-template-columns:minmax(0,1fr) 90px 100px 90px 70px;gap:12px;align-items:center;padding:11px 18px;border-top:{{ r.divider }}">
               <div style="min-width:0;display:flex;flex-direction:column;gap:4px">
                 <span style="font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.caption }}</span>
                 <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#677184">
@@ -1204,8 +1266,17 @@ textarea{resize:vertical}
     </div>
   </div>
 </sc-if>
+  <nav class="sfy-tabs" aria-label="Quick navigation">
+    <sc-for list="{{ mobTabs }}" as="m" hint-placeholder-count="5">
+      <button class="sfy-tab" onClick="{{ m.go }}" aria-current="{{ m.current }}" data-kind="{{ m.kind }}" data-on="{{ m.on }}">
+        <span class="sfy-tab-ic" style="background-image:{{ m.icon }}"></span>
+        <span class="sfy-tab-label">{{ m.label }}</span>
+        <sc-if value="{{ m.badge }}" hint-placeholder-val="{{ false }}"><span class="sfy-tab-badge">{{ m.badge }}</span></sc-if>
+      </button>
+    </sc-for>
+  </nav>
 <sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
-  <div style="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);animation:toastIn .3s cubic-bezier(.2,.8,.2,1);background:#141619;color:#f6f5f1;padding:10px 16px;border-radius:999px;font-size:14px;display:flex;align-items:center;gap:10px;box-shadow:0 12px 32px -12px rgba(20,23,26,.5);z-index:10">
+  <div class="sfy-toast" style="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);animation:toastIn .3s cubic-bezier(.2,.8,.2,1);background:#141619;color:#f6f5f1;padding:10px 16px;border-radius:999px;font-size:14px;display:flex;align-items:center;gap:10px;box-shadow:0 12px 32px -12px rgba(20,23,26,.5);z-index:10">
     <span role="status" aria-live="polite">{{ toast }}</span>
     <sc-if value="{{ toastUndo }}" hint-placeholder-val="{{ false }}"><button onClick="{{ doUndo }}" style="border:0;background:transparent;color:#d9ff35;cursor:pointer;font-weight:600;font-size:14px;padding:0 0 0 6px">Undo</button></sc-if>
   </div>
@@ -1321,7 +1392,7 @@ class Component extends DCLogic {
   componentWillUnmount() { window.removeEventListener('resize', this._rs); clearInterval(this._iv); window.removeEventListener('keydown', this._key); clearTimeout(this._tt); }
 
   flash(msg, bad, undo) { clearTimeout(this._tt); this._undo = undo || null; this.setState({ toast: msg, toastBad: !!bad, toastUndo: !!undo }); this._tt = setTimeout(() => { this._undo = null; this.setState({ toast: '', toastUndo: false }); }, undo ? 6000 : 2800); }
-  newPost(when) { this.setState({ draft: Component.blank(when), screen: 'compose' }); }
+  newPost(when) { this.setState({ draft: Component.blank(when), screen: 'compose', drawer: false }); }
   editPost(p) {
     if (p.src) p = this.state.posts.find((x) => x.id === p.src) || p;
     this.setState({ screen: 'compose', draft: { id: p.id, caption: p.caption, targets: p.targets.map((t) => t.acc), ov: JSON.parse(JSON.stringify(p.ov || {})), media: [...p.media], mode: p.status === 'draft' ? 'draft' : 'schedule', when: Component.toLocal(p.at || Component.at(0, 15)), open: null, previewId: null, labels: [...(p.labels || [])], repeat: p.repeat || 'none', evergreen: !!p.evergreen, approval: p.approval === 'pending', approvedBefore: p.approval === 'approved', remind: p.remind !== false, note: p.note || '' } });
@@ -1483,7 +1554,7 @@ class Component extends DCLogic {
     const conflictMap = {};
     for (const p of s.posts) if (p.status === 'scheduled') { const c = findConflicts(p, s.posts); if (c.length) conflictMap[p.id] = c; }
     const nav = [['home', 'Home', '', ''], ['queue', 'Queue', '☰', upcoming.length], ['calendar', 'Calendar', '▦', ''], ['bulk', 'Bulk schedule', '⇪', ''], ['library', 'Library', '', ''], ['accounts', 'Accounts', '◎', s.accounts.length], ['analytics', 'Analytics', '↗', ''], ['settings', 'Settings', '⚙', '']]
-      .map(([id, label, icon, count]) => ({ id, current: screen === id ? 'page' : 'false', label: { home: 'Overview', bulk: 'Bulk scheduling', library: 'Media library', accounts: 'Social accounts' }[id] || label, icon: `url(icons/${id}${screen === id ? '-on' : ''}.svg)`, count, go: () => this.setState({ screen: id, selecting: false, selected: [] }), hasAlert: id === 'queue' && failedPosts.length > 0, alert: failedPosts.length, bg: screen === id ? '#1f2226' : 'transparent', color: screen === id ? '#f8f9f6' : '#a3a9b4' }));
+      .map(([id, label, icon, count]) => ({ id, current: screen === id ? 'page' : 'false', label: { home: 'Overview', bulk: 'Bulk scheduling', library: 'Media library', accounts: 'Social accounts' }[id] || label, icon: `url(icons/${id}${screen === id ? '-on' : ''}.svg)`, count, go: () => this.setState({ screen: id, selecting: false, selected: [], drawer: false }), hasAlert: id === 'queue' && failedPosts.length > 0, alert: failedPosts.length, bg: screen === id ? '#1f2226' : 'transparent', color: screen === id ? '#f8f9f6' : '#a3a9b4' }));
 
     const ST = {
       scheduled: { color: '#141619', bg: '#f1efe9', border: '#e2dfd6' }, published: { color: '#15803d', bg: '#effaf3', border: '#cdebd8' },
@@ -1739,7 +1810,7 @@ class Component extends DCLogic {
       nav, accountCount: s.accounts.length, goCompose: () => this.newPost(), goQueue: go('queue'),
       isQueue: screen === 'queue', isCalendar: screen === 'calendar', isCompose: screen === 'compose', isAccounts: screen === 'accounts', isAnalytics: screen === 'analytics', isSettings: screen === 'settings',
       queueTabs, groups, queueEmpty: groups.length === 0, emptyTitle: s.tab === 'upcoming' ? 'Nothing scheduled' : `No ${s.tab} posts`, rowPad, nextUp,
-      dows: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], calDays, monthLabel: first.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
+      dows: (typeof window !== 'undefined' && window.innerWidth <= 760) ? ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] : ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], calDays, monthLabel: first.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
       prevMonth: () => this.setState({ cursor: cm === 0 ? [cy - 1, 11] : [cy, cm - 1] }), nextMonth: () => this.setState({ cursor: cm === 11 ? [cy + 1, 0] : [cy, cm + 1] }), thisMonth: () => this.setState({ cursor: [2026, 9] }),
       composeTitle: d.id ? 'Edit post' : 'New post', accountChips, allLabel: n === s.accounts.length ? 'Clear' : 'Select all',
       toggleAll: () => this.upd({ targets: n === s.accounts.length ? [] : s.accounts.map((a) => a.id) }),
@@ -2080,8 +2151,27 @@ class Component extends DCLogic {
       })(),
       navGroups: [{ title: 'Workspace', items: ['home', 'calendar', 'queue', 'bulk'] }, { title: 'Manage', items: ['library', 'accounts', 'analytics'] }].map((g) => ({ title: g.title, items: g.items.map((id) => nav.find((n) => n.id === id)).filter(Boolean) })),
       navBottom: nav.filter((n) => n.id === 'settings'),
-      sideCols: S0.collapsed ? '64px minmax(0,1fr)' : '236px minmax(0,1fr)', sideTxt: S0.collapsed ? 'none' : 'inline', sideBlock: S0.collapsed ? 'none' : 'flex',
-      sideArrow: S0.collapsed ? '»' : '«', sideToggleLabel: S0.collapsed ? 'Expand sidebar' : 'Collapse sidebar', toggleSide: () => this.setState((st) => ({ collapsed: !st.collapsed })),
+      ...(() => {
+        // Phones: the sidebar becomes a slide-in drawer, so it is never collapsed there.
+        const phone = typeof window !== 'undefined' && window.innerWidth <= 760, col = S0.collapsed && !phone;
+        const more = ['bulk', 'library', 'accounts', 'analytics', 'settings'].includes(screen);
+        const tab = (id, label, kind, go, on, badge) => ({ label, kind, go, on: on ? 'true' : 'false', current: on ? 'page' : 'false', badge: badge || 0, icon: kind === 'nav' ? `url(/icons/${id}${on ? '-on' : ''}.svg)` : 'none' });
+        const goTo = (id) => () => this.setState({ screen: id, selecting: false, selected: [], drawer: false });
+        return {
+          sideCols: col ? '64px minmax(0,1fr)' : '236px minmax(0,1fr)', sideTxt: col ? 'none' : 'inline', sideBlock: col ? 'none' : 'flex',
+          sideArrow: col ? '»' : '«', sideToggleLabel: col ? 'Expand sidebar' : 'Collapse sidebar',
+          drawerAttr: S0.drawer ? 'open' : 'closed', drawerOpen: S0.drawer ? 'true' : 'false',
+          toggleDrawer: () => this.setState((st) => ({ drawer: !st.drawer })), closeDrawer: () => this.setState({ drawer: false }),
+          screenTitle: { home: 'Overview', queue: 'Queue', calendar: 'Calendar', bulk: 'Bulk scheduling', library: 'Media library', compose: S0.draft && S0.draft.id ? 'Edit post' : 'New post', accounts: 'Social accounts', analytics: 'Analytics', settings: 'Settings' }[screen] || 'Schedule For You',
+          mobTabs: [
+            tab('home', 'Home', 'nav', goTo('home'), screen === 'home'),
+            tab('queue', 'Queue', 'nav', goTo('queue'), screen === 'queue', failedPosts.length),
+            tab('create', 'Create', 'create', () => this.newPost(), screen === 'compose'),
+            tab('calendar', 'Calendar', 'nav', goTo('calendar'), screen === 'calendar'),
+            tab('more', 'More', 'more', () => this.setState((st) => ({ drawer: !st.drawer })), more),
+          ],
+        };
+      })(), toggleSide: () => this.setState((st) => ({ collapsed: !st.collapsed })),
       ...(() => {
         const p = S0.posts.find((x) => x.id === S0.calPost);
         if (!p) return { hasCalPost: false, cp: { accs: [] }, closeCalPost: () => {} };

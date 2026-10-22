@@ -8,6 +8,8 @@ Post scheduler web app, built from the Claude Design prototypes. Next.js 15 (App
 | `/app`   | Dashboard: Overview, Queue, Calendar, Bulk scheduling, Media library, Accounts, Analytics, Settings, New post |
 | `/brand` | Logo and brand sheet                                                                            |
 
+On phones the dashboard switches to a top bar, a bottom tab bar (Home, Queue, Create, Calendar, More) and a slide-in menu; desktop layout is unchanged.
+
 The dashboard runs entirely in the browser on sample data (Maya's workspace, Field & Co., Northside Coffee). There is no backend or database yet, so changes reset on reload.
 
 ## Run locally
