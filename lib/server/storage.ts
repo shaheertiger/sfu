@@ -1,6 +1,7 @@
 import 'server-only';
 import { S3Client, PutObjectCommand, GetObjectCommand, HeadObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
+import { HttpError } from './http-error';
 
 /**
  * Media storage over the S3 API. Browsers upload straight to the bucket with a presigned PUT,
@@ -52,7 +53,7 @@ function s3() {
   if (client) return client;
   const c = config();
   if (!c) {
-    throw new Error('Media storage is not configured. Set STORAGE_ENDPOINT, STORAGE_ACCESS_KEY_ID and STORAGE_SECRET_ACCESS_KEY (or the R2_* variables).');
+    throw new HttpError(503, 'Media storage is not configured. Set STORAGE_ENDPOINT, STORAGE_ACCESS_KEY_ID and STORAGE_SECRET_ACCESS_KEY (or the R2_* variables).');
   }
   client = new S3Client({
     region: c.region,

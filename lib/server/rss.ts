@@ -80,8 +80,11 @@ export async function checkFeed(feed: any, first = !feed.last_checked_at): Promi
   return created;
 }
 
-/** Cron: checks feeds that are due, claiming each so overlapping runs don't double-check. */
-export async function pollFeeds(limit = 20) {
+/**
+ * Cron: checks feeds that are due, claiming each so overlapping runs don't double-check.
+ * Stops at `deadline` (epoch ms); feeds left over are picked up by the next run.
+ */
+export async function pollFeeds({ limit = 20, deadline = now() + 60_000 } = {}) {
   const due = await query(
     `SELECT id, last_checked_at FROM rss_feeds WHERE active AND (last_checked_at IS NULL OR last_checked_at < $1)
      ORDER BY last_checked_at NULLS FIRST LIMIT $2`,
@@ -89,6 +92,7 @@ export async function pollFeeds(limit = 20) {
   );
   let created = 0;
   for (const d of due) {
+    if (now() >= deadline) break;
     const feed = (await query('UPDATE rss_feeds SET last_checked_at=$3 WHERE id=$1 AND last_checked_at IS NOT DISTINCT FROM $2::bigint RETURNING *', [d.id, d.last_checked_at, now()]))[0];
     if (!feed) continue;
     created += await checkFeed(feed, d.last_checked_at == null);

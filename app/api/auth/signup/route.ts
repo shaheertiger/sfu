@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { ensureUser } from '@/lib/server/auth';
-import { body, errorResponse, json } from '@/lib/server/api';
+import { assertSameOrigin, body, errorResponse, json } from '@/lib/server/api';
 import { neonAuth } from '@/lib/server/neon-auth';
 
 const Input = z.object({ email: z.string().email().max(200), password: z.string().min(8).max(200), name: z.string().max(80).optional() });
@@ -8,6 +8,7 @@ const Input = z.object({ email: z.string().email().max(200), password: z.string(
 /** Creates the Neon Auth account (which signs the user in) and the app profile + first workspace. */
 export async function POST(req: Request) {
   try {
+    assertSameOrigin(req);
     const parsed = Input.safeParse(await body(req));
     if (!parsed.success) return json({ error: 'Enter a valid email and a password of at least 8 characters' }, 400);
     const { email, password, name } = parsed.data;

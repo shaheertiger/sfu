@@ -4,7 +4,7 @@ import { exec, now, one } from '@/lib/server/db';
 import styles from '@/components/auth/auth.module.css';
 
 export const dynamic = 'force-dynamic';
-export const metadata = { title: 'Join workspace · Schedule For You' };
+export const metadata = { title: 'Join workspace', robots: { index: false, follow: false } };
 
 export default async function Invite({ params }) {
   const { token } = await params;

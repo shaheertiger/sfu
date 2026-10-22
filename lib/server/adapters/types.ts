@@ -67,14 +67,34 @@ export class PublishError extends Error {
   }
 }
 
-export async function jsonFetch(url: string, init: RequestInit & { form?: Record<string, string> } = {}) {
-  const headers: Record<string, string> = { ...(init.headers as any) };
-  let body = init.body;
-  if (init.form) {
+/** Platform calls give up after this long. Uploads get longer (see `timeoutMs`). */
+export const PLATFORM_TIMEOUT_MS = 60_000;
+export const UPLOAD_TIMEOUT_MS = 180_000;
+
+/** fetch with a timeout. Platform APIs occasionally hang; without a limit a hung call stalls the whole publishing run. */
+export function timedFetch(url: string, init: RequestInit & { timeoutMs?: number } = {}) {
+  const { timeoutMs = PLATFORM_TIMEOUT_MS, ...rest } = init;
+  return fetch(url, { ...rest, signal: rest.signal ?? AbortSignal.timeout(timeoutMs) });
+}
+
+export async function jsonFetch(url: string, init: RequestInit & { form?: Record<string, string>; timeoutMs?: number } = {}) {
+  const { form, ...rest } = init;
+  const headers: Record<string, string> = { ...(rest.headers as any) };
+  let body = rest.body;
+  if (form) {
     headers['content-type'] = 'application/x-www-form-urlencoded';
-    body = new URLSearchParams(init.form).toString();
+    body = new URLSearchParams(form).toString();
   }
-  const res = await fetch(url, { ...init, headers, body });
+  // Uploads (FormData / raw bytes) are allowed more time than plain API calls.
+  const timeoutMs = rest.timeoutMs ?? (body instanceof FormData || body instanceof Uint8Array ? UPLOAD_TIMEOUT_MS : PLATFORM_TIMEOUT_MS);
+  let res: Response;
+  try {
+    res = await timedFetch(url, { ...rest, headers, body, timeoutMs });
+  } catch (e: any) {
+    const host = (() => { try { return new URL(url).host; } catch { return url; } })();
+    if (e?.name === 'TimeoutError' || e?.name === 'AbortError') throw new PublishError(`${host} did not answer within ${Math.round(timeoutMs / 1000)}s`, true);
+    throw new PublishError(`Could not reach ${host}: ${e?.message || e}`, true);
+  }
   const text = await res.text();
   let data: any = text;
   try { data = JSON.parse(text); } catch {}
