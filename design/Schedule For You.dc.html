@@ -1105,7 +1105,7 @@ textarea{resize:vertical}
             <div style="display:flex;flex-direction:column">
               <button onClick="{{ remAllToggle }}" style="display:flex;align-items:center;gap:12px;padding:10px 0;border:0;background:transparent;cursor:pointer;text-align:left;width:100%">
                     <span style="width:34px;height:20px;border-radius:999px;background:{{ remAllTrack }};position:relative;flex:none;transition:background .2s"><span style="position:absolute;top:2px;left:{{ remAllKnob }}px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:left .2s"></span></span>
-                    <span style="display:flex;flex-direction:column;line-height:1.3"><span style="font-weight:500;font-size:14px">Remind me before posts go out</span><span style="font-size:12px;color:#677184">Sent to maya@scheduleforyou.com</span></span>
+                    <span style="display:flex;flex-direction:column;line-height:1.3"><span style="font-weight:500;font-size:14px">Remind me before posts go out</span><span style="font-size:12px;color:#677184">Sent to {{ userEmail }}</span></span>
                   </button>
             </div>
             <div style="display:flex;align-items:center;gap:8px;font-size:14px;flex-wrap:wrap">
@@ -1296,8 +1296,26 @@ class Component extends DCLogic {
     pinterest: { label: 'Pinterest', color: '#e60023', logo: 'url(logos/white/pinterest.svg)', short: 'P', max: 500, req: 'image', note: 'Every pin needs an image and a board.', fields: [{ key: 'board', label: 'Board', options: ['Launch', 'Behind the scenes', 'Tips'] }, { key: 'link', label: 'Destination link' }] },
     google_business: { label: 'Google Business', color: '#4285f4', logo: 'url(logos/white/googlemybusiness.svg)', short: 'G', max: 1500, req: 'none', note: 'Requires Business Profile API quota.', keys: true },
   };
-  static NOW = new Date(2026, 9, 21, 10, 30).getTime();
-  static at(d, h, m = 0) { return new Date(2026, 9, 21 + d, h, m).getTime(); }
+  static get NOW() { return Date.now(); }
+  static at(d, h, m = 0) { const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate() + d, h, m).getTime(); }
+  /** Next whole hour at least 30 minutes away (default time for new posts). */
+  static soon() { const t = new Date(Date.now() + 30 * 6e4); t.setMinutes(0, 0, 0); return t.getTime() + 36e5; }
+  static monday() { const t = new Date(); t.setHours(0, 0, 0, 0); t.setDate(t.getDate() - ((t.getDay() + 6) % 7)); return t.getTime(); }
+  static thisMonth() { const t = new Date(); return [t.getFullYear(), t.getMonth()]; }
+  /* Timezones: the workspace zone (Component._tz) can differ from the browser's. */
+  static _tz = null;
+  static localTz() { try { return Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'; } catch { return 'UTC'; } }
+  static tzOff(tz, ms) {
+    try {
+      const p = new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).formatToParts(new Date(ms));
+      const g = (k) => Number(p.find((x) => x.type === k).value);
+      return (Date.UTC(g('year'), g('month') - 1, g('day'), g('hour'), g('minute'), g('second')) - Math.floor(ms / 1000) * 1000) / 6e4;
+    } catch { return 0; }
+  }
+  /** Milliseconds to add so a browser-local Date shows the wall clock of the workspace timezone. */
+  static shift(ms = Date.now(), tz = Component._tz) { return tz ? (Component.tzOff(tz, ms) - Component.tzOff(Component.localTz(), ms)) * 6e4 : 0; }
+  static fromLocal(v) { if (!v) return null; const guess = new Date(v).getTime(); return guess - Component.shift(guess); }
+  static tzLabel(tz) { const row = Component.TZ.find((t) => t[0] === tz); return row ? row[1] : (tz || 'UTC').replace(/_/g, ' ').split('/').pop(); }
   static seed() {
     const a = Component.at;
     const T = (ids, st) => ids.map((id) => ({ acc: id, status: st, error: '' }));
@@ -1320,15 +1338,15 @@ class Component extends DCLogic {
       { id: 'p10', status: 'draft', at: null, caption: 'Moodboard for November.', targets: T(['a3'], 'draft'), media: ['IMG'], ov: {} },
     ];
   }
-  static CSV = [
+  static get CSV() { const D = (n) => Component.toLocal(Component.at(n, 12)).slice(0, 10); return [
     'date,time,accounts,caption',
-    '2026-10-26,09:00,x;bluesky,Monday reminder: the Fall field kit ships this week.',
-    '2026-10-27,12:30,linkedin,How we tested the field kit on job sites for eight months.',
-    '2026-10-28,17:30,instagram;threads,Behind the scenes from the FW26 shoot.',
-    '2026-10-29,09:00,x,This caption runs long on purpose: canvas weights, brass hardware sourcing, stitching patterns, our lifetime warranty, the repair program, where to buy, plus a link and a few hashtags #fieldkit #madetolast #fw26',
-    '2026-10-30,25:00,threads,Weekend packing list.',
-    '2026-10-31,10:00,mastodon,Halloween sale starts now.',
-  ].join('\n');
+    D(5) + ',09:00,x;bluesky,Monday reminder: the Fall field kit ships this week.',
+    D(6) + ',12:30,linkedin,How we tested the field kit on job sites for eight months.',
+    D(7) + ',17:30,instagram;threads,Behind the scenes from the FW26 shoot.',
+    D(8) + ',09:00,x,This caption runs long on purpose: canvas weights, brass hardware sourcing, stitching patterns, our lifetime warranty, the repair program, where to buy, plus a link and a few hashtags #fieldkit #madetolast #fw26',
+    D(9) + ',25:00,threads,Weekend packing list.',
+    D(10) + ',10:00,mastodon,Halloween sale starts now.',
+  ].join('\n'); }
   static SAMPLES = [['fieldkit-hero.jpg', 'IMG', '#8a6d4f'], ['canvas-detail.jpg', 'IMG', '#6e5a42'], ['brass-hardware.jpg', 'IMG', '#7a6148'], ['packing-reel.mp4', 'VIDEO', '#4f3f2e'], ['trailhead.jpg', 'IMG', '#5d6b4a'], ['workshop-bts.mp4', 'VIDEO', '#5d4a36']];
   static TZ = [['America/New_York', 'Eastern Time (New York)', 0], ['America/Chicago', 'Central Time (Chicago)', -1], ['America/Los_Angeles', 'Pacific Time (Los Angeles)', -3], ['Europe/London', 'London', 5], ['Europe/Berlin', 'Berlin', 6], ['Asia/Kolkata', 'India (Kolkata)', 9.5], ['Asia/Singapore', 'Singapore', 12], ['Australia/Sydney', 'Sydney', 15]];
   static WS = [['maya', "Maya's workspace", 'Pro plan · 7 accounts', '#3a3e45'], ['field', 'Field & Co.', 'Client · outdoor gear', 'linear-gradient(160deg,#9a7a58,#5d4a36)'], ['north', 'Northside Coffee', 'Client · café', 'linear-gradient(160deg,#6b4a3a,#2e2019)']];
@@ -1344,11 +1362,11 @@ class Component extends DCLogic {
       { id: 'n2', ws: 'north', status: 'published', at: a(-1, 8), caption: 'Open at 6:30 all week.', targets: T(['c1'], 'published'), media: [], ov: {}, labels: [] }];
   }
   static hash(str) { let h = 7; for (const c of str) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h; }
-  static toLocal(ms) { const d = new Date(ms); const z = (n) => String(n).padStart(2, '0'); return `${d.getFullYear()}-${z(d.getMonth() + 1)}-${z(d.getDate())}T${z(d.getHours())}:${z(d.getMinutes())}`; }
-  static blank(when) { return { id: null, caption: '', targets: [], ov: {}, media: [], mode: 'schedule', when: Component.toLocal(when || Component.at(0, 15)), open: null, previewId: null, labels: [], repeat: 'none', evergreen: false, approval: false, remind: true, note: '' }; }
+  static toLocal(ms) { const d = new Date(ms + Component.shift(ms)); const z = (n) => String(n).padStart(2, '0'); return `${d.getFullYear()}-${z(d.getMonth() + 1)}-${z(d.getDate())}T${z(d.getHours())}:${z(d.getMinutes())}`; }
+  static blank(when) { return { id: null, caption: '', targets: [], ov: {}, media: [], mode: 'schedule', when: Component.toLocal(when || Component.soon()), open: null, previewId: null, labels: [], repeat: 'none', evergreen: false, approval: false, remind: true, note: '' }; }
 
   state = {
-    screen: null, tab: 'upcoming', cursor: [2026, 9], toast: '', toastBad: false,
+    screen: null, tab: 'upcoming', cursor: Component.thisMonth(), toast: '', toastBad: false,
     accounts: [
       { id: 'a1', platform: 'bluesky', username: 'maya.bsky.social', display: 'Maya Chen' },
       { id: 'a2', platform: 'x', username: 'mayabuilds', display: 'Maya Chen' },
@@ -1365,7 +1383,7 @@ class Component extends DCLogic {
     ],
     posts: Component.enrich(Component.seed()), draft: Component.blank(),
     ws: 'maya', wsOpen: false, paused: false, labelFilter: null, newLabel: '', labelList: ['Launch', 'Promo', 'Tutorial', 'Community', 'Evergreen', 'Seasonal'],
-    notes: { [new Date(2026, 9, 27).toDateString()]: 'Field kit launch', [new Date(2026, 9, 31).toDateString()]: 'Halloween', [new Date(2026, 10, 3).toDateString()]: 'Office closed' }, noteKey: null, noteText: '',
+    notes: { [new Date(Component.at(6, 0)).toDateString()]: 'Field kit launch', [new Date(Component.at(10, 0)).toDateString()]: 'Halloween', [new Date(Component.at(13, 0)).toDateString()]: 'Office closed' }, noteKey: null, noteText: '',
     templates: [{ name: 'Launch', text: "It's live: [product]. [One line on why it matters]. Link in bio." }, { name: 'Weekly tip', text: 'Tuesday tip: [the tip]. Try it this week and tell me how it went.' }, { name: 'Behind the scenes', text: 'Behind the scenes of [project]. [What surprised us].' }],
     tagGroups: [{ name: 'Field kit', tags: '#fieldkit #madetolast #fw26' }, { name: 'Creator', tags: '#contentcreator #socialmediatips #batching' }, { name: 'Small business', tags: '#smallbusiness #shoplocal' }],
     folders: ['Fall ’26', 'Product shots', 'Reels', 'Archive'], folder: 'All', newFolder: '', pickerOpen: false,
@@ -1374,7 +1392,7 @@ class Component extends DCLogic {
     keys: [{ id: 'k1', name: 'Claude Desktop', prefix: 'sfy_8f2a', meta: 'Created Oct 2 · last used 2 hours ago' }, { id: 'k2', name: 'Zapier', prefix: 'sfy_c41d', meta: 'Created Sep 14 · never used' }],
     newKey: '', keyName: '', invite: '', inviteUrl: '', invites: [],
     selecting: false, selected: [], moveDate: '', alertHidden: false,
-    calView: 'month', weekStart: Component.at(-2, 0), dragId: null, dragOver: null,
+    calView: 'month', weekStart: Component.monday(), dragId: null, dragOver: null,
     bulkTab: 'upload', bulkFiles: [], bulkAccs: ['a1', 'a2', 'a4'], bulkHover: false, csv: Component.CSV,
     slots: ['09:00', '12:30', '17:30'], slotDays: [1, 2, 3, 4, 5], newSlot: '15:00',
   };
@@ -1395,7 +1413,7 @@ class Component extends DCLogic {
   newPost(when) { this.setState({ draft: Component.blank(when), screen: 'compose', drawer: false }); }
   editPost(p) {
     if (p.src) p = this.state.posts.find((x) => x.id === p.src) || p;
-    this.setState({ screen: 'compose', draft: { id: p.id, caption: p.caption, targets: p.targets.map((t) => t.acc), ov: JSON.parse(JSON.stringify(p.ov || {})), media: [...p.media], mode: p.status === 'draft' ? 'draft' : 'schedule', when: Component.toLocal(p.at || Component.at(0, 15)), open: null, previewId: null, labels: [...(p.labels || [])], repeat: p.repeat || 'none', evergreen: !!p.evergreen, approval: p.approval === 'pending', approvedBefore: p.approval === 'approved', remind: p.remind !== false, note: p.note || '' } });
+    this.setState({ screen: 'compose', draft: { id: p.id, caption: p.caption, targets: p.targets.map((t) => t.acc), ov: JSON.parse(JSON.stringify(p.ov || {})), media: [...p.media], mode: p.status === 'draft' ? 'draft' : 'schedule', when: Component.toLocal(p.at || Component.soon()), open: null, previewId: null, labels: [...(p.labels || [])], repeat: p.repeat || 'none', evergreen: !!p.evergreen, approval: p.approval === 'pending', approvedBefore: p.approval === 'approved', remind: p.remind !== false, note: p.note || '' } });
   }
   upd(patch) { this.setState((s) => ({ draft: { ...s.draft, ...patch } })); }
   setOv(id, patch) {
@@ -1414,7 +1432,7 @@ class Component extends DCLogic {
   submit() {
     const s = this.state, d = s.draft;
     const st = d.mode === 'now' ? 'published' : d.mode === 'schedule' || d.mode === 'queue' ? 'scheduled' : 'draft';
-    const at = d.mode === 'now' ? Component.NOW : d.mode === 'schedule' ? new Date(d.when).getTime() : d.mode === 'queue' ? this.nextSlots(1, [], d.id)[0] || Component.at(1, 9) : null;
+    const at = d.mode === 'now' ? Component.NOW : d.mode === 'schedule' ? Component.fromLocal(d.when) : d.mode === 'queue' ? this.nextSlots(1, [], d.id)[0] || Component.at(1, 9) : null;
     const post = { id: d.id || 'p' + Date.now(), note: d.note || '', ws: s.ws || 'maya', labels: d.labels || [], repeat: d.repeat, evergreen: d.evergreen, remind: d.remind, approval: d.approval ? 'pending' : d.approvedBefore ? 'approved' : null, status: st, at, caption: d.caption, media: d.media, ov: d.ov, targets: d.targets.map((id) => ({ acc: id, status: st, error: '' })) };
     const posts = d.id ? s.posts.map((p) => (p.id === d.id ? post : p)) : [...s.posts, post];
     const tab = st === 'published' ? 'published' : st === 'draft' ? 'drafts' : 'upcoming';
@@ -1501,7 +1519,7 @@ class Component extends DCLogic {
       let at = null;
       if (!m) issues.push('Date must look like 2026-10-26');
       else if (!t || +t[1] > 23 || +t[2] > 59) issues.push(`"${(time || '').trim()}" isn't a valid time`);
-      else { at = new Date(+m[1], +m[2] - 1, +m[3], +t[1], +t[2]).getTime(); if (at <= Component.NOW) issues.push('That time has already passed'); }
+      else { at = Component.fromLocal(`${m[1]}-${m[2]}-${m[3]}T${String(+t[1]).padStart(2, '0')}:${t[2]}`); if (at <= Component.NOW) issues.push('That time has already passed'); }
       const names = (accStr || '').split(';').map((x) => x.trim().toLowerCase()).filter(Boolean).map((x) => alias[x] || x);
       const accs = [];
       for (const nm of names) {
@@ -1518,8 +1536,8 @@ class Component extends DCLogic {
       return { ok, warn: ok && warn, at, accs, caption, issue: ok ? (warn ? 'Imports as a draft: this platform needs media. Add it before scheduling.' : '') : issues[0] };
     });
   }
-  tzShift() { const z = Component.TZ.find((t) => t[0] === this.state.tz) || Component.TZ[0]; return z[2] * 36e5; }
-  time(ms) { return new Date(ms + this.tzShift()).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }); }
+  tzShift(ms = Date.now()) { return Component.shift(ms, this.state.tz); }
+  time(ms) { return new Date(ms + this.tzShift(ms)).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }); }
   dayLabel(ms) {
     const a = new Date(ms + this.tzShift()); a.setHours(0, 0, 0, 0); const b = new Date(Component.NOW + this.tzShift()); b.setHours(0, 0, 0, 0);
     const diff = Math.round((a - b) / 864e5);
@@ -1529,6 +1547,7 @@ class Component extends DCLogic {
 
   renderVals() {
     const P = Component.P, NOW = Component.NOW, S0 = this.state, WS = S0.ws || 'maya', s = { ...S0, posts: S0.posts.filter((p) => (p.ws || 'maya') === WS), accounts: S0.accounts.filter((a) => (a.ws || 'maya') === WS) }, d = s.draft;
+    Component._tz = S0.tz;
     const screen = s.screen || this.props.startScreen || 'home';
     const accById = Object.fromEntries(s.accounts.map((a) => [a.id, a]));
     const LG = (pl) => ({ color: P[pl]?.color || '#888', logo: P[pl]?.logo || 'none' });
@@ -1687,7 +1706,7 @@ class Component extends DCLogic {
       if (p.maxImages !== undefined && d.media.filter((m) => m === 'IMG').length > p.maxImages) problems.push(`${p.label} allows ${p.maxImages} image${p.maxImages === 1 ? '' : 's'} per post. Remove some or deselect @${a.username}.`);
     }
     const uniq = [...new Set(problems)];
-    const draftAt = d.mode === 'schedule' ? new Date(d.when).getTime() : d.mode === 'queue' ? this.nextSlots(1, [], d.id)[0] : null;
+    const draftAt = d.mode === 'schedule' ? Component.fromLocal(d.when) : d.mode === 'queue' ? this.nextSlots(1, [], d.id)[0] : null;
     const conflictWarn = draftAt && d.targets.length ? findConflicts({ id: d.id || '__draft', at: draftAt, caption: d.caption, targets: d.targets.map((acc) => ({ acc })) }, s.posts).map((c) => c.msg) : [];
     const variants = sel.map((a) => {
       const p = P[a.platform], o = d.ov[a.id] || {}, open = d.open === a.id, text = o.caption ?? d.caption;
@@ -1700,14 +1719,14 @@ class Component extends DCLogic {
       };
     });
     const modes = [['now', 'Publish now', 'Goes out immediately'], ['schedule', 'Schedule', 'Pick a date and time'], ['queue', 'Add to queue', 'Next open slot'], ['draft', 'Save draft', 'Not scheduled']].map(([k, label, hint]) => ({ label, hint, pressed: d.mode === k ? 'true' : 'false', select: () => this.upd({ mode: k }), bg: d.mode === k ? '#f6ffd9' : '#fff', border: d.mode === k ? '#141619' : '#e7e5df' }));
-    const quickTimes = [['Today 3 PM', Component.at(0, 15)], ['Tomorrow 9 AM', Component.at(1, 9)], ['Mon 12 PM', Component.at(5, 12)]].map(([label, ms]) => ({ label, pick: () => this.upd({ when: Component.toLocal(ms) }) }));
+    const quickTimes = [[(() => { const h = new Date(Component.soon() + this.tzShift(Component.soon())); return 'Today ' + h.toLocaleTimeString('en-US', { hour: 'numeric' }); })(), Component.soon()], ['Tomorrow 9 AM', Component.fromLocal(Component.toLocal(Component.at(1, 0)).slice(0, 11) + '09:00')], ['Mon 12 PM', Component.fromLocal(Component.toLocal(Component.monday() + 7 * 864e5).slice(0, 11) + '12:00')]].map(([label, ms]) => ({ label, pick: () => this.upd({ when: Component.toLocal(ms) }) }));
     const n = d.targets.length;
     const submitDisabled = n === 0 || (uniq.length > 0 && d.mode !== 'draft');
     const nextSlot = this.nextSlots(1, [], d.id)[0];
     const submitLabel = d.mode === 'queue' ? (n ? `Add to queue · ${n} account${n === 1 ? '' : 's'}` : 'Add to queue') : d.mode === 'now' ? `Publish to ${n} account${n === 1 ? '' : 's'}` : d.mode === 'schedule' ? (n ? `Schedule for ${n} account${n === 1 ? '' : 's'}` : 'Schedule') : 'Save draft';
     const pvAcc = sel.find((a) => a.id === d.previewId) || sel[0];
     const pvText = pvAcc ? (d.ov[pvAcc.id]?.caption ?? d.caption) : d.caption;
-    const pvWhen = d.mode === 'schedule' ? `${this.dayLabel(new Date(d.when).getTime())} ${this.time(new Date(d.when).getTime())}` : d.mode === 'now' ? 'now' : 'draft';
+    const pvWhen = d.mode === 'schedule' ? `${this.dayLabel(Component.fromLocal(d.when))} ${this.time(Component.fromLocal(d.when))}` : d.mode === 'now' ? 'now' : 'draft';
     const pv = {
       logo: pvAcc ? P[pvAcc.platform].logo : 'none', color: pvAcc ? P[pvAcc.platform].color : '#e9e7e0', name: pvAcc ? pvAcc.display : 'Preview',
       handle: pvAcc ? `@${pvAcc.username} · ${P[pvAcc.platform].label} · ${pvWhen}` : 'Pick an account to preview',
@@ -1775,7 +1794,7 @@ class Component extends DCLogic {
         name: f.name, kind: f.kind === 'VIDEO' ? '▶ VIDEO' : 'IMG', thumb: f.url ? `${f.tone} url(${f.url}) center/cover no-repeat` : f.tone, caption: f.caption, when: f.at ? Component.toLocal(f.at) : '',
         hasWarn: !!warn, warn, divider: i ? '1px solid #e5e3dc' : '0',
         onCaption: (e) => { const v = e.target.value; this.setState((st) => ({ bulkFiles: st.bulkFiles.map((x) => (x.id === f.id ? { ...x, caption: v } : x)) })); },
-        onWhen: (e) => { const v = e.target.value; this.setState((st) => ({ bulkFiles: st.bulkFiles.map((x) => (x.id === f.id ? { ...x, at: v ? new Date(v).getTime() : null } : x)) })); },
+        onWhen: (e) => { const v = e.target.value; this.setState((st) => ({ bulkFiles: st.bulkFiles.map((x) => (x.id === f.id ? { ...x, at: v ? Component.fromLocal(v) : null } : x)) })); },
         remove: () => this.setState((st) => ({ bulkFiles: st.bulkFiles.filter((x) => x.id !== f.id) })),
         up: () => this.setState((st) => { const a = [...st.bulkFiles], k = a.findIndex((x) => x.id === f.id); if (k > 0) [a[k - 1], a[k]] = [a[k], a[k - 1]]; return { bulkFiles: a }; }),
         down: () => this.setState((st) => { const a = [...st.bulkFiles], k = a.findIndex((x) => x.id === f.id); if (k < a.length - 1) [a[k + 1], a[k]] = [a[k], a[k + 1]]; return { bulkFiles: a }; }),
@@ -1807,11 +1826,12 @@ class Component extends DCLogic {
       .map((m) => ({ ...m, color: roleStyle[m.role][0], bg: roleStyle[m.role][1], border: roleStyle[m.role][2] }));
 
     return {
+      userEmail: this.userEmail || 'maya@scheduleforyou.com',
       nav, accountCount: s.accounts.length, goCompose: () => this.newPost(), goQueue: go('queue'),
       isQueue: screen === 'queue', isCalendar: screen === 'calendar', isCompose: screen === 'compose', isAccounts: screen === 'accounts', isAnalytics: screen === 'analytics', isSettings: screen === 'settings',
       queueTabs, groups, queueEmpty: groups.length === 0, emptyTitle: s.tab === 'upcoming' ? 'Nothing scheduled' : `No ${s.tab} posts`, rowPad, nextUp,
       dows: (typeof window !== 'undefined' && window.innerWidth <= 760) ? ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] : ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], calDays, monthLabel: first.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
-      prevMonth: () => this.setState({ cursor: cm === 0 ? [cy - 1, 11] : [cy, cm - 1] }), nextMonth: () => this.setState({ cursor: cm === 11 ? [cy + 1, 0] : [cy, cm + 1] }), thisMonth: () => this.setState({ cursor: [2026, 9] }),
+      prevMonth: () => this.setState({ cursor: cm === 0 ? [cy - 1, 11] : [cy, cm - 1] }), nextMonth: () => this.setState({ cursor: cm === 11 ? [cy + 1, 0] : [cy, cm + 1] }), thisMonth: () => this.setState({ cursor: Component.thisMonth() }),
       composeTitle: d.id ? 'Edit post' : 'New post', accountChips, allLabel: n === s.accounts.length ? 'Clear' : 'Select all',
       toggleAll: () => this.upd({ targets: n === s.accounts.length ? [] : s.accounts.map((a) => a.id) }),
       caption: d.caption, onCaption: (e) => this.upd({ caption: e.target.value }), counters,
@@ -1874,12 +1894,12 @@ class Component extends DCLogic {
       calPlatOpts: [{ v: '', l: 'All platforms' }, ...[...new Set(s.accounts.map((a) => a.platform))].map((pl) => ({ v: pl, l: P[pl].label }))],
       calAccOpts: [{ v: '', l: 'All accounts' }, ...s.accounts.map((a) => ({ v: a.id, l: '@' + a.username + ' · ' + P[a.platform].label }))],
       calStatusOpts: [['', 'All statuses'], ['scheduled', 'Scheduled'], ['published', 'Published'], ['draft', 'Draft'], ['failed', 'Failed'], ['approval', 'Needs approval']].map(([v, l]) => ({ v, l })),
-      tzShort: (Component.TZ.find((t) => t[0] === S0.tz) || Component.TZ[0])[1],
+      tzShort: Component.tzLabel(S0.tz),
       isMonth: s.calView === 'month', isWeek: s.calView === 'week', weekDays,
       calLabel: s.calView === 'week' ? weekLabel : s.calView === 'list' ? first.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : first.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
       calPrev: () => (s.calView === 'week' ? this.setState({ weekStart: s.weekStart - 7 * 864e5 }) : this.setState({ cursor: cm === 0 ? [cy - 1, 11] : [cy, cm - 1] })),
       calNext: () => (s.calView === 'week' ? this.setState({ weekStart: s.weekStart + 7 * 864e5 }) : this.setState({ cursor: cm === 11 ? [cy + 1, 0] : [cy, cm + 1] })),
-      calToday: () => this.setState({ cursor: [2026, 9], weekStart: Component.at(-2, 0) }),
+      calToday: () => this.setState({ cursor: Component.thisMonth(), weekStart: Component.monday() }),
       isQueueMode: d.mode === 'queue', nextSlotLabel: this.slotLabel(nextSlot), goSettings: go('settings'),
       isBulk: screen === 'bulk', isBulkUpload: s.bulkTab === 'upload', isBulkCsv: s.bulkTab === 'csv',
       bulkTabs: [['upload', 'Upload media'], ['csv', 'Import CSV']].map(([k, label]) => ({ label, select: () => this.setState({ bulkTab: k }), bg: s.bulkTab === k ? '#141619' : 'transparent', color: s.bulkTab === k ? '#fff' : '#677184' })),
@@ -1933,7 +1953,7 @@ class Component extends DCLogic {
       addSlot: () => { if (!s.newSlot || s.slots.includes(s.newSlot)) return; this.setState((st) => ({ slots: [...st.slots, st.newSlot] })); this.flash('Slot added'); },
       nextSlotsLabel: this.nextSlots(3).map((ms) => this.slotLabel(ms)).join('  ·  ') || 'No slots set',
       ...(() => {
-        const nowMs = NOW + Math.max(0, (s.tick || this._t0 || 0) - (this._t0 || 0)), nx = upcoming.find((p) => p.at > nowMs);
+        const nowMs = Date.now(), nx = upcoming.find((p) => p.at > nowMs);
         const z = (n) => String(n).padStart(2, '0');
         let countdown = '—';
         if (nx) { const sec = Math.floor((nx.at - nowMs) / 1000), d = Math.floor(sec / 86400), h = Math.floor((sec % 86400) / 3600), m = Math.floor((sec % 3600) / 60), ss = sec % 60; countdown = d ? `${d}d ${h}h ${z(m)}m` : h ? `${h}h ${z(m)}m ${z(ss)}s` : `${m}m ${z(ss)}s`; }
@@ -2022,19 +2042,19 @@ class Component extends DCLogic {
           ...T('ever', !!d.evergreen, () => this.upd({ evergreen: !d.evergreen })),
           ...T('appr', !!d.approval, () => this.upd({ approval: !d.approval })),
           ...T('rem', d.remind !== false && S0.remind.on, () => (S0.remind.on ? this.upd({ remind: d.remind === false }) : this.flash('Turn on email reminders in Settings first', true))),
-          remindNote: S0.remind.on ? `Email maya@scheduleforyou.com ${(leadOpts.find((o) => o[0] === S0.remind.lead) || leadOpts[2])[1]} before` : 'Reminders are off in Settings',
+          remindNote: S0.remind.on ? `Email ${this.userEmail || 'maya@scheduleforyou.com'} ${(leadOpts.find((o) => o[0] === S0.remind.lead) || leadOpts[2])[1]} before` : 'Reminders are off in Settings',
           ...T('remAll', S0.remind.on, () => this.setState((st) => ({ remind: { ...st.remind, on: !st.remind.on } }))),
           remindLead: String(S0.remind.lead), onRemindLead: (e) => this.setState((st) => ({ remind: { ...st.remind, lead: +e.target.value } })),
           leadOptions: leadOpts.map(([v, label]) => ({ value: String(v), label })),
           tzValue: S0.tz, onTz: (e) => { this.setState({ tz: e.target.value }); this.flash('Timezone updated'); },
-          tzOptions: Component.TZ.map(([v, label, off]) => { const o = off - 4; return { value: v, label: `${label} · UTC${o >= 0 ? '+' : '−'}${Math.abs(o)}` }; }),
-          tzNow: this.time(NOW + Math.max(0, (S0.tick || 0) - (this._t0 || 0))),
+          tzOptions: [...Component.TZ.map((t) => t[0]), ...[Component.localTz(), S0.tz].filter((z) => z && !Component.TZ.some((t) => t[0] === z))].filter((z, i, a) => a.indexOf(z) === i).map((v) => { const o = Component.tzOff(v, Date.now()) / 60, hh = Math.trunc(Math.abs(o)), mm = Math.round((Math.abs(o) - hh) * 60); return { value: v, label: `${Component.tzLabel(v)} · UTC${o >= 0 ? '+' : '−'}${hh}${mm ? ':' + String(mm).padStart(2, '0') : ''}` }; }),
+          tzNow: this.time(Date.now()),
         };
       })(),
       ...(() => {
         const tog = (on) => ({ Track: on ? '#141619' : '#d8d5cc', Knob: on ? 16 : 2 });
         const T = (name, on, fn) => ({ [name + 'Toggle']: fn, [name + 'Track']: tog(on).Track, [name + 'Knob']: tog(on).Knob });
-        const nowMs = NOW + Math.max(0, (S0.tick || 0) - (this._t0 || 0)), hr = new Date(nowMs + this.tzShift()).getHours();
+        const nowMs = Date.now(), hr = new Date(nowMs + this.tzShift(nowMs)).getHours();
         const sick = s.accounts.filter((a) => a.health === 'error' || a.health === 'expiring');
         const pending = s.posts.filter((p) => p.approval === 'pending' && p.status !== 'published');
         const pub7 = s.posts.filter((p) => ['published', 'partial'].includes(p.status) && p.at > NOW - 7 * 864e5).length;
@@ -2106,14 +2126,14 @@ class Component extends DCLogic {
         const healthTiles = s.accounts.map((a) => { const h = HL(a); return { username: a.username, detail: h.needsFix ? h.healthDetail : P[a.platform].label, label: h.hLabel === 'Connected' ? 'OK' : h.hLabel, fg: h.hFg, border: h.needsFix ? (a.health === 'error' ? '#f4c6c2' : '#f3dfb2') : '#e7e5df', glow: h.needsFix ? '0 12px 28px -20px ' + (a.health === 'error' ? 'rgba(210,59,47,.6)' : 'rgba(180,113,0,.5)') : 'none', color: P[a.platform].color, logo: P[a.platform].logo, needsFix: h.needsFix, fix: reconnect(a) }; }).sort((x, y) => y.needsFix - x.needsFix);
         const localNow = new Date(nowMs + this.tzShift());
         return {
-          dateLine: localNow.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) + ' · ' + this.time(nowMs) + ' · ' + (Component.TZ.find((t) => t[0] === S0.tz) || Component.TZ[0])[1],
+          dateLine: localNow.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) + ' · ' + this.time(nowMs) + ' · ' + Component.tzLabel(S0.tz),
           greetWord: hr < 12 ? 'Good morning' : hr < 18 ? 'Good afternoon' : 'Good evening', greetName: WS === 'maya' ? 'Maya' : (Component.WS.find((w) => w[0] === WS) || [])[1],
           weekPosts: `${thisWeek.length} post${thisWeek.length === 1 ? '' : 's'}`,
           weekLogos: wkPlats.map((pl) => ({ color: P[pl].color, logo: P[pl].logo, title: P[pl].label })),
           needText: needN ? `${needN} item${needN === 1 ? '' : 's'} that need attention` : 'nothing that needs attention', needTail: '',
           needColor: needN ? '#a1281f' : '#141619', needBg: needN ? 'linear-gradient(transparent 62%,#fdd9d5 62%)' : 'transparent',
           jumpAttn: () => { const el = document.getElementById('attn'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 24, behavior: 'smooth' }); },
-          goCalWeek: () => this.setState({ screen: 'calendar', calView: 'week', weekStart: Component.at(-2, 0) }),
+          goCalWeek: () => this.setState({ screen: 'calendar', calView: 'week', weekStart: Component.monday() }),
           goReview: () => this.setState({ screen: 'queue', tab: 'review' }), reviewLabel: pending.length ? `Review ${pending.length} pending` : 'Approvals',
           upNext, upcomingCount: upcoming.length, healthTiles,
           upRef: (this._upRef ||= React.createRef()), upPrev: () => this._upRef.current && this._upRef.current.scrollBy({ left: -320 }), upNextBtn: () => this._upRef.current && this._upRef.current.scrollBy({ left: 320 }),
@@ -2181,7 +2201,7 @@ class Component extends DCLogic {
           cp: { stLabel: st[0], stBg: st[1], stFg: st[2], when: p.at ? `${this.dayLabel(p.at)}, ${this.time(p.at)}` : 'Not scheduled', caption: p.caption, thumb: p.media.length ? TONES[Component.hash(p.id) % 4] : 'none', thumbDisplay: p.media.length ? 'block' : 'none',
             accs: p.targets.map((t) => { const a = accById[t.acc]; return { name: a ? `${P[a.platform].label} · @${a.username}` : 'Disconnected', color: a ? P[a.platform].color : '#888', logo: a ? P[a.platform].logo : 'none', st: t.error ? 'Failed' : t.status, stColor: t.error ? '#dc3545' : '#677184' }; }),
             canMove: p.status === 'scheduled', local: p.at ? Component.toLocal(p.at) : '',
-            onTime: (e) => { const v = e.target.value; if (!v) return; const at = new Date(v).getTime(), old = p.at; if (at <= NOW) return this.flash('Pick a time in the future', true); this.setPost(p.id, (x) => ({ ...x, at })); this.flash(`Moved to ${this.slotLabel(at)}`, false, () => this.setPost(p.id, (x) => ({ ...x, at: old }))); },
+            onTime: (e) => { const v = e.target.value; if (!v) return; const at = Component.fromLocal(v), old = p.at; if (at <= NOW) return this.flash('Pick a time in the future', true); this.setPost(p.id, (x) => ({ ...x, at })); this.flash(`Moved to ${this.slotLabel(at)}`, false, () => this.setPost(p.id, (x) => ({ ...x, at: old }))); },
             edit: () => { close(); this.editPost(p); }, dup: () => { close(); this.duplicate([p.id]); },
             del: () => this.setState({ confirm: { title: 'Delete this post?', body: p.caption.slice(0, 90), cta: 'Delete post', go: () => { close(); this.setState((s2) => ({ posts: s2.posts.filter((x) => x.id !== p.id) })); this.flash('Post deleted', false, () => this.setState((s2) => ({ posts: [...s2.posts, p] }))); } } }) },
         };

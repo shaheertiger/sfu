@@ -108,9 +108,72 @@ class Component extends DCLogic {
       keys: true,
     },
   };
-  static NOW = new Date(2026, 9, 21, 10, 30).getTime();
+  static get NOW() {
+    return Date.now();
+  }
   static at(d, h, m = 0) {
-    return new Date(2026, 9, 21 + d, h, m).getTime();
+    const t = new Date();
+    return new Date(t.getFullYear(), t.getMonth(), t.getDate() + d, h, m).getTime();
+  }
+  /** Next whole hour at least 30 minutes away (default time for new posts). */
+  static soon() {
+    const t = new Date(Date.now() + 30 * 6e4);
+    t.setMinutes(0, 0, 0);
+    return t.getTime() + 36e5;
+  }
+  static monday() {
+    const t = new Date();
+    t.setHours(0, 0, 0, 0);
+    t.setDate(t.getDate() - ((t.getDay() + 6) % 7));
+    return t.getTime();
+  }
+  static thisMonth() {
+    const t = new Date();
+    return [t.getFullYear(), t.getMonth()];
+  }
+  /* Timezones: the workspace zone (Component._tz) can differ from the browser's. */
+  static _tz = null;
+  static localTz() {
+    try {
+      return Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+    } catch {
+      return 'UTC';
+    }
+  }
+  static tzOff(tz, ms) {
+    try {
+      const p = new Intl.DateTimeFormat('en-US', {
+        timeZone: tz,
+        hourCycle: 'h23',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+      }).formatToParts(new Date(ms));
+      const g = (k) => Number(p.find((x) => x.type === k).value);
+      return (
+        (Date.UTC(g('year'), g('month') - 1, g('day'), g('hour'), g('minute'), g('second')) -
+          Math.floor(ms / 1000) * 1000) /
+        6e4
+      );
+    } catch {
+      return 0;
+    }
+  }
+  /** Milliseconds to add so a browser-local Date shows the wall clock of the workspace timezone. */
+  static shift(ms = Date.now(), tz = Component._tz) {
+    return tz ? (Component.tzOff(tz, ms) - Component.tzOff(Component.localTz(), ms)) * 6e4 : 0;
+  }
+  static fromLocal(v) {
+    if (!v) return null;
+    const guess = new Date(v).getTime();
+    return guess - Component.shift(guess);
+  }
+  static tzLabel(tz) {
+    const row = Component.TZ.find((t) => t[0] === tz);
+    return row ? row[1] : (tz || 'UTC').replace(/_/g, ' ').split('/').pop();
   }
   static seed() {
     const a = Component.at;
@@ -269,15 +332,19 @@ class Component extends DCLogic {
       },
     ];
   }
-  static CSV = [
-    'date,time,accounts,caption',
-    '2026-10-26,09:00,x;bluesky,Monday reminder: the Fall field kit ships this week.',
-    '2026-10-27,12:30,linkedin,How we tested the field kit on job sites for eight months.',
-    '2026-10-28,17:30,instagram;threads,Behind the scenes from the FW26 shoot.',
-    '2026-10-29,09:00,x,This caption runs long on purpose: canvas weights, brass hardware sourcing, stitching patterns, our lifetime warranty, the repair program, where to buy, plus a link and a few hashtags #fieldkit #madetolast #fw26',
-    '2026-10-30,25:00,threads,Weekend packing list.',
-    '2026-10-31,10:00,mastodon,Halloween sale starts now.',
-  ].join('\n');
+  static get CSV() {
+    const D = (n) => Component.toLocal(Component.at(n, 12)).slice(0, 10);
+    return [
+      'date,time,accounts,caption',
+      D(5) + ',09:00,x;bluesky,Monday reminder: the Fall field kit ships this week.',
+      D(6) + ',12:30,linkedin,How we tested the field kit on job sites for eight months.',
+      D(7) + ',17:30,instagram;threads,Behind the scenes from the FW26 shoot.',
+      D(8) +
+        ',09:00,x,This caption runs long on purpose: canvas weights, brass hardware sourcing, stitching patterns, our lifetime warranty, the repair program, where to buy, plus a link and a few hashtags #fieldkit #madetolast #fw26',
+      D(9) + ',25:00,threads,Weekend packing list.',
+      D(10) + ',10:00,mastodon,Halloween sale starts now.',
+    ].join('\n');
+  }
   static SAMPLES = [
     ['fieldkit-hero.jpg', 'IMG', '#8a6d4f'],
     ['canvas-detail.jpg', 'IMG', '#6e5a42'],
@@ -398,7 +465,7 @@ class Component extends DCLogic {
     return h;
   }
   static toLocal(ms) {
-    const d = new Date(ms);
+    const d = new Date(ms + Component.shift(ms));
     const z = (n) => String(n).padStart(2, '0');
     return `${d.getFullYear()}-${z(d.getMonth() + 1)}-${z(d.getDate())}T${z(d.getHours())}:${z(d.getMinutes())}`;
   }
@@ -410,7 +477,7 @@ class Component extends DCLogic {
       ov: {},
       media: [],
       mode: 'schedule',
-      when: Component.toLocal(when || Component.at(0, 15)),
+      when: Component.toLocal(when || Component.soon()),
       open: null,
       previewId: null,
       labels: [],
@@ -425,7 +492,7 @@ class Component extends DCLogic {
   state = {
     screen: null,
     tab: 'upcoming',
-    cursor: [2026, 9],
+    cursor: Component.thisMonth(),
     toast: '',
     toastBad: false,
     accounts: [
@@ -473,9 +540,9 @@ class Component extends DCLogic {
     newLabel: '',
     labelList: ['Launch', 'Promo', 'Tutorial', 'Community', 'Evergreen', 'Seasonal'],
     notes: {
-      [new Date(2026, 9, 27).toDateString()]: 'Field kit launch',
-      [new Date(2026, 9, 31).toDateString()]: 'Halloween',
-      [new Date(2026, 10, 3).toDateString()]: 'Office closed',
+      [new Date(Component.at(6, 0)).toDateString()]: 'Field kit launch',
+      [new Date(Component.at(10, 0)).toDateString()]: 'Halloween',
+      [new Date(Component.at(13, 0)).toDateString()]: 'Office closed',
     },
     noteKey: null,
     noteText: '',
@@ -521,7 +588,7 @@ class Component extends DCLogic {
     moveDate: '',
     alertHidden: false,
     calView: 'month',
-    weekStart: Component.at(-2, 0),
+    weekStart: Component.monday(),
     dragId: null,
     dragOver: null,
     bulkTab: 'upload',
@@ -582,7 +649,7 @@ class Component extends DCLogic {
         ov: JSON.parse(JSON.stringify(p.ov || {})),
         media: [...p.media],
         mode: p.status === 'draft' ? 'draft' : 'schedule',
-        when: Component.toLocal(p.at || Component.at(0, 15)),
+        when: Component.toLocal(p.at || Component.soon()),
         open: null,
         previewId: null,
         labels: [...(p.labels || [])],
@@ -631,7 +698,7 @@ class Component extends DCLogic {
       d.mode === 'now'
         ? Component.NOW
         : d.mode === 'schedule'
-          ? new Date(d.when).getTime()
+          ? Component.fromLocal(d.when)
           : d.mode === 'queue'
             ? this.nextSlots(1, [], d.id)[0] || Component.at(1, 9)
             : null;
@@ -851,7 +918,7 @@ class Component extends DCLogic {
       if (!m) issues.push('Date must look like 2026-10-26');
       else if (!t || +t[1] > 23 || +t[2] > 59) issues.push(`"${(time || '').trim()}" isn't a valid time`);
       else {
-        at = new Date(+m[1], +m[2] - 1, +m[3], +t[1], +t[2]).getTime();
+        at = Component.fromLocal(`${m[1]}-${m[2]}-${m[3]}T${String(+t[1]).padStart(2, '0')}:${t[2]}`);
         if (at <= Component.NOW) issues.push('That time has already passed');
       }
       const names = (accStr || '')
@@ -893,12 +960,11 @@ class Component extends DCLogic {
       };
     });
   }
-  tzShift() {
-    const z = Component.TZ.find((t) => t[0] === this.state.tz) || Component.TZ[0];
-    return z[2] * 36e5;
+  tzShift(ms = Date.now()) {
+    return Component.shift(ms, this.state.tz);
   }
   time(ms) {
-    return new Date(ms + this.tzShift()).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+    return new Date(ms + this.tzShift(ms)).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
   }
   dayLabel(ms) {
     const a = new Date(ms + this.tzShift());
@@ -923,6 +989,7 @@ class Component extends DCLogic {
         accounts: S0.accounts.filter((a) => (a.ws || 'maya') === WS),
       },
       d = s.draft;
+    Component._tz = S0.tz;
     const screen = s.screen || this.props.startScreen || 'home';
     const accById = Object.fromEntries(s.accounts.map((a) => [a.id, a]));
     const LG = (pl) => ({ color: P[pl]?.color || '#888', logo: P[pl]?.logo || 'none' });
@@ -1499,7 +1566,7 @@ class Component extends DCLogic {
     }
     const uniq = [...new Set(problems)];
     const draftAt =
-      d.mode === 'schedule' ? new Date(d.when).getTime() : d.mode === 'queue' ? this.nextSlots(1, [], d.id)[0] : null;
+      d.mode === 'schedule' ? Component.fromLocal(d.when) : d.mode === 'queue' ? this.nextSlots(1, [], d.id)[0] : null;
     const conflictWarn =
       draftAt && d.targets.length
         ? findConflicts(
@@ -1554,9 +1621,15 @@ class Component extends DCLogic {
       border: d.mode === k ? '#141619' : '#e7e5df',
     }));
     const quickTimes = [
-      ['Today 3 PM', Component.at(0, 15)],
-      ['Tomorrow 9 AM', Component.at(1, 9)],
-      ['Mon 12 PM', Component.at(5, 12)],
+      [
+        (() => {
+          const h = new Date(Component.soon() + this.tzShift(Component.soon()));
+          return 'Today ' + h.toLocaleTimeString('en-US', { hour: 'numeric' });
+        })(),
+        Component.soon(),
+      ],
+      ['Tomorrow 9 AM', Component.fromLocal(Component.toLocal(Component.at(1, 0)).slice(0, 11) + '09:00')],
+      ['Mon 12 PM', Component.fromLocal(Component.toLocal(Component.monday() + 7 * 864e5).slice(0, 11) + '12:00')],
     ].map(([label, ms]) => ({ label, pick: () => this.upd({ when: Component.toLocal(ms) }) }));
     const n = d.targets.length;
     const submitDisabled = n === 0 || (uniq.length > 0 && d.mode !== 'draft');
@@ -1577,7 +1650,7 @@ class Component extends DCLogic {
     const pvText = pvAcc ? (d.ov[pvAcc.id]?.caption ?? d.caption) : d.caption;
     const pvWhen =
       d.mode === 'schedule'
-        ? `${this.dayLabel(new Date(d.when).getTime())} ${this.time(new Date(d.when).getTime())}`
+        ? `${this.dayLabel(Component.fromLocal(d.when))} ${this.time(Component.fromLocal(d.when))}`
         : d.mode === 'now'
           ? 'now'
           : 'draft';
@@ -1853,7 +1926,7 @@ class Component extends DCLogic {
         onWhen: (e) => {
           const v = e.target.value;
           this.setState((st) => ({
-            bulkFiles: st.bulkFiles.map((x) => (x.id === f.id ? { ...x, at: v ? new Date(v).getTime() : null } : x)),
+            bulkFiles: st.bulkFiles.map((x) => (x.id === f.id ? { ...x, at: v ? Component.fromLocal(v) : null } : x)),
           }));
         },
         remove: () => this.setState((st) => ({ bulkFiles: st.bulkFiles.filter((x) => x.id !== f.id) })),
@@ -1952,6 +2025,7 @@ class Component extends DCLogic {
     ].map((m) => ({ ...m, color: roleStyle[m.role][0], bg: roleStyle[m.role][1], border: roleStyle[m.role][2] }));
 
     return {
+      userEmail: this.userEmail || 'maya@scheduleforyou.com',
       nav,
       accountCount: s.accounts.length,
       goCompose: () => this.newPost(),
@@ -1976,7 +2050,7 @@ class Component extends DCLogic {
       monthLabel: first.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
       prevMonth: () => this.setState({ cursor: cm === 0 ? [cy - 1, 11] : [cy, cm - 1] }),
       nextMonth: () => this.setState({ cursor: cm === 11 ? [cy + 1, 0] : [cy, cm + 1] }),
-      thisMonth: () => this.setState({ cursor: [2026, 9] }),
+      thisMonth: () => this.setState({ cursor: Component.thisMonth() }),
       composeTitle: d.id ? 'Edit post' : 'New post',
       accountChips,
       allLabel: n === s.accounts.length ? 'Clear' : 'Select all',
@@ -2325,7 +2399,7 @@ class Component extends DCLogic {
         ['failed', 'Failed'],
         ['approval', 'Needs approval'],
       ].map(([v, l]) => ({ v, l })),
-      tzShort: (Component.TZ.find((t) => t[0] === S0.tz) || Component.TZ[0])[1],
+      tzShort: Component.tzLabel(S0.tz),
       isMonth: s.calView === 'month',
       isWeek: s.calView === 'week',
       weekDays,
@@ -2343,7 +2417,7 @@ class Component extends DCLogic {
         s.calView === 'week'
           ? this.setState({ weekStart: s.weekStart + 7 * 864e5 })
           : this.setState({ cursor: cm === 11 ? [cy + 1, 0] : [cy, cm + 1] }),
-      calToday: () => this.setState({ cursor: [2026, 9], weekStart: Component.at(-2, 0) }),
+      calToday: () => this.setState({ cursor: Component.thisMonth(), weekStart: Component.monday() }),
       isQueueMode: d.mode === 'queue',
       nextSlotLabel: this.slotLabel(nextSlot),
       goSettings: go('settings'),
@@ -2637,7 +2711,7 @@ class Component extends DCLogic {
           .map((ms) => this.slotLabel(ms))
           .join('  ·  ') || 'No slots set',
       ...(() => {
-        const nowMs = NOW + Math.max(0, (s.tick || this._t0 || 0) - (this._t0 || 0)),
+        const nowMs = Date.now(),
           nx = upcoming.find((p) => p.at > nowMs);
         const z = (n) => String(n).padStart(2, '0');
         let countdown = '—';
@@ -3046,7 +3120,7 @@ class Component extends DCLogic {
               : this.flash('Turn on email reminders in Settings first', true),
           ),
           remindNote: S0.remind.on
-            ? `Email maya@scheduleforyou.com ${(leadOpts.find((o) => o[0] === S0.remind.lead) || leadOpts[2])[1]} before`
+            ? `Email ${this.userEmail || 'maya@scheduleforyou.com'} ${(leadOpts.find((o) => o[0] === S0.remind.lead) || leadOpts[2])[1]} before`
             : 'Reminders are off in Settings',
           ...T('remAll', S0.remind.on, () => this.setState((st) => ({ remind: { ...st.remind, on: !st.remind.on } }))),
           remindLead: String(S0.remind.lead),
@@ -3057,11 +3131,21 @@ class Component extends DCLogic {
             this.setState({ tz: e.target.value });
             this.flash('Timezone updated');
           },
-          tzOptions: Component.TZ.map(([v, label, off]) => {
-            const o = off - 4;
-            return { value: v, label: `${label} · UTC${o >= 0 ? '+' : '−'}${Math.abs(o)}` };
-          }),
-          tzNow: this.time(NOW + Math.max(0, (S0.tick || 0) - (this._t0 || 0))),
+          tzOptions: [
+            ...Component.TZ.map((t) => t[0]),
+            ...[Component.localTz(), S0.tz].filter((z) => z && !Component.TZ.some((t) => t[0] === z)),
+          ]
+            .filter((z, i, a) => a.indexOf(z) === i)
+            .map((v) => {
+              const o = Component.tzOff(v, Date.now()) / 60,
+                hh = Math.trunc(Math.abs(o)),
+                mm = Math.round((Math.abs(o) - hh) * 60);
+              return {
+                value: v,
+                label: `${Component.tzLabel(v)} · UTC${o >= 0 ? '+' : '−'}${hh}${mm ? ':' + String(mm).padStart(2, '0') : ''}`,
+              };
+            }),
+          tzNow: this.time(Date.now()),
         };
       })(),
       ...(() => {
@@ -3071,8 +3155,8 @@ class Component extends DCLogic {
           [name + 'Track']: tog(on).Track,
           [name + 'Knob']: tog(on).Knob,
         });
-        const nowMs = NOW + Math.max(0, (S0.tick || 0) - (this._t0 || 0)),
-          hr = new Date(nowMs + this.tzShift()).getHours();
+        const nowMs = Date.now(),
+          hr = new Date(nowMs + this.tzShift(nowMs)).getHours();
         const sick = s.accounts.filter((a) => a.health === 'error' || a.health === 'expiring');
         const pending = s.posts.filter((p) => p.approval === 'pending' && p.status !== 'published');
         const pub7 = s.posts.filter(
@@ -3355,7 +3439,7 @@ class Component extends DCLogic {
             ' · ' +
             this.time(nowMs) +
             ' · ' +
-            (Component.TZ.find((t) => t[0] === S0.tz) || Component.TZ[0])[1],
+            Component.tzLabel(S0.tz),
           greetWord: hr < 12 ? 'Good morning' : hr < 18 ? 'Good afternoon' : 'Good evening',
           greetName: WS === 'maya' ? 'Maya' : (Component.WS.find((w) => w[0] === WS) || [])[1],
           weekPosts: `${thisWeek.length} post${thisWeek.length === 1 ? '' : 's'}`,
@@ -3370,7 +3454,7 @@ class Component extends DCLogic {
             const el = document.getElementById('attn');
             if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 24, behavior: 'smooth' });
           },
-          goCalWeek: () => this.setState({ screen: 'calendar', calView: 'week', weekStart: Component.at(-2, 0) }),
+          goCalWeek: () => this.setState({ screen: 'calendar', calView: 'week', weekStart: Component.monday() }),
           goReview: () => this.setState({ screen: 'queue', tab: 'review' }),
           reviewLabel: pending.length ? `Review ${pending.length} pending` : 'Approvals',
           upNext,
@@ -3590,7 +3674,7 @@ class Component extends DCLogic {
             onTime: (e) => {
               const v = e.target.value;
               if (!v) return;
-              const at = new Date(v).getTime(),
+              const at = Component.fromLocal(v),
                 old = p.at;
               if (at <= NOW) return this.flash('Pick a time in the future', true);
               this.setPost(p.id, (x) => ({ ...x, at }));

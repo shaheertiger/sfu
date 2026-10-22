@@ -72,14 +72,14 @@ export function renderLanding($v) {
                 {'Pricing'}
               </a>{' '}
               <a
-                href="/app"
+                href="/login"
                 style={{ padding: '8px 12px', fontSize: '14px', color: '#a7abb2', borderRadius: '8px' }}
                 className="landing-hover-0"
               >
                 {'Sign in'}
               </a>{' '}
               <a
-                href="/app"
+                href="/signup"
                 style={{
                   padding: '8px 14px',
                   fontSize: '14px',
@@ -222,7 +222,7 @@ export function renderLanding($v) {
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
               {' '}
               <a
-                href="/app"
+                href="/signup"
                 style={{
                   padding: '14px 22px',
                   fontSize: '16px',
@@ -2281,7 +2281,7 @@ export function renderLanding($v) {
                   </span>{' '}
                 </div>{' '}
                 <a
-                  href="/app"
+                  href="/signup"
                   style={{
                     marginTop: 'auto',
                     textAlign: 'center',
@@ -2351,7 +2351,7 @@ export function renderLanding($v) {
                   </span>{' '}
                 </div>{' '}
                 <a
-                  href="/app"
+                  href="/signup"
                   style={{
                     marginTop: 'auto',
                     textAlign: 'center',
@@ -2404,7 +2404,7 @@ export function renderLanding($v) {
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
               {' '}
               <a
-                href="/app"
+                href="/signup"
                 style={{
                   padding: '15px 24px',
                   fontSize: '16px',
@@ -2461,7 +2461,7 @@ export function renderLanding($v) {
               <a href="#pricing" style={{ color: '#6b7079' }}>
                 {'Pricing'}
               </a>
-              <a href="/app" style={{ color: '#6b7079' }}>
+              <a href="/login" style={{ color: '#6b7079' }}>
                 {'Sign in'}
               </a>
             </span>{' '}

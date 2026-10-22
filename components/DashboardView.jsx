@@ -6608,7 +6608,8 @@ export function renderDashboard($v) {
                         <span style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.3' }}>
                           <span style={{ fontWeight: '500', fontSize: '14px' }}>{'Remind me before posts go out'}</span>
                           <span style={{ fontSize: '12px', color: '#677184' }}>
-                            {'Sent to maya@scheduleforyou.com'}
+                            {'Sent to '}
+                            {$t($v['userEmail'])}
                           </span>
                         </span>{' '}
                       </button>{' '}
