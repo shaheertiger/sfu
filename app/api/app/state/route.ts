@@ -5,6 +5,7 @@ import { listAccounts, listPosts } from '@/lib/server/posts';
 import { PLATFORM_LIST, platformConfigured } from '@/lib/server/platforms';
 import { storageConfigured } from '@/lib/server/storage';
 import { publicMedia } from '@/lib/server/media';
+import { billingSummary } from '@/lib/server/billing';
 
 export const dynamic = 'force-dynamic';
 
@@ -28,6 +29,7 @@ export const GET = handler(async ({ user, workspace }) => {
     mediaUsage: Object.fromEntries(usage.map((u) => [u.id, u.n])),
     platforms: PLATFORM_LIST.map((p) => ({ id: p.id, authMode: p.authMode, configured: platformConfigured(p) })),
     storage: storageConfigured(),
+    billing: billingSummary(workspace),
     now: Date.now(),
   };
 }, { sessionOnly: true });

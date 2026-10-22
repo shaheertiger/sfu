@@ -5,6 +5,7 @@ import { adapterFor } from './adapters';
 import { PublishError } from './adapters/types';
 import { mediaFiles, rowToAccount } from './posts';
 import { notifyFailures, type Failure } from './notify';
+import { canPublishSql } from './billing';
 
 const MAX_ATTEMPTS = 3;
 const DRY_RUN = process.env.SFY_DRY_RUN === '1';
@@ -151,6 +152,7 @@ export async function runDue({ budgetMs = 240_000, batch = 10 } = {}) {
          WHERE p.status='scheduled' AND p.scheduled_at IS NOT NULL AND p.scheduled_at <= $1
            AND p.approval IS DISTINCT FROM 'pending'
            AND COALESCE((w.prefs->>'paused')::boolean, false) = false
+           AND ${canPublishSql()}
          ORDER BY p.scheduled_at LIMIT $2 FOR UPDATE OF p SKIP LOCKED)
        RETURNING id`,
       [now(), batch],

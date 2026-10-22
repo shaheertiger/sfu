@@ -98,7 +98,7 @@ export default class LiveDashboard extends Base {
       ...this.state,
       loading: true, posts: [], accounts: [], library: [], keys: [], invites: [], notes: {}, templates: [], tagGroups: [],
       folders: [], labelList: [], bulkAccs: [], csv: 'date,time,accounts,caption\n', bulkFiles: [],
-      wsId: null, wsList: [], members: [], pendingInvites: [], platforms: {}, storage: false, plan: 'trial', accountLimit: 15, modal: null,
+      wsId: null, wsList: [], members: [], pendingInvites: [], platforms: {}, storage: false, plan: 'trial', accountLimit: 15, modal: null, billing: null, planPicker: false,
     };
     this._srv = new Map(); // post id → JSON of what the server has
     this._srvStatus = new Map(); // post id → server status
@@ -152,7 +152,7 @@ export default class LiveDashboard extends Base {
       library: d.media.map((m) => mapMedia(m, d.mediaUsage)),
       keys: d.keys.map((k) => ({ id: k.id, name: k.name, prefix: k.prefix, meta: `Created ${new Date(k.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} · ${k.last_used_at ? 'last used ' + new Date(k.last_used_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : 'never used'}` })),
       members: d.members, wsId: d.workspace.id, wsList: d.workspaces, plan: d.workspace.plan, accountLimit: d.workspace.account_limit,
-      platforms: Object.fromEntries(d.platforms.map((p) => [p.id, p])), storage: d.storage,
+      platforms: Object.fromEntries(d.platforms.map((p) => [p.id, p])), storage: d.storage, billing: d.billing || null,
       tz: prefs.tz || Base.localTz(), remind: prefs.remind || { on: true, lead: 60 }, alerts: prefs.alerts || { fail: true, digest: true },
       slots: prefs.slots || [], slotDays: prefs.slotDays || [], paused: !!prefs.paused, labelList: prefs.labels || [],
       folders: prefs.folders || [], templates: prefs.templates || [], tagGroups: prefs.tagGroups || [], notes: prefs.notes || {},
@@ -179,6 +179,12 @@ export default class LiveDashboard extends Base {
       this.flash(`Connected ${n} ${P[q.get('connected')]?.label || q.get('connected')} account${n === 1 ? '' : 's'}`);
     }
     if (q.get('error')) this.flash(q.get('error'), true);
+    if (q.get('billing') === 'success') {
+      this.flash('Thanks! Your plan is active.');
+      // Stripe's webhook can land a moment after the redirect.
+      setTimeout(() => this.load(false), 4000);
+    }
+    if (q.get('billing') === 'cancel') this.flash('Checkout cancelled. Nothing was charged.');
     window.history.replaceState(null, '', '/app');
   }
 
@@ -413,6 +419,23 @@ export default class LiveDashboard extends Base {
     });
   }
 
+  /* ---------- billing ---------- */
+  openBilling() {
+    const b = this.state.billing;
+    if (b && (b.state === 'active' || b.state === 'past_due') && b.hasCustomer) return this.goBilling('/api/billing/portal');
+    super.setState({ planPicker: true });
+  }
+
+  async goBilling(path, body) {
+    try {
+      const { url } = await api(path, { method: 'POST', body });
+      window.location.href = url;
+    } catch (e) {
+      this.flash(e.message, true);
+      throw e;
+    }
+  }
+
   async signOut() {
     await this.flushSaves();
     await fetch('/api/auth/logout', { method: 'POST' });
@@ -437,10 +460,13 @@ export default class LiveDashboard extends Base {
     v.workspaces = [
       ...s.wsList.map((w) => ({ name: w.name, sub: w.role === 'owner' ? 'Owner' : 'Member', tone: wsTone(w.id), mark: w.id === s.wsId ? '✓' : '', bg: w.id === s.wsId ? '#22252a' : 'transparent', pick: () => (w.id === s.wsId ? super.setState({ wsOpen: false }) : this.switchWorkspace(w.id).catch((e) => this.flash(e.message, true))) })),
       { name: '+ New workspace', sub: 'For a client or brand', tone: '#2a2e34', mark: '', bg: 'transparent', pick: () => this.newWorkspace() },
+      ...(s.billing?.enabled && cur?.role === 'owner'
+        ? [{ name: 'Billing', sub: billingLine(s.billing), tone: '#2a2e34', mark: '', bg: 'transparent', pick: () => { super.setState({ wsOpen: false }); this.openBilling(); } }]
+        : []),
       { name: 'Sign out', sub: this.userEmail || '', tone: '#2a2e34', mark: '', bg: 'transparent', pick: () => this.signOut() },
     ];
     v.wsName = cur?.name || 'Workspace';
-    v.wsSub = `${s.plan === 'trial' ? 'Trial' : s.plan} · ${s.accounts.length} account${s.accounts.length === 1 ? '' : 's'}`;
+    v.wsSub = `${planName(s.plan)} · ${s.accounts.length} account${s.accounts.length === 1 ? '' : 's'}`;
     v.wsTone = '#d9ff35';
     v.greetName = this.userName || '';
     if (typeof v.greeting === 'string') v.greeting = v.greeting.replace(/, [^,]*$/, `, ${this.userName || 'there'}`);
@@ -564,6 +590,20 @@ export default class LiveDashboard extends Base {
           </div>
         )}
         {m && <FormDialog modal={m} onClose={() => super.setState({ modal: null })} />}
+        {!this.state.loading && (
+          <BillingBanner
+            billing={this.state.billing}
+            owner={this.state.wsList.find((w) => w.id === this.state.wsId)?.role === 'owner'}
+            onChoose={() => this.openBilling()}
+          />
+        )}
+        {this.state.planPicker && (
+          <PlanDialog
+            billing={this.state.billing}
+            onPick={(plan) => this.goBilling('/api/billing/checkout', { plan })}
+            onClose={() => super.setState({ planPicker: false })}
+          />
+        )}
       </>
     );
   }
@@ -603,6 +643,80 @@ function FormDialog({ modal, onClose }) {
           <button type="submit" disabled={busy} style={{ padding: '9px 16px', borderRadius: 10, border: 0, background: '#141619', color: '#fff', cursor: 'pointer', fontWeight: 600, opacity: busy ? 0.6 : 1 }}>{busy ? 'One moment…' : modal.cta}</button>
         </div>
       </form>
+    </div>
+  );
+}
+
+
+/* ---------- billing UI ---------- */
+const planName = (p) => ({ trial: 'Trial', solo: 'Solo', studio: 'Studio' })[p] || p;
+
+function billingLine(b) {
+  if (b.state === 'trial') return b.daysLeft != null ? `Trial · ${b.daysLeft} day${b.daysLeft === 1 ? '' : 's'} left` : 'Trial';
+  if (b.state === 'expired') return 'Trial ended · choose a plan';
+  if (b.state === 'past_due') return 'Payment failed · update card';
+  if (b.cancelAtPeriodEnd && b.periodEnd) return `${planName(b.plan)} · ends ${new Date(b.periodEnd).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
+  return `${planName(b.plan)} plan`;
+}
+
+/** Slim notice for trial countdown, expired trial or failed payment. Nothing when the plan is fine. */
+function BillingBanner({ billing: b, owner, onChoose }) {
+  if (!b?.enabled) return null;
+  let text = '';
+  let tone = 'calm';
+  if (b.state === 'trial' && b.daysLeft != null && b.daysLeft <= 3) text = `Your free trial ends in ${b.daysLeft} day${b.daysLeft === 1 ? '' : 's'}.`;
+  else if (b.state === 'expired') { text = 'Your trial has ended. Scheduled posts are paused.'; tone = 'alert'; }
+  else if (b.state === 'past_due') { text = 'Your last payment failed. Update your card to avoid interruption.'; tone = 'alert'; }
+  if (!text) return null;
+  const alert = tone === 'alert';
+  return (
+    <div role="status" className="sfy-billing-banner" style={{ position: 'fixed', left: '50%', transform: 'translateX(-50%)', zIndex: 80, display: 'flex', alignItems: 'center', gap: 12, maxWidth: 'calc(100vw - 32px)', padding: '10px 12px 10px 16px', borderRadius: 14, background: alert ? '#fff1ef' : '#141619', color: alert ? '#a1281f' : '#fff', border: alert ? '1px solid #f3c9c3' : '1px solid #141619', boxShadow: '0 8px 24px rgba(20,22,25,.18)', font: '500 14px Geist, system-ui, sans-serif' }}>
+      <style>{'.sfy-billing-banner{bottom:20px}@media (max-width:760px){.sfy-billing-banner{bottom:84px}}'}</style>
+      <span>{text}{!owner && ' Ask the workspace owner to choose a plan.'}</span>
+      {owner && (
+        <button type="button" onClick={onChoose} style={{ flex: 'none', padding: '7px 12px', borderRadius: 10, border: 0, background: '#dcff2e', color: '#15171a', fontWeight: 600, cursor: 'pointer' }}>
+          {b.state === 'past_due' ? 'Update card' : 'Choose a plan'}
+        </button>
+      )}
+    </div>
+  );
+}
+
+function PlanDialog({ billing: b, onPick, onClose }) {
+  const [busy, setBusy] = React.useState('');
+  const plans = b?.plans || [];
+  const pick = async (id) => {
+    setBusy(id);
+    try { await onPick(id); } catch { setBusy(''); }
+  };
+  const features = { solo: ['15 connected accounts', 'Unlimited posts & scheduling', 'API + MCP access'], studio: ['100 connected accounts', 'Team members', 'Priority support'] };
+  return (
+    <div role="dialog" aria-modal="true" aria-label="Choose a plan" onClick={(e) => e.target === e.currentTarget && onClose()} style={{ position: 'fixed', inset: 0, zIndex: 95, display: 'grid', placeItems: 'center', padding: 16, background: 'rgba(20,22,25,.45)', fontFamily: 'Geist, system-ui, sans-serif' }}>
+      <div style={{ width: 'min(560px, 100%)', background: '#fff', borderRadius: 18, padding: 22, display: 'grid', gap: 14, boxShadow: '0 24px 60px rgba(20,22,25,.25)' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
+          <strong style={{ fontSize: 18, letterSpacing: '-0.02em' }}>Choose a plan</strong>
+          <button type="button" onClick={onClose} aria-label="Close" style={{ border: 0, background: 'transparent', fontSize: 20, cursor: 'pointer', color: '#677184' }}>×</button>
+        </div>
+        <p style={{ margin: 0, fontSize: 14, color: '#677184', lineHeight: 1.5 }}>
+          {b?.state === 'trial' && b?.daysLeft > 2 ? `You won't be charged until your trial ends in ${b.daysLeft} days. ` : ''}Cancel anytime. Payments are handled by Stripe.
+        </p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12 }}>
+          {plans.map((p) => (
+            <div key={p.id} style={{ border: p.id === 'studio' ? '2px solid #141619' : '1px solid #e5e3dc', borderRadius: 14, padding: 16, display: 'grid', gap: 10, alignContent: 'start' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
+                <strong style={{ fontSize: 16 }}>{p.name}</strong>
+                <span><strong style={{ fontSize: 22 }}>${p.amount}</strong><span style={{ color: '#677184', fontSize: 13 }}>/mo</span></span>
+              </div>
+              <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: '#3d434d', lineHeight: 1.7 }}>
+                {(features[p.id] || []).map((f) => <li key={f}>{f}</li>)}
+              </ul>
+              <button type="button" disabled={!!busy} onClick={() => pick(p.id)} style={{ padding: '10px 14px', borderRadius: 10, border: 0, background: p.id === 'studio' ? '#dcff2e' : '#141619', color: p.id === 'studio' ? '#15171a' : '#fff', fontWeight: 600, cursor: 'pointer', opacity: busy && busy !== p.id ? 0.5 : 1 }}>
+                {busy === p.id ? 'Opening checkout…' : `Choose ${p.name}`}
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
