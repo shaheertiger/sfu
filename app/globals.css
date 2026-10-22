@@ -1,0 +1,3 @@
+/* Full-page frame the prototypes were designed in. Page-specific styles live with each screen. */
+html, body { height: 100%; margin: 0; }
+#dc-root, #dc-root > .sc-host { height: 100%; }

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;background:#0c0d0f;color:#f6f5f1;font:15px/1.5 "Geist",ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#dcff2e;text-decoration:none}
+a:hover{color:#f6f5f1}
+@keyframes lgDraw{0%{stroke-dashoffset:100;opacity:1}42%{stroke-dashoffset:0}88%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes lgFade{0%{opacity:0}4%{opacity:1}88%{opacity:1}100%{opacity:0}}
+@keyframes lgRipple{0%,40%{transform:scale(1);opacity:0}43%{opacity:.9}78%{transform:scale(3);opacity:0}100%{opacity:0}}
+</style>
+</helmet>
+<section style="padding:56px;display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <span style="font:13px 'Geist Mono',monospace;color:#dcff2e">Turn 3 — Bold monograms · 3a selected</span>
+    <h1 style="margin:0;font-size:48px;letter-spacing:-0.045em;line-height:1">One S, three ways.</h1>
+    <p style="margin:0;color:#a7abb2;max-width:720px;text-wrap:pretty">All three use the same custom S: two crescents that taper to sharp points at the ends and meet in a heavy spine, like a brush stroke in one motion. Solid filled shapes, so they hold up as an app icon, an avatar and a 16px favicon.</p>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start">
+
+    <div id="3a" style="width:600px;border:1px solid #22252a;border-radius:28px;background:#0f1113;overflow:hidden">
+      <div style="position:relative;height:420px;display:grid;place-items:center;background:#0a0b0d">
+        <span style="position:absolute;top:18px;left:18px;padding:2px 10px;border-radius:999px;background:#dcff2e;color:#15171a;font:600 12px 'Geist Mono',monospace">3a</span>
+        <svg width="260" height="260" viewBox="0 0 64 64" style="filter:drop-shadow(0 30px 50px rgba(220,255,46,.18))"><rect x="9" y="13" width="46" height="44" rx="12" fill="#dcff2e"></rect><rect x="19" y="7" width="6" height="12" rx="3" fill="#dcff2e" stroke="#0a0b0d" stroke-width="2.5"></rect><rect x="39" y="7" width="6" height="12" rx="3" fill="#dcff2e" stroke="#0a0b0d" stroke-width="2.5"></rect><path d="M28 35 A13.5 13.5 0 1 1 44 17 A8 8 0 1 0 36 29 A13.5 13.5 0 1 1 20 47 A8 8 0 1 0 28 35 Z" fill="#0a0b0d" transform="translate(32 36) scale(.66) translate(-32 -32)"></path></svg>
+      </div>
+      <div style="padding:26px;display:flex;flex-direction:column;gap:18px;border-top:1px solid #22252a">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px"><strong style="font-size:20px;letter-spacing:-0.02em">The Calendar S</strong><span style="font-size:13px;color:#6b7079">Bold · container mark</span></div>
+        <p style="margin:0;color:#a7abb2;font-size:14px;text-wrap:pretty">A calendar page with the S cut through it. Says "scheduling" before anyone reads the name.</p>
+        <div style="display:flex;align-items:center;gap:14px;padding:22px;border-radius:16px;background:#f6f5f1;color:#15171a">
+          <svg width="52" height="52" viewBox="0 0 64 64"><rect x="9" y="13" width="46" height="44" rx="12" fill="#15171a"></rect><rect x="19" y="7" width="6" height="12" rx="3" fill="#15171a" stroke="#f6f5f1" stroke-width="2.5"></rect><rect x="39" y="7" width="6" height="12" rx="3" fill="#15171a" stroke="#f6f5f1" stroke-width="2.5"></rect><path d="M28 35 A13.5 13.5 0 1 1 44 17 A8 8 0 1 0 36 29 A13.5 13.5 0 1 1 20 47 A8 8 0 1 0 28 35 Z" fill="#dcff2e" transform="translate(32 36) scale(.66) translate(-32 -32)"></path></svg>
+          <span style="font-weight:800;font-size:34px;letter-spacing:-0.055em;line-height:1">schedule for you</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:22px;border-radius:16px;background:#dcff2e;color:#15171a">
+          <svg width="52" height="52" viewBox="0 0 64 64"><rect x="9" y="13" width="46" height="44" rx="12" fill="#15171a"></rect><rect x="19" y="7" width="6" height="12" rx="3" fill="#15171a" stroke="#dcff2e" stroke-width="2.5"></rect><rect x="39" y="7" width="6" height="12" rx="3" fill="#15171a" stroke="#dcff2e" stroke-width="2.5"></rect><path d="M28 35 A13.5 13.5 0 1 1 44 17 A8 8 0 1 0 36 29 A13.5 13.5 0 1 1 20 47 A8 8 0 1 0 28 35 Z" fill="#dcff2e" transform="translate(32 36) scale(.66) translate(-32 -32)"></path></svg>
+          <span style="font-weight:800;font-size:34px;letter-spacing:-0.055em;line-height:1">schedule for you</span>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:20px;padding:4px 2px">
+          <svg width="64" height="64" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#15171a" stroke="#2a2e34"></rect><rect x="9" y="13" width="46" height="44" rx="12" fill="#dcff2e"></rect><rect x="19" y="7" width="6" height="12" rx="3" fill="#dcff2e" stroke="#15171a" stroke-width="2.5"></rect><rect x="39" y="7" width="6" height="12" rx="3" fill="#dcff2e" stroke="#15171a" stroke-width="2.5"></rect><path d="M28 35 A13.5 13.5 0 1 1 44 17 A8 8 0 1 0 36 29 A13.5 13.5 0 1 1 20 47 A8 8 0 1 0 28 35 Z" fill="#15171a" transform="translate(32 36) scale(.66) translate(-32 -32)"></path></svg>
+          <svg width="32" height="32" viewBox="0 0 64 64"><rect x="9" y="13" width="46" height="44" rx="12" fill="#dcff2e"></rect><rect x="19" y="7" width="6" height="12" rx="3" fill="#dcff2e" stroke="#0f1113" stroke-width="2.5"></rect><rect x="39" y="7" width="6" height="12" rx="3" fill="#dcff2e" stroke="#0f1113" stroke-width="2.5"></rect><path d="M28 35 A13.5 13.5 0 1 1 44 17 A8 8 0 1 0 36 29 A13.5 13.5 0 1 1 20 47 A8 8 0 1 0 28 35 Z" fill="#0f1113" transform="translate(32 36) scale(.7) translate(-32 -32)"></path></svg>
+          <svg width="16" height="16" viewBox="0 0 64 64"><rect x="9" y="13" width="46" height="44" rx="12" fill="#dcff2e"></rect><rect x="19" y="7" width="6" height="12" rx="3" fill="#dcff2e"></rect><rect x="39" y="7" width="6" height="12" rx="3" fill="#dcff2e"></rect><path d="M28 35 A13.5 13.5 0 1 1 44 17 A8 8 0 1 0 36 29 A13.5 13.5 0 1 1 20 47 A8 8 0 1 0 28 35 Z" fill="#0f1113" transform="translate(32 36) scale(.74) translate(-32 -32)"></path></svg>
+          <span style="font:11px 'Geist Mono',monospace;color:#6b7079">64 · 32 · 16</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="3b" style="width:600px;border:1px solid #22252a;border-radius:28px;background:#0f1113;overflow:hidden">
+      <div style="position:relative;height:420px;display:grid;place-items:center;background:#dcff2e">
+        <span style="position:absolute;top:18px;left:18px;padding:2px 10px;border-radius:999px;background:#15171a;color:#dcff2e;font:600 12px 'Geist Mono',monospace">3b</span>
+        <svg width="300" height="300" viewBox="0 0 64 64"><path d="M28 35 A13.5 13.5 0 1 1 44 17 A8 8 0 1 0 36 29 A13.5 13.5 0 1 1 20 47 A8 8 0 1 0 28 35 Z" fill="#15171a" transform="translate(32 32) scale(1.12) translate(-32 -32)"></path></svg>
+      </div>
+      <div style="padding:26px;display:flex;flex-direction:column;gap:18px;border-top:1px solid #22252a">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px"><strong style="font-size:20px;letter-spacing:-0.02em">The Crescent S</strong><span style="font-size:13px;color:#6b7079">Loud · gesture mark</span></div>
+        <p style="margin:0;color:#a7abb2;font-size:14px;text-wrap:pretty">The S alone, no container. One confident shape that works the way a swoosh does: on a shirt, a sticker, a story frame.</p>
+        <div style="display:flex;align-items:center;gap:12px;padding:22px;border-radius:16px;background:#0a0b0d">
+          <svg width="50" height="50" viewBox="8 8 48 48"><path d="M28 35 A13.5 13.5 0 1 1 44 17 A8 8 0 1 0 36 29 A13.5 13.5 0 1 1 20 47 A8 8 0 1 0 28 35 Z" fill="#dcff2e"></path></svg>
+          <span style="font-weight:800;font-size:30px;letter-spacing:-0.03em;line-height:1;text-transform:uppercase">Schedule For You</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:22px;border-radius:16px;background:#f6f5f1;color:#15171a">
+          <svg width="50" height="50" viewBox="8 8 48 48"><path d="M28 35 A13.5 13.5 0 1 1 44 17 A8 8 0 1 0 36 29 A13.5 13.5 0 1 1 20 47 A8 8 0 1 0 28 35 Z" fill="#15171a"></path></svg>
+          <span style="font-weight:800;font-size:30px;letter-spacing:-0.03em;line-height:1;text-transform:uppercase">Schedule For You</span>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:20px;padding:4px 2px">
+          <svg width="64" height="64" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#dcff2e"></rect><path d="M28 35 A13.5 13.5 0 1 1 44 17 A8 8 0 1 0 36 29 A13.5 13.5 0 1 1 20 47 A8 8 0 1 0 28 35 Z" fill="#15171a" transform="translate(32 32) scale(1.08) translate(-32 -32)"></path></svg>
+          <svg width="32" height="32" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#dcff2e"></rect><path d="M28 35 A13.5 13.5 0 1 1 44 17 A8 8 0 1 0 36 29 A13.5 13.5 0 1 1 20 47 A8 8 0 1 0 28 35 Z" fill="#15171a" transform="translate(32 32) scale(1.08) translate(-32 -32)"></path></svg>
+          <svg width="16" height="16" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#dcff2e"></rect><path d="M28 35 A13.5 13.5 0 1 1 44 17 A8 8 0 1 0 36 29 A13.5 13.5 0 1 1 20 47 A8 8 0 1 0 28 35 Z" fill="#15171a" transform="translate(32 32) scale(1.12) translate(-32 -32)"></path></svg>
+          <span style="font:11px 'Geist Mono',monospace;color:#6b7079">64 · 32 · 16</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="3c" style="width:600px;border:1px solid #22252a;border-radius:28px;background:#0f1113;overflow:hidden">
+      <div style="position:relative;height:420px;display:grid;place-items:center;background:#15171a">
+        <span style="position:absolute;top:18px;left:18px;padding:2px 10px;border-radius:999px;background:#2a2e34;color:#f6f5f1;font:600 12px 'Geist Mono',monospace">3c</span>
+        <svg width="290" height="290" viewBox="0 0 64 64"><circle cx="32" cy="32" r="31" fill="#0c0d0f"></circle><circle cx="32" cy="32" r="28" fill="none" stroke="#dcff2e" stroke-width=".7"></circle><circle cx="32" cy="32" r="26.6" fill="none" stroke="#dcff2e" stroke-width=".25"></circle><path d="M28 35 A13.5 13.5 0 1 1 44 17 A8 8 0 1 0 36 29 A13.5 13.5 0 1 1 20 47 A8 8 0 1 0 28 35 Z" fill="#dcff2e" transform="translate(32 32) scale(.8) translate(-32 -32)"></path></svg>
+      </div>
+      <div style="padding:26px;display:flex;flex-direction:column;gap:18px;border-top:1px solid #22252a">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px"><strong style="font-size:20px;letter-spacing:-0.02em">The Seal</strong><span style="font-size:13px;color:#6b7079">Luxury · editorial</span></div>
+        <p style="margin:0;color:#a7abb2;font-size:14px;text-wrap:pretty">The S set in a fine double ring, paired with a high-contrast serif. Reads like a publisher's or atelier's mark.</p>
+        <div style="display:flex;align-items:center;gap:16px;padding:22px;border-radius:16px;background:#0a0b0d">
+          <svg width="54" height="54" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="none" stroke="#dcff2e" stroke-width="1.4"></circle><path d="M28 35 A13.5 13.5 0 1 1 44 17 A8 8 0 1 0 36 29 A13.5 13.5 0 1 1 20 47 A8 8 0 1 0 28 35 Z" fill="#dcff2e" transform="translate(32 32) scale(.84) translate(-32 -32)"></path></svg>
+          <span style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:36px;letter-spacing:-0.02em;line-height:1">Schedule <em style="font-weight:500">For</em> You</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;padding:22px;border-radius:16px;background:#f6f5f1;color:#15171a">
+          <svg width="54" height="54" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="none" stroke="#15171a" stroke-width="1.4"></circle><path d="M28 35 A13.5 13.5 0 1 1 44 17 A8 8 0 1 0 36 29 A13.5 13.5 0 1 1 20 47 A8 8 0 1 0 28 35 Z" fill="#15171a" transform="translate(32 32) scale(.84) translate(-32 -32)"></path></svg>
+          <span style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:36px;letter-spacing:-0.02em;line-height:1">Schedule <em style="font-weight:500">For</em> You</span>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:20px;padding:4px 2px">
+          <svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="#15171a"></circle><circle cx="32" cy="32" r="28" fill="none" stroke="#dcff2e" stroke-width="1"></circle><path d="M28 35 A13.5 13.5 0 1 1 44 17 A8 8 0 1 0 36 29 A13.5 13.5 0 1 1 20 47 A8 8 0 1 0 28 35 Z" fill="#dcff2e" transform="translate(32 32) scale(.8) translate(-32 -32)"></path></svg>
+          <svg width="32" height="32" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="#15171a"></circle><path d="M28 35 A13.5 13.5 0 1 1 44 17 A8 8 0 1 0 36 29 A13.5 13.5 0 1 1 20 47 A8 8 0 1 0 28 35 Z" fill="#dcff2e" transform="translate(32 32) scale(.92) translate(-32 -32)"></path></svg>
+          <svg width="16" height="16" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="#15171a"></circle><path d="M28 35 A13.5 13.5 0 1 1 44 17 A8 8 0 1 0 36 29 A13.5 13.5 0 1 1 20 47 A8 8 0 1 0 28 35 Z" fill="#dcff2e" transform="translate(32 32) scale(.98) translate(-32 -32)"></path></svg>
+          <span style="font:11px 'Geist Mono',monospace;color:#6b7079">64 · 32 · 16</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="2a" style="padding:56px;display:flex;flex-direction:column;gap:24px;width:1480px">
+  <div style="display:flex;align-items:center;gap:12px">
+    <span style="padding:2px 10px;border-radius:999px;background:#dcff2e;color:#15171a;font:600 12px 'Geist Mono',monospace">2a</span>
+    <span style="font:13px 'Geist Mono',monospace;color:#a7abb2">Turn 2 — The Route S · brand mark</span>
+  </div>
+
+  <div style="display:grid;grid-template-columns:560px 1fr;border:1px solid #22252a;border-radius:28px;overflow:hidden;background:#0f1113">
+    <div style="height:560px;display:grid;place-items:center;background:#0a0b0d;background-image:radial-gradient(#1a1d21 1px,transparent 1px);background-size:24px 24px;border-right:1px solid #22252a">
+      <div style="filter:drop-shadow(0 40px 60px rgba(0,0,0,.7)) drop-shadow(0 0 80px rgba(220,255,46,.08))">{{ heroMark }}</div>
+    </div>
+    <div style="padding:64px;display:flex;flex-direction:column;justify-content:center;gap:28px">
+      <span style="font:13px 'Geist Mono',monospace;color:#dcff2e">The idea</span>
+      <h2 style="margin:0;font-size:64px;line-height:.98;letter-spacing:-0.05em;font-weight:700">One route.<br>Draft to live.</h2>
+      <p style="margin:0;font-size:19px;line-height:1.55;color:#a7abb2;max-width:560px;text-wrap:pretty">The S is a single continuous stroke built from two equal arcs, like a route on a transit map. A post travels it from the top terminal, where it's written, to the lime node at the end, where it goes live.</p>
+      <p style="margin:0;font-size:19px;line-height:1.55;color:#a7abb2;max-width:560px;text-wrap:pretty">The lime node is the one place the accent appears. It means the same thing in the logo that it means in the product: published.</p>
+      <div style="display:flex;gap:28px;padding-top:8px;border-top:1px solid #22252a">
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="width:44px;height:44px;border-radius:12px;background:#15171a;border:1px solid #2a2e34"></span><span style="font:12px 'Geist Mono',monospace;color:#a7abb2">Ink #15171A</span></div>
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="width:44px;height:44px;border-radius:12px;background:#f6f5f1"></span><span style="font:12px 'Geist Mono',monospace;color:#a7abb2">Paper #F6F5F1</span></div>
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="width:44px;height:44px;border-radius:12px;background:#dcff2e"></span><span style="font:12px 'Geist Mono',monospace;color:#a7abb2">Live #DCFF2E</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+    <div style="border:1px solid #22252a;border-radius:24px;background:#0f1113;padding:32px;display:grid;grid-template-columns:300px 1fr;gap:32px;align-items:center">
+      <svg width="300" height="300" viewBox="0 0 64 64" style="display:block">
+        <rect width="64" height="64" rx="18" fill="#15171a"></rect>
+        <path d="M8 0V64M16 0V64M24 0V64M32 0V64M40 0V64M48 0V64M56 0V64M0 8H64M0 16H64M0 24H64M0 32H64M0 40H64M0 48H64M0 56H64" stroke="#23272c" stroke-width=".2"></path>
+        <circle cx="32" cy="21" r="11" fill="none" stroke="#6b7079" stroke-width=".25" stroke-dasharray="1 1"></circle>
+        <circle cx="32" cy="43" r="11" fill="none" stroke="#6b7079" stroke-width=".25" stroke-dasharray="1 1"></circle>
+        <path d="M32 21 L41.01 14.69 M32 43 L22.99 49.31" stroke="#6b7079" stroke-width=".25"></path>
+        <path d="M41.01 14.69 A11 11 0 1 0 32 32 A11 11 0 1 1 22.99 49.31" fill="none" stroke="#f6f5f1" stroke-opacity=".9" stroke-width="7.5" stroke-linecap="round"></path>
+        <circle cx="22.99" cy="49.31" r="6" fill="#dcff2e"></circle>
+        <circle cx="32" cy="21" r=".9" fill="#dcff2e"></circle>
+        <circle cx="32" cy="43" r=".9" fill="#dcff2e"></circle>
+      </svg>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <strong style="font-size:20px;letter-spacing:-0.02em">Construction</strong>
+        <div style="display:flex;flex-direction:column;gap:12px;font-size:14px;color:#a7abb2">
+          <span style="display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #22252a;padding-bottom:10px"><span>Arcs</span><span style="font-family:'Geist Mono',monospace;color:#f6f5f1">2 × r11, stacked</span></span>
+          <span style="display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #22252a;padding-bottom:10px"><span>Stroke</span><span style="font-family:'Geist Mono',monospace;color:#f6f5f1">7.5 / 64, round</span></span>
+          <span style="display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #22252a;padding-bottom:10px"><span>Terminals</span><span style="font-family:'Geist Mono',monospace;color:#f6f5f1">35° off axis</span></span>
+          <span style="display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #22252a;padding-bottom:10px"><span>Live node</span><span style="font-family:'Geist Mono',monospace;color:#f6f5f1">r6, on the end</span></span>
+          <span style="display:flex;justify-content:space-between;gap:12px"><span>Tile corner</span><span style="font-family:'Geist Mono',monospace;color:#f6f5f1">18 / 64</span></span>
+        </div>
+        <p style="margin:0;font-size:13px;color:#6b7079;text-wrap:pretty">Both terminals sit on the same 35° diagonal, so the mark has point symmetry and reads as balanced at any size.</p>
+      </div>
+    </div>
+
+    <div style="border:1px solid #22252a;border-radius:24px;background:#0f1113;padding:32px;display:flex;flex-direction:column;gap:24px">
+      <strong style="font-size:20px;letter-spacing:-0.02em">Scale</strong>
+      <div style="display:flex;align-items:flex-end;gap:28px;padding:24px;border-radius:16px;background:#0a0b0d">
+        <sc-for list="{{ sizes }}" as="s" hint-placeholder-count="5">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+            <svg width="{{ s.px }}" height="{{ s.px }}" viewBox="0 0 64 64" style="display:block;box-shadow:0 0 0 1px #2a2e34;border-radius:28%"><rect width="64" height="64" rx="18" fill="#15171a"></rect><path d="M41.01 14.69 A11 11 0 1 0 32 32 A11 11 0 1 1 22.99 49.31" fill="none" stroke="#f6f5f1" stroke-width="{{ s.sw }}" stroke-linecap="round"></path><circle cx="22.99" cy="49.31" r="{{ s.r }}" fill="#dcff2e"></circle></svg>
+            <span style="font:11px 'Geist Mono',monospace;color:#6b7079">{{ s.px }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;align-items:flex-end;gap:28px;padding:24px;border-radius:16px;background:#f6f5f1">
+        <sc-for list="{{ sizes }}" as="s" hint-placeholder-count="5">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+            <svg width="{{ s.px }}" height="{{ s.px }}" viewBox="0 0 64 64" style="display:block"><rect width="64" height="64" rx="18" fill="#15171a"></rect><path d="M41.01 14.69 A11 11 0 1 0 32 32 A11 11 0 1 1 22.99 49.31" fill="none" stroke="#f6f5f1" stroke-width="{{ s.sw }}" stroke-linecap="round"></path><circle cx="22.99" cy="49.31" r="{{ s.r }}" fill="#dcff2e"></circle></svg>
+            <span style="font:11px 'Geist Mono',monospace;color:#6b7079">{{ s.px }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:0;font-size:13px;color:#6b7079">Below 24px the stroke thickens to 9 and the node to 7 so it holds up as a favicon.</p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+    <div style="height:240px;border-radius:24px;background:#0a0b0d;border:1px solid #22252a;display:flex;align-items:center;justify-content:center;gap:16px">
+      <svg width="56" height="56" viewBox="6 6 52 52"><path d="M41.01 14.69 A11 11 0 1 0 32 32 A11 11 0 1 1 22.99 49.31" fill="none" stroke="#f6f5f1" stroke-width="7.5" stroke-linecap="round"></path><circle cx="22.99" cy="49.31" r="6" fill="#dcff2e"></circle></svg>
+      <span style="font-weight:700;font-size:34px;letter-spacing:-0.045em">Schedule For You</span>
+    </div>
+    <div style="height:240px;border-radius:24px;background:#f6f5f1;display:flex;align-items:center;justify-content:center;gap:16px;color:#15171a">
+      <svg width="56" height="56" viewBox="0 0 64 64"><rect width="64" height="64" rx="18" fill="#15171a"></rect><path d="M41.01 14.69 A11 11 0 1 0 32 32 A11 11 0 1 1 22.99 49.31" fill="none" stroke="#f6f5f1" stroke-width="7.5" stroke-linecap="round"></path><circle cx="22.99" cy="49.31" r="6" fill="#dcff2e"></circle></svg>
+      <span style="font-weight:700;font-size:34px;letter-spacing:-0.045em">Schedule For You</span>
+    </div>
+    <div style="height:240px;border-radius:24px;background:#dcff2e;display:flex;align-items:center;justify-content:center;gap:16px;color:#15171a">
+      <svg width="56" height="56" viewBox="6 6 52 52"><path d="M41.01 14.69 A11 11 0 1 0 32 32 A11 11 0 1 1 22.99 49.31" fill="none" stroke="#15171a" stroke-width="7.5" stroke-linecap="round"></path><circle cx="22.99" cy="49.31" r="6" fill="#15171a"></circle></svg>
+      <span style="font-weight:700;font-size:34px;letter-spacing:-0.045em">Schedule For You</span>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:24px">
+    <div style="border:1px solid #22252a;border-radius:24px;background:#0f1113;padding:28px;display:flex;flex-direction:column;gap:18px">
+      <span style="font-size:14px;font-weight:600;color:#a7abb2">Browser tab</span>
+      <div style="border-radius:14px;background:#1c1f23;overflow:hidden;border:1px solid #2a2e34">
+        <div style="display:flex;align-items:flex-end;gap:2px;padding:8px 10px 0">
+          <span style="display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px 10px 0 0;background:#0c0d0f;font-size:13px;min-width:0">
+            <svg width="16" height="16" viewBox="0 0 64 64"><rect width="64" height="64" rx="18" fill="#15171a"></rect><path d="M41.01 14.69 A11 11 0 1 0 32 32 A11 11 0 1 1 22.99 49.31" fill="none" stroke="#f6f5f1" stroke-width="9" stroke-linecap="round"></path><circle cx="22.99" cy="49.31" r="7" fill="#dcff2e"></circle></svg>
+            <span style="white-space:nowrap">Schedule For You — Queue</span>
+          </span>
+          <span style="padding:9px 14px;font-size:13px;color:#6b7079;white-space:nowrap">New tab</span>
+        </div>
+        <div style="height:92px;background:#0c0d0f;display:flex;align-items:center;gap:10px;padding:0 20px">
+          <svg width="26" height="26" viewBox="6 6 52 52"><path d="M41.01 14.69 A11 11 0 1 0 32 32 A11 11 0 1 1 22.99 49.31" fill="none" stroke="#f6f5f1" stroke-width="7.5" stroke-linecap="round"></path><circle cx="22.99" cy="49.31" r="6" fill="#dcff2e"></circle></svg>
+          <span style="font-weight:700;font-size:16px;letter-spacing:-0.03em">Schedule For You</span>
+        </div>
+      </div>
+    </div>
+    <div style="border:1px solid #22252a;border-radius:24px;background:#0f1113;padding:28px;display:flex;flex-direction:column;gap:18px">
+      <span style="font-size:14px;font-weight:600;color:#a7abb2">Social avatar</span>
+      <div style="display:flex;align-items:center;gap:16px;flex:1">
+        <span style="width:96px;height:96px;border-radius:50%;background:#15171a;border:1px solid #2a2e34;display:grid;place-items:center;flex:none">
+          <svg width="62" height="62" viewBox="6 6 52 52"><path d="M41.01 14.69 A11 11 0 1 0 32 32 A11 11 0 1 1 22.99 49.31" fill="none" stroke="#f6f5f1" stroke-width="7.5" stroke-linecap="round"></path><circle cx="22.99" cy="49.31" r="6" fill="#dcff2e"></circle></svg>
+        </span>
+        <span style="display:flex;flex-direction:column">
+          <strong style="font-size:17px">Schedule For You</strong>
+          <span style="font-size:14px;color:#6b7079">@scheduleforyou</span>
+        </span>
+      </div>
+      <p style="margin:0;font-size:13px;color:#6b7079">The glyph sits inside a circle crop without touching the edge.</p>
+    </div>
+    <div style="border:1px solid #22252a;border-radius:24px;background:#0f1113;padding:28px;display:flex;flex-direction:column;gap:18px">
+      <span style="font-size:14px;font-weight:600;color:#a7abb2">Home screen</span>
+      <div style="flex:1;border-radius:18px;background:linear-gradient(160deg,#2b3a2e,#1a2230);display:grid;grid-template-columns:repeat(3,64px);justify-content:center;align-content:center;gap:18px 22px;padding:18px">
+        <span style="display:flex;flex-direction:column;align-items:center;gap:6px"><span style="width:60px;height:60px;border-radius:15px;background:rgba(255,255,255,.14)"></span><span style="font-size:11px;color:rgba(255,255,255,.7)">Photos</span></span>
+        <span style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <svg width="60" height="60" viewBox="0 0 64 64" style="display:block;filter:drop-shadow(0 6px 12px rgba(0,0,0,.4))"><rect width="64" height="64" rx="15" fill="#15171a"></rect><path d="M41.01 14.69 A11 11 0 1 0 32 32 A11 11 0 1 1 22.99 49.31" fill="none" stroke="#f6f5f1" stroke-width="7.5" stroke-linecap="round"></path><circle cx="22.99" cy="49.31" r="6" fill="#dcff2e"></circle></svg>
+          <span style="font-size:11px;color:#fff">Schedule</span>
+        </span>
+        <span style="display:flex;flex-direction:column;align-items:center;gap:6px"><span style="width:60px;height:60px;border-radius:15px;background:rgba(255,255,255,.14)"></span><span style="font-size:11px;color:rgba(255,255,255,.7)">Mail</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:56px;display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <span style="font:13px 'Geist Mono',monospace;color:#dcff2e">Turn 1 — Logo concepts</span>
+    <h1 style="margin:0;font-size:40px;letter-spacing:-0.04em">Schedule For You</h1>
+    <p style="margin:0;color:#a7abb2;max-width:640px">Three marks. Superseded by <a href="#2a">2a</a>.</p>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start">
+
+    <div id="1a" style="width:520px;border:1px solid #22252a;border-radius:24px;background:#0f1113;overflow:hidden">
+      <div style="position:relative;height:340px;display:grid;place-items:center;background-image:radial-gradient(#1c1f23 1px,transparent 1px);background-size:20px 20px">
+        <span style="position:absolute;top:16px;left:16px;padding:2px 10px;border-radius:999px;background:#dcff2e;color:#15171a;font:600 12px 'Geist Mono',monospace">1a</span>
+        <svg width="180" height="180" viewBox="0 0 64 64"><rect width="64" height="64" rx="17" fill="#dcff2e"></rect><path d="M19 32 C 29 32, 33 18, 45 18 M19 32 L46 32 M19 32 C 29 32, 33 46, 45 46" fill="none" stroke="#15171a" stroke-width="4.2" stroke-linecap="round"></path><circle cx="18" cy="32" r="6.5" fill="#15171a"></circle><circle cx="46" cy="18" r="4.2" fill="#15171a"></circle><circle cx="47" cy="32" r="4.2" fill="#15171a"></circle><circle cx="46" cy="46" r="4.2" fill="#15171a"></circle></svg>
+      </div>
+      <div style="padding:22px 24px;display:flex;flex-direction:column;gap:16px;border-top:1px solid #22252a">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px"><strong style="font-size:18px">Fanout</strong><span style="font-size:13px;color:#6b7079">One post in, many out</span></div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <svg width="36" height="36" viewBox="0 0 64 64"><rect width="64" height="64" rx="17" fill="#dcff2e"></rect><path d="M19 32 C 29 32, 33 18, 45 18 M19 32 L46 32 M19 32 C 29 32, 33 46, 45 46" fill="none" stroke="#15171a" stroke-width="4.2" stroke-linecap="round"></path><circle cx="18" cy="32" r="6.5" fill="#15171a"></circle><circle cx="46" cy="18" r="4.2" fill="#15171a"></circle><circle cx="47" cy="32" r="4.2" fill="#15171a"></circle><circle cx="46" cy="46" r="4.2" fill="#15171a"></circle></svg>
+          <span style="font-weight:700;font-size:24px;letter-spacing:-0.035em">Schedule For You</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:14px;border-radius:14px;background:#f6f5f1">
+          <svg width="32" height="32" viewBox="0 0 64 64"><rect width="64" height="64" rx="17" fill="#15171a"></rect><path d="M19 32 C 29 32, 33 18, 45 18 M19 32 L46 32 M19 32 C 29 32, 33 46, 45 46" fill="none" stroke="#dcff2e" stroke-width="4.2" stroke-linecap="round"></path><circle cx="18" cy="32" r="6.5" fill="#dcff2e"></circle><circle cx="46" cy="18" r="4.2" fill="#dcff2e"></circle><circle cx="47" cy="32" r="4.2" fill="#dcff2e"></circle><circle cx="46" cy="46" r="4.2" fill="#dcff2e"></circle></svg>
+          <span style="font-weight:700;font-size:20px;letter-spacing:-0.035em;color:#15171a">Schedule For You</span>
+          <span style="flex:1"></span>
+          <svg width="20" height="20" viewBox="0 0 64 64"><rect width="64" height="64" rx="17" fill="#15171a"></rect><path d="M19 32 C 29 32, 33 18, 45 18 M19 32 L46 32 M19 32 C 29 32, 33 46, 45 46" fill="none" stroke="#dcff2e" stroke-width="5" stroke-linecap="round"></path><circle cx="18" cy="32" r="7" fill="#dcff2e"></circle><circle cx="46" cy="18" r="5" fill="#dcff2e"></circle><circle cx="47" cy="32" r="5" fill="#dcff2e"></circle><circle cx="46" cy="46" r="5" fill="#dcff2e"></circle></svg>
+        </div>
+      </div>
+    </div>
+
+    <div id="1b" style="width:520px;border:1px solid #22252a;border-radius:24px;background:#0f1113;overflow:hidden">
+      <div style="position:relative;height:340px;display:grid;place-items:center;background-image:radial-gradient(#1c1f23 1px,transparent 1px);background-size:20px 20px">
+        <span style="position:absolute;top:16px;left:16px;padding:2px 10px;border-radius:999px;background:#2a2e34;color:#f6f5f1;font:600 12px 'Geist Mono',monospace">1b</span>
+        <svg width="180" height="180" viewBox="0 0 64 64"><rect width="64" height="64" rx="17" fill="#dcff2e"></rect><circle cx="32" cy="32" r="18" fill="none" stroke="#15171a" stroke-width="4.5"></circle><path d="M24 32.5 L30 38.5 L41 25" fill="none" stroke="#15171a" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="32" cy="10" r="3" fill="#15171a"></circle></svg>
+      </div>
+      <div style="padding:22px 24px;display:flex;flex-direction:column;gap:16px;border-top:1px solid #22252a">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px"><strong style="font-size:18px">Clock check</strong><span style="font-size:13px;color:#6b7079">Scheduled and done</span></div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <svg width="36" height="36" viewBox="0 0 64 64"><rect width="64" height="64" rx="17" fill="#dcff2e"></rect><circle cx="32" cy="32" r="18" fill="none" stroke="#15171a" stroke-width="4.5"></circle><path d="M24 32.5 L30 38.5 L41 25" fill="none" stroke="#15171a" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="32" cy="10" r="3" fill="#15171a"></circle></svg>
+          <span style="font-weight:700;font-size:24px;letter-spacing:-0.035em">Schedule For You</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:14px;border-radius:14px;background:#f6f5f1">
+          <svg width="32" height="32" viewBox="0 0 64 64"><rect width="64" height="64" rx="17" fill="#15171a"></rect><circle cx="32" cy="32" r="18" fill="none" stroke="#dcff2e" stroke-width="4.5"></circle><path d="M24 32.5 L30 38.5 L41 25" fill="none" stroke="#dcff2e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="32" cy="10" r="3" fill="#dcff2e"></circle></svg>
+          <span style="font-weight:700;font-size:20px;letter-spacing:-0.035em;color:#15171a">Schedule For You</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="1c" style="width:520px;border:1px solid #22252a;border-radius:24px;background:#0f1113;overflow:hidden">
+      <div style="position:relative;height:340px;display:grid;place-items:center;background-image:radial-gradient(#1c1f23 1px,transparent 1px);background-size:20px 20px">
+        <span style="position:absolute;top:16px;left:16px;padding:2px 10px;border-radius:999px;background:#2a2e34;color:#f6f5f1;font:600 12px 'Geist Mono',monospace">1c</span>
+        <svg width="180" height="180" viewBox="0 0 64 64"><rect width="64" height="64" rx="17" fill="#15171a" stroke="#2a2e34" stroke-width="1"></rect><rect x="14" y="16" width="36" height="8" rx="4" fill="#dcff2e"></rect><rect x="14" y="28" width="28" height="8" rx="4" fill="#f6f5f1" opacity=".85"></rect><rect x="14" y="40" width="20" height="8" rx="4" fill="#f6f5f1" opacity=".45"></rect></svg>
+      </div>
+      <div style="padding:22px 24px;display:flex;flex-direction:column;gap:16px;border-top:1px solid #22252a">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px"><strong style="font-size:18px">Queue</strong><span style="font-size:13px;color:#6b7079">Next up, then the rest</span></div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <svg width="36" height="36" viewBox="0 0 64 64"><rect width="64" height="64" rx="17" fill="#15171a" stroke="#2a2e34" stroke-width="1"></rect><rect x="14" y="16" width="36" height="8" rx="4" fill="#dcff2e"></rect><rect x="14" y="28" width="28" height="8" rx="4" fill="#f6f5f1" opacity=".85"></rect><rect x="14" y="40" width="20" height="8" rx="4" fill="#f6f5f1" opacity=".45"></rect></svg>
+          <span style="font-weight:700;font-size:24px;letter-spacing:-0.035em">Schedule For You</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:14px;border-radius:14px;background:#f6f5f1">
+          <svg width="32" height="32" viewBox="0 0 64 64"><rect width="64" height="64" rx="17" fill="#15171a"></rect><rect x="14" y="16" width="36" height="8" rx="4" fill="#dcff2e"></rect><rect x="14" y="28" width="28" height="8" rx="4" fill="#f6f5f1" opacity=".85"></rect><rect x="14" y="40" width="20" height="8" rx="4" fill="#f6f5f1" opacity=".45"></rect></svg>
+          <span style="font-weight:700;font-size:20px;letter-spacing:-0.035em;color:#15171a">Schedule For You</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const P = 'M41.01 14.69 A11 11 0 1 0 32 32 A11 11 0 1 1 22.99 49.31';
+class Component extends DCLogic {
+  heroMark() {
+    const h = React.createElement, D = '4.6s';
+    const ripple = delay => h('circle', { cx: 22.99, cy: 49.31, r: 6, fill: 'none', stroke: '#dcff2e', strokeWidth: 1.2, style: { transformBox: 'fill-box', transformOrigin: 'center', animation: `lgRipple ${D} ease-out ${delay}s infinite` } });
+    return h('svg', { width: 340, height: 340, viewBox: '0 0 64 64', style: { display: 'block' } },
+      h('rect', { width: 64, height: 64, rx: 18, fill: '#15171a' }),
+      h('rect', { x: .25, y: .25, width: 63.5, height: 63.5, rx: 17.8, fill: 'none', stroke: '#2a2e34', strokeWidth: .5 }),
+      h('path', { d: P, fill: 'none', stroke: '#23272c', strokeWidth: 7.5, strokeLinecap: 'round' }),
+      h('path', { d: P, fill: 'none', stroke: '#f6f5f1', strokeWidth: 7.5, strokeLinecap: 'round', pathLength: 100, strokeDasharray: '100 101', style: { animation: `lgDraw ${D} cubic-bezier(.65,0,.25,1) infinite` } }),
+      ripple(0), ripple(.22),
+      h('circle', { r: 6, fill: '#dcff2e', style: { animation: `lgFade ${D} linear infinite` } },
+        h('animateMotion', { path: P, dur: D, repeatCount: 'indefinite', keyPoints: '0;1;1', keyTimes: '0;0.42;1', calcMode: 'spline', keySplines: '.65 0 .25 1;0 0 1 1' })));
+  }
+  renderVals() {
+    return {
+      heroMark: this.heroMark(),
+      sizes: [128, 64, 32, 24, 16].map(px => ({ px, sw: px < 24 ? 9 : 7.5, r: px < 24 ? 7 : 6 })),
+    };
+  }
+}
+</script>
+</body>
+</html>

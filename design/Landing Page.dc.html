@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Schedule For You — Write it once. Post it everywhere.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0;background:#0c0d0f;color:#f6f5f1;font:16px/1.55 "Geist",ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#f6f5f1;text-decoration:none}
+a:hover{color:#dcff2e}
+button{font:inherit;color:inherit}
+::selection{background:#dcff2e;color:#15171a}
+@keyframes sfyMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes sfyBob{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-14px) rotate(var(--r,0deg))}}
+@keyframes sfyPulse{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+@keyframes sfyShine{from{background-position:200% 0}to{background-position:-200% 0}}
+@keyframes sfyArrive{0%,84%{box-shadow:0 0 0 0 rgba(220,255,46,0)}88%{box-shadow:0 0 0 0 rgba(220,255,46,.75)}100%{box-shadow:0 0 0 12px rgba(220,255,46,0)}}
+@keyframes sfyPing{0%{box-shadow:0 0 0 0 rgba(220,255,46,.5)}100%{box-shadow:0 0 0 14px rgba(220,255,46,0)}}
+</style>
+</helmet>
+<div style="min-height:100vh;overflow-x:clip">
+
+  <nav style="position:sticky;top:0;z-index:20;background:rgba(12,13,15,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid #1f2227">
+    <div style="max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <a href="#top" style="display:flex;align-items:center;gap:10px;color:#f6f5f1">
+        <img src="logos/schedule-for-you-glyph.svg" alt="Schedule For You" width="32" height="32" style="display:block">
+
+        <span style="font-weight:800;letter-spacing:-0.055em;font-size:20px;line-height:1">schedule for you</span>
+      </a>
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end">
+        <a href="#features" style="padding:8px 12px;font-size:14px;color:#a7abb2;border-radius:8px" style-hover="color:#f6f5f1">Features</a>
+        <a href="#pricing" style="padding:8px 12px;font-size:14px;color:#a7abb2;border-radius:8px" style-hover="color:#f6f5f1">Pricing</a>
+        <a href="Schedule For You.dc.html" style="padding:8px 12px;font-size:14px;color:#a7abb2;border-radius:8px" style-hover="color:#f6f5f1">Sign in</a>
+        <a href="Schedule For You.dc.html" style="padding:8px 14px;font-size:14px;font-weight:600;border-radius:9px;background:#dcff2e;color:#15171a;transition:transform .15s" style-hover="transform:translateY(-1px);color:#15171a">Start free</a>
+      </div>
+    </div>
+  </nav>
+
+  <header id="top" data-screen-label="Hero" onMouseMove="{{ onHeroMove }}" style="position:relative;padding:96px 24px 40px">
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;inset:0;max-width:1320px;margin:0 auto;pointer-events:none">
+        <sc-for list="{{ floaters }}" as="f" hint-placeholder-count="6">
+          <span style="position:absolute;left:{{ f.left }};top:{{ f.top }};--r:{{ f.rot }};width:{{ f.size }}px;height:{{ f.size }}px;border-radius:22%;background:{{ f.tile }};display:grid;place-items:center;box-shadow:0 20px 50px -14px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.06) inset;animation:sfyBob {{ f.dur }}s ease-in-out {{ f.delay }}s infinite">
+            <span style="width:46%;height:46%;background:#ffffff;-webkit-mask:{{ f.logo }} center/contain no-repeat;mask:{{ f.logo }} center/contain no-repeat"></span>
+          </span>
+        </sc-for>
+      </div>
+    </sc-if>
+    <div style="position:relative;max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px">
+      <span style="display:inline-flex;align-items:center;gap:8px;padding:5px 12px 5px 6px;border:1px solid #2a2e34;border-radius:999px;background:#15171a;font-size:13px;color:#a7abb2">
+        <span style="padding:1px 8px;border-radius:999px;background:#dcff2e;color:#15171a;font-weight:600;font-size:12px">New</span>
+        REST API and MCP server in every workspace
+      </span>
+      <h1 style="margin:0;font-size:clamp(48px,8.4vw,116px);line-height:.95;letter-spacing:-0.05em;font-weight:700;text-wrap:balance">Write it once.<br><span style="color:#dcff2e">Post it everywhere.</span></h1>
+      <p style="margin:0;max-width:600px;font-size:clamp(17px,1.6vw,20px);color:#a7abb2;text-wrap:pretty">One composer, every social account you run. Schedule, tweak per platform, and let the queue do the posting while you build.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+        <a href="Schedule For You.dc.html" style="padding:14px 22px;font-size:16px;font-weight:600;border-radius:12px;background:#dcff2e;color:#15171a;transition:transform .15s" style-hover="transform:translateY(-2px);color:#15171a">Start posting free</a>
+        <a href="#how" style="padding:14px 22px;font-size:16px;font-weight:500;border-radius:12px;border:1px solid #3a3e45;background:#15171a;color:#f6f5f1;transition:border-color .15s" style-hover="border-color:#6b7079;color:#f6f5f1">See how it works</a>
+      </div>
+      <span style="font-size:13px;color:#6b7079">7-day trial · No card to start</span>
+    </div>
+
+    <div id="how" data-demo-root="" style="transform:{{ tilt }};transform-origin:50% 0;will-change:transform;position:relative;max-width:1180px;margin:72px auto 0;border:1px solid #2a2e34;border-radius:14px;background:#121417;box-shadow:0 50px 100px -40px rgba(0,0,0,.95);overflow:hidden">
+      <div style="display:flex;align-items:center;gap:14px;padding:11px 14px;border-bottom:1px solid #22252a;background:#17191c">
+        <div style="display:flex;gap:7px">
+          <span style="width:11px;height:11px;border-radius:50%;background:#ff5f57"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:#febc2e"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:#28c840"></span>
+        </div>
+        <span style="flex:1;display:flex;justify-content:center"><span style="padding:4px 40px;border-radius:7px;background:#0f1113;font-size:12px;color:#a7abb2">scheduleforyou.com</span></span>
+        <span style="width:47px"></span>
+      </div>
+      <div style="display:grid;grid-template-columns:{{ demoCols }};text-align:left">
+        <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+          <aside style="background:#15171a;border-right:1px solid #22252a;padding:16px 12px;display:flex;flex-direction:column;gap:3px;font-size:13px">
+            <div style="display:flex;align-items:center;gap:8px;padding:2px 8px 14px">
+              <img src="logos/schedule-for-you-glyph.svg" alt="" width="20" height="20" style="display:block">
+              <span style="font-weight:800;letter-spacing:-0.05em;font-size:14px">schedule for you</span>
+            </div>
+            <span style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;margin-bottom:8px;border-radius:8px;background:#dcff2e;color:#15171a;font-weight:600">New post<span style="font:500 10px 'Geist Mono',monospace;padding:0 5px;border-radius:4px;background:rgba(21,23,26,.12)">N</span></span>
+            <span style="padding:7px 10px;border-radius:7px;color:#a7abb2">Queue</span>
+            <span style="padding:7px 10px;border-radius:7px;color:#a7abb2">Calendar</span>
+            <span style="padding:7px 10px;border-radius:7px;background:#22252a;color:#f6f5f1;font-weight:500">Compose</span>
+            <span style="padding:7px 10px;border-radius:7px;color:#a7abb2">Accounts</span>
+            <span style="padding:7px 10px;border-radius:7px;color:#a7abb2">Analytics</span>
+            <span style="flex:1"></span>
+            <span style="display:flex;align-items:center;gap:8px;padding:10px 8px 2px;border-top:1px solid #22252a">
+              <span style="width:24px;height:24px;border-radius:50%;background:linear-gradient(160deg,#9a7a58,#5d4a36);display:grid;place-items:center;font-size:10px;font-weight:700"></span>
+              <span style="display:flex;flex-direction:column;line-height:1.25"><span style="font-weight:600;font-size:12px">Field &amp; Co.</span><span style="font-size:11px;color:#6b7079">Studio plan</span></span>
+            </span>
+          </aside>
+        </sc-if>
+        <div style="padding:22px 24px;display:flex;flex-direction:column;gap:18px;border-right:1px solid #22252a;min-width:0">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
+            <span style="font-weight:700;font-size:18px;letter-spacing:-0.02em">New post</span>
+            <span style="font-size:12px;color:#6b7079">Draft saved</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-size:13px;font-weight:500;color:#a7abb2">Post to</span>
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <sc-for list="{{ chips }}" as="c" hint-placeholder-count="5">
+                <span data-demo="chip-{{ $index }}" style="display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border-radius:8px;font-size:13px;font-weight:500;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.color }};transition:background .2s,color .2s,border-color .2s">
+                  <span style="width:13px;height:13px;background:currentColor;-webkit-mask:{{ c.logo }} center/contain no-repeat;mask:{{ c.logo }} center/contain no-repeat"></span>{{ c.label }}
+                </span>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;border:1px solid {{ captionBorder }};border-radius:10px;background:#0f1113;transition:border-color .2s">
+            <div data-demo="caption" style="min-height:104px;padding:13px 14px;font-size:15px;line-height:1.55">{{ caption }}<span style="display:inline-block;width:1.5px;height:17px;margin-left:1px;vertical-align:-3px;background:#f6f5f1;opacity:{{ cursorOp }}"></span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-top:1px solid #1f2227">
+              <div style="width:44px;height:44px;border-radius:7px;background:linear-gradient(160deg,#8a6d4f,#5d4a36);display:flex;align-items:flex-end;padding:4px 5px;color:#f3e9d8;font-weight:800;font-size:8px;line-height:.95;letter-spacing:-0.02em">Fall<br>field kit</div>
+              <span style="display:flex;flex-direction:column;line-height:1.3"><span style="font-size:12px;font-weight:500">fall-kit.jpg</span><span style="font-size:11px;color:#6b7079">2400 × 2400 · 2.4 MB</span></span>
+              <span style="flex:1"></span>
+              <span style="font:12px 'Geist Mono',monospace;color:#6b7079">{{ charLabel }}</span>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:stretch;margin-top:auto">
+            <div data-demo="time" style="flex:1 1 180px;display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid {{ timeBorder }};border-radius:9px;background:#0f1113;transition:border-color .2s">
+              <span style="font-size:12px;color:#6b7079">Schedule</span>
+              <span style="font-weight:500;font-size:14px;color:{{ timeColor }};transition:color .2s">{{ timeLabel }}</span>
+            </div>
+            <span data-demo="btn" style="display:inline-flex;align-items:center;padding:10px 16px;border-radius:9px;font-weight:600;font-size:14px;background:#dcff2e;color:#15171a;transform:scale({{ btnScale }});transition:transform .12s">{{ btnLabel }}</span>
+          </div>
+        </div>
+        <div data-demo="rest" style="padding:22px 20px;display:flex;flex-direction:column;gap:8px;background:#0f1113;min-width:0">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding-bottom:6px">
+            <span style="font-weight:700;font-size:15px">Queue</span>
+            <span style="font-size:12px;color:#6b7079">Tue, Oct 27</span>
+          </div>
+          <sc-for list="{{ rows }}" as="r" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:11px;align-items:center;padding:10px 11px;border:1px solid #1f2227;border-radius:10px;background:#15171a;opacity:{{ r.op }};transform:translateY({{ r.ty }}px);transition:opacity .45s,transform .45s cubic-bezier(.2,.8,.2,1)">
+              <span style="width:32px;height:32px;border-radius:8px;background:{{ r.tile }};display:grid;place-items:center"><span style="width:15px;height:15px;background:#ffffff;-webkit-mask:{{ r.logo }} center/contain no-repeat;mask:{{ r.logo }} center/contain no-repeat"></span></span>
+              <div style="min-width:0;display:flex;flex-direction:column;gap:1px">
+                <div style="display:flex;gap:7px;align-items:baseline;min-width:0">
+                  <span style="font-weight:600;font-size:13px">{{ r.label }}</span>
+                  <span style="font-size:12px;color:#6b7079;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.handle }}</span>
+                </div>
+                <span style="font-size:12px;color:#a7abb2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.text }}</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px">
+                <span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:{{ r.pillColor }};transition:color .3s">{{ r.status }}</span>
+                <span style="font:11px 'Geist Mono',monospace;color:#6b7079">{{ r.meta }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="position:absolute;left:0;top:0;transform:translate({{ cx }}px,{{ cy }}px);transition:transform .75s cubic-bezier(.65,0,.25,1),opacity .4s;opacity:{{ curOp }};pointer-events:none;z-index:5">
+        <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;transform:scale({{ curScale }});transform-origin:3px 3px;transition:transform .12s;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))"><path d="M4 2.5 L4 19 L8.6 14.8 L11.6 21.2 L14.4 19.9 L11.5 13.6 L17.6 13.4 Z" fill="#f6f5f1" stroke="#15171a" stroke-width="1.4" stroke-linejoin="round"></path></svg>
+      </div>
+    </div>
+  </header>
+
+  <section data-screen-label="Platforms" style="padding:48px 0 24px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:22px">
+      <span style="font-size:15px;color:#a7abb2">Posts to ten platforms</span>
+      <div style="width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)">
+        <div style="display:flex;gap:12px;width:max-content;animation:sfyMarquee 38s linear infinite">
+          <sc-for list="{{ marquee }}" as="p" hint-placeholder-count="20">
+            <span style="display:inline-flex;align-items:center;gap:12px;padding:12px 20px 12px 12px;border-radius:16px;border:1px solid #22252a;background:#121417;font-size:16px;font-weight:600;color:#f6f5f1;white-space:nowrap;transition:border-color .2s,transform .2s" style-hover="border-color:#dcff2e;transform:translateY(-3px)">
+              <span style="width:40px;height:40px;border-radius:11px;background:{{ p.tile }};display:grid;place-items:center"><span style="width:20px;height:20px;background:#ffffff;-webkit-mask:{{ p.logo }} center/contain no-repeat;mask:{{ p.logo }} center/contain no-repeat"></span></span>{{ p.label }}
+            </span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Fan-out" style="padding:120px 24px 40px">
+    <div style="max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+      <div style="display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center">
+        <h2 style="margin:0;font-size:clamp(34px,5.4vw,72px);line-height:1;letter-spacing:-0.045em;font-weight:700;text-wrap:balance">Ten platforms out.</h2>
+        <p style="margin:0;max-width:520px;color:#a7abb2;text-wrap:pretty">Images, videos, carousels and plain text all go out at once, each formatted for where it lands.</p>
+      </div>
+      <div data-reveal="" style="position:relative;width:100%;aspect-ratio:1000/560;border:1px solid #1f2227;border-radius:24px;background:radial-gradient(120% 90% at 30% 50%,#121417 0%,#0c0d0f 70%);overflow:hidden">
+        {{ fanSvg }}
+        <div style="position:absolute;left:6%;top:50%;transform:translateY(-50%);width:27%;display:flex;flex-direction:column;gap:clamp(6px,.9vw,12px);padding:clamp(8px,1.2vw,16px);border-radius:clamp(10px,1.4vw,16px);border:1px solid #2a2e34;background:#15171a;box-shadow:0 30px 60px -30px rgba(0,0,0,.9)">
+          <div style="display:flex;align-items:center;gap:clamp(6px,.8vw,10px)">
+            <span style="width:clamp(18px,2.4vw,30px);height:clamp(18px,2.4vw,30px);border-radius:50%;background:linear-gradient(160deg,#9a7a58,#5d4a36);display:grid;place-items:center;font-weight:700;font-size:clamp(7px,.9vw,11px);flex:none"></span>
+            <span style="display:flex;flex-direction:column;min-width:0;line-height:1.2;flex:1">
+              <span style="font-weight:600;font-size:clamp(9px,1.05vw,13px);white-space:nowrap">Field &amp; Co.</span>
+              <span style="font:clamp(8px,.85vw,11px) 'Geist Mono',monospace;color:#6b7079;white-space:nowrap">Tue · 9:00 AM</span>
+            </span>
+            <span style="padding:1px clamp(5px,.6vw,8px);border-radius:999px;background:#dcff2e;color:#15171a;font-size:clamp(7px,.8vw,11px);font-weight:600;white-space:nowrap">10 accounts</span>
+          </div>
+          <span style="font-size:clamp(9px,1.1vw,14px);line-height:1.45;text-wrap:pretty">The Fall field kit is live. Waxed canvas, brass hardware, built to take a beating.</span>
+          <div style="aspect-ratio:16/10;border-radius:clamp(6px,.8vw,10px);background:linear-gradient(160deg,#8a6d4f,#5d4a36);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(6px,1vw,12px);color:#f3e9d8">
+            <span style="font-weight:800;font-size:clamp(12px,1.8vw,24px);line-height:.92;letter-spacing:-0.04em">Fall<br>field kit</span>
+          </div>
+        </div>
+        <sc-for list="{{ fanNodes }}" as="n" hint-placeholder-count="10">
+          <div style="position:absolute;left:{{ n.left }}%;top:{{ n.top }}%;transform:translateY(-50%);display:flex;align-items:center;gap:clamp(6px,1vw,12px)">
+            <span style="width:clamp(22px,3.4vw,38px);height:clamp(22px,3.4vw,38px);border-radius:28%;background:{{ n.tile }};display:grid;place-items:center;flex:none;animation:sfyArrive 2.4s ease-out {{ n.delay }}s infinite"><span style="width:50%;height:50%;background:#ffffff;-webkit-mask:{{ n.logo }} center/contain no-repeat;mask:{{ n.logo }} center/contain no-repeat"></span></span>
+            <span style="font-size:clamp(9px,1.2vw,14px);font-weight:600;white-space:nowrap;color:#f6f5f1">{{ n.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Value" style="padding:120px 24px 60px">
+    <div style="max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+        <div style="display:flex;flex-direction:column;gap:14px;max-width:720px">
+          <h2 style="margin:0;font-size:clamp(34px,4.6vw,60px);line-height:1.02;letter-spacing:-0.04em;font-weight:700;text-wrap:balance">One sitting. A week of posts. Every account.</h2>
+        </div>
+      </div>
+      <div data-reveal="" style="display:grid;grid-template-columns:{{ bentoCols }};grid-template-rows:auto auto;gap:16px">
+
+        <div style="grid-row:{{ bentoSpan }};display:flex;flex-direction:column;gap:28px;padding:28px;border-radius:22px;border:1px solid #22252a;background:#0f1113;min-width:0">
+          <div style="position:relative;flex:1;min-height:330px">
+            <sc-for list="{{ tabRows }}" as="r" hint-placeholder-count="5">
+              <div style="position:absolute;left:0;right:0;top:0;height:50px;display:flex;align-items:center;gap:12px;padding:0 12px;border-radius:12px;border:1px solid #22252a;background:#15171a;transform:translateY({{ r.y }}px) scale({{ r.sc }});opacity:{{ r.op }};z-index:{{ r.z }};transition:transform .7s cubic-bezier(.65,0,.25,1) {{ r.d }}s,opacity .5s {{ r.d }}s">
+                <span style="width:26px;height:26px;border-radius:7px;background:{{ r.tile }};display:grid;place-items:center;flex:none"><span style="width:13px;height:13px;background:#ffffff;-webkit-mask:{{ r.logo }} center/contain no-repeat;mask:{{ r.logo }} center/contain no-repeat"></span></span>
+                <span style="font:12px 'Geist Mono',monospace;color:#a7abb2;white-space:nowrap">{{ r.host }}</span>
+                <span style="flex:1;min-width:0;font-size:13px;color:#6b7079;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Paste caption, attach image, pick time…</span>
+                <span style="padding:3px 9px;border-radius:6px;border:1px solid #2a2e34;font-size:12px;color:#a7abb2;flex:none">Post</span>
+              </div>
+            </sc-for>
+            <div style="position:absolute;left:0;right:0;top:0;display:flex;flex-direction:column;gap:14px;padding:18px;border-radius:14px;border:1px solid #3a3e45;background:#17191c;opacity:{{ oneOp }};transform:translateY({{ oneY }}px);transition:opacity .5s .35s,transform .6s cubic-bezier(.2,.8,.2,1) .35s;z-index:20">
+              <div style="display:flex;align-items:center;gap:10px">
+                <img src="logos/schedule-for-you-glyph.svg" alt="" width="26" height="26" style="display:block">
+                <span style="font-weight:700;font-size:15px">New post</span>
+                <span style="flex:1"></span>
+                <span style="display:flex">
+                  <sc-for list="{{ tabRows }}" as="r" hint-placeholder-count="5">
+                    <span style="width:24px;height:24px;margin-left:-6px;border-radius:50%;border:2px solid #17191c;background:{{ r.tile }};display:grid;place-items:center"><span style="width:11px;height:11px;background:#ffffff;-webkit-mask:{{ r.logo }} center/contain no-repeat;mask:{{ r.logo }} center/contain no-repeat"></span></span>
+                  </sc-for>
+                </span>
+              </div>
+              <span style="font-size:15px;line-height:1.5">The Fall field kit is live. Waxed canvas, brass hardware, built to take a beating.</span>
+              <div style="display:flex;align-items:center;gap:10px;padding-top:12px;border-top:1px solid #22252a">
+                <span style="font-size:13px;color:#a7abb2">Tue, Oct 27 · 9:00 AM</span>
+                <span style="flex:1"></span>
+                <span style="padding:7px 13px;border-radius:8px;background:#dcff2e;color:#15171a;font-weight:600;font-size:13px">Schedule 5 posts</span>
+              </div>
+            </div>
+            <div style="position:absolute;left:0;right:0;top:206px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;z-index:21">
+              <sc-for list="{{ tabRows }}" as="r" hint-placeholder-count="5">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 4px;border-radius:12px;background:#15171a;border:1px solid #22252a;opacity:{{ r.resOp }};transform:translateY({{ r.resY }}px);transition:opacity .4s {{ r.rd }}s,transform .5s cubic-bezier(.2,.8,.2,1) {{ r.rd }}s">
+                  <span style="width:28px;height:28px;border-radius:8px;background:{{ r.tile }};display:grid;place-items:center"><span style="width:14px;height:14px;background:#ffffff;-webkit-mask:{{ r.logo }} center/contain no-repeat;mask:{{ r.logo }} center/contain no-repeat"></span></span>
+                  <span style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:#dcff2e">Queued</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto">
+            <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+              <h3 style="margin:0;font-size:clamp(26px,2.6vw,34px);letter-spacing:-0.035em;line-height:1.05">Time back</h3>
+              <span style="font-size:15px;color:#a7abb2">{{ tabCaption }}</span>
+            </div>
+            <p style="margin:0;color:#a7abb2;max-width:460px;text-wrap:pretty">Queue the week in one session. No more logging into five apps and pasting the same caption five times.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:24px;padding:28px;border-radius:22px;border:1px solid #22252a;background:#0f1113;min-width:0">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <sc-for list="{{ echo }}" as="e" hint-placeholder-count="4">
+              <div style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;background:#15171a;min-width:0">
+                <span style="width:14px;height:14px;flex:none;background:#a7abb2;-webkit-mask:{{ e.logo }} center/contain no-repeat;mask:{{ e.logo }} center/contain no-repeat"></span>
+                <span style="min-width:0;font-size:13px;color:#a7abb2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ e.pre }}<span style="padding:1px 3px;margin:0 -1px;border-radius:4px;background:{{ e.hl }};color:{{ e.hc }};transition:background .35s,color .35s">{{ e.key }}</span>{{ e.post }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <h3 style="margin:0;font-size:24px;letter-spacing:-0.03em;line-height:1.1">Consistent everywhere</h3>
+            <p style="margin:0;color:#a7abb2;font-size:15px;text-wrap:pretty">One source caption keeps every platform on message. Reword it per account only where the audience is different.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:24px;padding:28px;border-radius:22px;border:1px solid #22252a;background:#0f1113;min-width:0">
+          <div style="display:flex;flex-direction:column">
+            <sc-for list="{{ checks }}" as="c" hint-placeholder-count="4">
+              <div style="display:flex;align-items:center;gap:12px;padding:9px 2px;border-bottom:1px solid #1c1f23;min-width:0">
+                <span style="width:18px;height:18px;flex:none;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800;border:1.5px solid {{ c.ring }};background:{{ c.fill }};color:#15171a;transition:all .3s">{{ c.icon }}</span>
+                <span style="width:14px;height:14px;flex:none;background:#f6f5f1;-webkit-mask:{{ c.logo }} center/contain no-repeat;mask:{{ c.logo }} center/contain no-repeat"></span>
+                <span style="font-size:13px;font-weight:500;white-space:nowrap">{{ c.rule }}</span>
+                <span style="flex:1"></span>
+                <span style="font:12px 'Geist Mono',monospace;color:{{ c.noteColor }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .3s">{{ c.note }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <h3 style="margin:0;font-size:24px;letter-spacing:-0.03em;line-height:1.1">Checks before it posts</h3>
+            <p style="margin:0;color:#a7abb2;font-size:15px;text-wrap:pretty">Character limits, image counts and media rules are checked per platform while you write, so nothing fails at 9 AM.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="features" data-screen-label="Features" ref="{{ featRef }}" style="position:relative;height:{{ featH }}">
+    <div style="position:{{ featPos }};top:0;min-height:{{ featMinH }};display:flex;align-items:center;padding:72px 24px">
+      <div style="max-width:1120px;width:100%;margin:0 auto;display:grid;grid-template-columns:{{ featCols }};gap:56px;align-items:center">
+        <div style="display:flex;flex-direction:column;gap:36px;min-width:0">
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <h2 style="margin:0;font-size:clamp(34px,4.2vw,56px);line-height:1.02;letter-spacing:-0.04em;font-weight:700;text-wrap:balance">Built for people who post a lot.</h2>
+          </div>
+          <div style="display:flex;flex-direction:column">
+            <sc-for list="{{ featSteps }}" as="f" hint-placeholder-count="3">
+              <button onClick="{{ f.go }}" style="display:grid;grid-template-columns:2px minmax(0,1fr);gap:22px;padding:0;border:0;background:transparent;text-align:left;cursor:pointer">
+                <span style="position:relative;background:#22252a;border-radius:2px;overflow:hidden"><span style="position:absolute;left:0;right:0;top:0;height:{{ f.fill }}%;background:#dcff2e;transition:height .15s linear"></span></span>
+                <span style="display:flex;flex-direction:column;padding:16px 0">
+                  <span style="display:flex;align-items:baseline;gap:12px">
+                    <span style="font-size:clamp(20px,2.2vw,28px);font-weight:700;letter-spacing:-0.03em;line-height:1.15;color:{{ f.color }};transition:color .3s">{{ f.title }}</span>
+                  </span>
+                  <span style="display:grid;grid-template-rows:{{ f.rows }};transition:grid-template-rows .45s cubic-bezier(.2,.8,.2,1)">
+                    <span style="overflow:hidden">
+                      <span style="display:block;padding:10px 0 0;color:#a7abb2;max-width:440px;text-wrap:pretty">{{ f.body }}</span>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="position:relative;height:500px;min-width:0">
+
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;gap:14px;padding:22px;border-radius:22px;border:1px solid #2a2e34;background:#121417;box-shadow:0 40px 90px -40px rgba(0,0,0,.95);opacity:{{ v0.op }};transform:translateY({{ v0.y }}px) scale({{ v0.sc }});pointer-events:{{ v0.pe }};transition:opacity .5s,transform .6s cubic-bezier(.2,.8,.2,1)">
+            <div style="display:flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:12px;background:#0c0d0f;border:1px solid #1f2227">
+              <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+                <button onClick="{{ t.select }}" style="flex:1 1 auto;display:flex;align-items:center;justify-content:center;gap:7px;border:0;padding:8px 10px;border-radius:9px;cursor:pointer;font-size:13px;font-weight:600;background:{{ t.bg }};color:{{ t.color }};transition:background .25s,color .25s">
+                  <span style="width:13px;height:13px;background:currentColor;-webkit-mask:{{ t.logo }} center/contain no-repeat;mask:{{ t.logo }} center/contain no-repeat"></span>{{ t.label }}
+                </button>
+              </sc-for>
+            </div>
+            <div style="flex:1;min-height:0;display:flex;flex-direction:column;border-radius:14px;border:1px solid #1f2227;background:#0c0d0f;overflow:hidden">
+              <div style="display:flex;align-items:center;gap:10px;padding:14px 16px 0">
+                <span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(160deg,#9a7a58,#5d4a36);display:grid;place-items:center;font-weight:700;font-size:11px"></span>
+                <span style="display:flex;flex-direction:column;line-height:1.25"><span style="font-weight:600;font-size:14px">Field &amp; Co.</span><span style="font-size:12px;color:#6b7079">{{ tabHandle }}</span></span>
+              </div>
+              <div style="flex:1;padding:12px 16px;white-space:pre-wrap;font-size:15px;line-height:1.55;text-wrap:pretty;overflow:hidden">{{ tabText }}</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px">
+              <svg width="38" height="38" viewBox="0 0 36 36" style="display:block;transform:rotate(-90deg)"><circle cx="18" cy="18" r="15" fill="none" stroke="#22252a" stroke-width="3"></circle><circle cx="18" cy="18" r="15" fill="none" stroke="#dcff2e" stroke-width="3" stroke-linecap="round" pathLength="100" stroke-dasharray="{{ ringDash }}" style="transition:stroke-dasharray .5s cubic-bezier(.2,.8,.2,1)"></circle></svg>
+              <span style="display:flex;flex-direction:column;line-height:1.3">
+                <span style="font:13px 'Geist Mono',monospace;color:#f6f5f1">{{ tabCount }}</span>
+                <span style="font-size:12px;color:#6b7079">{{ tabNote }}</span>
+              </span>
+              <span style="flex:1"></span>
+              <span style="font-size:12px;color:#6b7079">Same post, rewritten for {{ tabLabel }}</span>
+            </div>
+          </div>
+
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;gap:14px;padding:22px;border-radius:22px;border:1px solid #2a2e34;background:#121417;box-shadow:0 40px 90px -40px rgba(0,0,0,.95);opacity:{{ v1.op }};transform:translateY({{ v1.y }}px) scale({{ v1.sc }});pointer-events:{{ v1.pe }};transition:opacity .5s,transform .6s cubic-bezier(.2,.8,.2,1)">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <span style="font-weight:700;font-size:16px;letter-spacing:-0.02em">October 26 – November 1</span>
+              <span style="font:12px 'Geist Mono',monospace;color:#6b7079">{{ weekCount }}</span>
+            </div>
+            <div style="flex:1;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px">
+              <sc-for list="{{ weekLive }}" as="d" hint-placeholder-count="7">
+                <div style="display:flex;flex-direction:column;gap:6px;padding:10px 6px;border-radius:12px;background:{{ d.bg }};border:1px solid {{ d.border }};transition:background .3s,border-color .3s;min-width:0">
+                  <span style="font-size:11px;font-weight:600;color:#6b7079">{{ d.dow }}</span>
+                  <span style="font-size:20px;font-weight:700;letter-spacing:-0.03em;line-height:1">{{ d.num }}</span>
+                  <sc-for list="{{ d.posts }}" as="e" hint-placeholder-count="1">
+                    <span style="display:flex;flex-direction:column;gap:6px;padding:7px 6px;border-radius:8px;background:{{ e.bg }};color:{{ e.fg }};opacity:{{ e.op }};transform:translateY({{ e.y }}px);transition:opacity .4s,transform .5s cubic-bezier(.2,.8,.2,1),background .3s" style-hover="filter:brightness(1.15)">
+                      <span style="font:10px 'Geist Mono',monospace">{{ e.time }}</span>
+                      <span style="display:flex;gap:4px;flex-wrap:wrap">
+                        <sc-for list="{{ e.icons }}" as="c" hint-placeholder-count="2">
+                          <span style="width:10px;height:10px;background:currentColor;-webkit-mask:{{ c }} center/contain no-repeat;mask:{{ c }} center/contain no-repeat"></span>
+                        </sc-for>
+                      </span>
+                    </span>
+                  </sc-for>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;background:#0c0d0f;border:1px solid #1f2227;opacity:{{ dropOp }};transition:opacity .4s">
+              <span style="font-size:13px">Added <strong>Thu 15:00</strong> · Fall field kit restock</span>
+              <span style="flex:1"></span>
+              <span style="font:12px 'Geist Mono',monospace;color:#6b7079">X · Threads · Bluesky</span>
+            </div>
+          </div>
+
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;border-radius:22px;border:1px solid #2a2e34;background:#0c0d0f;box-shadow:0 40px 90px -40px rgba(0,0,0,.95);overflow:hidden;opacity:{{ v2.op }};transform:translateY({{ v2.y }}px) scale({{ v2.sc }});pointer-events:{{ v2.pe }};transition:opacity .5s,transform .6s cubic-bezier(.2,.8,.2,1)">
+            <div style="display:flex;align-items:center;gap:4px;padding:10px;border-bottom:1px solid #1f2227;background:#121417">
+              <sc-for list="{{ codeTabs }}" as="t" hint-placeholder-count="2">
+                <button onClick="{{ t.select }}" style="border:0;padding:6px 12px;border-radius:7px;cursor:pointer;font:500 12px 'Geist Mono',monospace;background:{{ t.bg }};color:{{ t.color }};transition:background .2s">{{ t.label }}</button>
+              </sc-for>
+              <span style="flex:1"></span>
+              <button onClick="{{ copy }}" style="border:1px solid #2a2e34;padding:5px 12px;border-radius:7px;cursor:pointer;font-size:12px;font-weight:500;background:transparent;color:#a7abb2;transition:border-color .2s,color .2s" style-hover="border-color:#dcff2e;color:#f6f5f1">{{ copyLabel }}</button>
+            </div>
+            <sc-if value="{{ isChat }}" hint-placeholder-val="{{ true }}">
+              <div style="flex:1;display:flex;flex-direction:column;gap:14px;padding:22px">
+                <div style="align-self:flex-end;max-width:85%;padding:12px 14px;border-radius:14px 14px 4px 14px;background:#22252a;font-size:15px;line-height:1.5">{{ chatPrompt }}<span style="display:inline-block;width:1.5px;height:16px;margin-left:1px;vertical-align:-3px;background:#f6f5f1;opacity:{{ chatCursor }}"></span></div>
+                <div style="display:flex;flex-direction:column;gap:10px;opacity:{{ chatToolOp }};transform:translateY({{ chatToolY }}px);transition:opacity .4s,transform .5s cubic-bezier(.2,.8,.2,1)">
+                  <div style="display:flex;flex-direction:column;gap:6px;padding:12px 14px;border-radius:12px;border:1px solid #22252a;background:#121417">
+                    <span style="display:flex;align-items:center;gap:8px;font-size:12px;color:#a7abb2"><img src="logos/schedule-for-you-glyph.svg" alt="" width="14" height="14" style="display:block">schedule-for-you · schedule_post</span>
+                    <span style="font:12px/1.6 'Geist Mono',monospace;color:#c9ccd1;white-space:pre-wrap">{ "accounts": ["x", "bluesky"],
+  "scheduled_at": "2026-10-27T09:00" }</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:10px;opacity:{{ chatDoneOp }};transition:opacity .4s">
+                    <span style="width:20px;height:20px;border-radius:50%;background:#dcff2e;color:#15171a;display:grid;place-items:center;font-size:12px;font-weight:800">✓</span>
+                    <span style="font-size:14px">Scheduled 2 posts for <strong>Tue, Oct 27 · 9:00 AM</strong>.</span>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ isRest }}" hint-placeholder-val="{{ false }}">
+              <pre style="flex:1;margin:0;padding:22px;font:13px/1.7 'Geist Mono',monospace;color:#c9ccd1;white-space:pre-wrap;word-break:break-word">{{ codeText }}</pre>
+            </sc-if>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ showTestimonials }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Testimonials" style="padding:80px 24px">
+      <div style="max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+        <div style="display:flex;flex-direction:column;gap:14px;max-width:720px">
+          <h2 style="margin:0;font-size:clamp(34px,4.6vw,60px);line-height:1.02;letter-spacing:-0.04em;font-weight:700;text-wrap:balance">People who stopped copy-pasting.</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+          <sc-for list="{{ quotes }}" as="q" hint-placeholder-count="3">
+            <figure data-reveal="" style="margin:0;padding:28px;border:1px solid #22252a;border-radius:18px;background:#0f1113;display:flex;flex-direction:column;gap:24px;justify-content:space-between;transition:border-color .2s,transform .2s" style-hover="border-color:#3a3e45;transform:translateY(-3px)">
+              <blockquote style="margin:0;font-size:18px;line-height:1.5;letter-spacing:-0.01em;text-wrap:pretty">“{{ q.text }}”</blockquote>
+              <figcaption style="display:flex;flex-direction:column;gap:2px;padding-top:18px;border-top:1px solid #22252a">
+                <span style="font-weight:600;font-size:14px">{{ q.name }}</span>
+                <span style="font-size:13px;color:#6b7079">{{ q.role }}</span>
+              </figcaption>
+            </figure>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <section id="pricing" data-screen-label="Pricing" style="padding:80px 24px">
+    <div style="max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:40px;align-items:center;text-align:center">
+      <div style="display:flex;flex-direction:column;gap:14px;align-items:center">
+        <h2 style="margin:0;font-size:clamp(34px,4.6vw,60px);line-height:1.02;letter-spacing:-0.04em;font-weight:700">Simple pricing</h2>
+        <p style="margin:0;color:#a7abb2">Unlimited posts on every plan. Cancel whenever.</p>
+      </div>
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;width:100%;max-width:760px;text-align:left">
+        <div style="padding:30px;border:1px solid #22252a;border-radius:20px;background:#0f1113;display:flex;flex-direction:column;gap:20px">
+          <span style="align-self:flex-start;padding:2px 10px;border-radius:999px;border:1px solid #3a3e45;font-size:12px;font-weight:600">Solo</span>
+          <div style="display:flex;align-items:baseline;gap:4px"><span style="font-size:52px;font-weight:700;letter-spacing:-0.04em;line-height:1">$19</span><span style="color:#6b7079">/mo</span></div>
+          <div style="display:flex;flex-direction:column;gap:10px;color:#a7abb2;font-size:15px">
+            <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>15 connected accounts</span>
+            <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>Unlimited posts &amp; scheduling</span>
+            <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>Per-platform captions</span>
+            <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>API + MCP access</span>
+            <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>Basic analytics</span>
+          </div>
+          <a href="Schedule For You.dc.html" style="margin-top:auto;text-align:center;padding:12px;border-radius:11px;border:1px solid #3a3e45;font-weight:600;transition:border-color .2s" style-hover="border-color:#f6f5f1;color:#f6f5f1">Start 7-day trial</a>
+        </div>
+        <div style="position:relative;padding:30px;border:1px solid #dcff2e;border-radius:20px;background:#15171a;display:flex;flex-direction:column;gap:20px;box-shadow:0 30px 80px -40px rgba(220,255,46,.35)">
+          <span style="align-self:flex-start;padding:2px 10px;border-radius:999px;background:#dcff2e;color:#15171a;font-size:12px;font-weight:600">Studio</span>
+          <div style="display:flex;align-items:baseline;gap:4px"><span style="font-size:52px;font-weight:700;letter-spacing:-0.04em;line-height:1">$59</span><span style="color:#6b7079">/mo</span></div>
+          <div style="display:flex;flex-direction:column;gap:10px;color:#a7abb2;font-size:15px">
+            <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>Everything in Solo</span>
+            <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>100 connected accounts</span>
+            <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>Team members</span>
+            <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>Priority support</span>
+          </div>
+          <a href="Schedule For You.dc.html" style="margin-top:auto;text-align:center;padding:12px;border-radius:11px;background:#dcff2e;color:#15171a;font-weight:600;transition:transform .15s" style-hover="transform:translateY(-1px);color:#15171a">Start 7-day trial</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="CTA" style="padding:60px 24px 100px">
+    <div data-reveal="" style="max-width:1120px;margin:0 auto;padding:clamp(40px,7vw,88px) clamp(24px,5vw,64px);border-radius:28px;background:#dcff2e;color:#15171a;display:flex;flex-direction:column;gap:26px;align-items:flex-start">
+      <h2 style="margin:0;font-size:clamp(40px,7vw,96px);line-height:.95;letter-spacing:-0.05em;font-weight:700;max-width:900px;text-wrap:balance">Your next week of posts, done by lunch.</h2>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="Schedule For You.dc.html" style="padding:15px 24px;font-size:16px;font-weight:600;border-radius:12px;background:#15171a;color:#f6f5f1;transition:transform .15s" style-hover="transform:translateY(-2px);color:#dcff2e">Start posting free</a>
+        <a href="#pricing" style="padding:15px 24px;font-size:16px;font-weight:600;border-radius:12px;border:1.5px solid #15171a;color:#15171a" style-hover="background:rgba(21,23,26,.08);color:#15171a">See pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid #1f2227;padding:28px 24px 44px">
+    <div style="max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:#6b7079">
+      <span style="display:flex;align-items:center;gap:8px"><img src="logos/schedule-for-you-glyph.svg" alt="" width="20" height="20" style="display:block">© 2026 Schedule For You</span>
+      <span style="display:flex;gap:18px"><a href="#features" style="color:#6b7079">Features</a><a href="#pricing" style="color:#6b7079">Pricing</a><a href="Schedule For You.dc.html" style="color:#6b7079">Sign in</a></span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;demoSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0.5,&quot;max&quot;:2,&quot;step&quot;:0.25,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero demo&quot;},&quot;autoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero demo&quot;},&quot;showTestimonials&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+const CAP = "The Fall field kit is live. Waxed canvas, brass hardware, built to take a beating. Ships this week →";
+const LOGO = s => `url(logos/${s}.svg)`;
+const IG = 'radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%)';
+const TILE = { bluesky: '#1185fe', x: '#000000', instagram: IG, linkedin: '#0a66c2', facebook: '#1877f2', tiktok: '#000000', youtube: '#ff0000', threads: '#000000', pinterest: '#e60023', googlemybusiness: '#4285f4' };
+const ACC = [
+  { id: 'x', label: 'X', handle: '@fieldco', dot: '#f6f5f1', limit: 280 },
+  { id: 'bluesky', label: 'Bluesky', handle: 'fieldco.bsky.social', dot: '#1185fe', limit: 300 },
+  { id: 'linkedin', label: 'LinkedIn', handle: 'Field & Co.', dot: '#3b8ee0', limit: 3000 },
+  { id: 'instagram', label: 'Instagram', handle: '@field.co', dot: '#ff4f8b', limit: 2200 },
+  { id: 'threads', label: 'Threads', handle: '@field.co', dot: '#f6f5f1', limit: 500 },
+].map(a => ({ ...a, logo: LOGO(a.id) }));
+const VARIANTS = {
+  x: "Fall field kit is live. Waxed canvas, brass hardware, built to take a beating. Ships this week →",
+  bluesky: "The Fall field kit is live. Waxed canvas, brass hardware, built to take a beating. Ships this week. Link below.",
+  linkedin: "Today we're shipping the Fall field kit.\n\nWaxed canvas, solid brass hardware and triple-stitched seams. We spent eight months testing it on job sites and trailheads so it holds up to a real season of use.\n\nOrders ship this week.",
+  instagram: "Fall field kit. Out now.\nWaxed canvas, brass hardware, built to take a beating.\nLink in bio.\n\n#fieldkit #waxedcanvas #madetolast",
+  threads: "The Fall field kit is live. Waxed canvas + brass hardware, built to take a beating. Ships this week.",
+};
+const CODE = {
+  rest: `curl -X POST https://scheduleforyou.com/api/v1/posts \\
+  -H "Authorization: Bearer $SFY_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "caption": "The Fall field kit is live.",
+    "accounts": ["x", "bluesky", "threads"],
+    "scheduled_at": "2026-10-27T09:00:00Z"
+  }'`,
+  mcp: `{
+  "mcpServers": {
+    "schedule-for-you": {
+      "command": "npx",
+      "args": ["schedule-for-you-mcp"],
+      "env": { "SFY_API_KEY": "sk_live_…" }
+    }
+  }
+}
+
+> Schedule the field kit post for Tuesday 9am on X and Bluesky.`,
+};
+const PLATFORMS = [
+  ['bluesky', 'Bluesky'], ['x', 'X / Twitter'], ['instagram', 'Instagram'], ['linkedin', 'LinkedIn'], ['facebook', 'Facebook'],
+  ['tiktok', 'TikTok'], ['youtube', 'YouTube'], ['threads', 'Threads'], ['pinterest', 'Pinterest'], ['googlemybusiness', 'Google Business'],
+].map(([slug, label]) => ({ slug, label, logo: LOGO(slug), tile: TILE[slug] }));
+const FLOAT = [
+  ['instagram', '6%', '90px', 84, '-10deg', 6.5, 0], ['x', '12%', '330px', 64, '8deg', 7, 1.2], ['youtube', '2%', '560px', 58, '-6deg', 8, .6],
+  ['tiktok', '86%', '80px', 76, '10deg', 7.2, .3], ['linkedin', '80%', '320px', 62, '-8deg', 6.2, 1.6], ['bluesky', '90%', '540px', 70, '6deg', 7.8, .9],
+].map(([s, left, top, size, rot, dur, delay]) => ({ logo: LOGO(s), tile: TILE[s], left, top, size, rot, dur, delay }));
+const FAN = PLATFORMS.map((p, i) => ({ ...p, left: 75, top: 8 + i * (84 / 9), delay: (i * 0.17).toFixed(2) }));
+const FAN_FMT = [
+  { slug: 'pinterest', ratio: 2 / 3, fmt: 'Pin · 2:3', max: '500', tone: '#8a5a3c' },
+  { slug: 'tiktok', ratio: 9 / 16, fmt: 'Video · 9:16', max: '2,200', tone: '#5d4a36' },
+  { slug: 'instagram', ratio: 1, fmt: 'Post · 1:1', max: '2,200', tone: '#7a6148' },
+  { slug: 'facebook', ratio: 1.91, fmt: 'Link · 1.91:1', max: '63,206', tone: '#6e5a42' },
+  { slug: 'x', ratio: 16 / 9, fmt: 'Post · 16:9', max: '280', tone: '#7a6148' },
+  { slug: 'threads', ratio: 0, fmt: 'Text', max: '500', tone: '' },
+  { slug: 'bluesky', ratio: 16 / 9, fmt: 'Post · 16:9', max: '300', tone: '#6a543e' },
+  { slug: 'linkedin', ratio: 1.91, fmt: 'Post · 1.91:1', max: '3,000', tone: '#806650' },
+  { slug: 'youtube', ratio: 9 / 16, fmt: 'Short · 9:16', max: '5,000', tone: '#4f3f2e' },
+  { slug: 'googlemybusiness', ratio: 4 / 3, fmt: 'Update · 4:3', max: '1,500', tone: '#76604a' },
+];
+const C = { x: '#f6f5f1', bsky: '#1185fe', li: '#3b8ee0', ig: '#e1306c', th: '#a7abb2', yt: '#ff3b30', tt: '#f6f5f1' };
+const WI = (...a) => a.map(x => LOGO(x));
+const WEEK = [
+  { dow: 'Mon', num: 26, posts: [{ time: '9:00', icons: WI('x', 'bluesky', 'linkedin') }] },
+  { dow: 'Tue', num: 27, posts: [{ time: '9:00', icons: WI('x', 'bluesky', 'linkedin', 'instagram', 'threads') }, { time: '17:30', icons: WI('instagram') }] },
+  { dow: 'Wed', num: 28, posts: [{ time: '12:00', icons: WI('linkedin') }] },
+  { dow: 'Thu', num: 29, posts: [{ time: '8:30', icons: WI('x', 'threads') }, { time: '19:00', icons: WI('youtube', 'tiktok') }] },
+  { dow: 'Fri', num: 30, posts: [{ time: '10:00', icons: WI('x', 'bluesky', 'instagram') }] },
+  { dow: 'Sat', num: 31, posts: [{ time: '11:00', icons: WI('instagram', 'tiktok') }] },
+  { dow: 'Sun', num: 1, posts: [] },
+];
+const QUOTES = [
+  { text: "I used to lose Monday mornings to posting. Now the whole week is queued before my coffee's cold.", name: 'Priya Raman', role: 'Founder, small-batch skincare', initials: 'PR' },
+  { text: "We run 40 accounts across six platforms. One calendar and per-platform captions made that manageable for two people.", name: 'Marcus Lee', role: 'Social lead, agency', initials: 'ML' },
+  { text: "The MCP server sold me. Claude drafts the posts, I approve them, the queue handles the rest.", name: 'Dana Okafor', role: 'Indie developer', initials: 'DO' },
+];
+const LOOP = 130;
+
+class Component extends DCLogic {
+  state = { t: 0, tab: 'x', code: 'chat', copied: false };
+  fanSvg() {
+    const h = React.createElement;
+    const paths = FAN.map((n, i) => {
+      const x1 = 332, y1 = 280, x2 = n.left * 10 - 8, y2 = n.top * 5.6;
+      const d = `M${x1} ${y1} C ${x1 + 170} ${y1}, ${x2 - 190} ${y2}, ${x2} ${y2}`;
+      return h('g', { key: i },
+        h('path', { d, fill: 'none', stroke: '#24282d', strokeWidth: 1.2 }),
+        h('path', { d, fill: 'none', stroke: '#dcff2e', strokeWidth: 2, strokeLinecap: 'round', pathLength: 100, strokeDasharray: '14 86', style: { animation: `sfyPulse 2.4s cubic-bezier(.55,0,.35,1) ${n.delay}s infinite`, filter: 'drop-shadow(0 0 3px rgba(220,255,46,.9))' } }));
+    });
+    return h('svg', { viewBox: '0 0 1000 560', style: { position: 'absolute', inset: 0, width: '100%', height: '100%' } },
+      paths);
+  }
+  curTarget(t) {
+    if (t < 29) return 'caption';
+    if (t < 44) return 'chip-' + Math.min(4, Math.floor((t - 29) / 3));
+    if (t < 48) return 'time';
+    if (t < 60) return 'btn';
+    return 'rest';
+  }
+  measureCursor() {
+    const auto = this.props.autoplay ?? true, t = auto ? this.state.t : 115;
+    const key = this.curTarget(t);
+    if (key === this.lastKey && !this.dirty) return;
+    const root = document.querySelector('[data-demo-root]'), el = root && root.querySelector('[data-demo="' + key + '"]');
+    if (!el) return;
+    const rr = root.getBoundingClientRect(), er = el.getBoundingClientRect(), k = rr.width / root.offsetWidth || 1;
+    const fx = key === 'caption' ? 0.82 : key === 'rest' ? 0.7 : 0.55, fy = key === 'caption' ? 0.75 : key === 'rest' ? 0.85 : 0.55;
+    this.lastKey = key; this.dirty = false;
+    this.setState({ cx: Math.round((er.left - rr.left + er.width * fx) / k), cy: Math.round((er.top - rr.top + er.height * fy) / k) });
+  }
+  cursorVals(t) {
+    const clicks = [32, 35, 38, 41, 44, 48, 54];
+    const down = clicks.some(c => t >= c && t < c + 1.2);
+    return { cx: this.state.cx ?? 400, cy: this.state.cy ?? 200, curScale: down ? 0.8 : 1, curOp: t > 104 || t < 3 ? 0 : 1 };
+  }
+  valueVals(t) {
+    const wideV = (this.state.w ?? 1400) >= 900;
+    const merged = t >= 30 && t < 118;
+    const hosts = [['x', 'x.com'], ['bluesky', 'bsky.app'], ['linkedin', 'linkedin.com'], ['instagram', 'instagram.com'], ['threads', 'threads.net']];
+    const tabRows = hosts.map(([id, host], i) => ({
+      host, logo: LOGO(id), tile: TILE[id],
+      y: merged ? 0 : i * 58, sc: merged ? 0.94 : 1, op: merged ? 0 : 1, z: 10 - i,
+      d: merged ? (0.06 * (4 - i)).toFixed(2) : (0.06 * i).toFixed(2),
+      resOp: t >= 40 && t < 118 ? 1 : 0, resY: t >= 40 && t < 118 ? 0 : 12, rd: (0.08 * i).toFixed(2),
+    }));
+    const KEY = 'Fall field kit';
+    const echo = ['x', 'bluesky', 'linkedin', 'instagram'].map((id, i) => {
+      const line = VARIANTS[id].split('\n').find(l => l.includes(KEY)) || VARIANTS[id];
+      const k = line.indexOf(KEY), on = t >= 14 + i * 7 && t < 112;
+      return { logo: LOGO(id), pre: line.slice(0, k), key: KEY, post: line.slice(k + KEY.length), hl: on ? '#dcff2e' : 'transparent', hc: on ? '#15171a' : '#f6f5f1' };
+    });
+    const C = [
+      ['x', 'X · 280 characters', 'fits · 96/280', 'ok', 20],
+      ['instagram', 'Instagram · needs media', 'fall-kit.jpg attached', 'ok', 38],
+      ['tiktok', 'TikTok · needs video', 'add a video or skip', 'warn', 56],
+      ['pinterest', 'Pinterest · board required', "board: Fall '26", 'ok', 74],
+      ['youtube', 'YouTube · title required', 'from first line', 'ok', 90],
+    ];
+    const checks = C.map(([id, rule, note, kind, at]) => {
+      const done = t >= at && t < 120, warn = kind === 'warn';
+      return { logo: LOGO(id), rule, note: done ? note : 'checking…',
+        icon: done ? (warn ? '!' : '✓') : '', ring: done ? (warn ? '#ffb547' : '#dcff2e') : '#3a3e45',
+        fill: done ? (warn ? '#ffb547' : '#dcff2e') : 'transparent',
+        noteColor: done ? (warn ? '#ffb547' : '#a7abb2') : '#4a4f57' };
+    });
+    return {
+      bentoCols: wideV ? 'minmax(0,1.15fr) minmax(0,1fr)' : 'minmax(0,1fr)',
+      bentoSpan: wideV ? 'span 2' : 'auto',
+      tabRows, echo, checks,
+      oneOp: merged ? 1 : 0, oneY: merged ? 0 : 16,
+      tabCaption: merged ? '1 tab · 5 accounts' : '5 tabs · 5 logins',
+    };
+  }
+  featRef = React.createRef();
+  featVals(t, tabId) {
+    const wideF = (this.state.w ?? 1400) >= 960, el = this.featRef.current;
+    let active = this.state.feat ?? 0, fill = 100;
+    if (wideF && el) {
+      const vh = window.innerHeight || 800, span = Math.max(1, el.offsetHeight - vh);
+      const p = Math.min(0.9999, Math.max(0, ((this.state.sy ?? 0) - el.offsetTop) / span));
+      active = Math.floor(p * 3); fill = Math.round((p * 3 - active) * 100);
+    }
+    const STEPS = [
+      ['Per-platform captions', 'Start from one caption and adjust it per account. The counter tracks each platform\'s limit as you type.'],
+      ['Queue and calendar', 'Every scheduled post on one calendar. Click a day to fill a gap, click a post to change it.'],
+      ['API + MCP', 'A REST API and an MCP server ship with every workspace, so Claude, Cursor or your own scripts can post for you.'],
+    ];
+    const featSteps = STEPS.map(([title, body], i) => ({
+      n: '0' + (i + 1), title, body,
+      color: i === active ? '#f6f5f1' : '#4a4f57', numColor: i === active ? '#dcff2e' : '#4a4f57',
+      rows: i === active ? '1fr' : '0fr', fill: i < active ? 100 : i === active ? (wideF ? fill : 100) : 0,
+      go: () => {
+        if (wideF && el) { const vh = window.innerHeight || 800; window.scrollTo({ top: el.offsetTop + ((i + 0.35) / 3) * (el.offsetHeight - vh), behavior: 'smooth' }); }
+        else this.setState({ feat: i });
+      },
+    }));
+    const layer = i => ({ op: i === active ? 1 : 0, y: i === active ? 0 : i < active ? -24 : 24, sc: i === active ? 1 : 0.97, pe: i === active ? 'auto' : 'none' });
+    const acc = ACC.find(a => a.id === tabId), txt = VARIANTS[tabId], pct = Math.min(100, (txt.length / acc.limit) * 100);
+    const lt = t % 65, added = lt >= 18;
+    const weekLive = WEEK.map(d => {
+      const posts = d.posts.map(p => ({ time: p.time, icons: p.icons || [], bg: '#1f2227', fg: '#f6f5f1', op: 1, y: 0 }));
+      if (d.dow === 'Thu') posts.push({ time: '15:00', icons: [LOGO('x'), LOGO('threads'), LOGO('bluesky')], bg: '#dcff2e', fg: '#15171a', op: added ? 1 : 0, y: added ? 0 : -14 });
+      const hot = d.dow === 'Thu' && lt >= 10 && lt < 30;
+      return { dow: d.dow, num: d.num, posts, bg: hot ? '#1a1d10' : '#0c0d0f', border: hot ? '#dcff2e' : '#1f2227' };
+    });
+    const PROMPT = 'Schedule the field kit post for Tuesday 9am on X and Bluesky.';
+    const ct = t % 80, typedN = Math.min(PROMPT.length, Math.floor(ct / 24 * PROMPT.length));
+    return {
+      featRef: this.featRef,
+      featH: wideF ? '300vh' : 'auto', featPos: wideF ? 'sticky' : 'relative', featMinH: wideF ? '100vh' : '0',
+      featCols: wideF ? 'minmax(0,.9fr) minmax(0,1.1fr)' : 'minmax(0,1fr)',
+      featSteps, v0: layer(0), v1: layer(1), v2: layer(2),
+      tabHandle: acc.handle, tabLabel: acc.label,
+      ringDash: pct.toFixed(1) + ' 100',
+      tabNote: pct < 90 ? 'Fits with room to spare' : 'Close to the limit',
+      weekLive, weekCount: (added ? 11 : 10) + ' posts scheduled', dropOp: added ? 1 : 0,
+      chatPrompt: PROMPT.slice(0, typedN), chatCursor: typedN < PROMPT.length && Math.floor(t / 4) % 2 === 0 ? 1 : 0,
+      chatToolOp: ct >= 32 ? 1 : 0, chatToolY: ct >= 32 ? 0 : 10, chatDoneOp: ct >= 46 ? 1 : 0,
+    };
+  }
+  fanRef = React.createRef();
+  fanVals() {
+    const open = !!this.state.fanOpen, hov = this.state.hov ?? null, n = FAN_FMT.length;
+    const scale = Math.min(1, ((this.state.w ?? 1400) - 32) / 1040);
+    return {
+      fanRef: this.fanRef,
+      fanScale: scale.toFixed(3),
+      fanH: Math.round(500 * scale),
+      fanLeave: () => this.setState({ hov: null }),
+      fanCards: FAN_FMT.map((f, i) => {
+        const p = PLATFORMS.find(x => x.slug === f.slug);
+        const base = -30 + i * (60 / (n - 1));
+        const ang = open ? base : base * 0.05;
+        const isH = hov === i;
+        const box = 150, mw = f.ratio >= 1 ? 168 : Math.round(118 * f.ratio), mh = f.ratio >= 1 ? Math.round(168 / f.ratio) : 118;
+        return {
+          label: p.label, logo: p.logo, tile: p.tile,
+          tf: `translateX(-50%) rotate(${ang.toFixed(2)}deg) translateY(${isH ? -54 : 0}px)`,
+          z: isH ? 40 : 10 + i, op: hov == null || isH ? 1 : 0.5,
+          delay: open ? (Math.abs(i - (n - 1) / 2) * 0.05).toFixed(2) : 0,
+          border: isH ? '#dcff2e' : '#2a2e34',
+          hasMedia: f.ratio > 0, textOnly: f.ratio === 0,
+          mw: Math.min(mw, 168), mh: Math.min(mh, box - 32), tone: f.tone,
+          long: CAP, text: f.ratio === 0 ? '' : CAP,
+          fmt: f.fmt, limit: `${f.max} max`, limitColor: isH ? '#dcff2e' : '#6b7079',
+          enter: () => this.setState({ hov: i }),
+        };
+      }),
+    };
+  }
+  onResize = () => { this.dirty = true; this.setState({ w: window.innerWidth }); };
+  onScroll = () => {
+    if (this.raf) return;
+    this.raf = requestAnimationFrame(() => { this.raf = 0; this.setState({ sy: window.scrollY }); });
+  };
+  setupReveal() {
+    const els = [...document.querySelectorAll('[data-reveal]')].filter(el => !el.dataset.rv);
+    if (!els.length || !('IntersectionObserver' in window)) return;
+    this.io = this.io || new IntersectionObserver(entries => entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      const el = en.target;
+      el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none';
+      this.io.unobserve(el);
+      setTimeout(() => { el.style.transition = ''; }, 1200);
+    }), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach((el, i) => {
+      el.dataset.rv = '1';
+      const base = el.style.transition;
+      el.style.opacity = '0'; el.style.transform = 'translateY(40px) scale(.98)'; el.style.filter = 'blur(6px)';
+      el.style.transition = `opacity .9s cubic-bezier(.2,.8,.2,1) ${(i % 3) * 0.08}s, transform .9s cubic-bezier(.2,.8,.2,1) ${(i % 3) * 0.08}s, filter .9s ease ${(i % 3) * 0.08}s${base ? ',' + base : ''}`;
+      this.io.observe(el);
+    });
+  }
+  componentDidUpdate() { if (!this.revealDone) { this.revealDone = true; this.setupReveal(); } this.measureCursor(); }
+  componentDidMount() {
+    this.onResize();
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    setTimeout(() => this.setupReveal(), 300);
+    if ('IntersectionObserver' in window && this.fanRef.current) {
+      this.fio = new IntersectionObserver(([e]) => { if (e.isIntersecting) { this.setState({ fanOpen: true }); this.fio.disconnect(); } }, { threshold: 0.35 });
+      this.fio.observe(this.fanRef.current);
+    } else this.setState({ fanOpen: true });
+    this.iv = setInterval(() => {
+      if ((this.props.autoplay ?? true) === false) return;
+      const s = this.props.demoSpeed ?? 1;
+      this.setState(st => ({ t: (st.t + s) % LOOP }));
+    }, 100);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); this.io?.disconnect(); this.fio?.disconnect(); cancelAnimationFrame(this.raf); clearInterval(this.iv); clearTimeout(this.ct); }
+  renderVals() {
+    const auto = this.props.autoplay ?? true;
+    const t = auto ? this.state.t : 115;
+    const typed = Math.min(CAP.length, Math.floor((t / 28) * CAP.length));
+    const typing = t < 32;
+    const chips = ACC.map((a, i) => {
+      const on = t >= 32 + i * 3;
+      return { label: a.label, logo: a.logo, bg: on ? '#f6f5f1' : 'transparent', border: on ? '#f6f5f1' : '#2a2e34', color: on ? '#15171a' : '#a7abb2' };
+    });
+    const timeSet = t >= 48;
+    const scheduled = t >= 57;
+    const rows = ACC.map((a, i) => {
+      const show = t >= 60 + i * 4;
+      const posted = t >= 88 + i * 5;
+      return {
+        label: a.label, handle: a.handle, dot: a.dot, logo: a.logo, tile: TILE[a.id], text: VARIANTS[a.id].split('\n')[0],
+        op: show ? 1 : 0.12, ty: show ? 0 : 10,
+        status: posted ? 'Posted' : show ? 'Scheduled' : 'Draft',
+        pillBg: posted ? '#dcff2e' : show ? '#a7abb2' : '#3a3e45', pillColor: posted ? '#dcff2e' : show ? '#f6f5f1' : '#6b7079', pillBorder: '',
+        meta: posted ? 'just now' : `${VARIANTS[a.id].length}/${a.limit}`,
+      };
+    });
+    const step = t < 30 ? 0 : t < 48 ? 1 : t < 86 ? 2 : 3;
+    const steps = ['Write once', 'Pick accounts', 'Schedule', 'Goes out'].map((label, i) => ({
+      n: `0${i + 1}`, label,
+      bg: i === step ? '#dcff2e' : 'transparent',
+      color: i === step ? '#15171a' : i < step ? '#f6f5f1' : '#6b7079',
+    }));
+
+    const tabId = this.state.picked ? this.state.tab : ACC[Math.floor(t / 26) % ACC.length].id;
+    const acc = ACC.find(a => a.id === tabId);
+    const txt = VARIANTS[tabId];
+    const tabs = ACC.map(a => ({
+      label: a.label, logo: a.logo, fg: a.id === tabId ? '#15171a' : a.dot,
+      bg: a.id === tabId ? '#f6f5f1' : 'transparent', color: a.id === tabId ? '#15171a' : '#a7abb2',
+      select: () => this.setState({ tab: a.id, picked: true }),
+    }));
+    const codeId = this.state.code;
+    const codeTabs = [['chat', 'Claude · MCP'], ['rest', 'REST API']].map(([id, label]) => ({
+      label, bg: id === codeId ? '#2a2e34' : 'transparent', color: id === codeId ? '#f6f5f1' : '#6b7079',
+      select: () => this.setState({ code: id, copied: false }),
+    }));
+
+    return {
+      chips, rows, steps,
+      caption: CAP.slice(0, typed),
+      cursorOp: typing && Math.floor(t / 4) % 2 === 0 ? 1 : typing ? 0.25 : 0,
+      captionBorder: typing ? '#3a3e45' : '#22252a',
+      ...this.cursorVals(t),
+      ...this.valueVals(t),
+      ...this.featVals(t, tabId),
+      demoCols: (this.state.w ?? 1400) >= 1100 ? '188px minmax(0,1.1fr) minmax(0,1fr)' : 'repeat(auto-fit,minmax(300px,1fr))',
+      charLabel: `${typed} chars`,
+      timeLabel: timeSet ? 'Tue, Oct 27 · 9:00 AM' : 'Pick a time',
+      timeColor: timeSet ? '#f6f5f1' : '#6b7079',
+      timeBorder: t >= 48 && t < 56 ? '#dcff2e' : '#22252a',
+      btnScale: t >= 54 && t < 57 ? 0.94 : 1,
+      btnLabel: scheduled ? 'Scheduled ✓' : 'Schedule 5 posts',
+      progress: Math.round((t / LOOP) * 100),
+      platforms: PLATFORMS,
+      marquee: [...PLATFORMS, ...PLATFORMS],
+      floaters: FLOAT,
+      wide: (this.state.w ?? 1400) >= 1100,
+      fanNodes: FAN,
+      fanSvg: this.fanSvg(),
+      tilt: (() => { const p = Math.min(1, (this.state.sy ?? 0) / 420); return `perspective(1800px) rotateX(${((1 - p) * 20).toFixed(2)}deg) scale(${(0.9 + 0.1 * p).toFixed(3)})`; })(),
+      spotlight: this.state.mx == null ? 'transparent' : `radial-gradient(520px circle at ${this.state.mx}px ${this.state.my}px, rgba(220,255,46,.09), transparent 60%)`,
+      onHeroMove: e => { const r = e.currentTarget.getBoundingClientRect(); this.setState({ mx: Math.round(e.clientX - r.left), my: Math.round(e.clientY - r.top) }); },
+      tabs, tabText: txt,
+      tabPct: Math.min(100, Math.max(2, (txt.length / acc.limit) * 100)),
+      tabCount: `${txt.length} / ${acc.limit.toLocaleString()}`,
+      week: WEEK,
+      codeTabs, codeText: CODE[codeId === 'chat' ? 'mcp' : 'rest'], isChat: codeId === 'chat', isRest: codeId === 'rest',
+      copyLabel: this.state.copied ? 'Copied' : 'Copy',
+      copy: () => {
+        navigator.clipboard?.writeText(CODE[codeId === 'chat' ? 'mcp' : 'rest']).catch(() => {});
+        this.setState({ copied: true });
+        clearTimeout(this.ct);
+        this.ct = setTimeout(() => this.setState({ copied: false }), 1500);
+      },
+      quotes: QUOTES,
+      showTestimonials: this.props.showTestimonials ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>
