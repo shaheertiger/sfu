@@ -45,8 +45,8 @@ export default function AuthForm({ mode }) {
         <span>schedule for you</span>
       </a>
       <form className={styles.card} onSubmit={submit}>
-        <h1>{signup ? 'Start posting free' : 'Welcome back'}</h1>
-        <p className={styles.sub}>{signup ? '7-day free trial. Add a card next; you are not charged until day 8.' : 'Sign in to your workspace.'}</p>
+        <h1>{signup ? 'Start your free trial' : 'Welcome back'}</h1>
+        <p className={styles.sub}>{signup ? '7-day free trial. Card required, cancel anytime. You are not charged until day 8.' : 'Sign in to your workspace.'}</p>
         {signup && (
           <label>
             <span>Name</span>

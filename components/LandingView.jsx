@@ -253,7 +253,7 @@ export function renderLanding($v) {
                 {'See how it works'}
               </a>{' '}
             </div>{' '}
-            <span style={{ fontSize: '13px', color: '#6b7079' }}>{'7-day free trial · Cancel anytime'}</span>{' '}
+            <span style={{ fontSize: '13px', color: '#6b7079' }}>{'7-day free trial · Card required · Cancel anytime'}</span>{' '}
           </div>{' '}
           <div
             id="how"
@@ -2211,7 +2211,7 @@ export function renderLanding($v) {
               >
                 {'Simple pricing'}
               </h2>{' '}
-              <p style={{ margin: '0', color: '#a7abb2' }}>{'Unlimited posts on every plan. Cancel whenever.'}</p>{' '}
+              <p style={{ margin: '0', color: '#a7abb2' }}>{'Unlimited posts on every plan. 7-day free trial, card required. Cancel anytime.'}</p>{' '}
             </div>{' '}
             <div
               data-reveal=""
