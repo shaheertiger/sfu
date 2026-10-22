@@ -37,8 +37,14 @@ On phones the dashboard switches to a top bar, a bottom tab bar and a slide-in m
    ```
    Instagram, Threads, TikTok photos and Google Business fetch media by URL; they get 24-hour signed URLs. To serve media from a CDN instead, set `STORAGE_PUBLIC_URL`. Locally, Neon's own `AWS_*` names also work. Cloudflare R2 still works: leave the storage variables unset and set `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET`.
 5. **Domain:** set `APP_URL` to your production URL (used for OAuth callbacks and invite links).
-6. **Cron:** `vercel.json` already schedules `/api/cron/publish` every minute. Every-minute crons need the Pro plan.
-7. **Platforms:** add the developer keys for each platform you want (see below). Bluesky needs none.
+6. **Cron:** `vercel.json` already schedules `/api/cron/publish` every minute. Every-minute crons need the Pro plan. The same run sends reminder and digest emails.
+7. **Email (Resend):** verify your domain in Resend (Domains), then add `RESEND_API_KEY` and `EMAIL_FROM` (an address on that domain, e.g. `Schedule For You <notifications@scheduleforyou.com>`). The app sends:
+   - a reminder before each scheduled post (Settings → Email reminders; lead time per workspace; to the post's author, or the owner for API posts),
+   - an alert right away when a post fails for good (to the owner and the author),
+   - a daily digest after 6 PM workspace time when something published or failed (to the owner),
+   - team invite emails (the invite link is still shown in the dashboard).
+   Without `RESEND_API_KEY` these are skipped and logged. Optional: use Resend for Neon Auth's emails too (Neon Console → Auth → Email/SMTP: host `smtp.resend.com`, port 465, user `resend`, password = a Resend API key, sender on your verified domain).
+8. **Platforms:** add the developer keys for each platform you want (see below). Bluesky needs none.
 
 All variables are listed in `.env.example`.
 

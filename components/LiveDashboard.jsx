@@ -543,7 +543,10 @@ export default class LiveDashboard extends Base {
       const email = (s.invite || '').trim();
       if (!email) return;
       api('/api/v1/team', { method: 'POST', body: { email } })
-        .then((r) => super.setState((st) => ({ invites: [...st.invites, email], inviteUrl: r.invite_url, invite: '' })))
+        .then((r) => {
+          super.setState((st) => ({ invites: [...st.invites, email], inviteUrl: r.invite_url, invite: '' }));
+          this.flash(r.emailed ? `Invite emailed to ${email}` : 'Invite link ready. Copy it and send it yourself.');
+        })
         .catch((e) => this.flash(e.message, true));
     };
     return v;
