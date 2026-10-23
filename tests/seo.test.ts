@@ -7,6 +7,7 @@ test('advertised prices match the billing plans', () => {
   for (const p of PLANS) {
     const b = BILLING[p.id as keyof typeof BILLING];
     assert.equal(b.amount, p.price, p.id);
+    assert.equal(b.yearlyAmount, p.yearly, p.id);
     assert.equal(b.accountLimit, p.accounts, p.id);
   }
 });
@@ -26,7 +27,8 @@ test('the landing graph has the expected types and the FAQ only when asked for',
   assert.deepEqual(types(landingLd()), ['Organization', 'WebSite', 'SoftwareApplication']);
   assert.deepEqual(types(landingLd({ withFaq: true })), ['Organization', 'WebSite', 'SoftwareApplication', 'FAQPage']);
   const app: any = landingLd()['@graph'][2];
-  assert.equal(app.offers.length, 2);
+  assert.equal(app.offers.length, 4);
+  assert.deepEqual(app.offers.map((o: any) => o.priceSpecification.billingDuration), ['P1M', 'P1Y', 'P1M', 'P1Y']);
   assert.equal(app.offers[0].priceCurrency, 'USD');
   assert.ok(app.url.startsWith('https://example.com/'));
   delete process.env.APP_URL;

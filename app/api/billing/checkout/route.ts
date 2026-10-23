@@ -1,14 +1,14 @@
 import { z } from 'zod';
 import { body, handler, json } from '@/lib/server/api';
 import { HttpError } from '@/lib/server/auth';
-import { accessFor, PLANS, stripe, TRIAL_DAYS } from '@/lib/server/billing';
+import { accessFor, priceFor, stripe, TRIAL_DAYS } from '@/lib/server/billing';
 import { exec, one } from '@/lib/server/db';
 import { appUrl } from '@/lib/server/url';
 
-/** Starts Stripe Checkout for a plan. Returns { url } to redirect to. Owners only. */
+/** Starts Stripe Checkout for a plan, billed monthly or yearly. Returns { url } to redirect to. Owners only. */
 export const POST = handler(async ({ req, workspace, user }) => {
   if (workspace.role !== 'owner') throw new HttpError(403, 'Only the workspace owner can manage billing');
-  const { plan } = z.object({ plan: z.enum(['solo', 'studio']) }).parse(await body(req));
+  const { plan, interval } = z.object({ plan: z.enum(['solo', 'studio']), interval: z.enum(['month', 'year']).default('month') }).parse(await body(req));
   const ws = await one('SELECT * FROM workspaces WHERE id=$1', [workspace.id]);
   const s = stripe();
   const base = appUrl(req);
@@ -37,7 +37,7 @@ export const POST = handler(async ({ req, workspace, user }) => {
     mode: 'subscription',
     customer: customer!,
     client_reference_id: ws.id,
-    line_items: [{ price: PLANS[plan].price(), quantity: 1 }],
+    line_items: [{ price: priceFor(plan, interval), quantity: 1 }],
     allow_promotion_codes: true,
     metadata: { workspace_id: ws.id, app: 'schedule-for-you' },
     payment_method_collection: 'always',

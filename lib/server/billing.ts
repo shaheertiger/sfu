@@ -5,16 +5,27 @@ import { exec, now, one } from './db';
 
 /**
  * Stripe billing: one subscription per workspace.
- * STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET; optional STRIPE_PRICE_SOLO / STRIPE_PRICE_STUDIO
- * (default to the live prices created for Schedule For You) and STRIPE_PORTAL_CONFIGURATION.
+ * STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET; optional STRIPE_PRICE_SOLO / STRIPE_PRICE_STUDIO and the
+ * yearly STRIPE_PRICE_SOLO_YEARLY / STRIPE_PRICE_STUDIO_YEARLY (all default to the live prices created
+ * for Schedule For You) and STRIPE_PORTAL_CONFIGURATION. Yearly costs 10 months: 2 months free.
  * The 7-day free trial needs a card: the owner starts it in Checkout and Stripe charges on day 8.
  * Until STRIPE_SECRET_KEY is set, billing is off and nothing is blocked.
  */
 export const PLANS = {
-  solo: { id: 'solo', name: 'Solo', amount: 19, accountLimit: 15, team: false, price: () => process.env.STRIPE_PRICE_SOLO || 'price_1UTMrgPgKI4BZbGFEDOyBeTF' },
-  studio: { id: 'studio', name: 'Studio', amount: 59, accountLimit: 100, team: true, price: () => process.env.STRIPE_PRICE_STUDIO || 'price_1UTMrhPgKI4BZbGF1pB8lYJf' },
+  solo: {
+    id: 'solo', name: 'Solo', amount: 19, yearlyAmount: 190, accountLimit: 15, team: false,
+    price: () => process.env.STRIPE_PRICE_SOLO || 'price_1UTMrgPgKI4BZbGFEDOyBeTF',
+    yearlyPrice: () => process.env.STRIPE_PRICE_SOLO_YEARLY || 'price_1UTnzePgKI4BZbGFITIQa8ur',
+  },
+  studio: {
+    id: 'studio', name: 'Studio', amount: 59, yearlyAmount: 590, accountLimit: 100, team: true,
+    price: () => process.env.STRIPE_PRICE_STUDIO || 'price_1UTMrhPgKI4BZbGF1pB8lYJf',
+    yearlyPrice: () => process.env.STRIPE_PRICE_STUDIO_YEARLY || 'price_1UTnzgPgKI4BZbGFVdU7qA3k',
+  },
 } as const;
 export type PlanId = keyof typeof PLANS;
+export type Interval = 'month' | 'year';
+export const priceFor = (plan: PlanId, interval: Interval = 'month') => (interval === 'year' ? PLANS[plan].yearlyPrice() : PLANS[plan].price());
 const DEFAULT_ACCOUNT_LIMIT = 15;
 export const TRIAL_DAYS = 7;
 
@@ -28,7 +39,9 @@ export function stripe(): Stripe {
 }
 
 export const planForPrice = (priceId?: string | null): PlanId | null =>
-  (Object.values(PLANS).find((p) => p.price() === priceId)?.id as PlanId) ?? null;
+  (Object.values(PLANS).find((p) => p.price() === priceId || p.yearlyPrice() === priceId)?.id as PlanId) ?? null;
+export const intervalForPrice = (priceId?: string | null): Interval | null =>
+  Object.values(PLANS).some((p) => p.yearlyPrice() === priceId) ? 'year' : Object.values(PLANS).some((p) => p.price() === priceId) ? 'month' : null;
 
 /** Statuses that keep a workspace publishing. past_due keeps working while Stripe retries the card. */
 const PAID = ['active', 'trialing', 'past_due', 'comped'];
@@ -100,7 +113,7 @@ export async function syncSubscription(sub: Stripe.Subscription) {
   await exec(
     `UPDATE workspaces SET stripe_customer_id=COALESCE(stripe_customer_id,$1), stripe_subscription_id=$2, subscription_status=$3,
        plan=$4, account_limit=$5, current_period_end=$6, cancel_at_period_end=$7,
-       trial_ends_at=$9, trial_used = trial_used OR $10 WHERE id=$8`,
+       trial_ends_at=$9, trial_used = trial_used OR $10, billing_interval=$11 WHERE id=$8`,
     [
       customerId ?? null, sub.id, sub.status,
       live && p ? p.id : 'none',
@@ -109,6 +122,7 @@ export async function syncSubscription(sub: Stripe.Subscription) {
       !!sub.cancel_at_period_end, ws.id,
       sub.status === 'trialing' && sub.trial_end ? sub.trial_end * 1000 : null,
       !!sub.trial_end,
+      intervalForPrice(item?.price?.id) ?? item?.price?.recurring?.interval ?? null,
     ],
   );
   return ws.id;
@@ -124,6 +138,7 @@ export function billingSummary(ws: any) {
     periodEnd: ws.current_period_end ? Number(ws.current_period_end) : null,
     cancelAtPeriodEnd: !!ws.cancel_at_period_end,
     hasCustomer: !!ws.stripe_customer_id,
-    plans: Object.values(PLANS).map((p) => ({ id: p.id, name: p.name, amount: p.amount, accountLimit: p.accountLimit, team: p.team })),
+    interval: (ws.billing_interval as Interval | null) ?? null,
+    plans: Object.values(PLANS).map((p) => ({ id: p.id, name: p.name, amount: p.amount, yearlyAmount: p.yearlyAmount, accountLimit: p.accountLimit, team: p.team })),
   };
 }

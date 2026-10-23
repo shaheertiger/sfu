@@ -1,7 +1,7 @@
 ---
 layout: feature
 title: "Social Media Scheduler Pricing: Two Plans, No Post Limits"
-description: "Social media scheduler pricing made simple: Solo at $19/month or Studio at $59/month, unlimited posts on 10 platforms and a 7-day trial. See what's included."
+description: "Social media scheduler pricing: Solo at $19/month or Studio at $59/month, 2 months free when billed yearly, unlimited posts on 10 platforms and a 7-day trial."
 h1: Social media scheduler pricing
 lead: Two plans, both with unlimited posts and every publishing feature. Choose by how many accounts you connect and whether you need teammates.
 keyword: social media scheduler pricing
@@ -14,6 +14,9 @@ Solo suits a creator, freelancer or small business running its own channels. You
 
 ### Studio: $59 a month
 Studio is for agencies, in-house teams and anyone managing many brands. It raises the limit to 100 connected accounts, lets you invite team members to work alongside you, and adds priority support.
+
+### Monthly or yearly billing
+Pay month to month, or pay for a year up front and get 2 months free. Yearly billing costs the same as 10 months: Solo is $190 a year (about $15.83 a month) and Studio is $590 a year (about $49.17 a month). You choose monthly or yearly when you start your trial, and the 7-day free trial works the same either way.
 
 ### Which plan should you pick?
 Count the profiles, Pages and channels you post to, plus any you expect to add soon. Up to 15 and working alone? Solo is enough. Need more accounts or teammates? Pick Studio.
@@ -53,6 +56,9 @@ A connected account is one profile, Page or channel you've linked so Schedule Fo
 ### Several accounts on the same platform
 Each account counts on its own. Three Instagram accounts use three of your connected accounts, which is how agencies [post to multiple Instagram accounts](/post-to-multiple-instagram-accounts) from one place.
 
+### When you reach your account limit
+You can't connect more accounts than your plan allows. If a Facebook login returns more Pages than you have room for, the ones that fit are connected and the rest are skipped, with a note telling you how many. If you move to a smaller plan while you have more accounts than it allows, your oldest accounts keep publishing and the newest ones past the limit are paused until you upgrade or disconnect some.
+
 ## How the 7-day free trial works
 Every new account starts with a 7-day free trial of the full product.
 
@@ -70,7 +76,10 @@ The workspace owner manages billing. Open **Billing** from the workspace menu an
 
 ## Frequently asked questions
 ### How much does a social media scheduler cost?
-Prices vary widely between tools. Schedule For You has two plans: Solo at $19 a month for 15 connected accounts and Studio at $59 a month for 100 connected accounts, team members and priority support. Both include unlimited posts.
+Prices vary widely between tools. Schedule For You has two plans: Solo at $19 a month for 15 connected accounts and Studio at $59 a month for 100 connected accounts, team members and priority support. Both include unlimited posts, and paying yearly gets you 2 months free.
+
+### Is there a discount for paying yearly?
+Yes. Yearly billing gives you 2 months free: Solo is $190 a year instead of $228, and Studio is $590 a year instead of $708. Pick Yearly when you start your trial. To switch an existing plan between monthly and yearly, contact support.
 
 ### Is there a free plan?
 No. There's a 7-day free trial, and after that you need a Solo or Studio subscription to keep publishing.

@@ -2356,6 +2356,56 @@ export function renderLanding($v) {
               </p>{' '}
             </div>{' '}
             <div
+              role="group"
+              aria-label="Billing period"
+              style={{
+                display: 'flex',
+                gap: '4px',
+                padding: '4px',
+                borderRadius: '14px',
+                border: '1px solid #22252a',
+                background: '#0f1113',
+                marginTop: '-12px',
+              }}
+            >
+              {' '}
+              <button
+                aria-pressed={$v['moPressed']}
+                onClick={$v['pickMonthly']}
+                style={{
+                  padding: '9px 18px',
+                  borderRadius: '10px',
+                  border: '0',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  background: `${$v['moBg'] ?? ''}`,
+                  color: `${$v['moFg'] ?? ''}`,
+                  transition: 'background .2s,color .2s',
+                }}
+              >
+                {'Monthly'}
+              </button>{' '}
+              <button
+                aria-pressed={$v['yrPressed']}
+                onClick={$v['pickYearly']}
+                style={{
+                  padding: '9px 18px',
+                  borderRadius: '10px',
+                  border: '0',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  background: `${$v['yrBg'] ?? ''}`,
+                  color: `${$v['yrFg'] ?? ''}`,
+                  transition: 'background .2s,color .2s',
+                }}
+              >
+                {'Yearly '}
+                <span style={{ color: `${$v['yrTag'] ?? ''}`, fontSize: '12px' }}>{'2 months free'}</span>
+              </button>{' '}
+            </div>{' '}
+            <div
               data-reveal=""
               style={{
                 display: 'grid',
@@ -2393,10 +2443,11 @@ export function renderLanding($v) {
                 </span>{' '}
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
                   <span style={{ fontSize: '52px', fontWeight: '700', letterSpacing: '-0.04em', lineHeight: '1' }}>
-                    {'$19'}
+                    {$t($v['soloPrice'])}
                   </span>
                   <span style={{ color: '#6b7079' }}>{'/mo'}</span>
                 </div>{' '}
+                <span style={{ marginTop: '-12px', fontSize: '13px', color: '#6b7079' }}>{$t($v['soloBilled'])}</span>{' '}
                 <div
                   style={{ display: 'flex', flexDirection: 'column', gap: '10px', color: '#a7abb2', fontSize: '15px' }}
                 >
@@ -2467,10 +2518,11 @@ export function renderLanding($v) {
                 </span>{' '}
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
                   <span style={{ fontSize: '52px', fontWeight: '700', letterSpacing: '-0.04em', lineHeight: '1' }}>
-                    {'$59'}
+                    {$t($v['studioPrice'])}
                   </span>
                   <span style={{ color: '#6b7079' }}>{'/mo'}</span>
                 </div>{' '}
+                <span style={{ marginTop: '-12px', fontSize: '13px', color: '#6b7079' }}>{$t($v['studioBilled'])}</span>{' '}
                 <div
                   style={{ display: 'flex', flexDirection: 'column', gap: '10px', color: '#a7abb2', fontSize: '15px' }}
                 >

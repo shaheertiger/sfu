@@ -47,3 +47,16 @@ test('price ids map to plans, unknown prices to null', () => {
     delete process.env.STRIPE_PRICE_SOLO;
   }
 });
+
+test('yearly prices map to the same plans and are 10 months of the monthly price', async () => {
+  const { PLANS, intervalForPrice, priceFor } = await import('../lib/server/billing.ts');
+  for (const p of Object.values(PLANS)) {
+    assert.equal(planForPrice(p.yearlyPrice()), p.id);
+    assert.equal(intervalForPrice(p.yearlyPrice()), 'year');
+    assert.equal(intervalForPrice(p.price()), 'month');
+    assert.equal(priceFor(p.id, 'year'), p.yearlyPrice());
+    assert.equal(priceFor(p.id), p.price());
+    assert.equal(p.yearlyAmount, p.amount * 10);
+  }
+  assert.equal(intervalForPrice('price_someone_else'), null);
+});

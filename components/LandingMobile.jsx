@@ -97,8 +97,14 @@ class Component extends DCLogic {
           'API + MCP access',
           'Basic analytics',
         ],
+        19,
       ],
-      studio: ['Studio', '$59', ['Everything in Solo', '100 connected accounts', 'Team members', 'Priority support']],
+      studio: [
+        'Studio',
+        '$59',
+        ['Everything in Solo', '100 connected accounts', 'Team members', 'Priority support'],
+        59,
+      ],
     };
     const pl = plans[s.plan];
     const faqs = [
@@ -144,7 +150,7 @@ class Component extends DCLogic {
       return `${h} hr${h === '1' ? '' : 's'}`;
     };
     const yearH = Math.round((savedMin * 52) / 60);
-    const price = s.plan === 'studio' ? 59 : 19,
+    const price = (s.plan === 'studio' ? 59 : 19) * (s.yearly ? 10 / 12 : 1),
       hrsMonth = (savedMin * 4.33) / 60;
     const ctaLabel = s.done
       ? 'One moment…'
@@ -263,7 +269,16 @@ class Component extends DCLogic {
         fg: s.plan === k ? '#15171a' : '#a7abb2',
         pick: () => this.setState({ plan: k }),
       })),
-      planPrice: pl[1],
+      planPrice: s.yearly ? '$' + +((pl[3] * 10) / 12).toFixed(2) : pl[1],
+      planBilled: s.yearly ? `$${pl[3] * 10} billed yearly · save $${pl[3] * 2}` : 'Billed monthly',
+      moPressed: s.yearly ? 'false' : 'true',
+      yrPressed: s.yearly ? 'true' : 'false',
+      moBg: s.yearly ? 'transparent' : '#dcff2e',
+      moFg: s.yearly ? '#a7abb2' : '#15171a',
+      yrBg: s.yearly ? '#dcff2e' : 'transparent',
+      yrFg: s.yearly ? '#15171a' : '#a7abb2',
+      pickMonthly: () => this.setState({ yearly: false }),
+      pickYearly: () => this.setState({ yearly: true }),
       planFeatures: pl[2],
       planBorder: s.plan === 'studio' ? '#dcff2e' : '#2a2e34',
       faqs: faqs.map(([q, a], i) => ({
@@ -277,7 +292,9 @@ class Component extends DCLogic {
       barY: s.showBar && !s.sheet && !s.done ? 0 : 110,
       barPE: s.showBar && !s.sheet && !s.done ? 'auto' : 'none',
       sheetOpen: s.sheet,
-      sheetPlan: `${pl[0]} plan · ${pl[1]}/mo after the trial`,
+      sheetPlan: s.yearly
+        ? `${pl[0]} plan · $${pl[3] * 10}/year after the trial`
+        : `${pl[0]} plan · ${pl[1]}/mo after the trial`,
       openSheet: () => {
         this.setState({ sheet: true });
         setTimeout(() => this.sheetRef.current?.focus(), 80);

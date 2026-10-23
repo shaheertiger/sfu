@@ -622,6 +622,26 @@ class Component extends DCLogic {
       },
       quotes: QUOTES,
       showTestimonials: this.props.showTestimonials ?? true,
+      ...(() => {
+        // Yearly is 10 months of the monthly price (2 months free).
+        const yr = !!this.state.yearly,
+          per = (m) => '$' + +((m * 10) / 12).toFixed(2);
+        return {
+          moPressed: yr ? 'false' : 'true',
+          yrPressed: yr ? 'true' : 'false',
+          moBg: yr ? 'transparent' : '#dcff2e',
+          moFg: yr ? '#a7abb2' : '#15171a',
+          yrBg: yr ? '#dcff2e' : 'transparent',
+          yrFg: yr ? '#15171a' : '#a7abb2',
+          yrTag: yr ? '#15171a' : '#dcff2e',
+          pickMonthly: () => this.setState({ yearly: false }),
+          pickYearly: () => this.setState({ yearly: true }),
+          soloPrice: yr ? per(19) : '$19',
+          studioPrice: yr ? per(59) : '$59',
+          soloBilled: yr ? '$190 billed yearly · save $38' : 'Billed monthly',
+          studioBilled: yr ? '$590 billed yearly · save $118' : 'Billed monthly',
+        };
+      })(),
     };
   }
 }

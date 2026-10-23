@@ -241,7 +241,7 @@ textarea{resize:vertical}
                 <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid #efefea">
                   <span style="width:28px;height:28px;border-radius:8px;background:{{ a.color }};display:grid;place-items:center;flex:none"><span style="width:56%;height:56%;background:{{ a.logo }} center/contain no-repeat"></span></span>
                   <span style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.3"><span style="font-size:14px;font-weight:500">@{{ a.username }}</span><span style="font-size:12px;color:{{ a.fg }}">{{ a.label }} · {{ a.detail }}</span></span>
-                  <button onClick="{{ a.fix }}" style="padding:6px 11px;border-radius:8px;border:0;background:#141619;color:#fff;cursor:pointer;font-size:13px;font-weight:600">Reconnect</button>
+                  <button onClick="{{ a.fix }}" style="padding:6px 11px;border-radius:8px;border:0;background:#141619;color:#fff;cursor:pointer;font-size:13px;font-weight:600">{{ a.fixLabel }}</button>
                 </div>
               </sc-for>
               <div style="display:flex;flex-direction:column;gap:8px;padding:12px 14px">
@@ -983,7 +983,7 @@ textarea{resize:vertical}
               </div>
               <span style="font-size:13px;color:#677184">{{ a.queued }}</span>
               <span title="{{ a.healthDetail }}" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:{{ a.hFg }};padding:2px 9px;border-radius:999px;background:{{ a.hBg }};white-space:nowrap">{{ a.hLabel }}</span>
-              <sc-if value="{{ a.needsFix }}" hint-placeholder-val="{{ false }}"><button onClick="{{ a.reconnect }}" style="padding:6px 10px;font-size:13px;border-radius:8px;border:0;background:#141619;color:#fff;cursor:pointer;font-weight:600">Reconnect</button></sc-if>
+              <sc-if value="{{ a.needsFix }}" hint-placeholder-val="{{ false }}"><button onClick="{{ a.reconnect }}" style="padding:6px 10px;font-size:13px;border-radius:8px;border:0;background:#141619;color:#fff;cursor:pointer;font-weight:600">{{ a.fixLabel }}</button></sc-if>
               <button onClick="{{ a.disconnect }}" style="padding:6px 10px;font-size:13px;border-radius:8px;border:1px solid #e7e5df;background:#fff;color:#677184;cursor:pointer;font-weight:500" style-hover="color:#dc3545;border-color:#f4c6c2">Disconnect</button>
             </div>
           </sc-for>
@@ -1697,7 +1697,7 @@ class Component extends DCLogic {
     // composer
     const sel = d.targets.map((id) => accById[id]).filter(Boolean);
     const accQ = (S0.accQ || '').toLowerCase();
-    const accountChips = s.accounts.filter((a) => !accQ || a.username.toLowerCase().includes(accQ) || P[a.platform].label.toLowerCase().includes(accQ)).map((a) => { const on = d.targets.includes(a.id); const warn = a.health === 'error' ? 'Reconnect needed' : a.health === 'expiring' ? 'Expires soon' : P[a.platform].label; return { username: a.username, logo: P[a.platform].logo, color: P[a.platform].color, ...Component.pic(a), pressed: on ? 'true' : 'false', border: on ? '#141619' : 'transparent', bg: on ? '#f6ffd9' : 'transparent', boxBorder: on ? '#141619' : '#cfd3d9', boxBg: on ? '#d9ff35' : '#fff', mark: on ? '✓' : '', sub: warn, subColor: a.health === 'error' ? '#dc3545' : a.health === 'expiring' ? '#b47100' : '#677184', toggle: () => this.upd({ targets: on ? d.targets.filter((x) => x !== a.id) : [...d.targets, a.id] }) }; });
+    const accountChips = s.accounts.filter((a) => !accQ || a.username.toLowerCase().includes(accQ) || P[a.platform].label.toLowerCase().includes(accQ)).map((a) => { const on = d.targets.includes(a.id); const warn = a.health === 'over' ? 'Over plan limit' : a.health === 'error' ? 'Reconnect needed' : a.health === 'expiring' ? 'Expires soon' : P[a.platform].label; return { username: a.username, logo: P[a.platform].logo, color: P[a.platform].color, ...Component.pic(a), pressed: on ? 'true' : 'false', border: on ? '#141619' : 'transparent', bg: on ? '#f6ffd9' : 'transparent', boxBorder: on ? '#141619' : '#cfd3d9', boxBg: on ? '#d9ff35' : '#fff', mark: on ? '✓' : '', sub: warn, subColor: a.health === 'error' ? '#dc3545' : a.health === 'expiring' || a.health === 'over' ? '#b47100' : '#677184', toggle: () => this.upd({ targets: on ? d.targets.filter((x) => x !== a.id) : [...d.targets, a.id] }) }; });
     const plats = [...new Set(sel.map((a) => a.platform))];
     const counters = plats.map((pl) => ({ label: P[pl].label, text: `${d.caption.length}/${P[pl].max}`, color: P[pl].color, fg: d.caption.length > P[pl].max ? '#dc3545' : '#677184' }));
     const hasImg = d.media.includes('IMG'), hasVid = d.media.includes('VIDEO');
@@ -1742,12 +1742,13 @@ class Component extends DCLogic {
     const previewTabs = sel.map((a) => ({ short: P[a.platform].short, logo: P[a.platform].logo, color: P[a.platform].color, title: `${P[a.platform].label} · ${a.username}`, ringShadow: pvAcc && pvAcc.id === a.id ? '0 0 0 2px #fff, 0 0 0 4px #141619' : 'none', select: () => this.upd({ previewId: a.id }) }));
 
     // accounts
-    const HL = (a) => a.health === 'error' ? { hLabel: 'Reconnect needed', hFg: '#a1281f', hBg: '#fde8e6', healthDetail: a.error || 'Connection error', needsFix: true }
-      : a.health === 'expiring' ? { hLabel: 'Expires soon', hFg: '#8a5a00', hBg: '#fff1d6', healthDetail: `Token expires ${this.dayLabel(a.expires)}`, needsFix: true }
-      : { hLabel: 'Connected', hFg: '#15803d', hBg: '#eaf6ee', healthDetail: 'Token valid for 58 days', needsFix: false };
+    const HL = (a) => a.health === 'over' ? { hLabel: 'Over plan limit', hFg: '#8a5a00', hBg: '#fff1d6', healthDetail: "Paused. Your plan's account limit is reached", needsFix: true, fixLabel: 'Upgrade' }
+      : a.health === 'error' ? { hLabel: 'Reconnect needed', hFg: '#a1281f', hBg: '#fde8e6', healthDetail: a.error || 'Connection error', needsFix: true, fixLabel: 'Reconnect' }
+      : a.health === 'expiring' ? { hLabel: 'Expires soon', hFg: '#8a5a00', hBg: '#fff1d6', healthDetail: `Token expires ${this.dayLabel(a.expires)}`, needsFix: true, fixLabel: 'Reconnect' }
+      : { hLabel: 'Connected', hFg: '#15803d', hBg: '#eaf6ee', healthDetail: 'Token valid for 58 days', needsFix: false, fixLabel: 'Reconnect' };
     const reconnect = (a) => () => { this.setState((st) => ({ accounts: st.accounts.map((x) => (x.id === a.id ? { ...x, health: 'ok', error: '', expires: null } : x)) })); this.flash(`Reconnected ${P[a.platform].label} @${a.username}`); };
     const acQ = (S0.acQ || '').toLowerCase();
-    const connected = s.accounts.filter((a) => (!acQ || a.username.toLowerCase().includes(acQ)) && (!S0.acPlat || a.platform === S0.acPlat) && (!S0.acSt || (S0.acSt === 'issue') === !!(a.health === 'error' || a.health === 'expiring'))).sort((x, y) => !!(y.health === 'error' || y.health === 'expiring') - !!(x.health === 'error' || x.health === 'expiring')).map((a, i) => ({
+    const connected = s.accounts.filter((a) => (!acQ || a.username.toLowerCase().includes(acQ)) && (!S0.acPlat || a.platform === S0.acPlat) && (!S0.acSt || (S0.acSt === 'issue') === !!(a.health === 'error' || a.health === 'expiring' || a.health === 'over'))).sort((x, y) => !!(y.health === 'error' || y.health === 'expiring' || y.health === 'over') - !!(x.health === 'error' || x.health === 'expiring' || x.health === 'over')).map((a, i) => ({
       ...a, ...HL(a), reconnect: reconnect(a), initial: a.username[0].toUpperCase(), color: P[a.platform].color, short: P[a.platform].short, logo: P[a.platform].logo, ...Component.pic(a), platform: P[a.platform].label, divider: i ? '1px solid #e5e3dc' : '0',
       queued: (() => { const q = upcoming.filter((p) => p.targets.some((t) => t.acc === a.id)).length; return q ? `${q} queued` : ''; })(),
       disconnect: () => { const q = upcoming.filter((p) => p.targets.some((t) => t.acc === a.id)).length; this.setState({ confirm: { title: `Disconnect @${a.username}?`, body: q ? `${q} scheduled post${q === 1 ? '' : 's'} will stop publishing to this account. Other accounts on those posts are not affected.` : 'No scheduled posts use this account.', cta: 'Disconnect', go: () => { this.setState((st) => ({ accounts: st.accounts.filter((x) => x.id !== a.id) })); this.flash(`Disconnected ${a.username}`); } } }); },
@@ -2060,7 +2061,7 @@ class Component extends DCLogic {
         const tog = (on) => ({ Track: on ? '#141619' : '#d8d5cc', Knob: on ? 16 : 2 });
         const T = (name, on, fn) => ({ [name + 'Toggle']: fn, [name + 'Track']: tog(on).Track, [name + 'Knob']: tog(on).Knob });
         const nowMs = Date.now(), hr = new Date(nowMs + this.tzShift(nowMs)).getHours();
-        const sick = s.accounts.filter((a) => a.health === 'error' || a.health === 'expiring');
+        const sick = s.accounts.filter((a) => a.health === 'error' || a.health === 'expiring' || a.health === 'over');
         const pending = s.posts.filter((p) => p.approval === 'pending' && p.status !== 'published');
         const pub7 = s.posts.filter((p) => ['published', 'partial'].includes(p.status) && p.at > NOW - 7 * 864e5).length;
         const conflictIds = Object.keys(conflictMap), seen = new Set();
@@ -2128,7 +2129,7 @@ class Component extends DCLogic {
             open: () => this.editPost(p),
           };
         });
-        const healthTiles = s.accounts.map((a) => { const h = HL(a); return { username: a.username, detail: h.needsFix ? h.healthDetail : P[a.platform].label, label: h.hLabel === 'Connected' ? 'OK' : h.hLabel, fg: h.hFg, border: h.needsFix ? (a.health === 'error' ? '#f4c6c2' : '#f3dfb2') : '#e7e5df', glow: h.needsFix ? '0 12px 28px -20px ' + (a.health === 'error' ? 'rgba(210,59,47,.6)' : 'rgba(180,113,0,.5)') : 'none', color: P[a.platform].color, logo: P[a.platform].logo, ...Component.pic(a), title: `@${a.username} · ${P[a.platform].label}`, platform: a.platform, needsFix: h.needsFix, fix: reconnect(a) }; }).sort((x, y) => y.needsFix - x.needsFix);
+        const healthTiles = s.accounts.map((a) => { const h = HL(a); return { username: a.username, detail: h.needsFix ? h.healthDetail : P[a.platform].label, label: h.hLabel === 'Connected' ? 'OK' : h.hLabel, fg: h.hFg, border: h.needsFix ? (a.health === 'error' ? '#f4c6c2' : '#f3dfb2') : '#e7e5df', glow: h.needsFix ? '0 12px 28px -20px ' + (a.health === 'error' ? 'rgba(210,59,47,.6)' : 'rgba(180,113,0,.5)') : 'none', color: P[a.platform].color, logo: P[a.platform].logo, ...Component.pic(a), title: `@${a.username} · ${P[a.platform].label}`, platform: a.platform, needsFix: h.needsFix, fixLabel: h.fixLabel, fix: reconnect(a) }; }).sort((x, y) => y.needsFix - x.needsFix);
         const localNow = new Date(nowMs + this.tzShift());
         return {
           dateLine: localNow.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) + ' · ' + this.time(nowMs) + ' · ' + Component.tzLabel(S0.tz),

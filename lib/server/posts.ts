@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { exec, now, one, query, tx, uid } from './db';
 import { decrypt } from './crypto';
 import { HttpError } from './http-error';
+import { overLimitAccountIds } from './accounts';
 import { getBytes, readUrl } from './storage';
 import { PLATFORMS, type PlatformId } from './platforms';
 import type { MediaFile, SocialAccount } from './adapters/types';
@@ -91,7 +92,11 @@ export function publicAccount(r: any) {
   };
 }
 export async function listAccounts(workspaceId: string) {
-  return (await query('SELECT * FROM social_accounts WHERE workspace_id=$1 ORDER BY created_at', [workspaceId])).map(publicAccount);
+  const [rows, over] = await Promise.all([
+    query('SELECT * FROM social_accounts WHERE workspace_id=$1 ORDER BY created_at', [workspaceId]),
+    overLimitAccountIds(workspaceId),
+  ]);
+  return rows.map((r) => ({ ...publicAccount(r), over_limit: over.has(r.id) }));
 }
 
 /* ---------- media ---------- */
@@ -142,12 +147,14 @@ export async function validatePost(workspaceId: string, input: PostInput) {
   if (media.length !== (input.media || []).length) errors.push('Some media files were not found');
   const accounts = await query('SELECT id, platform, username FROM social_accounts WHERE workspace_id=$1 AND id = ANY($2)', [workspaceId, (input.targets || []).map((t) => t.account_id)]);
   const byId = new Map(accounts.map((a) => [a.id, a]));
+  const over = accounts.length ? await overLimitAccountIds(workspaceId) : new Set<string>();
   const hasImg = media.some((m) => m.mime.startsWith('image/'));
   const hasVid = media.some((m) => m.mime.startsWith('video/'));
   for (const t of input.targets || []) {
     const acc = byId.get(t.account_id);
     if (!acc) { errors.push(`Unknown account ${t.account_id}`); continue; }
     const p = PLATFORMS[acc.platform as PlatformId];
+    if (over.has(acc.id)) errors.push(`${p.label} (@${acc.username}) is paused because the workspace is over its plan's account limit. Upgrade or disconnect an account.`);
     const text = t.caption ?? input.caption ?? '';
     if (text.length > p.maxChars) errors.push(`${p.label} (@${acc.username}): ${text.length}/${p.maxChars} characters`);
     if (p.requiresMedia === 'any' && !media.length) errors.push(`${p.label} needs an image or video`);

@@ -767,6 +767,54 @@ export function renderLandingMobile($v) {
                   </span>
                   <span style={{ color: '#6b7079' }}>{'/mo'}</span>
                 </div>{' '}
+                <span style={{ fontSize: '13px', color: '#6b7079' }}>{$t($v['planBilled'])}</span>{' '}
+                <div
+                  role="group"
+                  aria-label="Billing period"
+                  style={{
+                    display: 'flex',
+                    gap: '4px',
+                    padding: '3px',
+                    borderRadius: '11px',
+                    border: '1px solid #2a2e34',
+                    alignSelf: 'flex-start',
+                    margin: '4px 0',
+                  }}
+                >
+                  {' '}
+                  <button
+                    aria-pressed={$v['moPressed']}
+                    onClick={$v['pickMonthly']}
+                    style={{
+                      padding: '7px 12px',
+                      borderRadius: '8px',
+                      border: '0',
+                      cursor: 'pointer',
+                      fontSize: '13px',
+                      fontWeight: '600',
+                      background: `${$v['moBg'] ?? ''}`,
+                      color: `${$v['moFg'] ?? ''}`,
+                    }}
+                  >
+                    {'Monthly'}
+                  </button>{' '}
+                  <button
+                    aria-pressed={$v['yrPressed']}
+                    onClick={$v['pickYearly']}
+                    style={{
+                      padding: '7px 12px',
+                      borderRadius: '8px',
+                      border: '0',
+                      cursor: 'pointer',
+                      fontSize: '13px',
+                      fontWeight: '600',
+                      background: `${$v['yrBg'] ?? ''}`,
+                      color: `${$v['yrFg'] ?? ''}`,
+                    }}
+                  >
+                    {'Yearly · 2 months free'}
+                  </button>{' '}
+                </div>{' '}
                 <span style={{ fontSize: '14px', color: '#a7abb2' }}>
                   {'About '}
                   {$t($v['perDay'])}

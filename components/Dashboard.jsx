@@ -1527,7 +1527,13 @@ class Component extends DCLogic {
       .map((a) => {
         const on = d.targets.includes(a.id);
         const warn =
-          a.health === 'error' ? 'Reconnect needed' : a.health === 'expiring' ? 'Expires soon' : P[a.platform].label;
+          a.health === 'over'
+            ? 'Over plan limit'
+            : a.health === 'error'
+              ? 'Reconnect needed'
+              : a.health === 'expiring'
+                ? 'Expires soon'
+                : P[a.platform].label;
         return {
           username: a.username,
           logo: P[a.platform].logo,
@@ -1540,7 +1546,8 @@ class Component extends DCLogic {
           boxBg: on ? '#d9ff35' : '#fff',
           mark: on ? '✓' : '',
           sub: warn,
-          subColor: a.health === 'error' ? '#dc3545' : a.health === 'expiring' ? '#b47100' : '#677184',
+          subColor:
+            a.health === 'error' ? '#dc3545' : a.health === 'expiring' || a.health === 'over' ? '#b47100' : '#677184',
           toggle: () => this.upd({ targets: on ? d.targets.filter((x) => x !== a.id) : [...d.targets, a.id] }),
         };
       });
@@ -1688,29 +1695,41 @@ class Component extends DCLogic {
 
     // accounts
     const HL = (a) =>
-      a.health === 'error'
+      a.health === 'over'
         ? {
-            hLabel: 'Reconnect needed',
-            hFg: '#a1281f',
-            hBg: '#fde8e6',
-            healthDetail: a.error || 'Connection error',
+            hLabel: 'Over plan limit',
+            hFg: '#8a5a00',
+            hBg: '#fff1d6',
+            healthDetail: "Paused. Your plan's account limit is reached",
             needsFix: true,
+            fixLabel: 'Upgrade',
           }
-        : a.health === 'expiring'
+        : a.health === 'error'
           ? {
-              hLabel: 'Expires soon',
-              hFg: '#8a5a00',
-              hBg: '#fff1d6',
-              healthDetail: `Token expires ${this.dayLabel(a.expires)}`,
+              hLabel: 'Reconnect needed',
+              hFg: '#a1281f',
+              hBg: '#fde8e6',
+              healthDetail: a.error || 'Connection error',
               needsFix: true,
+              fixLabel: 'Reconnect',
             }
-          : {
-              hLabel: 'Connected',
-              hFg: '#15803d',
-              hBg: '#eaf6ee',
-              healthDetail: 'Token valid for 58 days',
-              needsFix: false,
-            };
+          : a.health === 'expiring'
+            ? {
+                hLabel: 'Expires soon',
+                hFg: '#8a5a00',
+                hBg: '#fff1d6',
+                healthDetail: `Token expires ${this.dayLabel(a.expires)}`,
+                needsFix: true,
+                fixLabel: 'Reconnect',
+              }
+            : {
+                hLabel: 'Connected',
+                hFg: '#15803d',
+                hBg: '#eaf6ee',
+                healthDetail: 'Token valid for 58 days',
+                needsFix: false,
+                fixLabel: 'Reconnect',
+              };
     const reconnect = (a) => () => {
       this.setState((st) => ({
         accounts: st.accounts.map((x) => (x.id === a.id ? { ...x, health: 'ok', error: '', expires: null } : x)),
@@ -1723,11 +1742,13 @@ class Component extends DCLogic {
         (a) =>
           (!acQ || a.username.toLowerCase().includes(acQ)) &&
           (!S0.acPlat || a.platform === S0.acPlat) &&
-          (!S0.acSt || (S0.acSt === 'issue') === !!(a.health === 'error' || a.health === 'expiring')),
+          (!S0.acSt ||
+            (S0.acSt === 'issue') === !!(a.health === 'error' || a.health === 'expiring' || a.health === 'over')),
       )
       .sort(
         (x, y) =>
-          !!(y.health === 'error' || y.health === 'expiring') - !!(x.health === 'error' || x.health === 'expiring'),
+          !!(y.health === 'error' || y.health === 'expiring' || y.health === 'over') -
+          !!(x.health === 'error' || x.health === 'expiring' || x.health === 'over'),
       )
       .map((a, i) => ({
         ...a,
@@ -3182,7 +3203,7 @@ class Component extends DCLogic {
         });
         const nowMs = Date.now(),
           hr = new Date(nowMs + this.tzShift(nowMs)).getHours();
-        const sick = s.accounts.filter((a) => a.health === 'error' || a.health === 'expiring');
+        const sick = s.accounts.filter((a) => a.health === 'error' || a.health === 'expiring' || a.health === 'over');
         const pending = s.posts.filter((p) => p.approval === 'pending' && p.status !== 'published');
         const pub7 = s.posts.filter(
           (p) => ['published', 'partial'].includes(p.status) && p.at > NOW - 7 * 864e5,
@@ -3456,6 +3477,7 @@ class Component extends DCLogic {
               title: `@${a.username} · ${P[a.platform].label}`,
               platform: a.platform,
               needsFix: h.needsFix,
+              fixLabel: h.fixLabel,
               fix: reconnect(a),
             };
           })

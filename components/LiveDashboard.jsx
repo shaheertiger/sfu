@@ -45,7 +45,7 @@ function mapAccount(a) {
   const soon = a.token_expires_at && a.token_expires_at < Date.now() + 3 * 864e5;
   return {
     id: a.id, platform: a.platform, username: a.username || a.display_name || a.platform, display: a.display_name || a.username,
-    health: a.status === 'error' ? 'error' : soon ? 'expiring' : undefined,
+    health: a.over_limit ? 'over' : a.status === 'error' ? 'error' : soon ? 'expiring' : undefined,
     avatar: a.avatar_url || '', error: a.last_error || '', expires: a.token_expires_at || null, boards: a.meta?.boards || [],
   };
 }
@@ -178,7 +178,10 @@ export default class LiveDashboard extends Base {
     if (q.get('screen')) super.setState({ screen: q.get('screen') });
     if (q.get('connected')) {
       const n = Number(q.get('n') || 1);
-      this.flash(`Connected ${n} ${P[q.get('connected')]?.label || q.get('connected')} account${n === 1 ? '' : 's'}`);
+      const skipped = Number(q.get('skipped') || 0);
+      const label = P[q.get('connected')]?.label || q.get('connected');
+      if (skipped) this.flash(`Connected ${n} ${label} account${n === 1 ? '' : 's'}. ${skipped} more didn't fit: your plan allows ${q.get('limit')} accounts. Upgrade to add them.`, true);
+      else this.flash(`Connected ${n} ${label} account${n === 1 ? '' : 's'}`);
     }
     if (q.get('error')) this.flash(q.get('error'), true);
     if (q.get('billing') === 'success') {
@@ -370,9 +373,14 @@ export default class LiveDashboard extends Base {
   }
 
   /* ---------- accounts ---------- */
-  connect(platform) {
+  connect(platform, { reconnect = false } = {}) {
     const s = this.state;
-    if (s.accounts.length >= s.accountLimit) return this.flash(`Account limit (${s.accountLimit}) reached on your plan`, true);
+    // Reconnecting an existing account never needs a free slot.
+    if (!reconnect && s.accounts.length >= s.accountLimit) {
+      this.flash(`Your plan allows ${s.accountLimit} connected accounts. Upgrade or disconnect an account to add more.`, true);
+      if (s.billing?.enabled && s.wsList.find((w) => w.id === s.wsId)?.role === 'owner') this.openBilling();
+      return;
+    }
     if (platform === 'bluesky') return this.openBluesky();
     if (!s.platforms[platform]?.configured) return this.flash(`${P[platform].label} isn't set up yet. Add its developer keys in Vercel (see the README).`, true);
     window.location.href = `/api/connect/${platform}`;
@@ -498,18 +506,18 @@ export default class LiveDashboard extends Base {
     v.connected = v.connected.map((c) => {
       const a = accBy((x) => x.id === c.id);
       const detail = a?.health === 'error' ? a.error || 'Connection error' : a?.expires ? `Token valid until ${new Date(a.expires).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}` : 'Connected';
-      return { ...c, healthDetail: c.needsFix ? c.healthDetail : detail, reconnect: () => this.connect(a?.platform || 'bluesky') };
+      return { ...c, healthDetail: c.needsFix ? c.healthDetail : detail, reconnect: a?.health === 'over' ? () => this.openBilling() : () => this.connect(a?.platform || 'bluesky', { reconnect: true }) };
     });
     for (const t of v.healthTiles || []) {
       const a = accBy((x) => x.username === t.username && P[x.platform].color === t.color);
-      if (a) t.fix = () => this.connect(a.platform);
+      if (a) t.fix = a.health === 'over' ? () => this.openBilling() : () => this.connect(a.platform, { reconnect: true });
     }
     for (const item of v.attention || []) {
       for (const act of item.actions || []) {
         if (act.label !== 'Reconnect') continue;
         const m = /@(\S+):/.exec(item.title);
         const a = m && accBy((x) => x.username === m[1]);
-        if (a) act.go = () => this.connect(a.platform);
+        if (a) act.go = () => this.connect(a.platform, { reconnect: true });
       }
     }
 
@@ -635,7 +643,7 @@ export default class LiveDashboard extends Base {
         {this.state.planPicker && (
           <PlanDialog
             billing={this.state.billing}
-            onPick={(plan) => this.goBilling('/api/billing/checkout', { plan })}
+            onPick={(plan, interval) => this.goBilling('/api/billing/checkout', { plan, interval })}
             onClose={() => super.setState({ planPicker: false })}
           />
         )}
@@ -703,7 +711,8 @@ function BillingBanner({ billing: b, owner, onChoose }) {
   let text = '';
   let tone = 'calm';
   let cta = 'Choose a plan';
-  const price = b.plans?.find((p) => p.id === b.plan)?.amount;
+  const cur = b.plans?.find((p) => p.id === b.plan);
+  const price = cur && (b.interval === 'year' ? `${cur.yearlyAmount} for the year` : cur.amount);
   if (b.state === 'needs_card') { text = 'Add a card to start your 7-day free trial. Publishing is off until then.'; cta = 'Start free trial'; }
   else if (b.state === 'trial' && b.daysLeft != null && b.daysLeft <= 2 && !b.cancelAtPeriodEnd) { text = `Your free trial ends in ${b.daysLeft} day${b.daysLeft === 1 ? '' : 's'}${price ? `. Your card will be charged $${price}` : ''}.`; cta = 'Manage billing'; }
   else if (b.state === 'expired') { text = 'Your plan has ended. Scheduled posts are paused.'; tone = 'alert'; }
@@ -725,11 +734,14 @@ function BillingBanner({ billing: b, owner, onChoose }) {
 
 function PlanDialog({ billing: b, onPick, onClose }) {
   const [busy, setBusy] = React.useState('');
+  const [interval, setInterval_] = React.useState('month');
+  const yearly = interval === 'year';
   const plans = b?.plans || [];
   const pick = async (id) => {
     setBusy(id);
-    try { await onPick(id); } catch { setBusy(''); }
+    try { await onPick(id, interval); } catch { setBusy(''); }
   };
+  const tab = (on) => ({ flex: 1, padding: '7px 12px', borderRadius: 9, border: 0, cursor: 'pointer', fontWeight: 600, fontSize: 13, background: on ? '#141619' : 'transparent', color: on ? '#fff' : '#3d434d' });
   const features = { solo: ['15 connected accounts', 'Unlimited posts & scheduling', 'API + MCP access'], studio: ['100 connected accounts', 'Team members', 'Priority support'] };
   return (
     <div role="dialog" aria-modal="true" aria-label="Choose a plan" onClick={(e) => e.target === e.currentTarget && onClose()} style={{ position: 'fixed', inset: 0, zIndex: 95, display: 'grid', placeItems: 'center', padding: 16, background: 'rgba(20,22,25,.45)', fontFamily: 'Geist, system-ui, sans-serif' }}>
@@ -738,18 +750,23 @@ function PlanDialog({ billing: b, onPick, onClose }) {
           <strong style={{ fontSize: 18, letterSpacing: '-0.02em' }}>{b?.trialEligible ? 'Start your 7-day free trial' : 'Choose a plan'}</strong>
           <button type="button" onClick={onClose} aria-label="Close" style={{ border: 0, background: 'transparent', fontSize: 20, cursor: 'pointer', color: '#677184' }}>×</button>
         </div>
+        <div role="group" aria-label="Billing period" style={{ display: 'flex', gap: 4, padding: 4, borderRadius: 12, background: '#f1f1ec', alignSelf: 'start', maxWidth: 320 }}>
+          <button type="button" aria-pressed={!yearly} onClick={() => setInterval_('month')} style={tab(!yearly)}>Monthly</button>
+          <button type="button" aria-pressed={yearly} onClick={() => setInterval_('year')} style={tab(yearly)}>Yearly <span style={{ color: yearly ? '#d9ff35' : '#15803d', fontWeight: 600 }}>2 months free</span></button>
+        </div>
         <p style={{ margin: 0, fontSize: 14, color: '#677184', lineHeight: 1.5 }}>
           {b?.trialEligible
-            ? '7 days free, then billed monthly. A card is required to start; you are not charged until day 8, and you can cancel before then.'
-            : 'Billed monthly. Cancel anytime.'}{' '}Payments are handled by Stripe.
+            ? `7 days free, then billed ${yearly ? 'yearly' : 'monthly'}. A card is required to start; you are not charged until day 8, and you can cancel before then.`
+            : `Billed ${yearly ? 'yearly' : 'monthly'}. Cancel anytime.`}{' '}Payments are handled by Stripe.
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12 }}>
           {plans.map((p) => (
             <div key={p.id} style={{ border: p.id === 'studio' ? '2px solid #141619' : '1px solid #e5e3dc', borderRadius: 14, padding: 16, display: 'grid', gap: 10, alignContent: 'start' }}>
               <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
                 <strong style={{ fontSize: 16 }}>{p.name}</strong>
-                <span><strong style={{ fontSize: 22 }}>${p.amount}</strong><span style={{ color: '#677184', fontSize: 13 }}>/mo</span></span>
+                <span><strong style={{ fontSize: 22 }}>${yearly ? +(p.yearlyAmount / 12).toFixed(2) : p.amount}</strong><span style={{ color: '#677184', fontSize: 13 }}>/mo</span></span>
               </div>
+              <span style={{ marginTop: -6, fontSize: 12, color: '#677184' }}>{yearly ? `$${p.yearlyAmount} billed yearly · save $${p.amount * 12 - p.yearlyAmount}` : 'Billed monthly'}</span>
               <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: '#3d434d', lineHeight: 1.7 }}>
                 {(features[p.id] || []).map((f) => <li key={f}>{f}</li>)}
               </ul>

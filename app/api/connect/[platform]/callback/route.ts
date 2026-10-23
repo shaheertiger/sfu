@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { now, one } from '@/lib/server/db';
 import { adapterFor } from '@/lib/server/adapters';
-import { upsertAccount } from '@/lib/server/accounts';
+import { connectAccounts, limitMessage } from '@/lib/server/accounts';
 import { requireWorkspace } from '@/lib/server/auth';
 import { appUrl } from '@/lib/server/url';
 
@@ -29,8 +29,10 @@ export async function GET(req: Request, { params }: { params: Promise<{ platform
   try {
     const accounts = await adapterFor(platform).exchangeCode!({ code, redirectUri: `${base}/api/connect/${platform}/callback`, codeVerifier: st.code_verifier });
     if (!accounts.length) return fail(`No ${platform} accounts were found on that login. Check the account type and permissions.`);
-    for (const f of accounts) await upsertAccount(st.workspace_id, platform, f);
-    return NextResponse.redirect(`${base}/app?screen=accounts&connected=${platform}&n=${accounts.length}`);
+    const r = await connectAccounts(st.workspace_id, platform, accounts);
+    if (!r.saved.length) return fail(limitMessage(r.limit));
+    // Accounts past the plan's limit are skipped; the dashboard says how many and why.
+    return NextResponse.redirect(`${base}/app?screen=accounts&connected=${platform}&n=${r.saved.length}${r.skipped ? `&skipped=${r.skipped}&limit=${r.limit}` : ''}`);
   } catch (e: any) {
     return fail(e?.message || 'Connection failed');
   }

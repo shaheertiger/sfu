@@ -8,6 +8,7 @@ import { notifyFailures, type Failure } from './notify';
 import { canPublishSql } from './billing';
 import { firePostEvent } from './webhooks';
 import { withSignature } from './signature';
+import { overLimitAccountIds } from './accounts';
 
 const MAX_ATTEMPTS = 3;
 const DRY_RUN = process.env.SFY_DRY_RUN === '1';
@@ -34,6 +35,8 @@ export async function publishPost(postId: string) {
   const media = await mediaFiles(post.workspace_id, post.media || []);
   const signature = post.signature === false ? '' : ((await one('SELECT signature FROM workspaces WHERE id=$1', [post.workspace_id]))?.signature || '').trim();
 
+  // Accounts past the plan's limit (e.g. after a downgrade) don't publish.
+  const overLimit = await overLimitAccountIds(post.workspace_id);
   const failures: Failure[] = [];
   for (const target of targets) {
     if (target.status === 'published') continue;
@@ -43,6 +46,9 @@ export async function publishPost(postId: string) {
     try {
       const accRow = await one('SELECT * FROM social_accounts WHERE id=$1 AND workspace_id=$2', [target.account_id, post.workspace_id]);
       if (!accRow) throw new PublishError('Account was disconnected', false);
+      if (overLimit.has(accRow.id)) {
+        throw new PublishError("This account is paused because the workspace is over its plan's account limit. Upgrade or disconnect an account, then retry.", false);
+      }
       const account = await freshAccount(accRow);
       const caption = withSignature(target.caption_override ?? post.caption, signature, account.platform);
       const result = DRY_RUN
