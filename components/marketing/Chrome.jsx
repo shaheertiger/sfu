@@ -99,7 +99,7 @@ export function SiteFooter() {
             </div>
           ))}
         </div>
-        <p className={m.footNote}>© 2026 Schedule For You. Platform names are trademarks of their owners; Schedule For You is not affiliated with them.</p>
+        <p className={m.footNote}>© 2026 Schedule For You · <Link href="/privacy">Privacy Policy</Link> · <Link href="/data-deletion">Data deletion</Link>. Platform names are trademarks of their owners; Schedule For You is not affiliated with them.</p>
       </div>
     </footer>
   );

@@ -104,6 +104,13 @@ test('every standalone page has copy and a route, and every page file is listed'
     assert.ok(c, `${slug}: missing content`);
     assert.ok(fs.existsSync(path.join(process.cwd(), 'app', slug, 'page.jsx')), `${slug}: missing route`);
     for (const k of ['title', 'description', 'h1']) assert.ok(c.page[k], `${slug}: ${k}`);
-    assert.ok(c.page.faq.length >= 4, `${slug}: faq`);
+    if (c.layout !== 'legal') assert.ok(c.page.faq.length >= 4, `${slug}: faq`);
   }
+});
+
+test('the privacy policy covers every platform we publish to and names a contact', () => {
+  const privacy = fs.readFileSync(path.join(ROOT, 'pages', 'privacy.md'), 'utf8');
+  for (const name of ['Facebook', 'Instagram', 'Threads', 'X', 'LinkedIn', 'TikTok', 'YouTube', 'Google Business Profile', 'Pinterest', 'Bluesky']) assert.ok(privacy.includes(`| ${name} |`), name);
+  assert.match(privacy, /privacy@scheduleforyou\.com/);
+  assert.match(privacy, /Limited Use/);
 });
