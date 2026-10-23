@@ -66,6 +66,7 @@ const FOOTER = [
       ['/about', 'About'],
       ['/pricing', 'Pricing'],
       ...LANDING_PAGES.filter((p) => p.group === 'Product' && p.slug !== 'pricing').map((p) => [`/${p.slug}`, p.name]),
+      ['/docs', 'API reference'],
       ['/blog/connect-facebook-page', 'Connect a Facebook Page'],
       ['/blog/connect-google-business-profile', 'Connect Google Business'],
       ['/signup', 'Start free trial'],
