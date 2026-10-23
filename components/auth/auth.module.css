@@ -13,3 +13,7 @@
 .switch{margin:4px 0 0;text-align:center;font-size:14px;color:#a7abb2}
 .switch a,.demo a{color:#f6f5f1}
 .demo{margin:0;font-size:14px;color:#6b7079}
+.notice{margin:0;padding:12px 14px;border-radius:10px;background:#1e2a10;color:#dcff2e;font-size:14px;line-height:1.5}
+.button{display:block;margin-top:6px;text-align:center;font-size:16px;font-weight:600;padding:13px;border-radius:12px;background:#dcff2e;color:#15171a;text-decoration:none}
+.forgot{margin:-6px 0 0;text-align:right;font-size:13px}
+.forgot a{color:#a7abb2}
