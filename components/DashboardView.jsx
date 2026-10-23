@@ -2268,6 +2268,7 @@ export function renderDashboard($v) {
                   </select>{' '}
                   <span title="Change in Settings" style={{ fontSize: '12px', color: '#677184', whiteSpace: 'nowrap' }}>
                     {$t($v['tzShort'])}
+                    {' · Drag a scheduled post to another day to move it'}
                   </span>{' '}
                 </div>{' '}
                 {$v['noteOpen'] ? (
@@ -2465,8 +2466,11 @@ export function renderDashboard($v) {
                             {$arr(d?.shown).map((e, $index) => (
                               <Fragment key={$index}>
                                 {' '}
-                                <button
+                                <div
+                                  role="button"
+                                  tabIndex="0"
                                   onClick={e?.open}
+                                  onKeyDown={e?.key}
                                   draggable={e?.draggable}
                                   onDragStart={e?.dragStart}
                                   onDragEnd={e?.dragEnd}
@@ -2534,7 +2538,7 @@ export function renderDashboard($v) {
                                       display: `${e?.thumbDisplay ?? ''}`,
                                     }}
                                   />{' '}
-                                </button>{' '}
+                                </div>{' '}
                               </Fragment>
                             ))}{' '}
                             <button

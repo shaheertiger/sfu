@@ -1407,6 +1407,12 @@ class Component extends DCLogic {
         thumbOrBlank: p.media.length ? th : '#f1f1ec',
         divider: i ? '1px solid #efefea' : '0',
         open: () => this.setState({ calPost: p.src || p.id }),
+        key: (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.setState({ calPost: p.src || p.id });
+          }
+        },
         duplicate: (e) => {
           e && e.stopPropagation && e.stopPropagation();
           this.duplicate([p.src || p.id]);

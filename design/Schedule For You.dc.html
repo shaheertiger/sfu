@@ -416,7 +416,7 @@ textarea{resize:vertical}
           <select value="{{ calPlat }}" onChange="{{ onCalPlat }}" aria-label="Filter by platform" style="padding:7px 10px;border:1px solid #e7e5df;border-radius:9px;background:#fff;font-size:13px;color:#141619;cursor:pointer"><sc-for list="{{ calPlatOpts }}" as="o" hint-placeholder-count="0"><option value="{{ o.v }}">{{ o.l }}</option></sc-for></select>
           <select value="{{ calAcc }}" onChange="{{ onCalAcc }}" aria-label="Filter by account" style="padding:7px 10px;border:1px solid #e7e5df;border-radius:9px;background:#fff;font-size:13px;color:#141619;cursor:pointer"><sc-for list="{{ calAccOpts }}" as="o" hint-placeholder-count="0"><option value="{{ o.v }}">{{ o.l }}</option></sc-for></select>
           <select value="{{ calStatus }}" onChange="{{ onCalStatus }}" aria-label="Filter by status" style="padding:7px 10px;border:1px solid #e7e5df;border-radius:9px;background:#fff;font-size:13px;color:#141619;cursor:pointer"><sc-for list="{{ calStatusOpts }}" as="o" hint-placeholder-count="0"><option value="{{ o.v }}">{{ o.l }}</option></sc-for></select>
-          <span title="Change in Settings" style="font-size:12px;color:#677184;white-space:nowrap">{{ tzShort }}</span>
+          <span title="Change in Settings" style="font-size:12px;color:#677184;white-space:nowrap">{{ tzShort }} · Drag a scheduled post to another day to move it</span>
         </div>
         <sc-if value="{{ noteOpen }}" hint-placeholder-val="{{ false }}">
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 16px;border-radius:14px;background:#fff8e6;border:1px solid #f3dfb2">
@@ -440,12 +440,12 @@ textarea{resize:vertical}
               </div>
               <button onClick="{{ d.editNote }}" title="{{ d.note }}" style="display:{{ d.noteDisplay }};text-align:left;border:0;padding:2px 6px;border-radius:5px;background:#fff6e0;color:#8a5a00;font-size:11px;font-weight:500;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ d.note }}</button>
               <sc-for list="{{ d.shown }}" as="e" hint-placeholder-count="0">
-                <button class="sfy-mchip" onClick="{{ e.open }}" draggable="{{ e.draggable }}" onDragStart="{{ e.dragStart }}" onDragEnd="{{ e.dragEnd }}" title="{{ e.title }}" style="opacity:{{ e.op }};display:flex;align-items:center;gap:5px;font-size:12px;font-weight:500;padding:3px 4px 3px 4px;border-radius:7px;border:1px solid {{ e.border }};cursor:{{ e.cursor }};text-align:left;min-width:0;color:#141619;background:#fff;transition:border-color .15s" style-hover="border-color:#141619">
+                <div class="sfy-mchip" role="button" tabindex="0" onClick="{{ e.open }}" onKeyDown="{{ e.key }}" draggable="{{ e.draggable }}" onDragStart="{{ e.dragStart }}" onDragEnd="{{ e.dragEnd }}" title="{{ e.title }}" style="opacity:{{ e.op }};display:flex;align-items:center;gap:5px;font-size:12px;font-weight:500;padding:3px 4px 3px 4px;border-radius:7px;border:1px solid {{ e.border }};cursor:{{ e.cursor }};text-align:left;min-width:0;color:#141619;background:#fff;transition:border-color .15s" style-hover="border-color:#141619">
                   <span style="width:16px;height:16px;border-radius:50%;flex:none;background:{{ e.c1 }};display:grid;place-items:center"><span style="width:60%;height:60%;background:{{ e.l1 }} center/contain no-repeat"></span></span>
                   <span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:clip">{{ e.timeShort }}</span>
                   <span style="font-size:10px;color:#677184;flex:none">{{ e.plus }}</span>
                   <span style="width:16px;height:16px;border-radius:4px;flex:none;background:{{ e.thumb }};display:{{ e.thumbDisplay }}"></span>
-                </button>
+                </div>
               </sc-for>
               <button onClick="{{ d.more }}" style="display:{{ d.moreDisplay }};text-align:left;border:0;background:transparent;padding:2px 4px;font-size:12px;color:#677184;cursor:pointer;font-weight:500">{{ d.moreLabel }}</button>
             </div>
@@ -1667,6 +1667,7 @@ class Component extends DCLogic {
         icons: p.targets.slice(0, 3).map((t) => LG(accById[t.acc]?.platform)), stLabel: st[0], stBg: st[1], stFg: st[2], border: st[0] === 'Failed' ? '#f5c2c7' : st[0] === 'Needs approval' ? '#f3dfb2' : '#e7e5df',
         thumb: th, thumbDisplay: p.media.length ? 'block' : 'none', thumbOrBlank: p.media.length ? th : '#f1f1ec', divider: i ? '1px solid #efefea' : '0',
         open: () => this.setState({ calPost: p.src || p.id }),
+        key: (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.setState({ calPost: p.src || p.id }); } },
         duplicate: (e) => { e && e.stopPropagation && e.stopPropagation(); this.duplicate([p.src || p.id]); }, ...this.dragProps(p) }; };
     for (const p of s.posts.filter(calMatch)) if (p.at) {
       (byDay[new Date(p.at).toDateString()] ||= []).push(p);
