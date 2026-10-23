@@ -114,7 +114,7 @@ Once you've fixed the cause, here's how to recover:
 3. Retry the post to publish it now, or pick a new time.
 4. If the same post went to other platforms, only the failed target needs retrying. The others have already published.
 
-The daily digest is also worth keeping on. It summarizes what's coming up and what went wrong, so a broken connection doesn't quietly cost you several days of posts.
+The daily digest is also worth keeping on. Checking it each morning, alongside your alerts, means a broken connection doesn't quietly cost you several days of posts.
 
 ## How to stop posts failing in the future
 
