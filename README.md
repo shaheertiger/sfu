@@ -32,7 +32,7 @@ On phones the dashboard switches to a top bar, a bottom tab bar and a slide-in m
 1. **Neon:** in the Vercel project, add the Neon integration (Storage → Neon). It sets `DATABASE_URL` and `DATABASE_URL_UNPOOLED`. Migrations run automatically on every build (`scripts/migrate.mjs`).
 2. **Neon Auth (sign-in):** `neon.ts` declares `auth: true`. Add `NEON_AUTH_BASE_URL` (the branch's Auth URL from the Neon Console → Auth, e.g. `https://ep-….neonauth.c-6.us-east-2.aws.neon.tech/neondb/auth`) and `NEON_AUTH_COOKIE_SECRET` (`openssl rand -base64 32`). Neon Auth only accepts sign-ins from trusted domains: add your production domain (and any preview domain you use) in the Neon Console → Auth → Domains, or with `neon neon-auth domain add https://your-domain.com`. Localhost is allowed by default.
 
-   Neon Auth stores users, passwords and sessions in the `neon_auth` schema. The app's `users` table keeps a profile row with the same id, created on first sign-in together with the user's first workspace. Workspaces, team invites and API keys work as before. Before launch, set up custom SMTP in Neon Auth (the shared sender is for development).
+   Neon Auth stores users, passwords and sessions in the `neon_auth` schema. The app's `users` table keeps a profile row with the same id, created on first sign-in together with the user's first workspace. Workspaces, team invites and API keys work as before. Before launch, turn on branded auth emails (see [Branded auth emails](#branded-auth-emails)); Neon's shared sender is for development.
 3. **Secrets:** add `TOKEN_ENCRYPTION_KEY` (`openssl rand -base64 32`; don't change it later or saved platform logins stop working) and `CRON_SECRET` (any long random string).
 4. **Media storage (Neon Object Storage):** the private bucket `sfy-media` is declared in `neon.ts` (`neon deploy` creates it). In the Neon Console, open **Connect → Storage** and add the values to Vercel under these names (Vercel reserves the `AWS_*` names Neon shows): `STORAGE_ENDPOINT` (= `AWS_ENDPOINT_URL_S3`), `STORAGE_ACCESS_KEY_ID` (= `AWS_ACCESS_KEY_ID`), `STORAGE_SECRET_ACCESS_KEY` (= `AWS_SECRET_ACCESS_KEY`), `STORAGE_REGION` (= `AWS_REGION`). Set `STORAGE_BUCKET` only if you use a different bucket name. Browsers upload with presigned URLs, so the bucket needs this CORS rule (already set on the production branch):
    ```json
@@ -46,7 +46,7 @@ On phones the dashboard switches to a top bar, a bottom tab bar and a slide-in m
    - an alert right away when a post fails for good (to the owner and the author),
    - a daily digest after 6 PM workspace time when something published or failed (to the owner),
    - team invite emails (the invite link is still shown in the dashboard).
-   Without `RESEND_API_KEY` these are skipped and logged. Optional: use Resend for Neon Auth's emails too (Neon Console → Auth → Email/SMTP: host `smtp.resend.com`, port 465, user `resend`, password = a Resend API key, sender on your verified domain).
+   Without `RESEND_API_KEY` these are skipped and logged. Password reset, email confirmation and sign-in link emails also go through Resend once the Neon Auth webhook is set up (see [Branded auth emails](#branded-auth-emails)).
 8. **Billing (Stripe):** plans Solo $19/mo (15 accounts) and Studio $59/mo (100 accounts, team members), one subscription per workspace. The 7-day free trial needs a card: after signing up, the owner picks a plan in Stripe Checkout (card required), Stripe runs the trial and charges on day 8 unless they cancel. One free trial per workspace.
    - Add `STRIPE_SECRET_KEY` (Stripe → Developers → API keys). Until it is set, billing is off and nothing is blocked.
    - Stripe → Developers → Webhooks → add endpoint `https://scheduleforyou.com/api/stripe/webhook` with events `checkout.session.completed`, `customer.subscription.created`, `customer.subscription.updated`, `customer.subscription.deleted`. Put its signing secret in `STRIPE_WEBHOOK_SECRET`.
@@ -57,6 +57,24 @@ On phones the dashboard switches to a top bar, a bottom tab bar and a slide-in m
 9. **Platforms:** add the developer keys for each platform you want (see below). Bluesky needs none.
 
 All variables are listed in `.env.example`.
+
+## Branded auth emails
+
+By default Neon Auth sends password reset and confirmation emails itself, from `auth@mail.myneon.app`, with Neon's branding and a link to Neon's domain. The webhook at `/api/webhooks/neon-auth` replaces them with our own emails, sent through Resend from `EMAIL_FROM`. The reset email links straight to `APP_URL/reset-password?token=…`.
+
+1. Make sure `RESEND_API_KEY`, `EMAIL_FROM`, `APP_URL` and `NEON_AUTH_BASE_URL` are set in Vercel and deployed (the webhook checks Neon's signature with the public keys at `NEON_AUTH_BASE_URL/.well-known/jwks.json`; no secret to copy).
+2. Neon Console → your project → the production branch → **Auth → Configuration → Webhooks**:
+   - Enable webhooks.
+   - **Webhook URL:** `https://scheduleforyou.com/api/webhooks/neon-auth`
+   - **Events:** `send.magic_link` only.
+   - **Timeout:** 10 seconds.
+   - Save.
+3. Neon Console → same branch → **Settings → Better Auth → Project Info**: set **Application Name** to `Schedule For You` (it defaults to the Neon project name and is shown wherever Neon still names the app).
+4. Test: on `/forgot-password`, request a reset for your own address. The email should come from `EMAIL_FROM`, say "Reset your Schedule For You password" and link to `scheduleforyou.com/reset-password?token=…`. Vercel logs show `[neon-auth webhook] sent forget-password email`.
+
+Same settings by CLI: `neon neon-auth config webhook update --enabled --url https://scheduleforyou.com/api/webhooks/neon-auth --enabled-events send.magic_link --timeout 10`.
+
+Once `send.magic_link` is subscribed, Neon stops sending these emails itself, so the webhook must work: if Resend isn't configured or a send fails, the webhook answers 5xx, Neon retries twice (15 seconds in total), and then the user sees an error. To go back to Neon's emails, turn the webhook off. Each event is sent once (event ids are kept in `neon_auth_events`); bad signatures and requests older than 5 minutes get 401. Each Neon branch has its own webhook setting, so preview branches keep Neon's default emails unless you set one up there too.
 
 ## Platform setup
 
@@ -191,6 +209,5 @@ After the first deploy: submit `https://scheduleforyou.com/sitemap.xml` in Searc
 
 ## Not built yet
 
-- Password reset (Neon Auth supports it; the app has no "forgot password" screen yet).
 - Engagement analytics from the platforms (Analytics shows publishing stats; impressions show "—").
 - Real image thumbnails in the queue and calendar (they show coloured tiles).
