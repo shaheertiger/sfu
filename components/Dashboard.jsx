@@ -2332,7 +2332,7 @@ class Component extends DCLogic {
         }));
       },
       mcpText:
-        '{\n  "mcpServers": {\n    "scheduleforyou": {\n      "command": "node",\n      "args": ["/path/to/scheduleforyou/mcp/server.mjs"],\n      "env": {\n        "SFY_URL": "https://app.scheduleforyou.com",\n        "SFY_API_KEY": "sfy_..."\n      }\n    }\n  }\n}',
+        '{\n  "mcpServers": {\n    "scheduleforyou": {\n      "type": "http",\n      "url": "https://scheduleforyou.com/api/mcp",\n      "headers": { "Authorization": "Bearer sfy_..." }\n    }\n  }\n}',
       members,
       invite: s.invite,
       onInvite: (e) => this.setState({ invite: e.target.value }),

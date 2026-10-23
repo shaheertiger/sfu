@@ -19,7 +19,20 @@ const TONES = ['#8a6d4f', '#6e5a42', '#7a6148', '#4f3f2e', '#5d6b4a', '#5d4a36',
 const hashTone = (id) => TONES[Base.hash(id || '') % TONES.length];
 const TIKTOK_PRIVACY = { Public: 'PUBLIC_TO_EVERYONE', Friends: 'MUTUAL_FOLLOW_FRIENDS', 'Only me': 'SELF_ONLY' };
 
-async function api(path, { method = 'GET', body } = {}) {
+/**
+ * Refreshes the session cache cookie through the Neon Auth proxy. True when the session is still
+ * valid. Shared so several requests failing at once only check once.
+ */
+let refreshing = null;
+function refreshSession() {
+  refreshing ||= fetch('/api/auth/get-session', { credentials: 'same-origin', cache: 'no-store' })
+    .then(async (r) => (r.ok ? !!(await r.json().catch(() => null))?.session : null))
+    .catch(() => null)
+    .finally(() => setTimeout(() => { refreshing = null; }, 1000));
+  return refreshing;
+}
+
+async function api(path, { method = 'GET', body } = {}, retried = false) {
   const res = await fetch(path, {
     method,
     headers: body ? { 'content-type': 'application/json' } : undefined,
@@ -28,8 +41,15 @@ async function api(path, { method = 'GET', body } = {}) {
   });
   const data = await res.json().catch(() => ({}));
   if (res.status === 401) {
-    window.location.href = '/login?next=/app';
-    throw new Error('Signed out');
+    // Only leave for the login page when the session is really gone; a stale cache cookie is
+    // refreshed and the request tried again.
+    const ok = retried ? false : await refreshSession();
+    if (ok) return api(path, { method, body }, true);
+    if (ok === false) {
+      window.location.href = '/login?next=/app';
+      throw new Error('Signed out');
+    }
+    throw new Error("Couldn't reach the server. Check your connection and try again.");
   }
   if (!res.ok) {
     const err = new Error(data.error || `Request failed (${res.status})`);
@@ -113,7 +133,8 @@ export default class LiveDashboard extends Base {
     super.componentDidMount();
     this.load(true);
     this._poll = setInterval(() => { if (document.visibilityState === 'visible') this.load(false); }, 30_000);
-    this._vis = () => { if (document.visibilityState === 'visible') this.load(false); };
+    // Coming back to the tab: refresh the session cache first, then reload.
+    this._vis = () => { if (document.visibilityState === 'visible') refreshSession().finally(() => this.load(false)); };
     document.addEventListener('visibilitychange', this._vis);
   }
   componentWillUnmount() {
@@ -383,7 +404,7 @@ export default class LiveDashboard extends Base {
       return;
     }
     if (platform === 'bluesky') return this.openBluesky();
-    if (!s.platforms[platform]?.configured) return this.flash(`${P[platform].label} isn't set up yet. Add its developer keys in Vercel (see the README).`, true);
+    if (!s.platforms[platform]?.configured) return this.flash(`${P[platform].label} isn't available yet.`, true);
     window.location.href = `/api/connect/${platform}`;
   }
 
@@ -599,7 +620,7 @@ export default class LiveDashboard extends Base {
       super.setState((st) => ({ newKey: r.key, keyName: '', keys: [{ id: r.id, name: st.keyName || 'Default', prefix: r.prefix, meta: 'Created just now · never used' }, ...st.keys] }));
     }).catch((e) => this.flash(e.message, true));
     const origin = typeof window !== 'undefined' ? window.location.origin : '';
-    v.mcpText = v.mcpText.replace('https://app.scheduleforyou.com', origin).replace('/path/to/scheduleforyou/mcp/server.mjs', '/path/to/sfu/mcp/server.mjs');
+    v.mcpText = v.mcpText.replace('https://scheduleforyou.com', origin);
     const roleStyle = { owner: ['#141619', '#d9ff35', '#d9ff35'], editor: ['#141619', '#fff', '#e5e3dc'], invited: ['#d98c0b', '#fff8e8', '#f3dfb2'] };
     v.members = [
       ...s.members.map((m) => ({ name: m.name || '', email: m.email, role: m.role === 'owner' ? 'owner' : 'editor' })),

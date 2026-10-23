@@ -123,3 +123,35 @@ export async function safeFetch(raw: string, init: RequestInit & { timeoutMs?: n
   }
   throw new Error('Too many redirects');
 }
+
+/** Like safeFetch, for files: returns a Blob with the response's content type. */
+export async function safeFetchBlob(raw: string, { timeoutMs = 60_000, maxBytes = 100_000_000 } = {}): Promise<Blob> {
+  let target = raw;
+  for (let hop = 0; hop < 4; hop++) {
+    await assertPublicUrl(target);
+    const res = await fetch(target, { redirect: 'manual', signal: AbortSignal.timeout(timeoutMs) });
+    if (res.status >= 300 && res.status < 400 && res.headers.get('location')) {
+      target = new URL(res.headers.get('location')!, target).toString();
+      continue;
+    }
+    if (!res.ok) throw new Error(`Could not download ${raw} (${res.status})`);
+    if (Number(res.headers.get('content-length') || 0) > maxBytes) throw new Error(`File is larger than ${Math.round(maxBytes / 1e6)} MB`);
+    const reader = res.body?.getReader();
+    const chunks: Uint8Array[] = [];
+    let size = 0;
+    if (reader) {
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        size += value.byteLength;
+        if (size > maxBytes) {
+          await reader.cancel();
+          throw new Error(`File is larger than ${Math.round(maxBytes / 1e6)} MB`);
+        }
+        chunks.push(value);
+      }
+    }
+    return new Blob(chunks as BlobPart[], { type: (res.headers.get('content-type') || 'application/octet-stream').split(';')[0] });
+  }
+  throw new Error('Too many redirects');
+}

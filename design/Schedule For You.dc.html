@@ -1187,7 +1187,7 @@ textarea{resize:vertical}
             <h3 style="margin:0;font-size:16px">Post from an AI agent</h3>
             <span style="padding:1px 9px;border-radius:999px;font-size:12px;font-weight:600;background:#d9ff35;color:#141619">MCP</span>
           </div>
-          <p style="margin:0;font-size:13px;color:#a7abb2;text-wrap:pretty">Add this to Claude Desktop, Claude Code or Cursor. The agent gets list_accounts, create_post, list_posts, publish_post and delete_post.</p>
+          <p style="margin:0;font-size:13px;color:#a7abb2;text-wrap:pretty">Hosted MCP server, nothing to install. Add this to your MCP client and replace sfy_... with an API key from above. Tools: list_accounts, create_post, list_posts, publish_post and delete_post. <a href="/docs#mcp-server" target="_blank" rel="noopener" style="color:#d9ff35">Setup for other clients</a></p>
           <pre style="margin:0;background:#22252a;padding:14px;border-radius:10px;overflow-x:auto;font:400 13px/1.55 'Geist Mono',monospace;color:#d9ff35">{{ mcpText }}</pre>
         </div>
         <div style="background:#fff;border:1px solid #e7e5df;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px">
@@ -1900,7 +1900,7 @@ class Component extends DCLogic {
       keys: s.keys.map((k) => ({ ...k, revoke: () => { this.setState((st) => ({ keys: st.keys.filter((x) => x.id !== k.id) })); this.flash('Key revoked'); } })),
       hasNewKey: !!s.newKey, newKey: s.newKey, keyName: s.keyName, onKeyName: (e) => this.setState({ keyName: e.target.value }),
       makeKey: () => { const r = 'sfy_' + Math.random().toString(36).slice(2, 10) + Math.random().toString(36).slice(2, 14); this.setState((st) => ({ newKey: r, keyName: '', keys: [{ id: 'k' + Date.now(), name: st.keyName || 'Default', prefix: r.slice(0, 8), meta: 'Created just now · never used' }, ...st.keys] })); },
-      mcpText: '{\n  "mcpServers": {\n    "scheduleforyou": {\n      "command": "node",\n      "args": ["/path/to/scheduleforyou/mcp/server.mjs"],\n      "env": {\n        "SFY_URL": "https://app.scheduleforyou.com",\n        "SFY_API_KEY": "sfy_..."\n      }\n    }\n  }\n}',
+      mcpText: '{\n  "mcpServers": {\n    "scheduleforyou": {\n      "type": "http",\n      "url": "https://scheduleforyou.com/api/mcp",\n      "headers": { "Authorization": "Bearer sfy_..." }\n    }\n  }\n}',
       members, invite: s.invite, onInvite: (e) => this.setState({ invite: e.target.value }),
       sendInvite: () => { if (!s.invite) return; this.setState((st) => ({ invites: [...st.invites, st.invite], inviteUrl: `https://app.scheduleforyou.com/invite/${Math.random().toString(36).slice(2, 12)}`, invite: '' })); },
       hasInviteUrl: !!s.inviteUrl, inviteUrl: s.inviteUrl,

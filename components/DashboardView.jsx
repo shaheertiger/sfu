@@ -7245,8 +7245,11 @@ export function renderDashboard($v) {
                   </div>{' '}
                   <p style={{ margin: '0', fontSize: '13px', color: '#a7abb2', textWrap: 'pretty' }}>
                     {
-                      'Add this to Claude Desktop, Claude Code or Cursor. The agent gets list_accounts, create_post, list_posts, publish_post and delete_post.'
+                      'Hosted MCP server, nothing to install. Add this to your MCP client and replace sfy_... with an API key from above. Tools: list_accounts, create_post, list_posts, publish_post and delete_post. '
                     }
+                    <a href="/docs#mcp-server" target="_blank" rel="noopener" style={{ color: '#d9ff35' }}>
+                      {'Setup for other clients'}
+                    </a>
                   </p>{' '}
                   <pre
                     style={{
