@@ -23,11 +23,6 @@ const TIKTOK_PRIVACY = { Public: 'PUBLIC_TO_EVERYONE', Friends: 'MUTUAL_FOLLOW_F
 const AUTO_REFRESH = new Set(['x', 'youtube', 'google_business', 'tiktok', 'pinterest', 'threads', 'facebook', 'instagram']);
 /** How long a deleted post waits before it's deleted on the server: the toast's Undo window (6 s) plus a margin. */
 const UNDO_MS = 6500;
-/**
- * Publish now: false = PUT the post, then POST /api/v1/posts/{id}/publish. Flip to true once PUT /api/app/posts/{id}
- * accepts `publish_now: true` (it checks billing before saving and returns the post).
- */
-const PUBLISH_NOW_VIA_PUT = false;
 let tokSeq = 0;
 /** A local identity for one composer session, so uploads land only in the draft they were started from. */
 const newTok = () => `d${Date.now().toString(36)}${(tokSeq++).toString(36)}`;
@@ -89,8 +84,10 @@ async function api(path, { method = 'GET', body } = {}, retried = false) {
 
 function mapAccount(a) {
   // With a refresh token the access token renews by itself, so its short expiry is no reason to reconnect.
-  const refresh = typeof a.has_refresh === 'boolean' ? a.has_refresh : AUTO_REFRESH.has(a.platform);
-  const soon = !refresh && a.token_expires_at && a.token_expires_at < Date.now() + 3 * 864e5;
+  // The server sends token_expires_at only when the account will need reconnecting; older servers send it always.
+  const known = typeof a.has_refresh === 'boolean';
+  const refresh = known ? a.has_refresh : AUTO_REFRESH.has(a.platform);
+  const soon = !refresh && !!a.token_expires_at && (known || a.token_expires_at < Date.now() + 3 * 864e5);
   return {
     id: a.id, platform: a.platform, username: a.username || a.display_name || a.platform, display: a.display_name || a.username,
     health: a.over_limit ? 'over' : a.status === 'error' ? 'error' : soon ? 'expiring' : undefined,
@@ -99,7 +96,7 @@ function mapAccount(a) {
 }
 
 function mapMedia(m, usage = {}) {
-  return { id: m.id, name: m.filename, kind: kindOf(m.mime), tone: hashTone(m.id), folder: m.folder || '', used: usage[m.id] || 0, url: m.mime.startsWith('image/') ? m.url : '', videoUrl: m.mime.startsWith('video/') ? m.url : '' };
+  return { id: m.id, name: m.filename, mime: m.mime, kind: kindOf(m.mime), tone: hashTone(m.id), folder: m.folder || '', used: usage[m.id] || 0, url: m.mime.startsWith('image/') ? m.url : '', videoUrl: m.mime.startsWith('video/') ? m.url : '' };
 }
 
 function mapPost(sp, mediaById) {
@@ -237,7 +234,7 @@ export default class LiveDashboard extends Base {
       folders: prefs.folders || [], templates: prefs.templates || [], tagGroups: prefs.tagGroups || [], notes: prefs.notes || {},
     };
     // Pending invites (server field `invites`: [{ email, role }]). Older servers don't send it: ask the team API once.
-    const toInvites = (list) => (list || []).map((i) => (typeof i === 'string' ? { email: i, role: 'member' } : { email: i.email, role: i.role || 'member' }));
+    const toInvites = (list) => (list || []).map((i) => (typeof i === 'string' ? { email: i, role: 'member' } : { id: i.id, email: i.email, role: i.role || 'member' }));
     if (Array.isArray(d.invites)) patch.invites = toInvites(d.invites);
     else if (first) api('/api/v1/team').then((r) => { if (Array.isArray(r.invites)) super.setState({ invites: toInvites(r.invites) }); }).catch(() => {});
     if (first) {
@@ -343,7 +340,8 @@ export default class LiveDashboard extends Base {
           if ((prev && prev.status !== 'published') || isNew) {
             this._srvStatus.set(p.id, 'published');
             starting.set(p.id, prev);
-            this.enqueue(p.id, () => this.publish(p));
+            const before = this._onServer.has(p.id) && prev && prev.status !== 'published' ? prev : null;
+            this.enqueue(p.id, () => this.publish(p, before));
           }
           continue;
         }
@@ -373,7 +371,10 @@ export default class LiveDashboard extends Base {
     if (pk !== this._prefsKey) {
       this._prefsKey = pk;
       clearTimeout(this._prefsT);
-      this._prefsT = setTimeout(() => api('/api/app/prefs', { method: 'PATCH', body: { prefs } }).catch((e) => this.flash(e.message, true)), 500);
+      this._prefsT = setTimeout(() => api('/api/app/prefs', { method: 'PATCH', body: { prefs } })
+        // `skipped`: settings the server couldn't read (the rest saved).
+        .then((r) => { if (r?.skipped?.length) this.flash(`Some settings couldn't be saved (${r.skipped.join(', ')}). Check them and try again.`, true); })
+        .catch((e) => this.flash(e.message, true)), 500);
     }
     const lk = JSON.stringify(s.library.map((m) => [m.id, m.folder]));
     if (lk !== this._libKey) {
@@ -471,15 +472,19 @@ export default class LiveDashboard extends Base {
     this._srv.set(p.id, JSON.stringify(this.toInput(p)));
   }
 
-  /** Sends the post now. The post shows "publishing…" until this returns, then the real per-account result. */
-  async publish(p) {
+  /**
+   * Sends the post now: one PUT with publish_now (the server checks the plan first; a 402 saves nothing). The post
+   * shows "publishing…" until this returns, then the real per-account result. `before` is the post as it was on
+   * the server (null for a post the server doesn't have yet).
+   */
+  async publish(p, before = null) {
     this._busy++;
     try {
       let post;
       try {
         post = await this.publishRequest(p);
       } catch (e) {
-        if (e.status === 402) return await this.backToDraft(p.id, e.message);
+        if (e.status === 402) return before ? this.unpublish(p.id, before, e.message) : await this.backToDraft(p.id, e.message);
         e.firstSave = !this._onServer.has(p.id);
         e.post = p;
         throw e;
@@ -492,19 +497,22 @@ export default class LiveDashboard extends Base {
     }
   }
 
-  /** The server calls behind Publish now; returns the post as the server has it afterwards. */
+  /** The server call behind Publish now; returns the post as the server has it afterwards ({ status, post }). */
   async publishRequest(p) {
-    if (PUBLISH_NOW_VIA_PUT) {
-      const r = await api(`/api/app/posts/${p.id}`, { method: 'PUT', body: { ...this.toInput(p), publish_now: true } });
-      this._onServer.add(p.id);
-      return r.post;
-    }
-    await api(`/api/app/posts/${p.id}`, { method: 'PUT', body: { ...this.toInput(p), status: 'scheduled', scheduled_at: Date.now() } });
+    const r = await api(`/api/app/posts/${p.id}`, { method: 'PUT', body: { ...this.toInput(p), publish_now: true } });
     this._onServer.add(p.id);
-    return (await api(`/api/v1/posts/${p.id}/publish`, { method: 'POST' })).post;
+    return r.post;
   }
 
-  /** Publishing was refused for billing (402): the post goes back to Drafts, here and on the server. */
+  /** Publishing an existing post was refused for billing (402). The server left it untouched: show it as it was. */
+  unpublish(id, before, msg) {
+    this._srvStatus.set(id, before.status);
+    this._srv.set(id, JSON.stringify(this.toInput(before)));
+    super.setState((st) => ({ posts: st.posts.map((x) => (x.id === id ? { ...before, mediaIds: x.mediaIds } : x)) }));
+    this.flash(msg || 'Publishing is off on your plan.', true);
+  }
+
+  /** Publishing a new post was refused for billing (402) and nothing was saved: keep it as a draft, here and on the server. */
   async backToDraft(id, msg) {
     const cur = this.state.posts.find((x) => x.id === id);
     if (!cur) return;
@@ -844,7 +852,17 @@ export default class LiveDashboard extends Base {
         />
       );
     }
-    // The server refused this post's first save; it was reopened here. Shown until it's submitted again.
+    // Instagram takes JPEG images only (the server refuses others); the design only knows "image", so check here.
+    const jpegOnly = d.targets.map((id) => accBy((a) => a.id === id)).filter((a) => a?.platform === 'instagram');
+    const notJpeg = (d.mediaIds || []).map((id) => libById.get(id)).filter((m) => m && m.mime?.startsWith('image/') && m.mime !== 'image/jpeg');
+    if (jpegOnly.length && notJpeg.length) {
+      const extra = jpegOnly.map((a) => `Instagram only accepts JPEG images: ${notJpeg.map((m) => m.name).join(', ')} ${notJpeg.length === 1 ? "isn't" : "aren't"} JPEG. Use JPG files or deselect @${a.username}.`);
+      v.problems = [...new Set([...(v.problems || []), ...extra])];
+      v.hasProblems = true;
+      v.submitDisabled = d.mode !== 'draft';
+      v.submitOpacity = v.submitDisabled ? 0.45 : 1;
+    }
+    // The server refused this post's first save; it was reopened here. Shown until it's submitted again (doesn't block).
     if (d.serverError) {
       v.problems = [`Not saved yet. The server said: ${d.serverError}`, ...(v.problems || [])];
       v.hasProblems = true;
@@ -912,18 +930,33 @@ export default class LiveDashboard extends Base {
     const origin = typeof window !== 'undefined' ? window.location.origin : '';
     v.mcpText = v.mcpText.replace('https://scheduleforyou.com', origin);
     // Team: each member's real role (owner, editor or member) and the pending invites with the role they'll get.
-    v.members = this.memberRows(s.members, s.invites);
+    v.members = this.memberRows(s.members, s.invites, (i) => this.revokeInvite(i));
     v.sendInvite = () => {
       const email = (s.invite || '').trim().toLowerCase(), role = s.inviteRole === 'editor' ? 'editor' : 'member';
       if (!email) return;
       api('/api/v1/team', { method: 'POST', body: { email, role } })
         .then((r) => {
           super.setState((st) => ({ invites: [...st.invites.filter((i) => i.email !== email), { email, role }], inviteUrl: r.invite_url, invite: '' }));
+          this.load(false); // picks up the invite's id, so it can be revoked
           this.flash(r.emailed ? `Invite emailed to ${email}` : 'Invite link ready. Copy it and send it yourself.');
         })
         .catch((e) => this.flash(e.message, true));
     };
     return v;
+  }
+
+  /** Revokes a pending invite (owner only; the server answers 403 otherwise). */
+  async revokeInvite(inv) {
+    try {
+      let id = inv.id;
+      if (!id) id = ((await api('/api/v1/team')).invites || []).find((x) => x.email === inv.email)?.id;
+      if (!id) throw new Error("Couldn't find that invite. Reload the page and try again.");
+      await api(`/api/v1/team/invites/${id}`, { method: 'DELETE' });
+      super.setState((st) => ({ invites: st.invites.filter((x) => x.email !== inv.email) }));
+      this.flash(`Invite for ${inv.email} revoked`);
+    } catch (e) {
+      this.flash(e.message, true);
+    }
   }
 
   /* ---------- extra UI: loading veil + small form dialog ---------- */

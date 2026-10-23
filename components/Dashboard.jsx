@@ -810,9 +810,11 @@ class Component extends DCLogic {
       src = s.posts.filter((p) => ids.includes(p.id)),
       wk = 7 * 864e5;
     const free = this.nextSlots(src.length);
-    const copies = src.map((p, i) =>
-      this.dupOf(p, p.at && p.at + wk > Component.NOW ? this.plusDays(p.at, 7) : free[i] || this.wsAt(1, 9)),
-    );
+    // One week later when that's still ahead (with a minute to spare), else the next free slot: never in the past.
+    const copies = src.map((p, i) => {
+      const later = p.at && p.at + wk > Component.NOW ? this.plusDays(p.at, 7) : null;
+      return this.dupOf(p, later && later > Component.NOW + 6e4 ? later : free[i] || this.wsAt(1, 9));
+    });
     this.setState({ posts: [...s.posts, ...copies], tab: 'upcoming' });
     this.flash(
       copies.length === 1
@@ -1131,7 +1133,11 @@ class Component extends DCLogic {
     return [this.wsTime(s.cursor[0], s.cursor[1], 1), this.wsTime(s.cursor[0], s.cursor[1] + 1, 1)];
   }
   /** Team list rows: members with their real role, then pending invites. */
-  memberRows(members, invites) {
+  memberRows(
+    members,
+    invites,
+    revoke = (i) => this.setState((st) => ({ invites: st.invites.filter((x) => (x.email || x) !== i.email) })),
+  ) {
     const style = {
       owner: ['#141619', '#d9ff35', '#d9ff35'],
       editor: ['#141619', '#fff', '#e5e3dc'],
@@ -1147,11 +1153,20 @@ class Component extends DCLogic {
       })),
       ...(invites || [])
         .map((i) => (typeof i === 'string' ? { email: i, role: 'member' } : i))
-        .map((i) => ({ name: '', email: i.email, kind: 'invited', role: `invited · ${i.role || 'member'}` })),
+        .map((i) => ({
+          name: '',
+          email: i.email,
+          kind: 'invited',
+          role: `invited · ${i.role || 'member'}`,
+          canRevoke: true,
+          revoke: () => revoke(i),
+        })),
     ].map((m) => ({
       name: m.name,
       email: m.email,
       role: m.role,
+      canRevoke: !!m.canRevoke,
+      revoke: m.revoke || (() => {}),
       color: style[m.kind][0],
       bg: style[m.kind][1],
       border: style[m.kind][2],
@@ -1799,6 +1814,10 @@ class Component extends DCLogic {
         problems.push(`${p.label} pins need an image. Add one or deselect @${a.username}.`);
       if (p.req === 'video' && !hasVid)
         problems.push(`${p.label} only accepts video. Add a video or deselect @${a.username}.`);
+      if (a.platform === 'facebook' && hasImg && hasVid)
+        problems.push(
+          `Facebook can't post a video and images together. Keep one video or only images for @${a.username}.`,
+        );
       // The effective "Post as": the account's own choice, else the one picked for every Instagram and Facebook account.
       const fmt =
         (d.ov[a.id]?.opts || {}).format || (a.platform === 'instagram' || a.platform === 'facebook' ? d.postAs : null);

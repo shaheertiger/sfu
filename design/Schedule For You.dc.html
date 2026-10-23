@@ -1201,7 +1201,7 @@ textarea{resize:vertical}
           <sc-for list="{{ members }}" as="m" hint-placeholder-count="2">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
               <span>{{ m.name }} <span style="font-size:13px;color:#677184">{{ m.email }}</span></span>
-              <span style="padding:1px 9px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid {{ m.border }};background:{{ m.bg }};color:{{ m.color }}">{{ m.role }}</span>
+              <span style="padding:1px 9px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid {{ m.border }};background:{{ m.bg }};color:{{ m.color }}">{{ m.role }}<sc-if value="{{ m.canRevoke }}" hint-placeholder-val="{{ false }}"> · <button onClick="{{ m.revoke }}" title="Revoke this invite" style="padding:0;border:0;background:transparent;color:inherit;font:inherit;text-decoration:underline;cursor:pointer">revoke</button></sc-if></span>
             </div>
           </sc-for>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
@@ -1502,7 +1502,8 @@ class Component extends DCLogic {
   duplicate(ids) {
     const s = this.state, src = s.posts.filter((p) => ids.includes(p.id)), wk = 7 * 864e5;
     const free = this.nextSlots(src.length);
-    const copies = src.map((p, i) => this.dupOf(p, p.at && p.at + wk > Component.NOW ? this.plusDays(p.at, 7) : free[i] || this.wsAt(1, 9)));
+    // One week later when that's still ahead (with a minute to spare), else the next free slot: never in the past.
+    const copies = src.map((p, i) => { const later = p.at && p.at + wk > Component.NOW ? this.plusDays(p.at, 7) : null; return this.dupOf(p, later && later > Component.NOW + 6e4 ? later : free[i] || this.wsAt(1, 9)); });
     this.setState({ posts: [...s.posts, ...copies], tab: 'upcoming' });
     this.flash(copies.length === 1 ? `Duplicated to ${this.slotLabel(copies[0].at)}` : `Duplicated ${copies.length} posts, one week later`);
   }
@@ -1634,12 +1635,12 @@ class Component extends DCLogic {
     return [this.wsTime(s.cursor[0], s.cursor[1], 1), this.wsTime(s.cursor[0], s.cursor[1] + 1, 1)];
   }
   /** Team list rows: members with their real role, then pending invites. */
-  memberRows(members, invites) {
+  memberRows(members, invites, revoke = (i) => this.setState((st) => ({ invites: st.invites.filter((x) => (x.email || x) !== i.email) }))) {
     const style = { owner: ['#141619', '#d9ff35', '#d9ff35'], editor: ['#141619', '#fff', '#e5e3dc'], member: ['#141619', '#fff', '#e5e3dc'], invited: ['#d98c0b', '#fff8e8', '#f3dfb2'] };
     return [
       ...members.map((m) => ({ name: m.name || '', email: m.email, kind: style[m.role] ? m.role : 'member', role: m.role || 'member' })),
-      ...(invites || []).map((i) => (typeof i === 'string' ? { email: i, role: 'member' } : i)).map((i) => ({ name: '', email: i.email, kind: 'invited', role: `invited · ${i.role || 'member'}` })),
-    ].map((m) => ({ name: m.name, email: m.email, role: m.role, color: style[m.kind][0], bg: style[m.kind][1], border: style[m.kind][2] }));
+      ...(invites || []).map((i) => (typeof i === 'string' ? { email: i, role: 'member' } : i)).map((i) => ({ name: '', email: i.email, kind: 'invited', role: `invited · ${i.role || 'member'}`, canRevoke: true, revoke: () => revoke(i) })),
+    ].map((m) => ({ name: m.name, email: m.email, role: m.role, canRevoke: !!m.canRevoke, revoke: m.revoke || (() => {}), color: style[m.kind][0], bg: style[m.kind][1], border: style[m.kind][2] }));
   }
   /** Choices for a platform's select field (the live app lists the account's real Pinterest boards). */
   fieldOptions(a, f) { return f.options || []; }
@@ -1818,6 +1819,7 @@ class Component extends DCLogic {
       if (p.req === 'any' && !d.media.length) problems.push(`${p.label} posts need an image or video. Add media or deselect @${a.username}.`);
       if (p.req === 'image' && !hasImg) problems.push(`${p.label} pins need an image. Add one or deselect @${a.username}.`);
       if (p.req === 'video' && !hasVid) problems.push(`${p.label} only accepts video. Add a video or deselect @${a.username}.`);
+      if (a.platform === 'facebook' && hasImg && hasVid) problems.push(`Facebook can't post a video and images together. Keep one video or only images for @${a.username}.`);
       // The effective "Post as": the account's own choice, else the one picked for every Instagram and Facebook account.
       const fmt = (d.ov[a.id]?.opts || {}).format || (a.platform === 'instagram' || a.platform === 'facebook' ? d.postAs : null);
       if (fmt === 'Reel' && !(d.media.length === 1 && hasVid)) problems.push(`A ${p.label} Reel needs exactly one video. Change "Post as" or the media for @${a.username}.`);

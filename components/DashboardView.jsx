@@ -7338,6 +7338,26 @@ export function renderDashboard($v) {
                           }}
                         >
                           {$t(m?.role)}
+                          {m?.canRevoke ? (
+                            <>
+                              {' · '}
+                              <button
+                                onClick={m?.revoke}
+                                title="Revoke this invite"
+                                style={{
+                                  padding: '0',
+                                  border: '0',
+                                  background: 'transparent',
+                                  color: 'inherit',
+                                  font: 'inherit',
+                                  textDecoration: 'underline',
+                                  cursor: 'pointer',
+                                }}
+                              >
+                                {'revoke'}
+                              </button>
+                            </>
+                          ) : null}
                         </span>{' '}
                       </div>{' '}
                     </Fragment>
