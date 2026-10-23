@@ -1,0 +1,49 @@
+.widget{background:#131417;border:1px solid #22252a;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:16px;text-align:left}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:#a7abb2;font-weight:500;flex:1 1 220px;min-width:0}
+.input,.textarea,.select{font:inherit;font-size:16px;color:#f6f5f1;background:#0c0d0f;border:1px solid #2a2e34;border-radius:12px;padding:12px 14px;outline:none;width:100%;box-sizing:border-box}
+.input:focus,.textarea:focus,.select:focus{border-color:#dcff2e}
+.textarea{min-height:120px;resize:vertical;line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:14px;padding:8px 14px;border-radius:999px;border:1px solid #2a2e34;background:#1a1c20;color:#d6d9de;cursor:pointer;min-height:40px}
+.chip[aria-pressed="true"]{background:#dcff2e;border-color:#dcff2e;color:#15171a;font-weight:600}
+.btn{font:inherit;font-size:15px;font-weight:600;padding:11px 16px;border-radius:12px;border:1px solid #2a2e34;background:#1d2024;color:#f6f5f1;cursor:pointer;min-height:44px}
+.btnPrimary{background:#dcff2e;border-color:#dcff2e;color:#15171a}
+.btn:disabled{opacity:.5;cursor:default}
+.results{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.resultsWide{grid-template-columns:1fr}
+.result{display:flex;align-items:center;gap:10px;justify-content:space-between;padding:12px 14px;border-radius:14px;background:#0f1012;border:1px solid #1f2226;min-width:0}
+.resultText{font-size:17px;line-height:1.45;color:#f6f5f1;word-break:break-word;white-space:pre-wrap;min-width:0;flex:1}
+.resultMeta{display:block;font-size:12px;color:#6b7079;margin-bottom:4px}
+.copy{font:inherit;font-size:13px;font-weight:600;padding:8px 12px;border-radius:10px;border:1px solid #2a2e34;background:#1d2024;color:#f6f5f1;cursor:pointer;flex:none;min-height:36px}
+.copied{background:#1e2a10;border-color:#3a5214;color:#dcff2e}
+.meter{height:8px;border-radius:999px;background:#22252a;overflow:hidden}
+.meterFill{height:100%;background:#dcff2e;transition:width .15s}
+.meterOver{background:#ff6b6b}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.stat{padding:12px;border-radius:12px;background:#0f1012;border:1px solid #1f2226}
+.statNum{font-size:22px;font-weight:700;letter-spacing:-0.02em;color:#f6f5f1;font-variant-numeric:tabular-nums}
+.statLabel{font-size:12px;color:#8a8f97}
+.over{color:#ff8a8f}
+.good{color:#dcff2e}
+.limits{display:flex;flex-direction:column;gap:6px}
+.limit{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:10px 12px;border-radius:10px;background:#0f1012;border:1px solid #1f2226;color:#d6d9de}
+.toggle{display:flex;align-items:center;gap:8px;font-size:14px;color:#d6d9de;cursor:pointer;min-height:40px}
+.toggle input{width:18px;height:18px;accent-color:#dcff2e}
+.drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:28px 16px;border:1.5px dashed #3a3e45;border-radius:16px;background:#0f1012;color:#a7abb2;font-size:14px;text-align:center;cursor:pointer}
+.dropActive{border-color:#dcff2e;color:#f6f5f1}
+.preview{display:flex;justify-content:center;align-items:center;background:repeating-conic-gradient(#17191c 0 25%,#1f2226 0 50%) 0 0/20px 20px;border-radius:14px;padding:14px;min-height:160px;overflow:hidden}
+.preview canvas{max-width:100%;max-height:420px;height:auto;display:block}
+.round canvas{border-radius:50%}
+.hint{margin:0;font-size:13px;color:#8a8f97}
+.swatches{display:flex;flex-wrap:wrap;gap:8px}
+.swatch{width:36px;height:36px;border-radius:10px;border:2px solid transparent;cursor:pointer;padding:0}
+.swatch[aria-pressed="true"]{border-color:#f6f5f1}
+.color{width:44px;height:40px;padding:0;border:1px solid #2a2e34;border-radius:10px;background:none;cursor:pointer}
+@media (max-width:560px){
+  .widget{padding:14px;border-radius:16px}
+  .results{grid-template-columns:1fr}
+}
+/* Labels only stretch when they sit side by side in a row. */
+.widget > .label{flex:none}
+.toggle .color{width:44px;height:36px}

@@ -928,21 +928,43 @@ export function renderLandingMobile($v) {
             style={{
               padding: '8px 20px 36px',
               display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '12px',
+              flexDirection: 'column',
+              gap: '6px',
               fontSize: '13px',
               color: '#6b7079',
             }}
           >
             {' '}
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <img src="/logos/schedule-for-you-glyph.svg" alt="" width="18" height="18" style={{ display: 'block' }} />
-              {'© 2026 Schedule For You'}
-            </span>{' '}
-            <a href="/?desktop=1" style={{ color: '#6b7079', padding: '12px 0' }}>
-              {'Desktop site'}
-            </a>{' '}
+            <nav aria-label="More" style={{ display: 'flex', flexWrap: 'wrap', gap: '4px 20px' }}>
+              <a href="/tools" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'Free tools'}
+              </a>
+              <a href="/blog" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'Blog'}
+              </a>
+              <a href="/compare" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'Compare'}
+              </a>
+              <a href="/login" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'Sign in'}
+              </a>
+            </nav>{' '}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+              {' '}
+              <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <img
+                  src="/logos/schedule-for-you-glyph.svg"
+                  alt=""
+                  width="18"
+                  height="18"
+                  style={{ display: 'block' }}
+                />
+                {'© 2026 Schedule For You'}
+              </span>{' '}
+              <a href="/?desktop=1" style={{ color: '#6b7079', padding: '12px 0' }}>
+                {'Desktop site'}
+              </a>{' '}
+            </div>{' '}
           </footer>
         </div>
         <div

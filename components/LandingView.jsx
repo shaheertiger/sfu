@@ -2596,12 +2596,21 @@ export function renderLanding($v) {
               <img src="/logos/schedule-for-you-glyph.svg" alt="" width="20" height="20" style={{ display: 'block' }} />
               {'© 2026 Schedule For You'}
             </span>{' '}
-            <span style={{ display: 'flex', gap: '18px' }} className="sfy-foot-links">
+            <span style={{ display: 'flex', flexWrap: 'wrap', gap: '0 18px' }} className="sfy-foot-links">
               <a href="#features" style={{ color: '#6b7079' }}>
                 {'Features'}
               </a>
               <a href="#pricing" style={{ color: '#6b7079' }}>
                 {'Pricing'}
+              </a>
+              <a href="/tools" style={{ color: '#6b7079' }}>
+                {'Free tools'}
+              </a>
+              <a href="/blog" style={{ color: '#6b7079' }}>
+                {'Blog'}
+              </a>
+              <a href="/compare" style={{ color: '#6b7079' }}>
+                {'Compare'}
               </a>
               <a href="/login" style={{ color: '#6b7079' }}>
                 {'Sign in'}
