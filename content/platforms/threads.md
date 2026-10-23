@@ -34,7 +34,7 @@ Threads is conversational, which suits frequent, lighter posts. Set a few daily 
 Weekly prompts, like a Friday "what are you working on?" post, can be set to repeat so they appear without you remembering each week.
 
 ### Workspaces and approvals
-If you run Threads for a brand or a client, keep it in its own workspace and use client preview links so they can approve or comment without an account.
+If you run Threads for a brand or a client, keep it in its own workspace (each workspace has its own plan) and use client preview links so they can approve or comment without an account.
 
 ## Tips for Threads
 - **Ask something.** Posts that invite a reply tend to suit Threads better than announcements. End with an open question when it fits.

@@ -31,7 +31,7 @@ LinkedIn is a network where showing up regularly builds recognition. The drag-an
 If you write posts for an executive or a client, send a preview link. They can approve or comment without creating an account, and you see their notes before the post is published.
 
 ### Workspaces per person or brand
-Keep each person's or company's accounts, drafts and media in a separate workspace, so nothing is published under the wrong name.
+Keep each person's accounts, drafts and media in a separate workspace, so nothing is published under the wrong name. Each workspace has its own plan.
 
 ### Reminder emails and a daily digest
 Reminder emails and a daily digest keep you aware of what's going out, which is useful when you're scheduling on someone else's behalf.

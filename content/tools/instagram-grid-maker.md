@@ -1,14 +1,14 @@
 ---
-title: Instagram Grid Maker – Split a Photo into 3, 6, 9 or 12 Posts
-description: Free Instagram grid maker. Split one image into a 3×1, 3×2, 3×3 or 3×4 grid of portrait or square tiles, numbered in posting order so your profile lines up.
+title: Instagram Grid Maker – 3x3 & 3x4 Puzzle Grids from One Photo
+description: Free Instagram grid maker. Split one image into a 3x1, 3x2, 3x3 or 3x4 puzzle grid of portrait or square tiles, numbered in posting order so it lines up.
 h1: Instagram Grid Maker
 lead: Upload one image, choose a grid size and tile shape, and download numbered tiles that form one large picture across your Instagram profile.
 keyword: instagram grid maker
 ---
 ## What the grid maker does
-The grid maker cuts one image into a set of tiles that, posted in the right order, rebuild the full picture on your Instagram profile. Choose a 3×1, 3×2, 3×3 or 3×4 grid, pick portrait or square tiles, preview the result and download every tile numbered in the order to post them.
+The Instagram grid maker cuts one image into a set of tiles that, posted in the right order, rebuild the full picture on your Instagram profile. Choose a 3×1, 3×2, 3×3 or 3×4 grid, pick portrait or square tiles, preview the result and download every tile numbered in the order to post them.
 
-### Grid sizes
+### Grid sizes, from 3x1 to a 3x4 grid
 | Grid | Posts | Good for |
 |---|---|---|
 | 3×1 | 3 | A banner-style row, launches, quick announcements |
@@ -20,7 +20,7 @@ The grid maker cuts one image into a set of tiles that, posted in the right orde
 Each tile is exported at 1080×1350 (4:5 portrait) or 1080×1080 (1:1 square). Portrait tiles match the most common feed shape; square tiles suit older-style layouts and graphics designed on a square canvas.
 
 ### Everything stays on your device
-Your image is split in the browser. Nothing is uploaded and there's no account to create.
+The Instagram grid maker splits your image in the browser. Nothing is uploaded and there's no account to create.
 
 ## How to make an Instagram grid
 ### 1. Upload a high-resolution image
@@ -48,7 +48,7 @@ Pinned posts appear at the start of your profile grid, which can push your tiles
 ### Pair it with a carousel
 If you want people to see the whole picture in one go, post the uncut image as well, or split a wide version into a swipeable set with the [Instagram carousel splitter](/tools/instagram-carousel-splitter).
 
-## Use cases
+## Instagram grid maker use cases
 ### Launches and reveals
 Tease a product, an event poster or a new logo across six or nine posts, then reveal the full image when the last tile goes up.
 
@@ -61,6 +61,9 @@ Mark a change of direction with a 3×3 grid that makes the new look obvious to a
 ## Frequently asked questions
 ### What order do I post Instagram grid tiles in?
 Start with tile 1, which is the bottom-right piece, and work up to the highest number, which is the top-left. Instagram places each new post at the top-left of your grid, so this order rebuilds the image.
+
+### How do I make a 3x3 puzzle grid on Instagram?
+Upload your image, choose the 3×3 grid and a tile shape, then download the nine numbered tiles. Post them from tile 1 to tile 9 with nothing in between, and the full picture appears across the top three rows of your profile.
 
 ### What size should Instagram grid tiles be?
 The grid maker exports tiles at 1080×1350 for portrait or 1080×1080 for square. Portrait is the more common choice for feed posts.

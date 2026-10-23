@@ -112,3 +112,16 @@ test('Instagram export files are read and compared', () => {
 test('styled text converts back to plain', () => {
   assert.equal(toPlain('𝐇𝐞𝐥𝐥𝐨 𝗪𝗼𝗿𝗹𝗱 a̶b̶'), 'Hello World ab');
 });
+
+import { generateCaptions } from '../lib/tools/generators.js';
+
+test('TikTok captions use the topic, the call to action and the hashtags', () => {
+  const caps = generateCaptions({ topic: 'sourdough', style: 'howto', cta: 'save', hashtags: 'baking, #bread lover' });
+  assert.equal(caps.length, 10);
+  for (const c of caps) {
+    assert.ok(/sourdough/i.test(c), c);
+    assert.ok(c.endsWith('#baking #bread #lover'), c);
+    assert.ok(/save|bookmark/i.test(c), c);
+  }
+  assert.notDeepEqual(caps, generateCaptions({ topic: 'sourdough', style: 'howto', cta: 'save', hashtags: 'baking', seed: 1 }));
+});

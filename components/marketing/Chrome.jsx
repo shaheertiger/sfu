@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import m from './marketing.module.css';
 import { PLATFORM_PAGES } from '@/lib/platform-pages';
+import { LANDING_PAGES } from '@/lib/landing-pages';
 
 /** Header, footer and breadcrumbs shared by the tools, blog and comparison pages. Server components. */
 
@@ -15,7 +16,7 @@ export function SiteHeader() {
         <nav className={m.nav} aria-label="Main">
           <Link href="/tools">Free tools</Link>
           <Link href="/blog">Blog</Link>
-          <Link href="/#pricing" className={m.navHide}>Pricing</Link>
+          <Link href="/pricing" className={m.navHide}>Pricing</Link>
           <Link href="/login" className={m.navHide}>Sign in</Link>
           <Link href="/signup" className={m.navCta}>Start free trial</Link>
         </nav>
@@ -51,7 +52,7 @@ const FOOTER = [
     links: [
       ['/compare/later/recurpost', 'Later vs. RecurPost'],
       ['/compare/brandwatch/recurpost', 'Brandwatch vs. RecurPost'],
-      ['/later-alternative', 'Later alternative'],
+      ...LANDING_PAGES.filter((p) => p.group === 'Compare').map((p) => [`/${p.slug}`, p.name]),
       ['/blog/free-hootsuite-alternative', 'Hootsuite alternatives'],
     ],
   },
@@ -63,8 +64,8 @@ const FOOTER = [
     title: 'Product',
     links: [
       ['/about', 'About'],
-      ['/#features', 'Features'],
-      ['/#pricing', 'Pricing'],
+      ['/pricing', 'Pricing'],
+      ...LANDING_PAGES.filter((p) => p.group === 'Product' && p.slug !== 'pricing').map((p) => [`/${p.slug}`, p.name]),
       ['/blog/connect-facebook-page', 'Connect a Facebook Page'],
       ['/blog/connect-google-business-profile', 'Connect Google Business'],
       ['/signup', 'Start free trial'],
@@ -124,7 +125,7 @@ export function TrialCta({ heading, html, children }) {
       {html ? <div dangerouslySetInnerHTML={{ __html: html }} /> : children}
       <div className={m.ctaRow}>
         <Link href="/signup" className={`${m.btn} ${m.btnPrimary}`}>Start your 7-day free trial</Link>
-        <Link href="/#pricing" className={m.btn}>See pricing</Link>
+        <Link href="/pricing" className={m.btn}>See pricing</Link>
       </div>
       <p className={m.ctaNote}>Card required. Not charged until day 8. Cancel anytime.</p>
     </section>

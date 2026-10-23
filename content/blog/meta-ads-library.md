@@ -7,7 +7,7 @@ excerpt: The Meta Ad Library at facebook.com/ads/library lets anyone see ads run
 keyword: meta ad library
 date: 2026-10-23
 ---
-The Meta Ad Library is a free, public, searchable database of ads running across Meta's apps, including Facebook and Instagram. You can open it at **facebook.com/ads/library** without logging in or having an ad account, search by advertiser name or keyword, and see the ads a business is currently running. For ads about social issues, elections or politics, it also shows extra details such as spending ranges and who paid for the ad.
+The Meta Ad Library (still often called the Facebook Ad Library) is a free, public, searchable database of ads running across Meta's apps, including Facebook and Instagram. You can open it at **facebook.com/ads/library** without logging in or having an ad account, search by advertiser name or keyword, and see the ads a business is currently running. For ads about social issues, elections or politics, it also shows extra details such as spending ranges and who paid for the ad.
 
 Meta built the library for transparency, but marketers also use it to understand their market: what competitors are promoting, which formats they use and how their messaging changes over time. This guide covers how to use it and how to do that research fairly.
 
@@ -81,7 +81,7 @@ Meta also publishes an **Ad Library Report** with aggregated spending on these a
 
 Because of EU transparency rules, ads delivered in the EU can show additional information, such as reach in EU countries and some targeting parameters, and remain viewable for a period after they stop running. The details depend on the country and the rules in force, so check the library for what's shown in your region.
 
-## How to use the Ad Library for competitor research
+## How to use the Facebook Ad Library for competitor research
 
 The library is a public tool, and looking at what others publish is a normal part of marketing research. Here's how to get real value from it.
 

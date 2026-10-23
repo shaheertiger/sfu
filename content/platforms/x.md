@@ -55,7 +55,7 @@ Yes. Every link counts as 23 characters and most emoji count as 2. The composer 
 Up to 4 images per post, or one GIF, or one video.
 
 ### Can I manage more than one X account?
-Yes. Connect as many as your plan allows: 15 accounts on Solo and 100 on Studio, shared across all platforms. Workspaces keep each brand's accounts and queue separate.
+Yes. Connect as many as your plan allows: 15 accounts on Solo and 100 on Studio, shared across all platforms in a workspace. Each workspace has its own plan, so use one workspace for brands you want on the same plan.
 
 ### What if X disconnects my account?
 If access is revoked, for example after a password change, your scheduled post can't publish. Schedule For You sends a failed-post alert and prompts you to reconnect from the Accounts screen and retry.

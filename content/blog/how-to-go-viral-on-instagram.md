@@ -35,7 +35,7 @@ So small accounts can go viral too. It also means a viral post isn't the same as
 - **Don't repost other creators' videos as your own.** Reposting without adding anything risks copyright problems and reduced reach.
 - **Don't spam hashtags.** A handful of specific, relevant tags is more useful than a wall of generic ones, and Instagram's hashtag limit has changed over time, so check the app for the current cap.
 
-## How to make posts that have a real chance
+## How to go viral on Instagram: 7 ways to raise your odds
 
 ### 1. Win the first two seconds
 
@@ -82,7 +82,7 @@ Then check your numbers. In your professional dashboard, look at which posts got
 
 At the time of writing, Instagram offers trial Reels for professional accounts, which show a Reel to non-followers first so you can test an idea without it appearing to your followers right away. If the option is available to you, it's a low-risk way to test hooks and formats.
 
-## What to do after a Reel goes viral
+## What to do after an Instagram Reel goes viral
 
 A spike in views is an opportunity with a short window. Here's a playbook for the first few days.
 

@@ -34,7 +34,7 @@ A café announcing a new menu or a salon opening extra appointments usually want
 Regular events and reminders, like a weekly special or monthly workshop, can be set to repeat so your listing stays current.
 
 ### Workspaces for multiple locations or clients
-Agencies and multi-location businesses can keep each profile in its own workspace, with separate queues and media libraries.
+Agencies and multi-location businesses can keep each profile in its own workspace, with separate queues and media libraries. Each workspace has its own plan, so locations you manage together can also share one workspace.
 
 ### Client approvals
 Send a preview link so the business owner can approve or comment on a post without an account.

@@ -17,7 +17,7 @@ If you post the same idea to several networks, you shouldn't have to rewrite it 
 Owners and small marketing teams need their Facebook Page, Instagram and Google Business Profile to stay current without daily logins. A few minutes of planning each week covers the essentials.
 
 ### Agencies and freelancers managing clients
-Each client gets a workspace with its own accounts, queue and media. Client preview links let them approve or comment on posts without creating an account, and the Studio plan adds team members so colleagues can work in the same space.
+Each client can get a workspace with its own accounts, queue, media and plan. Client preview links let them approve or comment on posts without creating an account, and the Studio plan adds team members so colleagues can work in the same space.
 
 ## How we build it
 A few principles shape what we add and what we leave out.

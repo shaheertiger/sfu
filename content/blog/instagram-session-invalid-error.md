@@ -1,6 +1,6 @@
 ---
-title: Instagram 400 Session Invalid Error: Causes and Fixes
-description: Seeing a 400 session invalid error from Instagram? Learn why Meta invalidated your access, how to reconnect your account and how to reschedule failed posts.
+title: 400 Session Invalid on Instagram: Causes and Fixes
+description: Getting 400 session invalid on Instagram? Learn why Meta invalidated your access, how to reconnect your account and how to reschedule failed posts.
 h1: How to Fix the "400 Session Invalid" Error on Instagram
 category: Guides
 excerpt: A 400 session invalid error means Meta has cancelled the access your scheduling tool was using. Here's why it happens and how to reconnect and recover failed posts.
@@ -11,7 +11,7 @@ A "400 session invalid" error on Instagram means Meta has invalidated the access
 
 This guide explains what the error means, the common causes, and how to fix it in Schedule For You.
 
-## What the error means
+## What 400 session invalid means on Instagram
 
 Apps that publish to Instagram, including scheduling tools, don't store your password. When you connect an account, Meta gives the app an access token: a key that lets it publish to that specific account with the permissions you approved.
 
@@ -45,7 +45,7 @@ Schedule For You publishes to **Instagram Business or Creator accounts linked to
 
 <!-- cta -->
 
-## How to fix it in Schedule For You
+## How to fix the Instagram session invalid error in Schedule For You
 
 When a post fails because of an invalid session, Schedule For You sends a failed-post alert with a prompt to reconnect. Follow these steps:
 

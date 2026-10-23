@@ -1,13 +1,13 @@
 ---
-title: How to Schedule YouTube Shorts: Step-by-Step Guide
-description: Schedule YouTube Shorts with Schedule For You: upload a vertical or square video up to 3 minutes, set the title and privacy, and let YouTube classify it.
-h1: How to Schedule YouTube Shorts with Schedule For You
+title: How to Post a Video to YouTube as a Short (and Schedule It)
+description: Post a video to YouTube as a Short: upload a vertical or square video up to 3 minutes, set the title and privacy, schedule it and let YouTube classify it.
+h1: How to Post a Video to YouTube as a Short and Schedule It
 category: Guides
 excerpt: Upload a vertical or square video up to 3 minutes, add a title and privacy setting, and schedule it. YouTube decides whether it counts as a Short. Here's how.
-keyword: schedule youtube shorts
+keyword: post a video to youtube as a short
 date: 2026-10-23
 ---
-To schedule a YouTube Short with Schedule For You, upload a vertical or square video that's 3 minutes or shorter, add a title (from the title field or the first line of your caption), choose public, unlisted or private, and pick a time. Schedule For You uploads it as a normal YouTube video, and YouTube itself decides whether it counts as a Short based on its shape and length.
+To post a video to YouTube as a Short with Schedule For You, upload a vertical or square video that's 3 minutes or shorter, add a title (from the title field or the first line of your caption), choose public, unlisted or private, and pick a time. Schedule For You uploads it as a normal YouTube video, and YouTube itself decides whether it counts as a Short based on its shape and length.
 
 There's no special "Shorts" switch to flip. This guide explains how YouTube classifies Shorts, how to set up the upload, and how to post the same clip to Reels and TikTok at the same time.
 
@@ -30,7 +30,7 @@ A horizontal video stays a regular video regardless of length, and a vertical vi
 
 No. Adding #Shorts to the title or description is optional. YouTube classifies Shorts by the video's shape and length, not by the hashtag. Some creators still add it as a label for viewers, which does no harm, but it uses up characters in your title.
 
-## Before you start
+## Before you post a video to YouTube as a Short
 
 You'll need:
 
@@ -42,7 +42,7 @@ If you're making one vertical video for several platforms, the size is the same 
 
 <!-- cta -->
 
-## How to schedule a YouTube Short step by step
+## How to schedule YouTube Shorts step by step
 
 1. **Open the composer.** Start a new post in the workspace connected to your channel.
 2. **Select your YouTube channel.** Add other accounts too if you want to cross-post (more on this below).
@@ -106,6 +106,10 @@ YouTube connections can be revoked, for example if you change your Google passwo
 ### Is there a Shorts toggle in Schedule For You?
 
 No. Schedule For You uploads a normal video, and YouTube decides whether it's a Short based on its shape and length. A vertical or square video of up to 3 minutes is treated as a Short at the time of writing.
+
+### How do I post a video to YouTube as a Short instead of a regular video?
+
+Export it vertical (ideally 9:16) or square and keep it to 3 minutes or less at the time of writing, then upload it as usual. YouTube classifies it automatically. A horizontal video, or a vertical clip placed inside a 16:9 frame with black bars, stays a regular video.
 
 ### Do I need to add #Shorts to the title?
 

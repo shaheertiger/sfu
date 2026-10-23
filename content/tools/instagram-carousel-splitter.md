@@ -1,12 +1,12 @@
 ---
-title: Instagram Carousel Splitter – Seamless Panorama Slides
+title: Instagram Carousel Splitter – Split an Image into Seamless Slides
 description: Free Instagram carousel splitter. Cut a wide photo or panorama into 2–10 equal portrait or square slides for a seamless swipe, then download each in order.
 h1: Instagram Carousel Splitter
-lead: Turn a panorama or wide design into 2–10 equal slides that join up perfectly as people swipe through your Instagram carousel.
+lead: A carousel post cutter for Instagram: turn a panorama or wide design into 2–10 equal slides that join up perfectly as people swipe through your Instagram carousel.
 keyword: instagram carousel splitter
 ---
 ## What the carousel splitter does
-Upload a wide image, choose how many slides you want (from 2 to 10) and whether they should be portrait or square, and the splitter cuts it into equal pieces. Each slide is exported at 1080×1350 or 1080×1080 and numbered in order. Post them as one carousel and the image flows from one slide to the next as followers swipe.
+Upload a wide image to the Instagram carousel splitter, choose how many slides you want (from 2 to 10) and whether they should be portrait or square, and the splitter cuts it into equal pieces. Each slide is exported at 1080×1350 or 1080×1080 and numbered in order. Post them as one carousel and the image flows from one slide to the next as followers swipe.
 
 ### Slide shapes
 - **Portrait, 1080×1350 (4:5):** takes up more of the screen in the feed, so the panorama looks bigger
@@ -16,9 +16,9 @@ Upload a wide image, choose how many slides you want (from 2 to 10) and whether 
 A seamless carousel only works if every slide is exactly the same size and the cuts line up. Splitting by hand in a photo editor is fiddly; the splitter divides the width evenly so the edge of one slide meets the next.
 
 ### Private by design
-The image never leaves your device. Splitting happens in the browser and the slides download directly.
+With the Instagram carousel splitter, the image never leaves your device. Splitting happens in the browser and the slides download directly.
 
-## How to split a panorama for Instagram
+## How to split an image for an Instagram carousel
 ### 1. Pick or design a wide image
 Phone panoramas, landscape photos and wide graphics designed for a carousel all work. For full sharpness, the source should be about 1,080 pixels wide per slide, so five portrait slides want an image around 5,400 pixels wide.
 
@@ -44,7 +44,7 @@ Instagram shows every slide in a carousel at the same shape, so mixing sizes lea
 ### Mind the slide count
 The splitter goes up to 10 slides, which is also the most Schedule For You publishes in one carousel. For how many slides Instagram itself allows in different situations, see the [Instagram carousel limit](/blog/instagram-carousel-limit) guide.
 
-## Use cases
+## Instagram carousel splitter use cases
 ### Travel and landscape photos
 Show a mountain range or city skyline at a size a single post can't match, with each swipe revealing more of the view.
 

@@ -8,6 +8,7 @@ import { TAG_LIMIT, TITLE_LIMIT, checkTitle, generateTags, tagsLength } from '@/
 import { compareLists, parseExport } from '@/lib/tools/instagram-export';
 import { convert, toPlain } from '@/lib/tools/unicode';
 import { plainLength } from '@/lib/tools/counters';
+import { CAPTION_CTAS, CAPTION_STYLES, TIKTOK_CAPTION_LIMIT, generateCaptions } from '@/lib/tools/generators';
 
 const fmt = (n) => n.toLocaleString('en-US');
 
@@ -308,6 +309,42 @@ export function UnfollowersTool() {
           </div>
         </>
       )}
+    </div>
+  );
+}
+
+/* TikTok caption generator ------------------------------------------------------------------------- */
+
+export function CaptionTool() {
+  const [topic, setTopic] = useState('sourdough bread');
+  const [style, setStyle] = useState('hook');
+  const [cta, setCta] = useState('follow');
+  const [tags, setTags] = useState('sourdough, baking');
+  const [seed, setSeed] = useState(0);
+  const captions = useMemo(() => generateCaptions({ topic, style, cta, hashtags: tags, seed }), [topic, style, cta, tags, seed]);
+  return (
+    <div className={s.widget}>
+      <div className={s.row}>
+        <label className={s.label}>
+          What is the video about?
+          <input className={s.input} value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="e.g. sourdough bread" maxLength={80} />
+        </label>
+        <label className={s.label}>
+          Your hashtags (up to 5)
+          <input className={s.input} value={tags} onChange={(e) => setTags(e.target.value)} placeholder="e.g. baking, sourdough" maxLength={120} />
+        </label>
+      </div>
+      <Chips options={CAPTION_STYLES} value={style} onChange={setStyle} label="Style" />
+      <Chips options={CAPTION_CTAS} value={cta} onChange={setCta} label="Call to action" />
+      <div className={`${s.results} ${s.resultsWide}`}>
+        {captions.map((c) => (
+          <Result key={c} text={c} meta={`${fmt(plainLength(c))} / ${fmt(TIKTOK_CAPTION_LIMIT)} characters`} />
+        ))}
+      </div>
+      <div className={s.row}>
+        <button type="button" className={`${s.btn} ${s.btnPrimary}`} onClick={() => setSeed((x) => x + 1)}>More ideas</button>
+        <p className={s.hint}>Starting points from templates: edit the first line so it sounds like you.</p>
+      </div>
     </div>
   );
 }
