@@ -15,6 +15,7 @@ export default function sitemap() {
     ...PLATFORM_PAGES.filter((p) => getPlatformPages().some((c) => c.slug === p.slug)).map((p) => ({ url: `${base}/${p.slug}`, changeFrequency: 'monthly', priority: 0.8 })),
     ...(getStaticPage('about') ? [{ url: `${base}/about`, changeFrequency: 'yearly', priority: 0.4 }] : []),
     ...LANDING_PAGES.filter((p) => getContentPage(p.slug)).map((p) => ({ url: `${base}/${p.slug}`, changeFrequency: 'monthly', priority: p.slug === 'pricing' ? 0.9 : 0.7 })),
+    { url: `${base}/docs`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/tools`, changeFrequency: 'weekly', priority: 0.8 },
     ...getToolPages()
       .filter((p) => toolBySlug(p.slug))

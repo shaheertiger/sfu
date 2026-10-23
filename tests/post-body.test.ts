@@ -39,3 +39,9 @@ test('unknown keys are dropped', () => {
   assert.equal(b.workspace_id, undefined);
   assert.equal(b.created_by, undefined);
 });
+
+test('an update without a caption leaves the caption out, so the saved one is kept', () => {
+  const b = parsePostBody({ labels: ['Launch'] });
+  assert.equal(b.caption, undefined);
+  assert.equal('targets' in b, false);
+});

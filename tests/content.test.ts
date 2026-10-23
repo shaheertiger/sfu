@@ -43,7 +43,7 @@ test('internal links point at pages that exist', () => {
   const posts = new Set(files('blog').map(([s]) => s));
   const ok = (href: string) => {
     const [p] = href.split('#');
-    if (['', '/', '/signup', '/login', '/tools', '/blog', '/compare', '/about', '/later-alternative'].includes(p)) return true;
+    if (['', '/', '/signup', '/login', '/tools', '/blog', '/compare', '/about', '/later-alternative', '/docs'].includes(p)) return true;
     if (PLATFORM_PAGES.some((x) => p === `/${x.slug}`)) return true;
     if (LANDING_PAGES.some((x) => p === `/${x.slug}`)) return true;
     let m = /^\/tools\/([a-z0-9-]+)$/.exec(p);

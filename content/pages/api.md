@@ -38,7 +38,11 @@ curl -X POST https://scheduleforyou.com/api/v1/posts \
 
 Use `publish_now` instead of `scheduled_at` to post straight away. To give each account its own wording, send per-account targets, each with its own caption, rather than a flat list of IDs.
 
+Every endpoint, field, error code and webhook payload is documented in the [API reference](/docs), with request examples in curl, JavaScript and Python.
+
 ## Endpoints at a glance
+The table is a summary. The [API reference](/docs) has the parameters, responses and errors for each one.
+
 | Endpoint | What it does |
 |---|---|
 | `GET /api/v1/accounts` | List connected accounts |
