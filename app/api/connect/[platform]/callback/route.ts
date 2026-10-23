@@ -4,12 +4,14 @@ import { adapterFor } from '@/lib/server/adapters';
 import { connectAccounts, limitMessage } from '@/lib/server/accounts';
 import { requireWorkspace } from '@/lib/server/auth';
 import { appUrl } from '@/lib/server/url';
+import { PublishError } from '@/lib/server/adapters/types';
+import { HttpError } from '@/lib/server/http-error';
 
 export async function GET(req: Request, { params }: { params: Promise<{ platform: string }> }) {
   const { platform } = await params;
   const url = new URL(req.url);
   const base = appUrl(req);
-  const fail = (msg: string) => NextResponse.redirect(`${base}/app?screen=accounts&error=${encodeURIComponent(msg)}`);
+  const fail = (msg: string) => NextResponse.redirect(`${base}/app?screen=accounts&error=${encodeURIComponent(msg.slice(0, 200))}`);
   if (url.searchParams.get('error')) return fail(url.searchParams.get('error_description') || url.searchParams.get('error')!);
   const code = url.searchParams.get('code');
   const state = url.searchParams.get('state');
@@ -34,6 +36,9 @@ export async function GET(req: Request, { params }: { params: Promise<{ platform
     // Accounts past the plan's limit are skipped; the dashboard says how many and why.
     return NextResponse.redirect(`${base}/app?screen=accounts&connected=${platform}&n=${r.saved.length}${r.skipped ? `&skipped=${r.skipped}&limit=${r.limit}` : ''}`);
   } catch (e: any) {
-    return fail(e?.message || 'Connection failed');
+    // Platform errors are already short and readable; anything else is logged, not shown.
+    if (e instanceof PublishError || e instanceof HttpError) return fail(`Connection failed: ${e.message}`);
+    console.error(`[connect] ${platform}:`, e);
+    return fail('Connection failed. Try again.');
   }
 }
