@@ -88,11 +88,13 @@ async function api(path, { method = 'GET', body } = {}, retried = false) {
 /* ---------- server ⇄ design data shapes ---------- */
 
 function mapAccount(a) {
-  const soon = a.token_expires_at && a.token_expires_at < Date.now() + 3 * 864e5;
+  // With a refresh token the access token renews by itself, so its short expiry is no reason to reconnect.
+  const refresh = typeof a.has_refresh === 'boolean' ? a.has_refresh : AUTO_REFRESH.has(a.platform);
+  const soon = !refresh && a.token_expires_at && a.token_expires_at < Date.now() + 3 * 864e5;
   return {
     id: a.id, platform: a.platform, username: a.username || a.display_name || a.platform, display: a.display_name || a.username,
     health: a.over_limit ? 'over' : a.status === 'error' ? 'error' : soon ? 'expiring' : undefined,
-    avatar: a.avatar_url || '', error: a.last_error || '', expires: a.token_expires_at || null, boards: a.meta?.boards || [],
+    avatar: a.avatar_url || '', error: a.last_error || '', expires: a.token_expires_at || null, refresh, boards: a.meta?.boards || [],
   };
 }
 
@@ -234,6 +236,10 @@ export default class LiveDashboard extends Base {
       slots: prefs.slots || [], slotDays: prefs.slotDays || [], paused: !!prefs.paused, labelList: prefs.labels || [],
       folders: prefs.folders || [], templates: prefs.templates || [], tagGroups: prefs.tagGroups || [], notes: prefs.notes || {},
     };
+    // Pending invites (server field `invites`: [{ email, role }]). Older servers don't send it: ask the team API once.
+    const toInvites = (list) => (list || []).map((i) => (typeof i === 'string' ? { email: i, role: 'member' } : { email: i.email, role: i.role || 'member' }));
+    if (Array.isArray(d.invites)) patch.invites = toInvites(d.invites);
+    else if (first) api('/api/v1/team').then((r) => { if (Array.isArray(r.invites)) super.setState({ invites: toInvites(r.invites) }); }).catch(() => {});
     if (first) {
       patch.bulkAccs = accounts.slice(0, 3).map((a) => a.id);
       patch.folder = 'All';
@@ -275,8 +281,17 @@ export default class LiveDashboard extends Base {
   }
 
   /* ---------- saving ---------- */
+  /** Settings as saved, cut to the server's limits (app/api/app/prefs) so one long value can't make the whole save fail. */
   prefsOf(s) {
-    return { tz: s.tz, remind: s.remind, alerts: s.alerts, slots: s.slots, slotDays: s.slotDays, paused: s.paused, labels: s.labelList, folders: s.folders, templates: s.templates, tagGroups: s.tagGroups, notes: s.notes };
+    const name = (v, n) => String(v ?? '').trim().slice(0, n);
+    const names = (list, n) => [...new Set((list || []).map((x) => name(x, n)).filter(Boolean))].slice(0, 100);
+    return {
+      tz: s.tz, remind: s.remind, alerts: s.alerts, slots: (s.slots || []).slice(0, 48), slotDays: s.slotDays, paused: s.paused,
+      labels: names(s.labelList, 40), folders: names(s.folders, 60),
+      templates: (s.templates || []).slice(0, 100).map((t) => ({ name: name(t.name, 60), text: String(t.text ?? '').slice(0, 5000) })),
+      tagGroups: (s.tagGroups || []).slice(0, 100).map((g) => ({ name: name(g.name, 60), tags: String(g.tags ?? '').slice(0, 2000) })),
+      notes: Object.fromEntries(Object.entries(s.notes || {}).filter(([k]) => k.length <= 40).map(([k, v]) => [k, String(v ?? '').slice(0, 500)])),
+    };
   }
 
   toInput(p, accounts = this.state.accounts) {
@@ -366,10 +381,21 @@ export default class LiveDashboard extends Base {
       this._libKey = lk;
       for (const m of s.library) if (before.has(m.id) && before.get(m.id) !== m.folder) api(`/api/v1/media/${m.id}`, { method: 'PATCH', body: { folder: m.folder || null } }).catch((e) => this.flash(e.message, true));
     }
+    if (s.accounts !== this._accRef) { this._accRef = s.accounts; for (const a of s.accounts) this._accSeen.set(a.id, a); }
     const ak = s.accounts.map((a) => a.id).join(',');
     if (ak !== this._accKey) {
       const now = new Set(s.accounts.map((a) => a.id));
-      for (const id of (this._accKey || '').split(',').filter(Boolean)) if (!now.has(id)) api(`/api/v1/accounts/${id}`, { method: 'DELETE' }).catch((e) => this.flash(e.message, true));
+      for (const id of (this._accKey || '').split(',').filter(Boolean)) {
+        if (now.has(id)) continue;
+        const acc = this._accSeen.get(id);
+        api(`/api/v1/accounts/${id}`, { method: 'DELETE' })
+          .then(() => this.load(false)) // the server also drops its unpublished targets
+          .catch((e) => {
+            // Refused (members can't disconnect accounts) or failed: put the account back now, not at the next refresh.
+            if (acc) super.setState((st) => (st.accounts.some((a) => a.id === id) ? null : { accounts: [...st.accounts, acc] }), () => { this._accKey = this.state.accounts.map((a) => a.id).join(','); });
+            this.flash(e.message || "Couldn't disconnect the account", true);
+          });
+      }
       this._accKey = ak;
     }
   }
@@ -757,19 +783,20 @@ export default class LiveDashboard extends Base {
     }).sort((x, y) => x.needsKeys - y.needsKeys);
     v.connected = v.connected.map((c) => {
       const a = accBy((x) => x.id === c.id);
-      const detail = a?.health === 'error' ? a.error || 'Connection error' : a?.expires ? `Token valid until ${new Date(a.expires).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}` : 'Connected';
+      // Tokens that renew by themselves have no date worth showing.
+      const detail = a?.health === 'error' ? a.error || 'Connection error' : a?.expires && !a.refresh ? `Token valid until ${new Date(a.expires).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}` : 'Connected';
       return { ...c, healthDetail: c.needsFix ? c.healthDetail : detail, reconnect: a?.health === 'over' ? () => this.openBilling() : () => this.connect(a?.platform || 'bluesky', { reconnect: true }) };
     });
+    const fixFor = (a) => (a.health === 'over' ? () => this.openBilling() : () => this.connect(a.platform, { reconnect: true }));
+    // Matched by account id: names can contain spaces and one username can exist on several platforms.
     for (const t of v.healthTiles || []) {
-      const a = accBy((x) => x.username === t.username && P[x.platform].color === t.color);
-      if (a) t.fix = a.health === 'over' ? () => this.openBilling() : () => this.connect(a.platform, { reconnect: true });
+      const a = accBy((x) => x.id === t.accId);
+      if (a) t.fix = fixFor(a);
     }
     for (const item of v.attention || []) {
       for (const act of item.actions || []) {
-        if (act.label !== 'Reconnect') continue;
-        const m = /@(\S+):/.exec(item.title);
-        const a = m && accBy((x) => x.username === m[1]);
-        if (a) act.go = () => this.connect(a.platform, { reconnect: true });
+        const a = act.accId && accBy((x) => x.id === act.accId);
+        if (a) act.go = fixFor(a);
       }
     }
 
@@ -884,17 +911,14 @@ export default class LiveDashboard extends Base {
     }).catch((e) => this.flash(e.message, true));
     const origin = typeof window !== 'undefined' ? window.location.origin : '';
     v.mcpText = v.mcpText.replace('https://scheduleforyou.com', origin);
-    const roleStyle = { owner: ['#141619', '#d9ff35', '#d9ff35'], editor: ['#141619', '#fff', '#e5e3dc'], invited: ['#d98c0b', '#fff8e8', '#f3dfb2'] };
-    v.members = [
-      ...s.members.map((m) => ({ name: m.name || '', email: m.email, role: m.role === 'owner' ? 'owner' : 'editor' })),
-      ...s.invites.map((e) => ({ name: '', email: e, role: 'invited' })),
-    ].map((m) => ({ ...m, color: roleStyle[m.role][0], bg: roleStyle[m.role][1], border: roleStyle[m.role][2] }));
+    // Team: each member's real role (owner, editor or member) and the pending invites with the role they'll get.
+    v.members = this.memberRows(s.members, s.invites);
     v.sendInvite = () => {
-      const email = (s.invite || '').trim();
+      const email = (s.invite || '').trim().toLowerCase(), role = s.inviteRole === 'editor' ? 'editor' : 'member';
       if (!email) return;
-      api('/api/v1/team', { method: 'POST', body: { email } })
+      api('/api/v1/team', { method: 'POST', body: { email, role } })
         .then((r) => {
-          super.setState((st) => ({ invites: [...st.invites, email], inviteUrl: r.invite_url, invite: '' }));
+          super.setState((st) => ({ invites: [...st.invites.filter((i) => i.email !== email), { email, role }], inviteUrl: r.invite_url, invite: '' }));
           this.flash(r.emailed ? `Invite emailed to ${email}` : 'Invite link ready. Copy it and send it yourself.');
         })
         .catch((e) => this.flash(e.message, true));

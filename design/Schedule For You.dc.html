@@ -421,7 +421,7 @@ textarea{resize:vertical}
         <sc-if value="{{ noteOpen }}" hint-placeholder-val="{{ false }}">
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 16px;border-radius:14px;background:#fff8e6;border:1px solid #f3dfb2">
             <strong style="font-size:14px;color:#8a5a00;white-space:nowrap">Note for {{ noteDay }}</strong>
-            <input value="{{ noteText }}" onChange="{{ onNoteText }}" placeholder="e.g. Product launch, office closed, campaign starts" style="flex:1 1 260px;padding:8px 12px;border:1px solid #f3dfb2;border-radius:9px;outline:none;background:#fff" style-focus="border-color:#8a5a00">
+            <input value="{{ noteText }}" onChange="{{ onNoteText }}" maxlength="500" placeholder="e.g. Product launch, office closed, campaign starts" style="flex:1 1 260px;padding:8px 12px;border:1px solid #f3dfb2;border-radius:9px;outline:none;background:#fff" style-focus="border-color:#8a5a00">
             <button onClick="{{ saveNote }}" style="padding:8px 14px;border-radius:9px;border:0;background:#141619;color:#fff;cursor:pointer;font-weight:600;font-size:13px">Save</button>
             <button onClick="{{ deleteNote }}" style="padding:8px 12px;border-radius:9px;border:1px solid #f3dfb2;background:#fff;cursor:pointer;font-size:13px">Remove</button>
             <button onClick="{{ closeNote }}" style="padding:8px 10px;border:0;background:transparent;cursor:pointer;color:#8a5a00;font-size:16px">×</button>
@@ -647,13 +647,13 @@ textarea{resize:vertical}
                   <sc-for list="{{ draftLabels }}" as="l" hint-placeholder-count="4">
                     <button onClick="{{ l.toggle }}" style="padding:4px 11px;border-radius:7px;border:1px solid {{ l.border }};background:{{ l.bg }};color:{{ l.color }};cursor:pointer;font-size:13px;font-weight:500">{{ l.name }}</button>
                   </sc-for>
-                  <input value="{{ newLabel }}" onChange="{{ onNewLabel }}" placeholder="New label" style="width:110px;padding:4px 10px;border:1px dashed #cfccc3;border-radius:7px;outline:none;font-size:13px">
+                  <input value="{{ newLabel }}" onChange="{{ onNewLabel }}" maxlength="40" placeholder="New label" style="width:110px;padding:4px 10px;border:1px dashed #cfccc3;border-radius:7px;outline:none;font-size:13px">
                   <button onClick="{{ addLabel }}" style="padding:4px 10px;border-radius:7px;border:0;background:transparent;cursor:pointer;font-size:13px;color:#677184">Add</button>
                 </div>
               </div>
               <div style="display:flex;flex-direction:column;gap:8px">
                 <span style="font-size:13px;font-weight:600;color:#677184">Note for reviewers <span style="font-weight:400">· private, never published</span></span>
-                <textarea rows="2" value="{{ draftNote }}" onChange="{{ onDraftNote }}" placeholder="Context for whoever approves this. e.g. Legal signed off on the claim in line 2." style="width:100%;padding:10px 12px;border:1px dashed #d8d5cc;border-radius:10px;background:#faf9f6;outline:none;font-size:14px;line-height:1.45" style-focus="border-color:#141619;border-style:solid"></textarea>
+                <textarea rows="2" value="{{ draftNote }}" onChange="{{ onDraftNote }}" maxlength="2000" placeholder="Context for whoever approves this. e.g. Legal signed off on the claim in line 2." style="width:100%;padding:10px 12px;border:1px dashed #d8d5cc;border-radius:10px;background:#faf9f6;outline:none;font-size:14px;line-height:1.45" style-focus="border-color:#141619;border-style:solid"></textarea>
               </div>
               <div style="display:flex;flex-direction:column;gap:8px">
                 <span style="font-size:13px;font-weight:600;color:#677184">Repeat</span>
@@ -876,7 +876,7 @@ textarea{resize:vertical}
                 <span style="font:500 12px 'Geist Mono',monospace;color:#677184">date,time,accounts,caption</span>
               </div>
               <textarea rows="12" value="{{ csv }}" onChange="{{ onCsv }}" spellcheck="false" style="width:100%;padding:12px;border:1px solid #e5e3dc;border-radius:10px;outline:none;font:12px/1.6 'Geist Mono',monospace;white-space:pre;overflow-x:auto" style-focus="border-color:#141619"></textarea>
-              <span style="font-size:13px;color:#677184">Separate accounts with ; using platform names (x, bluesky, linkedin…). Times are in your workspace timezone.</span>
+              <span style="font-size:13px;color:#677184;line-height:1.5">Separate accounts with ;. Name each one as @username, platform:@username (e.g. facebook:@Northside Coffee) or its display name. A platform name alone (x, bluesky, linkedin…) uses that platform's account, or the first one if you have several. Put captions with commas in "double quotes" and write "" for a quote inside. Times are in your workspace timezone.</span>
             </div>
             <div style="flex:1 1 460px;min-width:0;background:#fff;border:1px solid #e7e5df;border-radius:12px;overflow:hidden">
               <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid #e5e3dc;background:#faf9f6">
@@ -927,7 +927,7 @@ textarea{resize:vertical}
               </button>
             </sc-for>
             <div style="display:flex;gap:6px;padding:8px 4px 4px;border-top:1px solid #efede7;margin-top:6px">
-              <input value="{{ newFolder }}" onChange="{{ onNewFolder }}" placeholder="New folder" style="flex:1;min-width:0;padding:6px 10px;border:1px solid #e7e5df;border-radius:8px;outline:none;font-size:13px">
+              <input value="{{ newFolder }}" onChange="{{ onNewFolder }}" maxlength="60" placeholder="New folder" style="flex:1;min-width:0;padding:6px 10px;border:1px solid #e7e5df;border-radius:8px;outline:none;font-size:13px">
               <button onClick="{{ addFolder }}" style="padding:6px 10px;border-radius:8px;border:1px solid #e7e5df;background:#fff;cursor:pointer;font-size:13px">Add</button>
             </div>
           </div>
@@ -1172,7 +1172,7 @@ textarea{resize:vertical}
             </div>
           </sc-if>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <input placeholder="Key name (e.g. Claude Desktop)" value="{{ keyName }}" onChange="{{ onKeyName }}" style="flex:0 1 320px;padding:9px 12px;border:1px solid #e5e3dc;border-radius:10px;outline:none" style-focus="border-color:#141619">
+            <input placeholder="Key name (e.g. Claude Desktop)" maxlength="80" value="{{ keyName }}" onChange="{{ onKeyName }}" style="flex:0 1 320px;padding:9px 12px;border:1px solid #e5e3dc;border-radius:10px;outline:none" style-focus="border-color:#141619">
             <button onClick="{{ makeKey }}" style="padding:9px 14px;border-radius:10px;border:1px solid #141619;background:#141619;color:#fff;font-weight:500;cursor:pointer">Create key</button>
           </div>
           <sc-for list="{{ keys }}" as="k" hint-placeholder-count="2">
@@ -1206,8 +1206,10 @@ textarea{resize:vertical}
           </sc-for>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
             <input type="email" placeholder="teammate@company.com" value="{{ invite }}" onChange="{{ onInvite }}" style="flex:0 1 320px;padding:9px 12px;border:1px solid #e5e3dc;border-radius:10px;outline:none" style-focus="border-color:#141619">
+            <select value="{{ inviteRole }}" onChange="{{ onInviteRole }}" aria-label="Role" style="padding:9px 10px;border:1px solid #e5e3dc;border-radius:10px;background:#fff;font-size:14px;color:#141619;cursor:pointer"><option value="member">Member</option><option value="editor">Editor</option></select>
             <button onClick="{{ sendInvite }}" style="padding:9px 14px;border-radius:10px;border:1px solid #e5e3dc;background:#fff;font-weight:500;cursor:pointer">Create invite link</button>
           </div>
+          <span style="margin-top:-4px;font-size:13px;color:#677184">{{ inviteRoleHint }}</span>
           <sc-if value="{{ hasInviteUrl }}" hint-placeholder-val="{{ false }}">
             <div style="padding:10px 12px;border-radius:10px;border:1px solid #cdebd8;background:#effaf3;font-size:13px">Send them this link: <span style="font-family:'Geist Mono',monospace;word-break:break-all">{{ inviteUrl }}</span></div>
           </sc-if>
@@ -1306,7 +1308,7 @@ class Component extends DCLogic {
     instagram: { label: 'Instagram', color: '#e1306c', logo: 'url(logos/white/instagram.svg)', short: 'IG', max: 2200, req: 'any', note: 'Business or Creator account linked to a Facebook Page.', fields: [{ key: 'format', label: 'Post as', options: ['Post', 'Reel', 'Story'] }] },
     linkedin: { label: 'LinkedIn', color: '#0a66c2', logo: 'url(logos/white/linkedin.svg)', short: 'in', max: 3000, req: 'none', note: 'Posts to your personal profile.' },
     facebook: { label: 'Facebook', color: '#1877f2', logo: 'url(logos/white/facebook.svg)', short: 'f', max: 63206, req: 'none', note: 'Posts to Pages you manage.', fields: [{ key: 'format', label: 'Post as', options: ['Post', 'Reel', 'Story'] }] },
-    tiktok: { label: 'TikTok', color: '#000000', logo: 'url(logos/white/tiktok.svg)', short: 'TT', max: 2200, req: 'any', note: 'Post videos and photo carousels to your TikTok.', fields: [{ key: 'privacy', label: 'Privacy', options: ['Public', 'Friends', 'Only me'] }] },
+    tiktok: { label: 'TikTok', color: '#000000', logo: 'url(logos/white/tiktok.svg)', short: 'TT', max: 2200, req: 'any', note: 'Post videos and photo carousels to your TikTok.', fields: [{ key: 'privacy', label: 'Privacy', options: ['Only me', 'Friends', 'Public'] }] },
     youtube: { label: 'YouTube', color: '#ff0000', logo: 'url(logos/white/youtube.svg)', short: 'YT', max: 5000, req: 'video', note: 'Upload videos and Shorts with a title and privacy setting.', fields: [{ key: 'title', label: 'Title' }, { key: 'privacy', label: 'Privacy', options: ['public', 'unlisted', 'private'] }] },
     threads: { label: 'Threads', color: '#000000', logo: 'url(logos/white/threads.svg)', short: '@', max: 500, req: 'none', note: 'Post text, images and videos to your Threads profile.' },
     pinterest: { label: 'Pinterest', color: '#e60023', logo: 'url(logos/white/pinterest.svg)', short: 'P', max: 500, req: 'image', note: 'Pin images to the board you choose.', fields: [{ key: 'board', label: 'Board', options: ['Launch', 'Behind the scenes', 'Tips'] }, { key: 'link', label: 'Destination link' }] },
@@ -1461,6 +1463,15 @@ class Component extends DCLogic {
     // "Post as" picked before choosing accounts applies to every Instagram and Facebook target without its own choice.
     const accP = Object.fromEntries(s.accounts.map((a) => [a.id, a.platform])), ov = { ...d.ov };
     if (d.postAs && d.postAs !== 'Post') for (const id of d.targets) if ((accP[id] === 'instagram' || accP[id] === 'facebook') && !(ov[id]?.opts || {}).format) ov[id] = { ...(ov[id] || {}), opts: { ...(ov[id]?.opts || {}), format: d.postAs } };
+    // Save what the composer shows: a select left on its first option (TikTok privacy, Pinterest board…) is saved as that option.
+    for (const a of s.accounts) {
+      if (!d.targets.includes(a.id)) continue;
+      for (const f of Component.P[a.platform]?.fields || []) {
+        if (!f.options || f.key === 'format' || (ov[a.id]?.opts || {})[f.key] != null) continue;
+        const def = this.fieldOptions(a, f)[0];
+        if (def != null) ov[a.id] = { ...(ov[a.id] || {}), opts: { ...(ov[a.id]?.opts || {}), [f.key]: def } };
+      }
+    }
     const post = { id: d.id || 'p' + Date.now(), note: d.note || '', ws: s.ws || 'maya', labels: d.labels || [], repeat: d.repeat, evergreen: d.evergreen, remind: d.remind, approval: d.approval ? 'pending' : d.approvedBefore ? 'approved' : null, status: st, at, caption: d.caption, media: d.media, ov, targets: d.targets.map((id) => ({ acc: id, status: st, error: '' })) };
     const posts = d.id ? s.posts.map((p) => (p.id === d.id ? post : p)) : [...s.posts, post];
     const tab = st === 'published' ? 'published' : st === 'draft' ? 'drafts' : 'upcoming';
@@ -1538,14 +1549,36 @@ class Component extends DCLogic {
     this.setState({ posts: [...s.posts, ...posts], bulkFiles: [], screen: 'queue', tab: asDraft ? 'drafts' : 'upcoming' });
     this.flash(asDraft ? `Saved ${posts.length} drafts` : `Scheduled ${posts.length} posts`);
   }
+  /** Splits CSV text into rows of fields. Handles quoted fields with commas, line breaks and "" escapes. */
+  static csvRows(text) {
+    const rows = []; let row = [], f = '', q = false, quoted = false;
+    const endField = () => { row.push(f); f = ''; quoted = false; };
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i];
+      if (q) { if (c === '"' && text[i + 1] === '"') { f += '"'; i++; } else if (c === '"') q = false; else f += c; continue; }
+      if (c === '"' && !f.trim() && !quoted) { q = true; quoted = true; f = ''; }
+      else if (c === ',') endField();
+      else if (c === '\n' || c === '\r') { if (c === '\r' && text[i + 1] === '\n') i++; endField(); if (row.some((x) => x.trim())) rows.push(row); row = []; }
+      else if (!quoted) f += c;
+    }
+    endField(); if (row.some((x) => x.trim())) rows.push(row);
+    return rows;
+  }
+  /**
+   * CSV import. The accounts column lists accounts separated by ";". Each entry can be an account id, @username,
+   * platform:@username, the account's display name, or a platform name. A platform name means that platform's
+   * account when only one is connected; with several, the first is used and the row says so.
+   */
   parseCsv() {
-    const P = Component.P, s = this.state;
-    const lines = s.csv.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
-    if (lines[0] && /^date\s*,/i.test(lines[0])) lines.shift();
-    const alias = { twitter: 'x', 'x/twitter': 'x', ig: 'instagram', yt: 'youtube', gbp: 'google_business', google: 'google_business', bsky: 'bluesky' };
-    return lines.map((line) => {
-      const parts = line.split(','), [date, time, accStr] = parts, caption = parts.slice(3).join(',').trim();
-      const issues = []; let warn = false;
+    const P = Component.P, s = this.state, accounts = s.accounts.filter((a) => (a.ws || 'maya') === (s.ws || 'maya'));
+    const rows = Component.csvRows(s.csv || '');
+    if (rows[0] && /^date$/i.test((rows[0][0] || '').trim())) rows.shift();
+    const alias = { twitter: 'x', 'x/twitter': 'x', ig: 'instagram', yt: 'youtube', gbp: 'google_business', google: 'google_business', bsky: 'bluesky', fb: 'facebook', li: 'linkedin', tt: 'tiktok' };
+    const plat = (x) => { const k = x.toLowerCase(); return P[alias[k] || k] ? alias[k] || k : null; };
+    const list = (as) => as.map((a) => `${P[a.platform].label} @${a.username}`).join(', ');
+    return rows.map((parts) => {
+      const [date, time, accStr] = parts, caption = parts.slice(3).join(',').trim();
+      const issues = [], notes = []; let warn = false;
       const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec((date || '').trim()), t = /^(\d{1,2}):(\d{2})$/.exec((time || '').trim());
       let at = null;
       if (!m) issues.push('Date must look like 2026-10-26');
@@ -1553,18 +1586,29 @@ class Component extends DCLogic {
       else { at = Component.fromLocal(`${m[1]}-${m[2]}-${m[3]}T${String(+t[1]).padStart(2, '0')}:${t[2]}`, s.tz); if (!at || at <= Component.NOW) issues.push('That time has already passed'); }
       const names = (accStr || '').split(';').map((x) => x.trim()).filter(Boolean);
       const accs = [];
-      for (const nm of names) {
-        if (!P[nm]) { issues.push(`Unknown platform "${nm}"`); continue; }
-        const a = s.accounts.find((x) => x.platform === nm);
-        if (!a) { issues.push(`No ${P[nm].label} account connected`); continue; }
+      for (const raw of names) {
+        let found = accounts.filter((a) => a.id === raw);
+        const pm = /^([\w/ ]+?)\s*:\s*@?(.+)$/.exec(raw), pp = pm && plat(pm[1].trim());
+        if (!found.length && pp) found = accounts.filter((a) => a.platform === pp && (a.username.toLowerCase() === pm[2].trim().toLowerCase() || (a.display || '').toLowerCase() === pm[2].trim().toLowerCase()));
+        else if (!found.length && raw.startsWith('@')) found = accounts.filter((a) => a.username.toLowerCase() === raw.slice(1).toLowerCase());
+        if (!found.length && !raw.startsWith('@') && !pp && !plat(raw)) found = accounts.filter((a) => (a.display || '').toLowerCase() === raw.toLowerCase() || a.username.toLowerCase() === raw.toLowerCase());
+        if (!found.length && plat(raw)) {
+          const pl = plat(raw), all = accounts.filter((a) => a.platform === pl);
+          if (!all.length) { issues.push(`No ${P[pl].label} account connected`); continue; }
+          if (all.length > 1) notes.push(`"${raw}" matches ${all.length} ${P[pl].label} accounts, so this uses @${all[0].username}. Write ${pl}:@username to pick one.`);
+          found = [all[0]];
+        } else if (found.length > 1) { issues.push(`"${raw}" matches ${found.length} accounts (${list(found)}). Write platform:@username instead.`); continue; }
+        if (!found.length) { issues.push(raw.startsWith('@') || pp ? `No connected account ${raw}` : `Unknown account or platform "${raw}"`); continue; }
+        const a = found[0];
+        if (accs.includes(a)) continue;
         accs.push(a);
-        if (caption.length > P[nm].max) issues.push(`${caption.length}/${P[nm].max} characters for ${P[nm].label}`);
-        if (P[nm].req !== 'none') { warn = true; }
+        if (caption.length > P[a.platform].max) issues.push(`${caption.length}/${P[a.platform].max} characters for ${P[a.platform].label}`);
+        if (P[a.platform].req !== 'none') warn = true;
       }
       if (!names.length) issues.push('No accounts listed');
       if (!caption) issues.push('Caption is empty');
       const ok = issues.length === 0;
-      return { ok, warn: ok && warn, at, accs, caption, issue: ok ? (warn ? 'Imports as a draft: this platform needs media. Add it before scheduling.' : '') : issues[0] };
+      return { ok, warn: ok && warn, note: ok ? notes[0] || '' : '', at, accs, caption, issue: ok ? (warn ? 'Imports as a draft: this platform needs media. Add it before scheduling.' + (notes[0] ? ' ' + notes[0] : '') : notes[0] || '') : issues[0] };
     });
   }
   tzShift(ms = Date.now()) { return Component.shift(ms, this.state.tz); }
@@ -1778,6 +1822,7 @@ class Component extends DCLogic {
       const fmt = (d.ov[a.id]?.opts || {}).format || (a.platform === 'instagram' || a.platform === 'facebook' ? d.postAs : null);
       if (fmt === 'Reel' && !(d.media.length === 1 && hasVid)) problems.push(`A ${p.label} Reel needs exactly one video. Change "Post as" or the media for @${a.username}.`);
       if (fmt === 'Story' && d.media.length !== 1) problems.push(`A ${p.label} Story needs exactly one image or video. Change "Post as" or the media for @${a.username}.`);
+      for (const f of p.fields || []) if (f.options && !this.fieldOptions(a, f).length) problems.push(`${p.label} @${a.username} has no ${f.label.toLowerCase()}s to post to. Create one on ${p.label}, then reconnect the account.`);
       if (p.maxImages !== undefined && d.media.filter((m) => m === 'IMG').length > p.maxImages) problems.push(`${p.label} allows ${p.maxImages} image${p.maxImages === 1 ? '' : 's'} per post. Remove some or deselect @${a.username}.`);
     }
     if (d.mode === 'schedule') {
@@ -1795,7 +1840,8 @@ class Component extends DCLogic {
         custom: o.caption !== undefined || Object.keys(o.opts || {}).length > 0, toggleOpen: () => this.upd({ open: open ? null : a.id }),
         text, countText: `${text.length}/${p.max}`, countColor: text.length > p.max ? '#dc3545' : '#677184',
         onText: (e) => this.setOv(a.id, { caption: e.target.value }), hasOverride: o.caption !== undefined, reset: () => this.setOv(a.id, { caption: undefined }),
-        fields: (p.fields || []).map((f) => ({ label: f.label, isSelect: !!f.options, isText: !f.options, options: f.options || [], value: (o.opts || {})[f.key] ?? (f.options ? f.options[0] : ''), onChange: (e) => this.setOv(a.id, { opts: { ...(o.opts || {}), [f.key]: e.target.value } }) })),
+        // A select shows the value that will be saved: the account's choice, else "Post as", else the first option (submit saves it).
+        fields: (p.fields || []).map((f) => { const opts = f.options ? this.fieldOptions(a, f) : []; return { key: f.key, label: f.label, isSelect: !!f.options, isText: !f.options, options: opts, value: (o.opts || {})[f.key] ?? (f.key === 'format' ? d.postAs || opts[0] : f.options ? opts[0] ?? '' : ''), onChange: (e) => this.setOv(a.id, { opts: { ...(o.opts || {}), [f.key]: e.target.value } }) }; }),
       };
     });
     const modes = [['now', 'Publish now', 'Goes out immediately'], ['schedule', 'Schedule', 'Pick a date and time'], ['queue', 'Add to queue', 'Next open slot'], ['draft', 'Save draft', 'Not scheduled']].map(([k, label, hint]) => ({ label, hint, pressed: d.mode === k ? 'true' : 'false', select: () => this.upd({ mode: k }), bg: d.mode === k ? '#f6ffd9' : '#fff', border: d.mode === k ? '#141619' : '#e7e5df' }));
@@ -1896,8 +1942,8 @@ class Component extends DCLogic {
     const bf = s.bulkFiles.length, bulkDisabled = !bf || !s.bulkAccs.length || s.bulkFiles.some((f) => !f.at || f.at <= NOW);
     const csvParsed = this.parseCsv(), csvOk = csvParsed.filter((r) => r.ok), csvErr = csvParsed.length - csvOk.length;
     const csvRows = csvParsed.map((r, i) => ({
-      icon: r.ok ? (r.warn ? '!' : '✓') : '×', iconBg: r.ok ? (r.warn ? '#fff1d6' : '#d9ff35') : '#fde3e1', iconFg: r.ok ? (r.warn ? '#b47100' : '#141619') : '#dc3545',
-      when: r.at ? new Date(r.at).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) : '—',
+      icon: r.ok ? (r.warn || r.note ? '!' : '✓') : '×', iconBg: r.ok ? (r.warn || r.note ? '#fff1d6' : '#d9ff35') : '#fde3e1', iconFg: r.ok ? (r.warn || r.note ? '#b47100' : '#141619') : '#dc3545',
+      when: r.at ? `${this.wsDate(r.at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}, ${this.time(r.at)}` : '—',
       accs: r.accs.map((a) => ({ short: P[a.platform].short, logo: P[a.platform].logo, color: P[a.platform].color })), caption: r.caption || '(empty)',
       hasIssue: !!r.issue, issue: r.issue, issueColor: r.ok ? '#b47100' : '#dc3545', bg: r.ok ? '#fff' : '#fffafa', divider: i ? '1px solid #e5e3dc' : '0',
     }));
@@ -1913,9 +1959,7 @@ class Component extends DCLogic {
     const showAlert = failedPosts.length > 0 && !s.alertHidden && s.tab !== 'failed';
     const alertItems = failedPosts.slice(0, 3).map((p) => { const t = p.targets.find((x) => x.error) || {}; const a = accById[t.acc]; const er = t.error || 'Failed', k = /authori|token|revoked/i.test(er) ? 'Reconnect the account' : /character|limit|seconds|too long|video/i.test(er) ? 'Edit the post to fix' : 'Safe to retry'; return { who: a ? `${P[a.platform].label} @${a.username}` : 'Post', when: p.at ? `${this.dayLabel(p.at)} ${this.time(p.at)}` : '', why: `${er}. ${k}.` }; });
 
-    const roleStyle = { owner: ['#141619', '#d9ff35', '#d9ff35'], editor: ['#141619', '#fff', '#e5e3dc'], invited: ['#d98c0b', '#fff8e8', '#f3dfb2'] };
-    const members = [{ name: 'Maya Chen', email: 'maya@scheduleforyou.com', role: 'owner' }, { name: 'Jordan Lee', email: 'jordan@scheduleforyou.com', role: 'editor' }, ...s.invites.map((e) => ({ name: '', email: e, role: 'invited' }))]
-      .map((m) => ({ ...m, color: roleStyle[m.role][0], bg: roleStyle[m.role][1], border: roleStyle[m.role][2] }));
+    const members = this.memberRows([{ name: 'Maya Chen', email: 'maya@scheduleforyou.com', role: 'owner' }, { name: 'Jordan Lee', email: 'jordan@scheduleforyou.com', role: 'editor' }], s.invites);
 
     return {
       userEmail: this.userEmail || 'maya@scheduleforyou.com',
@@ -1961,7 +2005,9 @@ class Component extends DCLogic {
       makeKey: () => { const r = 'sfy_' + Math.random().toString(36).slice(2, 10) + Math.random().toString(36).slice(2, 14); this.setState((st) => ({ newKey: r, keyName: '', keys: [{ id: 'k' + Date.now(), name: st.keyName || 'Default', prefix: r.slice(0, 8), meta: 'Created just now · never used' }, ...st.keys] })); },
       mcpText: '{\n  "mcpServers": {\n    "scheduleforyou": {\n      "type": "http",\n      "url": "https://scheduleforyou.com/api/mcp",\n      "headers": { "Authorization": "Bearer sfy_..." }\n    }\n  }\n}',
       members, invite: s.invite, onInvite: (e) => this.setState({ invite: e.target.value }),
-      sendInvite: () => { if (!s.invite) return; this.setState((st) => ({ invites: [...st.invites, st.invite], inviteUrl: `https://app.scheduleforyou.com/invite/${Math.random().toString(36).slice(2, 12)}`, invite: '' })); },
+      inviteRole: S0.inviteRole || 'member', onInviteRole: (e) => this.setState({ inviteRole: e.target.value }),
+      inviteRoleHint: (S0.inviteRole || 'member') === 'editor' ? 'Editors can also connect and disconnect accounts and change automations.' : 'Members create, schedule and publish posts.',
+      sendInvite: () => { if (!s.invite) return; this.setState((st) => ({ invites: [...st.invites, { email: st.invite, role: st.inviteRole || 'member' }], inviteUrl: `https://app.scheduleforyou.com/invite/${Math.random().toString(36).slice(2, 12)}`, invite: '' })); },
       hasInviteUrl: !!s.inviteUrl, inviteUrl: s.inviteUrl,
       canSelect: s.tab === 'upcoming', selectLabel: s.selecting ? 'Cancel' : 'Select', selectBorder: s.selecting ? '#141619' : '#e5e3dc', selectBg: s.selecting ? '#141619' : '#fff', selectColor: s.selecting ? '#fff' : '#141619',
       toggleSelect: () => this.setState((st) => ({ selecting: !st.selecting, selected: [] })),
@@ -2094,7 +2140,8 @@ class Component extends DCLogic {
           heroLabel: S0.paused ? 'Queue paused. Next post would go out in' : 'Next post goes out in',
           exportCsv: () => {
             const esc = (v) => /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v;
-            const rows = [['date', 'time', 'timezone', 'accounts', 'caption', 'labels', 'approval']].concat(upcoming.map((p) => { const dt = new Date(p.at + this.tzShift()); return [`${dt.getFullYear()}-${z2(dt.getMonth() + 1)}-${z2(dt.getDate())}`, `${z2(dt.getHours())}:${z2(dt.getMinutes())}`, S0.tz, p.targets.map((t) => accById[t.acc]?.platform).filter(Boolean).join(';'), p.caption, (p.labels || []).join(';'), p.approval || '']; }));
+            // Accounts as platform:@username, which the CSV import reads back to the same accounts.
+            const rows = [['date', 'time', 'timezone', 'accounts', 'caption', 'labels', 'approval']].concat(upcoming.map((p) => { const dt = this.wsDate(p.at); return [`${dt.getFullYear()}-${z2(dt.getMonth() + 1)}-${z2(dt.getDate())}`, `${z2(dt.getHours())}:${z2(dt.getMinutes())}`, S0.tz, p.targets.map((t) => accById[t.acc]).filter(Boolean).map((a) => `${a.platform}:@${a.username}`).join(';'), p.caption, (p.labels || []).join(';'), p.approval || '']; }));
             const blob = new Blob([rows.map((r) => r.map((c) => esc(String(c))).join(',')).join('\n')], { type: 'text/csv' });
             const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `scheduled-posts-${WS}.csv`; document.body.appendChild(a); a.click(); a.remove();
             this.flash(`Exported ${upcoming.length} scheduled posts`);
@@ -2107,9 +2154,9 @@ class Component extends DCLogic {
           deleteNote: () => { const k = S0.noteKey; this.setState((st) => { const n = { ...st.notes }; delete n[k]; return { notes: n, noteKey: null, noteText: '' }; }); this.flash('Note removed'); },
           closeNote: () => this.setState({ noteKey: null, noteText: '' }),
           templates: S0.templates.map((t) => ({ ...t, use: () => this.upd({ caption: d.caption ? d.caption + '\n\n' + t.text : t.text }) })),
-          saveTemplate: () => { const c = d.caption.trim(); if (!c) return this.flash('Write a caption first', true); const name = c.split(/\s+/).slice(0, 3).join(' ').replace(/[^\w\s’']/g, ''); this.setState((st) => ({ templates: [...st.templates, { name, text: c }] })); this.flash(`Saved template “${name}”`); },
+          saveTemplate: () => { const c = d.caption.trim(); if (!c) return this.flash('Write a caption first', true); if (c.length > 5000) return this.flash('Templates can be up to 5,000 characters. Shorten the caption first.', true); const name = c.split(/\s+/).slice(0, 3).join(' ').replace(/[^\w\s’']/g, '').slice(0, 60) || 'Template'; this.setState((st) => ({ templates: [...st.templates, { name, text: c }] })); this.flash(`Saved template “${name}”`); },
           tagGroups: S0.tagGroups.map((g) => ({ ...g, count: g.tags.split(/\s+/).length, add: () => this.upd({ caption: (d.caption ? d.caption.replace(/\s+$/, '') + '\n\n' : '') + g.tags }) })),
-          saveTags: () => { const tags = [...new Set(d.caption.match(/#[\w]+/g) || [])]; if (!tags.length) return this.flash('No hashtags in the caption yet', true); this.setState((st) => ({ tagGroups: [...st.tagGroups, { name: tags[0].slice(1), tags: tags.join(' ') }] })); this.flash(`Saved ${tags.length} hashtags as a group`); },
+          saveTags: () => { const tags = [...new Set(d.caption.match(/#[\w]+/g) || [])]; if (!tags.length) return this.flash('No hashtags in the caption yet', true); this.setState((st) => ({ tagGroups: [...st.tagGroups, { name: tags[0].slice(1, 61), tags: tags.join(' ').slice(0, 2000).replace(/\s+\S*$/, (m) => (tags.join(' ').length > 2000 ? '' : m)) }] })); this.flash(`Saved ${tags.length} hashtags as a group`); },
           pickerOpen: S0.pickerOpen, togglePicker: () => this.setState((st) => ({ pickerOpen: !st.pickerOpen })),
           folderTabs: ['All', ...S0.folders].map((f) => { const on = S0.folder === f; return { name: f, count: f === 'All' ? lib.length : lib.filter((m) => m.folder === f).length, border: on ? '#141619' : '#e7e5df', bg: on ? '#141619' : '#fff', color: on ? '#fff' : '#141619', navBg: on ? '#f1efe9' : 'transparent', folderColor: on ? '#141619' : '#d8d5cc', pick: () => this.setState({ folder: f }) }; }),
           libItems: inFolder.map((m) => ({ name: m.name, thumb: thumb(m), badge: m.kind === 'VIDEO' ? '▶' : '', use: () => { addLib(m); this.flash(`Added ${m.name}`); } })),
@@ -2158,15 +2205,15 @@ class Component extends DCLogic {
           const t = p.targets.find((x) => x.error) || {}, a = accById[t.acc];
           attention.push({ icon: '!', iconBg: '#fde8e6', iconFg: '#dc3545', title: `${a ? P[a.platform].label : 'Post'} post couldn't publish`, when: p.at ? this.dayLabel(p.at) : '', body: `${t.error || 'Failed'}. "${(p.caption || '').slice(0, 70)}${p.caption.length > 70 ? '…' : ''}"`,
             actions: (() => { const e = t.error || ''; const kind = /authori|token|revoked/i.test(e) ? 'auth' : /character|limit|too long|seconds|video/i.test(e) ? 'content' : 'temp';
-              if (kind === 'auth') return [{ label: 'Reconnect account', go: () => this.setState({ screen: 'accounts' }), bg: '#141619', color: '#fff', border: '#141619' }];
+              if (kind === 'auth') return [{ label: 'Reconnect account', accId: a?.id || null, go: () => this.setState({ screen: 'accounts' }), bg: '#141619', color: '#fff', border: '#141619' }];
               if (kind === 'content') return [{ label: /second|video/i.test(e) ? 'Fix video length' : 'Edit caption', go: () => this.editPost(p), bg: '#141619', color: '#fff', border: '#141619' }];
               return [{ label: 'Retry', go: () => { this.setPost(p.id, (x) => ({ ...x, status: 'published', targets: x.targets.map((y) => ({ ...y, status: 'published', error: '' })) })); this.flash('Retried'); }, bg: '#141619', color: '#fff', border: '#141619' }, { label: 'Edit post', go: () => this.editPost(p), bg: '#fff', color: '#141619', border: '#e7e5df' }]; })() });
         }
         for (const a of sick) {
           const h = HL(a);
-          attention.push({ icon: a.health === 'error' ? '!' : '⏱', iconBg: a.health === 'error' ? '#fde8e6' : '#fff1d6', iconFg: a.health === 'error' ? '#dc3545' : '#8a5a00', title: `${P[a.platform].label} @${a.username}: ${h.hLabel.toLowerCase()}`, when: '',
+          attention.push({ accId: a.id, icon: a.health === 'error' ? '!' : '⏱', iconBg: a.health === 'error' ? '#fde8e6' : '#fff1d6', iconFg: a.health === 'error' ? '#dc3545' : '#8a5a00', title: `${P[a.platform].label} @${a.username}: ${h.hLabel.toLowerCase()}`, when: '',
             body: a.health === 'error' ? `${a.error}. Posts to this account are on hold until you reconnect.` : `${h.healthDetail}. Reconnect now so scheduled posts don't fail.`,
-            actions: [{ label: 'Reconnect', go: reconnect(a), bg: '#141619', color: '#fff', border: '#141619' }] });
+            actions: [{ label: a.health === 'over' ? 'Upgrade' : 'Reconnect', accId: a.id, go: reconnect(a), bg: '#141619', color: '#fff', border: '#141619' }] });
         }
         for (const id of conflictIds) {
           const c = conflictMap[id][0], key = [id, c.q.id].sort().join('|'); if (seen.has(key)) continue; seen.add(key);
@@ -2217,7 +2264,7 @@ class Component extends DCLogic {
             open: () => this.editPost(p),
           };
         });
-        const healthTiles = s.accounts.map((a) => { const h = HL(a); return { username: a.username, detail: h.needsFix ? h.healthDetail : P[a.platform].label, label: h.hLabel === 'Connected' ? 'OK' : h.hLabel, fg: h.hFg, border: h.needsFix ? (a.health === 'error' ? '#f4c6c2' : '#f3dfb2') : '#e7e5df', glow: h.needsFix ? '0 12px 28px -20px ' + (a.health === 'error' ? 'rgba(210,59,47,.6)' : 'rgba(180,113,0,.5)') : 'none', color: P[a.platform].color, logo: P[a.platform].logo, ...Component.pic(a), title: `@${a.username} · ${P[a.platform].label}`, platform: a.platform, needsFix: h.needsFix, fixLabel: h.fixLabel, fix: reconnect(a) }; }).sort((x, y) => y.needsFix - x.needsFix);
+        const healthTiles = s.accounts.map((a) => { const h = HL(a); return { accId: a.id, username: a.username, detail: h.needsFix ? h.healthDetail : P[a.platform].label, label: h.hLabel === 'Connected' ? 'OK' : h.hLabel, fg: h.hFg, border: h.needsFix ? (a.health === 'error' ? '#f4c6c2' : '#f3dfb2') : '#e7e5df', glow: h.needsFix ? '0 12px 28px -20px ' + (a.health === 'error' ? 'rgba(210,59,47,.6)' : 'rgba(180,113,0,.5)') : 'none', color: P[a.platform].color, logo: P[a.platform].logo, ...Component.pic(a), title: `@${a.username} · ${P[a.platform].label}`, platform: a.platform, needsFix: h.needsFix, fixLabel: h.fixLabel, fix: reconnect(a) }; }).sort((x, y) => y.needsFix - x.needsFix);
         const localNow = new Date(nowMs + this.tzShift());
         return {
           dateLine: localNow.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) + ' · ' + this.time(nowMs) + ' · ' + Component.tzLabel(S0.tz),

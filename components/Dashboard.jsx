@@ -61,7 +61,7 @@ class Component extends DCLogic {
       max: 2200,
       req: 'any',
       note: 'Post videos and photo carousels to your TikTok.',
-      fields: [{ key: 'privacy', label: 'Privacy', options: ['Public', 'Friends', 'Only me'] }],
+      fields: [{ key: 'privacy', label: 'Privacy', options: ['Only me', 'Friends', 'Public'] }],
     },
     youtube: {
       label: 'YouTube',
@@ -728,6 +728,15 @@ class Component extends DCLogic {
       for (const id of d.targets)
         if ((accP[id] === 'instagram' || accP[id] === 'facebook') && !(ov[id]?.opts || {}).format)
           ov[id] = { ...(ov[id] || {}), opts: { ...(ov[id]?.opts || {}), format: d.postAs } };
+    // Save what the composer shows: a select left on its first option (TikTok privacy, Pinterest board…) is saved as that option.
+    for (const a of s.accounts) {
+      if (!d.targets.includes(a.id)) continue;
+      for (const f of Component.P[a.platform]?.fields || []) {
+        if (!f.options || f.key === 'format' || (ov[a.id]?.opts || {})[f.key] != null) continue;
+        const def = this.fieldOptions(a, f)[0];
+        if (def != null) ov[a.id] = { ...(ov[a.id] || {}), opts: { ...(ov[a.id]?.opts || {}), [f.key]: def } };
+      }
+    }
     const post = {
       id: d.id || 'p' + Date.now(),
       note: d.note || '',
@@ -916,14 +925,55 @@ class Component extends DCLogic {
     });
     this.flash(asDraft ? `Saved ${posts.length} drafts` : `Scheduled ${posts.length} posts`);
   }
+  /** Splits CSV text into rows of fields. Handles quoted fields with commas, line breaks and "" escapes. */
+  static csvRows(text) {
+    const rows = [];
+    let row = [],
+      f = '',
+      q = false,
+      quoted = false;
+    const endField = () => {
+      row.push(f);
+      f = '';
+      quoted = false;
+    };
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i];
+      if (q) {
+        if (c === '"' && text[i + 1] === '"') {
+          f += '"';
+          i++;
+        } else if (c === '"') q = false;
+        else f += c;
+        continue;
+      }
+      if (c === '"' && !f.trim() && !quoted) {
+        q = true;
+        quoted = true;
+        f = '';
+      } else if (c === ',') endField();
+      else if (c === '\n' || c === '\r') {
+        if (c === '\r' && text[i + 1] === '\n') i++;
+        endField();
+        if (row.some((x) => x.trim())) rows.push(row);
+        row = [];
+      } else if (!quoted) f += c;
+    }
+    endField();
+    if (row.some((x) => x.trim())) rows.push(row);
+    return rows;
+  }
+  /**
+   * CSV import. The accounts column lists accounts separated by ";". Each entry can be an account id, @username,
+   * platform:@username, the account's display name, or a platform name. A platform name means that platform's
+   * account when only one is connected; with several, the first is used and the row says so.
+   */
   parseCsv() {
     const P = Component.P,
-      s = this.state;
-    const lines = s.csv
-      .split(/\r?\n/)
-      .map((l) => l.trim())
-      .filter(Boolean);
-    if (lines[0] && /^date\s*,/i.test(lines[0])) lines.shift();
+      s = this.state,
+      accounts = s.accounts.filter((a) => (a.ws || 'maya') === (s.ws || 'maya'));
+    const rows = Component.csvRows(s.csv || '');
+    if (rows[0] && /^date$/i.test((rows[0][0] || '').trim())) rows.shift();
     const alias = {
       twitter: 'x',
       'x/twitter': 'x',
@@ -932,12 +982,20 @@ class Component extends DCLogic {
       gbp: 'google_business',
       google: 'google_business',
       bsky: 'bluesky',
+      fb: 'facebook',
+      li: 'linkedin',
+      tt: 'tiktok',
     };
-    return lines.map((line) => {
-      const parts = line.split(','),
-        [date, time, accStr] = parts,
+    const plat = (x) => {
+      const k = x.toLowerCase();
+      return P[alias[k] || k] ? alias[k] || k : null;
+    };
+    const list = (as) => as.map((a) => `${P[a.platform].label} @${a.username}`).join(', ');
+    return rows.map((parts) => {
+      const [date, time, accStr] = parts,
         caption = parts.slice(3).join(',').trim();
-      const issues = [];
+      const issues = [],
+        notes = [];
       let warn = false;
       const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec((date || '').trim()),
         t = /^(\d{1,2}):(\d{2})$/.exec((time || '').trim());
@@ -953,21 +1011,52 @@ class Component extends DCLogic {
         .map((x) => x.trim())
         .filter(Boolean);
       const accs = [];
-      for (const nm of names) {
-        if (!P[nm]) {
-          issues.push(`Unknown platform "${nm}"`);
+      for (const raw of names) {
+        let found = accounts.filter((a) => a.id === raw);
+        const pm = /^([\w/ ]+?)\s*:\s*@?(.+)$/.exec(raw),
+          pp = pm && plat(pm[1].trim());
+        if (!found.length && pp)
+          found = accounts.filter(
+            (a) =>
+              a.platform === pp &&
+              (a.username.toLowerCase() === pm[2].trim().toLowerCase() ||
+                (a.display || '').toLowerCase() === pm[2].trim().toLowerCase()),
+          );
+        else if (!found.length && raw.startsWith('@'))
+          found = accounts.filter((a) => a.username.toLowerCase() === raw.slice(1).toLowerCase());
+        if (!found.length && !raw.startsWith('@') && !pp && !plat(raw))
+          found = accounts.filter(
+            (a) =>
+              (a.display || '').toLowerCase() === raw.toLowerCase() || a.username.toLowerCase() === raw.toLowerCase(),
+          );
+        if (!found.length && plat(raw)) {
+          const pl = plat(raw),
+            all = accounts.filter((a) => a.platform === pl);
+          if (!all.length) {
+            issues.push(`No ${P[pl].label} account connected`);
+            continue;
+          }
+          if (all.length > 1)
+            notes.push(
+              `"${raw}" matches ${all.length} ${P[pl].label} accounts, so this uses @${all[0].username}. Write ${pl}:@username to pick one.`,
+            );
+          found = [all[0]];
+        } else if (found.length > 1) {
+          issues.push(`"${raw}" matches ${found.length} accounts (${list(found)}). Write platform:@username instead.`);
           continue;
         }
-        const a = s.accounts.find((x) => x.platform === nm);
-        if (!a) {
-          issues.push(`No ${P[nm].label} account connected`);
+        if (!found.length) {
+          issues.push(
+            raw.startsWith('@') || pp ? `No connected account ${raw}` : `Unknown account or platform "${raw}"`,
+          );
           continue;
         }
+        const a = found[0];
+        if (accs.includes(a)) continue;
         accs.push(a);
-        if (caption.length > P[nm].max) issues.push(`${caption.length}/${P[nm].max} characters for ${P[nm].label}`);
-        if (P[nm].req !== 'none') {
-          warn = true;
-        }
+        if (caption.length > P[a.platform].max)
+          issues.push(`${caption.length}/${P[a.platform].max} characters for ${P[a.platform].label}`);
+        if (P[a.platform].req !== 'none') warn = true;
       }
       if (!names.length) issues.push('No accounts listed');
       if (!caption) issues.push('Caption is empty');
@@ -975,13 +1064,15 @@ class Component extends DCLogic {
       return {
         ok,
         warn: ok && warn,
+        note: ok ? notes[0] || '' : '',
         at,
         accs,
         caption,
         issue: ok
           ? warn
-            ? 'Imports as a draft: this platform needs media. Add it before scheduling.'
-            : ''
+            ? 'Imports as a draft: this platform needs media. Add it before scheduling.' +
+              (notes[0] ? ' ' + notes[0] : '')
+            : notes[0] || ''
           : issues[0],
       };
     });
@@ -1717,6 +1808,11 @@ class Component extends DCLogic {
         problems.push(
           `A ${p.label} Story needs exactly one image or video. Change "Post as" or the media for @${a.username}.`,
         );
+      for (const f of p.fields || [])
+        if (f.options && !this.fieldOptions(a, f).length)
+          problems.push(
+            `${p.label} @${a.username} has no ${f.label.toLowerCase()}s to post to. Create one on ${p.label}, then reconnect the account.`,
+          );
       if (p.maxImages !== undefined && d.media.filter((m) => m === 'IMG').length > p.maxImages)
         problems.push(
           `${p.label} allows ${p.maxImages} image${p.maxImages === 1 ? '' : 's'} per post. Remove some or deselect @${a.username}.`,
@@ -1763,14 +1859,20 @@ class Component extends DCLogic {
         onText: (e) => this.setOv(a.id, { caption: e.target.value }),
         hasOverride: o.caption !== undefined,
         reset: () => this.setOv(a.id, { caption: undefined }),
-        fields: (p.fields || []).map((f) => ({
-          label: f.label,
-          isSelect: !!f.options,
-          isText: !f.options,
-          options: f.options || [],
-          value: (o.opts || {})[f.key] ?? (f.options ? f.options[0] : ''),
-          onChange: (e) => this.setOv(a.id, { opts: { ...(o.opts || {}), [f.key]: e.target.value } }),
-        })),
+        // A select shows the value that will be saved: the account's choice, else "Post as", else the first option (submit saves it).
+        fields: (p.fields || []).map((f) => {
+          const opts = f.options ? this.fieldOptions(a, f) : [];
+          return {
+            key: f.key,
+            label: f.label,
+            isSelect: !!f.options,
+            isText: !f.options,
+            options: opts,
+            value:
+              (o.opts || {})[f.key] ?? (f.key === 'format' ? d.postAs || opts[0] : f.options ? (opts[0] ?? '') : ''),
+            onChange: (e) => this.setOv(a.id, { opts: { ...(o.opts || {}), [f.key]: e.target.value } }),
+          };
+        }),
       };
     });
     const modes = [
@@ -2198,11 +2300,11 @@ class Component extends DCLogic {
       csvOk = csvParsed.filter((r) => r.ok),
       csvErr = csvParsed.length - csvOk.length;
     const csvRows = csvParsed.map((r, i) => ({
-      icon: r.ok ? (r.warn ? '!' : '✓') : '×',
-      iconBg: r.ok ? (r.warn ? '#fff1d6' : '#d9ff35') : '#fde3e1',
-      iconFg: r.ok ? (r.warn ? '#b47100' : '#141619') : '#dc3545',
+      icon: r.ok ? (r.warn || r.note ? '!' : '✓') : '×',
+      iconBg: r.ok ? (r.warn || r.note ? '#fff1d6' : '#d9ff35') : '#fde3e1',
+      iconFg: r.ok ? (r.warn || r.note ? '#b47100' : '#141619') : '#dc3545',
       when: r.at
-        ? new Date(r.at).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })
+        ? `${this.wsDate(r.at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}, ${this.time(r.at)}`
         : '—',
       accs: r.accs.map((a) => ({ short: P[a.platform].short, logo: P[a.platform].logo, color: P[a.platform].color })),
       caption: r.caption || '(empty)',
@@ -2256,16 +2358,13 @@ class Component extends DCLogic {
       };
     });
 
-    const roleStyle = {
-      owner: ['#141619', '#d9ff35', '#d9ff35'],
-      editor: ['#141619', '#fff', '#e5e3dc'],
-      invited: ['#d98c0b', '#fff8e8', '#f3dfb2'],
-    };
-    const members = [
-      { name: 'Maya Chen', email: 'maya@scheduleforyou.com', role: 'owner' },
-      { name: 'Jordan Lee', email: 'jordan@scheduleforyou.com', role: 'editor' },
-      ...s.invites.map((e) => ({ name: '', email: e, role: 'invited' })),
-    ].map((m) => ({ ...m, color: roleStyle[m.role][0], bg: roleStyle[m.role][1], border: roleStyle[m.role][2] }));
+    const members = this.memberRows(
+      [
+        { name: 'Maya Chen', email: 'maya@scheduleforyou.com', role: 'owner' },
+        { name: 'Jordan Lee', email: 'jordan@scheduleforyou.com', role: 'editor' },
+      ],
+      s.invites,
+    );
 
     return {
       userEmail: this.userEmail || 'maya@scheduleforyou.com',
@@ -2495,10 +2594,16 @@ class Component extends DCLogic {
       members,
       invite: s.invite,
       onInvite: (e) => this.setState({ invite: e.target.value }),
+      inviteRole: S0.inviteRole || 'member',
+      onInviteRole: (e) => this.setState({ inviteRole: e.target.value }),
+      inviteRoleHint:
+        (S0.inviteRole || 'member') === 'editor'
+          ? 'Editors can also connect and disconnect accounts and change automations.'
+          : 'Members create, schedule and publish posts.',
       sendInvite: () => {
         if (!s.invite) return;
         this.setState((st) => ({
-          invites: [...st.invites, st.invite],
+          invites: [...st.invites, { email: st.invite, role: st.inviteRole || 'member' }],
           inviteUrl: `https://app.scheduleforyou.com/invite/${Math.random().toString(36).slice(2, 12)}`,
           invite: '',
         }));
@@ -3121,16 +3226,18 @@ class Component extends DCLogic {
           heroLabel: S0.paused ? 'Queue paused. Next post would go out in' : 'Next post goes out in',
           exportCsv: () => {
             const esc = (v) => (/[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v);
+            // Accounts as platform:@username, which the CSV import reads back to the same accounts.
             const rows = [['date', 'time', 'timezone', 'accounts', 'caption', 'labels', 'approval']].concat(
               upcoming.map((p) => {
-                const dt = new Date(p.at + this.tzShift());
+                const dt = this.wsDate(p.at);
                 return [
                   `${dt.getFullYear()}-${z2(dt.getMonth() + 1)}-${z2(dt.getDate())}`,
                   `${z2(dt.getHours())}:${z2(dt.getMinutes())}`,
                   S0.tz,
                   p.targets
-                    .map((t) => accById[t.acc]?.platform)
+                    .map((t) => accById[t.acc])
                     .filter(Boolean)
+                    .map((a) => `${a.platform}:@${a.username}`)
                     .join(';'),
                   p.caption,
                   (p.labels || []).join(';'),
@@ -3195,11 +3302,15 @@ class Component extends DCLogic {
           saveTemplate: () => {
             const c = d.caption.trim();
             if (!c) return this.flash('Write a caption first', true);
-            const name = c
-              .split(/\s+/)
-              .slice(0, 3)
-              .join(' ')
-              .replace(/[^\w\s’']/g, '');
+            if (c.length > 5000)
+              return this.flash('Templates can be up to 5,000 characters. Shorten the caption first.', true);
+            const name =
+              c
+                .split(/\s+/)
+                .slice(0, 3)
+                .join(' ')
+                .replace(/[^\w\s’']/g, '')
+                .slice(0, 60) || 'Template';
             this.setState((st) => ({ templates: [...st.templates, { name, text: c }] }));
             this.flash(`Saved template “${name}”`);
           },
@@ -3211,7 +3322,18 @@ class Component extends DCLogic {
           saveTags: () => {
             const tags = [...new Set(d.caption.match(/#[\w]+/g) || [])];
             if (!tags.length) return this.flash('No hashtags in the caption yet', true);
-            this.setState((st) => ({ tagGroups: [...st.tagGroups, { name: tags[0].slice(1), tags: tags.join(' ') }] }));
+            this.setState((st) => ({
+              tagGroups: [
+                ...st.tagGroups,
+                {
+                  name: tags[0].slice(1, 61),
+                  tags: tags
+                    .join(' ')
+                    .slice(0, 2000)
+                    .replace(/\s+\S*$/, (m) => (tags.join(' ').length > 2000 ? '' : m)),
+                },
+              ],
+            }));
             this.flash(`Saved ${tags.length} hashtags as a group`);
           },
           pickerOpen: S0.pickerOpen,
@@ -3470,6 +3592,7 @@ class Component extends DCLogic {
                 return [
                   {
                     label: 'Reconnect account',
+                    accId: a?.id || null,
                     go: () => this.setState({ screen: 'accounts' }),
                     bg: '#141619',
                     color: '#fff',
@@ -3509,6 +3632,7 @@ class Component extends DCLogic {
         for (const a of sick) {
           const h = HL(a);
           attention.push({
+            accId: a.id,
             icon: a.health === 'error' ? '!' : '⏱',
             iconBg: a.health === 'error' ? '#fde8e6' : '#fff1d6',
             iconFg: a.health === 'error' ? '#dc3545' : '#8a5a00',
@@ -3518,7 +3642,16 @@ class Component extends DCLogic {
               a.health === 'error'
                 ? `${a.error}. Posts to this account are on hold until you reconnect.`
                 : `${h.healthDetail}. Reconnect now so scheduled posts don't fail.`,
-            actions: [{ label: 'Reconnect', go: reconnect(a), bg: '#141619', color: '#fff', border: '#141619' }],
+            actions: [
+              {
+                label: a.health === 'over' ? 'Upgrade' : 'Reconnect',
+                accId: a.id,
+                go: reconnect(a),
+                bg: '#141619',
+                color: '#fff',
+                border: '#141619',
+              },
+            ],
           });
         }
         for (const id of conflictIds) {
@@ -3692,6 +3825,7 @@ class Component extends DCLogic {
           .map((a) => {
             const h = HL(a);
             return {
+              accId: a.id,
               username: a.username,
               detail: h.needsFix ? h.healthDetail : P[a.platform].label,
               label: h.hLabel === 'Connected' ? 'OK' : h.hLabel,

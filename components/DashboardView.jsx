@@ -2294,6 +2294,7 @@ export function renderDashboard($v) {
                       <input
                         value={$dv($v['noteText'])}
                         onChange={$v['onNoteText']}
+                        maxLength="500"
                         placeholder="e.g. Product launch, office closed, campaign starts"
                         style={{
                           flex: '1 1 260px',
@@ -3900,6 +3901,7 @@ export function renderDashboard($v) {
                             <input
                               value={$dv($v['newLabel'])}
                               onChange={$v['onNewLabel']}
+                              maxLength="40"
                               placeholder="New label"
                               style={{
                                 width: '110px',
@@ -3936,6 +3938,7 @@ export function renderDashboard($v) {
                             rows="2"
                             value={$dv($v['draftNote'])}
                             onChange={$v['onDraftNote']}
+                            maxLength="2000"
                             placeholder="Context for whoever approves this. e.g. Legal signed off on the claim in line 2."
                             style={{
                               width: '100%',
@@ -5392,9 +5395,9 @@ export function renderDashboard($v) {
                               }}
                               className="dashboard-focus-f"
                             />{' '}
-                            <span style={{ fontSize: '13px', color: '#677184' }}>
+                            <span style={{ fontSize: '13px', color: '#677184', lineHeight: '1.5' }}>
                               {
-                                'Separate accounts with ; using platform names (x, bluesky, linkedin…). Times are in your workspace timezone.'
+                                'Separate accounts with ;. Name each one as @username, platform:@username (e.g. facebook:@Northside Coffee) or its display name. A platform name alone (x, bluesky, linkedin…) uses that platform\'s account, or the first one if you have several. Put captions with commas in "double quotes" and write "" for a quote inside. Times are in your workspace timezone.'
                               }
                             </span>{' '}
                           </div>{' '}
@@ -5685,6 +5688,7 @@ export function renderDashboard($v) {
                       <input
                         value={$dv($v['newFolder'])}
                         onChange={$v['onNewFolder']}
+                        maxLength="60"
                         placeholder="New folder"
                         style={{
                           flex: '1',
@@ -7164,6 +7168,7 @@ export function renderDashboard($v) {
                     {' '}
                     <input
                       placeholder="Key name (e.g. Claude Desktop)"
+                      maxLength="80"
                       value={$dv($v['keyName'])}
                       onChange={$v['onKeyName']}
                       style={{
@@ -7353,6 +7358,23 @@ export function renderDashboard($v) {
                       }}
                       className="dashboard-focus-f"
                     />{' '}
+                    <select
+                      value={$dv($v['inviteRole'])}
+                      onChange={$v['onInviteRole']}
+                      aria-label="Role"
+                      style={{
+                        padding: '9px 10px',
+                        border: '1px solid #e5e3dc',
+                        borderRadius: '10px',
+                        background: '#fff',
+                        fontSize: '14px',
+                        color: '#141619',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <option value="member">{'Member'}</option>
+                      <option value="editor">{'Editor'}</option>
+                    </select>{' '}
                     <button
                       onClick={$v['sendInvite']}
                       style={{
@@ -7367,6 +7389,9 @@ export function renderDashboard($v) {
                       {'Create invite link'}
                     </button>{' '}
                   </div>{' '}
+                  <span style={{ marginTop: '-4px', fontSize: '13px', color: '#677184' }}>
+                    {$t($v['inviteRoleHint'])}
+                  </span>{' '}
                   {$v['hasInviteUrl'] ? (
                     <>
                       {' '}
