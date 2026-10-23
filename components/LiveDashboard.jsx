@@ -658,13 +658,13 @@ export default class LiveDashboard extends Base {
     // Calendar CSV with the real post URLs.
     v.exportCalCsv = () => {
       const z2 = (n) => String(n).padStart(2, '0'), esc = (x) => (/[",\n]/.test(x) ? '"' + x.replace(/"/g, '""') + '"' : x);
-      const range = s.calView === 'week' ? [s.weekStart, s.weekStart + 7 * 864e5] : [new Date(s.cursor[0], s.cursor[1], 1).getTime(), new Date(s.cursor[0], s.cursor[1] + 1, 1).getTime()];
+      const range = this.calRange(); // the workspace's days
       const rows = [['date', 'time', 'account', 'platform', 'caption', 'status', 'labels', 'url']];
       for (const p of s.posts.filter((x) => x.at && x.at >= range[0] && x.at < range[1]).sort((a, b) => a.at - b.at)) {
         for (const t of p.targets) {
           const a = accBy((x) => x.id === t.acc);
           if (!a) continue;
-          const dt = new Date(p.at + this.tzShift(p.at));
+          const dt = this.wsDate(p.at);
           rows.push([`${dt.getFullYear()}-${z2(dt.getMonth() + 1)}-${z2(dt.getDate())}`, `${z2(dt.getHours())}:${z2(dt.getMinutes())}`, '@' + a.username, P[a.platform].label, p.caption, t.status, (p.labels || []).join(';'), t.url || '']);
         }
       }
