@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { runDue } from '@/lib/server/publisher';
+import { refreshExpiringTokens, runDue } from '@/lib/server/publisher';
 import { sendDigests, sendReminders } from '@/lib/server/notify';
 import { pollFeeds } from '@/lib/server/rss';
 import { exec, now } from '@/lib/server/db';
@@ -8,6 +8,7 @@ export const maxDuration = 300;
 export const dynamic = 'force-dynamic';
 
 const BUDGET_MS = 270_000; // leave headroom under maxDuration for the response
+const PUBLISH_MS = 200_000; // publishing first; emails, feeds and cleanup get the rest
 
 /**
  * Vercel Cron hits this every minute (see vercel.json): publishes due posts, sends reminder and
@@ -20,14 +21,16 @@ export async function GET(req: Request) {
   }
   const started = now();
   const deadline = started + BUDGET_MS;
-  const result = await runDue({ budgetMs: 200_000 });
+  // Every platform call made while publishing gives up by this deadline, leaving time for the rest.
+  const result = await runDue({ deadline: started + PUBLISH_MS });
   if (result.processed) console.log('[cron] published', result);
+  const tokens = await refreshExpiringTokens({ deadline }).catch((e) => (console.error('[cron] tokens', e), 0));
   // Emails run after publishing so a slow email provider never delays posts.
   const reminders = await sendReminders().catch((e) => (console.error('[cron] reminders', e), 0));
   const digests = await sendDigests().catch((e) => (console.error('[cron] digests', e), 0));
   const rss = await pollFeeds({ deadline }).catch((e) => (console.error('[cron] rss', e), 0));
   await cleanup().catch((e) => console.error('[cron] cleanup', e));
-  return NextResponse.json({ ...result, reminders, digests, rss, ms: now() - started });
+  return NextResponse.json({ ...result, tokens, reminders, digests, rss, ms: now() - started });
 }
 
 /** Rows that outlived their purpose: uploads that never finished and OAuth handshakes that were abandoned. */

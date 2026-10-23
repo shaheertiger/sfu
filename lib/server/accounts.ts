@@ -47,6 +47,41 @@ export async function upsertAccount(workspaceId: string, platform: string, f: Co
   return r.saved[0];
 }
 
+/**
+ * Disconnects an account. Its targets on posts that haven't published there are removed with it
+ * (otherwise those posts could never be saved again: their targets would point at an unknown
+ * account). A post left with no targets goes back to drafts; a partly published post whose only
+ * remaining targets are published counts as published. Returns false when there is no such account.
+ */
+export async function disconnectAccount(workspaceId: string, accountId: string): Promise<boolean> {
+  return tx(async (q) => {
+    const gone = await q('DELETE FROM social_accounts WHERE id=$1 AND workspace_id=$2 RETURNING id', [accountId, workspaceId]);
+    if (!gone.length) return false;
+    const removed = await q(
+      `DELETE FROM post_targets t USING posts p
+       WHERE t.post_id = p.id AND p.workspace_id = $2 AND t.account_id = $1 AND t.status <> 'published'
+       RETURNING t.post_id`,
+      [accountId, workspaceId],
+    );
+    const postIds = [...new Set(removed.map((r: any) => r.post_id))];
+    if (postIds.length) {
+      await q(
+        `UPDATE posts p SET status='draft', updated_at=$2
+         WHERE p.id = ANY($1) AND p.status IN ('scheduled','failed','partial')
+           AND NOT EXISTS (SELECT 1 FROM post_targets t WHERE t.post_id = p.id)`,
+        [postIds, now()],
+      );
+      await q(
+        `UPDATE posts p SET status='published', updated_at=$2
+         WHERE p.id = ANY($1) AND p.status = 'partial'
+           AND NOT EXISTS (SELECT 1 FROM post_targets t WHERE t.post_id = p.id AND t.status <> 'published')`,
+        [postIds, now()],
+      );
+    }
+    return true;
+  });
+}
+
 export const limitMessage = (limit: number) =>
   `Your plan allows ${limit} connected accounts. Upgrade your plan or disconnect an account to add more.`;
 

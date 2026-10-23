@@ -17,7 +17,8 @@ export const POST = handler(async ({ workspace, params }) => {
   // Check the plan before touching the post, so a refused publish leaves it exactly as it was.
   await requireCanPublish(workspace.id);
   await exec(`UPDATE posts SET status='scheduled', scheduled_at=$1, updated_at=$1 WHERE id=$2 AND status <> 'publishing'`, [now(), post.id]);
-  await exec(`UPDATE post_targets SET status='pending', attempts=0, error=NULL WHERE post_id=$1 AND status <> 'published'`, [post.id]);
+  // Asked for by a person, so even a target that may have gone out is sent again.
+  await exec(`UPDATE post_targets SET status='pending', attempts=0, error=NULL, progress='{}'::jsonb WHERE post_id=$1 AND status <> 'published'`, [post.id]);
   const status = await claimAndPublish(post.id);
   return { status, post: publicPost(await getPost(workspace.id, post.id)) };
 });
