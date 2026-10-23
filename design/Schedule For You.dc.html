@@ -75,7 +75,53 @@ textarea{resize:vertical}
   .sfy-arow{flex-wrap:wrap!important;row-gap:8px!important;padding:14px!important}
   .sfy-arow > div{flex:1 1 calc(100% - 52px)!important}
   .sfy-arow > div + span{margin-left:48px}
+  /* Phone polish */
+  .sfy-mhide{display:none!important}
+  .sfy-filters{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px 2px;width:calc(100% + 32px);max-width:none;box-sizing:border-box}
+  .sfy-filters::-webkit-scrollbar,.sfy-chiprow::-webkit-scrollbar,.sfy-steps::-webkit-scrollbar,.sfy-folders::-webkit-scrollbar{display:none}
+  .sfy-filters > select{flex:none;max-width:70vw}
+  .sfy-chiprow{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px}
+  .sfy-chiprow > *{flex:none;white-space:nowrap}
+  .sfy-caltools{row-gap:10px!important}
+  .sfy-calhint{white-space:normal!important}
+  .sfy-week{grid-template-columns:minmax(0,1fr)!important;min-width:0!important}
+  .sfy-wday{min-height:0!important;border-right:0!important;border-bottom:1px solid #efefea}
+  .sfy-lrow{grid-template-columns:36px minmax(0,1fr) auto!important;row-gap:6px!important;column-gap:10px!important;padding:12px!important}
+  .sfy-lrow > :nth-child(1){grid-column:2;grid-row:1}
+  .sfy-lrow > :nth-child(2){grid-column:1;grid-row:1/4;align-self:start}
+  .sfy-lrow > :nth-child(3){grid-column:2/4;grid-row:2;white-space:normal!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .sfy-lrow > :nth-child(4){grid-column:2;grid-row:3}
+  .sfy-lrow > :nth-child(5){grid-column:3;grid-row:1;justify-self:end}
+  .sfy-lrow > :nth-child(6){grid-column:3;grid-row:3;justify-self:end}
+  .sfy-sheet-scrim{z-index:84!important;background:rgba(15,16,18,.5)!important}
+  .sfy-sheet{z-index:85!important;top:auto!important;left:0;width:100%!important;max-height:88dvh;border-left:0!important;border-radius:18px 18px 0 0;padding-bottom:env(safe-area-inset-bottom);animation:sheetUp .28s cubic-bezier(.2,.8,.2,1)!important}
+  .sfy-sheet button{min-height:40px}
+  .sfy-over{z-index:86!important}
+  .sfy-selbar{left:8px!important;right:8px!important;width:auto!important;max-width:none!important;bottom:calc(78px + env(safe-area-inset-bottom))!important;z-index:55!important;justify-content:flex-start!important}
+  .sfy-alertitems{padding-left:0!important}
+  .sfy-cap{min-height:150px!important}
+  .sfy-nextbar{bottom:calc(78px + env(safe-area-inset-bottom))!important}
+  .sfy-rcol{position:static!important}
+  .sfy-steps{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px}
+  .sfy-steps > button{flex:none;white-space:nowrap}
+  .sfy-folders{flex-direction:row!important;overflow-x:auto;scroll-padding:6px;scrollbar-width:none;gap:6px!important;padding:6px!important}
+  .sfy-folders > button{flex:none;white-space:nowrap;padding:7px 10px!important}
+  .sfy-folders > div{flex:none;width:210px;border-top:0!important;margin-top:0!important;padding:0!important;align-items:center}
+  .sfy-trow{min-width:0!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;row-gap:8px!important;padding:12px 14px!important}
+  .sfy-trow > :first-child{grid-column:1/-1}
+  .sfy-thead > :not(:first-child){display:none}
+  .sfy-brow{grid-template-columns:18px 52px minmax(0,1fr) 30px!important;grid-template-areas:'ord thumb main x' 'ord meta meta meta'!important;column-gap:10px!important;padding:12px!important}
+  .sfy-bthumb{width:52px!important;height:52px!important}
+  .sfy-bwhen{flex:1 1 180px;width:auto!important;min-width:0}
+  .sfy-bfoot{flex-wrap:wrap}
+  .sfy-bfoot > button:first-child{flex:1 1 100%;margin-right:0!important}
+  .sfy-bfoot > button:not(:first-child){flex:1}
+  .sfy-trow > span[data-l]{text-align:left!important;display:flex;flex-direction:column;gap:1px}
+  .sfy-trow > span[data-l]::before{content:attr(data-l);font:500 11px Geist,system-ui,sans-serif;color:#9aa0a8}
 }
+.sfy-monly{display:none}
+@media (max-width:760px){.sfy-monly{display:inline}}
+@keyframes sheetUp{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
 @keyframes toastIn{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}
 </style>
 </helmet>
@@ -262,7 +308,7 @@ textarea{resize:vertical}
             <p style="margin:8px 0 0;color:#677184;font-size:15px">{{ nextUp }}</p>
           </div>
           <div class="sfy-qtools" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-            <button onClick="{{ exportCsv }}" title="Download scheduled posts as CSV" style="padding:7px 12px;border-radius:10px;border:1px solid #e7e5df;background:#fff;cursor:pointer;font-weight:500;font-size:14px" style-hover="border-color:#141619">Export CSV</button>
+            <button class="sfy-mhide" onClick="{{ exportCsv }}" title="Download scheduled posts as CSV" style="padding:7px 12px;border-radius:10px;border:1px solid #e7e5df;background:#fff;cursor:pointer;font-weight:500;font-size:14px" style-hover="border-color:#141619">Export CSV</button>
             <button onClick="{{ togglePause }}" style="padding:7px 12px;border-radius:10px;border:1px solid {{ pauseBorder }};background:{{ pauseBg }};color:{{ pauseColor }};cursor:pointer;font-weight:500;font-size:14px">{{ pauseLabel }}</button>
             <sc-if value="{{ canSelect }}" hint-placeholder-val="{{ true }}">
               <button onClick="{{ toggleSelect }}" style="padding:7px 12px;border-radius:10px;border:1px solid {{ selectBorder }};background:{{ selectBg }};color:{{ selectColor }};cursor:pointer;font-weight:500;font-size:14px">{{ selectLabel }}</button>
@@ -281,12 +327,12 @@ textarea{resize:vertical}
             <button onClick="{{ togglePause }}" style="padding:7px 14px;border-radius:10px;border:0;background:#141619;color:#fff;cursor:pointer;font-weight:600;font-size:14px">Resume queue</button>
           </div>
         </sc-if>
-        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <div class="sfy-filters" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
           <select value="{{ qAcc }}" onChange="{{ onQAcc }}" aria-label="Filter by account" style="padding:6px 10px;border:1px solid #e7e5df;border-radius:9px;background:#fff;font-size:13px"><sc-for list="{{ calAccOpts }}" as="o" hint-placeholder-count="0"><option value="{{ o.v }}">{{ o.l }}</option></sc-for></select>
           <select value="{{ qPlat }}" onChange="{{ onQPlat }}" aria-label="Filter by platform" style="padding:6px 10px;border:1px solid #e7e5df;border-radius:9px;background:#fff;font-size:13px"><sc-for list="{{ calPlatOpts }}" as="o" hint-placeholder-count="0"><option value="{{ o.v }}">{{ o.l }}</option></sc-for></select>
         </div>
         <sc-if value="{{ hasLabels }}" hint-placeholder-val="{{ false }}">
-          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+          <div class="sfy-chiprow" style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
             <span style="font-size:13px;color:#677184;margin-right:4px">Labels</span>
             <sc-for list="{{ labelFilters }}" as="l" hint-placeholder-count="4">
               <button onClick="{{ l.pick }}" style="padding:4px 11px;border-radius:999px;border:1px solid {{ l.border }};background:{{ l.bg }};color:{{ l.color }};cursor:pointer;font-size:13px;font-weight:500">{{ l.label }}<span style="margin-left:6px;opacity:.55">{{ l.count }}</span></button>
@@ -316,7 +362,7 @@ textarea{resize:vertical}
               <button onClick="{{ viewFailed }}" style="padding:6px 10px;font-size:13px;border-radius:8px;border:1px solid #e5e3dc;background:#fff;cursor:pointer;font-weight:500">View</button>
               <button onClick="{{ dismissAlert }}" title="Dismiss" style="padding:4px 8px;border:0;background:transparent;color:#a1281f;cursor:pointer;font-size:16px">×</button>
             </div>
-            <div style="display:flex;flex-direction:column;gap:4px;padding-left:32px">
+            <div class="sfy-alertitems" style="display:flex;flex-direction:column;gap:4px;padding-left:32px">
               <sc-for list="{{ alertItems }}" as="f" hint-placeholder-count="2">
                 <span style="font-size:13px;color:#6b4440"><strong style="color:#141619;font-weight:600">{{ f.who }}</strong> · {{ f.when }} · {{ f.why }}</span>
               </sc-for>
@@ -399,10 +445,10 @@ textarea{resize:vertical}
           <h1 style="margin:0;font-size:30px;line-height:1.1;letter-spacing:-0.03em;font-weight:700">Calendar</h1>
           <div style="display:flex;gap:8px">
             <button onClick="{{ exportCalCsv }}" style="padding:7px 10px;border:1px solid #e7e5df;border-radius:9px;background:#fff;font-size:13px;color:#141619;cursor:pointer" style-hover="border-color:#141619">Export CSV</button>
-            <button onClick="{{ goCompose }}" style="padding:7px 14px;border-radius:9px;border:0;background:#141619;color:#fff;cursor:pointer;font-weight:600;font-size:13px">+ Create post</button>
+            <button class="sfy-mhide" onClick="{{ goCompose }}" style="padding:7px 14px;border-radius:9px;border:0;background:#141619;color:#fff;cursor:pointer;font-weight:600;font-size:13px">+ Create post</button>
           </div>
         </div>
-        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <div class="sfy-caltools" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
           <button onClick="{{ calPrev }}" aria-label="Previous" style="width:32px;height:32px;border-radius:8px;border:1px solid #e7e5df;background:#fff;cursor:pointer">‹</button>
           <button onClick="{{ calNext }}" aria-label="Next" style="width:32px;height:32px;border-radius:8px;border:1px solid #e7e5df;background:#fff;cursor:pointer">›</button>
           <strong style="font-size:17px;letter-spacing:-0.01em;margin:0 6px;white-space:nowrap">{{ calLabel }}</strong>
@@ -412,11 +458,13 @@ textarea{resize:vertical}
               <button onClick="{{ v.select }}" style="border:0;padding:4px 12px;border-radius:7px;cursor:pointer;font-weight:500;font-size:13px;background:{{ v.bg }};color:{{ v.color }}">{{ v.label }}</button>
             </sc-for>
           </div>
-          <span style="flex:1"></span>
+          <span class="sfy-mhide" style="flex:1"></span>
+          <div class="sfy-filters" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
           <select value="{{ calPlat }}" onChange="{{ onCalPlat }}" aria-label="Filter by platform" style="padding:7px 10px;border:1px solid #e7e5df;border-radius:9px;background:#fff;font-size:13px;color:#141619;cursor:pointer"><sc-for list="{{ calPlatOpts }}" as="o" hint-placeholder-count="0"><option value="{{ o.v }}">{{ o.l }}</option></sc-for></select>
           <select value="{{ calAcc }}" onChange="{{ onCalAcc }}" aria-label="Filter by account" style="padding:7px 10px;border:1px solid #e7e5df;border-radius:9px;background:#fff;font-size:13px;color:#141619;cursor:pointer"><sc-for list="{{ calAccOpts }}" as="o" hint-placeholder-count="0"><option value="{{ o.v }}">{{ o.l }}</option></sc-for></select>
           <select value="{{ calStatus }}" onChange="{{ onCalStatus }}" aria-label="Filter by status" style="padding:7px 10px;border:1px solid #e7e5df;border-radius:9px;background:#fff;font-size:13px;color:#141619;cursor:pointer"><sc-for list="{{ calStatusOpts }}" as="o" hint-placeholder-count="0"><option value="{{ o.v }}">{{ o.l }}</option></sc-for></select>
-          <span title="Change in Settings" style="font-size:12px;color:#677184;white-space:nowrap">{{ tzShort }} · Drag a scheduled post to another day to move it</span>
+          </div>
+          <span class="sfy-calhint" title="Change in Settings" style="font-size:12px;color:#677184;white-space:nowrap">{{ tzShort }}<span class="sfy-mhide"> · Drag a scheduled post to another day to move it</span><span class="sfy-monly"> · Tap a post to open it</span></span>
         </div>
         <sc-if value="{{ noteOpen }}" hint-placeholder-val="{{ false }}">
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 16px;border-radius:14px;background:#fff8e6;border:1px solid #f3dfb2">
@@ -454,9 +502,9 @@ textarea{resize:vertical}
         </sc-if>
         <sc-if value="{{ isWeek }}" hint-placeholder-val="{{ false }}">
           <div style="overflow-x:auto;border:1px solid #e7e5df;border-radius:12px;background:#fff">
-          <div style="display:grid;grid-template-columns:repeat(7,minmax(150px,1fr));min-width:1050px">
+          <div class="sfy-week" style="display:grid;grid-template-columns:repeat(7,minmax(150px,1fr));min-width:1050px">
             <sc-for list="{{ weekDays }}" as="d" hint-placeholder-count="7">
-              <div onDragOver="{{ d.over }}" onDrop="{{ d.drop }}" style="min-height:260px;min-width:0;border-right:1px solid #efefea;background:{{ d.bg }};padding:8px;display:flex;flex-direction:column;gap:6px;transition:background .15s">
+              <div class="sfy-wday" onDragOver="{{ d.over }}" onDrop="{{ d.drop }}" style="min-height:260px;min-width:0;border-right:1px solid #efefea;background:{{ d.bg }};padding:8px;display:flex;flex-direction:column;gap:6px;transition:background .15s">
                 <div style="display:flex;align-items:center;gap:6px;padding:2px 2px 6px">
                   <span style="font-size:12px;color:#677184">{{ d.dow }}</span>
                   <span style="font-size:13px;font-weight:600;min-width:24px;height:24px;padding:0 5px;border-radius:999px;display:grid;place-items:center;background:{{ d.numBg }};color:#141619">{{ d.num }}</span>
@@ -490,7 +538,7 @@ textarea{resize:vertical}
                 <span style="font-size:13px;font-weight:600;color:#677184;padding:0 2px">{{ g.label }}</span>
                 <div style="background:#fff;border:1px solid #e7e5df;border-radius:12px;overflow:hidden">
                   <sc-for list="{{ g.items }}" as="e" hint-placeholder-count="2">
-                    <div style="display:grid;grid-template-columns:76px 36px minmax(0,1fr) auto auto auto;gap:12px;align-items:center;padding:10px 14px;border-top:{{ e.divider }}">
+                    <div class="sfy-lrow" style="display:grid;grid-template-columns:76px 36px minmax(0,1fr) auto auto auto;gap:12px;align-items:center;padding:10px 14px;border-top:{{ e.divider }}">
                       <span style="font-size:13px;font-weight:600">{{ e.time }}</span>
                       <span style="width:36px;height:36px;border-radius:7px;background:{{ e.thumbOrBlank }}"></span>
                       <span style="font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ e.caption }}</span>
@@ -570,7 +618,7 @@ textarea{resize:vertical}
                   </button>
                 </sc-for>
               </div>
-              <textarea value="{{ capValue }}" onChange="{{ onCapValue }}" placeholder="{{ capPlaceholder }}" aria-label="Caption" style="width:100%;min-height:260px;padding:16px 18px;border:0;outline:none;resize:vertical;font-size:16px;line-height:1.6;background:#fff"></textarea>
+              <textarea value="{{ capValue }}" onChange="{{ onCapValue }}" placeholder="{{ capPlaceholder }}" aria-label="Caption" class="sfy-cap" style="width:100%;min-height:260px;padding:16px 18px;border:0;outline:none;resize:vertical;font-size:16px;line-height:1.6;background:#fff"></textarea>
               <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 14px;border-top:1px solid #efefea;background:#fcfcfa">
                 <sc-for list="{{ counters }}" as="c" hint-placeholder-count="3"><span style="font-size:12px;color:{{ c.fg }};font-variant-numeric:tabular-nums">{{ c.label }} {{ c.text }}</span></sc-for>
                 <span style="flex:1"></span>
@@ -699,9 +747,15 @@ textarea{resize:vertical}
 
               </div>
             </div>
+            <sc-if value="{{ showNextBar }}" hint-placeholder-val="{{ false }}">
+              <div class="sfy-nextbar" style="position:sticky;bottom:16px;z-index:30;display:flex;align-items:center;gap:10px;padding:8px 8px 8px 14px;border-radius:14px;background:#141619;color:#f8f9f6;box-shadow:0 16px 36px -14px rgba(20,22,25,.7)">
+                <span style="flex:1;min-width:0;font-size:13px;color:#c9cdd3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ nextBarLabel }}</span>
+                <button onClick="{{ goPreviewTab }}" style="flex:none;padding:10px 14px;border-radius:10px;border:0;background:#d9ff35;color:#141619;cursor:pointer;font-weight:600;font-size:14px">Preview &amp; publish →</button>
+              </div>
+            </sc-if>
           </div>
 
-          <div style="display:{{ showRightCol }};flex-direction:column;gap:12px;position:sticky;top:20px;min-width:0">
+          <div class="sfy-rcol" style="display:{{ showRightCol }};flex-direction:column;gap:12px;position:sticky;top:20px;min-width:0">
             <sc-if value="{{ showPreview }}" hint-placeholder-val="{{ true }}">
               <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
                 <strong style="font-size:14px">Preview</strong>
@@ -785,7 +839,7 @@ textarea{resize:vertical}
           </div>
         </div>
 
-        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap" aria-label="Progress">
+        <div class="sfy-steps" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap" aria-label="Progress">
           <sc-for list="{{ bulkSteps }}" as="st" hint-placeholder-count="3">
             <button onClick="{{ st.go }}" disabled="{{ st.disabled }}" aria-current="{{ st.current }}" style="display:flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border-radius:999px;border:1px solid {{ st.border }};background:{{ st.bg }};cursor:pointer;font-size:13px;font-weight:600;color:{{ st.color }}">
               <span style="width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;background:{{ st.numBg }};color:{{ st.numFg }}">{{ st.n }}</span>{{ st.label }}
@@ -840,9 +894,9 @@ textarea{resize:vertical}
                 </span>
               </div>
               <sc-for list="{{ bulkRows }}" as="f" hint-placeholder-count="3">
-                <div style="display:grid;grid-template-columns:24px 64px minmax(0,1fr) auto;grid-template-areas:'ord thumb main x' 'ord thumb meta x';column-gap:12px;row-gap:8px;align-items:center;padding:12px 16px;border-top:{{ f.divider }}">
+                <div class="sfy-brow" style="display:grid;grid-template-columns:24px 64px minmax(0,1fr) auto;grid-template-areas:'ord thumb main x' 'ord thumb meta x';column-gap:12px;row-gap:8px;align-items:center;padding:12px 16px;border-top:{{ f.divider }}">
                   <span style="grid-area:ord;display:flex;flex-direction:column;gap:2px"><button onClick="{{ f.up }}" aria-label="Move up" style="border:0;background:transparent;cursor:pointer;color:#677184;font-size:11px;padding:0">▲</button><button onClick="{{ f.down }}" aria-label="Move down" style="border:0;background:transparent;cursor:pointer;color:#677184;font-size:11px;padding:0">▼</button></span>
-                  <div style="grid-area:thumb;width:64px;height:64px;border-radius:9px;overflow:hidden;background:{{ f.thumb }};display:flex;align-items:flex-end;padding:5px;color:#f3e9d8;font:600 10px 'Geist Mono',monospace">
+                  <div class="sfy-bthumb" style="grid-area:thumb;width:64px;height:64px;border-radius:9px;overflow:hidden;background:{{ f.thumb }};display:flex;align-items:flex-end;padding:5px;color:#f3e9d8;font:600 10px 'Geist Mono',monospace">
                     <span style="text-shadow:0 1px 2px rgba(0,0,0,.5)">{{ f.kind }}</span>
                   </div>
                   <div style="grid-area:main;min-width:0;display:flex;flex-direction:column;gap:6px">
@@ -850,12 +904,12 @@ textarea{resize:vertical}
                     <input value="{{ f.caption }}" onChange="{{ f.onCaption }}" placeholder="Caption" style="width:100%;padding:8px 10px;border:1px solid #e5e3dc;border-radius:8px;outline:none" style-focus="border-color:#141619">
                     <sc-if value="{{ f.hasWarn }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#d98c0b">{{ f.warn }}</span></sc-if>
                   </div>
-                  <span style="grid-area:meta;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><input type="datetime-local" value="{{ f.when }}" onChange="{{ f.onWhen }}" aria-label="Scheduled date and time" style="width:200px;padding:8px 10px;border:1px solid #e5e3dc;border-radius:8px;outline:none;font-size:13px">
+                  <span style="grid-area:meta;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><input type="datetime-local" value="{{ f.when }}" onChange="{{ f.onWhen }}" aria-label="Scheduled date and time" class="sfy-bwhen" style="width:200px;padding:8px 10px;border:1px solid #e5e3dc;border-radius:8px;outline:none;font-size:13px">
                   <span style="padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600;background:{{ f.vBg }};color:{{ f.vFg }};justify-self:start;white-space:nowrap">{{ f.vLabel }}</span></span>
                   <button onClick="{{ f.remove }}" aria-label="Remove file" title="Remove" style="grid-area:x;border:0;background:transparent;color:#9aa0a8;cursor:pointer;font-size:18px;padding:4px 8px">×</button>
                 </div>
               </sc-for>
-              <div style="display:flex;justify-content:flex-end;gap:10px;padding:14px 16px;border-top:1px solid #e5e3dc;background:#faf9f6">
+              <div class="sfy-bfoot" style="display:flex;justify-content:flex-end;gap:10px;padding:14px 16px;border-top:1px solid #e5e3dc;background:#faf9f6">
                 <button onClick="{{ toStep1 }}" style="padding:10px 14px;border-radius:10px;border:1px solid #e5e3dc;background:#fff;cursor:pointer;font-weight:500;margin-right:auto">← Add more files</button>
                 <button onClick="{{ bulkDrafts }}" style="padding:10px 14px;border-radius:10px;border:1px solid #e5e3dc;background:#fff;cursor:pointer;font-weight:500">Save as drafts</button>
                 <button onClick="{{ toStep3 }}" style="padding:10px 16px;border-radius:10px;border:0;background:#141619;color:#fff;font-weight:600;cursor:pointer">Review →</button>
@@ -936,7 +990,7 @@ textarea{resize:vertical}
           </label>
         </div>
         <div class="sfy-stack" style="display:grid;grid-template-columns:190px minmax(0,1fr);gap:18px;align-items:start">
-          <div style="background:#fff;border:1px solid #e7e5df;border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:2px">
+          <div class="sfy-folders" style="background:#fff;border:1px solid #e7e5df;border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:2px">
             <sc-for list="{{ folderTabs }}" as="f" hint-placeholder-count="5">
               <button onClick="{{ f.pick }}" style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;border:0;background:{{ f.navBg }};cursor:pointer;text-align:left;font-weight:500;font-size:14px" style-hover="background:#f6f5f1">
                 <span style="width:18px;height:14px;border-radius:3px;background:{{ f.folderColor }};flex:none"></span>
@@ -1098,7 +1152,7 @@ textarea{resize:vertical}
           </sc-for>
         </div>
         <div class="sfy-tscroll" style="background:#fff;border:1px solid #e7e5df;border-radius:12px;overflow:hidden">
-          <div class="sfy-trow" style="display:grid;grid-template-columns:minmax(0,1fr) 90px 100px 90px 70px;gap:12px;padding:10px 18px;background:#faf9f6;border-bottom:1px solid #e5e3dc;font-size:12px;font-weight:600;color:#677184">
+          <div class="sfy-trow sfy-thead" style="display:grid;grid-template-columns:minmax(0,1fr) 90px 100px 90px 70px;gap:12px;padding:10px 18px;background:#faf9f6;border-bottom:1px solid #e5e3dc;font-size:12px;font-weight:600;color:#677184">
             <span title="Shown only where the platform API reports the metric">Recent posts · metrics as reported by each platform</span><span style="text-align:right">Impressions</span><span style="text-align:right">Engagements</span><span style="text-align:right">Link clicks</span><span style="text-align:right">Rate</span>
           </div>
           <sc-for list="{{ postStats }}" as="r" hint-placeholder-count="5">
@@ -1110,10 +1164,10 @@ textarea{resize:vertical}
                   {{ r.when }}
                 </span>
               </div>
-              <span style="text-align:right;font:500 13px 'Geist Mono',monospace">{{ r.imp }}</span>
-              <span style="text-align:right;font:500 13px 'Geist Mono',monospace">{{ r.eng }}</span>
-              <span style="text-align:right;font:500 13px 'Geist Mono',monospace">{{ r.clicks }}</span>
-              <span style="text-align:right;font:600 13px 'Geist Mono',monospace;color:{{ r.rateColor }}">{{ r.rate }}</span>
+              <span data-l="Impressions" style="text-align:right;font:500 13px 'Geist Mono',monospace">{{ r.imp }}</span>
+              <span data-l="Engagements" style="text-align:right;font:500 13px 'Geist Mono',monospace">{{ r.eng }}</span>
+              <span data-l="Clicks" style="text-align:right;font:500 13px 'Geist Mono',monospace">{{ r.clicks }}</span>
+              <span data-l="Rate" style="text-align:right;font:600 13px 'Geist Mono',monospace;color:{{ r.rateColor }}">{{ r.rate }}</span>
             </div>
           </sc-for>
         </div>
@@ -1237,7 +1291,7 @@ textarea{resize:vertical}
   </main>
 </div>
 <sc-if value="{{ hasSelection }}" hint-placeholder-val="{{ false }}">
-  <div style="position:fixed;left:256px;right:24px;bottom:20px;margin:0 auto;width:max-content;max-width:calc(100vw - 280px);background:#141619;color:#f6f5f1;padding:8px 8px 8px 16px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;box-shadow:0 20px 40px -16px rgba(20,23,26,.6);z-index:11">
+  <div class="sfy-selbar" style="position:fixed;left:256px;right:24px;bottom:20px;margin:0 auto;width:max-content;max-width:calc(100vw - 280px);background:#141619;color:#f6f5f1;padding:8px 8px 8px 16px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;box-shadow:0 20px 40px -16px rgba(20,23,26,.6);z-index:11">
     <strong style="font-size:14px;margin-right:6px;white-space:nowrap">{{ selCount }} selected</strong>
     <sc-for list="{{ shiftBtns }}" as="b" hint-placeholder-count="4">
       <button onClick="{{ b.go }}" style="padding:6px 10px;border-radius:8px;border:1px solid #3a3e45;background:transparent;color:#f6f5f1;cursor:pointer;font:500 12px 'Geist Mono',monospace" style-hover="border-color:#d9ff35">{{ b.label }}</button>
@@ -1250,7 +1304,7 @@ textarea{resize:vertical}
   </div>
 </sc-if>
 <sc-if value="{{ hasPreviewMedia }}" hint-placeholder-val="{{ false }}">
-  <div onClick="{{ closePreview }}" role="dialog" aria-label="Media preview" style="position:fixed;inset:0;background:rgba(15,16,18,.6);display:grid;place-items:center;z-index:30;padding:24px">
+  <div class="sfy-over" onClick="{{ closePreview }}" role="dialog" aria-label="Media preview" style="position:fixed;inset:0;background:rgba(15,16,18,.6);display:grid;place-items:center;z-index:30;padding:24px">
     <div style="width:min(720px,100%);background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 30px 80px -30px rgba(0,0,0,.6)">
       <div style="aspect-ratio:16/10;background:{{ pvMedia.thumb }};display:flex;align-items:flex-end;padding:14px;color:#f6efe3;font:600 12px 'Geist Mono',monospace">{{ pvMedia.badge }}</div>
       <div style="display:flex;align-items:center;gap:10px;padding:14px 16px">
@@ -1262,8 +1316,8 @@ textarea{resize:vertical}
   </div>
 </sc-if>
 <sc-if value="{{ hasCalPost }}" hint-placeholder-val="{{ false }}">
-  <div onClick="{{ closeCalPost }}" style="position:fixed;inset:0;z-index:25;background:rgba(15,16,18,.25)"></div>
-  <aside role="dialog" aria-label="Post details" style="position:fixed;top:0;right:0;bottom:0;z-index:26;width:min(420px,100vw);background:#fff;border-left:1px solid #e7e5df;box-shadow:-30px 0 60px -40px rgba(0,0,0,.5);display:flex;flex-direction:column;animation:dashIn .2s ease-out">
+  <div class="sfy-sheet-scrim" onClick="{{ closeCalPost }}" style="position:fixed;inset:0;z-index:25;background:rgba(15,16,18,.25)"></div>
+  <aside class="sfy-sheet" role="dialog" aria-label="Post details" style="position:fixed;top:0;right:0;bottom:0;z-index:26;width:min(420px,100vw);background:#fff;border-left:1px solid #e7e5df;box-shadow:-30px 0 60px -40px rgba(0,0,0,.5);display:flex;flex-direction:column;animation:dashIn .2s ease-out">
     <div style="display:flex;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid #efefea">
       <span style="padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600;background:{{ cp.stBg }};color:{{ cp.stFg }}">{{ cp.stLabel }}</span>
       <strong style="flex:1;font-size:15px">{{ cp.when }}</strong>
@@ -1290,7 +1344,7 @@ textarea{resize:vertical}
   </aside>
 </sc-if>
 <sc-if value="{{ hasConfirm }}" hint-placeholder-val="{{ false }}">
-  <div role="dialog" aria-modal="true" aria-label="{{ cfTitle }}" style="position:fixed;inset:0;z-index:40;background:rgba(15,16,18,.45);display:grid;place-items:center;padding:20px">
+  <div class="sfy-over" role="dialog" aria-modal="true" aria-label="{{ cfTitle }}" style="position:fixed;inset:0;z-index:40;background:rgba(15,16,18,.45);display:grid;place-items:center;padding:20px">
     <div style="width:min(420px,100%);background:#fff;border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px;box-shadow:0 30px 80px -30px rgba(0,0,0,.6)">
       <strong style="font-size:17px">{{ cfTitle }}</strong>
       <span style="font-size:14px;color:#677184;line-height:1.5">{{ cfBody }}</span>
@@ -2030,7 +2084,10 @@ class Component extends DCLogic {
           composeCols: wide ? 'minmax(210px,20%) minmax(0,1fr) minmax(300px,30%)' : mid ? 'minmax(0,1fr) minmax(290px,34%)' : 'minmax(0,1fr)',
           showAccCol: wide ? 'flex' : 'none', inlineAccounts: !wide && (!mob || tab === 'edit'),
           showEditCol: !mob || tab === 'edit' ? 'flex' : 'none', showRightCol: !mob || tab === 'preview' ? 'flex' : 'none',
-          composeTabs: mob, cTabs: [['edit', 'Edit'], ['preview', 'Preview & publish']].map(([k, label]) => ({ label, bg: tab === k ? '#141619' : 'transparent', color: tab === k ? '#fff' : '#677184', pick: () => this.setState({ cTab: k }) })),
+          composeTabs: mob, cTabs: [['edit', 'Edit'], ['preview', 'Preview & publish']].map(([k, label]) => ({ label, bg: tab === k ? '#141619' : 'transparent', color: tab === k ? '#fff' : '#677184', pick: () => { this.setState({ cTab: k }); if (typeof window !== 'undefined') window.scrollTo(0, 0); } })),
+          // Phones: a sticky bar on the Edit tab so the next step is always one tap away.
+          showNextBar: mob && tab === 'edit', goPreviewTab: () => { this.setState({ cTab: 'preview' }); if (typeof window !== 'undefined') window.scrollTo(0, 0); },
+          nextBarLabel: d.targets.length ? `${d.targets.length} account${d.targets.length === 1 ? '' : 's'} · ${d.media.length ? d.media.length + ' file' + (d.media.length === 1 ? '' : 's') : 'no media'}` : 'Pick at least one account',
           accQ: S0.accQ || '', onAccQ: (e) => this.setState({ accQ: e.target.value }),
           capTabs: [{ id: null, label: 'Main caption', title: 'Main caption', tag: '', logo: 'none', dotBg: 'transparent', pic: 'none', iconDisplay: 'none' }, ...variants.map((v) => ({ id: v.id, label: variants.filter((x) => x.platform === v.platform).length > 1 ? v.username : v.platform, title: `${v.platform} · ${v.username}`, tag: v.hasOverride ? '· custom' : '· main', logo: v.logo, dotBg: v.color, pic: v.pic, iconDisplay: 'block' }))].map((t) => { const on = t.id === ct; return { ...t, line: on ? '#141619' : 'transparent', weight: on ? 600 : 500, color: on ? '#141619' : '#677184', tagColor: t.tag.includes('custom') ? '#15803d' : '#9aa0a8', pick: () => this.setState({ capTab: t.id }) }; }),
           capValue: cv ? cv.text : d.caption, onCapValue: cv ? cv.onText : (e) => this.upd({ caption: e.target.value, savedAt: Date.now() }),

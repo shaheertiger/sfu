@@ -106,7 +106,7 @@
 .footNote{margin-top:32px;font-size:13px;color:#6b7079}
 
 @media (max-width:900px){
-  .articleGrid{grid-template-columns:1fr}
+  .articleGrid{grid-template-columns:minmax(0,1fr)}
   .toc{display:none}
   .footGrid{grid-template-columns:1fr 1fr}
 }

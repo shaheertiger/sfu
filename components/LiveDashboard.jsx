@@ -1014,7 +1014,7 @@ export default class LiveDashboard extends Base {
         )}
         {!this.state.loading && this.state.screen === 'compose' && this.state.draft?.id && this._srv.has(this.state.draft.id) && (
           <button type="button" className="sfy-share-btn" onClick={() => this.shareDraft()} style={{ position: 'fixed', right: 20, zIndex: 70, padding: '10px 14px', borderRadius: 12, border: '1px solid #141619', background: '#fff', color: '#141619', font: '600 14px Geist, system-ui, sans-serif', cursor: 'pointer', boxShadow: '0 8px 24px rgba(20,22,25,.15)' }}>
-            <style>{'.sfy-share-btn{bottom:20px}@media (max-width:760px){.sfy-share-btn{bottom:140px}}'}</style>
+            <style>{'.sfy-share-btn{bottom:20px}@media (max-width:760px){.sfy-share-btn{bottom:calc(156px + env(safe-area-inset-bottom));right:12px!important}}'}</style>
             Share for review
           </button>
         )}
@@ -1119,7 +1119,7 @@ function BillingBanner({ billing: b, owner, onChoose }) {
   const alert = tone === 'alert';
   return (
     <div role="status" className="sfy-billing-banner" style={{ position: 'fixed', left: '50%', transform: 'translateX(-50%)', zIndex: 80, display: 'flex', alignItems: 'center', gap: 12, maxWidth: 'calc(100vw - 32px)', padding: '10px 12px 10px 16px', borderRadius: 14, background: alert ? '#fff1ef' : '#141619', color: alert ? '#a1281f' : '#fff', border: alert ? '1px solid #f3c9c3' : '1px solid #141619', boxShadow: '0 8px 24px rgba(20,22,25,.18)', font: '500 14px Geist, system-ui, sans-serif' }}>
-      <style>{'.sfy-billing-banner{bottom:20px}@media (max-width:760px){.sfy-billing-banner{bottom:84px}}'}</style>
+      <style>{'.sfy-billing-banner{bottom:20px}@media (max-width:760px){.sfy-billing-banner{bottom:auto;top:calc(64px + env(safe-area-inset-top));width:calc(100vw - 24px);box-sizing:border-box;font-size:13px!important}}'}</style>
       <span>{text}{!owner && ' Ask the workspace owner to choose a plan.'}</span>
       {owner && (
         <button type="button" onClick={onChoose} style={{ flex: 'none', padding: '7px 12px', borderRadius: 10, border: 0, background: '#dcff2e', color: '#15171a', fontWeight: 600, cursor: 'pointer' }}>

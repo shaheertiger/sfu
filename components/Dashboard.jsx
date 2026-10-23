@@ -2531,8 +2531,20 @@ class Component extends DCLogic {
             label,
             bg: tab === k ? '#141619' : 'transparent',
             color: tab === k ? '#fff' : '#677184',
-            pick: () => this.setState({ cTab: k }),
+            pick: () => {
+              this.setState({ cTab: k });
+              if (typeof window !== 'undefined') window.scrollTo(0, 0);
+            },
           })),
+          // Phones: a sticky bar on the Edit tab so the next step is always one tap away.
+          showNextBar: mob && tab === 'edit',
+          goPreviewTab: () => {
+            this.setState({ cTab: 'preview' });
+            if (typeof window !== 'undefined') window.scrollTo(0, 0);
+          },
+          nextBarLabel: d.targets.length
+            ? `${d.targets.length} account${d.targets.length === 1 ? '' : 's'} · ${d.media.length ? d.media.length + ' file' + (d.media.length === 1 ? '' : 's') : 'no media'}`
+            : 'Pick at least one account',
           accQ: S0.accQ || '',
           onAccQ: (e) => this.setState({ accQ: e.target.value }),
           capTabs: [
