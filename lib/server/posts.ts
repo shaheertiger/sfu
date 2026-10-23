@@ -12,7 +12,7 @@ import type { MediaFile, SocialAccount } from './adapters/types';
 export type TargetInput = { account_id: string; caption?: string | null; options?: Record<string, any> };
 export type PostInput = {
   id?: string;
-  caption: string;
+  caption?: string;
   media?: string[];
   scheduled_at?: number | null;
   status?: 'draft' | 'scheduled' | 'published';
@@ -76,7 +76,8 @@ export function parsePostBody(raw: unknown): PostBodyInput {
   const { account_ids, ...rest } = b;
   const targets = rest.targets ?? (account_ids ? account_ids.map((account_id) => ({ account_id })) : undefined);
   const seen = new Set<string>();
-  const out: PostBodyInput = { ...rest, targets: (targets || []).filter((t) => !seen.has(t.account_id) && seen.add(t.account_id)), caption: rest.caption ?? '' };
+  // caption stays undefined when it isn't sent, so an update without it keeps the existing caption.
+  const out: PostBodyInput = { ...rest, targets: (targets || []).filter((t) => !seen.has(t.account_id) && seen.add(t.account_id)) };
   if (rest.targets === undefined && account_ids === undefined) delete (out as any).targets;
   return out;
 }
