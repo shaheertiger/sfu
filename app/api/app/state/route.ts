@@ -6,11 +6,15 @@ import { PLATFORM_LIST, platformConfigured } from '@/lib/server/platforms';
 import { storageConfigured } from '@/lib/server/storage';
 import { publicMedia } from '@/lib/server/media';
 import { billingSummary } from '@/lib/server/billing';
+import { refreshStaleAvatars } from '@/lib/server/accounts';
+import { freshMetaAvatar } from '@/lib/server/adapters/oauth';
 
 export const dynamic = 'force-dynamic';
 
 /** Everything the dashboard needs on first load, in one request. */
 export const GET = handler(async ({ user, workspace }) => {
+  // Meta picture URLs expire; refresh old ones before listing accounts (bounded wait).
+  await refreshStaleAvatars(workspace.id, freshMetaAvatar).catch((e) => console.error('[avatars]', e));
   const [accounts, posts, mediaRows, keys, members, workspaces] = await Promise.all([
     listAccounts(workspace.id),
     listPosts(workspace.id, { limit: 2000 }),

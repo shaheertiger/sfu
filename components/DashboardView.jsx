@@ -315,7 +315,8 @@ export function renderDashboard($v) {
                 <span>{'Accounts'}</span>
                 <span style={{ color: '#f6f5f1' }}>
                   {$t($v['accountCount'])}
-                  {' / 15'}
+                  {' / '}
+                  {$t($v['accountLimitLabel'])}
                 </span>
               </div>{' '}
               <span style={{ height: '4px', borderRadius: '4px', background: '#22252a', overflow: 'hidden' }}>
@@ -1837,14 +1838,14 @@ export function renderDashboard($v) {
                                               width: '56px',
                                               height: '56px',
                                               borderRadius: '8px',
-                                              background: 'linear-gradient(160deg,#9a7a58,#5d4a36)',
+                                              background: `${m?.bg ?? ''}`,
                                               display: 'grid',
                                               placeItems: 'center',
                                               font: "500 10px 'Geist Mono',monospace",
                                               color: '#f3e9d8',
                                             }}
                                           >
-                                            {$t(m)}
+                                            {$t(m?.label)}
                                           </div>{' '}
                                         </Fragment>
                                       ))}{' '}
@@ -3081,20 +3082,25 @@ export function renderDashboard($v) {
                             {' '}
                             <span
                               style={{
+                                position: 'relative',
                                 width: '26px',
                                 height: '26px',
                                 borderRadius: '50%',
                                 flex: 'none',
-                                display: 'grid',
-                                placeItems: 'center',
-                                background: `${a?.color ?? ''}`,
+                                background: `${a?.pic ?? ''}`,
                               }}
                             >
                               <span
                                 style={{
-                                  width: '56%',
-                                  height: '56%',
-                                  background: `${a?.logo ?? ''} center/contain no-repeat`,
+                                  position: 'absolute',
+                                  right: '-3px',
+                                  bottom: '-3px',
+                                  width: '13px',
+                                  height: '13px',
+                                  borderRadius: '50%',
+                                  border: '2px solid #fff',
+                                  background: `${a?.badge ?? ''}`,
+                                  display: `${a?.badgeDisplay ?? ''}`,
                                 }}
                               />
                             </span>{' '}
@@ -3507,7 +3513,7 @@ export function renderDashboard($v) {
                                       width: '84px',
                                       height: '84px',
                                       borderRadius: '10px',
-                                      background: 'linear-gradient(160deg,#9a7a58,#5d4a36)',
+                                      background: `${m?.bg ?? ''}`,
                                       display: 'grid',
                                       placeItems: 'center',
                                       font: "500 11px 'Geist Mono',monospace",
@@ -3515,7 +3521,7 @@ export function renderDashboard($v) {
                                     }}
                                   >
                                     {' '}
-                                    <span>{$t(m?.kind)}</span>{' '}
+                                    <span>{$t(m?.label)}</span>{' '}
                                     <button
                                       onClick={m?.remove}
                                       style={{
@@ -4075,19 +4081,25 @@ export function renderDashboard($v) {
                             {' '}
                             <span
                               style={{
+                                position: 'relative',
                                 width: '34px',
                                 height: '34px',
                                 borderRadius: '50%',
-                                background: `${$v['pv']?.color ?? ''}`,
-                                display: 'grid',
-                                placeItems: 'center',
+                                flex: 'none',
+                                background: `${$v['pv']?.pic ?? ''}`,
                               }}
                             >
                               <span
                                 style={{
-                                  width: '58%',
-                                  height: '58%',
-                                  background: `${$v['pv']?.logo ?? ''} center/contain no-repeat`,
+                                  position: 'absolute',
+                                  right: '-3px',
+                                  bottom: '-3px',
+                                  width: '15px',
+                                  height: '15px',
+                                  borderRadius: '50%',
+                                  border: '2px solid #fff',
+                                  background: `${$v['pv']?.badge ?? ''}`,
+                                  display: `${$v['pv']?.badgeDisplay ?? ''}`,
                                 }}
                               />
                             </span>{' '}
@@ -4121,14 +4133,14 @@ export function renderDashboard($v) {
                                       style={{
                                         aspectRatio: '1',
                                         borderRadius: '8px',
-                                        background: 'linear-gradient(160deg,#9a7a58,#5d4a36)',
+                                        background: `${m?.bg ?? ''}`,
                                         display: 'grid',
                                         placeItems: 'center',
                                         font: "500 11px 'Geist Mono',monospace",
                                         color: '#f3e9d8',
                                       }}
                                     >
-                                      {$t(m)}
+                                      {$t(m?.label)}
                                     </div>{' '}
                                   </Fragment>
                                 ))}{' '}
@@ -5814,7 +5826,9 @@ export function renderDashboard($v) {
                   </h1>{' '}
                   <p style={{ margin: '8px 0 0', color: '#677184', fontSize: '15px' }}>
                     {$t($v['accountCount'])}
-                    {' of 15 connected. Multiple accounts per platform are fine.'}
+                    {' of '}
+                    {$t($v['accountLimitLabel'])}
+                    {' connected. Multiple accounts per platform are fine.'}
                   </p>{' '}
                 </div>{' '}
                 <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
@@ -5895,20 +5909,25 @@ export function renderDashboard($v) {
                         {' '}
                         <span
                           style={{
+                            position: 'relative',
                             width: '36px',
                             height: '36px',
                             borderRadius: '50%',
-                            background: `${a?.color ?? ''}`,
-                            display: 'grid',
-                            placeItems: 'center',
+                            background: `${a?.pic ?? ''}`,
                             flex: 'none',
                           }}
                         >
                           <span
                             style={{
-                              width: '58%',
-                              height: '58%',
-                              background: `${a?.logo ?? ''} center/contain no-repeat`,
+                              position: 'absolute',
+                              right: '-3px',
+                              bottom: '-3px',
+                              width: '16px',
+                              height: '16px',
+                              borderRadius: '50%',
+                              border: '2px solid #fff',
+                              background: `${a?.badge ?? ''}`,
+                              display: `${a?.badgeDisplay ?? ''}`,
                             }}
                           />
                         </span>{' '}
@@ -6034,12 +6053,13 @@ export function renderDashboard($v) {
                                   borderRadius: '999px',
                                   fontSize: '11px',
                                   fontWeight: '600',
-                                  color: '#d98c0b',
-                                  border: '1px solid #f3dfb2',
-                                  background: '#fff8e8',
+                                  color: '#677184',
+                                  border: '1px solid #e5e3dc',
+                                  background: '#f6f5f1',
+                                  whiteSpace: 'nowrap',
                                 }}
                               >
-                                {'needs keys'}
+                                {'Coming soon'}
                               </span>{' '}
                             </>
                           ) : null}{' '}
@@ -6057,6 +6077,7 @@ export function renderDashboard($v) {
                         </span>{' '}
                         <button
                           onClick={p?.connect}
+                          disabled={p?.needsKeys}
                           style={{
                             alignSelf: 'flex-start',
                             padding: '6px 10px',
@@ -6064,7 +6085,8 @@ export function renderDashboard($v) {
                             borderRadius: '8px',
                             border: '1px solid #e5e3dc',
                             background: '#fff',
-                            cursor: 'pointer',
+                            cursor: `${p?.cursor ?? ''}`,
+                            opacity: `${p?.btnOpacity ?? ''}`,
                             fontWeight: '500',
                           }}
                           className="dashboard-hover-5"

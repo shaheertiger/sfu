@@ -1,6 +1,6 @@
 import 'server-only';
-import { now, one, query, uid } from './db';
-import { encrypt } from './crypto';
+import { exec, now, one, query, uid } from './db';
+import { decrypt, encrypt } from './crypto';
 import { HttpError } from './http-error';
 import type { ConnectedAccountFields } from './adapters/types';
 
@@ -23,4 +23,33 @@ export async function upsertAccount(workspaceId: string, platform: string, f: Co
     [id, workspaceId, platform, f.external_id, f.username, f.display_name, f.avatar_url ?? null, encrypt(f.access_token), encrypt(f.refresh_token ?? null), f.token_expires_at ?? null, JSON.stringify(f.meta || {}), now()],
   );
   return rows[0];
+}
+
+/** How long a stored Meta profile picture URL is trusted before it is fetched again. */
+export const AVATAR_TTL_MS = 2 * 864e5;
+const REFRESH_BUDGET_MS = 2500;
+
+/**
+ * Refreshes Facebook and Instagram profile pictures that are older than AVATAR_TTL_MS (their URLs
+ * expire). Waits at most REFRESH_BUDGET_MS so the dashboard never hangs on Meta; whatever doesn't
+ * finish is retried on a later load. Failures keep the old picture.
+ */
+export async function refreshStaleAvatars(workspaceId: string, fetchAvatar: (a: { platform: string; external_id: string | null; access_token: string | null }) => Promise<string | null>) {
+  const rows = await query(
+    `SELECT id, platform, external_id, access_token FROM social_accounts
+     WHERE workspace_id=$1 AND platform IN ('facebook','instagram') AND status='active'
+       AND COALESCE((meta->>'avatar_at')::bigint, 0) < $2
+     ORDER BY created_at LIMIT 60`,
+    [workspaceId, now() - AVATAR_TTL_MS],
+  );
+  if (!rows.length) return 0;
+  let done = 0;
+  const work = Promise.all(rows.map(async (r: any) => {
+    let url: string | null = null;
+    try { url = await fetchAvatar({ platform: r.platform, external_id: r.external_id, access_token: decrypt(r.access_token) }); } catch { /* keep the old picture */ }
+    await exec(`UPDATE social_accounts SET avatar_url=COALESCE($1, avatar_url), meta = meta || jsonb_build_object('avatar_at', $2::bigint) WHERE id=$3`, [url, now(), r.id]);
+    done++;
+  }));
+  await Promise.race([work.catch(() => {}), new Promise((res) => setTimeout(res, REFRESH_BUDGET_MS))]);
+  return done;
 }

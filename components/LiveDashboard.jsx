@@ -46,7 +46,7 @@ function mapAccount(a) {
   return {
     id: a.id, platform: a.platform, username: a.username || a.display_name || a.platform, display: a.display_name || a.username,
     health: a.status === 'error' ? 'error' : soon ? 'expiring' : undefined,
-    error: a.last_error || '', expires: a.token_expires_at || null, boards: a.meta?.boards || [],
+    avatar: a.avatar_url || '', error: a.last_error || '', expires: a.token_expires_at || null, boards: a.meta?.boards || [],
   };
 }
 
@@ -489,11 +489,12 @@ export default class LiveDashboard extends Base {
     if (typeof v.greeting === 'string') v.greeting = v.greeting.replace(/, [^,]*$/, `, ${this.userName || 'there'}`);
 
     // Accounts: real connect / reconnect.
+    // Platforms we haven't set up yet show "Coming soon" with a disabled button, listed after the rest.
     v.platformCards = v.platformCards.map((c, i) => {
       const id = PLATFORM_IDS[i];
       const configured = id === 'bluesky' || !!s.platforms[id]?.configured;
-      return { ...c, needsKeys: !configured, hasCount: c.hasCount || (configured && s.accounts.some((a) => a.platform === id)), connect: () => this.connect(id) };
-    });
+      return { ...c, needsKeys: !configured, cursor: configured ? 'pointer' : 'not-allowed', btnOpacity: configured ? '1' : '.5', hasCount: c.hasCount || (configured && s.accounts.some((a) => a.platform === id)), connect: configured ? () => this.connect(id) : () => {} };
+    }).sort((x, y) => x.needsKeys - y.needsKeys);
     v.connected = v.connected.map((c) => {
       const a = accBy((x) => x.id === c.id);
       const detail = a?.health === 'error' ? a.error || 'Connection error' : a?.expires ? `Token valid until ${new Date(a.expires).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}` : 'Connected';
@@ -515,7 +516,16 @@ export default class LiveDashboard extends Base {
     // Composer media: real uploads.
     v.addImage = () => this.pickFiles('image/jpeg,image/png,image/gif,image/webp', true, (fs) => this.addToDraft(fs));
     v.addVideo = () => this.pickFiles('video/mp4,video/quicktime,video/webm', false, (fs) => this.addToDraft(fs));
-    v.mediaTiles = d.media.map((kind, i) => ({ kind, remove: () => this.upd({ media: d.media.filter((_, j) => j !== i), mediaIds: (d.mediaIds || []).filter((_, j) => j !== i) }) }));
+    // Show the real image in the composer tiles and the preview; videos (and anything not in the
+    // library yet) keep the placeholder.
+    const libById = new Map((s.library || []).map((m) => [m.id, m]));
+    const look = (kind, i, ids = d.mediaIds) => {
+      const m = libById.get((ids || [])[i]);
+      if (m?.url) return { bg: `#2a2e34 url("${String(m.url).replace(/["\\\n]/g, encodeURIComponent)}") center/cover no-repeat`, label: '' };
+      return { bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind === 'VIDEO' ? '▶ VIDEO' : kind };
+    };
+    v.mediaTiles = d.media.map((kind, i) => ({ kind, ...look(kind, i), remove: () => this.upd({ media: d.media.filter((_, j) => j !== i), mediaIds: (d.mediaIds || []).filter((_, j) => j !== i) }) }));
+    if (v.pv) v.pv.media = d.media.slice(0, 4).map((kind, i) => look(kind, i));
 
     // Media library.
     const q = (s.libQ || '').toLowerCase();
@@ -546,6 +556,7 @@ export default class LiveDashboard extends Base {
     const postById = Object.fromEntries(s.posts.map((p) => [p.id, p]));
     for (const g of v.groups || []) for (const it of g.items) {
       const p = postById[it.__id];
+      if (p) it.media = p.media.map((kind, i) => look(kind, i, p.mediaIds));
       it.targets.forEach((t, i) => { const url = p?.targets[i]?.url; if (url && p.targets[i].status === 'published') { t.href = url; t.pe = 'auto'; t.arrow = '↗'; } else { t.href = '#'; t.pe = 'none'; t.arrow = ''; } });
     }
 
