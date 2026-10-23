@@ -61,7 +61,7 @@ class Component extends DCLogic {
       max: 2200,
       req: 'any',
       note: 'Post videos and photo carousels to your TikTok.',
-      fields: [{ key: 'privacy', label: 'Privacy', options: ['Public', 'Friends', 'Only me'] }],
+      fields: [{ key: 'privacy', label: 'Privacy', options: ['Only me', 'Friends', 'Public'] }],
     },
     youtube: {
       label: 'YouTube',
@@ -118,9 +118,10 @@ class Component extends DCLogic {
   }
   /** Next whole hour at least 30 minutes away (default time for new posts). */
   static soon() {
-    const t = new Date(Date.now() + 30 * 6e4);
+    const ms = Date.now() + 30 * 6e4,
+      t = new Date(ms + Component.shift(ms));
     t.setMinutes(0, 0, 0);
-    return t.getTime() + 36e5;
+    return Component.fromLocal(`${Component.ymd(t)}T${String(t.getHours()).padStart(2, '0')}:00`) + 36e5;
   }
   static monday() {
     const t = new Date();
@@ -167,10 +168,16 @@ class Component extends DCLogic {
   static shift(ms = Date.now(), tz = Component._tz) {
     return tz ? (Component.tzOff(tz, ms) - Component.tzOff(Component.localTz(), ms)) * 6e4 : 0;
   }
-  static fromLocal(v) {
+  /** Epoch ms for a workspace wall-clock string like 2026-10-26T09:00. */
+  static fromLocal(v, tz = Component._tz) {
     if (!v) return null;
     const guess = new Date(v).getTime();
-    return guess - Component.shift(guess);
+    return Number.isNaN(guess) ? null : guess - Component.shift(guess, tz);
+  }
+  /** YYYY-MM-DD from a Date's local fields. */
+  static ymd(d) {
+    const z = (n) => String(n).padStart(2, '0');
+    return `${d.getFullYear()}-${z(d.getMonth() + 1)}-${z(d.getDate())}`;
   }
   static tzLabel(tz) {
     const row = Component.TZ.find((t) => t[0] === tz);
@@ -710,9 +717,9 @@ class Component extends DCLogic {
       d.mode === 'now'
         ? Component.NOW
         : d.mode === 'schedule'
-          ? Component.fromLocal(d.when)
+          ? Component.fromLocal(d.when, s.tz)
           : d.mode === 'queue'
-            ? this.nextSlots(1, [], d.id)[0] || Component.at(1, 9)
+            ? this.nextSlots(1, [], d.id)[0] || this.wsAt(1, 9)
             : null;
     // "Post as" picked before choosing accounts applies to every Instagram and Facebook target without its own choice.
     const accP = Object.fromEntries(s.accounts.map((a) => [a.id, a.platform])),
@@ -721,6 +728,15 @@ class Component extends DCLogic {
       for (const id of d.targets)
         if ((accP[id] === 'instagram' || accP[id] === 'facebook') && !(ov[id]?.opts || {}).format)
           ov[id] = { ...(ov[id] || {}), opts: { ...(ov[id]?.opts || {}), format: d.postAs } };
+    // Save what the composer shows: a select left on its first option (TikTok privacy, Pinterest board…) is saved as that option.
+    for (const a of s.accounts) {
+      if (!d.targets.includes(a.id)) continue;
+      for (const f of Component.P[a.platform]?.fields || []) {
+        if (!f.options || f.key === 'format' || (ov[a.id]?.opts || {})[f.key] != null) continue;
+        const def = this.fieldOptions(a, f)[0];
+        if (def != null) ov[a.id] = { ...(ov[a.id] || {}), opts: { ...(ov[a.id]?.opts || {}), [f.key]: def } };
+      }
+    }
     const post = {
       id: d.id || 'p' + Date.now(),
       note: d.note || '',
@@ -759,15 +775,15 @@ class Component extends DCLogic {
     const out = [],
       slots = [...s.slots].sort();
     if (!slots.length || !s.slotDays.length) return out;
+    // Slots are wall-clock times in the workspace timezone, on the workspace's weekdays.
+    const today = this.wsDate(Component.NOW);
     for (let d = 0; d < 120 && out.length < n; d++) {
-      const day = new Date(Component.NOW);
-      day.setHours(0, 0, 0, 0);
-      day.setDate(day.getDate() + d);
+      const day = new Date(today.getFullYear(), today.getMonth(), today.getDate() + d);
       if (!s.slotDays.includes(day.getDay())) continue;
       for (const sl of slots) {
         const [h, m] = sl.split(':').map(Number),
-          ms = new Date(day.getFullYear(), day.getMonth(), day.getDate(), h, m).getTime();
-        if (ms <= Component.NOW || taken.has(ms)) continue;
+          ms = this.wsTime(day.getFullYear(), day.getMonth(), day.getDate(), h, m);
+        if (!ms || ms <= Component.NOW || taken.has(ms)) continue;
         out.push(ms);
         taken.add(ms);
         if (out.length >= n) break;
@@ -777,7 +793,7 @@ class Component extends DCLogic {
   }
   slotLabel(ms) {
     return ms
-      ? `${this.dayLabel(ms)}, ${new Date(ms).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} · ${this.time(ms)}`
+      ? `${this.dayLabel(ms)}, ${this.wsDate(ms).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} · ${this.time(ms)}`
       : 'No slots set';
   }
   dupOf(p, at) {
@@ -794,9 +810,11 @@ class Component extends DCLogic {
       src = s.posts.filter((p) => ids.includes(p.id)),
       wk = 7 * 864e5;
     const free = this.nextSlots(src.length);
-    const copies = src.map((p, i) =>
-      this.dupOf(p, p.at && p.at + wk > Component.NOW ? p.at + wk : free[i] || Component.at(1, 9)),
-    );
+    // One week later when that's still ahead (with a minute to spare), else the next free slot: never in the past.
+    const copies = src.map((p, i) => {
+      const later = p.at && p.at + wk > Component.NOW ? this.plusDays(p.at, 7) : null;
+      return this.dupOf(p, later && later > Component.NOW + 6e4 ? later : free[i] || this.wsAt(1, 9));
+    });
     this.setState({ posts: [...s.posts, ...copies], tab: 'upcoming' });
     this.flash(
       copies.length === 1
@@ -807,10 +825,11 @@ class Component extends DCLogic {
   moveTo(id, dayMs) {
     const p = this.state.posts.find((x) => x.id === id);
     if (!p || !p.at) return;
-    const o = new Date(p.at),
+    // dayMs is a calendar cell (a date label); keep the post's workspace wall-clock time on that date.
+    const o = this.wsDate(p.at),
       d = new Date(dayMs),
-      at = new Date(d.getFullYear(), d.getMonth(), d.getDate(), o.getHours(), o.getMinutes()).getTime();
-    if (new Date(at).toDateString() === o.toDateString()) return;
+      at = this.wsTime(d.getFullYear(), d.getMonth(), d.getDate(), o.getHours(), o.getMinutes());
+    if (d.toDateString() === o.toDateString()) return;
     if (at < Component.NOW) return this.flash("Can't move a post into the past", true);
     const old = p.at,
       doMove = () => {
@@ -908,14 +927,55 @@ class Component extends DCLogic {
     });
     this.flash(asDraft ? `Saved ${posts.length} drafts` : `Scheduled ${posts.length} posts`);
   }
+  /** Splits CSV text into rows of fields. Handles quoted fields with commas, line breaks and "" escapes. */
+  static csvRows(text) {
+    const rows = [];
+    let row = [],
+      f = '',
+      q = false,
+      quoted = false;
+    const endField = () => {
+      row.push(f);
+      f = '';
+      quoted = false;
+    };
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i];
+      if (q) {
+        if (c === '"' && text[i + 1] === '"') {
+          f += '"';
+          i++;
+        } else if (c === '"') q = false;
+        else f += c;
+        continue;
+      }
+      if (c === '"' && !f.trim() && !quoted) {
+        q = true;
+        quoted = true;
+        f = '';
+      } else if (c === ',') endField();
+      else if (c === '\n' || c === '\r') {
+        if (c === '\r' && text[i + 1] === '\n') i++;
+        endField();
+        if (row.some((x) => x.trim())) rows.push(row);
+        row = [];
+      } else if (!quoted) f += c;
+    }
+    endField();
+    if (row.some((x) => x.trim())) rows.push(row);
+    return rows;
+  }
+  /**
+   * CSV import. The accounts column lists accounts separated by ";". Each entry can be an account id, @username,
+   * platform:@username, the account's display name, or a platform name. A platform name means that platform's
+   * account when only one is connected; with several, the first is used and the row says so.
+   */
   parseCsv() {
     const P = Component.P,
-      s = this.state;
-    const lines = s.csv
-      .split(/\r?\n/)
-      .map((l) => l.trim())
-      .filter(Boolean);
-    if (lines[0] && /^date\s*,/i.test(lines[0])) lines.shift();
+      s = this.state,
+      accounts = s.accounts.filter((a) => (a.ws || 'maya') === (s.ws || 'maya'));
+    const rows = Component.csvRows(s.csv || '');
+    if (rows[0] && /^date$/i.test((rows[0][0] || '').trim())) rows.shift();
     const alias = {
       twitter: 'x',
       'x/twitter': 'x',
@@ -924,12 +984,20 @@ class Component extends DCLogic {
       gbp: 'google_business',
       google: 'google_business',
       bsky: 'bluesky',
+      fb: 'facebook',
+      li: 'linkedin',
+      tt: 'tiktok',
     };
-    return lines.map((line) => {
-      const parts = line.split(','),
-        [date, time, accStr] = parts,
+    const plat = (x) => {
+      const k = x.toLowerCase();
+      return P[alias[k] || k] ? alias[k] || k : null;
+    };
+    const list = (as) => as.map((a) => `${P[a.platform].label} @${a.username}`).join(', ');
+    return rows.map((parts) => {
+      const [date, time, accStr] = parts,
         caption = parts.slice(3).join(',').trim();
-      const issues = [];
+      const issues = [],
+        notes = [];
       let warn = false;
       const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec((date || '').trim()),
         t = /^(\d{1,2}):(\d{2})$/.exec((time || '').trim());
@@ -937,30 +1005,60 @@ class Component extends DCLogic {
       if (!m) issues.push('Date must look like 2026-10-26');
       else if (!t || +t[1] > 23 || +t[2] > 59) issues.push(`"${(time || '').trim()}" isn't a valid time`);
       else {
-        at = Component.fromLocal(`${m[1]}-${m[2]}-${m[3]}T${String(+t[1]).padStart(2, '0')}:${t[2]}`);
-        if (at <= Component.NOW) issues.push('That time has already passed');
+        at = Component.fromLocal(`${m[1]}-${m[2]}-${m[3]}T${String(+t[1]).padStart(2, '0')}:${t[2]}`, s.tz);
+        if (!at || at <= Component.NOW) issues.push('That time has already passed');
       }
       const names = (accStr || '')
         .split(';')
-        .map((x) => x.trim().toLowerCase())
-        .filter(Boolean)
-        .map((x) => alias[x] || x);
+        .map((x) => x.trim())
+        .filter(Boolean);
       const accs = [];
-      for (const nm of names) {
-        if (!P[nm]) {
-          issues.push(`Unknown platform "${nm}"`);
+      for (const raw of names) {
+        let found = accounts.filter((a) => a.id === raw);
+        const pm = /^([\w/ ]+?)\s*:\s*@?(.+)$/.exec(raw),
+          pp = pm && plat(pm[1].trim());
+        if (!found.length && pp)
+          found = accounts.filter(
+            (a) =>
+              a.platform === pp &&
+              (a.username.toLowerCase() === pm[2].trim().toLowerCase() ||
+                (a.display || '').toLowerCase() === pm[2].trim().toLowerCase()),
+          );
+        else if (!found.length && raw.startsWith('@'))
+          found = accounts.filter((a) => a.username.toLowerCase() === raw.slice(1).toLowerCase());
+        if (!found.length && !raw.startsWith('@') && !pp && !plat(raw))
+          found = accounts.filter(
+            (a) =>
+              (a.display || '').toLowerCase() === raw.toLowerCase() || a.username.toLowerCase() === raw.toLowerCase(),
+          );
+        if (!found.length && plat(raw)) {
+          const pl = plat(raw),
+            all = accounts.filter((a) => a.platform === pl);
+          if (!all.length) {
+            issues.push(`No ${P[pl].label} account connected`);
+            continue;
+          }
+          if (all.length > 1)
+            notes.push(
+              `"${raw}" matches ${all.length} ${P[pl].label} accounts, so this uses @${all[0].username}. Write ${pl}:@username to pick one.`,
+            );
+          found = [all[0]];
+        } else if (found.length > 1) {
+          issues.push(`"${raw}" matches ${found.length} accounts (${list(found)}). Write platform:@username instead.`);
           continue;
         }
-        const a = s.accounts.find((x) => x.platform === nm);
-        if (!a) {
-          issues.push(`No ${P[nm].label} account connected`);
+        if (!found.length) {
+          issues.push(
+            raw.startsWith('@') || pp ? `No connected account ${raw}` : `Unknown account or platform "${raw}"`,
+          );
           continue;
         }
+        const a = found[0];
+        if (accs.includes(a)) continue;
         accs.push(a);
-        if (caption.length > P[nm].max) issues.push(`${caption.length}/${P[nm].max} characters for ${P[nm].label}`);
-        if (P[nm].req !== 'none') {
-          warn = true;
-        }
+        if (caption.length > P[a.platform].max)
+          issues.push(`${caption.length}/${P[a.platform].max} characters for ${P[a.platform].label}`);
+        if (P[a.platform].req !== 'none') warn = true;
       }
       if (!names.length) issues.push('No accounts listed');
       if (!caption) issues.push('Caption is empty');
@@ -968,13 +1066,15 @@ class Component extends DCLogic {
       return {
         ok,
         warn: ok && warn,
+        note: ok ? notes[0] || '' : '',
         at,
         accs,
         caption,
         issue: ok
           ? warn
-            ? 'Imports as a draft: this platform needs media. Add it before scheduling.'
-            : ''
+            ? 'Imports as a draft: this platform needs media. Add it before scheduling.' +
+              (notes[0] ? ' ' + notes[0] : '')
+            : notes[0] || ''
           : issues[0],
       };
     });
@@ -982,8 +1082,99 @@ class Component extends DCLogic {
   tzShift(ms = Date.now()) {
     return Component.shift(ms, this.state.tz);
   }
+  /* Workspace wall-clock helpers. Calendar days are keyed by the workspace's date, never the browser's. */
+  /** A Date whose local fields read as the workspace wall clock at ms (for reading the date and time only). */
+  wsDate(ms) {
+    return new Date(ms + this.tzShift(ms));
+  }
+  /** Workspace-local day key, comparable with a calendar cell's toDateString(). */
+  dayKey(ms) {
+    return this.wsDate(ms).toDateString();
+  }
+  /** Epoch ms for a workspace wall-clock date and time. Out-of-range days roll over (day 32 → next month). */
+  wsTime(y, mo, d, h = 0, mi = 0) {
+    const z = (n) => String(n).padStart(2, '0');
+    return Component.fromLocal(`${Component.ymd(new Date(y, mo, d))}T${z(h)}:${z(mi)}`, this.state.tz);
+  }
+  /** Epoch ms for h:mi on the workspace's today + d days. */
+  wsAt(d, h, mi = 0) {
+    const t = this.wsDate(Date.now());
+    return this.wsTime(t.getFullYear(), t.getMonth(), t.getDate() + d, h, mi);
+  }
+  /** The same workspace wall-clock time n days later (stays at 9:00 across daylight-saving changes). */
+  plusDays(ms, n) {
+    const o = this.wsDate(ms);
+    return this.wsTime(o.getFullYear(), o.getMonth(), o.getDate() + n, o.getHours(), o.getMinutes());
+  }
+  /** Monday of the workspace's current week, as a calendar-day label (browser midnight). */
+  wsMonday() {
+    const t = this.wsDate(Date.now());
+    t.setHours(0, 0, 0, 0);
+    t.setDate(t.getDate() - ((t.getDay() + 6) % 7));
+    return t.getTime();
+  }
+  wsMonth() {
+    const t = this.wsDate(Date.now());
+    return [t.getFullYear(), t.getMonth()];
+  }
   time(ms) {
     return new Date(ms + this.tzShift(ms)).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+  }
+  /** The calendar's visible range [from, to) in epoch ms, using the workspace's days. */
+  calRange() {
+    const s = this.state;
+    if (s.calView === 'week') {
+      const w = new Date(s.weekStart);
+      return [
+        this.wsTime(w.getFullYear(), w.getMonth(), w.getDate()),
+        this.wsTime(w.getFullYear(), w.getMonth(), w.getDate() + 7),
+      ];
+    }
+    return [this.wsTime(s.cursor[0], s.cursor[1], 1), this.wsTime(s.cursor[0], s.cursor[1] + 1, 1)];
+  }
+  /** Team list rows: members with their real role, then pending invites. */
+  memberRows(
+    members,
+    invites,
+    revoke = (i) => this.setState((st) => ({ invites: st.invites.filter((x) => (x.email || x) !== i.email) })),
+  ) {
+    const style = {
+      owner: ['#141619', '#d9ff35', '#d9ff35'],
+      editor: ['#141619', '#fff', '#e5e3dc'],
+      member: ['#141619', '#fff', '#e5e3dc'],
+      invited: ['#d98c0b', '#fff8e8', '#f3dfb2'],
+    };
+    return [
+      ...members.map((m) => ({
+        name: m.name || '',
+        email: m.email,
+        kind: style[m.role] ? m.role : 'member',
+        role: m.role || 'member',
+      })),
+      ...(invites || [])
+        .map((i) => (typeof i === 'string' ? { email: i, role: 'member' } : i))
+        .map((i) => ({
+          name: '',
+          email: i.email,
+          kind: 'invited',
+          role: `invited · ${i.role || 'member'}`,
+          canRevoke: true,
+          revoke: () => revoke(i),
+        })),
+    ].map((m) => ({
+      name: m.name,
+      email: m.email,
+      role: m.role,
+      canRevoke: !!m.canRevoke,
+      revoke: m.revoke || (() => {}),
+      color: style[m.kind][0],
+      bg: style[m.kind][1],
+      border: style[m.kind][2],
+    }));
+  }
+  /** Choices for a platform's select field (the live app lists the account's real Pinterest boards). */
+  fieldOptions(a, f) {
+    return f.options || [];
   }
   /** A CSS background showing the post's first image, or null for the placeholder (the live app fills this in). */
   mediaThumb(p, dim) {
@@ -995,9 +1186,9 @@ class Component extends DCLogic {
     return /^(Today|Tomorrow|Yesterday)$/.test(l) ? l.toLowerCase() : `on ${l}`;
   }
   dayLabel(ms) {
-    const a = new Date(ms + this.tzShift());
+    const a = this.wsDate(ms);
     a.setHours(0, 0, 0, 0);
-    const b = new Date(Component.NOW + this.tzShift());
+    const b = this.wsDate(Component.NOW);
     b.setHours(0, 0, 0, 0);
     const diff = Math.round((a - b) / 864e5);
     if (diff === 0) return 'Today';
@@ -1124,14 +1315,14 @@ class Component extends DCLogic {
       .sort((a, b) => (s.tab === 'upcoming' ? a.at - b.at : (b.at || 0) - (a.at || 0)));
     const groups = [];
     for (const p of list) {
-      const key = p.at ? new Date(p.at).toDateString() : 'none';
+      const key = p.at ? this.dayKey(p.at) : 'none';
       let g = groups[groups.length - 1];
       if (!g || g.key !== key) {
         g = {
           key,
           label: p.at ? this.dayLabel(p.at) : 'Drafts',
           sub: p.at
-            ? new Date(p.at).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
+            ? this.wsDate(p.at).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
             : 'Not scheduled',
           items: [],
         };
@@ -1147,28 +1338,30 @@ class Component extends DCLogic {
             ? 'content'
             : 'temp';
       const fk = errs.length ? errKind(errs[0].error) : null;
-      const actLabel = ['failed', 'partial'].includes(p.status)
-        ? fk === 'auth'
-          ? 'Reconnect account'
-          : fk === 'content'
-            ? 'Edit to fix'
-            : 'Retry'
-        : p.status === 'scheduled'
-          ? p.approval === 'pending'
-            ? ''
-            : 'Post now'
-          : p.status === 'draft'
-            ? 'Publish'
-            : ['failed', 'partial'].includes(p.status)
-              ? 'Retry'
-              : p.status === 'published'
-                ? 'Repost'
-                : '';
+      const actLabel = p.publishing
+        ? ''
+        : ['failed', 'partial'].includes(p.status)
+          ? fk === 'auth'
+            ? 'Reconnect account'
+            : fk === 'content'
+              ? 'Edit to fix'
+              : 'Retry'
+          : p.status === 'scheduled'
+            ? p.approval === 'pending'
+              ? ''
+              : 'Post now'
+            : p.status === 'draft'
+              ? 'Publish'
+              : ['failed', 'partial'].includes(p.status)
+                ? 'Retry'
+                : p.status === 'published'
+                  ? 'Repost'
+                  : '';
       const LEAD = { 15: '15m', 30: '30m', 60: '1h', 180: '3h', 1440: '1 day' };
       g.items.push({
         time: p.at ? this.time(p.at) : '—',
-        status: p.status,
-        st: ST[p.status] || ST.draft,
+        status: p.publishing ? 'publishing…' : p.status,
+        st: p.publishing ? ST.scheduled : ST[p.status] || ST.draft,
         meta: [
           `${p.targets.length} account${p.targets.length === 1 ? '' : 's'}`,
           imgs > 1 ? `carousel of ${imgs}` : imgs ? '1 image' : '',
@@ -1259,8 +1452,9 @@ class Component extends DCLogic {
               fn();
             };
           const doAct = () => g.items.find((x) => x.__id === p.id)?.act();
-          let prim =
-            p.approval === 'pending' && p.status !== 'published'
+          let prim = p.publishing
+            ? ['Publishing…', () => {}, false]
+            : p.approval === 'pending' && p.status !== 'published'
               ? [
                   'Approve',
                   () => {
@@ -1272,48 +1466,51 @@ class Component extends DCLogic {
               : actLabel
                 ? [actLabel, () => doAct(), ['failed', 'partial'].includes(p.status) || actLabel === 'Post now']
                 : ['Edit', () => this.editPost(p), false];
-          const menu = [
-            p.status !== 'published' ? { label: 'Edit', go: close(() => this.editPost(p)) } : null,
-            { label: 'Duplicate', go: close(() => this.duplicate([p.id])) },
-            p.approval === 'pending'
-              ? {
-                  label: 'Request changes',
-                  go: close(() => {
-                    this.setPost(p.id, (x) => ({ ...x, approval: null, status: 'draft', at: null }));
-                    this.flash('Sent back to drafts');
-                  }),
-                }
-              : null,
-            p.status === 'scheduled'
-              ? {
-                  label: 'Move +1 day',
-                  go: close(() => {
-                    this.setPost(p.id, (x) => ({ ...x, at: x.at + 864e5 }));
-                    this.flash('Moved one day later', false, () =>
-                      this.setPost(p.id, (x) => ({ ...x, at: x.at - 864e5 })),
-                    );
-                  }),
-                }
-              : null,
-            {
-              label: 'Delete…',
-              color: '#dc3545',
-              go: close(() =>
-                this.setState({
-                  confirm: {
-                    title: 'Delete this post?',
-                    body: (p.caption || '').slice(0, 90),
-                    cta: 'Delete post',
-                    go: () => {
-                      const snap = p;
-                      this.setState((st) => ({ posts: st.posts.filter((x) => x.id !== p.id) }));
-                      this.flash('Post deleted', false, () => this.setState((st) => ({ posts: [...st.posts, snap] })));
-                    },
-                  },
-                }),
-              ),
-            },
-          ].filter(Boolean);
+          const menu = p.publishing
+            ? []
+            : [
+                p.status !== 'published' ? { label: 'Edit', go: close(() => this.editPost(p)) } : null,
+                { label: 'Duplicate', go: close(() => this.duplicate([p.id])) },
+                p.approval === 'pending'
+                  ? {
+                      label: 'Request changes',
+                      go: close(() => {
+                        this.setPost(p.id, (x) => ({ ...x, approval: null, status: 'draft', at: null }));
+                        this.flash('Sent back to drafts');
+                      }),
+                    }
+                  : null,
+                p.status === 'scheduled'
+                  ? {
+                      label: 'Move +1 day',
+                      go: close(() => {
+                        const old = p.at;
+                        this.setPost(p.id, (x) => ({ ...x, at: this.plusDays(x.at, 1) }));
+                        this.flash('Moved one day later', false, () => this.setPost(p.id, (x) => ({ ...x, at: old })));
+                      }),
+                    }
+                  : null,
+                {
+                  label: 'Delete…',
+                  color: '#dc3545',
+                  go: close(() =>
+                    this.setState({
+                      confirm: {
+                        title: 'Delete this post?',
+                        body: (p.caption || '').slice(0, 90),
+                        cta: 'Delete post',
+                        go: () => {
+                          const snap = p;
+                          this.setState((st) => ({ posts: st.posts.filter((x) => x.id !== p.id) }));
+                          this.flash('Post deleted', false, () =>
+                            this.setState((st) => ({ posts: [...st.posts, snap] })),
+                          );
+                        },
+                      },
+                    }),
+                  ),
+                },
+              ].filter(Boolean);
           return {
             __id: p.id,
             primLabel: prim[0],
@@ -1394,15 +1591,17 @@ class Component extends DCLogic {
             ? ['failed', 'partial'].includes(p.status)
             : p.status === S0.calStatus));
     const STL = (p) =>
-      p.approval === 'pending' && p.status !== 'published'
-        ? ['Needs approval', '#fff1d6', '#8a5a00']
-        : p.status === 'published'
-          ? ['Published', '#e7f5ec', '#15803D']
-          : p.status === 'failed' || p.status === 'partial'
-            ? ['Failed', '#fde8ea', '#DC3545']
-            : p.status === 'draft'
-              ? ['Draft', '#f1f1ec', '#677184']
-              : ['Scheduled', '#eef0f3', '#141619'];
+      p.publishing
+        ? ['Publishing…', '#eef0f3', '#141619']
+        : p.approval === 'pending' && p.status !== 'published'
+          ? ['Needs approval', '#fff1d6', '#8a5a00']
+          : p.status === 'published'
+            ? ['Published', '#e7f5ec', '#15803D']
+            : p.status === 'failed' || p.status === 'partial'
+              ? ['Failed', '#fde8ea', '#DC3545']
+              : p.status === 'draft'
+                ? ['Draft', '#f1f1ec', '#677184']
+                : ['Scheduled', '#eef0f3', '#141619'];
     const TONES = [
       'linear-gradient(160deg,#9a7a58,#5d4a36)',
       'linear-gradient(160deg,#6e7b5a,#3e4a33)',
@@ -1443,24 +1642,21 @@ class Component extends DCLogic {
         ...this.dragProps(p),
       };
     };
+    // Bucketed by the workspace's date, so a 9 PM New York post sits on its New York day in any browser.
     for (const p of s.posts.filter(calMatch))
       if (p.at) {
-        (byDay[new Date(p.at).toDateString()] ||= []).push(p);
+        (byDay[this.dayKey(p.at)] ||= []).push(p);
         if (p.repeat && p.repeat !== 'none' && p.status === 'scheduled')
           for (let k = 1; k <= 12; k++) {
-            const dt = new Date(p.at);
+            const dt = this.wsDate(p.at);
             if (p.repeat === 'weekly') dt.setDate(dt.getDate() + 7 * k);
             else dt.setMonth(dt.getMonth() + k);
-            (byDay[dt.toDateString()] ||= []).push({
-              ...p,
-              id: p.id + '~' + k,
-              at: dt.getTime(),
-              virtual: true,
-              src: p.id,
-            });
+            const at = this.wsTime(dt.getFullYear(), dt.getMonth(), dt.getDate(), dt.getHours(), dt.getMinutes());
+            (byDay[dt.toDateString()] ||= []).push({ ...p, id: p.id + '~' + k, at, virtual: true, src: p.id });
           }
       }
-    const todayK = new Date(NOW).toDateString();
+    const todayK = this.dayKey(NOW);
+    const dayEnd = (dd) => this.wsTime(dd.getFullYear(), dd.getMonth(), dd.getDate() + 1);
     const EV = {
       scheduled: ['#f1efe9', '#141619'],
       published: ['#effaf3', '#15803d'],
@@ -1493,7 +1689,7 @@ class Component extends DCLogic {
               }),
           };
         })(),
-        add: () => this.newPost(new Date(dd.getFullYear(), dd.getMonth(), dd.getDate(), 10).getTime()),
+        add: () => this.newPost(this.wsTime(dd.getFullYear(), dd.getMonth(), dd.getDate(), 10)),
         note: s.notes[k] || '',
         hasNote: !!s.notes[k],
         noteDisplay: s.notes[k] ? 'block' : 'none',
@@ -1519,7 +1715,7 @@ class Component extends DCLogic {
             over: dp.over,
             drop: dp.drop,
             ring: dp.isOver ? 'inset 0 0 0 2px #141619' : 'none',
-            bg: dp.isOver ? '#f7ffd6' : dd.getTime() + 864e5 <= NOW ? '#f6f6f2' : '#fff',
+            bg: dp.isOver ? '#f7ffd6' : dayEnd(dd) <= NOW ? '#f6f6f2' : '#fff',
           };
         })(),
       };
@@ -1534,11 +1730,11 @@ class Component extends DCLogic {
         dow: dd.toLocaleDateString('en-US', { weekday: 'short' }),
         num: dd.getDate(),
         numColor: isT ? '#5c6b00' : '#141619',
-        bg: dp.isOver ? '#f7ffd6' : isT ? '#fcfff0' : dd.getTime() + 864e5 <= NOW ? '#f9f9f6' : '#fff',
+        bg: dp.isOver ? '#f7ffd6' : isT ? '#fcfff0' : dayEnd(dd) <= NOW ? '#f9f9f6' : '#fff',
         numBg: isT ? '#D9FF35' : 'transparent',
         over: dp.over,
         drop: dp.drop,
-        add: () => this.newPost(new Date(dd.getFullYear(), dd.getMonth(), dd.getDate(), 10).getTime()),
+        add: () => this.newPost(this.wsTime(dd.getFullYear(), dd.getMonth(), dd.getDate(), 10)),
         note: s.notes[k] || '',
         hasNote: !!s.notes[k],
         noteDisplay: s.notes[k] ? 'block' : 'none',
@@ -1604,6 +1800,10 @@ class Component extends DCLogic {
         problems.push(
           `${p.label} @${a.username} is disconnected (${a.error || 'authorization lost'}). Reconnect it in Social accounts or deselect it.`,
         );
+      if (a.health === 'over')
+        problems.push(
+          `${p.label} @${a.username} is over your plan's account limit and can't publish. Upgrade your plan, disconnect another account, or deselect it.`,
+        );
       if (text.length > p.max)
         problems.push(
           `Your ${p.label} caption is ${text.length - p.max} characters over the ${p.max.toLocaleString()} limit. Shorten it in the ${p.label} tab.`,
@@ -1614,16 +1814,35 @@ class Component extends DCLogic {
         problems.push(`${p.label} pins need an image. Add one or deselect @${a.username}.`);
       if (p.req === 'video' && !hasVid)
         problems.push(`${p.label} only accepts video. Add a video or deselect @${a.username}.`);
-      const fmt = (d.ov[a.id]?.opts || {}).format;
+      if (a.platform === 'facebook' && hasImg && hasVid)
+        problems.push(
+          `Facebook can't post a video and images together. Keep one video or only images for @${a.username}.`,
+        );
+      // The effective "Post as": the account's own choice, else the one picked for every Instagram and Facebook account.
+      const fmt =
+        (d.ov[a.id]?.opts || {}).format || (a.platform === 'instagram' || a.platform === 'facebook' ? d.postAs : null);
       if (fmt === 'Reel' && !(d.media.length === 1 && hasVid))
         problems.push(`A ${p.label} Reel needs exactly one video. Change "Post as" or the media for @${a.username}.`);
       if (fmt === 'Story' && d.media.length !== 1)
         problems.push(
           `A ${p.label} Story needs exactly one image or video. Change "Post as" or the media for @${a.username}.`,
         );
+      for (const f of p.fields || [])
+        if (f.options && !this.fieldOptions(a, f).length)
+          problems.push(
+            `${p.label} @${a.username} has no ${f.label.toLowerCase()}s to post to. Create one on ${p.label}, then reconnect the account.`,
+          );
       if (p.maxImages !== undefined && d.media.filter((m) => m === 'IMG').length > p.maxImages)
         problems.push(
           `${p.label} allows ${p.maxImages} image${p.maxImages === 1 ? '' : 's'} per post. Remove some or deselect @${a.username}.`,
+        );
+    }
+    if (d.mode === 'schedule') {
+      const at = Component.fromLocal(d.when, S0.tz);
+      if (!at) problems.push('Pick a date and time.');
+      else if (at < NOW - 6e4)
+        problems.push(
+          `That time is in the past (${this.dayLabel(at)} ${this.time(at)}). Pick a future time, or choose Publish now.`,
         );
     }
     const uniq = [...new Set(problems)];
@@ -1659,14 +1878,20 @@ class Component extends DCLogic {
         onText: (e) => this.setOv(a.id, { caption: e.target.value }),
         hasOverride: o.caption !== undefined,
         reset: () => this.setOv(a.id, { caption: undefined }),
-        fields: (p.fields || []).map((f) => ({
-          label: f.label,
-          isSelect: !!f.options,
-          isText: !f.options,
-          options: f.options || [],
-          value: (o.opts || {})[f.key] ?? (f.options ? f.options[0] : ''),
-          onChange: (e) => this.setOv(a.id, { opts: { ...(o.opts || {}), [f.key]: e.target.value } }),
-        })),
+        // A select shows the value that will be saved: the account's choice, else "Post as", else the first option (submit saves it).
+        fields: (p.fields || []).map((f) => {
+          const opts = f.options ? this.fieldOptions(a, f) : [];
+          return {
+            key: f.key,
+            label: f.label,
+            isSelect: !!f.options,
+            isText: !f.options,
+            options: opts,
+            value:
+              (o.opts || {})[f.key] ?? (f.key === 'format' ? d.postAs || opts[0] : f.options ? (opts[0] ?? '') : ''),
+            onChange: (e) => this.setOv(a.id, { opts: { ...(o.opts || {}), [f.key]: e.target.value } }),
+          };
+        }),
       };
     });
     const modes = [
@@ -1685,13 +1910,22 @@ class Component extends DCLogic {
     const quickTimes = [
       [
         (() => {
-          const h = new Date(Component.soon() + this.tzShift(Component.soon()));
-          return 'Today ' + h.toLocaleTimeString('en-US', { hour: 'numeric' });
+          const h = this.wsDate(Component.soon());
+          return (
+            (this.dayLabel(Component.soon()) === 'Today' ? 'Today ' : 'Tomorrow ') +
+            h.toLocaleTimeString('en-US', { hour: 'numeric' })
+          );
         })(),
         Component.soon(),
       ],
-      ['Tomorrow 9 AM', Component.fromLocal(Component.toLocal(Component.at(1, 0)).slice(0, 11) + '09:00')],
-      ['Mon 12 PM', Component.fromLocal(Component.toLocal(Component.monday() + 7 * 864e5).slice(0, 11) + '12:00')],
+      ['Tomorrow 9 AM', this.wsAt(1, 9)],
+      [
+        'Mon 12 PM',
+        (() => {
+          const m = new Date(this.wsMonday());
+          return this.wsTime(m.getFullYear(), m.getMonth(), m.getDate() + 7, 12);
+        })(),
+      ],
     ].map(([label, ms]) => ({ label, pick: () => this.upd({ when: Component.toLocal(ms) }) }));
     const n = d.targets.length;
     const submitDisabled = n === 0 || (uniq.length > 0 && d.mode !== 'draft');
@@ -1916,7 +2150,7 @@ class Component extends DCLogic {
         if (t.status === 'published') {
           pub++;
           bp[pl].published++;
-          const k = new Date(p.at).toDateString();
+          const k = this.dayKey(p.at);
           perDay[k] = (perDay[k] || 0) + 1;
         }
         if (t.status === 'failed') {
@@ -1925,7 +2159,8 @@ class Component extends DCLogic {
         }
       }
     const days = Array.from({ length: 14 }, (_, i) => {
-      const x = new Date(NOW);
+      const x = this.wsDate(NOW);
+      x.setHours(12, 0, 0, 0);
       x.setDate(x.getDate() - 13 + i);
       return x;
     });
@@ -1997,7 +2232,7 @@ class Component extends DCLogic {
         return {
           caption: p.caption,
           when:
-            new Date(p.at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) +
+            this.wsDate(p.at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) +
             ' · ' +
             live +
             ' account' +
@@ -2073,22 +2308,22 @@ class Component extends DCLogic {
             if (k < a.length - 1) [a[k + 1], a[k]] = [a[k], a[k + 1]];
             return { bulkFiles: a };
           }),
-        vLabel: !f.at ? 'No time' : warn ? 'Partial' : 'Ready',
-        vBg: !f.at ? '#fde8ea' : warn ? '#fff1d6' : '#e7f5ec',
-        vFg: !f.at ? '#dc3545' : warn ? '#8a5a00' : '#15803d',
+        vLabel: !f.at ? 'No time' : f.at <= NOW ? 'In the past' : warn ? 'Partial' : 'Ready',
+        vBg: !f.at || f.at <= NOW ? '#fde8ea' : warn ? '#fff1d6' : '#e7f5ec',
+        vFg: !f.at || f.at <= NOW ? '#dc3545' : warn ? '#8a5a00' : '#15803d',
       };
     });
     const bf = s.bulkFiles.length,
-      bulkDisabled = !bf || !s.bulkAccs.length || s.bulkFiles.some((f) => !f.at);
+      bulkDisabled = !bf || !s.bulkAccs.length || s.bulkFiles.some((f) => !f.at || f.at <= NOW);
     const csvParsed = this.parseCsv(),
       csvOk = csvParsed.filter((r) => r.ok),
       csvErr = csvParsed.length - csvOk.length;
     const csvRows = csvParsed.map((r, i) => ({
-      icon: r.ok ? (r.warn ? '!' : '✓') : '×',
-      iconBg: r.ok ? (r.warn ? '#fff1d6' : '#d9ff35') : '#fde3e1',
-      iconFg: r.ok ? (r.warn ? '#b47100' : '#141619') : '#dc3545',
+      icon: r.ok ? (r.warn || r.note ? '!' : '✓') : '×',
+      iconBg: r.ok ? (r.warn || r.note ? '#fff1d6' : '#d9ff35') : '#fde3e1',
+      iconFg: r.ok ? (r.warn || r.note ? '#b47100' : '#141619') : '#dc3545',
       when: r.at
-        ? new Date(r.at).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })
+        ? `${this.wsDate(r.at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}, ${this.time(r.at)}`
         : '—',
       accs: r.accs.map((a) => ({ short: P[a.platform].short, logo: P[a.platform].logo, color: P[a.platform].color })),
       caption: r.caption || '(empty)',
@@ -2142,16 +2377,13 @@ class Component extends DCLogic {
       };
     });
 
-    const roleStyle = {
-      owner: ['#141619', '#d9ff35', '#d9ff35'],
-      editor: ['#141619', '#fff', '#e5e3dc'],
-      invited: ['#d98c0b', '#fff8e8', '#f3dfb2'],
-    };
-    const members = [
-      { name: 'Maya Chen', email: 'maya@scheduleforyou.com', role: 'owner' },
-      { name: 'Jordan Lee', email: 'jordan@scheduleforyou.com', role: 'editor' },
-      ...s.invites.map((e) => ({ name: '', email: e, role: 'invited' })),
-    ].map((m) => ({ ...m, color: roleStyle[m.role][0], bg: roleStyle[m.role][1], border: roleStyle[m.role][2] }));
+    const members = this.memberRows(
+      [
+        { name: 'Maya Chen', email: 'maya@scheduleforyou.com', role: 'owner' },
+        { name: 'Jordan Lee', email: 'jordan@scheduleforyou.com', role: 'editor' },
+      ],
+      s.invites,
+    );
 
     return {
       userEmail: this.userEmail || 'maya@scheduleforyou.com',
@@ -2179,7 +2411,7 @@ class Component extends DCLogic {
       monthLabel: first.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
       prevMonth: () => this.setState({ cursor: cm === 0 ? [cy - 1, 11] : [cy, cm - 1] }),
       nextMonth: () => this.setState({ cursor: cm === 11 ? [cy + 1, 0] : [cy, cm + 1] }),
-      thisMonth: () => this.setState({ cursor: Component.thisMonth() }),
+      thisMonth: () => this.setState({ cursor: this.wsMonth() }),
       composeTitle: d.id ? 'Edit post' : 'New post',
       accountChips,
       allLabel: n === s.accounts.length ? 'Clear' : 'Select all',
@@ -2381,10 +2613,16 @@ class Component extends DCLogic {
       members,
       invite: s.invite,
       onInvite: (e) => this.setState({ invite: e.target.value }),
+      inviteRole: S0.inviteRole || 'member',
+      onInviteRole: (e) => this.setState({ inviteRole: e.target.value }),
+      inviteRoleHint:
+        (S0.inviteRole || 'member') === 'editor'
+          ? 'Editors can also connect and disconnect accounts and change automations.'
+          : 'Members create, schedule and publish posts.',
       sendInvite: () => {
         if (!s.invite) return;
         this.setState((st) => ({
-          invites: [...st.invites, st.invite],
+          invites: [...st.invites, { email: st.invite, role: st.inviteRole || 'member' }],
           inviteUrl: `https://app.scheduleforyou.com/invite/${Math.random().toString(36).slice(2, 12)}`,
           invite: '',
         }));
@@ -2414,8 +2652,8 @@ class Component extends DCLogic {
           ids = s.selected;
         const next = s.posts.map((p) => {
           if (!ids.includes(p.id)) return p;
-          const o = new Date(p.at);
-          return { ...p, at: new Date(y, mo - 1, da, o.getHours(), o.getMinutes()).getTime() };
+          const o = this.wsDate(p.at);
+          return { ...p, at: this.wsTime(y, mo - 1, da, o.getHours(), o.getMinutes()) };
         });
         if (next.some((p) => ids.includes(p.id) && p.at <= NOW))
           return this.flash('That date has already passed', true);
@@ -2511,16 +2749,16 @@ class Component extends DCLogic {
       ...(() => {
         const inM = s.posts
           .filter(calMatch)
-          .filter((p) => p.at && new Date(p.at).getMonth() === cm && new Date(p.at).getFullYear() === cy)
+          .filter((p) => p.at && this.wsDate(p.at).getMonth() === cm && this.wsDate(p.at).getFullYear() === cy)
           .sort((a, b) => a.at - b.at);
         const g = [];
         for (const p of inM) {
-          const k = new Date(p.at).toDateString();
+          const k = this.dayKey(p.at);
           let x = g[g.length - 1];
           if (!x || x.k !== k) {
             x = {
               k,
-              label: new Date(p.at).toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' }),
+              label: this.wsDate(p.at).toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' }),
               items: [],
             };
             g.push(x);
@@ -2569,7 +2807,7 @@ class Component extends DCLogic {
         s.calView === 'week'
           ? this.setState({ weekStart: s.weekStart + 7 * 864e5 })
           : this.setState({ cursor: cm === 11 ? [cy + 1, 0] : [cy, cm + 1] }),
-      calToday: () => this.setState({ cursor: Component.thisMonth(), weekStart: Component.monday() }),
+      calToday: () => this.setState({ cursor: this.wsMonth(), weekStart: this.wsMonday() }),
       isQueueMode: d.mode === 'queue',
       nextSlotLabel: this.slotLabel(nextSlot),
       goSettings: go('settings'),
@@ -2607,11 +2845,13 @@ class Component extends DCLogic {
                 Math.abs(p.at - f.at) < 18e5 &&
                 p.targets.some((t) => S0.bulkAccs.includes(t.acc)),
             );
+          const past = !!f.at && f.at <= NOW;
           return {
-            ok: !!f.at && bad.length < accs.length,
+            ok: !!f.at && !past && bad.length < accs.length,
             skip: bad.map((a) => P[a.platform].label),
             conflict,
             noTime: !f.at,
+            past,
           };
         };
         const vs = s.bulkFiles.map(val),
@@ -2622,15 +2862,16 @@ class Component extends DCLogic {
           .map((f) => f.at)
           .filter(Boolean)
           .sort((a, b) => a - b);
-        const dayMs = new Date(NOW);
-        dayMs.setHours(0, 0, 0, 0);
+        const today = this.wsDate(NOW);
         const dist = Array.from({ length: 7 }, (_, i) => {
-          const d0 = dayMs.getTime() + i * 864e5;
-          const n = times.filter((t) => t >= d0 && t < d0 + 864e5).length;
+          const dd = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i),
+            d0 = this.wsTime(dd.getFullYear(), dd.getMonth(), dd.getDate()),
+            d1 = this.wsTime(dd.getFullYear(), dd.getMonth(), dd.getDate() + 1);
+          const n = times.filter((t) => t >= d0 && t < d1).length;
           return {
             n: n || '',
-            day: new Date(d0).toLocaleDateString('en-US', { weekday: 'narrow' }),
-            title: `${new Date(d0).toDateString()}: ${n}`,
+            day: dd.toLocaleDateString('en-US', { weekday: 'narrow' }),
+            title: `${dd.toDateString()}: ${n}`,
             h: 0,
             raw: n,
           };
@@ -2679,7 +2920,7 @@ class Component extends DCLogic {
             {
               label: 'Date range',
               value: times.length
-                ? `${new Date(times[0]).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} – ${new Date(times[times.length - 1]).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`
+                ? `${this.wsDate(times[0]).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} – ${this.wsDate(times[times.length - 1]).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`
                 : '—',
             },
             {
@@ -2700,14 +2941,19 @@ class Component extends DCLogic {
             .map((f, i) =>
               vs[i].noTime
                 ? { text: `${f.name}: no time set. Use “Re-space into slots” or pick a time.`, color: '#dc3545' }
-                : vs[i].skip.length
+                : vs[i].past
                   ? {
-                      text: `${f.name}: will skip ${vs[i].skip.join(', ')} (media type, length or connection).`,
-                      color: '#b47100',
+                      text: `${f.name}: that time is in the past. Pick a future time or use “Re-space into slots”.`,
+                      color: '#dc3545',
                     }
-                  : vs[i].conflict
-                    ? { text: `${f.name}: within 30 min of another post on the same account.`, color: '#b47100' }
-                    : null,
+                  : vs[i].skip.length
+                    ? {
+                        text: `${f.name}: will skip ${vs[i].skip.join(', ')} (media type, length or connection).`,
+                        color: '#b47100',
+                      }
+                    : vs[i].conflict
+                      ? { text: `${f.name}: within 30 min of another post on the same account.`, color: '#b47100' }
+                      : null,
             )
             .filter(Boolean),
           bulkHasInvalid: invalid > 0 || vs.some((v) => v.skip.length),
@@ -2722,11 +2968,13 @@ class Component extends DCLogic {
                   f.caption,
                   vs[i].noTime
                     ? 'No time'
-                    : vs[i].skip.length
-                      ? 'Skips ' + vs[i].skip.join('; ')
-                      : vs[i].conflict
-                        ? 'Conflict'
-                        : '',
+                    : vs[i].past
+                      ? 'Time in the past'
+                      : vs[i].skip.length
+                        ? 'Skips ' + vs[i].skip.join('; ')
+                        : vs[i].conflict
+                          ? 'Conflict'
+                          : '',
                 ])
                 .filter((r) => r[2]),
             );
@@ -2875,14 +3123,12 @@ class Component extends DCLogic {
             ss = sec % 60;
           countdown = d ? `${d}d ${h}h ${z(m)}m` : h ? `${h}h ${z(m)}m ${z(ss)}s` : `${m}m ${z(ss)}s`;
         }
-        const day0 = new Date(NOW);
-        day0.setHours(0, 0, 0, 0);
+        const day0 = this.wsAt(0, 0);
         const H0 = 6,
           H1 = 24;
-        const pos = (ms) => Math.min(100, Math.max(0, (((ms - day0.getTime()) / 36e5 - H0) / (H1 - H0)) * 100));
-        const today = s.posts
-          .filter((p) => p.at && new Date(p.at).toDateString() === new Date(NOW).toDateString())
-          .sort((a, b) => a.at - b.at);
+        const pos = (ms) => Math.min(100, Math.max(0, (((ms - day0) / 36e5 - H0) / (H1 - H0)) * 100));
+        const todayKey = this.dayKey(NOW),
+          today = s.posts.filter((p) => p.at && this.dayKey(p.at) === todayKey).sort((a, b) => a.at - b.at);
         const todayMarks = today.map((p, i) => ({
           left: pos(p.at),
           top: 22 + (i % 2) * 0,
@@ -2999,16 +3245,18 @@ class Component extends DCLogic {
           heroLabel: S0.paused ? 'Queue paused. Next post would go out in' : 'Next post goes out in',
           exportCsv: () => {
             const esc = (v) => (/[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v);
+            // Accounts as platform:@username, which the CSV import reads back to the same accounts.
             const rows = [['date', 'time', 'timezone', 'accounts', 'caption', 'labels', 'approval']].concat(
               upcoming.map((p) => {
-                const dt = new Date(p.at + this.tzShift());
+                const dt = this.wsDate(p.at);
                 return [
                   `${dt.getFullYear()}-${z2(dt.getMonth() + 1)}-${z2(dt.getDate())}`,
                   `${z2(dt.getHours())}:${z2(dt.getMinutes())}`,
                   S0.tz,
                   p.targets
-                    .map((t) => accById[t.acc]?.platform)
+                    .map((t) => accById[t.acc])
                     .filter(Boolean)
+                    .map((a) => `${a.platform}:@${a.username}`)
                     .join(';'),
                   p.caption,
                   (p.labels || []).join(';'),
@@ -3073,11 +3321,15 @@ class Component extends DCLogic {
           saveTemplate: () => {
             const c = d.caption.trim();
             if (!c) return this.flash('Write a caption first', true);
-            const name = c
-              .split(/\s+/)
-              .slice(0, 3)
-              .join(' ')
-              .replace(/[^\w\s’']/g, '');
+            if (c.length > 5000)
+              return this.flash('Templates can be up to 5,000 characters. Shorten the caption first.', true);
+            const name =
+              c
+                .split(/\s+/)
+                .slice(0, 3)
+                .join(' ')
+                .replace(/[^\w\s’']/g, '')
+                .slice(0, 60) || 'Template';
             this.setState((st) => ({ templates: [...st.templates, { name, text: c }] }));
             this.flash(`Saved template “${name}”`);
           },
@@ -3089,7 +3341,18 @@ class Component extends DCLogic {
           saveTags: () => {
             const tags = [...new Set(d.caption.match(/#[\w]+/g) || [])];
             if (!tags.length) return this.flash('No hashtags in the caption yet', true);
-            this.setState((st) => ({ tagGroups: [...st.tagGroups, { name: tags[0].slice(1), tags: tags.join(' ') }] }));
+            this.setState((st) => ({
+              tagGroups: [
+                ...st.tagGroups,
+                {
+                  name: tags[0].slice(1, 61),
+                  tags: tags
+                    .join(' ')
+                    .slice(0, 2000)
+                    .replace(/\s+\S*$/, (m) => (tags.join(' ').length > 2000 ? '' : m)),
+                },
+              ],
+            }));
             this.flash(`Saved ${tags.length} hashtags as a group`);
           },
           pickerOpen: S0.pickerOpen,
@@ -3348,6 +3611,7 @@ class Component extends DCLogic {
                 return [
                   {
                     label: 'Reconnect account',
+                    accId: a?.id || null,
                     go: () => this.setState({ screen: 'accounts' }),
                     bg: '#141619',
                     color: '#fff',
@@ -3387,6 +3651,7 @@ class Component extends DCLogic {
         for (const a of sick) {
           const h = HL(a);
           attention.push({
+            accId: a.id,
             icon: a.health === 'error' ? '!' : '⏱',
             iconBg: a.health === 'error' ? '#fde8e6' : '#fff1d6',
             iconFg: a.health === 'error' ? '#dc3545' : '#8a5a00',
@@ -3396,7 +3661,16 @@ class Component extends DCLogic {
               a.health === 'error'
                 ? `${a.error}. Posts to this account are on hold until you reconnect.`
                 : `${h.healthDetail}. Reconnect now so scheduled posts don't fail.`,
-            actions: [{ label: 'Reconnect', go: reconnect(a), bg: '#141619', color: '#fff', border: '#141619' }],
+            actions: [
+              {
+                label: a.health === 'over' ? 'Upgrade' : 'Reconnect',
+                accId: a.id,
+                go: reconnect(a),
+                bg: '#141619',
+                color: '#fff',
+                border: '#141619',
+              },
+            ],
           });
         }
         for (const id of conflictIds) {
@@ -3465,32 +3739,22 @@ class Component extends DCLogic {
                   : 4;
         attention.sort((a, b) => rank(a) - rank(b));
         const icon = (n) => `url(/icons/${n}.svg)`;
-        const range =
-          S0.calView === 'week'
-            ? [S0.weekStart, S0.weekStart + 7 * 864e5]
-            : [
-                new Date(S0.cursor[0], S0.cursor[1], 1).getTime(),
-                new Date(S0.cursor[0], S0.cursor[1] + 1, 1).getTime(),
-              ];
+        const range = this.calRange();
         if (screen === 'home' && this._lastScreen !== 'home') this._homeT0 = Date.now();
         this._lastScreen = screen;
         const pr = Math.min(1, (Date.now() - (this._homeT0 || 0)) / 900),
           ease = 1 - Math.pow(1 - pr, 3);
         if (screen === 'home' && pr < 1) requestAnimationFrame(() => this.forceUpdate());
         const cu = (v) => Math.round(v * ease);
-        const mon = new Date(NOW);
-        mon.setHours(0, 0, 0, 0);
-        mon.setDate(mon.getDate() - ((mon.getDay() + 6) % 7));
+        const mon = new Date(this.wsMonday());
         let wkTotal = 0,
           wkSent = 0;
         const weekStrip = Array.from({ length: 7 }, (_, i) => {
           const dd = new Date(mon);
           dd.setDate(mon.getDate() + i);
-          const isT = dd.toDateString() === new Date(NOW).toDateString(),
-            past = dd.getTime() + 864e5 <= NOW;
-          const ps = s.posts
-            .filter((p) => p.at && new Date(p.at).toDateString() === dd.toDateString())
-            .sort((a, b) => a.at - b.at);
+          const isT = dd.toDateString() === this.dayKey(NOW),
+            past = this.wsTime(dd.getFullYear(), dd.getMonth(), dd.getDate() + 1) <= NOW;
+          const ps = s.posts.filter((p) => p.at && this.dayKey(p.at) === dd.toDateString()).sort((a, b) => a.at - b.at);
           wkTotal += ps.length;
           wkSent += ps.filter((p) => p.status === 'published').length;
           return {
@@ -3527,7 +3791,7 @@ class Component extends DCLogic {
               }),
           };
         });
-        const wkEnd = mon.getTime() + 7 * 864e5,
+        const wkEnd = this.wsTime(mon.getFullYear(), mon.getMonth(), mon.getDate() + 7),
           thisWeek = upcoming.filter((p) => p.at < wkEnd);
         const wkPlats = [
           ...new Set(thisWeek.flatMap((p) => p.targets.map((t) => accById[t.acc]?.platform)).filter(Boolean)),
@@ -3580,6 +3844,7 @@ class Component extends DCLogic {
           .map((a) => {
             const h = HL(a);
             return {
+              accId: a.id,
               username: a.username,
               detail: h.needsFix ? h.healthDetail : P[a.platform].label,
               label: h.hLabel === 'Connected' ? 'OK' : h.hLabel,
@@ -3621,7 +3886,7 @@ class Component extends DCLogic {
             const el = document.getElementById('attn');
             if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 24, behavior: 'smooth' });
           },
-          goCalWeek: () => this.setState({ screen: 'calendar', calView: 'week', weekStart: Component.monday() }),
+          goCalWeek: () => this.setState({ screen: 'calendar', calView: 'week', weekStart: this.wsMonday() }),
           goReview: () => this.setState({ screen: 'queue', tab: 'review' }),
           reviewLabel: pending.length ? `Review ${pending.length} pending` : 'Approvals',
           upNext,
@@ -3734,7 +3999,7 @@ class Component extends DCLogic {
               for (const t of p.targets) {
                 const a = accById[t.acc];
                 if (!a) continue;
-                const dt = new Date(p.at + this.tzShift());
+                const dt = this.wsDate(p.at);
                 const pid = Component.hash(p.id + t.acc).toString(36);
                 rows.push([
                   `${dt.getFullYear()}-${z2(dt.getMonth() + 1)}-${z2(dt.getDate())}`,
