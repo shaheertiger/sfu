@@ -521,9 +521,27 @@ textarea{resize:vertical}
         <div style="display:grid;grid-template-columns:{{ composeCols }};gap:16px;align-items:start">
           <div style="display:{{ showAccCol }};background:#fff;border:1px solid #e7e5df;border-radius:12px;padding:12px;flex-direction:column;gap:8px;position:sticky;top:20px;min-width:0">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:2px 2px 0">
-              <strong style="font-size:14px">Accounts</strong>
-              <button onClick="{{ toggleAll }}" style="border:0;background:transparent;cursor:pointer;font-size:12px;color:#677184;padding:2px 4px">{{ allLabel }}</button>
+              <strong style="font-size:14px;white-space:nowrap">Accounts <span style="font-weight:500;color:#677184;font-size:12px">{{ selCountLabel }}</span></strong>
+              <button onClick="{{ toggleAll }}" style="border:0;background:transparent;cursor:pointer;font-size:12px;color:#677184;padding:2px 4px;white-space:nowrap">{{ allLabel }}</button>
             </div>
+            <div style="display:flex;flex-wrap:wrap;gap:5px">
+              <sc-for list="{{ quickPicks }}" as="q" hint-placeholder-count="3">
+                <span style="display:inline-flex;align-items:center;border-radius:999px;border:1px solid {{ q.border }};background:{{ q.bg }};overflow:hidden">
+                  <button onClick="{{ q.pick }}" title="{{ q.title }}" style="display:inline-flex;align-items:center;gap:5px;border:0;background:transparent;cursor:pointer;padding:3px 9px 3px 4px;font-size:12px;font-weight:600;color:{{ q.fg }}"><span style="width:16px;height:16px;border-radius:50%;flex:none;background:{{ q.icon }}"></span>{{ q.label }}<span style="font-weight:500;opacity:.7">{{ q.count }}</span></button>
+                  <sc-if value="{{ q.removable }}" hint-placeholder-val="{{ false }}"><button onClick="{{ q.remove }}" aria-label="Delete group {{ q.label }}" title="Delete group" style="border:0;background:transparent;cursor:pointer;padding:3px 7px 3px 0;color:#9aa0a8;font-size:13px;line-height:1">×</button></sc-if>
+                </span>
+              </sc-for>
+              <sc-if value="{{ canSaveGroup }}" hint-placeholder-val="{{ false }}">
+                <button onClick="{{ startGroup }}" style="border:1px dashed #cfccc3;background:transparent;border-radius:999px;cursor:pointer;padding:3px 9px;font-size:12px;color:#677184">+ Save as group</button>
+              </sc-if>
+            </div>
+            <sc-if value="{{ groupNaming }}" hint-placeholder-val="{{ false }}">
+              <form onSubmit="{{ saveGroup }}" style="display:flex;gap:6px">
+                <input value="{{ groupName }}" onChange="{{ onGroupName }}" maxlength="40" placeholder="Group name, e.g. Bramalea client" aria-label="Group name" style="flex:1;min-width:0;padding:6px 9px;border:1px solid #141619;border-radius:8px;outline:none;font-size:13px">
+                <button type="submit" style="padding:6px 10px;border-radius:8px;border:0;background:#141619;color:#fff;cursor:pointer;font-size:12px;font-weight:600">Save</button>
+                <button type="button" onClick="{{ cancelGroup }}" style="padding:6px 8px;border-radius:8px;border:1px solid #e7e5df;background:#fff;cursor:pointer;font-size:12px">Cancel</button>
+              </form>
+            </sc-if>
             <input value="{{ accQ }}" onChange="{{ onAccQ }}" placeholder="Search accounts" aria-label="Search accounts" style="width:100%;padding:7px 10px;border:1px solid #e7e5df;border-radius:8px;outline:none;font-size:13px" style-focus="border-color:#141619">
             <div style="display:flex;flex-direction:column;gap:3px">
               <sc-for list="{{ accountChips }}" as="a" hint-placeholder-count="6">
@@ -609,7 +627,7 @@ textarea{resize:vertical}
                     </sc-for>
                   </div>
                 </sc-if>
-                <div style="border:1.5px dashed #d9d6cd;border-radius:10px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#677184">
+                <div onDragOver="{{ mediaOver }}" onDragLeave="{{ mediaLeave }}" onDrop="{{ mediaDrop }}" style="border:1.5px dashed {{ mediaDropBorder }};background:{{ mediaDropBg }};border-radius:10px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#677184;transition:background .15s,border-color .15s">
                   <span style="font-size:14px">Drop images or videos here. Several images become a carousel.</span>
                   <div style="display:flex;gap:8px">
                     <button onClick="{{ addImage }}" style="white-space:nowrap;padding:6px 10px;font-size:13px;border-radius:8px;border:1px solid #e5e3dc;background:#fff;cursor:pointer;font-weight:500">Add image</button>
@@ -745,8 +763,8 @@ textarea{resize:vertical}
               <sc-if value="{{ hasProblems }}" hint-placeholder-val="{{ false }}">
                 <div role="alert" style="padding:9px 11px;border-radius:9px;border:1px solid #f5c2c7;background:#fff5f5;color:#a1281f;font-size:12px;line-height:1.45;display:flex;flex-direction:column;gap:4px"><strong>Fix before publishing</strong><sc-for list="{{ problems }}" as="pr" hint-placeholder-count="1"><span>• {{ pr }}</span></sc-for></div>
               </sc-if>
-              <button onClick="{{ submit }}" disabled="{{ submitDisabled }}" style="padding:12px 14px;border-radius:10px;border:0;background:#d9ff35;color:#141619;font-weight:600;font-size:15px;cursor:pointer;opacity:{{ submitOpacity }}" style-hover="background:#e6ff6e">{{ submitLabel }}</button>
-              <button onClick="{{ goQueue }}" style="padding:6px;border:0;background:transparent;color:#677184;cursor:pointer;font-size:13px">Cancel</button>
+              <button data-sfy="submit" title="Ctrl/⌘ + Enter" onClick="{{ submit }}" disabled="{{ submitDisabled }}" style="padding:12px 14px;border-radius:10px;border:0;background:#d9ff35;color:#141619;font-weight:600;font-size:15px;cursor:pointer;opacity:{{ submitOpacity }}" style-hover="background:#e6ff6e">{{ submitLabel }}</button>
+              <button data-sfy="cancel" title="Esc" onClick="{{ goQueue }}" style="padding:6px;border:0;background:transparent;color:#677184;cursor:pointer;font-size:13px">Cancel</button>
             </div>
           </div>
         </div>
@@ -1394,6 +1412,7 @@ class Component extends DCLogic {
 
   state = {
     screen: null, tab: 'upcoming', cursor: Component.thisMonth(), toast: '', toastBad: false,
+    accGroups: [{ id: 'g1', name: 'Maya brand', ids: ['a2', 'a3', 'a7'] }],
     accounts: [
       { id: 'a1', platform: 'bluesky', username: 'maya.bsky.social', display: 'Maya Chen' },
       { id: 'a2', platform: 'x', username: 'mayabuilds', display: 'Maya Chen' },
@@ -1972,6 +1991,34 @@ class Component extends DCLogic {
       prevMonth: () => this.setState({ cursor: cm === 0 ? [cy - 1, 11] : [cy, cm - 1] }), nextMonth: () => this.setState({ cursor: cm === 11 ? [cy + 1, 0] : [cy, cm + 1] }), thisMonth: () => this.setState({ cursor: this.wsMonth() }),
       composeTitle: d.id ? 'Edit post' : 'New post', accountChips, allLabel: n === s.accounts.length ? 'Clear' : 'Select all',
       toggleAll: () => this.upd({ targets: n === s.accounts.length ? [] : s.accounts.map((a) => a.id) }),
+      ...(() => {
+        // Quick picks: saved account groups first, then one chip per platform. A chip adds its accounts,
+        // or removes them when they're all selected already.
+        const ids = new Set(s.accounts.map((a) => a.id));
+        const toggleSet = (set) => { const all = set.length && set.every((id) => d.targets.includes(id)); this.upd({ targets: all ? d.targets.filter((id) => !set.includes(id)) : [...new Set([...d.targets, ...set])] }); };
+        const chip = (label, set, icon, extra = {}) => { const on = set.length > 0 && set.every((id) => d.targets.includes(id)); return { label, count: String(set.length), icon, title: `${on ? 'Deselect' : 'Select'} ${label} (${set.length})`, bg: on ? '#141619' : '#fff', fg: on ? '#fff' : '#141619', border: on ? '#141619' : '#e5e3dc', pick: () => toggleSet(set), removable: false, remove: () => {}, ...extra }; };
+        const groups = (S0.accGroups || []).map((g) => ({ ...g, ids: g.ids.filter((id) => ids.has(id)) })).filter((g) => g.ids.length);
+        const byPlat = [...new Set(s.accounts.map((a) => a.platform))].map((pl) => [pl, s.accounts.filter((a) => a.platform === pl).map((a) => a.id)]).filter(([, set]) => set.length > 1);
+        return {
+          quickPicks: [
+            ...groups.map((g) => chip(g.name, g.ids, 'linear-gradient(135deg,#d9ff35,#9be15d)', { removable: true, remove: () => this.setState((st) => ({ accGroups: (st.accGroups || []).filter((x) => x.id !== g.id) })) })),
+            ...(s.accounts.length > 6 ? byPlat.map(([pl, set]) => chip(P[pl].label, set, `${P[pl].logo} center/60% no-repeat, ${P[pl].color}`)) : []),
+          ],
+          selCountLabel: n ? `· ${n}` : '',
+          canSaveGroup: n > 1 && !S0.groupNaming,
+          groupNaming: !!S0.groupNaming, groupName: S0.groupName || '',
+          startGroup: () => this.setState({ groupNaming: true, groupName: '' }),
+          cancelGroup: () => this.setState({ groupNaming: false }),
+          onGroupName: (e) => this.setState({ groupName: e.target.value }),
+          saveGroup: (e) => {
+            e.preventDefault();
+            const name = (S0.groupName || '').trim().slice(0, 40);
+            if (!name) return this.flash('Give the group a name', true);
+            this.setState((st) => ({ groupNaming: false, accGroups: [...(st.accGroups || []).filter((g) => g.name.toLowerCase() !== name.toLowerCase()), { id: 'g' + Date.now(), name, ids: [...d.targets] }].slice(-50) }));
+            this.flash(`Saved group “${name}” with ${d.targets.length} accounts`);
+          },
+        };
+      })(),
       caption: d.caption, onCaption: (e) => this.upd({ caption: e.target.value }), counters,
       hasMedia: d.media.length > 0, mediaTiles: d.media.map((kind, i) => ({ kind, bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind, isVideo: false, video: '', labelBg: 'transparent', remove: () => this.upd({ media: d.media.filter((_, j) => j !== i) }) })),
       addImage: () => this.upd({ media: [...d.media, 'IMG'] }), addVideo: () => this.upd({ media: [...d.media, 'VIDEO'] }),
@@ -1996,6 +2043,11 @@ class Component extends DCLogic {
       })(),
       hasSelected: sel.length > 0, variants, modes, isSchedule: d.mode === 'schedule', when: d.when, onWhen: (e) => this.upd({ when: e.target.value }), quickTimes,
       hasProblems: uniq.length > 0, problems: uniq, submit: () => this.submit(), submitDisabled, submitOpacity: submitDisabled ? 0.45 : 1, submitLabel,
+      // Dropping files on the composer's media box (the demo adds placeholders; the live app uploads).
+      mediaOver: (e) => { e.preventDefault(); if (!S0.mediaHover) this.setState({ mediaHover: true }); },
+      mediaLeave: () => this.setState({ mediaHover: false }),
+      mediaDrop: (e) => { e.preventDefault(); const fl = [...(e.dataTransfer.files || [])].filter((f) => /^(image|video)\//.test(f.type)); this.setState({ mediaHover: false }); if (fl.length) this.upd({ media: [...d.media, ...fl.map((f) => (f.type.startsWith('video') ? 'VIDEO' : 'IMG'))] }); },
+      mediaDropBorder: S0.mediaHover ? '#141619' : '#d9d6cd', mediaDropBg: S0.mediaHover ? '#f7ffd6' : 'transparent',
       showPreview: this.props.showPreview ?? true, pv, previewTabs, pvClassic: true, pvCustom: false, pvNode: null,
       showFormat: metaSel.length > 0 || d.media.includes('VIDEO'), formatChips, formatHint: fmtNow ? FMT_HINT[fmtNow] : 'Different per account. Set it in each account’s tab.',
       formatFor: !sel.length || metaSel.length < sel.length ? 'Applies to Instagram and Facebook' : '',

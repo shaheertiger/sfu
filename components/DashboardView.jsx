@@ -3080,7 +3080,12 @@ export function renderDashboard($v) {
                       }}
                     >
                       {' '}
-                      <strong style={{ fontSize: '14px' }}>{'Accounts'}</strong>{' '}
+                      <strong style={{ fontSize: '14px', whiteSpace: 'nowrap' }}>
+                        {'Accounts '}
+                        <span style={{ fontWeight: '500', color: '#677184', fontSize: '12px' }}>
+                          {$t($v['selCountLabel'])}
+                        </span>
+                      </strong>{' '}
                       <button
                         onClick={$v['toggleAll']}
                         style={{
@@ -3090,11 +3095,152 @@ export function renderDashboard($v) {
                           fontSize: '12px',
                           color: '#677184',
                           padding: '2px 4px',
+                          whiteSpace: 'nowrap',
                         }}
                       >
                         {$t($v['allLabel'])}
                       </button>{' '}
                     </div>{' '}
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
+                      {' '}
+                      {$arr($v['quickPicks']).map((q, $index) => (
+                        <Fragment key={$index}>
+                          {' '}
+                          <span
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              borderRadius: '999px',
+                              border: `1px solid ${q?.border ?? ''}`,
+                              background: `${q?.bg ?? ''}`,
+                              overflow: 'hidden',
+                            }}
+                          >
+                            {' '}
+                            <button
+                              onClick={q?.pick}
+                              title={q?.title}
+                              style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '5px',
+                                border: '0',
+                                background: 'transparent',
+                                cursor: 'pointer',
+                                padding: '3px 9px 3px 4px',
+                                fontSize: '12px',
+                                fontWeight: '600',
+                                color: `${q?.fg ?? ''}`,
+                              }}
+                            >
+                              <span
+                                style={{
+                                  width: '16px',
+                                  height: '16px',
+                                  borderRadius: '50%',
+                                  flex: 'none',
+                                  background: `${q?.icon ?? ''}`,
+                                }}
+                              />
+                              {$t(q?.label)}
+                              <span style={{ fontWeight: '500', opacity: '.7' }}>{$t(q?.count)}</span>
+                            </button>{' '}
+                            {q?.removable ? (
+                              <>
+                                <button
+                                  onClick={q?.remove}
+                                  aria-label={`Delete group ${q?.label ?? ''}`}
+                                  title="Delete group"
+                                  style={{
+                                    border: '0',
+                                    background: 'transparent',
+                                    cursor: 'pointer',
+                                    padding: '3px 7px 3px 0',
+                                    color: '#9aa0a8',
+                                    fontSize: '13px',
+                                    lineHeight: '1',
+                                  }}
+                                >
+                                  {'×'}
+                                </button>
+                              </>
+                            ) : null}{' '}
+                          </span>{' '}
+                        </Fragment>
+                      ))}{' '}
+                      {$v['canSaveGroup'] ? (
+                        <>
+                          {' '}
+                          <button
+                            onClick={$v['startGroup']}
+                            style={{
+                              border: '1px dashed #cfccc3',
+                              background: 'transparent',
+                              borderRadius: '999px',
+                              cursor: 'pointer',
+                              padding: '3px 9px',
+                              fontSize: '12px',
+                              color: '#677184',
+                            }}
+                          >
+                            {'+ Save as group'}
+                          </button>{' '}
+                        </>
+                      ) : null}{' '}
+                    </div>{' '}
+                    {$v['groupNaming'] ? (
+                      <>
+                        {' '}
+                        <form onSubmit={$v['saveGroup']} style={{ display: 'flex', gap: '6px' }}>
+                          {' '}
+                          <input
+                            value={$dv($v['groupName'])}
+                            onChange={$v['onGroupName']}
+                            maxLength="40"
+                            placeholder="Group name, e.g. Bramalea client"
+                            aria-label="Group name"
+                            style={{
+                              flex: '1',
+                              minWidth: '0',
+                              padding: '6px 9px',
+                              border: '1px solid #141619',
+                              borderRadius: '8px',
+                              outline: 'none',
+                              fontSize: '13px',
+                            }}
+                          />{' '}
+                          <button
+                            type="submit"
+                            style={{
+                              padding: '6px 10px',
+                              borderRadius: '8px',
+                              border: '0',
+                              background: '#141619',
+                              color: '#fff',
+                              cursor: 'pointer',
+                              fontSize: '12px',
+                              fontWeight: '600',
+                            }}
+                          >
+                            {'Save'}
+                          </button>{' '}
+                          <button
+                            type="button"
+                            onClick={$v['cancelGroup']}
+                            style={{
+                              padding: '6px 8px',
+                              borderRadius: '8px',
+                              border: '1px solid #e7e5df',
+                              background: '#fff',
+                              cursor: 'pointer',
+                              fontSize: '12px',
+                            }}
+                          >
+                            {'Cancel'}
+                          </button>{' '}
+                        </form>{' '}
+                      </>
+                    ) : null}{' '}
                     <input
                       value={$dv($v['accQ'])}
                       onChange={$v['onAccQ']}
@@ -3677,8 +3823,12 @@ export function renderDashboard($v) {
                           </>
                         ) : null}{' '}
                         <div
+                          onDragOver={$v['mediaOver']}
+                          onDragLeave={$v['mediaLeave']}
+                          onDrop={$v['mediaDrop']}
                           style={{
-                            border: '1.5px dashed #d9d6cd',
+                            border: `1.5px dashed ${$v['mediaDropBorder'] ?? ''}`,
+                            background: `${$v['mediaDropBg'] ?? ''}`,
                             borderRadius: '10px',
                             padding: '14px 16px',
                             display: 'flex',
@@ -3687,6 +3837,7 @@ export function renderDashboard($v) {
                             gap: '12px',
                             flexWrap: 'wrap',
                             color: '#677184',
+                            transition: 'background .15s,border-color .15s',
                           }}
                         >
                           {' '}
@@ -4539,6 +4690,8 @@ export function renderDashboard($v) {
                         </>
                       ) : null}{' '}
                       <button
+                        data-sfy="submit"
+                        title="Ctrl/⌘ + Enter"
                         onClick={$v['submit']}
                         disabled={$v['submitDisabled']}
                         style={{
@@ -4557,6 +4710,8 @@ export function renderDashboard($v) {
                         {$t($v['submitLabel'])}
                       </button>{' '}
                       <button
+                        data-sfy="cancel"
+                        title="Esc"
                         onClick={$v['goQueue']}
                         style={{
                           padding: '6px',
