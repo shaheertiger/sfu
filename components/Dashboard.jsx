@@ -22,7 +22,7 @@ class Component extends DCLogic {
       short: 'X',
       max: 280,
       req: 'none',
-      note: 'OAuth 2.0. The free API tier allows posting.',
+      note: 'Post text, images and videos to your X profile.',
     },
     instagram: {
       label: 'Instagram',
@@ -59,7 +59,7 @@ class Component extends DCLogic {
       short: 'TT',
       max: 2200,
       req: 'any',
-      note: 'Posts stay private until the app passes audit.',
+      note: 'Post videos and photo carousels to your TikTok.',
       fields: [{ key: 'privacy', label: 'Privacy', options: ['Public', 'Friends', 'Only me'] }],
     },
     youtube: {
@@ -69,7 +69,7 @@ class Component extends DCLogic {
       short: 'YT',
       max: 5000,
       req: 'video',
-      note: 'Video only. Set a title per upload.',
+      note: 'Upload videos and Shorts with a title and privacy setting.',
       fields: [
         { key: 'title', label: 'Title' },
         { key: 'privacy', label: 'Privacy', options: ['public', 'unlisted', 'private'] },
@@ -82,7 +82,7 @@ class Component extends DCLogic {
       short: '@',
       max: 500,
       req: 'none',
-      note: 'Connects through its own Meta app.',
+      note: 'Post text, images and videos to your Threads profile.',
     },
     pinterest: {
       label: 'Pinterest',
@@ -91,7 +91,7 @@ class Component extends DCLogic {
       short: 'P',
       max: 500,
       req: 'image',
-      note: 'Every pin needs an image and a board.',
+      note: 'Pin images to the board you choose.',
       fields: [
         { key: 'board', label: 'Board', options: ['Launch', 'Behind the scenes', 'Tips'] },
         { key: 'link', label: 'Destination link' },
@@ -104,7 +104,7 @@ class Component extends DCLogic {
       short: 'G',
       max: 1500,
       req: 'none',
-      note: 'Requires Business Profile API quota.',
+      note: 'Post updates to your Google Business Profile locations.',
       keys: true,
     },
   };
@@ -458,6 +458,17 @@ class Component extends DCLogic {
         labels: [],
       },
     ];
+  }
+  /** Account picture: the profile photo over the platform logo (shown if the photo fails), plus a corner badge. */
+  static pic(a) {
+    const p = Component.P[a.platform] || {},
+      base = `${p.logo || 'none'} center/56% no-repeat, ${p.color || '#888'}`;
+    const url = a.avatar ? String(a.avatar).replace(/["\\\n()]/g, encodeURIComponent) : '';
+    return {
+      pic: url ? `url("${url}") center/cover no-repeat, ${base}` : base,
+      badge: `${p.logo || 'none'} center/60% no-repeat, ${p.color || '#888'}`,
+      badgeDisplay: url ? 'block' : 'none',
+    };
   }
   static hash(str) {
     let h = 7;
@@ -1521,6 +1532,7 @@ class Component extends DCLogic {
           username: a.username,
           logo: P[a.platform].logo,
           color: P[a.platform].color,
+          ...Component.pic(a),
           pressed: on ? 'true' : 'false',
           border: on ? '#141619' : 'transparent',
           bg: on ? '#f6ffd9' : 'transparent',
@@ -1657,6 +1669,7 @@ class Component extends DCLogic {
     const pv = {
       logo: pvAcc ? P[pvAcc.platform].logo : 'none',
       color: pvAcc ? P[pvAcc.platform].color : '#e9e7e0',
+      ...(pvAcc ? Component.pic(pvAcc) : { pic: '#e9e7e0', badge: 'none', badgeDisplay: 'none' }),
       name: pvAcc ? pvAcc.display : 'Preview',
       handle: pvAcc ? `@${pvAcc.username} · ${P[pvAcc.platform].label} · ${pvWhen}` : 'Pick an account to preview',
       text: pvText || 'Your post will appear here.',
@@ -1724,6 +1737,7 @@ class Component extends DCLogic {
         color: P[a.platform].color,
         short: P[a.platform].short,
         logo: P[a.platform].logo,
+        ...Component.pic(a),
         platform: P[a.platform].label,
         divider: i ? '1px solid #e5e3dc' : '0',
         queued: (() => {
@@ -1751,11 +1765,12 @@ class Component extends DCLogic {
       const c = s.accounts.filter((a) => a.platform === id).length;
       return {
         ...p,
-        needsKeys: !!p.keys,
-        hasCount: c > 0 && !p.keys,
+        needsKeys: false,
+        cursor: 'pointer',
+        btnOpacity: '1',
+        hasCount: c > 0,
         count: `${c} connected`,
         connect: () => {
-          if (p.keys) return this.flash(`${p.label} isn't configured yet. Add its API keys first.`, true);
           if (s.accounts.length >= 15) return this.flash('Account limit reached on your plan', true);
           this.setState((st) => ({
             accounts: [

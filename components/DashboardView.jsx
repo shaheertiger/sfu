@@ -3082,20 +3082,25 @@ export function renderDashboard($v) {
                             {' '}
                             <span
                               style={{
+                                position: 'relative',
                                 width: '26px',
                                 height: '26px',
                                 borderRadius: '50%',
                                 flex: 'none',
-                                display: 'grid',
-                                placeItems: 'center',
-                                background: `${a?.color ?? ''}`,
+                                background: `${a?.pic ?? ''}`,
                               }}
                             >
                               <span
                                 style={{
-                                  width: '56%',
-                                  height: '56%',
-                                  background: `${a?.logo ?? ''} center/contain no-repeat`,
+                                  position: 'absolute',
+                                  right: '-3px',
+                                  bottom: '-3px',
+                                  width: '13px',
+                                  height: '13px',
+                                  borderRadius: '50%',
+                                  border: '2px solid #fff',
+                                  background: `${a?.badge ?? ''}`,
+                                  display: `${a?.badgeDisplay ?? ''}`,
                                 }}
                               />
                             </span>{' '}
@@ -4076,19 +4081,25 @@ export function renderDashboard($v) {
                             {' '}
                             <span
                               style={{
+                                position: 'relative',
                                 width: '34px',
                                 height: '34px',
                                 borderRadius: '50%',
-                                background: `${$v['pv']?.color ?? ''}`,
-                                display: 'grid',
-                                placeItems: 'center',
+                                flex: 'none',
+                                background: `${$v['pv']?.pic ?? ''}`,
                               }}
                             >
                               <span
                                 style={{
-                                  width: '58%',
-                                  height: '58%',
-                                  background: `${$v['pv']?.logo ?? ''} center/contain no-repeat`,
+                                  position: 'absolute',
+                                  right: '-3px',
+                                  bottom: '-3px',
+                                  width: '15px',
+                                  height: '15px',
+                                  borderRadius: '50%',
+                                  border: '2px solid #fff',
+                                  background: `${$v['pv']?.badge ?? ''}`,
+                                  display: `${$v['pv']?.badgeDisplay ?? ''}`,
                                 }}
                               />
                             </span>{' '}
@@ -5898,20 +5909,25 @@ export function renderDashboard($v) {
                         {' '}
                         <span
                           style={{
+                            position: 'relative',
                             width: '36px',
                             height: '36px',
                             borderRadius: '50%',
-                            background: `${a?.color ?? ''}`,
-                            display: 'grid',
-                            placeItems: 'center',
+                            background: `${a?.pic ?? ''}`,
                             flex: 'none',
                           }}
                         >
                           <span
                             style={{
-                              width: '58%',
-                              height: '58%',
-                              background: `${a?.logo ?? ''} center/contain no-repeat`,
+                              position: 'absolute',
+                              right: '-3px',
+                              bottom: '-3px',
+                              width: '16px',
+                              height: '16px',
+                              borderRadius: '50%',
+                              border: '2px solid #fff',
+                              background: `${a?.badge ?? ''}`,
+                              display: `${a?.badgeDisplay ?? ''}`,
                             }}
                           />
                         </span>{' '}
@@ -6037,12 +6053,13 @@ export function renderDashboard($v) {
                                   borderRadius: '999px',
                                   fontSize: '11px',
                                   fontWeight: '600',
-                                  color: '#d98c0b',
-                                  border: '1px solid #f3dfb2',
-                                  background: '#fff8e8',
+                                  color: '#677184',
+                                  border: '1px solid #e5e3dc',
+                                  background: '#f6f5f1',
+                                  whiteSpace: 'nowrap',
                                 }}
                               >
-                                {'needs keys'}
+                                {'Coming soon'}
                               </span>{' '}
                             </>
                           ) : null}{' '}
@@ -6060,6 +6077,7 @@ export function renderDashboard($v) {
                         </span>{' '}
                         <button
                           onClick={p?.connect}
+                          disabled={p?.needsKeys}
                           style={{
                             alignSelf: 'flex-start',
                             padding: '6px 10px',
@@ -6067,7 +6085,8 @@ export function renderDashboard($v) {
                             borderRadius: '8px',
                             border: '1px solid #e5e3dc',
                             background: '#fff',
-                            cursor: 'pointer',
+                            cursor: `${p?.cursor ?? ''}`,
+                            opacity: `${p?.btnOpacity ?? ''}`,
                             fontWeight: '500',
                           }}
                           className="dashboard-hover-5"

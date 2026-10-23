@@ -131,7 +131,7 @@ export const facebook: PlatformAdapter = {
   async exchangeCode({ code, redirectUri }) {
     const tok = await jsonFetch(`${GRAPH}/oauth/access_token?` + q({ client_id: env('FACEBOOK_APP_ID'), client_secret: env('FACEBOOK_APP_SECRET'), redirect_uri: redirectUri, code }));
     const longLived = await jsonFetch(`${GRAPH}/oauth/access_token?` + q({ grant_type: 'fb_exchange_token', client_id: env('FACEBOOK_APP_ID'), client_secret: env('FACEBOOK_APP_SECRET'), fb_exchange_token: tok.access_token }));
-    const pages = await jsonFetch(`${GRAPH}/me/accounts?fields=id,name,access_token,picture&access_token=${longLived.access_token}`);
+    const pages = await jsonFetch(`${GRAPH}/me/accounts?fields=id,name,access_token,picture.type(large)&access_token=${longLived.access_token}`);
     return (pages.data || []).map((p: any) => ({
       external_id: p.id, username: p.name, display_name: p.name, avatar_url: p.picture?.data?.url,
       access_token: p.access_token, meta: { user_token: longLived.access_token },
@@ -169,6 +169,25 @@ export const facebook: PlatformAdapter = {
     return { externalId: res.id, url: `https://www.facebook.com/${res.id}` };
   },
 };
+
+/**
+ * A current profile picture URL for a Facebook Page or Instagram account. Meta's picture URLs are
+ * signed and stop working after a few days, so the stored one is refreshed with this.
+ */
+export async function freshMetaAvatar(account: { platform: string; external_id: string | null; access_token: string | null }): Promise<string | null> {
+  if (!account.external_id || !account.access_token) return null;
+  const token = encodeURIComponent(account.access_token);
+  const id = encodeURIComponent(account.external_id);
+  if (account.platform === 'facebook') {
+    const r = await jsonFetch(`${GRAPH}/${id}/picture?redirect=0&type=large&access_token=${token}`, { timeoutMs: 4000 });
+    return r?.data?.url || null;
+  }
+  if (account.platform === 'instagram') {
+    const r = await jsonFetch(`${GRAPH}/${id}?fields=profile_picture_url&access_token=${token}`, { timeoutMs: 4000 });
+    return r?.profile_picture_url || null;
+  }
+  return null;
+}
 
 /* ───────────────────────── Instagram (via Facebook login) ───────────────────────── */
 export const instagram: PlatformAdapter = {

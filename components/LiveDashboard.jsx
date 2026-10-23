@@ -46,7 +46,7 @@ function mapAccount(a) {
   return {
     id: a.id, platform: a.platform, username: a.username || a.display_name || a.platform, display: a.display_name || a.username,
     health: a.status === 'error' ? 'error' : soon ? 'expiring' : undefined,
-    error: a.last_error || '', expires: a.token_expires_at || null, boards: a.meta?.boards || [],
+    avatar: a.avatar_url || '', error: a.last_error || '', expires: a.token_expires_at || null, boards: a.meta?.boards || [],
   };
 }
 
@@ -489,11 +489,12 @@ export default class LiveDashboard extends Base {
     if (typeof v.greeting === 'string') v.greeting = v.greeting.replace(/, [^,]*$/, `, ${this.userName || 'there'}`);
 
     // Accounts: real connect / reconnect.
+    // Platforms we haven't set up yet show "Coming soon" with a disabled button, listed after the rest.
     v.platformCards = v.platformCards.map((c, i) => {
       const id = PLATFORM_IDS[i];
       const configured = id === 'bluesky' || !!s.platforms[id]?.configured;
-      return { ...c, needsKeys: !configured, hasCount: c.hasCount || (configured && s.accounts.some((a) => a.platform === id)), connect: () => this.connect(id) };
-    });
+      return { ...c, needsKeys: !configured, cursor: configured ? 'pointer' : 'not-allowed', btnOpacity: configured ? '1' : '.5', hasCount: c.hasCount || (configured && s.accounts.some((a) => a.platform === id)), connect: configured ? () => this.connect(id) : () => {} };
+    }).sort((x, y) => x.needsKeys - y.needsKeys);
     v.connected = v.connected.map((c) => {
       const a = accBy((x) => x.id === c.id);
       const detail = a?.health === 'error' ? a.error || 'Connection error' : a?.expires ? `Token valid until ${new Date(a.expires).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}` : 'Connected';
