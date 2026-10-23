@@ -48,7 +48,7 @@ Pinned posts appear at the start of your profile grid, which can push your tiles
 ### Pair it with a carousel
 If you want people to see the whole picture in one go, post the uncut image as well, or split a wide version into a swipeable set with the [Instagram carousel splitter](/tools/instagram-carousel-splitter).
 
-## Use cases
+## Instagram grid maker use cases
 ### Launches and reveals
 Tease a product, an event poster or a new logo across six or nine posts, then reveal the full image when the last tile goes up.
 

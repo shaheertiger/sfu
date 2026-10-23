@@ -9,7 +9,7 @@ date: 2026-10-23
 ---
 Instagram crops photos because its feed only accepts images between 4:5 portrait and 1.91:1 landscape, at the time of writing. If your image is taller or wider than that, the Instagram app makes you crop it to fit, and your profile grid then trims every post to a 3:4 thumbnail on top of that. When you schedule posts, the rules work differently: Schedule For You doesn't crop or resize images, so a photo outside the allowed range is rejected by Instagram and you get a failed-post alert.
 
-The fix in both cases is the same: export your images at a supported size before you post. This guide shows which sizes to use and how to keep important details out of the crop.
+Whether Instagram crops photos in the app or rejects them from a scheduler, the fix is the same: export your images at a supported size before you post. This guide shows which sizes to use and how to keep important details out of the crop.
 
 ## Instagram aspect ratios and sizes at a glance
 

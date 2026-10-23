@@ -9,7 +9,7 @@ date: 2026-10-23
 ---
 To clip a YouTube video, open it, select **Clip** (the scissors icon under the player), drag the selector to choose a section between 5 and 60 seconds, add a title and select **Share clip**. YouTube creates a link that plays just that moment of the original video. If the video is your own and you want to shorten the upload itself, use the **Editor** in YouTube Studio instead.
 
-Those are two different jobs. Below you'll find how each works, when the Clip button is missing, and how to turn a moment from your own video into a Short.
+Those are two different jobs. Below you'll find how to clip a YouTube video on a computer or phone, how trimming works, when the Clip button is missing, and how to turn a moment from your own video into a Short.
 
 ## Clip, trim or Short: which do you need?
 

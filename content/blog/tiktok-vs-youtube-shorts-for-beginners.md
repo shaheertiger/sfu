@@ -1,6 +1,6 @@
 ---
 title: "TikTok vs YouTube Shorts: Which Is Better for Beginners?"
-description: TikTok vs YouTube Shorts for beginners: compare discovery, video length, monetization, audience and editing tools, then learn how to post to both without extra work.
+description: TikTok vs YouTube Shorts for beginners. Compare discovery, video length, monetization, audience and editing tools, then see how to post to both with one video.
 h1: "TikTok vs YouTube Shorts: Which Should a Beginner Start With?"
 category: Strategy
 excerpt: TikTok and YouTube Shorts both reward short vertical video, but they differ in discovery, length, monetization and what happens after a viewer likes you. Here's how to choose, or do both.

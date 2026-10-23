@@ -26,7 +26,7 @@ This guide covers each method, when it's worth using, and how to set it up step 
 
 Automation only works if every account is connected properly.
 
-1. Start your trial at [/signup](/signup) and create a workspace for your brand. If you manage several brands or clients, give each its own workspace.
+1. Start your trial at [/signup](/signup) and create a workspace for your brand. If you manage several brands or clients, you can give each its own workspace (each workspace has its own plan).
 2. Connect your accounts. Instagram needs a Business or Creator account linked to a Facebook Page and connects through Meta's login. Bluesky connects with your handle and an app password from Bluesky's settings.
 3. Send a test post to each account to confirm it publishes.
 
@@ -47,11 +47,11 @@ Posting time slots are the backbone of automated scheduling. Instead of picking 
 
 If you plan a month at a time, bulk scheduling saves the most effort.
 
-1. Draft your posts in a spreadsheet: one row per post, with the caption, the accounts it goes to, and the date and time (or leave timing to the queue).
-2. Gather the images and videos for those posts.
-3. Upload the CSV and media using Schedule For You's bulk scheduling, following the template it provides.
-4. Review the imported posts on the calendar. Live character-limit checks flag any caption that's too long for a platform.
-5. Adjust per-platform versions where needed, then confirm.
+1. Draft your posts in a spreadsheet with four columns: `date` (like 2026-11-02), `time` (24-hour, like 09:00), `accounts` (separated by semicolons, like `instagram;threads`) and `caption`.
+2. Upload the images and videos for those posts to your media library.
+3. Open bulk scheduling in Schedule For You, choose **Import CSV**, and paste your rows.
+4. Review the preview. Rows with problems, such as an invalid date, a time that has already passed, an account that isn't connected or a caption over a platform's limit, are flagged before anything is scheduled.
+5. Fix the flagged rows, then schedule. Posts for platforms that require media, such as Instagram, TikTok, YouTube and Pinterest, import as drafts so you can attach the image or video before they go into the schedule.
 
 <!-- cta -->
 
@@ -59,8 +59,8 @@ If you plan a month at a time, bulk scheduling saves the most effort.
 
 Some posts stay useful for months: a how-to tip, a link to your booking page, a reminder about a weekly event.
 
-- **Repeating posts** go out on a fixed pattern, such as every Monday morning.
-- **Evergreen posts** are recycled back into your queue so good content keeps working.
+- **Repeating posts** go out again on a weekly or monthly pattern, such as every Monday morning.
+- **Evergreen posts** go back into the next open slot in your queue after they publish, so good content keeps working without you rescheduling it.
 
 Refresh the wording or image of evergreen posts now and then so regular followers don't see exactly the same thing repeatedly. On X, avoid repeating identical text too often, since duplicate content is restricted under its rules.
 
@@ -70,7 +70,9 @@ If you publish a blog, newsletter archive or podcast, RSS auto-post turns each n
 
 1. Add your feed's URL in the RSS settings.
 2. Choose a mode. **Draft mode** saves each new item as a draft for you to edit and approve. **Queue mode** drops it straight into your next open time slot.
-3. Pick which accounts the posts should go to.
+3. Pick which accounts the posts should go to, and set a template for the caption using placeholders for the item's title, link and description.
+
+Items already in the feed when you add it aren't posted; only new items after that become posts.
 
 Start with draft mode. Feed titles and excerpts are written for your website, not for social, so a quick edit usually improves them.
 

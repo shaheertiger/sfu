@@ -1,6 +1,6 @@
 ---
 title: How to Plan Social Media Content in Advance (Weekly Routine)
-description: Learn how to plan social media content in advance with a queue, time slots, a content calendar, drafts, bulk CSV uploads and approvals, plus a simple weekly routine.
+description: How to plan social media content in advance with a queue, time slots, a content calendar, drafts, bulk CSV uploads and approvals, plus a weekly routine.
 h1: How to Plan Social Media Content in Advance
 category: Guides
 excerpt: Planning ahead turns daily posting stress into one focused session a week. Here's the system: themes, a calendar, a queue with time slots, batching and a weekly routine.

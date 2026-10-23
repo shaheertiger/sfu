@@ -118,6 +118,8 @@ The daily digest is also worth keeping on. Checking it each morning, alongside y
 
 ## How to stop posts failing in the future
 
+Most cases of Instagram failing to post come back to the same few habits:
+
 - **Export media at Instagram sizes** before uploading, rather than relying on cropping.
 - **Reconnect straight after password changes** to your Instagram or linked Facebook account.
 - **Keep the account professional** and linked to the same Facebook Page.

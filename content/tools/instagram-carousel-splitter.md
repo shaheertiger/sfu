@@ -16,7 +16,7 @@ Upload a wide image to the Instagram carousel splitter, choose how many slides y
 A seamless carousel only works if every slide is exactly the same size and the cuts line up. Splitting by hand in a photo editor is fiddly; the splitter divides the width evenly so the edge of one slide meets the next.
 
 ### Private by design
-The image never leaves your device. Splitting happens in the browser and the slides download directly.
+With the Instagram carousel splitter, the image never leaves your device. Splitting happens in the browser and the slides download directly.
 
 ## How to split an image for an Instagram carousel
 ### 1. Pick or design a wide image

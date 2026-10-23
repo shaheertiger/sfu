@@ -1,6 +1,6 @@
 ---
 title: How to Cancel a Social Media Scheduler Subscription
-description: How to cancel a social media scheduler subscription, change plan or downgrade in Schedule For You through Billing and Stripe, plus how to cancel a trial before day 8.
+description: How to cancel a social media scheduler subscription, change or downgrade your plan in Schedule For You via Billing, and cancel a trial before day 8.
 h1: How to Cancel or Change Your Social Media Scheduler Subscription
 category: Guides
 excerpt: In Schedule For You, the workspace owner opens Billing to switch plans, update the card, see invoices or cancel. Here's each step, plus what to check before you downgrade.
@@ -21,7 +21,7 @@ This guide covers each of those tasks step by step, what to check before you swi
 | View or download invoices | Billing → Stripe customer portal | Workspace owner |
 | Ask a billing question | Contact support | Anyone on the account |
 
-Payments are handled by Stripe, a widely used payment provider. When you open Billing, you're taken to Stripe's secure portal for your subscription, and your card details are entered there rather than stored in the app.
+Payments are handled by Stripe, a widely used payment provider. When you open Billing, you're taken to Stripe's secure customer portal for your subscription, and any card details are entered there.
 
 ### Only the workspace owner can manage billing
 
@@ -34,7 +34,7 @@ If you don't see Billing in the workspace menu, you're probably not the owner. T
 3. **Wait for the Stripe customer portal** to open in your browser.
 4. **Choose to cancel** your plan.
 5. **Review the details** shown, then confirm.
-6. **Keep the confirmation.** Stripe shows the result in the portal, and it's worth saving a screenshot or the email for your records.
+6. **Keep a record.** Check that the portal shows your plan as cancelled, and save a screenshot for your records.
 
 Cancelling stops your subscription from renewing, so you won't be charged for future billing periods. If you have questions about your account after cancelling, or about a charge, contact support rather than relying on assumptions.
 
@@ -53,10 +53,10 @@ A few minutes of preparation saves headaches later:
 
 There are two plans, and both include unlimited posts:
 
-| Plan | Price | Connected accounts | Team members | Support |
+| Plan | Price | Connected accounts | Team members | Priority support |
 |---|---|---|---|---|
-| Solo | $19/month | 15 | No | Standard |
-| Studio | $59/month | 100 | Yes | Priority |
+| Solo | $19/month | 15 | No | No |
+| Studio | $59/month | 100 | Yes | Yes |
 
 To switch between them:
 
@@ -104,7 +104,7 @@ Schedule For You has a 7-day free trial. A card is required to start it, and you
 A few tips for trials in general:
 
 - **Set a reminder** a day or two before the trial ends, so you have time to decide.
-- **Test the workflows you'll actually use**: connect your accounts, schedule a week of posts, and try the calendar and queue.
+- **Test the workflows you'll actually use**: connect your accounts, schedule a week of posts, and try the calendar and queue. Our guide to [planning content in advance](/blog/plan-content-in-advance) suggests a routine to try.
 - **Check the confirmation** after cancelling so you know it went through.
 
 There's no free plan, so once a trial ends without cancelling, your chosen plan starts.

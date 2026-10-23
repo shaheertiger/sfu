@@ -1,6 +1,6 @@
 ---
 title: How to Connect Instagram to a Scheduler (Step by Step)
-description: How to connect Instagram to a scheduler like Schedule For You: switch to a professional account, link a Facebook Page, approve Meta's permissions and fix common errors.
+description: How to connect Instagram to a scheduler: switch to a professional account, link a Facebook Page, approve Meta's permissions and fix common connection errors.
 h1: How to Connect Instagram to a Scheduler: A Step-by-Step Guide
 category: Guides
 excerpt: To schedule Instagram posts you need a professional account linked to a Facebook Page. Here's how to set that up, connect it to Schedule For You and fix common problems.
@@ -54,6 +54,8 @@ Once linked, the Page and the Instagram account should each show the other in th
 
 The Facebook account you'll connect with needs full control of the Page (the equivalent of the old admin role). Partial or task-only access isn't enough to grant publishing permissions. Our guide on [connecting a Facebook Page](/blog/connect-facebook-page) explains how to check your access level.
 
+<!-- cta -->
+
 ## Step 3: Connect Instagram to Schedule For You
 
 1. **Sign in** and open the workspace you want to use. Each workspace has its own connected accounts.
@@ -65,8 +67,6 @@ The Facebook account you'll connect with needs full control of the Page (the equ
 7. **Choose the account to add.** Back in Schedule For You, select your Instagram account and confirm.
 
 Your account now appears on the Accounts screen and in the composer. It counts as one of your connected accounts: 15 on Solo, 100 on Studio. Managing several brands? See [how to connect multiple Instagram accounts](/blog/connect-multiple-instagram-accounts).
-
-<!-- cta -->
 
 ## What you can schedule once Instagram is connected
 

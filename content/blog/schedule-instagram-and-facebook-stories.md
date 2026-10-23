@@ -1,6 +1,6 @@
 ---
 title: How to Schedule Instagram Stories (and Facebook Stories)
-description: How to schedule Instagram Stories and Facebook Stories with Meta Business Suite, what Schedule For You can and can't do, and practical tips for Stories that get watched.
+description: How to schedule Instagram Stories and Facebook Stories with Meta Business Suite, what a scheduler can and can't do, and tips for Stories that get watched.
 h1: How to Schedule Instagram Stories and Facebook Stories
 category: Guides
 excerpt: Meta Business Suite can schedule Stories for Instagram and Facebook at the time of writing. Here's how, plus honest alternatives and tips for Stories people watch to the end.

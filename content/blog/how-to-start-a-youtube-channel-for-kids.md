@@ -11,7 +11,7 @@ How to start a YouTube channel for kids depends on what you mean. If you're maki
 
 This guide covers both situations, step by step, with privacy and safety front and center.
 
-## Two kinds of "YouTube channel for kids"
+## How to start a YouTube channel for kids: two different meanings
 
 | | A channel made for kids | A kid running (or starring in) a channel |
 | --- | --- | --- |
@@ -55,6 +55,8 @@ Check YouTube's current help page for the full list. The important takeaway is t
 5. **Plan content that's appropriate and original.** Avoid misleading thumbnails, loud "shock" titles and anything that copies other creators' characters or music without permission.
 6. **Review each upload's audience setting** in YouTube Studio before it goes public.
 
+<!-- cta -->
+
 ## Part 2: When your kid wants their own YouTube channel
 
 ### How old do you have to be to have a YouTube channel?
@@ -72,8 +74,6 @@ A child under the minimum age can't legitimately have their own channel. Safer o
 ### For teens 13 and over
 
 A teen who meets the minimum age can have their own channel. Parents can stay involved through YouTube's supervision tools for teens, where available, and by agreeing house rules: what topics are fine, what personal details stay private, and how comments are handled. YouTube also limits some features for younger users; for example, its policies say minors under 16 can only live stream with an adult present.
-
-<!-- cta -->
 
 ### Step by step: set up a parent-managed channel for your child
 
@@ -100,7 +100,7 @@ If the channel earns money, the payments go to the account holder's AdSense acco
 
 ## Planning and scheduling uploads
 
-A predictable schedule helps families, too: it keeps filming to set times, not every evening. Plan a batch of videos on a weekend, review them together, and schedule them to go live later.
+Whichever way you start a YouTube channel for kids, a predictable schedule helps: it keeps filming to set times, not every evening. Plan a batch of videos on a weekend, review them together, and schedule them to go live later.
 
 If you manage several channels, Schedule For You can upload videos to YouTube with a title, description and privacy setting (public, unlisted or private) and publish them at a set time. Set the channel's audience default in YouTube Studio first, then check each video's made for kids setting in Studio after it's uploaded. Our free [YouTube bio generator](/tools/youtube-bio-generator) can also help you draft a clear channel description.
 

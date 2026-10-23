@@ -1,6 +1,6 @@
 ---
 title: How to Connect Multiple Instagram Accounts to a Scheduler
-description: How to connect multiple Instagram accounts to Schedule For You: requirements, the step-by-step Meta login, plan limits, workspaces per client, and fixes for missing accounts.
+description: How to connect multiple Instagram accounts to one scheduler: requirements, Meta login steps, plan limits, workspaces per client and fixes for missing accounts.
 h1: How to Connect Multiple Instagram Accounts and Schedule for All of Them
 category: Guides
 excerpt: Each Instagram account must be a Business or Creator account linked to a Facebook Page. Then connect them all through one Meta login and choose which to add. Here's how.
@@ -65,7 +65,7 @@ So on Solo you could connect, for example, eight Instagram accounts plus seven a
 
 ## Use separate workspaces for brands and clients
 
-If you manage Instagram for several brands or clients, give each its own workspace. A workspace keeps that brand's connected accounts, queue, calendar, approvals and client preview links together, so you don't post a client's content to the wrong account by accident.
+If you manage Instagram for several brands or clients, you can give each its own workspace. A workspace keeps that brand's connected accounts, queue, calendar, approvals and client preview links together, so you don't post a client's content to the wrong account by accident. Each workspace has its own plan and its own account limit, so a client in a separate workspace is billed as a separate subscription. To keep several brands on one plan, connect them in the same workspace.
 
 A practical setup:
 
@@ -113,7 +113,7 @@ Password changes, security checks and removed permissions can end a connection. 
 
 ### How many Instagram accounts can I connect to Schedule For You?
 
-As many as your plan allows in total: 15 connected accounts on Solo and 100 on Studio, counting every platform. There's no separate Instagram limit.
+As many as your plan allows in the workspace: 15 connected accounts on Solo and 100 on Studio, counting every platform. There's no separate Instagram limit.
 
 ### Do I need a separate Facebook Page for each Instagram account?
 

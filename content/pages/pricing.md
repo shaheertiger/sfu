@@ -90,5 +90,9 @@ The workspace owner opens Billing from the workspace menu and cancels in the Str
 ### Is the API included on Solo?
 Yes. The REST API, webhooks and RSS feeds are part of every workspace on both plans.
 
+### Is the plan per workspace?
+
+Yes. Each workspace has its own plan and its own account limit. Put the brands you want on one plan in the same workspace, or give a client their own workspace and subscription if you bill them separately.
+
 ## Try Schedule For You before you pay
 Connect your accounts, fill the queue and see how per-platform captions fit your workflow before your first charge. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.

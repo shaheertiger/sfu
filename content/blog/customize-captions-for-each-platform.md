@@ -20,7 +20,7 @@ Copying the same text everywhere is quick, but it often backfires:
 - **Links behave differently.** Links in Instagram captions aren't clickable, while on LinkedIn, Facebook or Bluesky they are.
 - **Audiences differ.** The same announcement might need a casual tone on Threads and a more professional one on LinkedIn or Google Business Profile.
 
-Tailoring each version takes a few minutes per post and avoids truncated text, failed posts and copy that feels out of place.
+Tailoring social media captions for each platform takes a few minutes per post and avoids truncated text, failed posts and copy that feels out of place.
 
 ## Caption length limits by platform
 

@@ -40,7 +40,7 @@ Pinterest is a long game, and it helps to have plenty of Pins lined up. Upload a
 Seasonal and evergreen content does well on Pinterest. Mark Pins as evergreen so good ideas can come back around.
 
 ### Workspaces for clients
-If you manage Pinterest for shops or bloggers, give each client a workspace with its own boards, queue and media library, plus client preview links for approval.
+If you manage Pinterest for shops or bloggers, give each client a workspace with its own boards, queue and media library, plus client preview links for approval. Each workspace has its own plan.
 
 ## Tips for Pinterest
 - **Design for a tall grid.** Use a portrait image with a clear subject. Text on the image should be large enough to read on a phone.

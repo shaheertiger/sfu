@@ -22,7 +22,7 @@ Solo connects up to 15 accounts and Studio up to 100, across X, Bluesky, Instagr
 Agencies and freelancers need clear walls between clients. Workspaces provide them.
 
 ### A workspace per brand or client
-Create a separate workspace for each brand or client. Its connected accounts, posts, queue and calendar stay inside it, so a post meant for a bakery can't end up on a law firm's profile.
+Create a separate workspace for each brand or client. Its connected accounts, posts, queue and calendar stay inside it, so a post meant for a bakery can't end up on a law firm's profile. Each workspace has its own plan and its own account limit, so a client in a separate workspace is billed as a separate subscription. To keep several brands on one plan, connect them in the same workspace.
 
 ### Time slots that match each audience
 Set posting time slots for each workspace's queue. A local café might post at breakfast and lunch while a B2B client posts mid-morning on weekdays, and each queue fills its own slots.
@@ -62,10 +62,10 @@ Connect them to one scheduler, write each post once and select every account it 
 Yes. A workspace can hold several accounts per platform, such as multiple Instagram accounts or Facebook Pages, and you choose which ones each post targets. To learn more, see how to [post to multiple Instagram accounts](/post-to-multiple-instagram-accounts).
 
 ### How many social media accounts can I manage?
-Solo includes up to 15 connected accounts and Studio up to 100. Every profile, Page or channel you connect counts as one account.
+Solo includes up to 15 connected accounts and Studio up to 100, per workspace. Every profile, Page or channel you connect counts as one account.
 
 ### How do agencies keep client accounts separate?
-Use one workspace per client. Each workspace has its own connected accounts, queue and calendar, so posts stay with the right brand.
+Use one workspace per client. Each workspace has its own connected accounts, queue, calendar and plan, so posts stay with the right brand and each client can be billed on its own subscription.
 
 ### Can my team and clients help with posts?
 Team members are available on the Studio plan. Clients don't need an account at all: send a preview link and they can approve or comment on the post.

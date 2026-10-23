@@ -79,7 +79,7 @@ Schedule For You is built around one workflow: write once, tailor each platform'
 Two plans: Solo at $19 a month with 15 connected accounts, and Studio at $59 a month with 100 connected accounts, team members and priority support. Both include unlimited posts, and you can connect several accounts on the same platform. There's a 7-day free trial; a card is required, you aren't charged until day 8 and you can cancel anytime. There's no free plan. See the [pricing page](/pricing) for details, or [start your 7-day free trial](/signup).
 
 ### Where it's different in practice
-- **Accounts, not channels, set the price.** If you run 12 profiles across several brands, they fit on the Solo plan, and you can split them into separate workspaces. Our page on [managing multiple social media accounts](/manage-multiple-social-media-accounts) covers the setup.
+- **Accounts, not channels, set the price.** If you run 12 profiles across several brands in one workspace, they fit on the Solo plan. Each workspace has its own plan, so splitting brands into separate workspaces means a subscription per workspace. Our page on [managing multiple social media accounts](/manage-multiple-social-media-accounts) covers the setup.
 - **Each version is yours to edit.** Change the LinkedIn version without touching the X one. The guide to [customizing captions for each platform](/blog/customize-captions-for-each-platform) shows the workflow.
 - **Automation is included.** Every workspace gets the [REST API](/api), webhooks and RSS auto-post on both plans.
 - **No AI writing.** If you want an assistant to draft posts, Schedule For You isn't that tool.

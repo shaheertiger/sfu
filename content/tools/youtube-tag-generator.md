@@ -73,7 +73,7 @@ It can help if people commonly misspell or shorten your channel name. Otherwise 
 ### Can I use other creators' names as tags?
 Don't. Tags that don't describe your video can be treated as misleading metadata under YouTube's policies. Stick to terms that are genuinely about your content.
 
-### Does the generator use AI or search volume data?
+### Does the YouTube tag generator use AI or search volume data?
 No. It builds tags from fixed templates around the topic and keywords you enter. Nothing is sent to a server.
 
 ### Where do I paste tags in YouTube Studio?

@@ -1,6 +1,6 @@
 ---
 title: "How to Schedule Instagram Posts: App, Meta and Schedulers"
-description: How to schedule Instagram posts, Reels and carousels in the Instagram app, in Meta Business Suite or with a scheduler, with steps and a table to compare methods.
+description: How to schedule Instagram posts, Reels and carousels in the Instagram app, in Meta Business Suite or with a scheduler, with steps and a table comparing methods.
 h1: How to Schedule Instagram Posts, Reels and Carousels
 category: Instagram
 excerpt: You can schedule Instagram posts in the app, in Meta Business Suite or with a scheduler. Here's how each method works, what it can't do and which one fits you.

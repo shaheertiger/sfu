@@ -100,7 +100,7 @@ These channels are invented to show how the factors combine. They aren't benchma
 - **Creator B: comedy Shorts.** If 1 million Shorts views had an RPM of ₹4, they would earn about 1,000 × ₹4 = **₹4,000**.
 - **Creator C: English coding tutorials, half the views from abroad.** If 500,000 views from India had an RPM of ₹50 and 500,000 views from the US had an RPM of ₹400, the total would be about ₹25,000 + ₹2,00,000 = **₹2,25,000**.
 
-Same view count, very different results.
+Same view count, very different results: the YouTube view price in India depends on who watches and what they watch.
 
 ## Taxes and deductions to plan for
 

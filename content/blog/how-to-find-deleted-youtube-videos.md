@@ -13,7 +13,7 @@ Here's how to work out which situation you're in and where to look.
 
 ## YouTube video deleted, private or removed? Work out which
 
-The message you see when you open the link tells you a lot. The exact wording changes over time, but it usually falls into one of these groups.
+Before you try to find deleted YouTube videos, look at the message you see when you open the link. It tells you a lot. The exact wording changes over time, but it usually falls into one of these groups.
 
 | What you see | What it usually means | What you can do |
 | --- | --- | --- |

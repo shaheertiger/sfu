@@ -107,7 +107,7 @@ YouTube connections can be revoked, for example if you change your Google passwo
 
 No. Schedule For You uploads a normal video, and YouTube decides whether it's a Short based on its shape and length. A vertical or square video of up to 3 minutes is treated as a Short at the time of writing.
 
-### How do I make YouTube treat my video as a Short?
+### How do I post a video to YouTube as a Short instead of a regular video?
 
 Export it vertical (ideally 9:16) or square and keep it to 3 minutes or less at the time of writing, then upload it as usual. YouTube classifies it automatically. A horizontal video, or a vertical clip placed inside a 16:9 frame with black bars, stays a regular video.
 

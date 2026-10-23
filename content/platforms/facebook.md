@@ -30,7 +30,7 @@ You can include a link in the text of any post. Our guide on [adding links to a 
 Facebook Pages are often run by more than one person, or managed on behalf of a business owner. That's where the workflow tools help most.
 
 ### Workspaces for each business
-Keep each Page in its own workspace with its own queue, calendar and media library. If you manage Pages for a bakery and a gym, their posts never end up in the same view.
+Keep each business in its own workspace with its own queue, calendar, media library and plan. If you manage Pages for a bakery and a gym, their posts never end up in the same view.
 
 ### Approvals and client preview links
 Share a preview link and the business owner can approve or comment on a post without signing up. You see their feedback before anything is published.
@@ -61,7 +61,7 @@ No. Groups aren't supported. You can share a Page post into a Group from Faceboo
 Up to 10 images in a single post. Alternatively, attach a video instead of images.
 
 ### Can I manage several Facebook Pages?
-Yes. Connect every Page you manage, and use separate workspaces if they belong to different clients or brands. Solo includes 15 connected accounts and Studio includes 100.
+Yes. Connect every Page you manage. Solo includes 15 connected accounts and Studio includes 100 per workspace. You can use separate workspaces for different clients; each workspace has its own plan.
 
 ### Can I post the same update to Instagram at the same time?
 Yes, if your Instagram Business or Creator account is connected too. Select both, then tailor each version. Instagram needs at least one image or video.

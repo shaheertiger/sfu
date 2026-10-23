@@ -3,7 +3,7 @@ title: LinkedIn Post Not Getting Impressions? 9 Causes and Fixes
 description: LinkedIn post not getting impressions? Check the usual causes, from external links and posting time to weak hooks, slow early engagement and spam signals.
 h1: LinkedIn Post Not Getting Impressions? How to Find the Cause and Fix It
 category: LinkedIn
-excerpt: Low LinkedIn impressions usually trace back to a few fixable causes: links, timing, a weak first line, slow early engagement, visibility settings or behavior that looks like spam.
+excerpt: Low LinkedIn impressions usually come from fixable causes like links, timing, a weak first line, slow early engagement, visibility settings or spam-like behavior.
 keyword: linkedin post not getting impressions
 date: 2026-10-23
 ---
@@ -41,7 +41,7 @@ If your impressions fell to almost nothing overnight, check your LinkedIn notifi
 
 ## External links and LinkedIn post reach
 
-Many LinkedIn users find that posts with an external link in the body get less reach than similar posts without one. LinkedIn hasn't confirmed a fixed penalty, but it makes sense that a feed built to keep people on LinkedIn would favor posts that people read and discuss there.
+Many LinkedIn users find that posts with an external link in the body get less reach than similar posts without one. LinkedIn hasn't confirmed a fixed penalty, so treat it as something to test.
 
 How to test this on your own account:
 
@@ -79,8 +79,6 @@ On LinkedIn, the feed shows only the opening of a longer post before the "…mor
 - **Be specific.** Name the problem, the role or the result.
 - **Create a reason to keep reading.** A clear tension, a surprising detail or the first step of a story.
 
-Avoid clickbait that the rest of the post doesn't deliver on. People who feel tricked scroll away, and that doesn't help you.
-
 ### Preview the cut-off before posting
 
 Our free [LinkedIn text formatter](/tools/linkedin-text-formatter) shows a live character count against the 3,000-character limit and a preview of roughly where "…more" falls, so you can check that your hook sits above it. It also adds Unicode bold, italic and lists. Use styled text sparingly: screen readers may read it letter by letter, and LinkedIn search may not match it.
@@ -114,13 +112,10 @@ Scheduling a post you wrote yourself is different from automating engagement. To
 
 ## How to increase LinkedIn impressions over time
 
-Fixing one post helps; a steady routine helps more.
-
 1. **Pick two or three topics** you want to be known for, and stay close to them.
 2. **Post consistently** rather than in bursts, at the times your testing points to.
 3. **Comment thoughtfully on other people's posts** in your field. It builds relationships and puts your name in front of their audiences.
 4. **Review your post analytics** every couple of weeks. Look at impressions, reactions, comments and reposts after the same time window, and notice which hooks and formats work best for you.
-5. **Reuse what works.** Turn a strong comment thread into a follow-up post, or a popular post into a document.
 
 If you'd like to post at your best times without being at your desk, Schedule For You can publish to your LinkedIn profile on a schedule, alongside your other channels, with a live check against LinkedIn's 3,000-character limit. It doesn't post to LinkedIn company pages.
 
