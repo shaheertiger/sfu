@@ -487,10 +487,15 @@ button{font:inherit;color:inherit}
         <h2 style="margin:0;font-size:clamp(34px,4.6vw,60px);line-height:1.02;letter-spacing:-0.04em;font-weight:700">Simple pricing</h2>
         <p style="margin:0;color:#a7abb2">Unlimited posts on every plan. 7-day free trial, card required. Cancel anytime.</p>
       </div>
+      <div role="group" aria-label="Billing period" style="display:flex;gap:4px;padding:4px;border-radius:14px;border:1px solid #22252a;background:#0f1113;margin-top:-12px">
+        <button aria-pressed="{{ moPressed }}" onClick="{{ pickMonthly }}" style="padding:9px 18px;border-radius:10px;border:0;cursor:pointer;font-size:14px;font-weight:600;background:{{ moBg }};color:{{ moFg }};transition:background .2s,color .2s">Monthly</button>
+        <button aria-pressed="{{ yrPressed }}" onClick="{{ pickYearly }}" style="padding:9px 18px;border-radius:10px;border:0;cursor:pointer;font-size:14px;font-weight:600;background:{{ yrBg }};color:{{ yrFg }};transition:background .2s,color .2s">Yearly <span style="color:{{ yrTag }};font-size:12px">2 months free</span></button>
+      </div>
       <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;width:100%;max-width:760px;text-align:left">
         <div style="padding:30px;border:1px solid #22252a;border-radius:20px;background:#0f1113;display:flex;flex-direction:column;gap:20px">
           <span style="align-self:flex-start;padding:2px 10px;border-radius:999px;border:1px solid #3a3e45;font-size:12px;font-weight:600">Solo</span>
-          <div style="display:flex;align-items:baseline;gap:4px"><span style="font-size:52px;font-weight:700;letter-spacing:-0.04em;line-height:1">$19</span><span style="color:#6b7079">/mo</span></div>
+          <div style="display:flex;align-items:baseline;gap:4px"><span style="font-size:52px;font-weight:700;letter-spacing:-0.04em;line-height:1">{{ soloPrice }}</span><span style="color:#6b7079">/mo</span></div>
+          <span style="margin-top:-12px;font-size:13px;color:#6b7079">{{ soloBilled }}</span>
           <div style="display:flex;flex-direction:column;gap:10px;color:#a7abb2;font-size:15px">
             <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>15 connected accounts</span>
             <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>Unlimited posts &amp; scheduling</span>
@@ -502,7 +507,8 @@ button{font:inherit;color:inherit}
         </div>
         <div style="position:relative;padding:30px;border:1px solid #dcff2e;border-radius:20px;background:#15171a;display:flex;flex-direction:column;gap:20px;box-shadow:0 30px 80px -40px rgba(220,255,46,.35)">
           <span style="align-self:flex-start;padding:2px 10px;border-radius:999px;background:#dcff2e;color:#15171a;font-size:12px;font-weight:600">Studio</span>
-          <div style="display:flex;align-items:baseline;gap:4px"><span style="font-size:52px;font-weight:700;letter-spacing:-0.04em;line-height:1">$59</span><span style="color:#6b7079">/mo</span></div>
+          <div style="display:flex;align-items:baseline;gap:4px"><span style="font-size:52px;font-weight:700;letter-spacing:-0.04em;line-height:1">{{ studioPrice }}</span><span style="color:#6b7079">/mo</span></div>
+          <span style="margin-top:-12px;font-size:13px;color:#6b7079">{{ studioBilled }}</span>
           <div style="display:flex;flex-direction:column;gap:10px;color:#a7abb2;font-size:15px">
             <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>Everything in Solo</span>
             <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>100 connected accounts</span>
@@ -886,6 +892,17 @@ class Component extends DCLogic {
       },
       quotes: QUOTES,
       showTestimonials: this.props.showTestimonials ?? true,
+      ...(() => {
+        // Yearly is 10 months of the monthly price (2 months free).
+        const yr = !!this.state.yearly, per = (m) => '$' + +(m * 10 / 12).toFixed(2);
+        return {
+          moPressed: yr ? 'false' : 'true', yrPressed: yr ? 'true' : 'false',
+          moBg: yr ? 'transparent' : '#dcff2e', moFg: yr ? '#a7abb2' : '#15171a', yrBg: yr ? '#dcff2e' : 'transparent', yrFg: yr ? '#15171a' : '#a7abb2', yrTag: yr ? '#15171a' : '#dcff2e',
+          pickMonthly: () => this.setState({ yearly: false }), pickYearly: () => this.setState({ yearly: true }),
+          soloPrice: yr ? per(19) : '$19', studioPrice: yr ? per(59) : '$59',
+          soloBilled: yr ? '$190 billed yearly · save $38' : 'Billed monthly', studioBilled: yr ? '$590 billed yearly · save $118' : 'Billed monthly',
+        };
+      })(),
     };
   }
 }

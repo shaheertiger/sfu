@@ -1121,7 +1121,7 @@ export function renderDashboard($v) {
                                 fontWeight: '600',
                               }}
                             >
-                              {'Reconnect'}
+                              {$t(a?.fixLabel)}
                             </button>{' '}
                           </div>{' '}
                         </Fragment>
@@ -5996,7 +5996,7 @@ export function renderDashboard($v) {
                                 fontWeight: '600',
                               }}
                             >
-                              {'Reconnect'}
+                              {$t(a?.fixLabel)}
                             </button>
                           </>
                         ) : null}{' '}

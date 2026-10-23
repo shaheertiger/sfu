@@ -32,6 +32,9 @@ function PlanTable() {
             <dt>{p.name}</dt>
             <dd>
               <strong style={{ fontSize: 28, letterSpacing: '-0.03em' }}>${p.price}</strong> / month
+              <div style={{ marginTop: 4, fontSize: 14, color: '#c4c7cc' }}>
+                or <strong style={{ color: '#fff' }}>${p.yearly} / year</strong> billed yearly (2 months free, ${(p.yearly / 12).toFixed(2)} a month)
+              </div>
               <ul style={{ margin: '10px 0 0', paddingLeft: 18, color: '#c4c7cc', fontSize: 14, lineHeight: 1.6 }}>
                 {PLAN_FEATURES[p.id].map((f) => (
                   <li key={f}>{f}</li>
@@ -41,7 +44,7 @@ function PlanTable() {
           </div>
         ))}
       </dl>
-      <p className={m.meta} style={{ textAlign: 'left', marginTop: -8 }}>7-day free trial on both plans. Card required, not charged until day 8, cancel anytime.</p>
+      <p className={m.meta} style={{ textAlign: 'left', marginTop: -8 }}>7-day free trial on both plans, billed monthly or yearly. Card required, not charged until day 8, cancel anytime.</p>
     </section>
   );
 }
