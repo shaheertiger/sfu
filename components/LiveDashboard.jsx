@@ -32,6 +32,19 @@ function refreshSession() {
   return refreshing;
 }
 
+/** PUT a file to a presigned URL, reporting progress (0–100). fetch can't report upload progress, XHR can. */
+function putWithProgress(url, file, onProgress) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('PUT', url);
+    xhr.setRequestHeader('content-type', file.type);
+    xhr.upload.onprogress = (e) => { if (e.lengthComputable && onProgress) onProgress(Math.min(99, Math.round((e.loaded / e.total) * 100))); };
+    xhr.onload = () => (xhr.status >= 200 && xhr.status < 300 ? resolve() : reject(new Error(`Upload of ${file.name} failed (${xhr.status}). Try again.`)));
+    xhr.onerror = () => reject(new Error(`Upload of ${file.name} failed. Check your connection and try again.`));
+    xhr.send(file);
+  });
+}
+
 async function api(path, { method = 'GET', body } = {}, retried = false) {
   const res = await fetch(path, {
     method,
@@ -335,9 +348,20 @@ export default class LiveDashboard extends Base {
   }
 
   submit() {
+    if ((this.state.uploads || []).length) return this.flash('Wait for your uploads to finish first', true);
     const d = this.state.draft;
     this._submitFor = { id: d.id, mediaIds: [...(d.mediaIds || [])] };
     super.submit();
+  }
+
+  /** The post's first image as a CSS background. Videos keep the placeholder (CSS can't show a video frame). */
+  mediaThumb(p, dim) {
+    const lib = this.state.library || [];
+    if (this._thumbLib !== lib) { this._thumbLib = lib; this._thumbById = new Map(lib.map((m) => [m.id, m])); }
+    const m = (p.mediaIds || []).map((id) => this._thumbById.get(id)).find((x) => x?.url);
+    if (!m) return null;
+    const url = `url("${String(m.url).replace(/["\\\n]/g, encodeURIComponent)}") center/cover no-repeat #2a2e34`;
+    return dim ? `linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.55)), ${url}` : url;
   }
 
   newPost(when) {
@@ -360,11 +384,10 @@ export default class LiveDashboard extends Base {
   }
 
   /* ---------- uploads ---------- */
-  async upload(file, folder = null) {
-    if (!this.state.storage) throw new Error("Media storage isn't set up yet. Add the R2 settings in Vercel.");
+  async upload(file, folder = null, onProgress = null) {
+    if (!this.state.storage) throw new Error("Media storage isn't available right now. Try again later.");
     const r = await api('/api/v1/media', { method: 'POST', body: { filename: file.name, mime: file.type, size: file.size, folder } });
-    const put = await fetch(r.upload_url, { method: 'PUT', headers: { 'content-type': file.type }, body: file });
-    if (!put.ok) throw new Error(`Upload of ${file.name} failed (${put.status}). Check the R2 bucket's CORS rules.`);
+    await putWithProgress(r.upload_url, file, onProgress);
     const done = await api(`/api/v1/media/${r.id}`, { method: 'PATCH', body: { uploaded: true } });
     const item = mapMedia(done.media);
     this._libKey = JSON.stringify([[item.id, item.folder], ...JSON.parse(this._libKey || '[]')]);
@@ -381,16 +404,23 @@ export default class LiveDashboard extends Base {
     input.click();
   }
 
+  /** Uploads files into the draft. Each file shows as a tile with its progress until it's added. */
   addToDraft(files) {
     if (!files.length) return;
-    this.flash(`Uploading ${files.length} file${files.length === 1 ? '' : 's'}…`);
+    const jobs = files.map((f, i) => ({ key: `up${Date.now()}_${i}`, name: f.name, kind: kindOf(f.type), pct: 0, file: f }));
+    super.setState((st) => ({ uploads: [...(st.uploads || []), ...jobs.map(({ file, ...j }) => j)] }));
+    const setPct = (key, pct) => super.setState((st) => ({ uploads: (st.uploads || []).map((u) => (u.key === key ? { ...u, pct } : u)) }));
+    const drop = (key) => super.setState((st) => ({ uploads: (st.uploads || []).filter((u) => u.key !== key) }));
     this._busy++;
-    Promise.all(files.map((f) => this.upload(f).then((m) => ({ id: m.id, kind: kindOf(m.mime) }))))
-      .then((ms) => {
-        super.setState((st) => ({ draft: { ...st.draft, media: [...st.draft.media, ...ms.map((m) => m.kind)], mediaIds: [...(st.draft.mediaIds || []), ...ms.map((m) => m.id)] } }));
-        this.flash(`Added ${ms.length} file${ms.length === 1 ? '' : 's'}`);
+    let added = 0;
+    Promise.allSettled(jobs.map((j) => this.upload(j.file, null, (pct) => setPct(j.key, pct))
+      .then((m) => {
+        added++;
+        drop(j.key);
+        super.setState((st) => ({ draft: { ...st.draft, media: [...st.draft.media, kindOf(m.mime)], mediaIds: [...(st.draft.mediaIds || []), m.id] } }));
       })
-      .catch((e) => this.flash(e.message, true))
+      .catch((e) => { drop(j.key); this.flash(`${j.name}: ${e.message}`, true); throw e; })))
+      .then((rs) => { if (added && rs.every((r) => r.status === 'fulfilled')) this.flash(`Added ${added} file${added === 1 ? '' : 's'}`); })
       .finally(() => { this._busy--; });
   }
 
@@ -558,6 +588,12 @@ export default class LiveDashboard extends Base {
       return { ...none, bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind === 'VIDEO' ? '▶ VIDEO' : kind };
     };
     v.mediaTiles = d.media.map((kind, i) => ({ kind, ...look(kind, i), remove: () => this.upd({ media: d.media.filter((_, j) => j !== i), mediaIds: (d.mediaIds || []).filter((_, j) => j !== i) }) }));
+    // Files still uploading: a tile that fills up as the upload goes.
+    for (const u of s.uploads || []) {
+      v.mediaTiles.push({ kind: u.kind, isVideo: false, video: '', labelBg: 'rgba(0,0,0,.45)', label: u.pct < 99 ? `${u.pct}%` : 'Saving…',
+        bg: `linear-gradient(to top, #5d6470 ${u.pct}%, #2a2e34 ${u.pct}%)`, remove: () => this.flash('Wait for the upload to finish, then remove it', true) });
+    }
+    if ((s.uploads || []).length) v.hasMedia = true;
     if (v.pv) v.pv.media = d.media.slice(0, v.pv.media.length || 4).map((kind, i) => look(kind, i));
 
     // Media library.
