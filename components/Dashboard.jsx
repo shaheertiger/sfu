@@ -3452,6 +3452,9 @@ class Component extends DCLogic {
                 : 'none',
               color: P[a.platform].color,
               logo: P[a.platform].logo,
+              ...Component.pic(a),
+              title: `@${a.username} · ${P[a.platform].label}`,
+              platform: a.platform,
               needsFix: h.needsFix,
               fix: reconnect(a),
             };
@@ -3489,8 +3492,18 @@ class Component extends DCLogic {
           upPrev: () => this._upRef.current && this._upRef.current.scrollBy({ left: -320 }),
           upNextBtn: () => this._upRef.current && this._upRef.current.scrollBy({ left: 320 }),
           sickTiles: healthTiles.filter((t) => t.needsFix),
-          okTiles: healthTiles.filter((t) => !t.needsFix),
+          okTiles: healthTiles.filter((t) => !t.needsFix).slice(0, 12),
+          okMore: healthTiles.filter((t) => !t.needsFix).length > 12,
+          okMoreLabel: `+${healthTiles.filter((t) => !t.needsFix).length - 12}`,
           okCount: healthTiles.filter((t) => !t.needsFix).length,
+          okBreakdown: (() => {
+            const by = {};
+            for (const t of healthTiles) if (!t.needsFix) by[t.platform] = (by[t.platform] || 0) + 1;
+            const parts = Object.entries(by)
+              .sort((x, y) => y[1] - x[1])
+              .map(([k, n]) => `${n} ${P[k].label}`);
+            return parts.length > 1 ? ' · ' + parts.join(' · ') : '';
+          })(),
           attentionShown: S0.allIssues ? attention : attention.slice(0, 3),
           hasMoreIssues: attention.length > 3,
           issuesLabel: S0.allIssues ? 'Show fewer' : `View all ${attention.length} issues`,

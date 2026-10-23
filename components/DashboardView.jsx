@@ -1126,39 +1126,59 @@ export function renderDashboard($v) {
                           </div>{' '}
                         </Fragment>
                       ))}{' '}
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '11px 14px' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '12px 14px' }}>
                         {' '}
-                        <span style={{ display: 'flex' }}>
+                        <span style={{ display: 'flex', alignItems: 'center', minWidth: '0' }}>
                           {$arr($v['okTiles']).map((a, $index) => (
                             <Fragment key={$index}>
                               <span
-                                title={`@${a?.username ?? ''}`}
+                                title={a?.title}
                                 style={{
-                                  width: '24px',
-                                  height: '24px',
-                                  marginRight: '-5px',
+                                  width: '28px',
+                                  height: '28px',
+                                  marginRight: '-6px',
                                   borderRadius: '50%',
                                   border: '2px solid #fff',
-                                  background: `${a?.color ?? ''}`,
-                                  display: 'grid',
-                                  placeItems: 'center',
+                                  background: `${a?.pic ?? ''}`,
+                                  flex: 'none',
                                 }}
-                              >
-                                <span
-                                  style={{
-                                    width: '56%',
-                                    height: '56%',
-                                    background: `${a?.logo ?? ''} center/contain no-repeat`,
-                                  }}
-                                />
-                              </span>
+                              />
                             </Fragment>
                           ))}
+                          {$v['okMore'] ? (
+                            <>
+                              <span
+                                style={{
+                                  height: '28px',
+                                  minWidth: '28px',
+                                  padding: '0 8px',
+                                  marginLeft: '2px',
+                                  borderRadius: '999px',
+                                  border: '2px solid #fff',
+                                  background: '#f1f1ec',
+                                  color: '#4a4f57',
+                                  fontSize: '12px',
+                                  fontWeight: '600',
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  whiteSpace: 'nowrap',
+                                  flex: 'none',
+                                  position: 'relative',
+                                }}
+                              >
+                                {$t($v['okMoreLabel'])}
+                              </span>
+                            </>
+                          ) : null}
                         </span>{' '}
-                        <span style={{ fontSize: '13px', color: '#15803d', fontWeight: '500', marginLeft: '6px' }}>
-                          {'✓ '}
-                          {$t($v['okCount'])}
-                          {' connected'}
+                        <span style={{ fontSize: '13px', color: '#677184', lineHeight: '1.4' }}>
+                          <span style={{ color: '#15803d', fontWeight: '500' }}>
+                            {'✓ '}
+                            {$t($v['okCount'])}
+                            {' connected'}
+                          </span>
+                          {$t($v['okBreakdown'])}
                         </span>{' '}
                       </div>{' '}
                     </div>{' '}

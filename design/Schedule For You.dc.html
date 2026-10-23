@@ -244,9 +244,9 @@ textarea{resize:vertical}
                   <button onClick="{{ a.fix }}" style="padding:6px 11px;border-radius:8px;border:0;background:#141619;color:#fff;cursor:pointer;font-size:13px;font-weight:600">Reconnect</button>
                 </div>
               </sc-for>
-              <div style="display:flex;align-items:center;gap:10px;padding:11px 14px">
-                <span style="display:flex"><sc-for list="{{ okTiles }}" as="a" hint-placeholder-count="5"><span title="@{{ a.username }}" style="width:24px;height:24px;margin-right:-5px;border-radius:50%;border:2px solid #fff;background:{{ a.color }};display:grid;place-items:center"><span style="width:56%;height:56%;background:{{ a.logo }} center/contain no-repeat"></span></span></sc-for></span>
-                <span style="font-size:13px;color:#15803d;font-weight:500;margin-left:6px">✓ {{ okCount }} connected</span>
+              <div style="display:flex;flex-direction:column;gap:8px;padding:12px 14px">
+                <span style="display:flex;align-items:center;min-width:0"><sc-for list="{{ okTiles }}" as="a" hint-placeholder-count="5"><span title="{{ a.title }}" style="width:28px;height:28px;margin-right:-6px;border-radius:50%;border:2px solid #fff;background:{{ a.pic }};flex:none"></span></sc-for><sc-if value="{{ okMore }}" hint-placeholder-val="{{ false }}"><span style="height:28px;min-width:28px;padding:0 8px;margin-left:2px;border-radius:999px;border:2px solid #fff;background:#f1f1ec;color:#4a4f57;font-size:12px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;flex:none;position:relative">{{ okMoreLabel }}</span></sc-if></span>
+                <span style="font-size:13px;color:#677184;line-height:1.4"><span style="color:#15803d;font-weight:500">✓ {{ okCount }} connected</span>{{ okBreakdown }}</span>
               </div>
             </div>
           </div>
@@ -2128,7 +2128,7 @@ class Component extends DCLogic {
             open: () => this.editPost(p),
           };
         });
-        const healthTiles = s.accounts.map((a) => { const h = HL(a); return { username: a.username, detail: h.needsFix ? h.healthDetail : P[a.platform].label, label: h.hLabel === 'Connected' ? 'OK' : h.hLabel, fg: h.hFg, border: h.needsFix ? (a.health === 'error' ? '#f4c6c2' : '#f3dfb2') : '#e7e5df', glow: h.needsFix ? '0 12px 28px -20px ' + (a.health === 'error' ? 'rgba(210,59,47,.6)' : 'rgba(180,113,0,.5)') : 'none', color: P[a.platform].color, logo: P[a.platform].logo, needsFix: h.needsFix, fix: reconnect(a) }; }).sort((x, y) => y.needsFix - x.needsFix);
+        const healthTiles = s.accounts.map((a) => { const h = HL(a); return { username: a.username, detail: h.needsFix ? h.healthDetail : P[a.platform].label, label: h.hLabel === 'Connected' ? 'OK' : h.hLabel, fg: h.hFg, border: h.needsFix ? (a.health === 'error' ? '#f4c6c2' : '#f3dfb2') : '#e7e5df', glow: h.needsFix ? '0 12px 28px -20px ' + (a.health === 'error' ? 'rgba(210,59,47,.6)' : 'rgba(180,113,0,.5)') : 'none', color: P[a.platform].color, logo: P[a.platform].logo, ...Component.pic(a), title: `@${a.username} · ${P[a.platform].label}`, platform: a.platform, needsFix: h.needsFix, fix: reconnect(a) }; }).sort((x, y) => y.needsFix - x.needsFix);
         const localNow = new Date(nowMs + this.tzShift());
         return {
           dateLine: localNow.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) + ' · ' + this.time(nowMs) + ' · ' + Component.tzLabel(S0.tz),
@@ -2142,7 +2142,8 @@ class Component extends DCLogic {
           goReview: () => this.setState({ screen: 'queue', tab: 'review' }), reviewLabel: pending.length ? `Review ${pending.length} pending` : 'Approvals',
           upNext, upcomingCount: upcoming.length, healthTiles,
           upRef: (this._upRef ||= React.createRef()), upPrev: () => this._upRef.current && this._upRef.current.scrollBy({ left: -320 }), upNextBtn: () => this._upRef.current && this._upRef.current.scrollBy({ left: 320 }),
-          sickTiles: healthTiles.filter((t) => t.needsFix), okTiles: healthTiles.filter((t) => !t.needsFix), okCount: healthTiles.filter((t) => !t.needsFix).length,
+          sickTiles: healthTiles.filter((t) => t.needsFix), okTiles: healthTiles.filter((t) => !t.needsFix).slice(0, 12), okMore: healthTiles.filter((t) => !t.needsFix).length > 12, okMoreLabel: `+${healthTiles.filter((t) => !t.needsFix).length - 12}`, okCount: healthTiles.filter((t) => !t.needsFix).length,
+          okBreakdown: (() => { const by = {}; for (const t of healthTiles) if (!t.needsFix) by[t.platform] = (by[t.platform] || 0) + 1; const parts = Object.entries(by).sort((x, y) => y[1] - x[1]).map(([k, n]) => `${n} ${P[k].label}`); return parts.length > 1 ? ' · ' + parts.join(' · ') : ''; })(),
           attentionShown: S0.allIssues ? attention : attention.slice(0, 3), hasMoreIssues: attention.length > 3, issuesLabel: S0.allIssues ? 'Show fewer' : `View all ${attention.length} issues`, toggleIssues: () => this.setState((st) => ({ allIssues: !st.allIssues })),
           qAcc: S0.qAcc || '', qPlat: S0.qPlat || '', onQAcc: (e) => this.setState({ qAcc: e.target.value || null }), onQPlat: (e) => this.setState({ qPlat: e.target.value || null }),
           weekStrip, weekSum: `${wkSent} of ${wkTotal} sent`,
