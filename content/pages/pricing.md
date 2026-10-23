@@ -16,13 +16,16 @@ Solo suits a creator, freelancer or small business running its own channels. You
 Studio is for agencies, in-house teams and anyone managing many brands. It raises the limit to 100 connected accounts, lets you invite team members to work alongside you, and adds priority support.
 
 ### Which plan should you pick?
-Count the profiles, Pages and channels you post to today, then add the ones you expect to take on soon. If the total stays under 15 and you work alone, Solo is enough. If you need more accounts or other people need to log in, pick Studio.
+Count the profiles, Pages and channels you post to, plus any you expect to add soon. Up to 15 and working alone? Solo is enough. Need more accounts or teammates? Pick Studio.
+
+### Is this a cheap social media scheduler?
+Solo is priced for individuals and small businesses at $19 a month with unlimited posts, but "cheap" depends on what you need. If you post rarely to one account, a platform's built-in scheduler may be enough; our guide to [free social media schedulers](/blog/best-free-social-media-schedulers) covers those options. When you compare social media scheduling tool prices, weigh them against how many accounts and platforms each one covers.
 
 ## What's included on every plan
 The plans differ only in account limits, team members and support. Everything below comes with both.
 
 ### Unlimited posts on all 10 platforms
-Publish as often as you like to X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile. There are no monthly post caps and no per-platform add-ons.
+Publish as often as you like to X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile, with no monthly post caps.
 
 ### Planning tools
 - **Per-platform captions:** write once, then edit each platform's version on its own, with live character-limit checks.
@@ -49,9 +52,6 @@ A connected account is one profile, Page or channel you've linked so Schedule Fo
 
 ### Several accounts on the same platform
 Each account counts on its own. Three Instagram accounts use three of your connected accounts, which is how agencies [post to multiple Instagram accounts](/post-to-multiple-instagram-accounts) from one place.
-
-### Is this a cheap social media scheduler?
-At $19 a month with unlimited posts, Solo sits at the affordable end of paid tools, but "cheap" depends on what you need. If you post rarely to one account, a platform's built-in scheduler may be enough; our guide to [free social media schedulers](/blog/best-free-social-media-schedulers) covers those options. Weigh any social media scheduling tool's price against how many accounts and platforms it actually covers.
 
 ## How the 7-day free trial works
 Every new account starts with a 7-day free trial of the full product.
@@ -91,4 +91,4 @@ The workspace owner opens Billing from the workspace menu and cancels in the Str
 Yes. The REST API, webhooks and RSS feeds are part of every workspace on both plans.
 
 ## Try Schedule For You before you pay
-Connect your accounts, fill the queue and see how per-platform captions fit your workflow, all before your first charge. Pick Solo or Studio, and switch whenever your needs change. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Connect your accounts, fill the queue and see how per-platform captions fit your workflow before your first charge. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.

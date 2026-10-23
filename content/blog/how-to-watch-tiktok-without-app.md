@@ -4,14 +4,14 @@ description: Watch TikTok without the app at tiktok.com in any browser. What wor
 h1: How to Watch TikTok Without the App
 category: TikTok
 excerpt: You can watch TikTok in any web browser at tiktok.com. Here's what you can do signed out, what needs an account, and what still only works in the app.
-keyword: how to watch tiktok without app
+keyword: watch tiktok without the app
 date: 2026-10-23
 ---
 You can watch TikTok without the app by going to **tiktok.com** in any web browser on a computer, tablet or phone. You can open shared video links, browse public profiles and search without an account, though TikTok may ask you to log in after a while. Signing in on the website unlocks your For You and Following feeds, likes, comments and messages, and even uploading.
 
 Here's what works where, how to make the browser experience smoother, and why it's best to skip third-party "TikTok viewer" sites.
 
-## What you can do on TikTok without the app
+## Using TikTok without the app: what works where
 
 | Feature | Browser, signed out | Browser, signed in | Mobile app |
 | --- | --- | --- | --- |
@@ -107,6 +107,10 @@ If you manage TikTok alongside other channels, Schedule For You lets you schedul
 ### Can you watch TikTok without an account?
 
 Yes. Go to tiktok.com in a browser to watch public videos, open shared links and browse public profiles without signing in. TikTok may show login prompts, and you can't like, comment or follow without an account.
+
+### Can I use TikTok without downloading the app?
+
+Yes. The website at tiktok.com lets you watch, search and, once signed in, follow, comment, message and upload through TikTok Studio. Duets, Stitches, effects and the in-app editor still need the mobile app.
 
 ### Can I watch TikTok on my computer?
 

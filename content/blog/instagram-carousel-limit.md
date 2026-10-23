@@ -7,7 +7,7 @@ excerpt: Scheduled Instagram carousels can hold up to 10 photos and videos, even
 keyword: instagram carousel limit
 date: 2026-10-23
 ---
-When you schedule an Instagram carousel with Schedule For You, you can include up to 10 items, and you can mix photos and videos in the same post. The Instagram app itself has allowed more slides for posts created in the app (up to 20 at the time of writing), but posts published through Instagram's API, which scheduling tools use, are limited to 10.
+The Instagram carousel limit for scheduled posts is 10 items. When you schedule a carousel with Schedule For You, you can also mix photos and videos in the same post. The Instagram app itself has allowed more slides for posts created in the app (up to 20 at the time of writing), but posts published through Instagram's API, which scheduling tools use, are limited to 10.
 
 Below you'll find the limits side by side, why the numbers differ, and how to build a carousel that looks right when it goes live.
 
@@ -25,11 +25,11 @@ Below you'll find the limits side by side, why the numbers differ, and how to bu
 
 One image on its own is posted as a regular photo post, and one video on its own is posted as a Reel. Add a second item and the post becomes a carousel.
 
-## Why the app allows more than scheduled posts
+## Instagram post limit: why the app allows more than scheduled posts
 
 Instagram has raised the in-app carousel limit over the years. At the time of writing, posts made directly in the Instagram app can include up to 20 photos and videos. Third-party tools don't publish through the app, though. They use Instagram's official publishing API, and that API caps carousels at 10 items.
 
-So the practical rule is:
+So the practical Instagram carousel limit depends on how you post:
 
 - **Posting by hand in the app:** you may be able to add more than 10 items.
 - **Scheduling through any tool that uses the API:** plan for 10.
@@ -111,9 +111,9 @@ If Instagram rejects the post, for example because an image is outside the allow
 
 ## Frequently asked questions
 
-### How many photos can you put in an Instagram carousel?
+### How many photos can you put in an Instagram post?
 
-When you schedule with Schedule For You, up to 10 photos and videos per carousel. The Instagram app may allow more for posts made in the app (up to 20 at the time of writing), but the publishing API that schedulers use is limited to 10.
+In a carousel scheduled with Schedule For You, up to 10 photos and videos. The Instagram app may allow more for posts made in the app (up to 20 at the time of writing), but the publishing API that schedulers use is limited to 10.
 
 ### Can I mix photos and videos in one carousel?
 

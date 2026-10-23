@@ -1,17 +1,17 @@
 ---
-title: Why Instagram Crops Your Photos (and How to Stop It)
+title: Why Instagram Crops Photos (and How to Stop It)
 description: Instagram crops photos outside its 4:5 to 1.91:1 feed range and trims your profile grid to 3:4. See the right sizes and how to avoid failed scheduled posts.
-h1: Why Instagram Crops Your Photos and How to Prevent It
+h1: Why Instagram Crops Photos and How to Prevent It
 category: Guides
 excerpt: Instagram feed photos must sit between 4:5 portrait and 1.91:1 landscape, and the grid shows a 3:4 crop. Here are the sizes to use and how to avoid failed posts.
-keyword: instagram crops
+keyword: instagram crops photos
 date: 2026-10-23
 ---
 Instagram crops photos because its feed only accepts images between 4:5 portrait and 1.91:1 landscape, at the time of writing. If your image is taller or wider than that, the Instagram app makes you crop it to fit, and your profile grid then trims every post to a 3:4 thumbnail on top of that. When you schedule posts, the rules work differently: Schedule For You doesn't crop or resize images, so a photo outside the allowed range is rejected by Instagram and you get a failed-post alert.
 
 The fix in both cases is the same: export your images at a supported size before you post. This guide shows which sizes to use and how to keep important details out of the crop.
 
-## Instagram image sizes at a glance
+## Instagram aspect ratios and sizes at a glance
 
 | Format | Aspect ratio | Recommended size | Notes |
 |---|---|---|---|
@@ -24,7 +24,7 @@ The fix in both cases is the same: export your images at a supported size before
 
 All of these values are correct at the time of writing. Instagram adjusts its formats from time to time, so check the [Instagram Help Center](https://help.instagram.com) if something looks different.
 
-## Why Instagram crops your photos
+## Why Instagram crops photos
 
 ### Your image is outside the feed range
 
@@ -113,7 +113,7 @@ For a wide panorama, splitting it into a seamless carousel is often better than 
 
 Instagram's feed only accepts images between 4:5 portrait and 1.91:1 landscape at the time of writing. Anything taller or wider has to be cropped to fit. Separately, the profile grid shows each post as a 3:4 thumbnail, which trims the sides.
 
-### What size should I use to avoid cropping?
+### What Instagram aspect ratio avoids cropping?
 
 1080×1350 (4:5) for portrait and 1080×1080 (1:1) for square both fit the feed without a forced crop. Keep key details away from the left and right edges, because the profile grid shows a 3:4 crop.
 

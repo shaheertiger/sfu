@@ -1,17 +1,17 @@
 ---
-title: How to Customize Captions for Each Social Platform
-description: Write one post and tailor the caption for each platform in Schedule For You: per-platform versions, live character-limit checks and a tips table by network.
-h1: How to Customize Captions for Each Platform in Schedule For You
+title: Social Media Captions for Each Platform: How to Tailor
+description: Tailor social media captions for each platform in Schedule For You: one post, per-platform versions, live character-limit checks and tips by network.
+h1: How to Customize Social Media Captions for Each Platform in Schedule For You
 category: Guides
 excerpt: Write your main caption once, then open each platform's version and adjust it without touching the others. Here's the workflow, plus limits and tips per network.
-keyword: customize captions for each platform
+keyword: social media captions for each platform
 date: 2026-10-23
 ---
-In Schedule For You, you write one main caption, then open each platform's version and edit it separately. Changes to one platform's version don't affect the others, and a live character-limit check for each platform shows when a version is too long. That way you can keep one idea across every network while still writing for how each platform reads.
+To customize social media captions for each platform in Schedule For You, you write one main caption, then open each platform's version and edit it separately. Changes to one platform's version don't affect the others, and a live character-limit check for each platform shows when a version is too long. That way you can keep one idea across every network while still writing for how each platform reads.
 
 This guide walks through the workflow step by step, then gives practical caption tips for each of the 10 supported platforms.
 
-## Why one caption rarely fits every platform
+## Why one social media caption rarely fits every platform
 
 Copying the same text everywhere is quick, but it often backfires:
 
@@ -22,7 +22,7 @@ Copying the same text everywhere is quick, but it often backfires:
 
 Tailoring each version takes a few minutes per post and avoids truncated text, failed posts and copy that feels out of place.
 
-## Caption limits at a glance
+## Caption length limits by platform
 
 These are the limits Schedule For You checks against when you write. Platform limits can change, so treat them as correct at the time of writing.
 
@@ -61,7 +61,7 @@ It's usually easier to write the longest version first and cut it down than to s
 
 Change the packaging, not the facts. Dates, prices, offers and links should match across every version, so nobody sees conflicting information. Edit wording, length, hashtags and calls to action instead.
 
-## Caption tips for each platform
+## Social media caption tips for each platform
 
 ### X
 
@@ -126,6 +126,10 @@ The live character-limit check flags that platform's version as too long, so you
 ### Do I have to customize every platform?
 
 No. If the main caption already fits a platform's limit and style, you can leave that version as it is. Most people only adjust the shortest-limit platforms and anywhere hashtags or links need to change.
+
+### How long should a social media caption be?
+
+As long as the idea needs and within the platform's limit. Most feeds show only the first line or two before a "more" cut-off, so put the hook first. Short platforms like X and Bluesky need a tight version; Instagram, LinkedIn and Facebook leave room for more detail.
 
 ### Can I use different hashtags on each platform?
 

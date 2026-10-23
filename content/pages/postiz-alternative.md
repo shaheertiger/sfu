@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "Postiz Alternative: A Hosted Scheduler for 10 Platforms"
-description: Looking for a Postiz alternative? Compare Postiz vs Schedule For You on hosting, AI features, platforms and pricing, see who should pick which, and how to switch.
+description: Looking for a Postiz alternative? Compare Postiz vs Schedule For You on hosting, AI features, platforms and pricing, who should pick which and how to switch.
 h1: Looking for a Postiz Alternative? Self-Hosted vs. Hosted, Compared
 category: Comparisons
 excerpt: Postiz is an open-source scheduler you can self-host or use as a hosted service. If you'd rather not run servers and don't need AI writing, here's how to compare.
@@ -120,10 +120,10 @@ Postiz is open source, so you can run it yourself on your own server; you'd pay 
 Yes. Schedule For You is hosted only and has no AI writing features. It has a 7-day free trial (card required) and plans from $19 a month.
 
 ### Postiz vs. Schedule For You: which supports more platforms?
-Postiz lists more networks, including some community and chat platforms. Schedule For You publishes to 10: Instagram, Facebook Pages, X, LinkedIn, Threads, Bluesky, TikTok, YouTube, Pinterest and Google Business Profile.
+At the time of writing, Postiz lists more networks, including some community and chat platforms; check its site for the current list. Schedule For You publishes to 10: Instagram, Facebook Pages, X, LinkedIn, Threads, Bluesky, TikTok, YouTube, Pinterest and Google Business Profile.
 
 ### Can I self-host Schedule For You?
 No. Schedule For You is a hosted service only. If self-hosting is a requirement, an open-source tool such as Postiz is the better route.
 
-### Does Schedule For You have an API like an open-source tool?
+### Does Schedule For You have an API?
 It has a REST API on both plans, with endpoints for accounts, posts, media, webhooks and RSS feeds. You create a key in Settings → API keys.
