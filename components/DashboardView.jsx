@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import { $arr, $t, $sx, $dv } from '../lib/dc';
 
 export const css =
-  '\n*{box-sizing:border-box}\nhtml,body{margin:0;padding:0;background:#f8f9f6;color:#141619;font:15px/1.5 "Geist",ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}\na{color:#141619;text-decoration:underline;text-underline-offset:2px}\na:hover{color:#5c6b00}\nbutton,input,select,textarea{font:inherit;color:inherit}\ntextarea{resize:vertical}\n::selection{background:#d9ff35;color:#141619}\n@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}\n@keyframes dashIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}\n/* ---- Phone layout ---- */\n.sfy-top,.sfy-tabs,.sfy-scrim{display:none}\n@media (max-width:760px){\n  html,body{overscroll-behavior-y:none}\n  .sfy-shell{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto 1fr;align-content:start}\n  .sfy-side{position:fixed!important;top:0;left:0;bottom:0;width:min(84vw,300px);height:100dvh!important;z-index:70;transform:translateX(-104%);transition:transform .28s cubic-bezier(.2,.8,.2,1);padding-top:calc(14px + env(safe-area-inset-top))!important;padding-bottom:calc(14px + env(safe-area-inset-bottom))!important}\n  .sfy-shell[data-drawer="open"] .sfy-side{transform:none;box-shadow:24px 0 60px -20px rgba(0,0,0,.6)}\n  .sfy-side .sfy-collapse{display:none!important}\n  .sfy-side button{min-height:40px}\n  .sfy-scrim{display:block;position:fixed;inset:0;z-index:65;background:rgba(10,11,13,.55);opacity:0;pointer-events:none;transition:opacity .25s}\n  .sfy-shell[data-drawer="open"] .sfy-scrim{opacity:1;pointer-events:auto}\n  .sfy-top{display:flex;align-items:center;gap:8px;position:sticky;top:0;z-index:40;padding:calc(8px + env(safe-area-inset-top)) 12px 8px;background:rgba(15,16,18,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:#f8f9f6;border-bottom:1px solid #1c1f23}\n  .sfy-iconbtn{width:40px;height:40px;flex:none;display:grid;place-items:center;border:0;border-radius:10px;background:transparent;color:inherit;cursor:pointer}\n  .sfy-iconbtn:active{background:#1c1f23}\n  .sfy-burger,.sfy-burger::before,.sfy-burger::after{display:block;width:18px;height:2px;border-radius:2px;background:#f8f9f6}\n  .sfy-burger{position:relative}\n  .sfy-burger::before,.sfy-burger::after{content:"";position:absolute;left:0}\n  .sfy-burger::before{top:-6px}.sfy-burger::after{top:6px}\n  .sfy-top-title{flex:1;min-width:0;display:flex;align-items:center;gap:9px;border:0;background:transparent;color:inherit;padding:0;cursor:pointer;text-align:left}\n  .sfy-top-title > span{font-weight:800;letter-spacing:-0.04em;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}\n  .sfy-plus{width:40px;height:40px;flex:none;border:0;border-radius:11px;background:#d9ff35;color:#141619;font-size:22px;font-weight:600;line-height:1;cursor:pointer}\n  .sfy-main{padding:18px 16px calc(104px + env(safe-area-inset-bottom))!important}\n  .sfy-main h1{font-size:26px!important}\n  .sfy-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:50;padding:6px 6px calc(6px + env(safe-area-inset-bottom));background:rgba(15,16,18,.96);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid #1c1f23}\n  .sfy-tab{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;border:0;border-radius:10px;background:transparent;color:#a3a9b4;font-size:11px;font-weight:500;cursor:pointer;-webkit-tap-highlight-color:transparent}\n  .sfy-tab[data-on="true"]{color:#f8f9f6}\n  .sfy-tab-ic{width:22px;height:22px;background:center/contain no-repeat}\n  .sfy-tab[data-kind="create"] .sfy-tab-ic{width:40px;height:28px;border-radius:9px;background:#d9ff35;display:grid;place-items:center}\n  .sfy-tab[data-kind="create"] .sfy-tab-ic::after{content:"+";color:#141619;font-size:20px;font-weight:600;line-height:1}\n  .sfy-tab[data-kind="more"] .sfy-tab-ic{display:grid;place-items:center}\n  .sfy-tab[data-kind="more"] .sfy-tab-ic::after{content:"•••";color:currentColor;font-size:11px;letter-spacing:1px}\n  .sfy-tab-badge{position:absolute;top:2px;left:calc(50% + 6px);min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:#dc3545;color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center}\n  .sfy-toast{bottom:calc(86px + env(safe-area-inset-bottom))!important;max-width:calc(100vw - 32px)}\n  input,select,textarea{font-size:16px!important}\n}\n@media (max-width:760px){\n  .sfy-g2{grid-template-columns:repeat(2,minmax(0,1fr))!important}\n  .sfy-qrow{grid-template-columns:auto minmax(0,1fr) auto!important;row-gap:10px!important;padding:14px!important}\n  .sfy-qbody{grid-column:1/-1;grid-row:2}\n  .sfy-qact{grid-column:3;grid-row:1;justify-self:end}\n  .sfy-qtools{min-width:0;max-width:100%}\n  .sfy-scrollx{max-width:100%;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}\n  .sfy-scrollx::-webkit-scrollbar{display:none}\n  .sfy-month .sfy-mcell{min-height:78px!important;padding:5px 3px!important;gap:3px!important}\n  .sfy-mcell > div > button{display:none!important}\n  .sfy-mcell > div > span{font-size:12px!important;min-width:22px!important;height:22px!important}\n  .sfy-month > div:nth-child(-n+7){padding:8px 2px!important;font-size:11px!important}\n  .sfy-mchip{justify-content:center;gap:2px!important;padding:3px 2px!important}\n  .sfy-mchip > span:nth-child(2),.sfy-mchip > span:nth-child(4){display:none!important}\n  .sfy-tscroll{overflow-x:auto!important;-webkit-overflow-scrolling:touch}\n  .sfy-trow{min-width:560px;grid-template-columns:minmax(180px,1fr) 80px 96px 80px 64px!important}\n  .sfy-stack{grid-template-columns:minmax(0,1fr)!important}\n  .sfy-arow{flex-wrap:wrap!important;row-gap:8px!important;padding:14px!important}\n  .sfy-arow > div{flex:1 1 calc(100% - 52px)!important}\n  .sfy-arow > div + span{margin-left:48px}\n}\n@keyframes toastIn{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}\n\n.dashboard-hover-0:hover{background:#1c1f23 !important}\n.dashboard-hover-1:hover{background:#e6ff6e !important}\n.dashboard-hover-2:hover{background:#1c1f23 !important;color:#f8f9f6 !important}\n.dashboard-focus-3:focus{outline:2px solid #d9ff35 !important;outline-offset:1px !important}\n.dashboard-hover-4:hover{background:#2a2e34 !important}\n.dashboard-hover-5:hover{border-color:#141619 !important}\n.dashboard-hover-6:hover{transform:translateY(-4px) !important;box-shadow:0 24px 40px -24px rgba(20,23,26,.45) !important}\n.dashboard-hover-7:hover{background:#fcfbf8 !important}\n.dashboard-hover-8:hover{border-color:#141619 !important;color:#141619 !important}\n.dashboard-hover-9:hover{background:#f3f4f0 !important}\n.dashboard-focus-a:focus{border-color:#8a5a00 !important}\n.dashboard-hover-b:hover{background:#D9FF35 !important;color:#141619 !important}\n.dashboard-hover-c:hover{background:#fff6e0 !important;color:#8a5a00 !important}\n.dashboard-hover-d:hover{border-color:#141619 !important;box-shadow:0 6px 16px -10px rgba(20,22,25,.4) !important}\n.dashboard-hover-e:hover{background:#f1f1ec !important;color:#141619 !important}\n.dashboard-focus-f:focus{border-color:#141619 !important}\n.dashboard-hover-g:hover{outline:2px solid #141619 !important;outline-offset:2px !important}\n.dashboard-focus-h:focus{border-color:#141619 !important;border-style:solid !important}\n.dashboard-hover-i:hover{background:#f6f5f1 !important}\n.dashboard-hover-j:hover{transform:translateY(-2px) !important;box-shadow:0 16px 30px -20px rgba(20,23,26,.45) !important}\n.dashboard-hover-k:hover{color:#dc3545 !important;border-color:#f4c6c2 !important}\n.dashboard-hover-l:hover{border-color:#d9ff35 !important}';
+  '\n*{box-sizing:border-box}\nhtml,body{margin:0;padding:0;background:#f8f9f6;color:#141619;font:15px/1.5 "Geist",ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}\na{color:#141619;text-decoration:underline;text-underline-offset:2px}\na:hover{color:#5c6b00}\nbutton,input,select,textarea{font:inherit;color:inherit}\ntextarea{resize:vertical}\n::selection{background:#d9ff35;color:#141619}\n@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}\n@keyframes dashIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}\n/* ---- Phone layout ---- */\n.sfy-top,.sfy-tabs,.sfy-scrim{display:none}\n@media (max-width:760px){\n  html,body{overscroll-behavior-y:none}\n  .sfy-shell{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto 1fr;align-content:start}\n  .sfy-side{position:fixed!important;top:0;left:0;bottom:0;width:min(84vw,300px);height:100dvh!important;z-index:70;transform:translateX(-104%);transition:transform .28s cubic-bezier(.2,.8,.2,1);padding-top:calc(14px + env(safe-area-inset-top))!important;padding-bottom:calc(14px + env(safe-area-inset-bottom))!important}\n  .sfy-shell[data-drawer="open"] .sfy-side{transform:none;box-shadow:24px 0 60px -20px rgba(0,0,0,.6)}\n  .sfy-side .sfy-collapse{display:none!important}\n  .sfy-side button{min-height:40px}\n  .sfy-scrim{display:block;position:fixed;inset:0;z-index:65;background:rgba(10,11,13,.55);opacity:0;pointer-events:none;transition:opacity .25s}\n  .sfy-shell[data-drawer="open"] .sfy-scrim{opacity:1;pointer-events:auto}\n  .sfy-top{display:flex;align-items:center;gap:8px;position:sticky;top:0;z-index:40;padding:calc(8px + env(safe-area-inset-top)) 12px 8px;background:rgba(15,16,18,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:#f8f9f6;border-bottom:1px solid #1c1f23}\n  .sfy-iconbtn{width:40px;height:40px;flex:none;display:grid;place-items:center;border:0;border-radius:10px;background:transparent;color:inherit;cursor:pointer}\n  .sfy-iconbtn:active{background:#1c1f23}\n  .sfy-burger,.sfy-burger::before,.sfy-burger::after{display:block;width:18px;height:2px;border-radius:2px;background:#f8f9f6}\n  .sfy-burger{position:relative}\n  .sfy-burger::before,.sfy-burger::after{content:"";position:absolute;left:0}\n  .sfy-burger::before{top:-6px}.sfy-burger::after{top:6px}\n  .sfy-top-title{flex:1;min-width:0;display:flex;align-items:center;gap:9px;border:0;background:transparent;color:inherit;padding:0;cursor:pointer;text-align:left}\n  .sfy-top-title > span{font-weight:800;letter-spacing:-0.04em;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}\n  .sfy-plus{width:40px;height:40px;flex:none;border:0;border-radius:11px;background:#d9ff35;color:#141619;font-size:22px;font-weight:600;line-height:1;cursor:pointer}\n  .sfy-main{padding:18px 16px calc(104px + env(safe-area-inset-bottom))!important}\n  .sfy-main h1{font-size:26px!important}\n  .sfy-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:50;padding:6px 6px calc(6px + env(safe-area-inset-bottom));background:rgba(15,16,18,.96);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid #1c1f23}\n  .sfy-tab{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;border:0;border-radius:10px;background:transparent;color:#a3a9b4;font-size:11px;font-weight:500;cursor:pointer;-webkit-tap-highlight-color:transparent}\n  .sfy-tab[data-on="true"]{color:#f8f9f6}\n  .sfy-tab-ic{width:22px;height:22px;background:center/contain no-repeat}\n  .sfy-tab[data-kind="create"] .sfy-tab-ic{width:40px;height:28px;border-radius:9px;background:#d9ff35;display:grid;place-items:center}\n  .sfy-tab[data-kind="create"] .sfy-tab-ic::after{content:"+";color:#141619;font-size:20px;font-weight:600;line-height:1}\n  .sfy-tab[data-kind="more"] .sfy-tab-ic{display:grid;place-items:center}\n  .sfy-tab[data-kind="more"] .sfy-tab-ic::after{content:"•••";color:currentColor;font-size:11px;letter-spacing:1px}\n  .sfy-tab-badge{position:absolute;top:2px;left:calc(50% + 6px);min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:#dc3545;color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center}\n  .sfy-toast{bottom:calc(86px + env(safe-area-inset-bottom))!important;max-width:calc(100vw - 32px)}\n  input,select,textarea{font-size:16px!important}\n}\n@media (max-width:760px){\n  .sfy-g2{grid-template-columns:repeat(2,minmax(0,1fr))!important}\n  .sfy-qrow{grid-template-columns:auto minmax(0,1fr) auto!important;row-gap:10px!important;padding:14px!important}\n  .sfy-qbody{grid-column:1/-1;grid-row:2}\n  .sfy-qact{grid-column:3;grid-row:1;justify-self:end}\n  .sfy-qtools{min-width:0;max-width:100%}\n  .sfy-scrollx{max-width:100%;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}\n  .sfy-scrollx::-webkit-scrollbar{display:none}\n  .sfy-month .sfy-mcell{min-height:78px!important;padding:5px 3px!important;gap:3px!important}\n  .sfy-mcell > div > button{display:none!important}\n  .sfy-mcell > div > span{font-size:12px!important;min-width:22px!important;height:22px!important}\n  .sfy-month > div:nth-child(-n+7){padding:8px 2px!important;font-size:11px!important}\n  .sfy-mchip{justify-content:center;gap:2px!important;padding:3px 2px!important}\n  .sfy-mchip > span:nth-child(2),.sfy-mchip > span:nth-child(4){display:none!important}\n  .sfy-tscroll{overflow-x:auto!important;-webkit-overflow-scrolling:touch}\n  .sfy-trow{min-width:560px;grid-template-columns:minmax(180px,1fr) 80px 96px 80px 64px!important}\n  .sfy-stack{grid-template-columns:minmax(0,1fr)!important}\n  .sfy-arow{flex-wrap:wrap!important;row-gap:8px!important;padding:14px!important}\n  .sfy-arow > div{flex:1 1 calc(100% - 52px)!important}\n  .sfy-arow > div + span{margin-left:48px}\n  /* Phone polish */\n  .sfy-mhide{display:none!important}\n  .sfy-filters{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px 2px;width:calc(100% + 32px);max-width:none;box-sizing:border-box}\n  .sfy-filters::-webkit-scrollbar,.sfy-chiprow::-webkit-scrollbar,.sfy-steps::-webkit-scrollbar,.sfy-folders::-webkit-scrollbar{display:none}\n  .sfy-filters > select{flex:none;max-width:70vw}\n  .sfy-chiprow{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px}\n  .sfy-chiprow > *{flex:none;white-space:nowrap}\n  .sfy-caltools{row-gap:10px!important}\n  .sfy-calhint{white-space:normal!important}\n  .sfy-week{grid-template-columns:minmax(0,1fr)!important;min-width:0!important}\n  .sfy-wday{min-height:0!important;border-right:0!important;border-bottom:1px solid #efefea}\n  .sfy-lrow{grid-template-columns:36px minmax(0,1fr) auto!important;row-gap:6px!important;column-gap:10px!important;padding:12px!important}\n  .sfy-lrow > :nth-child(1){grid-column:2;grid-row:1}\n  .sfy-lrow > :nth-child(2){grid-column:1;grid-row:1/4;align-self:start}\n  .sfy-lrow > :nth-child(3){grid-column:2/4;grid-row:2;white-space:normal!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}\n  .sfy-lrow > :nth-child(4){grid-column:2;grid-row:3}\n  .sfy-lrow > :nth-child(5){grid-column:3;grid-row:1;justify-self:end}\n  .sfy-lrow > :nth-child(6){grid-column:3;grid-row:3;justify-self:end}\n  .sfy-sheet-scrim{z-index:84!important;background:rgba(15,16,18,.5)!important}\n  .sfy-sheet{z-index:85!important;top:auto!important;left:0;width:100%!important;max-height:88dvh;border-left:0!important;border-radius:18px 18px 0 0;padding-bottom:env(safe-area-inset-bottom);animation:sheetUp .28s cubic-bezier(.2,.8,.2,1)!important}\n  .sfy-sheet button{min-height:40px}\n  .sfy-over{z-index:86!important}\n  .sfy-selbar{left:8px!important;right:8px!important;width:auto!important;max-width:none!important;bottom:calc(78px + env(safe-area-inset-bottom))!important;z-index:55!important;justify-content:flex-start!important}\n  .sfy-alertitems{padding-left:0!important}\n  .sfy-cap{min-height:150px!important}\n  .sfy-nextbar{bottom:calc(78px + env(safe-area-inset-bottom))!important}\n  .sfy-rcol{position:static!important}\n  .sfy-steps{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px}\n  .sfy-steps > button{flex:none;white-space:nowrap}\n  .sfy-folders{flex-direction:row!important;overflow-x:auto;scroll-padding:6px;scrollbar-width:none;gap:6px!important;padding:6px!important}\n  .sfy-folders > button{flex:none;white-space:nowrap;padding:7px 10px!important}\n  .sfy-folders > div{flex:none;width:210px;border-top:0!important;margin-top:0!important;padding:0!important;align-items:center}\n  .sfy-trow{min-width:0!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;row-gap:8px!important;padding:12px 14px!important}\n  .sfy-trow > :first-child{grid-column:1/-1}\n  .sfy-thead > :not(:first-child){display:none}\n  .sfy-brow{grid-template-columns:18px 52px minmax(0,1fr) 30px!important;grid-template-areas:\'ord thumb main x\' \'ord meta meta meta\'!important;column-gap:10px!important;padding:12px!important}\n  .sfy-bthumb{width:52px!important;height:52px!important}\n  .sfy-bwhen{flex:1 1 180px;width:auto!important;min-width:0}\n  .sfy-bfoot{flex-wrap:wrap}\n  .sfy-bfoot > button:first-child{flex:1 1 100%;margin-right:0!important}\n  .sfy-bfoot > button:not(:first-child){flex:1}\n  .sfy-trow > span[data-l]{text-align:left!important;display:flex;flex-direction:column;gap:1px}\n  .sfy-trow > span[data-l]::before{content:attr(data-l);font:500 11px Geist,system-ui,sans-serif;color:#9aa0a8}\n}\n.sfy-monly{display:none}\n@media (max-width:760px){.sfy-monly{display:inline}}\n@keyframes sheetUp{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}\n@keyframes toastIn{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}\n\n.dashboard-hover-0:hover{background:#1c1f23 !important}\n.dashboard-hover-1:hover{background:#e6ff6e !important}\n.dashboard-hover-2:hover{background:#1c1f23 !important;color:#f8f9f6 !important}\n.dashboard-focus-3:focus{outline:2px solid #d9ff35 !important;outline-offset:1px !important}\n.dashboard-hover-4:hover{background:#2a2e34 !important}\n.dashboard-hover-5:hover{border-color:#141619 !important}\n.dashboard-hover-6:hover{transform:translateY(-4px) !important;box-shadow:0 24px 40px -24px rgba(20,23,26,.45) !important}\n.dashboard-hover-7:hover{background:#fcfbf8 !important}\n.dashboard-hover-8:hover{border-color:#141619 !important;color:#141619 !important}\n.dashboard-hover-9:hover{background:#f3f4f0 !important}\n.dashboard-focus-a:focus{border-color:#8a5a00 !important}\n.dashboard-hover-b:hover{background:#D9FF35 !important;color:#141619 !important}\n.dashboard-hover-c:hover{background:#fff6e0 !important;color:#8a5a00 !important}\n.dashboard-hover-d:hover{border-color:#141619 !important;box-shadow:0 6px 16px -10px rgba(20,22,25,.4) !important}\n.dashboard-hover-e:hover{background:#f1f1ec !important;color:#141619 !important}\n.dashboard-focus-f:focus{border-color:#141619 !important}\n.dashboard-hover-g:hover{outline:2px solid #141619 !important;outline-offset:2px !important}\n.dashboard-focus-h:focus{border-color:#141619 !important;border-style:solid !important}\n.dashboard-hover-i:hover{background:#f6f5f1 !important}\n.dashboard-hover-j:hover{transform:translateY(-2px) !important;box-shadow:0 16px 30px -20px rgba(20,23,26,.45) !important}\n.dashboard-hover-k:hover{color:#dc3545 !important;border-color:#f4c6c2 !important}\n.dashboard-hover-l:hover{border-color:#d9ff35 !important}';
 
 export function renderDashboard($v) {
   return (
@@ -1242,7 +1242,7 @@ export function renderDashboard($v) {
                         fontWeight: '500',
                         fontSize: '14px',
                       }}
-                      className="dashboard-hover-5"
+                      className="sfy-mhide dashboard-hover-5"
                     >
                       {'Export CSV'}
                     </button>{' '}
@@ -1360,7 +1360,10 @@ export function renderDashboard($v) {
                     </div>{' '}
                   </>
                 ) : null}{' '}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                <div
+                  style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}
+                  className="sfy-filters"
+                >
                   {' '}
                   <select
                     value={$dv($v['qAcc'])}
@@ -1402,7 +1405,10 @@ export function renderDashboard($v) {
                 {$v['hasLabels'] ? (
                   <>
                     {' '}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                    <div
+                      style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}
+                      className="sfy-chiprow"
+                    >
                       {' '}
                       <span style={{ fontSize: '13px', color: '#677184', marginRight: '4px' }}>{'Labels'}</span>{' '}
                       {$arr($v['labelFilters']).map((l, $index) => (
@@ -1620,7 +1626,10 @@ export function renderDashboard($v) {
                           {'×'}
                         </button>{' '}
                       </div>{' '}
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', paddingLeft: '32px' }}>
+                      <div
+                        style={{ display: 'flex', flexDirection: 'column', gap: '4px', paddingLeft: '32px' }}
+                        className="sfy-alertitems"
+                      >
                         {' '}
                         {$arr($v['alertItems']).map((f, $index) => (
                           <Fragment key={$index}>
@@ -2121,12 +2130,16 @@ export function renderDashboard($v) {
                         fontWeight: '600',
                         fontSize: '13px',
                       }}
+                      className="sfy-mhide"
                     >
                       {'+ Create post'}
                     </button>{' '}
                   </div>{' '}
                 </div>{' '}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                <div
+                  style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}
+                  className="sfy-caltools"
+                >
                   {' '}
                   <button
                     onClick={$v['calPrev']}
@@ -2205,70 +2218,81 @@ export function renderDashboard($v) {
                       </Fragment>
                     ))}{' '}
                   </div>{' '}
-                  <span style={{ flex: '1' }} />{' '}
-                  <select
-                    value={$dv($v['calPlat'])}
-                    onChange={$v['onCalPlat']}
-                    aria-label="Filter by platform"
-                    style={{
-                      padding: '7px 10px',
-                      border: '1px solid #e7e5df',
-                      borderRadius: '9px',
-                      background: '#fff',
-                      fontSize: '13px',
-                      color: '#141619',
-                      cursor: 'pointer',
-                    }}
+                  <span style={{ flex: '1' }} className="sfy-mhide" />{' '}
+                  <div
+                    style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}
+                    className="sfy-filters"
                   >
-                    {$arr($v['calPlatOpts']).map((o, $index) => (
-                      <Fragment key={$index}>
-                        <option value={$dv(o?.v)}>{o?.l}</option>
-                      </Fragment>
-                    ))}
-                  </select>{' '}
-                  <select
-                    value={$dv($v['calAcc'])}
-                    onChange={$v['onCalAcc']}
-                    aria-label="Filter by account"
-                    style={{
-                      padding: '7px 10px',
-                      border: '1px solid #e7e5df',
-                      borderRadius: '9px',
-                      background: '#fff',
-                      fontSize: '13px',
-                      color: '#141619',
-                      cursor: 'pointer',
-                    }}
+                    {' '}
+                    <select
+                      value={$dv($v['calPlat'])}
+                      onChange={$v['onCalPlat']}
+                      aria-label="Filter by platform"
+                      style={{
+                        padding: '7px 10px',
+                        border: '1px solid #e7e5df',
+                        borderRadius: '9px',
+                        background: '#fff',
+                        fontSize: '13px',
+                        color: '#141619',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      {$arr($v['calPlatOpts']).map((o, $index) => (
+                        <Fragment key={$index}>
+                          <option value={$dv(o?.v)}>{o?.l}</option>
+                        </Fragment>
+                      ))}
+                    </select>{' '}
+                    <select
+                      value={$dv($v['calAcc'])}
+                      onChange={$v['onCalAcc']}
+                      aria-label="Filter by account"
+                      style={{
+                        padding: '7px 10px',
+                        border: '1px solid #e7e5df',
+                        borderRadius: '9px',
+                        background: '#fff',
+                        fontSize: '13px',
+                        color: '#141619',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      {$arr($v['calAccOpts']).map((o, $index) => (
+                        <Fragment key={$index}>
+                          <option value={$dv(o?.v)}>{o?.l}</option>
+                        </Fragment>
+                      ))}
+                    </select>{' '}
+                    <select
+                      value={$dv($v['calStatus'])}
+                      onChange={$v['onCalStatus']}
+                      aria-label="Filter by status"
+                      style={{
+                        padding: '7px 10px',
+                        border: '1px solid #e7e5df',
+                        borderRadius: '9px',
+                        background: '#fff',
+                        fontSize: '13px',
+                        color: '#141619',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      {$arr($v['calStatusOpts']).map((o, $index) => (
+                        <Fragment key={$index}>
+                          <option value={$dv(o?.v)}>{o?.l}</option>
+                        </Fragment>
+                      ))}
+                    </select>{' '}
+                  </div>{' '}
+                  <span
+                    title="Change in Settings"
+                    style={{ fontSize: '12px', color: '#677184', whiteSpace: 'nowrap' }}
+                    className="sfy-calhint"
                   >
-                    {$arr($v['calAccOpts']).map((o, $index) => (
-                      <Fragment key={$index}>
-                        <option value={$dv(o?.v)}>{o?.l}</option>
-                      </Fragment>
-                    ))}
-                  </select>{' '}
-                  <select
-                    value={$dv($v['calStatus'])}
-                    onChange={$v['onCalStatus']}
-                    aria-label="Filter by status"
-                    style={{
-                      padding: '7px 10px',
-                      border: '1px solid #e7e5df',
-                      borderRadius: '9px',
-                      background: '#fff',
-                      fontSize: '13px',
-                      color: '#141619',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    {$arr($v['calStatusOpts']).map((o, $index) => (
-                      <Fragment key={$index}>
-                        <option value={$dv(o?.v)}>{o?.l}</option>
-                      </Fragment>
-                    ))}
-                  </select>{' '}
-                  <span title="Change in Settings" style={{ fontSize: '12px', color: '#677184', whiteSpace: 'nowrap' }}>
                     {$t($v['tzShort'])}
-                    {' · Drag a scheduled post to another day to move it'}
+                    <span className="sfy-mhide">{' · Drag a scheduled post to another day to move it'}</span>
+                    <span className="sfy-monly">{' · Tap a post to open it'}</span>
                   </span>{' '}
                 </div>{' '}
                 {$v['noteOpen'] ? (
@@ -2582,6 +2606,7 @@ export function renderDashboard($v) {
                           gridTemplateColumns: 'repeat(7,minmax(150px,1fr))',
                           minWidth: '1050px',
                         }}
+                        className="sfy-week"
                       >
                         {' '}
                         {$arr($v['weekDays']).map((d, $index) => (
@@ -2601,6 +2626,7 @@ export function renderDashboard($v) {
                                 gap: '6px',
                                 transition: 'background .15s',
                               }}
+                              className="sfy-wday"
                             >
                               {' '}
                               <div
@@ -2874,6 +2900,7 @@ export function renderDashboard($v) {
                                       padding: '10px 14px',
                                       borderTop: `${e?.divider ?? ''}`,
                                     }}
+                                    className="sfy-lrow"
                                   >
                                     {' '}
                                     <span style={{ fontSize: '13px', fontWeight: '600' }}>{$t(e?.time)}</span>{' '}
@@ -3483,6 +3510,7 @@ export function renderDashboard($v) {
                           lineHeight: '1.6',
                           background: '#fff',
                         }}
+                        className="sfy-cap"
                       />{' '}
                       <div
                         style={{
@@ -4285,6 +4313,58 @@ export function renderDashboard($v) {
                         </div>{' '}
                       </div>{' '}
                     </div>{' '}
+                    {$v['showNextBar'] ? (
+                      <>
+                        {' '}
+                        <div
+                          style={{
+                            position: 'sticky',
+                            bottom: '16px',
+                            zIndex: '30',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '10px',
+                            padding: '8px 8px 8px 14px',
+                            borderRadius: '14px',
+                            background: '#141619',
+                            color: '#f8f9f6',
+                            boxShadow: '0 16px 36px -14px rgba(20,22,25,.7)',
+                          }}
+                          className="sfy-nextbar"
+                        >
+                          {' '}
+                          <span
+                            style={{
+                              flex: '1',
+                              minWidth: '0',
+                              fontSize: '13px',
+                              color: '#c9cdd3',
+                              whiteSpace: 'nowrap',
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                            }}
+                          >
+                            {$t($v['nextBarLabel'])}
+                          </span>{' '}
+                          <button
+                            onClick={$v['goPreviewTab']}
+                            style={{
+                              flex: 'none',
+                              padding: '10px 14px',
+                              borderRadius: '10px',
+                              border: '0',
+                              background: '#d9ff35',
+                              color: '#141619',
+                              cursor: 'pointer',
+                              fontWeight: '600',
+                              fontSize: '14px',
+                            }}
+                          >
+                            {'Preview & publish →'}
+                          </button>{' '}
+                        </div>{' '}
+                      </>
+                    ) : null}{' '}
                   </div>{' '}
                   <div
                     style={{
@@ -4295,6 +4375,7 @@ export function renderDashboard($v) {
                       top: '20px',
                       minWidth: '0',
                     }}
+                    className="sfy-rcol"
                   >
                     {' '}
                     {$v['showPreview'] ? (
@@ -4805,6 +4886,7 @@ export function renderDashboard($v) {
                 <div
                   style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}
                   aria-label="Progress"
+                  className="sfy-steps"
                 >
                   {' '}
                   {$arr($v['bulkSteps']).map((st, $index) => (
@@ -5139,6 +5221,7 @@ export function renderDashboard($v) {
                                   padding: '12px 16px',
                                   borderTop: `${f?.divider ?? ''}`,
                                 }}
+                                className="sfy-brow"
                               >
                                 {' '}
                                 <span style={{ gridArea: 'ord', display: 'flex', flexDirection: 'column', gap: '2px' }}>
@@ -5185,6 +5268,7 @@ export function renderDashboard($v) {
                                     color: '#f3e9d8',
                                     font: "600 10px 'Geist Mono',monospace",
                                   }}
+                                  className="sfy-bthumb"
                                 >
                                   {' '}
                                   <span style={{ textShadow: '0 1px 2px rgba(0,0,0,.5)' }}>{$t(f?.kind)}</span>{' '}
@@ -5251,6 +5335,7 @@ export function renderDashboard($v) {
                                       outline: 'none',
                                       fontSize: '13px',
                                     }}
+                                    className="sfy-bwhen"
                                   />{' '}
                                   <span
                                     style={{
@@ -5295,6 +5380,7 @@ export function renderDashboard($v) {
                               borderTop: '1px solid #e5e3dc',
                               background: '#faf9f6',
                             }}
+                            className="sfy-bfoot"
                           >
                             {' '}
                             <button
@@ -5793,6 +5879,7 @@ export function renderDashboard($v) {
                       flexDirection: 'column',
                       gap: '2px',
                     }}
+                    className="sfy-folders"
                   >
                     {' '}
                     {$arr($v['folderTabs']).map((f, $index) => (
@@ -6782,7 +6869,7 @@ export function renderDashboard($v) {
                       fontWeight: '600',
                       color: '#677184',
                     }}
-                    className="sfy-trow"
+                    className="sfy-trow sfy-thead"
                   >
                     {' '}
                     <span title="Shown only where the platform API reports the metric">
@@ -6858,16 +6945,23 @@ export function renderDashboard($v) {
                             {$t(r?.when)}{' '}
                           </span>{' '}
                         </div>{' '}
-                        <span style={{ textAlign: 'right', font: "500 13px 'Geist Mono',monospace" }}>
+                        <span
+                          data-l="Impressions"
+                          style={{ textAlign: 'right', font: "500 13px 'Geist Mono',monospace" }}
+                        >
                           {$t(r?.imp)}
                         </span>{' '}
-                        <span style={{ textAlign: 'right', font: "500 13px 'Geist Mono',monospace" }}>
+                        <span
+                          data-l="Engagements"
+                          style={{ textAlign: 'right', font: "500 13px 'Geist Mono',monospace" }}
+                        >
                           {$t(r?.eng)}
                         </span>{' '}
-                        <span style={{ textAlign: 'right', font: "500 13px 'Geist Mono',monospace" }}>
+                        <span data-l="Clicks" style={{ textAlign: 'right', font: "500 13px 'Geist Mono',monospace" }}>
                           {$t(r?.clicks)}
                         </span>{' '}
                         <span
+                          data-l="Rate"
                           style={{
                             textAlign: 'right',
                             font: "600 13px 'Geist Mono',monospace",
@@ -7616,6 +7710,7 @@ export function renderDashboard($v) {
               boxShadow: '0 20px 40px -16px rgba(20,23,26,.6)',
               zIndex: '11',
             }}
+            className="sfy-selbar"
           >
             {' '}
             <strong style={{ fontSize: '14px', marginRight: '6px', whiteSpace: 'nowrap' }}>
@@ -7739,6 +7834,7 @@ export function renderDashboard($v) {
               zIndex: '30',
               padding: '24px',
             }}
+            className="sfy-over"
           >
             {' '}
             <div
@@ -7794,6 +7890,7 @@ export function renderDashboard($v) {
           <div
             onClick={$v['closeCalPost']}
             style={{ position: 'fixed', inset: '0', zIndex: '25', background: 'rgba(15,16,18,.25)' }}
+            className="sfy-sheet-scrim"
           />{' '}
           <aside
             role="dialog"
@@ -7812,6 +7909,7 @@ export function renderDashboard($v) {
               flexDirection: 'column',
               animation: 'dashIn .2s ease-out',
             }}
+            className="sfy-sheet"
           >
             {' '}
             <div
@@ -7994,6 +8092,7 @@ export function renderDashboard($v) {
               placeItems: 'center',
               padding: '20px',
             }}
+            className="sfy-over"
           >
             {' '}
             <div
