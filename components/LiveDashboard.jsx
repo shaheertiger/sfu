@@ -11,6 +11,7 @@
  */
 import PostPreview from './dashboard/PostPreview';
 import ImageCropper from './dashboard/ImageCropper';
+import ConnectPicker from './dashboard/ConnectPicker';
 import React from 'react';
 import Base from './Dashboard';
 
@@ -276,6 +277,8 @@ export default class LiveDashboard extends Base {
     const q = new URLSearchParams(window.location.search);
     if (!q.toString()) return;
     if (q.get('screen')) super.setState({ screen: q.get('screen') });
+    if (q.get('pick')) super.setState({ pickId: q.get('pick') });
+    if (q.get('refreshed')) this.flash(`Refreshed ${q.get('refreshed')} connected account${q.get('refreshed') === '1' ? '' : 's'}`);
     if (q.get('connected')) {
       const n = Number(q.get('n') || 1);
       const skipped = Number(q.get('skipped') || 0);
@@ -1014,6 +1017,18 @@ export default class LiveDashboard extends Base {
             <style>{'.sfy-share-btn{bottom:20px}@media (max-width:760px){.sfy-share-btn{bottom:140px}}'}</style>
             Share for review
           </button>
+        )}
+        {this.state.pickId && (
+          <ConnectPicker
+            id={this.state.pickId}
+            onClose={() => super.setState({ pickId: null })}
+            onConnected={(r) => {
+              super.setState({ pickId: null });
+              const label = P[r.platform]?.label || r.platform;
+              this.flash(r.skipped ? `Connected ${r.added} ${label} account${r.added === 1 ? '' : 's'}. ${r.skipped} didn't fit: your plan allows ${r.limit}.` : `Connected ${r.added} ${label} account${r.added === 1 ? '' : 's'}`, !!r.skipped);
+              this.load(false);
+            }}
+          />
         )}
         {this.state.cropFiles && (
           <ImageCropper
