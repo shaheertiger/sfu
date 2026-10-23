@@ -2,12 +2,13 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { getComparisons, getPosts, getToolPages } from '../lib/content.js';
+import { getComparisons, getPlatformPages, getPosts, getStaticPage, getToolPages } from '../lib/content.js';
 import { TOOLS, toolBySlug } from '../lib/tools/registry.js';
+import { PLATFORM_PAGES } from '../lib/platform-pages.js';
 
 const ROOT = path.join(process.cwd(), 'content');
 const files = (dir: string) => fs.readdirSync(path.join(ROOT, dir)).filter((f) => f.endsWith('.md')).map((f) => [f.slice(0, -3), fs.readFileSync(path.join(ROOT, dir, f), 'utf8')] as const);
-const all = [...files('tools'), ...files('blog'), ...files('compare')];
+const all = [...files('tools'), ...files('blog'), ...files('compare'), ...files('platforms'), ...files('pages')];
 
 test('every tool in the registry has a page, and every tool page has a tool', () => {
   const pages = getToolPages().map((p: any) => p.slug).sort();
@@ -41,7 +42,8 @@ test('internal links point at pages that exist', () => {
   const posts = new Set(files('blog').map(([s]) => s));
   const ok = (href: string) => {
     const [p] = href.split('#');
-    if (p === '' || p === '/' || p === '/signup' || p === '/login' || p === '/tools' || p === '/blog' || p === '/compare') return true;
+    if (['', '/', '/signup', '/login', '/tools', '/blog', '/compare', '/about', '/later-alternative'].includes(p)) return true;
+    if (PLATFORM_PAGES.some((x) => p === `/${x.slug}`)) return true;
     let m = /^\/tools\/([a-z0-9-]+)$/.exec(p);
     if (m) return tools.has(m[1]);
     m = /^\/blog\/([a-z0-9-]+)$/.exec(p);
@@ -80,4 +82,15 @@ test('pages for platforms we do not publish to never say we schedule there', () 
       }
     }
   }
+});
+
+test('every platform landing page has copy, and the copy has a FAQ and call to action', () => {
+  const slugs = files('platforms').map(([s]) => s).sort();
+  assert.deepEqual(slugs, PLATFORM_PAGES.map((p) => p.slug).sort());
+  for (const p of getPlatformPages() as any[]) {
+    for (const k of ['title', 'description', 'h1', 'lead', 'keyword']) assert.ok(p[k], `${p.slug}: ${k}`);
+    assert.ok(p.faq.length >= 4, `${p.slug}: faq`);
+    assert.ok(p.cta, `${p.slug}: cta`);
+  }
+  for (const slug of ['about', 'later-alternative']) assert.ok((getStaticPage(slug) as any)?.title, slug);
 });

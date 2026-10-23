@@ -1,5 +1,6 @@
 import { siteUrl } from '@/lib/site';
-import { getComparisons, getPosts, getToolPages } from '@/lib/content';
+import { getComparisons, getPlatformPages, getPosts, getStaticPage, getToolPages } from '@/lib/content';
+import { PLATFORM_PAGES } from '@/lib/platform-pages';
 import { toolBySlug } from '@/lib/tools/registry';
 
 /** Public pages worth indexing. Signed-in pages, previews and utility pages are left out on purpose. */
@@ -10,6 +11,9 @@ export default function sitemap() {
   return [
     { url: `${base}/`, changeFrequency: 'weekly', priority: 1 },
     { url: `${base}/signup`, changeFrequency: 'monthly', priority: 0.8 },
+    ...PLATFORM_PAGES.filter((p) => getPlatformPages().some((c) => c.slug === p.slug)).map((p) => ({ url: `${base}/${p.slug}`, changeFrequency: 'monthly', priority: 0.8 })),
+    ...(getStaticPage('about') ? [{ url: `${base}/about`, changeFrequency: 'yearly', priority: 0.4 }] : []),
+    ...(getStaticPage('later-alternative') ? [{ url: `${base}/later-alternative`, changeFrequency: 'monthly', priority: 0.6 }] : []),
     { url: `${base}/tools`, changeFrequency: 'weekly', priority: 0.8 },
     ...getToolPages()
       .filter((p) => toolBySlug(p.slug))

@@ -233,3 +233,121 @@ export function LogoTool({ config, platform }) {
     </div>
   );
 }
+
+/* Grid maker and carousel splitter: one image cut into equal tiles ------------------------------- */
+
+const TILE_SIZES = [
+  { id: 'portrait', label: 'Portrait 1080×1350', w: 1080, h: 1350 },
+  { id: 'square', label: 'Square 1080×1080', w: 1080, h: 1080 },
+];
+
+function tileBlob(full, x, y, w, h) {
+  const c = document.createElement('canvas');
+  c.width = w;
+  c.height = h;
+  c.getContext('2d').drawImage(full, x, y, w, h, 0, 0, w, h);
+  return c;
+}
+
+export function SliceTool({ config }) {
+  const grid = config.mode === 'grid';
+  const [img, setImg] = useState(null);
+  const [error, setError] = useState('');
+  const [size, setSize] = useState('portrait');
+  const [rows, setRows] = useState(grid ? 3 : 1);
+  const [cols, setCols] = useState(grid ? 3 : 3);
+  const [format, setFormat] = useState('jpg');
+  const canvas = useRef(null);
+  const input = useRef(null);
+  const t = TILE_SIZES.find((x) => x.id === size);
+  const W = cols * t.w;
+  const H = rows * t.h;
+
+  useEffect(() => {
+    if (img && canvas.current) drawResized(canvas.current, img, W, H, 'fill', '#ffffff', false);
+  }, [img, W, H]);
+
+  function load(file) {
+    setError('');
+    if (!file) return;
+    if (!file.type.startsWith('image/')) return setError('Choose an image file (JPG, PNG or WebP).');
+    const url = URL.createObjectURL(file);
+    const im = new Image();
+    im.onload = () => {
+      setImg(im);
+      URL.revokeObjectURL(url);
+    };
+    im.onerror = () => setError('That image could not be opened.');
+    im.src = url;
+  }
+
+  // Tiles in reading order (top-left first). For a grid, the posting order is the reverse:
+  // the bottom-right tile goes up first so the newest post (top-left) completes the picture.
+  const tiles = [];
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) tiles.push({ r, c, i: r * cols + c });
+  const order = (i) => (grid ? tiles.length - i : i + 1);
+  const type = format === 'png' ? 'image/png' : 'image/jpeg';
+  const save = (tile) => download(tileBlob(canvas.current, tile.c * t.w, tile.r * t.h, t.w, t.h), `${grid ? 'grid' : 'slide'}-${String(order(tile.i)).padStart(2, '0')}.${format}`, type);
+  const saveAll = async () => {
+    const sorted = [...tiles].sort((a, b) => order(a.i) - order(b.i));
+    for (const tile of sorted) {
+      save(tile);
+      await new Promise((r) => setTimeout(r, 350));
+    }
+  };
+
+  return (
+    <div className={s.widget}>
+      <div className={s.drop} role="button" tabIndex={0} onClick={() => input.current?.click()} onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && input.current?.click()} onDragOver={(e) => e.preventDefault()} onDrop={(e) => { e.preventDefault(); load(e.dataTransfer.files?.[0]); }}>
+        <strong style={{ color: '#f6f5f1' }}>{img ? 'Choose a different image' : grid ? 'Choose the image for your grid' : 'Choose a wide image or panorama'}</strong>
+        <span>Stays on your device. Nothing is uploaded.</span>
+        <input ref={input} type="file" accept="image/*" hidden onChange={(e) => load(e.target.files?.[0])} />
+      </div>
+      {error && <p className={`${s.hint} ${s.over}`}>{error}</p>}
+      {grid ? (
+        <Chips options={[1, 2, 3, 4].map((n) => ({ id: n, label: `3×${n} · ${3 * n} posts` }))} value={rows} onChange={setRows} label="Grid" />
+      ) : (
+        <Chips options={[2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => ({ id: n, label: `${n} slides` }))} value={cols} onChange={setCols} label="Slides" />
+      )}
+      <div className={s.row}>
+        <Chips options={TILE_SIZES.map((x) => ({ id: x.id, label: x.label }))} value={size} onChange={setSize} label="Tile size" />
+        <Chips options={[{ id: 'jpg', label: 'JPG' }, { id: 'png', label: 'PNG' }]} value={format} onChange={setFormat} label="Format" />
+      </div>
+      <div className={s.preview}>
+        {img ? (
+          <div style={{ position: 'relative', width: '100%', maxWidth: grid ? 420 : '100%' }}>
+            <canvas ref={canvas} style={{ width: '100%', height: 'auto', maxHeight: 'none' }} aria-label="Preview" />
+            <div style={{ position: 'absolute', inset: 0, display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, gridTemplateRows: `repeat(${rows}, 1fr)` }}>
+              {tiles.map((tile) => (
+                <div key={tile.i} style={{ border: '1px solid rgba(255,255,255,.7)', display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-start', padding: 4 }}>
+                  <span style={{ background: 'rgba(0,0,0,.65)', color: '#fff', fontSize: 12, fontWeight: 700, borderRadius: 6, padding: '2px 6px' }}>{order(tile.i)}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <p className={s.hint}>Your {grid ? 'grid' : 'slides'} preview appears here.</p>
+        )}
+      </div>
+      {img && (
+        <>
+          <button type="button" className={`${s.btn} ${s.btnPrimary}`} onClick={saveAll}>
+            Download all {tiles.length} {grid ? 'tiles' : 'slides'}
+          </button>
+          <div className={s.chips}>
+            {[...tiles].sort((a, b) => order(a.i) - order(b.i)).map((tile) => (
+              <button key={tile.i} type="button" className={s.chip} onClick={() => save(tile)}>
+                {grid ? 'Tile' : 'Slide'} {order(tile.i)}
+              </button>
+            ))}
+          </div>
+          <p className={s.hint}>
+            {grid
+              ? 'Numbers show posting order: post 1 first and the last number last, so the top-left tile is your newest post. Your browser may ask to allow multiple downloads.'
+              : 'Numbers show slide order. Upload them in that order as one carousel (up to 10 slides).'}
+          </p>
+        </>
+      )}
+    </div>
+  );
+}

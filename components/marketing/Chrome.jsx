@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import m from './marketing.module.css';
+import { PLATFORM_PAGES } from '@/lib/platform-pages';
 
 /** Header, footer and breadcrumbs shared by the tools, blog and comparison pages. Server components. */
 
@@ -50,12 +51,18 @@ const FOOTER = [
     links: [
       ['/compare/later/recurpost', 'Later vs. RecurPost'],
       ['/compare/brandwatch/recurpost', 'Brandwatch vs. RecurPost'],
+      ['/later-alternative', 'Later alternative'],
       ['/blog/free-hootsuite-alternative', 'Hootsuite alternatives'],
     ],
   },
   {
+    title: 'Platforms',
+    links: PLATFORM_PAGES.map((p) => [`/${p.slug}`, p.name]),
+  },
+  {
     title: 'Product',
     links: [
+      ['/about', 'About'],
       ['/#features', 'Features'],
       ['/#pricing', 'Pricing'],
       ['/blog/connect-facebook-page', 'Connect a Facebook Page'],
