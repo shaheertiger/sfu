@@ -57,7 +57,7 @@ export default async function PlatformPage({ params }) {
           {page.lead && <p className={m.lead}>{page.lead}</p>}
           <div className={m.ctaRow} style={{ justifyContent: 'center', marginTop: 22 }}>
             <Link href="/signup" className={`${m.btn} ${m.btnPrimary}`}>Start your 7-day free trial</Link>
-            <Link href="/#pricing" className={m.btn}>See pricing</Link>
+            <Link href="/pricing" className={m.btn}>See pricing</Link>
           </div>
           <p className={m.meta}>Card required. Not charged until day 8. Cancel anytime.</p>
         </section>

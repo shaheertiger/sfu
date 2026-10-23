@@ -1,13 +1,13 @@
 ---
 title: How Much Does FB Pay for 1,000 Views? Reels Payouts
 description: How much does Facebook pay for 1,000 views on Reels? How Meta's creator monetization works, what moves payouts, and hypothetical examples to estimate yours.
-h1: How Much Does Facebook Reels Pay per 1,000 Views?
+h1: How Much Does Facebook (FB) Pay for 1,000 Views on Reels?
 category: Facebook
 excerpt: Facebook doesn't pay a fixed rate per 1,000 views. Here's how Meta's performance-based creator payouts work and how to estimate your own earnings.
 keyword: how much does fb pay for 1000 views
 date: 2026-10-23
 ---
-Facebook doesn't pay a fixed amount for 1,000 views. Eligible creators earn through Meta's monetization programs, which pay based on how content performs and on the ads shown with it, and the amount per 1,000 views varies widely by country, audience, content type and engagement. The only reliable number is your own: once you're enrolled, your Professional Dashboard shows what your Reels and videos have actually earned.
+How much does FB pay for 1,000 views? There's no fixed amount. Eligible creators earn through Meta's monetization programs, which pay based on how content performs and on the ads shown with it, and the amount per 1,000 views varies widely by country, audience, content type and engagement. The only reliable number is your own: once you're enrolled, your Professional Dashboard shows what your Reels and videos have actually earned.
 
 Here's how Facebook's creator payouts work in general terms, what makes them go up or down, and some clearly hypothetical examples so you can do the math with your own figures.
 
@@ -64,7 +64,7 @@ Even with the same number of views, payouts can be very different. These are the
 
 <!-- cta -->
 
-## Hypothetical worked examples
+## Hypothetical Facebook Reels payout examples
 
 The numbers below are **hypothetical**, chosen only to show the math. They are not averages, typical rates or predictions for your account.
 
@@ -123,6 +123,10 @@ Schedule For You publishes to Facebook Pages (text, up to 10 images, or a video)
 ### How much does Facebook pay for 1,000 views on Reels?
 
 There's no fixed rate. Payouts depend on the program you're in, how many of your views are monetized, your audience's location, your niche and engagement. Once you're enrolled, your Professional Dashboard shows your actual earnings so you can work out your own rate.
+
+### How much does Facebook pay for 1 million views?
+
+There's no set figure, for the same reasons. Work it out from monetized views, not total views. As a hypothetical example, if 400,000 of a million views were monetized and your effective rate were $1.00 per 1,000, you'd earn about $400.
 
 ### How many followers do you need to get paid on Facebook?
 

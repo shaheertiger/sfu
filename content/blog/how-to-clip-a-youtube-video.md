@@ -1,6 +1,6 @@
 ---
 title: How to Clip a YouTube Video (Clip Button and Studio)
-description: Clip a YouTube video with the built-in Clip button (5–60 seconds) and share the link, or trim your own uploads in the YouTube Studio editor. Step by step.
+description: How to clip a YouTube video: use the built-in Clip button (5–60 seconds) and share the link, or trim your own uploads in YouTube Studio. Step by step.
 h1: How to Clip a YouTube Video: The Clip Button, Studio Editor and Shorts
 category: YouTube
 excerpt: Use YouTube's Clip button to share a 5–60 second moment from an eligible video, or trim your own uploads in YouTube Studio. Here's how each works.
@@ -26,7 +26,7 @@ The Clip button doesn't copy, download or re-upload anything. A clip is a pointe
 
 The Clip feature works in the YouTube app on Android and iPhone and on youtube.com in a desktop browser. You need to be signed in.
 
-### On a computer
+### How to clip on a computer
 
 1. Open the video on youtube.com.
 2. Under the player, select **Clip**. If you don't see it, select the three-dot **More** menu next to Share; it's sometimes tucked in there.
@@ -34,7 +34,7 @@ The Clip feature works in the YouTube app on Android and iPhone and on youtube.c
 4. Add a title in the text box. This is what people see when you share the link.
 5. Select **Share clip**, then copy the link or pick where to share it.
 
-### On a phone
+### How to clip on a phone (iPhone or Android)
 
 1. Open the video in the YouTube app.
 2. Swipe along the row of buttons under the video and tap **Clip**.

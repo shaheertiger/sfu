@@ -1,17 +1,17 @@
 ---
 title: TikTok Payout per View: What 1 Million Views Can Earn
 description: How TikTok payout per view really works: Creator Rewards Program rules, qualified views, RPM, worked examples for 1 million views, and other ways creators earn.
-h1: How Much Money Do You Get on TikTok for 1 Million Views?
+h1: TikTok Payout per View: How Much Do You Get for 1 Million Views?
 category: TikTok
 excerpt: There's no fixed TikTok payout per view. Here's how the Creator Rewards Program calculates earnings, with hypothetical examples for 1 million views.
 keyword: tiktok payout per view
 date: 2026-10-23
 ---
-There's no fixed amount TikTok pays for 1 million views. Through the Creator Rewards Program, TikTok pays eligible creators based on **qualified views** of eligible videos longer than one minute, and the rate per 1,000 qualified views (RPM) varies from video to video and account to account. A million views on a 20-second video earns nothing from that program, while a million views on a qualifying video could earn a modest or a meaningful amount depending on how many views qualify and the RPM.
+There's no fixed TikTok payout per view, so there's no set amount for 1 million views either. Through the Creator Rewards Program, TikTok pays eligible creators based on **qualified views** of eligible videos longer than one minute, and the rate per 1,000 qualified views (RPM) varies from video to video and account to account. A million views on a 20-second video earns nothing from that program, while a million views on a qualifying video could earn a modest or a meaningful amount depending on how many views qualify and the RPM.
 
 Below is how the payout actually works, a few clearly hypothetical worked examples, and the other ways TikTok creators make money.
 
-## TikTok payouts at a glance
+## TikTok payout per view at a glance
 
 | Question | Short answer |
 | --- | --- |
@@ -47,13 +47,13 @@ Videos need to be longer than one minute and original. TikTok also applies its c
 
 Not every view on an eligible video counts. TikTok's criteria for qualified views have included factors such as the view coming from the For You feed, a minimum watch time, and the view not being flagged as fraudulent or invalid. That means your qualified views are usually lower than the view count shown on the video. TikTok shows qualified views in your Creator Rewards dashboard, so that's the number to use when estimating earnings.
 
-### What affects your RPM
+### What affects your TikTok RPM
 
 RPM here means rewards per 1,000 qualified views. TikTok has said that rewards depend on factors including originality, how long people watch, how much search value the video has, and how much people engage with it. Outside TikTok's own formula, the same forces that shape ad-funded payouts everywhere matter too: where your audience lives, your niche, and the time of year.
 
 <!-- cta -->
 
-## Worked examples: 1 million views
+## Worked examples: how much TikTok pays for 1 million views
 
 The numbers below are **hypothetical**. They're not averages, predictions or typical rates. They exist only to show how the calculation works, so you can plug in your own figures from your dashboard.
 
@@ -133,6 +133,10 @@ If views have stalled, our guide on [why your TikTok isn't getting views](/blog/
 ### How much does TikTok pay per view?
 
 TikTok doesn't publish a fixed rate per view. Through the Creator Rewards Program, eligible creators earn based on qualified views of eligible videos, and the rate per 1,000 qualified views varies. Your Creator Rewards dashboard shows your actual figures.
+
+### How much does TikTok pay for 1,000 views?
+
+There's no standard figure. For 1,000 qualified views, you earn your RPM for that video. As a hypothetical example, an RPM of $0.80 would mean about $0.80 for those 1,000 qualified views. Views that don't qualify earn nothing from the program.
 
 ### Do TikTok videos under one minute earn money?
 

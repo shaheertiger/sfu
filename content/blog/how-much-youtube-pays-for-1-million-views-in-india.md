@@ -1,7 +1,7 @@
 ---
 title: YouTube View Price in India: What 1 Million Views Earn
 description: There's no fixed YouTube view price in India. See how RPM, audience country and Shorts vs long-form shape what 1 million views earn, with hypothetical examples.
-h1: How Much Does YouTube Pay for 1 Million Views in India?
+h1: YouTube View Price in India: How Much Does YouTube Pay for 1 Million Views?
 category: YouTube
 excerpt: YouTube doesn't set a price per view in India. What 1 million views earn depends on your RPM, where your viewers are and whether they watched Shorts or long videos.
 keyword: youtube view price in india
@@ -11,7 +11,7 @@ There is no official YouTube view price in India. YouTube pays creators a share 
 
 Those figures are hypothetical. Two Indian channels with a million views each can earn very different amounts, and the reasons are mostly about who is watching and what kind of video they watched.
 
-## Quick answer: estimating earnings for 1 million views
+## Quick answer: YouTube earnings for 1 million views in India
 
 The formula is the same everywhere:
 
@@ -70,7 +70,7 @@ A million Shorts views and a million long-form views usually earn very different
 
 Many creators find their Shorts RPM much lower than their long-form RPM, which is why a viral Short with a million views might earn less than a long video with a fraction of the views. Filter the Revenue tab by content type to compare yours.
 
-## What moves your earnings in India
+## What moves the YouTube view price in India
 
 ### Audience country and language
 
@@ -121,6 +121,10 @@ Steady uploads make all of these easier. Schedule For You can upload and schedul
 ### How much does YouTube pay for 1 lakh views in India?
 
 It depends on your RPM. 1 lakh views is 100 × your RPM, so a hypothetical RPM of ₹30 would give about ₹3,000. Your actual RPM is in the Revenue tab of YouTube Studio.
+
+### How much does YouTube pay per 1,000 views in India?
+
+That amount is your RPM, and it isn't fixed. It differs by channel, niche, audience country, season and format. As a hypothetical example, an RPM of ₹40 means about ₹40 per 1,000 views. Check the Revenue tab in YouTube Studio for your own figure.
 
 ### Why is YouTube RPM lower in India than in the US?
 

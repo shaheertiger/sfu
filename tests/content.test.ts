@@ -2,9 +2,10 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { getComparisons, getPlatformPages, getPosts, getStaticPage, getToolPages } from '../lib/content.js';
+import { getComparisons, getContentPage, getPlatformPages, getPosts, getStaticPage, getToolPages } from '../lib/content.js';
 import { TOOLS, toolBySlug } from '../lib/tools/registry.js';
 import { PLATFORM_PAGES } from '../lib/platform-pages.js';
+import { LANDING_PAGES } from '../lib/landing-pages.js';
 
 const ROOT = path.join(process.cwd(), 'content');
 const files = (dir: string) => fs.readdirSync(path.join(ROOT, dir)).filter((f) => f.endsWith('.md')).map((f) => [f.slice(0, -3), fs.readFileSync(path.join(ROOT, dir, f), 'utf8')] as const);
@@ -44,6 +45,7 @@ test('internal links point at pages that exist', () => {
     const [p] = href.split('#');
     if (['', '/', '/signup', '/login', '/tools', '/blog', '/compare', '/about', '/later-alternative'].includes(p)) return true;
     if (PLATFORM_PAGES.some((x) => p === `/${x.slug}`)) return true;
+    if (LANDING_PAGES.some((x) => p === `/${x.slug}`)) return true;
     let m = /^\/tools\/([a-z0-9-]+)$/.exec(p);
     if (m) return tools.has(m[1]);
     m = /^\/blog\/([a-z0-9-]+)$/.exec(p);
@@ -93,4 +95,16 @@ test('every platform landing page has copy, and the copy has a FAQ and call to a
     assert.ok(p.cta, `${p.slug}: cta`);
   }
   for (const slug of ['about', 'later-alternative']) assert.ok((getStaticPage(slug) as any)?.title, slug);
+});
+
+test('every standalone page has copy and a route, and every page file is listed', () => {
+  const listed = new Set(LANDING_PAGES.map((p) => p.slug));
+  for (const [slug] of files('pages')) if (slug !== 'about') assert.ok(listed.has(slug), `content/pages/${slug}.md is not in LANDING_PAGES`);
+  for (const { slug } of LANDING_PAGES) {
+    const c = getContentPage(slug) as any;
+    assert.ok(c, `${slug}: missing content`);
+    assert.ok(fs.existsSync(path.join(process.cwd(), 'app', slug, 'page.jsx')), `${slug}: missing route`);
+    for (const k of ['title', 'description', 'h1']) assert.ok(c.page[k], `${slug}: ${k}`);
+    assert.ok(c.page.faq.length >= 4, `${slug}: faq`);
+  }
 });

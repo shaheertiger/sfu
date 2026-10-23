@@ -9,9 +9,9 @@ date: 2026-10-23
 ---
 When your TikTok isn't getting views, the cause is usually one of two things: something is stopping the video from being shown (a privacy setting, a restriction or a guideline issue), or people are being shown it and swiping away in the first few seconds. Check the first group in settings and TikTok Studio, then improve the second with a stronger hook, a length that fits the idea, and original content.
 
-Here's how to tell which problem you have and what to do about each.
+Here's how to work out why your TikTok is not getting views, and what to do about each problem.
 
-## Quick diagnosis
+## Quick diagnosis: why your TikTok isn't getting views
 
 | What you're seeing | Likely cause | Where to check |
 | --- | --- | --- |
@@ -119,6 +119,10 @@ For format details, our [TikTok video size and ratio guide](/blog/tiktok-video-s
 ### Why does my TikTok have 0 views?
 
 Usually the video is still being reviewed, its privacy is set to Friends or Only me, your account is private, or there's a restriction on your account. Check the video's privacy settings and your Account status page first.
+
+### Why did my TikTok views suddenly drop?
+
+Check Account status first, since a guideline warning or ineligible videos can cut For You distribution. If nothing is listed, look at what changed: a new topic, a different format, weaker hooks or a gap in posting. Compare retention on recent videos with older ones that did well.
 
 ### Is my TikTok account shadowbanned?
 

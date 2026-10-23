@@ -1,17 +1,17 @@
 ---
-title: Why Can't I Post on Facebook? Causes and Fixes
-description: Why can't I post on Facebook? Check app and browser glitches, account restrictions, Page roles, Group approval rules, spam limits, blocked links and outages.
-h1: Why Can't I Post on Facebook? 9 Causes and How to Fix Each One
+title: Why Can't I Post on Facebook (FB)? Causes and Fixes
+description: Why can't I post on FB? Check app and browser glitches, account restrictions, Page roles, Group approval rules, spam limits, blocked links and outages.
+h1: Why Can't I Post on Facebook (FB)? 9 Causes and How to Fix Each One
 category: Facebook
 excerpt: Facebook posting problems usually come from an app glitch, an account restriction, missing Page permissions, Group rules, spam limits or a blocked link. Here's how to find yours.
 keyword: why can't i post on fb
 date: 2026-10-23
 ---
-If you can't post on Facebook, the cause is usually one of a handful of things: a glitch in the app or browser, a restriction on your account, missing permissions on a Page, rules set by a Group's admins, a temporary limit for posting too fast, or a link that Facebook blocks. Less often, Facebook itself is having problems. Start by checking **Account Status** in your settings, then work through the causes below.
+Why can't you post on Facebook (FB)? The cause is usually one of a handful of things: a glitch in the app or browser, a restriction on your account, missing permissions on a Page, rules set by a Group's admins, a temporary limit for posting too fast, or a link that Facebook blocks. Less often, Facebook itself is having problems. Start by checking **Account Status** in your settings, then work through the causes below.
 
-The fix depends on where you're trying to post (your profile, a Page or a Group) and what you see when it fails. The table below helps you narrow it down.
+The fix depends on where Facebook won't let you post (your profile, a Page or a Group) and what you see when it fails. The table below helps you narrow it down.
 
-## Quick answer: match the symptom to the cause
+## Quick answer: why you can't post on Facebook, by symptom
 
 | What you see | Likely cause | Where to look |
 | --- | --- | --- |
@@ -113,6 +113,10 @@ If you see unfamiliar posts, can't change your settings or get logged out repeat
 ### Why can't I post on Facebook all of a sudden?
 
 The most common reasons are an app glitch, a temporary block for activity that looks like spam, or a restriction after a post was flagged. Check Account Status in Settings & privacy, update the app, and try posting from a different device.
+
+### Why does Facebook say I can't post right now?
+
+That message usually means a temporary limit on your account, often after activity that looked like spam, such as sharing the same link in many places quickly. The notice or Account Status normally says how long it lasts. Wait it out and spread your posting more evenly afterward.
 
 ### How do I know if Facebook has restricted my account?
 
