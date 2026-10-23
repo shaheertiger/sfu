@@ -1407,6 +1407,12 @@ class Component extends DCLogic {
         thumbOrBlank: p.media.length ? th : '#f1f1ec',
         divider: i ? '1px solid #efefea' : '0',
         open: () => this.setState({ calPost: p.src || p.id }),
+        key: (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.setState({ calPost: p.src || p.id });
+          }
+        },
         duplicate: (e) => {
           e && e.stopPropagation && e.stopPropagation();
           this.duplicate([p.src || p.id]);
@@ -2332,7 +2338,7 @@ class Component extends DCLogic {
         }));
       },
       mcpText:
-        '{\n  "mcpServers": {\n    "scheduleforyou": {\n      "command": "node",\n      "args": ["/path/to/scheduleforyou/mcp/server.mjs"],\n      "env": {\n        "SFY_URL": "https://app.scheduleforyou.com",\n        "SFY_API_KEY": "sfy_..."\n      }\n    }\n  }\n}',
+        '{\n  "mcpServers": {\n    "scheduleforyou": {\n      "type": "http",\n      "url": "https://scheduleforyou.com/api/mcp",\n      "headers": { "Authorization": "Bearer sfy_..." }\n    }\n  }\n}',
       members,
       invite: s.invite,
       onInvite: (e) => this.setState({ invite: e.target.value }),

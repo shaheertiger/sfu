@@ -2,6 +2,7 @@ import 'server-only';
 import { exec, now, one, query, tx, uid } from './db';
 import { randomToken, sha256 } from './crypto';
 import { neonAuth } from './neon-auth';
+import { isTransientAuthError } from '../auth-errors.js';
 import { HttpError } from './http-error';
 
 export { HttpError };
@@ -56,12 +57,33 @@ export async function ensureUser(nu: NeonUser): Promise<User & { active_workspac
 }
 
 /* ---------- sessions (Neon Auth) ---------- */
+/**
+ * The signed-in user, or null when there is no valid session.
+ * A failed session check (Neon Auth briefly unreachable or waking up) is not the same as being
+ * signed out: it is retried, and if it still fails the request gets a 503, never a 401, so the
+ * dashboard doesn't bounce people to the login page.
+ */
 async function sessionUser() {
-  const { data, error } = await neonAuth().getSession();
-  if (error) console.error('[auth] getSession failed:', error.message);
-  const nu = data?.user;
-  return nu ? ensureUser(nu) : null;
+  let lastError: string | undefined;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const { data, error } = await neonAuth().getSession();
+      if (!error) {
+        const nu = data?.user;
+        return nu ? ensureUser(nu) : null;
+      }
+      if (!isTransientAuthError(error.status)) return null;
+      lastError = `${error.status ?? ''} ${error.message}`;
+    } catch (e: any) {
+      if (e instanceof HttpError) throw e;
+      lastError = e?.message || String(e);
+    }
+    await new Promise((r) => setTimeout(r, 300 * 3 ** attempt)); // 300 ms, 900 ms, 2.7 s
+  }
+  console.error('[auth] getSession failed after retries:', lastError);
+  throw new HttpError(503, "We couldn't check your sign-in just now. Try again in a moment.");
 }
+
 
 export async function currentUser(): Promise<User | null> {
   const u = await sessionUser();

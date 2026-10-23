@@ -30,7 +30,7 @@ input,button{font-family:inherit}
       <img src="logos/schedule-for-you-glyph.svg" alt="" width="28" height="28" style="display:block">
       <span style="font-weight:800;letter-spacing:-0.055em;font-size:17px;line-height:1">schedule for you</span>
     </a>
-    <a href="/login" style="padding:10px 4px;font-size:15px;font-weight:500;color:#a7abb2">Sign in</a>
+    <a href="{{ topHref }}" style="padding:10px 4px;font-size:15px;font-weight:500;color:{{ topColor }}">{{ topLabel }}</a>
   </header>
 
   <section id="top" data-screen-label="Hero" style="padding:28px 20px 36px;display:flex;flex-direction:column;gap:22px">
@@ -259,6 +259,8 @@ class Component extends DCLogic {
   emailRef = React.createRef();
   sheetRef = React.createRef();
   componentDidMount() {
+    // Signed-in visitors get "Open dashboard" instead of "Sign in" (see lib/signed-in-hint.js).
+    this.setState({ signedIn: /(?:^|;\s*)sfy_signed_in=1/.test(document.cookie) });
     this._iv = setInterval(() => this.setState((s) => ({ t: (s.t + 1) % 120 })), 70);
     this._sc = () => {
       const y = window.scrollY, fin = document.getElementById('final');
@@ -305,6 +307,7 @@ class Component extends DCLogic {
     const price = (s.plan === 'studio' ? 59 : 19) * (s.yearly ? 10 / 12 : 1), hrsMonth = (savedMin * 4.33) / 60;
     const ctaLabel = s.done ? 'One moment…' : nPick ? `Start posting to ${nPick} platform${nPick === 1 ? '' : 's'}` : 'Start free trial';
     return {
+      topLabel: s.signedIn ? 'Open dashboard' : 'Sign in', topHref: s.signedIn ? '/app' : '/login', topColor: s.signedIn ? '#dcff2e' : '#a7abb2',
       pickers: PK.map((k) => { const on = s.picks.includes(k); return { name: P[k][0], pressed: on ? 'true' : 'false', border: on ? '#dcff2e' : '#2a2e34', bg: on ? P[k][1] : '#0f1113', op: on ? 1 : 0.55, check: on ? 'grid' : 'none', logo: `url(logos/white/${k}.svg)`, toggle: () => this.setState((st) => ({ picks: on ? st.picks.filter((x) => x !== k) : [...st.picks, k] })) }; }),
       pickHint: nPick ? `${nPick} selected` : 'Tap all that apply',
       hasPicks: nPick > 0, pickedLogos: s.picks.slice(0, 6).map((k) => ({ color: P[k][1], logo: `url(logos/white/${k}.svg)` })), pickSummary: `${nPick} platform${nPick === 1 ? '' : 's'} ready to connect`,

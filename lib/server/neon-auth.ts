@@ -13,6 +13,8 @@ export function neonAuth(): NeonAuth {
   const baseUrl = process.env.NEON_AUTH_BASE_URL;
   const secret = process.env.NEON_AUTH_COOKIE_SECRET;
   if (!baseUrl || !secret) throw new HttpError(503, 'Sign-in is not configured. Set NEON_AUTH_BASE_URL and NEON_AUTH_COOKIE_SECRET.');
-  instance = createNeonAuth({ baseUrl, cookies: { secret } });
+  // The signed session cache cookie saves a round trip to Neon Auth on every request. 30 minutes
+  // (default 5) means fewer upstream checks, so a briefly slow auth server rarely matters.
+  instance = createNeonAuth({ baseUrl, cookies: { secret, sessionDataTtl: 30 * 60 } });
   return instance;
 }

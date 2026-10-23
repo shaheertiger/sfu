@@ -2268,6 +2268,7 @@ export function renderDashboard($v) {
                   </select>{' '}
                   <span title="Change in Settings" style={{ fontSize: '12px', color: '#677184', whiteSpace: 'nowrap' }}>
                     {$t($v['tzShort'])}
+                    {' · Drag a scheduled post to another day to move it'}
                   </span>{' '}
                 </div>{' '}
                 {$v['noteOpen'] ? (
@@ -2465,8 +2466,11 @@ export function renderDashboard($v) {
                             {$arr(d?.shown).map((e, $index) => (
                               <Fragment key={$index}>
                                 {' '}
-                                <button
+                                <div
+                                  role="button"
+                                  tabIndex="0"
                                   onClick={e?.open}
+                                  onKeyDown={e?.key}
                                   draggable={e?.draggable}
                                   onDragStart={e?.dragStart}
                                   onDragEnd={e?.dragEnd}
@@ -2534,7 +2538,7 @@ export function renderDashboard($v) {
                                       display: `${e?.thumbDisplay ?? ''}`,
                                     }}
                                   />{' '}
-                                </button>{' '}
+                                </div>{' '}
                               </Fragment>
                             ))}{' '}
                             <button
@@ -7245,8 +7249,11 @@ export function renderDashboard($v) {
                   </div>{' '}
                   <p style={{ margin: '0', fontSize: '13px', color: '#a7abb2', textWrap: 'pretty' }}>
                     {
-                      'Add this to Claude Desktop, Claude Code or Cursor. The agent gets list_accounts, create_post, list_posts, publish_post and delete_post.'
+                      'Hosted MCP server, nothing to install. Add this to your MCP client and replace sfy_... with an API key from above. Tools: list_accounts, create_post, list_posts, publish_post and delete_post. '
                     }
+                    <a href="/docs#mcp-server" target="_blank" rel="noopener" style={{ color: '#d9ff35' }}>
+                      {'Setup for other clients'}
+                    </a>
                   </p>{' '}
                   <pre
                     style={{

@@ -61,8 +61,8 @@ button{font:inherit;color:inherit}
       <div class="sfy-nav-links" style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end">
         <a href="#features" class="sfy-hide-sm" style="padding:8px 12px;font-size:14px;color:#a7abb2;border-radius:8px" style-hover="color:#f6f5f1">Features</a>
         <a href="#pricing" class="sfy-hide-sm" style="padding:8px 12px;font-size:14px;color:#a7abb2;border-radius:8px" style-hover="color:#f6f5f1">Pricing</a>
-        <a href="/login" class="sfy-nav-cta" style="padding:8px 12px;font-size:14px;color:#a7abb2;border-radius:8px" style-hover="color:#f6f5f1">Sign in</a>
-        <a href="/signup" class="sfy-nav-cta" style="padding:8px 14px;font-size:14px;font-weight:600;border-radius:9px;background:#dcff2e;color:#15171a;transition:transform .15s;white-space:nowrap" style-hover="transform:translateY(-1px);color:#15171a">Start free</a>
+        <a href="{{ navSecondHref }}" class="sfy-nav-cta" style="padding:8px 12px;font-size:14px;color:#a7abb2;border-radius:8px" style-hover="color:#f6f5f1">{{ navSecondLabel }}</a>
+        <a href="{{ navMainHref }}" class="sfy-nav-cta" style="padding:8px 14px;font-size:14px;font-weight:600;border-radius:9px;background:#dcff2e;color:#15171a;transition:transform .15s;white-space:nowrap" style-hover="transform:translateY(-1px);color:#15171a">{{ navMainLabel }}</a>
       </div>
     </div>
   </nav>
@@ -795,6 +795,8 @@ class Component extends DCLogic {
   }
   componentDidUpdate() { if (!this.revealDone) { this.revealDone = true; this.setupReveal(); } this.measureCursor(); }
   componentDidMount() {
+    // Signed-in visitors get "Open dashboard" instead of "Sign in" (see lib/signed-in-hint.js).
+    this.setState({ signedIn: /(?:^|;\s*)sfy_signed_in=1/.test(document.cookie) });
     this.onResize();
     window.addEventListener('resize', this.onResize);
     window.addEventListener('scroll', this.onScroll, { passive: true });
@@ -890,6 +892,8 @@ class Component extends DCLogic {
         clearTimeout(this.ct);
         this.ct = setTimeout(() => this.setState({ copied: false }), 1500);
       },
+      navMainLabel: this.state.signedIn ? 'Open dashboard' : 'Start free', navMainHref: this.state.signedIn ? '/app' : '/signup',
+      navSecondLabel: this.state.signedIn ? 'Pricing' : 'Sign in', navSecondHref: this.state.signedIn ? '#pricing' : '/login',
       quotes: QUOTES,
       showTestimonials: this.props.showTestimonials ?? true,
       ...(() => {

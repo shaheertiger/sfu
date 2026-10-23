@@ -82,14 +82,14 @@ export function renderLanding($v) {
                 {'Pricing'}
               </a>{' '}
               <a
-                href="/login"
+                href={$v['navSecondHref']}
                 style={{ padding: '8px 12px', fontSize: '14px', color: '#a7abb2', borderRadius: '8px' }}
                 className="sfy-nav-cta landing-hover-0"
               >
-                {'Sign in'}
+                {$t($v['navSecondLabel'])}
               </a>{' '}
               <a
-                href="/signup"
+                href={$v['navMainHref']}
                 style={{
                   padding: '8px 14px',
                   fontSize: '14px',
@@ -102,7 +102,7 @@ export function renderLanding($v) {
                 }}
                 className="sfy-nav-cta landing-hover-1"
               >
-                {'Start free'}
+                {$t($v['navMainLabel'])}
               </a>{' '}
             </div>{' '}
           </div>{' '}

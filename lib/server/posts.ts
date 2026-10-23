@@ -125,6 +125,16 @@ async function hydrate(rows: any[]) {
   return rows.map((r) => ({ ...r, targets: byPost.get(r.id) || [] }));
 }
 
+/**
+ * A post as the public API returns it: internal bookkeeping (workspace, author, reminder and
+ * repeat links, retry counters) is left out.
+ */
+export function publicPost(p: any) {
+  if (!p) return p;
+  const { workspace_id, created_by, reminded_for, parent_id, ...post } = p;
+  return { ...post, targets: (p.targets || []).map(({ post_id, attempts, ...t }: any) => t) };
+}
+
 export async function getPost(workspaceId: string, id: string) {
   const rows = await query('SELECT * FROM posts WHERE id=$1 AND workspace_id=$2', [id, workspaceId]);
   return (await hydrate(rows))[0] || null;
@@ -145,8 +155,9 @@ export async function listPosts(workspaceId: string, opts: { status?: string; fr
 export async function validatePost(workspaceId: string, input: PostInput) {
   const errors: string[] = [];
   if (!input.targets?.length) errors.push('Pick at least one account');
-  const media = input.media?.length ? await query('SELECT id, mime FROM media WHERE workspace_id=$1 AND id = ANY($2)', [workspaceId, input.media]) : [];
-  if (media.length !== (input.media || []).length) errors.push('Some media files were not found');
+  // Only confirmed uploads count: unconfirmed files would be dropped at publish time.
+  const media = input.media?.length ? await query('SELECT id, mime FROM media WHERE workspace_id=$1 AND id = ANY($2) AND uploaded', [workspaceId, input.media]) : [];
+  if (media.length !== new Set(input.media || []).size) errors.push('Some media files were not found or have not finished uploading. Confirm each upload with PATCH /media/{id} { "uploaded": true }.');
   const accounts = await query('SELECT id, platform, username FROM social_accounts WHERE workspace_id=$1 AND id = ANY($2)', [workspaceId, (input.targets || []).map((t) => t.account_id)]);
   const byId = new Map(accounts.map((a) => [a.id, a]));
   const over = accounts.length ? await overLimitAccountIds(workspaceId) : new Set<string>();

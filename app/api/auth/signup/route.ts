@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { ensureUser } from '@/lib/server/auth';
 import { assertSameOrigin, body, errorResponse, json } from '@/lib/server/api';
 import { neonAuth } from '@/lib/server/neon-auth';
+import { setSignedInHint } from '@/lib/server/signed-in-hint';
 
 const Input = z.object({ email: z.string().email().max(200), password: z.string().min(8).max(200), name: z.string().max(80).optional() });
 
@@ -21,6 +22,7 @@ export async function POST(req: Request) {
     await ensureUser(data.user);
     // No token means Neon Auth is set to verify emails before the first sign-in.
     if (!data.token) return json({ ok: true, verify: true, message: 'Check your email to confirm your address, then sign in.' });
+    await setSignedInHint(true);
     return json({ ok: true });
   } catch (e) {
     return errorResponse(e);

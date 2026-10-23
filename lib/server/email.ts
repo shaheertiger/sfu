@@ -39,18 +39,25 @@ export async function sendEmail(mail: Email): Promise<{ id?: string; skipped?: b
 export const esc = (s: unknown) =>
   String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 
-/** Simple branded HTML wrapper. `body` must already be escaped HTML. */
-export function layout(title: string, body: string, cta?: { label: string; url: string }) {
+const SETTINGS_FOOTER = 'Turn these emails on or off in Settings.';
+
+/**
+ * Simple branded HTML wrapper. `body` must already be escaped HTML.
+ * `opts.footer`: plain text (escaped here) replacing the default Settings note; `null` leaves the footer out.
+ * `opts.afterCta`: escaped HTML placed under the button, inside the card.
+ */
+export function layout(title: string, body: string, cta?: { label: string; url: string }, opts: { footer?: string | null; afterCta?: string } = {}) {
   const button = cta
     ? `<p style="margin:24px 0 0"><a href="${esc(cta.url)}" style="display:inline-block;background:#dcff2e;color:#15171a;font-weight:600;text-decoration:none;padding:12px 18px;border-radius:10px">${esc(cta.label)}</a></p>`
     : '';
+  const footerText = opts.footer === undefined ? SETTINGS_FOOTER : opts.footer;
+  const footer = footerText ? `\n<p style="margin:16px 4px 0;font-size:12px;color:#7a7d82">${esc(footerText)}</p>` : '';
   return `<!doctype html><html><body style="margin:0;background:#f6f6f3;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#15171a">
 <div style="max-width:560px;margin:0 auto;padding:32px 20px">
 <p style="margin:0 0 20px;font-weight:700;font-size:15px">schedule for you</p>
 <div style="background:#fff;border-radius:14px;padding:24px;border:1px solid #e7e7e2">
 <h1 style="margin:0 0 12px;font-size:20px;line-height:1.3">${esc(title)}</h1>
-${body}${button}
-</div>
-<p style="margin:16px 4px 0;font-size:12px;color:#7a7d82">Turn these emails on or off in Settings.</p>
+${body}${button}${opts.afterCta || ''}
+</div>${footer}
 </div></body></html>`;
 }
