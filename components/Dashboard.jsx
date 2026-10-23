@@ -714,6 +714,13 @@ class Component extends DCLogic {
           : d.mode === 'queue'
             ? this.nextSlots(1, [], d.id)[0] || Component.at(1, 9)
             : null;
+    // "Post as" picked before choosing accounts applies to every Instagram and Facebook target without its own choice.
+    const accP = Object.fromEntries(s.accounts.map((a) => [a.id, a.platform])),
+      ov = { ...d.ov };
+    if (d.postAs && d.postAs !== 'Post')
+      for (const id of d.targets)
+        if ((accP[id] === 'instagram' || accP[id] === 'facebook') && !(ov[id]?.opts || {}).format)
+          ov[id] = { ...(ov[id] || {}), opts: { ...(ov[id]?.opts || {}), format: d.postAs } };
     const post = {
       id: d.id || 'p' + Date.now(),
       note: d.note || '',
@@ -727,7 +734,7 @@ class Component extends DCLogic {
       at,
       caption: d.caption,
       media: d.media,
-      ov: d.ov,
+      ov,
       targets: d.targets.map((id) => ({ acc: id, status: st, error: '' })),
     };
     const posts = d.id ? s.posts.map((p) => (p.id === d.id ? post : p)) : [...s.posts, post];
@@ -978,6 +985,15 @@ class Component extends DCLogic {
   time(ms) {
     return new Date(ms + this.tzShift(ms)).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
   }
+  /** A CSS background showing the post's first image, or null for the placeholder (the live app fills this in). */
+  mediaThumb(p, dim) {
+    return null;
+  }
+  /** dayLabel for the middle of a sentence: "tomorrow", "on Saturday", "on Sat, Oct 31". */
+  dayWords(ms) {
+    const l = this.dayLabel(ms);
+    return /^(Today|Tomorrow|Yesterday)$/.test(l) ? l.toLowerCase() : `on ${l}`;
+  }
   dayLabel(ms) {
     const a = new Date(ms + this.tzShift());
     a.setHours(0, 0, 0, 0);
@@ -987,7 +1003,14 @@ class Component extends DCLogic {
     if (diff === 0) return 'Today';
     if (diff === 1) return 'Tomorrow';
     if (diff === -1) return 'Yesterday';
-    return a.toLocaleDateString('en-US', { weekday: 'long' });
+    // A weekday name alone is only clear within the coming week; further out, show the date.
+    if (diff > 1 && diff < 7) return a.toLocaleDateString('en-US', { weekday: 'long' });
+    return a.toLocaleDateString('en-US', {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+      ...(a.getFullYear() !== b.getFullYear() ? { year: 'numeric' } : {}),
+    });
   }
 
   renderVals() {
@@ -1026,7 +1049,7 @@ class Component extends DCLogic {
           out.push({
             kind: 'dup',
             q,
-            msg: `Same caption already scheduled for ${who} ${this.dayLabel(q.at).toLowerCase()} at ${this.time(q.at)}`,
+            msg: `Same caption already scheduled for ${who} ${this.dayWords(q.at)} at ${this.time(q.at)}`,
           });
         else if (gap < 30) out.push({ kind: 'overlap', q, msg: `${Math.round(gap)} min from another post on ${who}` });
       }
@@ -1352,7 +1375,7 @@ class Component extends DCLogic {
     }
     const rowPad = this.props.density === 'compact' ? '10px 16px' : '16px 18px';
     const nextUp = upcoming.length
-      ? `${upcoming.length} scheduled. Next one goes out ${this.dayLabel(upcoming[0].at).toLowerCase()} at ${this.time(upcoming[0].at)}.`
+      ? `${upcoming.length} scheduled. Next one goes out ${this.dayWords(upcoming[0].at)} at ${this.time(upcoming[0].at)}.`
       : 'Nothing scheduled yet.';
 
     // calendar
@@ -1388,7 +1411,7 @@ class Component extends DCLogic {
     ];
     const evOf = (p, i, n) => {
       const st = STL(p),
-        th = p.media.length ? TONES[Component.hash(p.src || p.id) % 4] : 'transparent';
+        th = p.media.length ? this.mediaThumb(p) || TONES[Component.hash(p.src || p.id) % 4] : 'transparent';
       return {
         time: this.time(p.at),
         timeShort: this.time(p.at).replace(':00', '').replace(' AM', 'a').replace(' PM', 'p'),
@@ -1694,9 +1717,13 @@ class Component extends DCLogic {
           ? 'now'
           : 'draft';
     // "Post as" (Instagram and Facebook): one choice for every selected account, changeable per account in its tab.
-    const fmtOf = (a) => (d.ov[a.id]?.opts || {}).format || 'Post';
+    const fmtOf = (a) => (d.ov[a.id]?.opts || {}).format || d.postAs || 'Post';
     const metaSel = sel.filter((a) => a.platform === 'instagram' || a.platform === 'facebook');
-    const fmtNow = metaSel.length && metaSel.every((a) => fmtOf(a) === fmtOf(metaSel[0])) ? fmtOf(metaSel[0]) : '';
+    const fmtNow = !metaSel.length
+      ? d.postAs || 'Post'
+      : metaSel.every((a) => fmtOf(a) === fmtOf(metaSel[0]))
+        ? fmtOf(metaSel[0])
+        : '';
     const FMT_HINT = {
       Post: 'Feed post · images 1:1 or 4:5, carousels up to 10',
       Reel: 'Vertical video · 9:16 (1080×1920)',
@@ -1709,9 +1736,16 @@ class Component extends DCLogic {
       bg: fmtNow === f ? '#141619' : '#fff',
       fg: fmtNow === f ? '#fff' : '#141619',
       border: fmtNow === f ? '#141619' : '#e7e5df',
-      pick: () => metaSel.forEach((a) => this.setOv(a.id, { opts: { ...(d.ov[a.id]?.opts || {}), format: f } })),
+      pick: () => {
+        this.upd({ postAs: f });
+        metaSel.forEach((a) => this.setOv(a.id, { opts: { ...(d.ov[a.id]?.opts || {}), format: f } }));
+      },
     }));
-    const pvFmt = pvAcc && (pvAcc.platform === 'instagram' || pvAcc.platform === 'facebook') ? fmtOf(pvAcc) : 'Post';
+    const pvFmt = !pvAcc
+      ? d.postAs || 'Post'
+      : pvAcc.platform === 'instagram' || pvAcc.platform === 'facebook'
+        ? fmtOf(pvAcc)
+        : 'Post';
     const vertical = pvFmt !== 'Post' || ['tiktok'].includes(pvAcc?.platform);
     const pv = {
       ratio: vertical ? '9/16' : '1',
@@ -2266,10 +2300,10 @@ class Component extends DCLogic {
       showPreview: this.props.showPreview ?? true,
       pv,
       previewTabs,
-      showFormat: metaSel.length > 0,
+      showFormat: metaSel.length > 0 || d.media.includes('VIDEO'),
       formatChips,
       formatHint: fmtNow ? FMT_HINT[fmtNow] : 'Different per account. Set it in each account’s tab.',
-      formatFor: metaSel.length === sel.length ? '' : 'Instagram and Facebook only',
+      formatFor: !sel.length || metaSel.length < sel.length ? 'Applies to Instagram and Facebook' : '',
       connected,
       platformCards,
       acQ: S0.acQ || '',
@@ -3515,10 +3549,11 @@ class Component extends DCLogic {
                     : ['Scheduled', '#f1efe9', '#4a4f57'];
           const words = p.caption.split(/\s+/).slice(0, 6).join(' ');
           return {
+            __id: p.id,
             day: this.dayLabel(p.at),
             time: this.time(p.at),
             caption: p.caption,
-            cover: hasMedia ? tones[Component.hash(p.id) % tones.length] : '#141619',
+            cover: hasMedia ? this.mediaThumb(p, true) || tones[Component.hash(p.id) % tones.length] : '#141619',
             coverFg: hasMedia ? '#f6efe3' : '#d9ff35',
             kind: p.media.includes('VIDEO')
               ? '▶ VIDEO'
@@ -3794,7 +3829,7 @@ class Component extends DCLogic {
             stFg: st[2],
             when: p.at ? `${this.dayLabel(p.at)}, ${this.time(p.at)}` : 'Not scheduled',
             caption: p.caption,
-            thumb: p.media.length ? TONES[Component.hash(p.id) % 4] : 'none',
+            thumb: p.media.length ? this.mediaThumb(p) || TONES[Component.hash(p.id) % 4] : 'none',
             thumbDisplay: p.media.length ? 'block' : 'none',
             accs: p.targets.map((t) => {
               const a = accById[t.acc];
