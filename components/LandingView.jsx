@@ -2612,6 +2612,9 @@ export function renderLanding($v) {
               <a href="/compare" style={{ color: '#6b7079' }}>
                 {'Compare'}
               </a>
+              <a href="/about" style={{ color: '#6b7079' }}>
+                {'About'}
+              </a>
               <a href="/login" style={{ color: '#6b7079' }}>
                 {'Sign in'}
               </a>

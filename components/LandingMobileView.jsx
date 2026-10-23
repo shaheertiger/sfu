@@ -945,6 +945,9 @@ export function renderLandingMobile($v) {
               <a href="/compare" style={{ color: '#a7abb2', padding: '10px 0' }}>
                 {'Compare'}
               </a>
+              <a href="/about" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'About'}
+              </a>
               <a href="/login" style={{ color: '#a7abb2', padding: '10px 0' }}>
                 {'Sign in'}
               </a>
