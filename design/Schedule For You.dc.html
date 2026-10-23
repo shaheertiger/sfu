@@ -693,6 +693,8 @@ textarea{resize:vertical}
                   </sc-for>
                 </div>
               </div>
+              <sc-if value="{{ pvCustom }}" hint-placeholder-val="{{ false }}"><div style="min-width:0">{{ pvNode }}</div></sc-if>
+              <sc-if value="{{ pvClassic }}" hint-placeholder-val="{{ true }}">
               <div style="border:1px solid #e7e5df;border-radius:12px;padding:14px;background:#fff;display:flex;flex-direction:column;gap:10px">
                   <div style="display:flex;align-items:center;gap:10px">
                     <span style="position:relative;width:34px;height:34px;border-radius:50%;flex:none;background:{{ pv.pic }}"><span style="position:absolute;right:-3px;bottom:-3px;width:15px;height:15px;border-radius:50%;border:2px solid #fff;background:{{ pv.badge }};display:{{ pv.badgeDisplay }}"></span></span>
@@ -711,6 +713,7 @@ textarea{resize:vertical}
                     </div>
                   </sc-if>
                 </div>
+              </sc-if>
               <span style="font-size:11px;color:#9aa0a8;margin-top:-4px">Approximate preview. Each platform renders posts slightly differently.</span>
             </sc-if>
             <div style="background:#fff;border:1px solid #e7e5df;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 18px 40px -30px rgba(20,22,25,.45)">
@@ -1902,7 +1905,7 @@ class Component extends DCLogic {
       })(),
       hasSelected: sel.length > 0, variants, modes, isSchedule: d.mode === 'schedule', when: d.when, onWhen: (e) => this.upd({ when: e.target.value }), quickTimes,
       hasProblems: uniq.length > 0, problems: uniq, submit: () => this.submit(), submitDisabled, submitOpacity: submitDisabled ? 0.45 : 1, submitLabel,
-      showPreview: this.props.showPreview ?? true, pv, previewTabs,
+      showPreview: this.props.showPreview ?? true, pv, previewTabs, pvClassic: true, pvCustom: false, pvNode: null,
       showFormat: metaSel.length > 0 || d.media.includes('VIDEO'), formatChips, formatHint: fmtNow ? FMT_HINT[fmtNow] : 'Different per account. Set it in each account’s tab.',
       formatFor: !sel.length || metaSel.length < sel.length ? 'Applies to Instagram and Facebook' : '',
       connected, platformCards, acQ: S0.acQ || '', onAcQ: (e) => this.setState({ acQ: e.target.value }), acPlat: S0.acPlat || '', onAcPlat: (e) => this.setState({ acPlat: e.target.value }), acSt: S0.acSt || '', onAcSt: (e) => this.setState({ acSt: e.target.value }),

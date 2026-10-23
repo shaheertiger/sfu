@@ -4198,149 +4198,161 @@ export function renderDashboard($v) {
                             ))}{' '}
                           </div>{' '}
                         </div>{' '}
-                        <div
-                          style={{
-                            border: '1px solid #e7e5df',
-                            borderRadius: '12px',
-                            padding: '14px',
-                            background: '#fff',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '10px',
-                          }}
-                        >
-                          {' '}
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        {$v['pvCustom'] ? (
+                          <>
+                            <div style={{ minWidth: '0' }}>{$t($v['pvNode'])}</div>
+                          </>
+                        ) : null}{' '}
+                        {$v['pvClassic'] ? (
+                          <>
                             {' '}
-                            <span
+                            <div
                               style={{
-                                position: 'relative',
-                                width: '34px',
-                                height: '34px',
-                                borderRadius: '50%',
-                                flex: 'none',
-                                background: `${$v['pv']?.pic ?? ''}`,
+                                border: '1px solid #e7e5df',
+                                borderRadius: '12px',
+                                padding: '14px',
+                                background: '#fff',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '10px',
                               }}
                             >
-                              <span
-                                style={{
-                                  position: 'absolute',
-                                  right: '-3px',
-                                  bottom: '-3px',
-                                  width: '15px',
-                                  height: '15px',
-                                  borderRadius: '50%',
-                                  border: '2px solid #fff',
-                                  background: `${$v['pv']?.badge ?? ''}`,
-                                  display: `${$v['pv']?.badgeDisplay ?? ''}`,
-                                }}
-                              />
-                            </span>{' '}
-                            <div style={{ display: 'flex', flexDirection: 'column', minWidth: '0' }}>
                               {' '}
-                              <span style={{ fontWeight: '600', fontSize: '14px' }}>{$t($v['pv']?.name)}</span>{' '}
-                              <span style={{ fontSize: '12px', color: '#677184' }}>{$t($v['pv']?.handle)}</span>{' '}
-                            </div>{' '}
-                          </div>{' '}
-                          <div
-                            style={{
-                              whiteSpace: 'pre-wrap',
-                              wordBreak: 'break-word',
-                              fontSize: '14px',
-                              color: `${$v['pv']?.textColor ?? ''}`,
-                            }}
-                          >
-                            {$t($v['pv']?.text)}
-                          </div>{' '}
-                          {$v['hasMedia'] ? (
-                            <>
-                              {' '}
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                {' '}
+                                <span
+                                  style={{
+                                    position: 'relative',
+                                    width: '34px',
+                                    height: '34px',
+                                    borderRadius: '50%',
+                                    flex: 'none',
+                                    background: `${$v['pv']?.pic ?? ''}`,
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      position: 'absolute',
+                                      right: '-3px',
+                                      bottom: '-3px',
+                                      width: '15px',
+                                      height: '15px',
+                                      borderRadius: '50%',
+                                      border: '2px solid #fff',
+                                      background: `${$v['pv']?.badge ?? ''}`,
+                                      display: `${$v['pv']?.badgeDisplay ?? ''}`,
+                                    }}
+                                  />
+                                </span>{' '}
+                                <div style={{ display: 'flex', flexDirection: 'column', minWidth: '0' }}>
+                                  {' '}
+                                  <span style={{ fontWeight: '600', fontSize: '14px' }}>{$t($v['pv']?.name)}</span>{' '}
+                                  <span style={{ fontSize: '12px', color: '#677184' }}>
+                                    {$t($v['pv']?.handle)}
+                                  </span>{' '}
+                                </div>{' '}
+                              </div>{' '}
                               <div
                                 style={{
-                                  position: 'relative',
-                                  display: 'grid',
-                                  gridTemplateColumns: `${$v['pv']?.cols ?? ''}`,
-                                  gap: '4px',
-                                  width: `${$v['pv']?.frameW ?? ''}`,
-                                  margin: '0 auto',
+                                  whiteSpace: 'pre-wrap',
+                                  wordBreak: 'break-word',
+                                  fontSize: '14px',
+                                  color: `${$v['pv']?.textColor ?? ''}`,
                                 }}
                               >
-                                {' '}
-                                {$v['pv']?.hasFmtTag ? (
-                                  <>
-                                    <span
-                                      style={{
-                                        position: 'absolute',
-                                        zIndex: '1',
-                                        top: '8px',
-                                        left: '8px',
-                                        padding: '2px 8px',
-                                        borderRadius: '999px',
-                                        background: 'rgba(0,0,0,.6)',
-                                        color: '#fff',
-                                        fontSize: '11px',
-                                        fontWeight: '600',
-                                      }}
-                                    >
-                                      {$t($v['pv']?.fmtTag)}
-                                      {' · 9:16'}
-                                    </span>
-                                  </>
-                                ) : null}{' '}
-                                {$arr($v['pv']?.media).map((m, $index) => (
-                                  <Fragment key={$index}>
-                                    {' '}
-                                    <div
-                                      style={{
-                                        position: 'relative',
-                                        overflow: 'hidden',
-                                        aspectRatio: `${$v['pv']?.ratio ?? ''}`,
-                                        borderRadius: '8px',
-                                        background: `${m?.bg ?? ''}`,
-                                        display: 'grid',
-                                        placeItems: 'center',
-                                        font: "500 11px 'Geist Mono',monospace",
-                                        color: '#f3e9d8',
-                                      }}
-                                    >
-                                      {m?.isVideo ? (
-                                        <>
-                                          <video
-                                            src={m?.video}
-                                            controls={m?.controls}
-                                            playsInline=""
-                                            preload="metadata"
-                                            style={{
-                                              position: 'absolute',
-                                              inset: '0',
-                                              width: '100%',
-                                              height: '100%',
-                                              objectFit: 'cover',
-                                              background: '#000',
-                                              pointerEvents: `${m?.pe ?? ''}`,
-                                            }}
-                                          />
-                                        </>
-                                      ) : null}
-                                      <span
-                                        style={{
-                                          position: 'relative',
-                                          pointerEvents: 'none',
-                                          padding: '2px 6px',
-                                          borderRadius: '6px',
-                                          background: `${m?.labelBg ?? ''}`,
-                                          textShadow: '0 1px 2px rgba(0,0,0,.4)',
-                                        }}
-                                      >
-                                        {$t(m?.label)}
-                                      </span>
-                                    </div>{' '}
-                                  </Fragment>
-                                ))}{' '}
+                                {$t($v['pv']?.text)}
                               </div>{' '}
-                            </>
-                          ) : null}{' '}
-                        </div>{' '}
+                              {$v['hasMedia'] ? (
+                                <>
+                                  {' '}
+                                  <div
+                                    style={{
+                                      position: 'relative',
+                                      display: 'grid',
+                                      gridTemplateColumns: `${$v['pv']?.cols ?? ''}`,
+                                      gap: '4px',
+                                      width: `${$v['pv']?.frameW ?? ''}`,
+                                      margin: '0 auto',
+                                    }}
+                                  >
+                                    {' '}
+                                    {$v['pv']?.hasFmtTag ? (
+                                      <>
+                                        <span
+                                          style={{
+                                            position: 'absolute',
+                                            zIndex: '1',
+                                            top: '8px',
+                                            left: '8px',
+                                            padding: '2px 8px',
+                                            borderRadius: '999px',
+                                            background: 'rgba(0,0,0,.6)',
+                                            color: '#fff',
+                                            fontSize: '11px',
+                                            fontWeight: '600',
+                                          }}
+                                        >
+                                          {$t($v['pv']?.fmtTag)}
+                                          {' · 9:16'}
+                                        </span>
+                                      </>
+                                    ) : null}{' '}
+                                    {$arr($v['pv']?.media).map((m, $index) => (
+                                      <Fragment key={$index}>
+                                        {' '}
+                                        <div
+                                          style={{
+                                            position: 'relative',
+                                            overflow: 'hidden',
+                                            aspectRatio: `${$v['pv']?.ratio ?? ''}`,
+                                            borderRadius: '8px',
+                                            background: `${m?.bg ?? ''}`,
+                                            display: 'grid',
+                                            placeItems: 'center',
+                                            font: "500 11px 'Geist Mono',monospace",
+                                            color: '#f3e9d8',
+                                          }}
+                                        >
+                                          {m?.isVideo ? (
+                                            <>
+                                              <video
+                                                src={m?.video}
+                                                controls={m?.controls}
+                                                playsInline=""
+                                                preload="metadata"
+                                                style={{
+                                                  position: 'absolute',
+                                                  inset: '0',
+                                                  width: '100%',
+                                                  height: '100%',
+                                                  objectFit: 'cover',
+                                                  background: '#000',
+                                                  pointerEvents: `${m?.pe ?? ''}`,
+                                                }}
+                                              />
+                                            </>
+                                          ) : null}
+                                          <span
+                                            style={{
+                                              position: 'relative',
+                                              pointerEvents: 'none',
+                                              padding: '2px 6px',
+                                              borderRadius: '6px',
+                                              background: `${m?.labelBg ?? ''}`,
+                                              textShadow: '0 1px 2px rgba(0,0,0,.4)',
+                                            }}
+                                          >
+                                            {$t(m?.label)}
+                                          </span>
+                                        </div>{' '}
+                                      </Fragment>
+                                    ))}{' '}
+                                  </div>{' '}
+                                </>
+                              ) : null}{' '}
+                            </div>{' '}
+                          </>
+                        ) : null}{' '}
                         <span style={{ fontSize: '11px', color: '#9aa0a8', marginTop: '-4px' }}>
                           {'Approximate preview. Each platform renders posts slightly differently.'}
                         </span>{' '}

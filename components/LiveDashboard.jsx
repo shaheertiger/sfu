@@ -9,6 +9,7 @@
  * - Replaces the demo-only actions with real ones: connecting accounts, uploads to R2,
  *   API keys, invites, workspaces, signing out.
  */
+import PostPreview from './dashboard/PostPreview';
 import React from 'react';
 import Base from './Dashboard';
 
@@ -596,6 +597,27 @@ export default class LiveDashboard extends Base {
     if ((s.uploads || []).length) v.hasMedia = true;
     // The preview plays videos (with controls); the composer tiles stay still thumbnails.
     if (v.pv) v.pv.media = d.media.slice(0, v.pv.media.length || 4).map((kind, i) => { const t = look(kind, i); return t.isVideo ? { ...t, label: '', labelBg: 'transparent', controls: true, pe: 'auto' } : { ...t, controls: false, pe: 'none' }; });
+    // Realistic preview (Instagram/Facebook feed, Reels, Stories) in place of the generic card.
+    {
+      const sel = s.accounts.filter((a) => d.targets.includes(a.id));
+      const pa = sel.find((a) => a.id === d.previewId) || sel[0] || null;
+      const meta = pa && (pa.platform === 'instagram' || pa.platform === 'facebook');
+      const format = meta ? (d.ov[pa.id]?.opts || {}).format || d.postAs || 'Post' : pa ? 'Post' : d.postAs || 'Post';
+      const media = d.media.map((kind, i) => { const m = libById.get((d.mediaIds || [])[i]); return { kind, url: m ? m.url || m.videoUrl || '' : '' }; });
+      const at = d.mode === 'schedule' ? Base.fromLocal(d.when) : null;
+      const when = d.mode === 'now' ? 'Just now' : at ? `${this.dayLabel(at)} ${this.time(at)}` : d.mode === 'queue' ? 'Next open slot' : 'Draft';
+      v.pvClassic = false;
+      v.pvCustom = true;
+      v.pvNode = (
+        <PostPreview
+          account={pa && { name: pa.display || pa.username, handle: pa.username, avatar: pa.avatar, platform: pa.platform }}
+          caption={pa ? d.ov[pa.id]?.caption ?? d.caption : d.caption}
+          media={media}
+          format={format}
+          when={when}
+        />
+      );
+    }
 
     // Media library.
     const q = (s.libQ || '').toLowerCase();
