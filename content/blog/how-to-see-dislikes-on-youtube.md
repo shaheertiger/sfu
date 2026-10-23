@@ -1,6 +1,6 @@
 ---
 title: How to See Dislikes on YouTube (Creators and Viewers)
-description: How to see dislikes on YouTube: creators can find exact dislike counts in YouTube Studio. Learn why public counts were hidden and what dislike extensions really show.
+description: How to see dislikes on YouTube: creators get exact counts in YouTube Studio. Learn why public counts were hidden and what dislike extensions really show.
 h1: How to See Dislikes on YouTube
 category: YouTube
 excerpt: Creators can still see exact dislike counts in YouTube Studio. Viewers can't see them on other people's videos, and browser extensions only show third-party estimates.

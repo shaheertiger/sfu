@@ -51,8 +51,6 @@ RPM is your revenue per 1,000 views **after** YouTube's share. It counts every v
 
 Several things pull RPM below CPM: YouTube's revenue share, viewers who don't see an ad (ad blockers, very short watch sessions, videos with limited ads), and views from places with fewer advertisers.
 
-<!-- cta -->
-
 ## How YouTube splits ad revenue
 
 The revenue share depends on the format. These are YouTube's terms at the time of writing; check [YouTube Help](https://support.google.com/youtube) for the current version, because they can change.
@@ -70,6 +68,8 @@ Because of this pooled model, many creators see a very different RPM on Shorts t
 ### Income that isn't tied to views
 
 Some YPP income doesn't depend on view counts at all: channel memberships, Super Chat, Super Stickers, Super Thanks and shopping features (where available). A channel with a loyal community can earn more from these than from ads, even with modest views.
+
+<!-- cta -->
 
 ## What changes your earnings per 1,000 views
 

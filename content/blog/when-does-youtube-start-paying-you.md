@@ -1,6 +1,6 @@
 ---
 title: When Does YouTube Start Paying You? The Full Timeline
-description: When does YouTube start paying you? Learn the Partner Program requirements, how AdSense payments work, the monthly payment cycle and why a first payout can be late.
+description: When does YouTube start paying you? See the Partner Program requirements, how AdSense pays, the monthly payment cycle and why a first payout can be late.
 h1: When Does YouTube Start Paying You?
 category: YouTube
 excerpt: YouTube pays once you're in the Partner Program, have linked AdSense and your balance passes the payment threshold. Here's the timeline from eligibility to your first payout.

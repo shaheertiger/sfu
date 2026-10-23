@@ -1,6 +1,6 @@
 ---
 title: How to See Your YouTube Subscribers (Count and List)
-description: How to see your YouTube subscribers in YouTube Studio: check your exact count, see who subscribed, track gains and losses in Analytics, and why some never show up.
+description: How to see your YouTube subscribers in Studio: check your exact count, see who subscribed, track gains and losses in Analytics, and why some never show up.
 h1: How to See Your YouTube Subscribers
 category: YouTube
 excerpt: YouTube Studio shows your exact subscriber count, a list of recent subscribers with public subscriptions, and subscribers gained and lost in Analytics.

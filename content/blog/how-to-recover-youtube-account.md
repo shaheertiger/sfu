@@ -1,6 +1,6 @@
 ---
 title: How to Recover a YouTube Account (Locked Out or Hacked)
-description: How to recover a YouTube account: use Google account recovery, secure a hacked account, restore your channel with YouTube's hacked-channel help, and avoid recovery scams.
+description: How to recover a YouTube account: use Google account recovery, secure a hacked account, restore your channel via YouTube Help and avoid recovery scams.
 h1: How to Recover Your YouTube Account
 category: YouTube
 excerpt: YouTube channels belong to Google accounts, so recovery starts with Google. Here's how to get back in, secure a hacked channel and avoid recovery scams.

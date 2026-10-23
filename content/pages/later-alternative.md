@@ -44,10 +44,10 @@ If others are involved, check for team members, approvals and a way for clients 
 ### Reliability signals
 Find out what happens when a post fails. A good scheduler tells you immediately and makes it easy to reconnect and retry.
 
-<!-- cta -->
-
 ### Pricing and trial terms
 Check how many accounts each plan includes, whether posts are capped, and whether the trial needs a card.
+
+<!-- cta -->
 
 ## How Schedule For You compares
 Schedule For You is built around one idea: write once, tailor each platform's version, and publish from one queue and calendar. Where we're not confident about Later's current offering, the table says "Check".
