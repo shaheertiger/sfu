@@ -4307,7 +4307,8 @@ export function renderDashboard($v) {
                                         <>
                                           <video
                                             src={m?.video}
-                                            muted=""
+                                            controls={m?.controls}
+                                            playsInline=""
                                             preload="metadata"
                                             style={{
                                               position: 'absolute',
@@ -4315,7 +4316,8 @@ export function renderDashboard($v) {
                                               width: '100%',
                                               height: '100%',
                                               objectFit: 'cover',
-                                              pointerEvents: 'none',
+                                              background: '#000',
+                                              pointerEvents: `${m?.pe ?? ''}`,
                                             }}
                                           />
                                         </>
@@ -4323,6 +4325,7 @@ export function renderDashboard($v) {
                                       <span
                                         style={{
                                           position: 'relative',
+                                          pointerEvents: 'none',
                                           padding: '2px 6px',
                                           borderRadius: '6px',
                                           background: `${m?.labelBg ?? ''}`,

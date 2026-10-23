@@ -584,7 +584,7 @@ export default class LiveDashboard extends Base {
       const none = { isVideo: false, video: '', labelBg: 'transparent' };
       if (m?.url) return { ...none, bg: `#2a2e34 url("${String(m.url).replace(/["\\\n]/g, encodeURIComponent)}") center/cover no-repeat`, label: '' };
       // Videos show their first frame (#t=0.1 makes Safari render one) with a play badge.
-      if (m?.videoUrl) return { bg: '#1d2025', label: '▶', isVideo: true, video: `${m.videoUrl}#t=0.1`, labelBg: 'rgba(0,0,0,.5)' };
+      if (m?.videoUrl) return { bg: '#1d2025', label: '▶', isVideo: true, video: `${m.videoUrl}#t=0.5`, labelBg: 'rgba(0,0,0,.5)' };
       return { ...none, bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind === 'VIDEO' ? '▶ VIDEO' : kind };
     };
     v.mediaTiles = d.media.map((kind, i) => ({ kind, ...look(kind, i), remove: () => this.upd({ media: d.media.filter((_, j) => j !== i), mediaIds: (d.mediaIds || []).filter((_, j) => j !== i) }) }));
@@ -594,7 +594,8 @@ export default class LiveDashboard extends Base {
         bg: `linear-gradient(to top, #5d6470 ${u.pct}%, #2a2e34 ${u.pct}%)`, remove: () => this.flash('Wait for the upload to finish, then remove it', true) });
     }
     if ((s.uploads || []).length) v.hasMedia = true;
-    if (v.pv) v.pv.media = d.media.slice(0, v.pv.media.length || 4).map((kind, i) => look(kind, i));
+    // The preview plays videos (with controls); the composer tiles stay still thumbnails.
+    if (v.pv) v.pv.media = d.media.slice(0, v.pv.media.length || 4).map((kind, i) => { const t = look(kind, i); return t.isVideo ? { ...t, label: '', labelBg: 'transparent', controls: true, pe: 'auto' } : { ...t, controls: false, pe: 'none' }; });
 
     // Media library.
     const q = (s.libQ || '').toLowerCase();

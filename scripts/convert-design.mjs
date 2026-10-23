@@ -144,7 +144,7 @@ function pseudoClass(kind, css) {
   return pseudo.get(k).cls;
 }
 
-const ATTR_MAP = { class: 'className', for: 'htmlFor', tabindex: 'tabIndex', readonly: 'readOnly', maxlength: 'maxLength', minlength: 'minLength', autofocus: 'autoFocus', autocomplete: 'autoComplete', colspan: 'colSpan', rowspan: 'rowSpan', spellcheck: 'spellCheck', contenteditable: 'contentEditable', crossorigin: 'crossOrigin', srcset: 'srcSet', enctype: 'encType', novalidate: 'noValidate', 'xlink:href': 'xlinkHref', 'xml:space': 'xmlSpace', 'xmlns:xlink': 'xmlnsXlink' };
+const ATTR_MAP = { class: 'className', for: 'htmlFor', tabindex: 'tabIndex', playsinline: 'playsInline', readonly: 'readOnly', maxlength: 'maxLength', minlength: 'minLength', autofocus: 'autoFocus', autocomplete: 'autoComplete', colspan: 'colSpan', rowspan: 'rowSpan', spellcheck: 'spellCheck', contenteditable: 'contentEditable', crossorigin: 'crossOrigin', srcset: 'srcSet', enctype: 'encType', novalidate: 'noValidate', 'xlink:href': 'xlinkHref', 'xml:space': 'xmlSpace', 'xmlns:xlink': 'xmlnsXlink' };
 const VOID = new Set(['img', 'input', 'br', 'hr', 'meta', 'link', 'source', 'area', 'col', 'wbr', 'embed', 'track']);
 const NO_WS = new Set(['table', 'thead', 'tbody', 'tfoot', 'tr', 'select', 'colgroup', 'ul', 'ol']);
 const PLAIN_TEXT = new Set(['option', 'title', 'textarea']);
