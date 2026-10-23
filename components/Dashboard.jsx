@@ -1770,6 +1770,8 @@ class Component extends DCLogic {
           isVideo: false,
           video: '',
           labelBg: 'transparent',
+          controls: false,
+          pe: 'none',
         })),
       cols: d.media.length === 1 || vertical ? '1fr' : '1fr 1fr',
     };
