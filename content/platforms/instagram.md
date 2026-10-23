@@ -52,7 +52,7 @@ No. It publishes feed photos, Reels and carousels. Stories need to be posted in 
 You need an Instagram Business or Creator account that's linked to a Facebook Page. Personal Instagram accounts can't be connected. You can switch account type in Instagram's settings; see [Instagram's help center](https://help.instagram.com) for the current steps.
 
 ### How many photos can I put in a carousel?
-Between 2 and 10 images or videos, and you can mix the two. For more on how carousels behave, read our guide to the [Instagram carousel limit](/blog/instagram-carousel-limit).
+Between 2 and 10 images or videos, and you can mix the two in one carousel.
 
 ### Will Schedule For You crop my photos to fit?
 No, it publishes the image as you uploaded it. If the aspect ratio is outside what Instagram accepts for the feed, resize it before you schedule.

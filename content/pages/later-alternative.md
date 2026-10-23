@@ -1,6 +1,6 @@
 ---
 title: "Later Alternative: A Simpler Scheduler for 10 Platforms"
-description: Looking for a Later alternative? See what to look for, how Schedule For You compares on platforms and workflow, where Later may suit you better, and how to switch.
+description: Looking for a Later alternative? See what to check, how Schedule For You compares on platforms and workflow, where Later may suit you better, and how to switch.
 h1: Looking for a Later Alternative? What to Consider Before You Switch
 category: Comparisons
 excerpt: Later is strong at visual Instagram planning and link-in-bio. If you need one queue for 10 platforms with per-platform captions, here's how to compare and switch.
@@ -75,7 +75,7 @@ Schedule For You is built around one idea: write once, tailor each platform's ve
 | Posts per month | Unlimited on every plan | Check |
 
 ### What Schedule For You includes
-Two plans: Solo at $19 a month with 15 connected accounts, and Studio at $59 a month with 100 connected accounts, team members and priority support. Both include unlimited posts. There's a 7-day free trial; a card is required, you aren't charged until day 8 and you can cancel anytime. There's no free plan.
+Two plans: Solo at $19 a month with 15 connected accounts, and Studio at $59 a month with 100 connected accounts, team members and priority support. Both include unlimited posts. There's a 7-day free trial; a card is required, you aren't charged until day 8 and you can cancel anytime. There's no free plan. [Start your 7-day free trial](/signup) to try it with your own accounts.
 
 ### Where it's different in practice
 - **Text-first networks are first-class.** Threads, X, Bluesky, LinkedIn and Facebook all accept text-only posts, and you can schedule them without attaching an image.
