@@ -33,3 +33,12 @@ test('a setting that can’t be read is skipped instead of refusing the others',
   assert.deepEqual(cleanPrefs({ tz: 'Europe/Berlin', tzSet: true }).prefs, { tz: 'Europe/Berlin', tzSet: true });
   assert.deepEqual(cleanPrefs(null), { prefs: {}, skipped: [] });
 });
+
+test('account groups are saved, shortened and capped like other settings', async () => {
+  const { cleanPrefs } = await import('../lib/server/prefs.ts');
+  const { prefs, skipped } = cleanPrefs({ accountGroups: [{ id: 'g1', name: 'x'.repeat(80), ids: ['acc_1', 'acc_2'] }, 'junk'] });
+  assert.deepEqual(skipped, []);
+  assert.equal(prefs.accountGroups!.length, 1);
+  assert.equal(prefs.accountGroups![0].name.length, 40);
+  assert.deepEqual(prefs.accountGroups![0].ids, ['acc_1', 'acc_2']);
+});

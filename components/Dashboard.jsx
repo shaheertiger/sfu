@@ -514,6 +514,7 @@ class Component extends DCLogic {
     cursor: Component.thisMonth(),
     toast: '',
     toastBad: false,
+    accGroups: [{ id: 'g1', name: 'Maya brand', ids: ['a2', 'a3', 'a7'] }],
     accounts: [
       { id: 'a1', platform: 'bluesky', username: 'maya.bsky.social', display: 'Maya Chen' },
       { id: 'a2', platform: 'x', username: 'mayabuilds', display: 'Maya Chen' },
@@ -2416,6 +2417,72 @@ class Component extends DCLogic {
       accountChips,
       allLabel: n === s.accounts.length ? 'Clear' : 'Select all',
       toggleAll: () => this.upd({ targets: n === s.accounts.length ? [] : s.accounts.map((a) => a.id) }),
+      ...(() => {
+        // Quick picks: saved account groups first, then one chip per platform. A chip adds its accounts,
+        // or removes them when they're all selected already.
+        const ids = new Set(s.accounts.map((a) => a.id));
+        const toggleSet = (set) => {
+          const all = set.length && set.every((id) => d.targets.includes(id));
+          this.upd({
+            targets: all ? d.targets.filter((id) => !set.includes(id)) : [...new Set([...d.targets, ...set])],
+          });
+        };
+        const chip = (label, set, icon, extra = {}) => {
+          const on = set.length > 0 && set.every((id) => d.targets.includes(id));
+          return {
+            label,
+            count: String(set.length),
+            icon,
+            title: `${on ? 'Deselect' : 'Select'} ${label} (${set.length})`,
+            bg: on ? '#141619' : '#fff',
+            fg: on ? '#fff' : '#141619',
+            border: on ? '#141619' : '#e5e3dc',
+            pick: () => toggleSet(set),
+            removable: false,
+            remove: () => {},
+            ...extra,
+          };
+        };
+        const groups = (S0.accGroups || [])
+          .map((g) => ({ ...g, ids: g.ids.filter((id) => ids.has(id)) }))
+          .filter((g) => g.ids.length);
+        const byPlat = [...new Set(s.accounts.map((a) => a.platform))]
+          .map((pl) => [pl, s.accounts.filter((a) => a.platform === pl).map((a) => a.id)])
+          .filter(([, set]) => set.length > 1);
+        return {
+          quickPicks: [
+            ...groups.map((g) =>
+              chip(g.name, g.ids, 'linear-gradient(135deg,#d9ff35,#9be15d)', {
+                removable: true,
+                remove: () => this.setState((st) => ({ accGroups: (st.accGroups || []).filter((x) => x.id !== g.id) })),
+              }),
+            ),
+            ...(s.accounts.length > 6
+              ? byPlat.map(([pl, set]) => chip(P[pl].label, set, `${P[pl].logo} center/60% no-repeat, ${P[pl].color}`))
+              : []),
+          ],
+          selCountLabel: n ? `· ${n}` : '',
+          canSaveGroup: n > 1 && !S0.groupNaming,
+          groupNaming: !!S0.groupNaming,
+          groupName: S0.groupName || '',
+          startGroup: () => this.setState({ groupNaming: true, groupName: '' }),
+          cancelGroup: () => this.setState({ groupNaming: false }),
+          onGroupName: (e) => this.setState({ groupName: e.target.value }),
+          saveGroup: (e) => {
+            e.preventDefault();
+            const name = (S0.groupName || '').trim().slice(0, 40);
+            if (!name) return this.flash('Give the group a name', true);
+            this.setState((st) => ({
+              groupNaming: false,
+              accGroups: [
+                ...(st.accGroups || []).filter((g) => g.name.toLowerCase() !== name.toLowerCase()),
+                { id: 'g' + Date.now(), name, ids: [...d.targets] },
+              ].slice(-50),
+            }));
+            this.flash(`Saved group “${name}” with ${d.targets.length} accounts`);
+          },
+        };
+      })(),
       caption: d.caption,
       onCaption: (e) => this.upd({ caption: e.target.value }),
       counters,
@@ -2531,6 +2598,21 @@ class Component extends DCLogic {
       submitDisabled,
       submitOpacity: submitDisabled ? 0.45 : 1,
       submitLabel,
+      // Dropping files on the composer's media box (the demo adds placeholders; the live app uploads).
+      mediaOver: (e) => {
+        e.preventDefault();
+        if (!S0.mediaHover) this.setState({ mediaHover: true });
+      },
+      mediaLeave: () => this.setState({ mediaHover: false }),
+      mediaDrop: (e) => {
+        e.preventDefault();
+        const fl = [...(e.dataTransfer.files || [])].filter((f) => /^(image|video)\//.test(f.type));
+        this.setState({ mediaHover: false });
+        if (fl.length)
+          this.upd({ media: [...d.media, ...fl.map((f) => (f.type.startsWith('video') ? 'VIDEO' : 'IMG'))] });
+      },
+      mediaDropBorder: S0.mediaHover ? '#141619' : '#d9d6cd',
+      mediaDropBg: S0.mediaHover ? '#f7ffd6' : 'transparent',
       showPreview: this.props.showPreview ?? true,
       pv,
       previewTabs,

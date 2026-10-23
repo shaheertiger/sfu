@@ -10,6 +10,7 @@
  *   API keys, invites, workspaces, signing out.
  */
 import PostPreview from './dashboard/PostPreview';
+import ImageCropper from './dashboard/ImageCropper';
 import React from 'react';
 import Base from './Dashboard';
 
@@ -165,6 +166,20 @@ export default class LiveDashboard extends Base {
   componentDidMount() {
     super.componentDidMount();
     this.load(true);
+    // Keyboard shortcuts: N new post, Ctrl/Cmd+Enter submit the composer, Esc leave the composer.
+    this._keys = (e) => {
+      const el = e.target, typing = el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName));
+      const dialogOpen = !!document.querySelector('[role="dialog"]');
+      if ((e.metaKey || e.ctrlKey) && e.key === 'Enter' && this.state.screen === 'compose') {
+        const btn = document.querySelector('[data-sfy="submit"]');
+        if (btn && !btn.disabled) { e.preventDefault(); btn.click(); }
+        return;
+      }
+      if (typing || dialogOpen || e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key === 'Escape' && this.state.screen === 'compose') document.querySelector('[data-sfy="cancel"]')?.click();
+      else if ((e.key === 'n' || e.key === 'N') && this.state.screen !== 'compose' && !this.state.loading) { e.preventDefault(); this.newPost(); }
+    };
+    window.addEventListener('keydown', this._keys);
     this._poll = setInterval(() => { if (document.visibilityState === 'visible') this.load(false); }, 30_000);
     // Coming back to the tab: refresh the session cache first, then reload.
     this._vis = () => { if (document.visibilityState === 'visible') refreshSession().finally(() => this.load(false)); };
@@ -184,6 +199,7 @@ export default class LiveDashboard extends Base {
   }
   componentWillUnmount() {
     super.componentWillUnmount();
+    window.removeEventListener('keydown', this._keys);
     clearInterval(this._poll);
     clearTimeout(this._prefsT);
     document.removeEventListener('visibilitychange', this._vis);
@@ -231,7 +247,7 @@ export default class LiveDashboard extends Base {
       platforms: Object.fromEntries(d.platforms.map((p) => [p.id, p])), storage: d.storage, billing: d.billing || null,
       tz, remind: prefs.remind || { on: true, lead: 60 }, alerts: prefs.alerts || { fail: true, digest: true },
       slots: prefs.slots || [], slotDays: prefs.slotDays || [], paused: !!prefs.paused, labelList: prefs.labels || [],
-      folders: prefs.folders || [], templates: prefs.templates || [], tagGroups: prefs.tagGroups || [], notes: prefs.notes || {},
+      folders: prefs.folders || [], templates: prefs.templates || [], tagGroups: prefs.tagGroups || [], notes: prefs.notes || {}, accGroups: prefs.accountGroups || [],
     };
     // Pending invites (server field `invites`: [{ email, role }]). Older servers don't send it: ask the team API once.
     const toInvites = (list) => (list || []).map((i) => (typeof i === 'string' ? { email: i, role: 'member' } : { id: i.id, email: i.email, role: i.role || 'member' }));
@@ -288,6 +304,7 @@ export default class LiveDashboard extends Base {
       templates: (s.templates || []).slice(0, 100).map((t) => ({ name: name(t.name, 60), text: String(t.text ?? '').slice(0, 5000) })),
       tagGroups: (s.tagGroups || []).slice(0, 100).map((g) => ({ name: name(g.name, 60), tags: String(g.tags ?? '').slice(0, 2000) })),
       notes: Object.fromEntries(Object.entries(s.notes || {}).filter(([k]) => k.length <= 40).map(([k, v]) => [k, String(v ?? '').slice(0, 500)])),
+      accountGroups: (s.accGroups || []).slice(0, 50).map((g) => ({ id: name(g.id, 40), name: name(g.name, 40), ids: (g.ids || []).slice(0, 200) })),
     };
   }
 
@@ -626,6 +643,14 @@ export default class LiveDashboard extends Base {
     input.click();
   }
 
+  /** Photos go through the cropper (1:1, 4:5, 9:16…) first; videos and GIFs upload as they are. */
+  cropThenAdd(files) {
+    const photos = files.filter((f) => f.type.startsWith('image/') && f.type !== 'image/gif');
+    const rest = files.filter((f) => !photos.includes(f));
+    if (rest.length) this.addToDraft(rest);
+    if (photos.length) super.setState({ cropFiles: photos });
+  }
+
   /** Uploads files into the draft. Each file shows as a tile with its progress until it's added. */
   addToDraft(files) {
     if (!files.length) return;
@@ -809,7 +834,13 @@ export default class LiveDashboard extends Base {
     }
 
     // Composer media: real uploads.
-    v.addImage = () => this.pickFiles('image/jpeg,image/png,image/gif,image/webp', true, (fs) => this.addToDraft(fs));
+    v.addImage = () => this.pickFiles('image/jpeg,image/png,image/gif,image/webp', true, (fs) => this.cropThenAdd(fs));
+    v.mediaDrop = (e) => {
+      e.preventDefault();
+      super.setState({ mediaHover: false });
+      const fl = [...(e.dataTransfer.files || [])].filter((f) => /^(image|video)\//.test(f.type));
+      if (fl.length) this.cropThenAdd(fl);
+    };
     v.addVideo = () => this.pickFiles('video/mp4,video/quicktime,video/webm', false, (fs) => this.addToDraft(fs));
     // Show the real image or video frame in the composer tiles, preview and queue; anything not in
     // the library yet keeps the placeholder.
@@ -983,6 +1014,13 @@ export default class LiveDashboard extends Base {
             <style>{'.sfy-share-btn{bottom:20px}@media (max-width:760px){.sfy-share-btn{bottom:140px}}'}</style>
             Share for review
           </button>
+        )}
+        {this.state.cropFiles && (
+          <ImageCropper
+            files={this.state.cropFiles}
+            onDone={(fs) => { super.setState({ cropFiles: null }); this.addToDraft(fs); }}
+            onCancel={() => super.setState({ cropFiles: null })}
+          />
         )}
         {this.state.shareLink && <ShareDialog link={this.state.shareLink} onClose={() => super.setState({ shareLink: null })} />}
         {this.state.planPicker && (

@@ -34,6 +34,8 @@ const PREF_FIELDS = {
     return out;
   }),
   tzSet: z.boolean(),
+  /** Saved sets of accounts the composer can select in one click. */
+  accountGroups: list(z.object({ id: clip(40), name: clip(40), ids: list(z.string().max(64), 200) }), 50),
 } as const;
 
 export type Prefs = { [K in keyof typeof PREF_FIELDS]?: z.output<(typeof PREF_FIELDS)[K]> };
