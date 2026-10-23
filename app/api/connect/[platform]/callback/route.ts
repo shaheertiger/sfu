@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { now, one } from '@/lib/server/db';
 import { adapterFor } from '@/lib/server/adapters';
 import { connectAccounts, limitMessage } from '@/lib/server/accounts';
+import { splitNew, stashConnection } from '@/lib/server/pending-connections';
 import { requireWorkspace } from '@/lib/server/auth';
 import { appUrl } from '@/lib/server/url';
 import { PublishError } from '@/lib/server/adapters/types';
@@ -31,6 +32,14 @@ export async function GET(req: Request, { params }: { params: Promise<{ platform
   try {
     const accounts = await adapterFor(platform).exchangeCode!({ code, redirectUri: `${base}/api/connect/${platform}/callback`, codeVerifier: st.code_verifier });
     if (!accounts.length) return fail(`No ${platform} accounts were found on that login. Check the account type and permissions.`);
+    // Several new accounts (a person managing many Pages): let them choose. Accounts already
+    // connected are refreshed straight away, so reconnecting never needs the picker.
+    const { known, fresh } = await splitNew(st.workspace_id, platform, accounts);
+    if (fresh.length > 1) {
+      if (known.length) await connectAccounts(st.workspace_id, platform, known);
+      const pick = await stashConnection(st.workspace_id, platform, fresh);
+      return NextResponse.redirect(`${base}/app?screen=accounts&pick=${pick}${known.length ? `&refreshed=${known.length}` : ''}`);
+    }
     const r = await connectAccounts(st.workspace_id, platform, accounts);
     if (!r.saved.length) return fail(limitMessage(r.limit));
     // Accounts past the plan's limit are skipped; the dashboard says how many and why.
