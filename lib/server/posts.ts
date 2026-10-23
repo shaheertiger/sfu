@@ -4,6 +4,7 @@ import { exec, now, one, query, tx, uid } from './db';
 import { decrypt } from './crypto';
 import { HttpError } from './http-error';
 import { overLimitAccountIds } from './accounts';
+import { metaFormat, metaFormatProblem } from './meta-format';
 import { getBytes, readUrl } from './storage';
 import { PLATFORMS, type PlatformId } from './platforms';
 import type { MediaFile, SocialAccount } from './adapters/types';
@@ -154,6 +155,10 @@ export async function validatePost(workspaceId: string, input: PostInput) {
     const acc = byId.get(t.account_id);
     if (!acc) { errors.push(`Unknown account ${t.account_id}`); continue; }
     const p = PLATFORMS[acc.platform as PlatformId];
+    if (acc.platform === 'instagram' || acc.platform === 'facebook') {
+      const problem = metaFormatProblem(metaFormat(t.options), media);
+      if (problem) errors.push(`${p.label} (@${acc.username}): ${problem}`);
+    }
     if (over.has(acc.id)) errors.push(`${p.label} (@${acc.username}) is paused because the workspace is over its plan's account limit. Upgrade or disconnect an account.`);
     const text = t.caption ?? input.caption ?? '';
     if (text.length > p.maxChars) errors.push(`${p.label} (@${acc.username}): ${text.length}/${p.maxChars} characters`);

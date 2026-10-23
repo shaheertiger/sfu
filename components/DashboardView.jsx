@@ -3542,6 +3542,58 @@ export function renderDashboard($v) {
                       {' '}
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         {' '}
+                        {$v['showFormat'] ? (
+                          <>
+                            {' '}
+                            <div
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '6px',
+                                paddingBottom: '10px',
+                                marginBottom: '2px',
+                                borderBottom: '1px solid #efefea',
+                              }}
+                            >
+                              {' '}
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                                {' '}
+                                <span style={{ fontSize: '13px', fontWeight: '600', color: '#677184' }}>
+                                  {'Post as'}
+                                </span>{' '}
+                                {$arr($v['formatChips']).map((f, $index) => (
+                                  <Fragment key={$index}>
+                                    {' '}
+                                    <button
+                                      onClick={f?.pick}
+                                      aria-pressed={f?.on}
+                                      style={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        gap: '6px',
+                                        padding: '5px 11px',
+                                        borderRadius: '999px',
+                                        border: `1px solid ${f?.border ?? ''}`,
+                                        background: `${f?.bg ?? ''}`,
+                                        color: `${f?.fg ?? ''}`,
+                                        cursor: 'pointer',
+                                        fontSize: '13px',
+                                        fontWeight: '600',
+                                      }}
+                                    >
+                                      {$t(f?.label)}
+                                      <span style={{ font: "500 11px 'Geist Mono',monospace", opacity: '.7' }}>
+                                        {$t(f?.ratio)}
+                                      </span>
+                                    </button>{' '}
+                                  </Fragment>
+                                ))}{' '}
+                                <span style={{ fontSize: '12px', color: '#9aa0a8' }}>{$t($v['formatFor'])}</span>{' '}
+                              </div>{' '}
+                              <span style={{ fontSize: '12px', color: '#677184' }}>{$t($v['formatHint'])}</span>{' '}
+                            </div>{' '}
+                          </>
+                        ) : null}{' '}
                         <span style={{ fontSize: '13px', fontWeight: '600', color: '#677184' }}>{'Media'}</span>{' '}
                         {$v['hasMedia'] ? (
                           <>
@@ -4200,9 +4252,37 @@ export function renderDashboard($v) {
                             <>
                               {' '}
                               <div
-                                style={{ display: 'grid', gridTemplateColumns: `${$v['pv']?.cols ?? ''}`, gap: '4px' }}
+                                style={{
+                                  position: 'relative',
+                                  display: 'grid',
+                                  gridTemplateColumns: `${$v['pv']?.cols ?? ''}`,
+                                  gap: '4px',
+                                  width: `${$v['pv']?.frameW ?? ''}`,
+                                  margin: '0 auto',
+                                }}
                               >
                                 {' '}
+                                {$v['pv']?.hasFmtTag ? (
+                                  <>
+                                    <span
+                                      style={{
+                                        position: 'absolute',
+                                        zIndex: '1',
+                                        top: '8px',
+                                        left: '8px',
+                                        padding: '2px 8px',
+                                        borderRadius: '999px',
+                                        background: 'rgba(0,0,0,.6)',
+                                        color: '#fff',
+                                        fontSize: '11px',
+                                        fontWeight: '600',
+                                      }}
+                                    >
+                                      {$t($v['pv']?.fmtTag)}
+                                      {' · 9:16'}
+                                    </span>
+                                  </>
+                                ) : null}{' '}
                                 {$arr($v['pv']?.media).map((m, $index) => (
                                   <Fragment key={$index}>
                                     {' '}
@@ -4210,7 +4290,7 @@ export function renderDashboard($v) {
                                       style={{
                                         position: 'relative',
                                         overflow: 'hidden',
-                                        aspectRatio: '1',
+                                        aspectRatio: `${$v['pv']?.ratio ?? ''}`,
                                         borderRadius: '8px',
                                         background: `${m?.bg ?? ''}`,
                                         display: 'grid',

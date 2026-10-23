@@ -83,6 +83,7 @@ function adapterOptions(account, ui = {}) {
   if (!account) return o;
   if (account.platform === 'tiktok' && ui.privacy) o.privacy = TIKTOK_PRIVACY[ui.privacy] || ui.privacy;
   if (account.platform === 'youtube') { if (ui.title) o.title = ui.title; if (ui.privacy) o.privacy = ui.privacy; }
+  if ((account.platform === 'instagram' || account.platform === 'facebook') && ui.format) o.format = String(ui.format).toLowerCase();
   if (account.platform === 'pinterest') {
     const b = (account.boards || []).find((x) => x.name === ui.board) || (account.boards || [])[0];
     if (b) o.board_id = b.id;
@@ -536,7 +537,7 @@ export default class LiveDashboard extends Base {
       return { ...none, bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind === 'VIDEO' ? '▶ VIDEO' : kind };
     };
     v.mediaTiles = d.media.map((kind, i) => ({ kind, ...look(kind, i), remove: () => this.upd({ media: d.media.filter((_, j) => j !== i), mediaIds: (d.mediaIds || []).filter((_, j) => j !== i) }) }));
-    if (v.pv) v.pv.media = d.media.slice(0, 4).map((kind, i) => look(kind, i));
+    if (v.pv) v.pv.media = d.media.slice(0, v.pv.media.length || 4).map((kind, i) => look(kind, i));
 
     // Media library.
     const q = (s.libQ || '').toLowerCase();

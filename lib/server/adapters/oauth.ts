@@ -5,6 +5,7 @@
  */
 import type { PlatformAdapter, PublishInput, PublishResult, ConnectedAccountFields, SocialAccount } from './types';
 import { PublishError, UPLOAD_TIMEOUT_MS, jsonFetch, timedFetch } from './types';
+import { metaFormat, metaFormatProblem } from '../meta-format';
 
 const env = (k: string) => process.env[k] || '';
 const q = (o: Record<string, string>) => new URLSearchParams(o).toString();
@@ -137,11 +138,34 @@ export const facebook: PlatformAdapter = {
       access_token: p.access_token, meta: { user_token: longLived.access_token },
     }));
   },
-  async publish({ account, caption, media }) {
+  async publish({ account, caption, media, options }) {
     const token = account.access_token!;
     const pageId = account.external_id;
     const images = media.filter((m) => m.mime.startsWith('image/'));
     const video = media.find((m) => m.mime.startsWith('video/'));
+    const format = metaFormat(options);
+    const problem = metaFormatProblem(format, media);
+    if (problem) throw new PublishError(problem, false);
+    if (format === 'reel') {
+      const start = await jsonFetch(`${GRAPH}/${pageId}/video_reels`, { method: 'POST', form: { upload_phase: 'start', access_token: token } });
+      await fbHostedUpload(start.video_id, token, video!.url);
+      await jsonFetch(`${GRAPH}/${pageId}/video_reels`, {
+        method: 'POST', form: { upload_phase: 'finish', video_id: start.video_id, video_state: 'PUBLISHED', description: caption, access_token: token },
+      });
+      return { externalId: start.video_id, url: `https://www.facebook.com/reel/${start.video_id}` };
+    }
+    if (format === 'story') {
+      // Stories have no caption on Facebook.
+      if (video) {
+        const start = await jsonFetch(`${GRAPH}/${pageId}/video_stories`, { method: 'POST', form: { upload_phase: 'start', access_token: token } });
+        await fbHostedUpload(start.video_id, token, video.url);
+        const done = await jsonFetch(`${GRAPH}/${pageId}/video_stories`, { method: 'POST', form: { upload_phase: 'finish', video_id: start.video_id, access_token: token } });
+        return { externalId: done.post_id || start.video_id, url: `https://www.facebook.com/${done.post_id || start.video_id}` };
+      }
+      const photo = await jsonFetch(`${GRAPH}/${pageId}/photos`, { method: 'POST', form: { url: images[0].url, published: 'false', access_token: token } });
+      const done = await jsonFetch(`${GRAPH}/${pageId}/photo_stories`, { method: 'POST', form: { photo_id: photo.id, access_token: token } });
+      return { externalId: done.post_id || photo.id, url: `https://www.facebook.com/${done.post_id || photo.id}` };
+    }
     if (video) {
       const fd = new FormData();
       fd.append('description', caption);
@@ -169,6 +193,14 @@ export const facebook: PlatformAdapter = {
     return { externalId: res.id, url: `https://www.facebook.com/${res.id}` };
   },
 };
+
+/** Facebook's resumable upload: hands it the file's URL, so the bytes never pass through us. */
+async function fbHostedUpload(videoId: string, token: string, fileUrl: string) {
+  const res = await timedFetch(`https://rupload.facebook.com/video-upload/v21.0/${videoId}`, {
+    method: 'POST', headers: { authorization: `OAuth ${token}`, file_url: fileUrl }, timeoutMs: UPLOAD_TIMEOUT_MS,
+  });
+  if (!res.ok) throw new PublishError(`Facebook upload ${res.status}: ${(await res.text()).slice(0, 300)}`, res.status >= 500);
+}
 
 /**
  * A current profile picture URL for a Facebook Page or Instagram account. Meta's picture URLs are
@@ -202,15 +234,25 @@ export const instagram: PlatformAdapter = {
       return { external_id: ig.id, username: ig.username, display_name: ig.name || ig.username, avatar_url: ig.profile_picture_url, access_token: longLived.access_token, meta: { page_id: p.id } };
     });
   },
-  async publish({ account, caption, media }) {
+  async publish({ account, caption, media, options }) {
     const token = account.access_token!;
     const igId = account.external_id;
     if (!media.length) throw new PublishError('Instagram requires an image or video', false);
+    const format = metaFormat(options);
+    const problem = metaFormatProblem(format, media);
+    if (problem) throw new PublishError(problem, false);
     const mk = async (params: Record<string, string>) =>
       (await jsonFetch(`${GRAPH}/${igId}/media`, { method: 'POST', form: { ...params, access_token: token } })).id as string;
     let creationId: string;
     const video = media.find((m) => m.mime.startsWith('video/'));
-    if (media.length === 1) {
+    if (format === 'story') {
+      // Stories have no caption on Instagram.
+      creationId = video
+        ? await mk({ media_type: 'STORIES', video_url: video.url })
+        : await mk({ media_type: 'STORIES', image_url: media[0].url });
+    } else if (format === 'reel') {
+      creationId = await mk({ media_type: 'REELS', video_url: video!.url, caption, share_to_feed: 'true' });
+    } else if (media.length === 1) {
       creationId = video
         ? await mk({ media_type: 'REELS', video_url: video.url, caption })
         : await mk({ image_url: media[0].url, caption });
@@ -231,8 +273,9 @@ export const instagram: PlatformAdapter = {
     }
     if (!ready) throw new PublishError('Instagram is still processing the media. It will be retried.', true);
     const pub = await jsonFetch(`${GRAPH}/${igId}/media_publish`, { method: 'POST', form: { creation_id: creationId, access_token: token } });
-    const info = await jsonFetch(`${GRAPH}/${pub.id}?fields=permalink&access_token=${token}`);
-    return { externalId: pub.id, url: info.permalink };
+    // Stories may not return a permalink; the post is still published.
+    const info = await jsonFetch(`${GRAPH}/${pub.id}?fields=permalink&access_token=${token}`).catch(() => ({} as any));
+    return { externalId: pub.id, url: info.permalink || (format === 'story' ? `https://www.instagram.com/stories/${account.username}/` : undefined) };
   },
 };
 

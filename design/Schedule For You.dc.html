@@ -586,6 +586,18 @@ textarea{resize:vertical}
               
             <div style="background:#fff;border:1px solid #e7e5df;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px">
             <div style="display:flex;flex-direction:column;gap:8px">
+                <sc-if value="{{ showFormat }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-direction:column;gap:6px;padding-bottom:10px;margin-bottom:2px;border-bottom:1px solid #efefea">
+                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                      <span style="font-size:13px;font-weight:600;color:#677184">Post as</span>
+                      <sc-for list="{{ formatChips }}" as="f" hint-placeholder-count="3">
+                        <button onClick="{{ f.pick }}" aria-pressed="{{ f.on }}" style="display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;border:1px solid {{ f.border }};background:{{ f.bg }};color:{{ f.fg }};cursor:pointer;font-size:13px;font-weight:600">{{ f.label }}<span style="font:500 11px 'Geist Mono',monospace;opacity:.7">{{ f.ratio }}</span></button>
+                      </sc-for>
+                      <span style="font-size:12px;color:#9aa0a8">{{ formatFor }}</span>
+                    </div>
+                    <span style="font-size:12px;color:#677184">{{ formatHint }}</span>
+                  </div>
+                </sc-if>
                 <span style="font-size:13px;font-weight:600;color:#677184">Media</span>
                 <sc-if value="{{ hasMedia }}" hint-placeholder-val="{{ false }}">
                   <div style="display:flex;flex-wrap:wrap;gap:8px">
@@ -691,9 +703,10 @@ textarea{resize:vertical}
                   </div>
                   <div style="white-space:pre-wrap;word-break:break-word;font-size:14px;color:{{ pv.textColor }}">{{ pv.text }}</div>
                   <sc-if value="{{ hasMedia }}" hint-placeholder-val="{{ false }}">
-                    <div style="display:grid;grid-template-columns:{{ pv.cols }};gap:4px">
+                    <div style="position:relative;display:grid;grid-template-columns:{{ pv.cols }};gap:4px;width:{{ pv.frameW }};margin:0 auto">
+                      <sc-if value="{{ pv.hasFmtTag }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;z-index:1;top:8px;left:8px;padding:2px 8px;border-radius:999px;background:rgba(0,0,0,.6);color:#fff;font-size:11px;font-weight:600">{{ pv.fmtTag }} · 9:16</span></sc-if>
                       <sc-for list="{{ pv.media }}" as="m" hint-placeholder-count="1">
-                        <div style="position:relative;overflow:hidden;aspect-ratio:1;border-radius:8px;background:{{ m.bg }};display:grid;place-items:center;font:500 11px 'Geist Mono',monospace;color:#f3e9d8"><sc-if value="{{ m.isVideo }}" hint-placeholder-val="{{ false }}"><video src="{{ m.video }}" muted="" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none"></video></sc-if><span style="position:relative;padding:2px 6px;border-radius:6px;background:{{ m.labelBg }};text-shadow:0 1px 2px rgba(0,0,0,.4)">{{ m.label }}</span></div>
+                        <div style="position:relative;overflow:hidden;aspect-ratio:{{ pv.ratio }};border-radius:8px;background:{{ m.bg }};display:grid;place-items:center;font:500 11px 'Geist Mono',monospace;color:#f3e9d8"><sc-if value="{{ m.isVideo }}" hint-placeholder-val="{{ false }}"><video src="{{ m.video }}" muted="" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none"></video></sc-if><span style="position:relative;padding:2px 6px;border-radius:6px;background:{{ m.labelBg }};text-shadow:0 1px 2px rgba(0,0,0,.4)">{{ m.label }}</span></div>
                       </sc-for>
                     </div>
                   </sc-if>
@@ -1287,9 +1300,9 @@ class Component extends DCLogic {
   static P = {
     bluesky: { label: 'Bluesky', color: '#1185fe', logo: 'url(logos/white/bluesky.svg)', short: 'BS', max: 300, req: 'none', note: 'Handle and app password. No developer approval needed.' },
     x: { label: 'X', color: '#000000', logo: 'url(logos/white/x.svg)', short: 'X', max: 280, req: 'none', note: 'Post text, images and videos to your X profile.' },
-    instagram: { label: 'Instagram', color: '#e1306c', logo: 'url(logos/white/instagram.svg)', short: 'IG', max: 2200, req: 'any', note: 'Business or Creator account linked to a Facebook Page.' },
+    instagram: { label: 'Instagram', color: '#e1306c', logo: 'url(logos/white/instagram.svg)', short: 'IG', max: 2200, req: 'any', note: 'Business or Creator account linked to a Facebook Page.', fields: [{ key: 'format', label: 'Post as', options: ['Post', 'Reel', 'Story'] }] },
     linkedin: { label: 'LinkedIn', color: '#0a66c2', logo: 'url(logos/white/linkedin.svg)', short: 'in', max: 3000, req: 'none', note: 'Posts to your personal profile.' },
-    facebook: { label: 'Facebook', color: '#1877f2', logo: 'url(logos/white/facebook.svg)', short: 'f', max: 63206, req: 'none', note: 'Posts to Pages you manage.', keys: true },
+    facebook: { label: 'Facebook', color: '#1877f2', logo: 'url(logos/white/facebook.svg)', short: 'f', max: 63206, req: 'none', note: 'Posts to Pages you manage.', fields: [{ key: 'format', label: 'Post as', options: ['Post', 'Reel', 'Story'] }] },
     tiktok: { label: 'TikTok', color: '#000000', logo: 'url(logos/white/tiktok.svg)', short: 'TT', max: 2200, req: 'any', note: 'Post videos and photo carousels to your TikTok.', fields: [{ key: 'privacy', label: 'Privacy', options: ['Public', 'Friends', 'Only me'] }] },
     youtube: { label: 'YouTube', color: '#ff0000', logo: 'url(logos/white/youtube.svg)', short: 'YT', max: 5000, req: 'video', note: 'Upload videos and Shorts with a title and privacy setting.', fields: [{ key: 'title', label: 'Title' }, { key: 'privacy', label: 'Privacy', options: ['public', 'unlisted', 'private'] }] },
     threads: { label: 'Threads', color: '#000000', logo: 'url(logos/white/threads.svg)', short: '@', max: 500, req: 'none', note: 'Post text, images and videos to your Threads profile.' },
@@ -1709,6 +1722,9 @@ class Component extends DCLogic {
       if (p.req === 'any' && !d.media.length) problems.push(`${p.label} posts need an image or video. Add media or deselect @${a.username}.`);
       if (p.req === 'image' && !hasImg) problems.push(`${p.label} pins need an image. Add one or deselect @${a.username}.`);
       if (p.req === 'video' && !hasVid) problems.push(`${p.label} only accepts video. Add a video or deselect @${a.username}.`);
+      const fmt = (d.ov[a.id]?.opts || {}).format;
+      if (fmt === 'Reel' && !(d.media.length === 1 && hasVid)) problems.push(`A ${p.label} Reel needs exactly one video. Change "Post as" or the media for @${a.username}.`);
+      if (fmt === 'Story' && d.media.length !== 1) problems.push(`A ${p.label} Story needs exactly one image or video. Change "Post as" or the media for @${a.username}.`);
       if (p.maxImages !== undefined && d.media.filter((m) => m === 'IMG').length > p.maxImages) problems.push(`${p.label} allows ${p.maxImages} image${p.maxImages === 1 ? '' : 's'} per post. Remove some or deselect @${a.username}.`);
     }
     const uniq = [...new Set(problems)];
@@ -1733,13 +1749,24 @@ class Component extends DCLogic {
     const pvAcc = sel.find((a) => a.id === d.previewId) || sel[0];
     const pvText = pvAcc ? (d.ov[pvAcc.id]?.caption ?? d.caption) : d.caption;
     const pvWhen = d.mode === 'schedule' ? `${this.dayLabel(Component.fromLocal(d.when))} ${this.time(Component.fromLocal(d.when))}` : d.mode === 'now' ? 'now' : 'draft';
+    // "Post as" (Instagram and Facebook): one choice for every selected account, changeable per account in its tab.
+    const fmtOf = (a) => (d.ov[a.id]?.opts || {}).format || 'Post';
+    const metaSel = sel.filter((a) => a.platform === 'instagram' || a.platform === 'facebook');
+    const fmtNow = metaSel.length && metaSel.every((a) => fmtOf(a) === fmtOf(metaSel[0])) ? fmtOf(metaSel[0]) : '';
+    const FMT_HINT = { Post: 'Feed post · images 1:1 or 4:5, carousels up to 10', Reel: 'Vertical video · 9:16 (1080×1920)', Story: 'One image or video · 9:16, no caption' };
+    const formatChips = ['Post', 'Reel', 'Story'].map((f) => ({ label: f, ratio: f === 'Post' ? '1:1' : '9:16', on: fmtNow === f, bg: fmtNow === f ? '#141619' : '#fff', fg: fmtNow === f ? '#fff' : '#141619', border: fmtNow === f ? '#141619' : '#e7e5df',
+      pick: () => metaSel.forEach((a) => this.setOv(a.id, { opts: { ...(d.ov[a.id]?.opts || {}), format: f } })) }));
+    const pvFmt = pvAcc && (pvAcc.platform === 'instagram' || pvAcc.platform === 'facebook') ? fmtOf(pvAcc) : 'Post';
+    const vertical = pvFmt !== 'Post' || ['tiktok'].includes(pvAcc?.platform);
     const pv = {
+      ratio: vertical ? '9/16' : '1', frameW: vertical ? '62%' : '100%', fmtTag: pvFmt !== 'Post' ? pvFmt : '', hasFmtTag: pvFmt !== 'Post',
       logo: pvAcc ? P[pvAcc.platform].logo : 'none', color: pvAcc ? P[pvAcc.platform].color : '#e9e7e0', ...(pvAcc ? Component.pic(pvAcc) : { pic: '#e9e7e0', badge: 'none', badgeDisplay: 'none' }), name: pvAcc ? pvAcc.display : 'Preview',
       // Pages, profiles and locations are named, not @handles.
       handle: pvAcc ? `${['facebook', 'linkedin', 'google_business', 'youtube'].includes(pvAcc.platform) ? '' : '@'}${pvAcc.username} · ${P[pvAcc.platform].label} · ${pvWhen}` : 'Pick an account to preview',
       text: pvText || 'Your post will appear here.', textColor: pvText ? '#141619' : '#9aa0a8',
-      media: d.media.slice(0, 4).map((kind) => ({ bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind, isVideo: false, video: '', labelBg: 'transparent' })), cols: d.media.length === 1 ? '1fr' : '1fr 1fr',
+      media: d.media.slice(0, 4).map((kind) => ({ bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind, isVideo: false, video: '', labelBg: 'transparent' })), cols: d.media.length === 1 || vertical ? '1fr' : '1fr 1fr',
     };
+    if (vertical) pv.media = pv.media.slice(0, 1);
     const previewTabs = sel.map((a) => ({ short: P[a.platform].short, logo: P[a.platform].logo, color: P[a.platform].color, ...Component.pic(a), title: `${P[a.platform].label} · ${a.username}`, ringShadow: pvAcc && pvAcc.id === a.id ? '0 0 0 2px #fff, 0 0 0 4px #141619' : 'none', select: () => this.upd({ previewId: a.id }) }));
 
     // accounts
@@ -1866,6 +1893,7 @@ class Component extends DCLogic {
       hasSelected: sel.length > 0, variants, modes, isSchedule: d.mode === 'schedule', when: d.when, onWhen: (e) => this.upd({ when: e.target.value }), quickTimes,
       hasProblems: uniq.length > 0, problems: uniq, submit: () => this.submit(), submitDisabled, submitOpacity: submitDisabled ? 0.45 : 1, submitLabel,
       showPreview: this.props.showPreview ?? true, pv, previewTabs,
+      showFormat: metaSel.length > 0, formatChips, formatHint: fmtNow ? FMT_HINT[fmtNow] : 'Different per account. Set it in each account’s tab.', formatFor: metaSel.length === sel.length ? '' : 'Instagram and Facebook only',
       connected, platformCards, acQ: S0.acQ || '', onAcQ: (e) => this.setState({ acQ: e.target.value }), acPlat: S0.acPlat || '', onAcPlat: (e) => this.setState({ acPlat: e.target.value }), acSt: S0.acSt || '', onAcSt: (e) => this.setState({ acSt: e.target.value }),
       stats: [{ label: `Published · last ${aDays} days`, value: aPub, color: '#141619', delta: `${aPub - pPub >= 0 ? '+' : ''}${aPub - pPub} vs previous ${aDays} days` }, { label: 'Failed attempts', value: aFail, color: aFail ? '#dc3545' : '#141619', delta: `${pFail} in previous period` }, { label: 'Success rate', value: `${rate}%`, color: '#141619', delta: pRate === null ? 'No previous data' : `${rate - pRate >= 0 ? '+' : ''}${rate - pRate} pts vs previous` }, { label: 'Scheduled (not counted)', value: upcoming.length, color: '#141619', delta: 'Future posts are never counted as failures' }],
       aRange: String(aDays), onARange: (e) => this.setState({ aRange: +e.target.value }), aPlat: aPl, onAPlat: (e) => this.setState({ aPlat: e.target.value }), bars, byPlatform,

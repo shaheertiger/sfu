@@ -32,6 +32,7 @@ class Component extends DCLogic {
       max: 2200,
       req: 'any',
       note: 'Business or Creator account linked to a Facebook Page.',
+      fields: [{ key: 'format', label: 'Post as', options: ['Post', 'Reel', 'Story'] }],
     },
     linkedin: {
       label: 'LinkedIn',
@@ -50,7 +51,7 @@ class Component extends DCLogic {
       max: 63206,
       req: 'none',
       note: 'Posts to Pages you manage.',
-      keys: true,
+      fields: [{ key: 'format', label: 'Post as', options: ['Post', 'Reel', 'Story'] }],
     },
     tiktok: {
       label: 'TikTok',
@@ -1584,6 +1585,13 @@ class Component extends DCLogic {
         problems.push(`${p.label} pins need an image. Add one or deselect @${a.username}.`);
       if (p.req === 'video' && !hasVid)
         problems.push(`${p.label} only accepts video. Add a video or deselect @${a.username}.`);
+      const fmt = (d.ov[a.id]?.opts || {}).format;
+      if (fmt === 'Reel' && !(d.media.length === 1 && hasVid))
+        problems.push(`A ${p.label} Reel needs exactly one video. Change "Post as" or the media for @${a.username}.`);
+      if (fmt === 'Story' && d.media.length !== 1)
+        problems.push(
+          `A ${p.label} Story needs exactly one image or video. Change "Post as" or the media for @${a.username}.`,
+        );
       if (p.maxImages !== undefined && d.media.filter((m) => m === 'IMG').length > p.maxImages)
         problems.push(
           `${p.label} allows ${p.maxImages} image${p.maxImages === 1 ? '' : 's'} per post. Remove some or deselect @${a.username}.`,
@@ -1679,7 +1687,31 @@ class Component extends DCLogic {
         : d.mode === 'now'
           ? 'now'
           : 'draft';
+    // "Post as" (Instagram and Facebook): one choice for every selected account, changeable per account in its tab.
+    const fmtOf = (a) => (d.ov[a.id]?.opts || {}).format || 'Post';
+    const metaSel = sel.filter((a) => a.platform === 'instagram' || a.platform === 'facebook');
+    const fmtNow = metaSel.length && metaSel.every((a) => fmtOf(a) === fmtOf(metaSel[0])) ? fmtOf(metaSel[0]) : '';
+    const FMT_HINT = {
+      Post: 'Feed post · images 1:1 or 4:5, carousels up to 10',
+      Reel: 'Vertical video · 9:16 (1080×1920)',
+      Story: 'One image or video · 9:16, no caption',
+    };
+    const formatChips = ['Post', 'Reel', 'Story'].map((f) => ({
+      label: f,
+      ratio: f === 'Post' ? '1:1' : '9:16',
+      on: fmtNow === f,
+      bg: fmtNow === f ? '#141619' : '#fff',
+      fg: fmtNow === f ? '#fff' : '#141619',
+      border: fmtNow === f ? '#141619' : '#e7e5df',
+      pick: () => metaSel.forEach((a) => this.setOv(a.id, { opts: { ...(d.ov[a.id]?.opts || {}), format: f } })),
+    }));
+    const pvFmt = pvAcc && (pvAcc.platform === 'instagram' || pvAcc.platform === 'facebook') ? fmtOf(pvAcc) : 'Post';
+    const vertical = pvFmt !== 'Post' || ['tiktok'].includes(pvAcc?.platform);
     const pv = {
+      ratio: vertical ? '9/16' : '1',
+      frameW: vertical ? '62%' : '100%',
+      fmtTag: pvFmt !== 'Post' ? pvFmt : '',
+      hasFmtTag: pvFmt !== 'Post',
       logo: pvAcc ? P[pvAcc.platform].logo : 'none',
       color: pvAcc ? P[pvAcc.platform].color : '#e9e7e0',
       ...(pvAcc ? Component.pic(pvAcc) : { pic: '#e9e7e0', badge: 'none', badgeDisplay: 'none' }),
@@ -1699,8 +1731,9 @@ class Component extends DCLogic {
           video: '',
           labelBg: 'transparent',
         })),
-      cols: d.media.length === 1 ? '1fr' : '1fr 1fr',
+      cols: d.media.length === 1 || vertical ? '1fr' : '1fr 1fr',
     };
+    if (vertical) pv.media = pv.media.slice(0, 1);
     const previewTabs = sel.map((a) => ({
       short: P[a.platform].short,
       logo: P[a.platform].logo,
@@ -2227,6 +2260,10 @@ class Component extends DCLogic {
       showPreview: this.props.showPreview ?? true,
       pv,
       previewTabs,
+      showFormat: metaSel.length > 0,
+      formatChips,
+      formatHint: fmtNow ? FMT_HINT[fmtNow] : 'Different per account. Set it in each account’s tab.',
+      formatFor: metaSel.length === sel.length ? '' : 'Instagram and Facebook only',
       connected,
       platformCards,
       acQ: S0.acQ || '',
