@@ -64,5 +64,9 @@ No. There are no AI writing features. You write the post, and Schedule For You h
 ### What happens if LinkedIn disconnects my account?
 If LinkedIn revokes access, a scheduled post can fail. You get a failed-post alert and a prompt to reconnect from the Accounts screen, then you can retry.
 
+### Can I schedule posts to a LinkedIn company page?
+
+Not at the moment. Schedule For You publishes to the personal LinkedIn profile you connect. To post as a company page, publish from the page itself in LinkedIn.
+
 ## Post on LinkedIn consistently, in your own words
 Write your LinkedIn posts when you have time to think, and let Schedule For You publish them on schedule alongside your other channels. Plans start at $19 a month with unlimited posts. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
