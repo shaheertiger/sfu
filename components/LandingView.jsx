@@ -2615,6 +2615,9 @@ export function renderLanding($v) {
               <a href="/about" style={{ color: '#6b7079' }}>
                 {'About'}
               </a>
+              <a href="/privacy" style={{ color: '#6b7079' }}>
+                {'Privacy'}
+              </a>
               <a href="/login" style={{ color: '#6b7079' }}>
                 {'Sign in'}
               </a>

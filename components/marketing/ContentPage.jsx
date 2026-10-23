@@ -14,7 +14,7 @@ export function contentMetadata(slug) {
   const c = getContentPage(slug);
   if (!c) return {};
   const { page, layout } = c;
-  return pageMetadata({ title: page.title, description: page.description, path: `/${slug}`, absolute: true, keyword: page.keyword, type: layout === 'article' ? 'article' : 'website', publishedTime: page.date });
+  return pageMetadata({ title: page.title, description: page.description, path: `/${slug}`, absolute: layout !== 'legal', keyword: page.keyword, type: layout === 'article' ? 'article' : 'website', publishedTime: page.date });
 }
 
 const PLAN_FEATURES = {
@@ -115,11 +115,51 @@ function FeaturePage({ slug, page }) {
   );
 }
 
+const longDate = (d) => new Date(`${d}T12:00:00Z`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+
+/** Privacy policy, data deletion and similar: plain reading layout with a table of contents. */
+function LegalPage({ slug, page }) {
+  const path = `/${slug}`;
+  const crumbs = [
+    { name: 'Home', href: '/' },
+    { name: page.h1, href: path },
+  ];
+  return (
+    <MarketingPage>
+      <JsonLd data={{ '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'WebPage', url: abs(path), name: page.title, description: page.description, inLanguage: 'en', ...(page.updated ? { dateModified: page.updated } : {}) }, breadcrumbLd(crumbs)] }} />
+      <div className={m.container}>
+        <Breadcrumbs items={crumbs} />
+        <header className={m.hero} style={{ textAlign: 'left', maxWidth: 760, margin: '0 auto' }}>
+          <h1 className={m.h1}>{page.h1}</h1>
+          {page.lead && <p className={m.lead} style={{ margin: 0 }}>{page.lead}</p>}
+          {page.updated && <p className={m.meta} style={{ textAlign: 'left' }}>Last updated {longDate(page.updated)}</p>}
+        </header>
+        <article className={`${m.narrow} ${m.prose}`}>
+          {page.toc.length > 3 && (
+            <nav aria-label="Contents" className={m.inlineCta} style={{ margin: '0 0 28px' }}>
+              <strong>Contents</strong>
+              <ol style={{ margin: 0, paddingLeft: 20 }}>
+                {page.toc.map((t) => (
+                  <li key={t.id} style={{ margin: '4px 0' }}>
+                    <a href={`#${t.id}`}>{t.heading}</a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          )}
+          <div dangerouslySetInnerHTML={{ __html: page.htmlBefore + page.htmlAfter }} />
+        </article>
+      </div>
+    </MarketingPage>
+  );
+}
+
 /** Renders content/pages/<slug>.md with the layout its frontmatter asks for. */
 export default function ContentPage({ slug }) {
   const c = getContentPage(slug);
   if (!c) notFound();
   if (c.layout === 'feature') return <FeaturePage slug={slug} page={c.page} />;
+  if (c.layout === 'legal') return <LegalPage slug={slug} page={c.page} />;
   const path = `/${slug}`;
   const crumbs = [
     { name: 'Home', href: '/' },

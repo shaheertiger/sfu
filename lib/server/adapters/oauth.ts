@@ -111,14 +111,23 @@ export const linkedin: PlatformAdapter = {
 
 /* ───────────────────────── Facebook Pages ───────────────────────── */
 const GRAPH = 'https://graph.facebook.com/v21.0';
+
+/**
+ * Meta login dialog. Apps set up with "Facebook Login for Business" can require a configuration
+ * (FACEBOOK_CONFIG_ID, from Facebook Login for Business → Configurations) instead of a scope list;
+ * when it is set it replaces the scope, so the permissions come from that configuration.
+ */
+function metaAuthUrl({ state, redirectUri }: { state: string; redirectUri: string }, scope: string) {
+  const config = process.env.FACEBOOK_CONFIG_ID;
+  return 'https://www.facebook.com/v21.0/dialog/oauth?' + q({
+    client_id: env('FACEBOOK_APP_ID'), redirect_uri: redirectUri, state,
+    ...(config ? { config_id: config } : { scope }),
+  });
+}
+
 export const facebook: PlatformAdapter = {
   platform: 'facebook',
-  getAuthUrl({ state, redirectUri }) {
-    return 'https://www.facebook.com/v21.0/dialog/oauth?' + q({
-      client_id: env('FACEBOOK_APP_ID'), redirect_uri: redirectUri, state,
-      scope: 'pages_show_list,pages_manage_posts,pages_read_engagement,business_management',
-    });
-  },
+  getAuthUrl: (a) => metaAuthUrl(a, 'pages_show_list,pages_manage_posts,pages_read_engagement,business_management'),
   async exchangeCode({ code, redirectUri }) {
     const tok = await jsonFetch(`${GRAPH}/oauth/access_token?` + q({ client_id: env('FACEBOOK_APP_ID'), client_secret: env('FACEBOOK_APP_SECRET'), redirect_uri: redirectUri, code }));
     const longLived = await jsonFetch(`${GRAPH}/oauth/access_token?` + q({ grant_type: 'fb_exchange_token', client_id: env('FACEBOOK_APP_ID'), client_secret: env('FACEBOOK_APP_SECRET'), fb_exchange_token: tok.access_token }));
@@ -164,12 +173,7 @@ export const facebook: PlatformAdapter = {
 /* ───────────────────────── Instagram (via Facebook login) ───────────────────────── */
 export const instagram: PlatformAdapter = {
   platform: 'instagram',
-  getAuthUrl({ state, redirectUri }) {
-    return 'https://www.facebook.com/v21.0/dialog/oauth?' + q({
-      client_id: env('FACEBOOK_APP_ID'), redirect_uri: redirectUri, state,
-      scope: 'pages_show_list,instagram_basic,instagram_content_publish,business_management',
-    });
-  },
+  getAuthUrl: (a) => metaAuthUrl(a, 'pages_show_list,pages_read_engagement,instagram_basic,instagram_content_publish,business_management'),
   async exchangeCode({ code, redirectUri }) {
     const tok = await jsonFetch(`${GRAPH}/oauth/access_token?` + q({ client_id: env('FACEBOOK_APP_ID'), client_secret: env('FACEBOOK_APP_SECRET'), redirect_uri: redirectUri, code }));
     const longLived = await jsonFetch(`${GRAPH}/oauth/access_token?` + q({ grant_type: 'fb_exchange_token', client_id: env('FACEBOOK_APP_ID'), client_secret: env('FACEBOOK_APP_SECRET'), fb_exchange_token: tok.access_token }));

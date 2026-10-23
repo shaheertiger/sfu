@@ -948,6 +948,9 @@ export function renderLandingMobile($v) {
               <a href="/about" style={{ color: '#a7abb2', padding: '10px 0' }}>
                 {'About'}
               </a>
+              <a href="/privacy" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'Privacy'}
+              </a>
               <a href="/login" style={{ color: '#a7abb2', padding: '10px 0' }}>
                 {'Sign in'}
               </a>
