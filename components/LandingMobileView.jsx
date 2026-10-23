@@ -55,8 +55,11 @@ export function renderLandingMobile($v) {
                 {'schedule for you'}
               </span>{' '}
             </a>{' '}
-            <a href="/login" style={{ padding: '10px 4px', fontSize: '15px', fontWeight: '500', color: '#a7abb2' }}>
-              {'Sign in'}
+            <a
+              href={$v['topHref']}
+              style={{ padding: '10px 4px', fontSize: '15px', fontWeight: '500', color: `${$v['topColor'] ?? ''}` }}
+            >
+              {$t($v['topLabel'])}
             </a>{' '}
           </header>{' '}
           <section

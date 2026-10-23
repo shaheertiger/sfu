@@ -2,6 +2,7 @@ import Link from 'next/link';
 import m from './marketing.module.css';
 import { PLATFORM_PAGES } from '@/lib/platform-pages';
 import { LANDING_PAGES } from '@/lib/landing-pages';
+import NavAuth from './NavAuth';
 
 /** Header, footer and breadcrumbs shared by the tools, blog and comparison pages. Server components. */
 
@@ -17,8 +18,7 @@ export function SiteHeader() {
           <Link href="/tools">Free tools</Link>
           <Link href="/blog">Blog</Link>
           <Link href="/pricing" className={m.navHide}>Pricing</Link>
-          <Link href="/login" className={m.navHide}>Sign in</Link>
-          <Link href="/signup" className={m.navCta}>Start free trial</Link>
+          <NavAuth hideClass={m.navHide} ctaClass={m.navCta} />
         </nav>
       </div>
     </header>

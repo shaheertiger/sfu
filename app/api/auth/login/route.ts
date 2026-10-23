@@ -2,6 +2,7 @@ import { ensureUser } from '@/lib/server/auth';
 import { assertSameOrigin, body, errorResponse, json } from '@/lib/server/api';
 import { now } from '@/lib/server/db';
 import { neonAuth } from '@/lib/server/neon-auth';
+import { setSignedInHint } from '@/lib/server/signed-in-hint';
 
 // Simple brute-force guard on top of Neon Auth's own: at most 10 failed attempts per email per 15 minutes.
 const WINDOW = 15 * 60_000, MAX_FAILS = 10;
@@ -29,6 +30,7 @@ export async function POST(req: Request) {
     }
     fails.delete(key);
     await ensureUser(data.user);
+    await setSignedInHint(true);
     return json({ ok: true });
   } catch (e) {
     return errorResponse(e);

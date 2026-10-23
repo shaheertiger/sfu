@@ -36,6 +36,8 @@ class Component extends DCLogic {
   emailRef = React.createRef();
   sheetRef = React.createRef();
   componentDidMount() {
+    // Signed-in visitors get "Open dashboard" instead of "Sign in" (see lib/signed-in-hint.js).
+    this.setState({ signedIn: /(?:^|;\s*)sfy_signed_in=1/.test(document.cookie) });
     this._iv = setInterval(() => this.setState((s) => ({ t: (s.t + 1) % 120 })), 70);
     this._sc = () => {
       const y = window.scrollY,
@@ -158,6 +160,9 @@ class Component extends DCLogic {
         ? `Start posting to ${nPick} platform${nPick === 1 ? '' : 's'}`
         : 'Start free trial';
     return {
+      topLabel: s.signedIn ? 'Open dashboard' : 'Sign in',
+      topHref: s.signedIn ? '/app' : '/login',
+      topColor: s.signedIn ? '#dcff2e' : '#a7abb2',
       pickers: PK.map((k) => {
         const on = s.picks.includes(k);
         return {

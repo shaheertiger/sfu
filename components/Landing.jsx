@@ -470,6 +470,8 @@ class Component extends DCLogic {
     this.measureCursor();
   }
   componentDidMount() {
+    // Signed-in visitors get "Open dashboard" instead of "Sign in" (see lib/signed-in-hint.js).
+    this.setState({ signedIn: /(?:^|;\s*)sfy_signed_in=1/.test(document.cookie) });
     this.onResize();
     window.addEventListener('resize', this.onResize);
     window.addEventListener('scroll', this.onScroll, { passive: true });
@@ -620,6 +622,10 @@ class Component extends DCLogic {
         clearTimeout(this.ct);
         this.ct = setTimeout(() => this.setState({ copied: false }), 1500);
       },
+      navMainLabel: this.state.signedIn ? 'Open dashboard' : 'Start free',
+      navMainHref: this.state.signedIn ? '/app' : '/signup',
+      navSecondLabel: this.state.signedIn ? 'Pricing' : 'Sign in',
+      navSecondHref: this.state.signedIn ? '#pricing' : '/login',
       quotes: QUOTES,
       showTestimonials: this.props.showTestimonials ?? true,
       ...(() => {
