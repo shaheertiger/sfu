@@ -61,6 +61,11 @@ export default function AuthForm({ mode }) {
           <span>Password</span>
           <input name="password" type="password" required minLength={signup ? 8 : undefined} autoComplete={signup ? 'new-password' : 'current-password'} placeholder={signup ? 'At least 8 characters' : ''} />
         </label>
+        {!signup && (
+          <p className={styles.forgot}>
+            <a href="/forgot-password">Forgot password?</a>
+          </p>
+        )}
         {error && <p className={styles.error} role="alert">{error}</p>}
         {notice && <p className={styles.sub} role="status">{notice}</p>}
         <button type="submit" disabled={busy}>{busy ? 'One moment…' : signup ? 'Create account' : 'Sign in'}</button>
