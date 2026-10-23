@@ -66,8 +66,8 @@ Every OAuth callback URL is `APP_URL/api/connect/<platform>/callback`.
 | --------------- | ------------------------------------------- | ----- |
 | Bluesky         | none                                        | Users connect with their handle and an app password. |
 | X               | `X_CLIENT_ID`, `X_CLIENT_SECRET`            | developer.x.com, OAuth 2.0 confidential client; scopes `tweet.write offline.access media.write`. |
-| Facebook Pages  | `FACEBOOK_APP_ID`, `FACEBOOK_APP_SECRET`    | Needs `pages_manage_posts`; App Review to post for other people's Pages. |
-| Instagram       | same Meta app as Facebook                   | Business/Creator account linked to a Page; media by public URL. |
+| Facebook Pages  | `FACEBOOK_APP_ID`, `FACEBOOK_APP_SECRET` (+ optional `FACEBOOK_CONFIG_ID`) | Needs `pages_manage_posts`; App Review to post for other people's Pages. Set `FACEBOOK_CONFIG_ID` only if your app uses a Facebook Login for Business configuration; it then replaces the scope list. |
+| Instagram       | same Meta app as Facebook                   | Business/Creator account linked to a Page; media by public URL. Asks for `instagram_basic`, `instagram_content_publish`, `pages_show_list`, `pages_read_engagement`, `business_management`. |
 | Threads         | `THREADS_APP_ID`, `THREADS_APP_SECRET`      | Separate Threads app in Meta developers. |
 | LinkedIn        | `LINKEDIN_CLIENT_ID`, `LINKEDIN_CLIENT_SECRET` | Products "Share on LinkedIn" + "Sign In with LinkedIn using OpenID Connect". |
 | TikTok          | `TIKTOK_CLIENT_KEY`, `TIKTOK_CLIENT_SECRET` | Content Posting API; posts are private until the app passes audit. |
