@@ -1143,7 +1143,7 @@ class Component extends DCLogic {
           .join(' · '),
         caption: p.caption,
         hasMedia: p.media.length > 0,
-        media: p.media,
+        media: p.media.map((kind) => ({ bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind })),
         targets: p.targets.map((t) => {
           const a = accById[t.acc] || { username: 'disconnected', platform: 'x' };
           const sc =
@@ -1661,7 +1661,7 @@ class Component extends DCLogic {
       handle: pvAcc ? `@${pvAcc.username} · ${P[pvAcc.platform].label} · ${pvWhen}` : 'Pick an account to preview',
       text: pvText || 'Your post will appear here.',
       textColor: pvText ? '#141619' : '#9aa0a8',
-      media: d.media.slice(0, 4),
+      media: d.media.slice(0, 4).map((kind) => ({ bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind })),
       cols: d.media.length === 1 ? '1fr' : '1fr 1fr',
     };
     const previewTabs = sel.map((a) => ({
@@ -2061,6 +2061,8 @@ class Component extends DCLogic {
       hasMedia: d.media.length > 0,
       mediaTiles: d.media.map((kind, i) => ({
         kind,
+        bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)',
+        label: kind,
         remove: () => this.upd({ media: d.media.filter((_, j) => j !== i) }),
       })),
       addImage: () => this.upd({ media: [...d.media, 'IMG'] }),
@@ -2779,7 +2781,8 @@ class Component extends DCLogic {
           nowLeft: pos(nowMs).toFixed(2),
           todayMarks,
           todaySummary: `${pubToday} sent · ${schToday} to go`,
-          planPct: Math.min(100, (s.accounts.length / 15) * 100),
+          planPct: Math.min(100, (s.accounts.length / (s.accountLimit || 15)) * 100),
+          accountLimitLabel: s.accountLimit || 15,
         };
       })(),
       ...(() => {
@@ -3035,7 +3038,14 @@ class Component extends DCLogic {
             preview: () => this.setState({ pvMediaId: m.id }),
             name: m.name,
             thumb: thumb(m),
-            badge: m.kind === 'VIDEO' ? (S0.libView === 'list' ? '▶' : '▶ VIDEO') : S0.libView === 'list' ? '' : 'IMG',
+            badge:
+              m.kind === 'VIDEO'
+                ? S0.libView === 'list'
+                  ? '▶'
+                  : '▶ VIDEO'
+                : S0.libView === 'list' || m.url
+                  ? ''
+                  : 'IMG',
             used: m.used ? `used ${m.used}×` : '',
             folder: m.folder,
             move: (e) => {

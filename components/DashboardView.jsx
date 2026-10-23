@@ -315,7 +315,8 @@ export function renderDashboard($v) {
                 <span>{'Accounts'}</span>
                 <span style={{ color: '#f6f5f1' }}>
                   {$t($v['accountCount'])}
-                  {' / 15'}
+                  {' / '}
+                  {$t($v['accountLimitLabel'])}
                 </span>
               </div>{' '}
               <span style={{ height: '4px', borderRadius: '4px', background: '#22252a', overflow: 'hidden' }}>
@@ -1837,14 +1838,14 @@ export function renderDashboard($v) {
                                               width: '56px',
                                               height: '56px',
                                               borderRadius: '8px',
-                                              background: 'linear-gradient(160deg,#9a7a58,#5d4a36)',
+                                              background: `${m?.bg ?? ''}`,
                                               display: 'grid',
                                               placeItems: 'center',
                                               font: "500 10px 'Geist Mono',monospace",
                                               color: '#f3e9d8',
                                             }}
                                           >
-                                            {$t(m)}
+                                            {$t(m?.label)}
                                           </div>{' '}
                                         </Fragment>
                                       ))}{' '}
@@ -3507,7 +3508,7 @@ export function renderDashboard($v) {
                                       width: '84px',
                                       height: '84px',
                                       borderRadius: '10px',
-                                      background: 'linear-gradient(160deg,#9a7a58,#5d4a36)',
+                                      background: `${m?.bg ?? ''}`,
                                       display: 'grid',
                                       placeItems: 'center',
                                       font: "500 11px 'Geist Mono',monospace",
@@ -3515,7 +3516,7 @@ export function renderDashboard($v) {
                                     }}
                                   >
                                     {' '}
-                                    <span>{$t(m?.kind)}</span>{' '}
+                                    <span>{$t(m?.label)}</span>{' '}
                                     <button
                                       onClick={m?.remove}
                                       style={{
@@ -4121,14 +4122,14 @@ export function renderDashboard($v) {
                                       style={{
                                         aspectRatio: '1',
                                         borderRadius: '8px',
-                                        background: 'linear-gradient(160deg,#9a7a58,#5d4a36)',
+                                        background: `${m?.bg ?? ''}`,
                                         display: 'grid',
                                         placeItems: 'center',
                                         font: "500 11px 'Geist Mono',monospace",
                                         color: '#f3e9d8',
                                       }}
                                     >
-                                      {$t(m)}
+                                      {$t(m?.label)}
                                     </div>{' '}
                                   </Fragment>
                                 ))}{' '}
@@ -5814,7 +5815,9 @@ export function renderDashboard($v) {
                   </h1>{' '}
                   <p style={{ margin: '8px 0 0', color: '#677184', fontSize: '15px' }}>
                     {$t($v['accountCount'])}
-                    {' of 15 connected. Multiple accounts per platform are fine.'}
+                    {' of '}
+                    {$t($v['accountLimitLabel'])}
+                    {' connected. Multiple accounts per platform are fine.'}
                   </p>{' '}
                 </div>{' '}
                 <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
