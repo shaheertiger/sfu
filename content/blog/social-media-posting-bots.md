@@ -11,7 +11,7 @@ Social media posting bots are programs that publish to social networks automatic
 
 This guide explains the difference, summarizes how X, Instagram and Reddit approach automation, and gives you a checklist for automating safely.
 
-## Posting bots vs. schedulers at a glance
+## Social media posting bots vs. schedulers at a glance
 
 | | Legitimate scheduling tool | Rule-breaking bot |
 | --- | --- | --- |
@@ -24,7 +24,7 @@ This guide explains the difference, summarizes how X, Instagram and Reddit appro
 
 ## What counts as a social media bot?
 
-"Bot" covers several very different things. It helps to separate them.
+When people talk about social media posting bots, they can mean several very different things. It helps to separate them.
 
 ### Scheduling and publishing tools
 
@@ -57,6 +57,8 @@ X (formerly Twitter) permits some automation through its API, such as scheduling
 
 X asks automated accounts to identify themselves, and it offers an "automated" label for bot accounts. Read X's [automation rules](https://help.x.com/en/rules-and-policies/x-automation) before building anything. If you suspect your reach has dropped after a run-in with these rules, see [am I shadowbanned on X](/blog/am-i-shadowbanned-twitter).
 
+<!-- cta -->
+
 ### Instagram rules on bots
 
 Instagram's terms prohibit accessing the service or collecting information by automated means without permission, and its community guidelines prohibit inauthentic activity such as artificially boosting likes, follows or comments. In practice, apps that ask for your Instagram password and then like, follow or comment on your behalf are the classic way accounts get action-blocked or disabled.
@@ -70,8 +72,6 @@ Reddit allows bots built on its developer API, but they must follow Reddit's con
 ### Other platforms
 
 Facebook, LinkedIn and TikTok follow the same pattern: approved apps can publish through official APIs, while scraping, fake engagement and unauthorized automation are prohibited. LinkedIn's user agreement, for example, specifically prohibits using bots or other automated methods to access the service, add contacts or send messages.
-
-<!-- cta -->
 
 ## Why legitimate schedulers use official APIs
 

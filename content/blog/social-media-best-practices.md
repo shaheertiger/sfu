@@ -1,6 +1,6 @@
 ---
 title: Social Media Best Practices: A Practical Checklist
-description: Social media best practices by area: profiles, content, captions per platform, posting cadence, community, accessibility, security and measurement, as a checklist.
+description: Social media best practices by area: profiles, content, captions per platform, posting cadence, community, accessibility, security and measurement.
 h1: Social Media Best Practices: A Practical Checklist for Every Area
 category: Strategy
 excerpt: A working checklist of social media best practices, from profiles and captions to alt text, two-factor authentication and measuring what matters.
@@ -59,6 +59,8 @@ Each network has its own limit and its own norms. Write one master message, then
 
 Two practical tips: count characters before you post (X counts each link as 23 characters and most emoji as 2), and keep line breaks intact on Instagram with our [Instagram line break generator](/tools/instagram-line-break-generator).
 
+<!-- cta -->
+
 ## Posting cadence best practices
 
 How often should you post on social media? There's no universal number. The best practice is a cadence you can sustain without the quality dropping.
@@ -67,8 +69,6 @@ How often should you post on social media? There's no universal number. The best
 - **Batch your work.** Write and schedule a week or month at a time rather than posting on the fly.
 - **Use consistent posting times,** then test alternatives. Our guide to the [best days to post on social media](/blog/best-days-to-post-on-social-media) explains how to run that test.
 - **Leave room for timely posts** alongside scheduled ones.
-
-<!-- cta -->
 
 ## Community best practices
 

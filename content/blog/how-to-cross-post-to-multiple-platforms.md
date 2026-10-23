@@ -1,6 +1,6 @@
 ---
 title: How to Cross Post to Multiple Platforms (Without Copy-Paste)
-description: How to cross post to multiple platforms: adapt captions to each limit, size media once for every feed, time posts well and avoid the copy-paste look. Step by step.
+description: How to cross post to multiple platforms: adapt captions to each limit, size media once for every feed, time posts well and avoid the copy-paste look.
 h1: How to Cross Post to Multiple Platforms the Right Way
 category: Strategy
 excerpt: Cross-posting works when each version fits its platform. Here are the limits to write for, the media sizes to export, and a step-by-step workflow for posting everywhere at once.
@@ -9,7 +9,7 @@ date: 2026-10-23
 ---
 To cross post to multiple platforms, write one core message, adapt the caption to each platform's character limit and style, export your media in the sizes each feed needs, and publish from a scheduler that sends a separate version to every account. The aim is one idea, posted everywhere, that still looks native on each platform rather than copied and pasted.
 
-This guide covers the limits you're writing for, the media formats to prepare, how to time posts, and a step-by-step workflow.
+If you're working out how to cross post to multiple platforms for the first time, this guide covers the limits you're writing for, the media formats to prepare, how to time posts, and a step-by-step workflow.
 
 ## Platform limits for cross-posting at a glance
 
@@ -53,6 +53,8 @@ LinkedIn rewards a clear takeaway in short paragraphs. On YouTube, the first lin
 - **Platform words.** "Link in bio," "swipe," "retweet" and "subscribe" only make sense in one place.
 - **Watermarks.** Upload your original video file to every platform instead of saving and re-uploading a video exported from another app.
 
+<!-- cta -->
+
 ## Preparing media once for every platform
 
 Export each image or video in a few standard sizes and reuse them across platforms.
@@ -62,12 +64,10 @@ Export each image or video in a few standard sizes and reuse them across platfor
 | Vertical video, 9:16 | 1080×1920 | Instagram Reels, TikTok, YouTube (YouTube decides whether a vertical video is a Short) |
 | Portrait image, 4:5 | 1080×1350 | Instagram and Facebook feeds, LinkedIn |
 | Square image, 1:1 | 1080×1080 | Instagram, LinkedIn, X, Threads, Bluesky |
-| Landscape image, 1.91:1 | 1200×627 or 1080×566 | LinkedIn link-style images, Instagram landscape |
+| Landscape image, 1.91:1 | 1200×627 or 1080×566 | LinkedIn landscape image posts, Instagram landscape posts |
 | Pin, 2:3 | 1000×1500 | Pinterest |
 
 Instagram accepts feed images between 4:5 portrait and 1.91:1 landscape at the time of writing, and Schedule For You doesn't crop or resize images for you. Prepare images that fit first; our [Instagram photo resizer](/tools/instagram-photo-resizer) crops or pads an image to these sizes in your browser.
-
-<!-- cta -->
 
 ## Timing your cross-posts
 
@@ -89,7 +89,7 @@ Here's the workflow from start to finish. You can see an overview on the [cross-
 1. **Connect your accounts.** Add each platform from the Accounts screen. You can connect several accounts on the same platform, such as two Instagram accounts, and keep different brands in separate workspaces.
 2. **Create a post and choose its targets.** Select every account the post should go to.
 3. **Write the master caption.** This is the version every platform starts with.
-4. **Edit each platform's version.** Open a platform's tab and adjust its caption without changing the others. Live character-limit checks show when a version is over the limit.
+4. **Edit each platform's version.** Switch to a platform's version and adjust its caption without changing the others. Live character-limit checks show when a version is over the limit.
 5. **Add media and platform settings.** Attach your images or video, then fill in what each platform needs: a title for YouTube and its privacy setting, a privacy setting for TikTok, a board for Pinterest, and an optional button link for Google Business Profile.
 6. **Schedule it.** Drop the post into your next queue slot, pick a time on the drag-and-drop calendar, or publish now.
 7. **Check the results.** If any target fails, for example because a platform revoked access after a password change, you'll get an alert and can reconnect or retry that target without reposting to the others.

@@ -26,7 +26,7 @@ function PlanTable() {
   return (
     <section className={m.narrow} aria-labelledby="plans">
       <h2 id="plans" className={m.specTitle}>Plans</h2>
-      <div className={m.specs}>
+      <dl className={m.specs}>
         {PLANS.map((p) => (
           <div key={p.id} className={m.spec}>
             <dt>{p.name}</dt>
@@ -40,7 +40,7 @@ function PlanTable() {
             </dd>
           </div>
         ))}
-      </div>
+      </dl>
       <p className={m.meta} style={{ textAlign: 'left', marginTop: -8 }}>7-day free trial on both plans. Card required, not charged until day 8, cancel anytime.</p>
     </section>
   );

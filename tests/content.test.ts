@@ -58,17 +58,16 @@ test('internal links point at pages that exist', () => {
 });
 
 test('copy never promises what the product does not do', () => {
+  // Free plans and no-card trials may be discussed for other tools; any sentence about our own
+  // product that mentions one must say we don't offer it.
   const banned = [/\bfree plan\b/i, /\bno card\b/i, /\bno credit card\b/i, /free forever/i, /\bAI[- ](?:powered|writer|generated|assistant)\b/i];
+  const ours = /Schedule For You|\bour (?:plan|trial|tool|app|scheduler)|\bwe (?:offer|have|include)/i;
+  const negated = /\b(?:no|not|never|without)\b|n['’]t\b/i;
   for (const [slug, raw] of all) {
-    for (const re of banned) {
-      for (const m of raw.matchAll(new RegExp(re.source, re.flags + 'g'))) {
-        // "both plans are paid" style statements are fine; flag anything that reads as an offer.
-        const i = m.index ?? 0;
-        const line = raw.slice(raw.lastIndexOf('\n', i) + 1, raw.indexOf('\n', i) < 0 ? undefined : raw.indexOf('\n', i));
-        const negated = /(?:\bno|\bnot|n['’]t)\b[^.]{0,40}$/i.test(raw.slice(Math.max(0, i - 50), i));
-        const question = /^#+ .*\?$/.test(line.trim());
-        assert.ok(negated || question, `${slug}: "${line.trim().slice(0, 140)}"`);
-      }
+    const sentences = raw.replace(/\n+/g, ' ').split(/(?<=[.!?])\s+/);
+    for (const sentence of sentences) {
+      if (!banned.some((re) => re.test(sentence)) || !ours.test(sentence) || sentence.trim().endsWith('?')) continue;
+      assert.ok(negated.test(sentence), `${slug}: "${sentence.slice(0, 160)}"`);
     }
   }
 });

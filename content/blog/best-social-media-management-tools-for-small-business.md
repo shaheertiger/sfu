@@ -46,6 +46,8 @@ Most tools fall into one of these categories. The examples are well-known tools 
 
 Meta Business Suite (Facebook and Instagram), YouTube Studio, and the management screens for your Google Business Profile are free and official. If you're only on one or two platforms, start here. Our post on [free social media management tools](/blog/free-social-media-management-tools) covers what each one does.
 
+<!-- cta -->
+
 ### All-in-one suites
 
 Tools such as Hootsuite, Sprout Social and Agorapulse combine publishing with a shared social inbox, reporting and, on higher tiers, social listening. They suit businesses with a dedicated marketing person or team who will use the inbox and reports daily. They're typically priced for teams, so check how seats and accounts are counted.
@@ -66,9 +68,7 @@ If you manage several brands, look for separate workspaces per client, client ap
 
 A growing group of tools focuses on publishing to many networks from one calendar at a lower price, usually without a social inbox or deep analytics. They suit small businesses that want to post consistently across several channels without paying for features they won't use.
 
-<!-- cta -->
-
-## How to choose: a five-step process
+## How to choose the best social media management tools for small business
 
 1. **List your channels and accounts.** Write down every profile you post to, including Google Business Profile, and any you plan to add in the next year.
 2. **Decide what you actually need.** Mark each as must-have or nice-to-have: scheduling, approvals, inbox, analytics, bulk upload, team seats.
@@ -78,7 +78,7 @@ A growing group of tools focuses on publishing to many networks from one calenda
 
 ## Do small businesses need a social media management tool?
 
-Not always. If you post to Facebook and Instagram a few times a week, Meta Business Suite may be all you need. A paid tool earns its cost when you post to several networks, want one calendar for everything, need someone to approve posts, or keep missing posts because scheduling is scattered across apps. A consistent schedule matters more than any tool; see our guide to the [best days to post on social media](/blog/best-days-to-post-on-social-media) for how to find yours.
+Not always, and the best social media management tools for small business include free ones. If you post to Facebook and Instagram a few times a week, Meta Business Suite may be all you need. A paid tool earns its cost when you post to several networks, want one calendar for everything, need someone to approve posts, or keep missing posts because scheduling is scattered across apps. A consistent schedule matters more than any tool; see our guide to the [best days to post on social media](/blog/best-days-to-post-on-social-media) for how to find yours.
 
 ## Where Schedule For You fits for small businesses
 

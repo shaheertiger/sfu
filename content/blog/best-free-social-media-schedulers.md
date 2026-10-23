@@ -1,6 +1,6 @@
 ---
 title: Best Free Social Media Schedulers (Native and Free Tiers)
-description: The best free social media schedulers are built into each platform. Compare native schedulers for Instagram, TikTok, X, LinkedIn and YouTube, and what they can't do.
+description: The best free social media schedulers are built into each platform. Compare native schedulers for Instagram, TikTok, X, LinkedIn and YouTube, and their limits.
 h1: The Best Free Social Media Schedulers, Platform by Platform
 category: Strategy
 excerpt: Every major platform now has some free scheduling built in. Here's what each native scheduler does, what it can't do, and how to run a free scheduling routine.
@@ -11,7 +11,7 @@ The best free social media schedulers are the ones built into the platforms them
 
 This post focuses only on scheduling: getting a post to go live at a set time without you being there. If you want the wider picture of free inboxes, insights and utilities, see our guide to [free social media management tools](/blog/free-social-media-management-tools).
 
-## Free social media schedulers by platform
+## The best free social media schedulers by platform
 
 Native features change often and can depend on your account type, country and device. Everything below is accurate to the best of our knowledge at the time of writing; check each platform's help center if an option is missing.
 
@@ -44,6 +44,8 @@ Both let you write a post, tap a scheduling icon and pick a time. They work well
 
 TikTok's desktop upload page includes a schedule option. The scheduling window is limited and has changed over time, so you can't line up content as far ahead as you might on other platforms. Check TikTok's help center for the current window.
 
+<!-- cta -->
+
 ## What free native schedulers can't do
 
 Native schedulers share the same set of gaps, because each platform only cares about itself.
@@ -54,8 +56,6 @@ Native schedulers share the same set of gaps, because each platform only cares a
 - **No evergreen or repeating posts.** Republishing a proven post means recreating it by hand.
 - **No bulk scheduling.** There's rarely a way to upload a spreadsheet of posts.
 - **No approvals across channels.** If someone needs to sign off, that happens outside the tool.
-
-<!-- cta -->
 
 ## How to schedule social media posts for free: a weekly routine
 
@@ -78,7 +78,7 @@ Open-source schedulers you host yourself are the other free route. The software 
 
 ## When a paid scheduler is worth it
 
-A paid scheduler earns its cost when the time you spend repeating posts across native tools is worth more than the subscription. Typical signs: you post to four or more platforms, you plan a month at a time, or someone else needs to approve posts.
+Even the best free social media schedulers make you repeat work across apps. A paid scheduler earns its cost when the time you spend repeating posts across native tools is worth more than the subscription. Typical signs: you post to four or more platforms, you plan a month at a time, or someone else needs to approve posts.
 
 Schedule For You is a paid option, not a free one: there's a 7-day free trial (card required, no charge until day 8), then $19/month for up to 15 connected accounts or $59/month for up to 100, with unlimited posts. It schedules one post to X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile, with a per-platform caption for each, a queue with time slots, evergreen posts and CSV bulk scheduling. See [pricing](/#pricing) for details.
 

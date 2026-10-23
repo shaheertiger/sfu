@@ -77,7 +77,7 @@ If several accounts belong to the same brand, for example regional accounts or a
 
 ## Posting to several Instagram accounts at once
 
-Once accounts are connected, select as many as you need in one post. Each selected Instagram account gets the same media and the Instagram version of the caption, while other platforms in the same post keep their own versions. That's useful for a launch announced on several brand accounts at the same time. Keep in mind that Instagram may treat identical posts across many accounts as repetitive, so if accounts share an audience, consider separate posts with different wording. Our page on [posting to multiple Instagram accounts](/post-to-multiple-instagram-accounts) covers this workflow.
+Once accounts are connected, select as many as you need in one post. Each selected account gets the same media, and you can edit the caption separately for each account, so two Instagram accounts don't have to say exactly the same thing. That's useful for a launch announced on several brand accounts at the same time. If the accounts share an audience, give each one its own wording rather than posting identical captions. Our page on [posting to multiple Instagram accounts](/post-to-multiple-instagram-accounts) covers this workflow.
 
 ## Troubleshooting: an Instagram account doesn't appear
 
@@ -129,4 +129,4 @@ Usually it's a personal account, it isn't linked to a Facebook Page, it wasn't t
 
 ### Can I post the same content to several Instagram accounts at once?
 
-Yes. Select each account in one post and they'll all publish it. For accounts that share an audience, separate posts with different wording are a good habit, so followers of both don't see the same thing twice.
+Yes. Select each account in one post and they'll all publish it. For accounts that share an audience, edit the caption for each account so followers of both don't see the exact same words twice.

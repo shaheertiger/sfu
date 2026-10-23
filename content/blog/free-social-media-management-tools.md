@@ -47,6 +47,8 @@ X (formerly Twitter) has offered a schedule option in the post composer on x.com
 
 TikTok, Pinterest and Threads have all offered some form of native scheduling, usually on the web or for certain account types. Availability and how far ahead you can schedule vary, so check each platform's help pages before you plan around it.
 
+<!-- cta -->
+
 ## Open-source, self-hosted tools
 
 Open-source social media management software is free to download and run. You install it on a server you control, register your own developer apps with each platform, and manage everything yourself.
@@ -67,8 +69,6 @@ Open-source social media management software is free to download and run. You in
 - **Support** that usually means community forums rather than a help desk.
 
 If you or a teammate already runs servers, this route can work well. If not, the hours involved usually outweigh the savings.
-
-<!-- cta -->
 
 ## Free plans of commercial tools
 
@@ -96,7 +96,7 @@ They don't publish anything for you, but they remove a lot of small friction fro
 
 ## When free stops being enough
 
-A free stack works well when you post to one or two platforms and do the work yourself. It starts to strain when:
+A stack of free social media management tools works well when you post to one or two platforms and do the work yourself. It starts to strain when:
 
 - You post the same content to four or more networks and are logging in to each one separately.
 - Someone else needs to approve posts before they go out.

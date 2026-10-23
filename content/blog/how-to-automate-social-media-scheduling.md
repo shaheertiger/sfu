@@ -1,6 +1,6 @@
 ---
 title: How to Automate Social Media Scheduling, Step by Step
-description: How to automate social media scheduling with a queue, time slots, evergreen posts, RSS auto-post, bulk CSV uploads, webhooks and an API, plus what not to automate.
+description: How to automate social media scheduling with time slots, evergreen posts, RSS auto-post, bulk CSV uploads, webhooks and an API, plus what not to automate.
 h1: How to Automate Social Media Scheduling (Without Losing the Human Touch)
 category: Strategy
 excerpt: Set up posting time slots, bulk-load posts from a CSV, recycle evergreen content, auto-post from RSS and connect Zapier, Make or n8n. Here's the full setup, step by step.
@@ -11,7 +11,7 @@ Here's how to automate social media scheduling: set up a queue with recurring po
 
 This guide covers each method, when it's worth using, and how to set it up step by step in Schedule For You. The same principles apply to any scheduler with similar features.
 
-## Ways to automate social media posts at a glance
+## How to automate social media scheduling: methods at a glance
 
 | Method | What it automates | Best for | Setup effort |
 | --- | --- | --- | --- |
@@ -124,7 +124,7 @@ Automation needs a light check-in, not constant watching.
 
 ## What not to automate on social media
 
-Automating publishing is fine. Automating the human parts of social media isn't, and some of it breaks platform rules.
+Knowing how to automate social media scheduling also means knowing where to stop. Automating publishing is fine. Automating the human parts of social media isn't, and some of it breaks platform rules.
 
 - **Replies, comments and DMs.** Answer people yourself.
 - **Likes, follows and unfollows.** Automated engagement is prohibited on every major platform. Our guide to [social media posting bots](/blog/social-media-posting-bots) explains where the line is.
