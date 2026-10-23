@@ -13,3 +13,16 @@ export function metaFormatProblem(format: MetaFormat, media: { mime: string }[])
   if (format === 'story' && media.length !== 1) return 'A Story needs exactly one image or video.';
   return null;
 }
+
+/** A Facebook feed post carries one video or images, never both. Returns an error message or null. */
+export function facebookMixProblem(media: { mime: string }[]): string | null {
+  const videos = media.filter((m) => m.mime.startsWith('video/')).length;
+  if (videos && media.length > videos) return 'A post can have a video or images, not both.';
+  if (videos > 1) return 'A post can have one video.';
+  return null;
+}
+
+/** Instagram only takes JPEG images. Returns the images that aren't JPEG. */
+export function nonJpegImages<T extends { mime: string }>(media: T[]): T[] {
+  return media.filter((m) => m.mime.startsWith('image/') && m.mime !== 'image/jpeg');
+}

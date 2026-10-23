@@ -4,7 +4,7 @@ import { exec, now, one, query, tx, uid } from './db';
 import { decrypt } from './crypto';
 import { HttpError } from './http-error';
 import { overLimitAccountIds } from './accounts';
-import { metaFormat, metaFormatProblem } from './meta-format';
+import { facebookMixProblem, metaFormat, metaFormatProblem, nonJpegImages } from './meta-format';
 import { getBytes, readUrl } from './storage';
 import { PLATFORMS, type PlatformId } from './platforms';
 import type { MediaFile, SocialAccount } from './adapters/types';
@@ -86,10 +86,26 @@ export function parsePostBody(raw: unknown): PostBodyInput {
 export function rowToAccount(r: any): SocialAccount {
   return { ...r, access_token: decrypt(r.access_token), refresh_token: decrypt(r.refresh_token), meta: r.meta || {} };
 }
+/**
+ * Whether the account keeps its own sign-in fresh, so its token expiry is nothing to warn about:
+ * it has a refresh token, or it uses a token that renews itself (Threads) or doesn't expire
+ * (Facebook and Instagram Page tokens, Bluesky app passwords).
+ */
+export function hasRefresh(r: any): boolean {
+  if (r.refresh_token) return true;
+  if (r.platform === 'threads' || r.platform === 'facebook' || r.platform === 'bluesky') return true;
+  return r.platform === 'instagram' && r.meta?.token_kind === 'page';
+}
+
 export function publicAccount(r: any) {
+  const renews = hasRefresh(r);
   return {
     id: r.id, platform: r.platform, username: r.username, display_name: r.display_name, avatar_url: r.avatar_url,
-    status: r.status, last_error: r.last_error, token_expires_at: r.token_expires_at, created_at: r.created_at,
+    status: r.status, last_error: r.last_error,
+    has_refresh: renews,
+    // Only an expiry the person has to act on (by reconnecting) is shown.
+    token_expires_at: renews ? null : r.token_expires_at ?? null,
+    created_at: r.created_at,
     meta: { boards: r.meta?.boards },
   };
 }
@@ -131,8 +147,8 @@ async function hydrate(rows: any[]) {
  */
 export function publicPost(p: any) {
   if (!p) return p;
-  const { workspace_id, created_by, reminded_for, parent_id, ...post } = p;
-  return { ...post, targets: (p.targets || []).map(({ post_id, attempts, ...t }: any) => t) };
+  const { workspace_id, created_by, reminded_for, parent_id, repeat_anchor, repeat_n, ...post } = p;
+  return { ...post, targets: (p.targets || []).map(({ post_id, attempts, progress, ...t }: any) => t) };
 }
 
 export async function getPost(workspaceId: string, id: string) {
@@ -156,7 +172,7 @@ export async function validatePost(workspaceId: string, input: PostInput) {
   const errors: string[] = [];
   if (!input.targets?.length) errors.push('Pick at least one account');
   // Only confirmed uploads count: unconfirmed files would be dropped at publish time.
-  const media = input.media?.length ? await query('SELECT id, mime FROM media WHERE workspace_id=$1 AND id = ANY($2) AND uploaded', [workspaceId, input.media]) : [];
+  const media = input.media?.length ? await query('SELECT id, mime, filename FROM media WHERE workspace_id=$1 AND id = ANY($2) AND uploaded', [workspaceId, input.media]) : [];
   if (media.length !== new Set(input.media || []).size) errors.push('Some media files were not found or have not finished uploading. Confirm each upload with PATCH /media/{id} { "uploaded": true }.');
   const accounts = await query('SELECT id, platform, username FROM social_accounts WHERE workspace_id=$1 AND id = ANY($2)', [workspaceId, (input.targets || []).map((t) => t.account_id)]);
   const byId = new Map(accounts.map((a) => [a.id, a]));
@@ -168,8 +184,13 @@ export async function validatePost(workspaceId: string, input: PostInput) {
     if (!acc) { errors.push(`Unknown account ${t.account_id}`); continue; }
     const p = PLATFORMS[acc.platform as PlatformId];
     if (acc.platform === 'instagram' || acc.platform === 'facebook') {
-      const problem = metaFormatProblem(metaFormat(t.options), media);
+      const format = metaFormat(t.options);
+      const problem = metaFormatProblem(format, media) ?? (acc.platform === 'facebook' && format === 'post' ? facebookMixProblem(media) : null);
       if (problem) errors.push(`${p.label} (@${acc.username}): ${problem}`);
+    }
+    if (acc.platform === 'instagram') {
+      const notJpeg = nonJpegImages(media);
+      if (notJpeg.length) errors.push(`Instagram only accepts JPEG images. Convert ${notJpeg.map((m) => m.filename || m.id).join(', ')} to JPEG or deselect @${acc.username}.`);
     }
     if (over.has(acc.id)) errors.push(`${p.label} (@${acc.username}) is paused because the workspace is over its plan's account limit. Upgrade or disconnect an account.`);
     const text = t.caption ?? input.caption ?? '';
@@ -188,6 +209,33 @@ function statusFor(input: PostInput, existing?: any) {
   return { status: existing?.status === 'failed' ? 'scheduled' : existing?.status || 'draft', at: existing?.scheduled_at ?? null };
 }
 
+/** How far in the past a new scheduled time may be (slow requests, clock differences). */
+export const PAST_GRACE_MS = 5 * 60_000;
+
+/**
+ * A post can't be newly scheduled in the past: it would publish the moment it is saved. A post that
+ * was already due (a failed post being retried, an overdue post being edited) keeps its time, since
+ * saving it doesn't make anything go out sooner. Returns an error message or null.
+ */
+export function pastScheduleProblem(status: string, at: number | null, existing: any, publishNow = false, t = now()): string | null {
+  if (publishNow || status !== 'scheduled' || at == null || at >= t - PAST_GRACE_MS) return null;
+  if (existing && existing.status !== 'draft' && existing.scheduled_at != null && existing.scheduled_at <= t) return null;
+  return 'scheduled_at is in the past. Pick a time from now on, or publish the post now.';
+}
+
+/**
+ * The repeating series a post belongs to: its anchor (first occurrence) and its occurrence number.
+ * The anchor stays put through edits, retries and "publish now"; giving the post a new time
+ * re-anchors the series there.
+ */
+export function repeatSeries(input: PostInput, existing: any, at: number | null): { anchor: number | null; n: number } {
+  const repeat = input.repeat ?? existing?.repeat ?? 'none';
+  if (repeat === 'none') return { anchor: null, n: 0 };
+  const moved = !input.publish_now && input.scheduled_at != null && input.scheduled_at !== existing?.scheduled_at;
+  if (existing?.repeat_anchor != null && existing.repeat === repeat && !moved) return { anchor: existing.repeat_anchor, n: existing.repeat_n ?? 0 };
+  return { anchor: at, n: 0 };
+}
+
 /** Create or replace a post (and its targets). Published targets are kept as they are. */
 export async function savePost(workspaceId: string, input: PostInput, userId: string | null) {
   const existing = input.id ? await getPost(workspaceId, input.id) : null;
@@ -196,21 +244,25 @@ export async function savePost(workspaceId: string, input: PostInput, userId: st
   const id = existing?.id || input.id || uid('post');
   const t = now();
   const { status, at } = statusFor(input, existing);
+  const past = pastScheduleProblem(status, at, existing, input.publish_now, t);
+  if (past) throw new HttpError(422, past);
+  const series = repeatSeries(input, existing, at);
   const fields = [
     input.caption ?? existing?.caption ?? '', JSON.stringify(input.media ?? existing?.media ?? []), at, status,
     JSON.stringify(input.labels ?? existing?.labels ?? []), input.repeat ?? existing?.repeat ?? 'none', input.evergreen ?? existing?.evergreen ?? false,
     input.approval === undefined ? existing?.approval ?? null : input.approval, input.remind ?? existing?.remind ?? true, input.note ?? existing?.note ?? '',
     input.batch === undefined ? existing?.batch ?? null : input.batch,
     input.signature ?? existing?.signature ?? true,
+    series.anchor, series.n,
   ];
   await tx(async (q) => {
     if (existing) {
       if (existing.status === 'published' && status !== 'published') throw new HttpError(409, 'Published posts cannot be rescheduled. Duplicate it instead.');
-      await q(`UPDATE posts SET caption=$1, media=$2, scheduled_at=$3, status=$4, labels=$5, repeat=$6, evergreen=$7, approval=$8, remind=$9, note=$10, batch=$11, signature=$12, updated_at=$13 WHERE id=$14 AND workspace_id=$15`,
+      await q(`UPDATE posts SET caption=$1, media=$2, scheduled_at=$3, status=$4, labels=$5, repeat=$6, evergreen=$7, approval=$8, remind=$9, note=$10, batch=$11, signature=$12, repeat_anchor=$13, repeat_n=$14, updated_at=$15 WHERE id=$16 AND workspace_id=$17`,
         [...fields, t, id, workspaceId]);
     } else {
-      await q(`INSERT INTO posts (caption, media, scheduled_at, status, labels, repeat, evergreen, approval, remind, note, batch, signature, id, workspace_id, created_by, created_at, updated_at)
-               VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$16)`, [...fields, id, workspaceId, userId, t]);
+      await q(`INSERT INTO posts (caption, media, scheduled_at, status, labels, repeat, evergreen, approval, remind, note, batch, signature, repeat_anchor, repeat_n, id, workspace_id, created_by, created_at, updated_at)
+               VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$18)`, [...fields, id, workspaceId, userId, t]);
     }
     if (input.targets) {
       const keep = new Map<string, any>((existing?.targets || []).map((x: any) => [x.account_id, x]));
@@ -221,8 +273,13 @@ export async function savePost(workspaceId: string, input: PostInput, userId: st
         await q('INSERT INTO post_targets (id,post_id,account_id,caption_override,options) VALUES ($1,$2,$3,$4,$5)',
           [uid('tgt'), id, tg.account_id, tg.caption ?? null, JSON.stringify(tg.options || {})]);
       }
-    } else if (status === 'scheduled') {
-      await q(`UPDATE post_targets SET status='pending', error=NULL, attempts=0 WHERE post_id=$1 AND status='failed'`, [id]);
+    } else {
+      if (status === 'scheduled') {
+        await q(`UPDATE post_targets SET status='pending', error=NULL, attempts=0, progress='{}'::jsonb WHERE post_id=$1 AND status='failed'`, [id]);
+      }
+      // An Instagram upload saved by an earlier attempt holds the old caption and media.
+      const changed = existing && ((input.caption !== undefined && input.caption !== existing.caption) || (input.media !== undefined && JSON.stringify(input.media) !== JSON.stringify(existing.media)));
+      if (changed) await q(`UPDATE post_targets SET progress = progress - 'ig' - 'waits' WHERE post_id=$1 AND status <> 'published'`, [id]);
     }
   });
   return (await getPost(workspaceId, id))!;

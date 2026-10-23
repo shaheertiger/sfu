@@ -35,7 +35,7 @@ export const bluesky: PlatformAdapter = {
     };
   },
 
-  async publish({ account, caption, media }: PublishInput): Promise<PublishResult> {
+  async publish({ account, caption, media, sending }: PublishInput): Promise<PublishResult> {
     const agent = await agentFor(account);
     const rt = new RichText({ text: caption });
     await rt.detectFacets(agent);
@@ -60,6 +60,7 @@ export const bluesky: PlatformAdapter = {
       embed = { $type: 'app.bsky.embed.video', video: res.data.blob };
     }
 
+    await sending?.();
     const post = await agent.post({
       text: rt.text,
       facets: rt.facets,

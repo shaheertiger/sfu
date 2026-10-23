@@ -58,7 +58,7 @@ export async function tx<T>(fn: (q: <R = any>(text: string, params?: any[]) => P
 }
 
 // The Neon driver returns int8 as strings; normalise the known millisecond columns.
-const INT_COLS = new Set(['created_at', 'updated_at', 'expires_at', 'scheduled_at', 'published_at', 'token_expires_at', 'last_used_at', 'accepted_at', 'size', 'c']);
+const INT_COLS = new Set(['created_at', 'updated_at', 'expires_at', 'scheduled_at', 'published_at', 'token_expires_at', 'last_used_at', 'accepted_at', 'size', 'c', 'repeat_anchor', 'failed_at']);
 function fixInts(row: any) {
   for (const k in row) if (INT_COLS.has(k) && typeof row[k] === 'string') row[k] = Number(row[k]);
   return row;
