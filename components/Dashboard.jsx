@@ -1154,7 +1154,13 @@ class Component extends DCLogic {
           .join(' · '),
         caption: p.caption,
         hasMedia: p.media.length > 0,
-        media: p.media.map((kind) => ({ bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind })),
+        media: p.media.map((kind) => ({
+          bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)',
+          label: kind,
+          isVideo: false,
+          video: '',
+          labelBg: 'transparent',
+        })),
         targets: p.targets.map((t) => {
           const a = accById[t.acc] || { username: 'disconnected', platform: 'x' };
           const sc =
@@ -1604,8 +1610,8 @@ class Component extends DCLogic {
         username: a.username,
         platform: p.label,
         short: p.short,
-        logo: p.logo,
         color: p.color,
+        pic: Component.pic(a).pic,
         isOpen: open,
         chevron: open ? '▾' : '▸',
         custom: o.caption !== undefined || Object.keys(o.opts || {}).length > 0,
@@ -1678,16 +1684,28 @@ class Component extends DCLogic {
       color: pvAcc ? P[pvAcc.platform].color : '#e9e7e0',
       ...(pvAcc ? Component.pic(pvAcc) : { pic: '#e9e7e0', badge: 'none', badgeDisplay: 'none' }),
       name: pvAcc ? pvAcc.display : 'Preview',
-      handle: pvAcc ? `@${pvAcc.username} · ${P[pvAcc.platform].label} · ${pvWhen}` : 'Pick an account to preview',
+      // Pages, profiles and locations are named, not @handles.
+      handle: pvAcc
+        ? `${['facebook', 'linkedin', 'google_business', 'youtube'].includes(pvAcc.platform) ? '' : '@'}${pvAcc.username} · ${P[pvAcc.platform].label} · ${pvWhen}`
+        : 'Pick an account to preview',
       text: pvText || 'Your post will appear here.',
       textColor: pvText ? '#141619' : '#9aa0a8',
-      media: d.media.slice(0, 4).map((kind) => ({ bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind })),
+      media: d.media
+        .slice(0, 4)
+        .map((kind) => ({
+          bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)',
+          label: kind,
+          isVideo: false,
+          video: '',
+          labelBg: 'transparent',
+        })),
       cols: d.media.length === 1 ? '1fr' : '1fr 1fr',
     };
     const previewTabs = sel.map((a) => ({
       short: P[a.platform].short,
       logo: P[a.platform].logo,
       color: P[a.platform].color,
+      ...Component.pic(a),
       title: `${P[a.platform].label} · ${a.username}`,
       ringShadow: pvAcc && pvAcc.id === a.id ? '0 0 0 2px #fff, 0 0 0 4px #141619' : 'none',
       select: () => this.upd({ previewId: a.id }),
@@ -2099,6 +2117,9 @@ class Component extends DCLogic {
         kind,
         bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)',
         label: kind,
+        isVideo: false,
+        video: '',
+        labelBg: 'transparent',
         remove: () => this.upd({ media: d.media.filter((_, j) => j !== i) }),
       })),
       addImage: () => this.upd({ media: [...d.media, 'IMG'] }),
@@ -2141,14 +2162,25 @@ class Component extends DCLogic {
           accQ: S0.accQ || '',
           onAccQ: (e) => this.setState({ accQ: e.target.value }),
           capTabs: [
-            { id: null, label: 'Main caption', tag: '', logo: 'none', dotBg: 'transparent', iconDisplay: 'none' },
+            {
+              id: null,
+              label: 'Main caption',
+              title: 'Main caption',
+              tag: '',
+              logo: 'none',
+              dotBg: 'transparent',
+              pic: 'none',
+              iconDisplay: 'none',
+            },
             ...variants.map((v) => ({
               id: v.id,
-              label: v.platform,
+              label: variants.filter((x) => x.platform === v.platform).length > 1 ? v.username : v.platform,
+              title: `${v.platform} · ${v.username}`,
               tag: v.hasOverride ? '· custom' : '· main',
               logo: v.logo,
               dotBg: v.color,
-              iconDisplay: 'grid',
+              pic: v.pic,
+              iconDisplay: 'block',
             })),
           ].map((t) => {
             const on = t.id === ct;
@@ -3074,6 +3106,8 @@ class Component extends DCLogic {
             preview: () => this.setState({ pvMediaId: m.id }),
             name: m.name,
             thumb: thumb(m),
+            isVideo: !!m.videoUrl,
+            video: m.videoUrl ? `${m.videoUrl}#t=0.1` : '',
             badge:
               m.kind === 'VIDEO'
                 ? S0.libView === 'list'

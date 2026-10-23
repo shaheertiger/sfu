@@ -51,7 +51,7 @@ function mapAccount(a) {
 }
 
 function mapMedia(m, usage = {}) {
-  return { id: m.id, name: m.filename, kind: kindOf(m.mime), tone: hashTone(m.id), folder: m.folder || '', used: usage[m.id] || 0, url: m.mime.startsWith('image/') ? m.url : '' };
+  return { id: m.id, name: m.filename, kind: kindOf(m.mime), tone: hashTone(m.id), folder: m.folder || '', used: usage[m.id] || 0, url: m.mime.startsWith('image/') ? m.url : '', videoUrl: m.mime.startsWith('video/') ? m.url : '' };
 }
 
 function mapPost(sp, mediaById) {
@@ -524,13 +524,16 @@ export default class LiveDashboard extends Base {
     // Composer media: real uploads.
     v.addImage = () => this.pickFiles('image/jpeg,image/png,image/gif,image/webp', true, (fs) => this.addToDraft(fs));
     v.addVideo = () => this.pickFiles('video/mp4,video/quicktime,video/webm', false, (fs) => this.addToDraft(fs));
-    // Show the real image in the composer tiles and the preview; videos (and anything not in the
-    // library yet) keep the placeholder.
+    // Show the real image or video frame in the composer tiles, preview and queue; anything not in
+    // the library yet keeps the placeholder.
     const libById = new Map((s.library || []).map((m) => [m.id, m]));
     const look = (kind, i, ids = d.mediaIds) => {
       const m = libById.get((ids || [])[i]);
-      if (m?.url) return { bg: `#2a2e34 url("${String(m.url).replace(/["\\\n]/g, encodeURIComponent)}") center/cover no-repeat`, label: '' };
-      return { bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind === 'VIDEO' ? '▶ VIDEO' : kind };
+      const none = { isVideo: false, video: '', labelBg: 'transparent' };
+      if (m?.url) return { ...none, bg: `#2a2e34 url("${String(m.url).replace(/["\\\n]/g, encodeURIComponent)}") center/cover no-repeat`, label: '' };
+      // Videos show their first frame (#t=0.1 makes Safari render one) with a play badge.
+      if (m?.videoUrl) return { bg: '#1d2025', label: '▶', isVideo: true, video: `${m.videoUrl}#t=0.1`, labelBg: 'rgba(0,0,0,.5)' };
+      return { ...none, bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind === 'VIDEO' ? '▶ VIDEO' : kind };
     };
     v.mediaTiles = d.media.map((kind, i) => ({ kind, ...look(kind, i), remove: () => this.upd({ media: d.media.filter((_, j) => j !== i), mediaIds: (d.mediaIds || []).filter((_, j) => j !== i) }) }));
     if (v.pv) v.pv.media = d.media.slice(0, 4).map((kind, i) => look(kind, i));

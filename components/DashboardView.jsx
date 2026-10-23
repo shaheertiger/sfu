@@ -1855,6 +1855,8 @@ export function renderDashboard($v) {
                                           {' '}
                                           <div
                                             style={{
+                                              position: 'relative',
+                                              overflow: 'hidden',
                                               width: '56px',
                                               height: '56px',
                                               borderRadius: '8px',
@@ -1865,7 +1867,34 @@ export function renderDashboard($v) {
                                               color: '#f3e9d8',
                                             }}
                                           >
-                                            {$t(m?.label)}
+                                            {m?.isVideo ? (
+                                              <>
+                                                <video
+                                                  src={m?.video}
+                                                  muted=""
+                                                  preload="metadata"
+                                                  style={{
+                                                    position: 'absolute',
+                                                    inset: '0',
+                                                    width: '100%',
+                                                    height: '100%',
+                                                    objectFit: 'cover',
+                                                    pointerEvents: 'none',
+                                                  }}
+                                                />
+                                              </>
+                                            ) : null}
+                                            <span
+                                              style={{
+                                                position: 'relative',
+                                                padding: '2px 6px',
+                                                borderRadius: '6px',
+                                                background: `${m?.labelBg ?? ''}`,
+                                                textShadow: '0 1px 2px rgba(0,0,0,.4)',
+                                              }}
+                                            >
+                                              {$t(m?.label)}
+                                            </span>
                                           </div>{' '}
                                         </Fragment>
                                       ))}{' '}
@@ -3250,6 +3279,7 @@ export function renderDashboard($v) {
                             {' '}
                             <button
                               onClick={t?.pick}
+                              title={t?.title}
                               style={{
                                 display: 'flex',
                                 alignItems: 'center',
@@ -3268,23 +3298,17 @@ export function renderDashboard($v) {
                               {' '}
                               <span
                                 style={{
-                                  width: '16px',
-                                  height: '16px',
+                                  width: '18px',
+                                  height: '18px',
                                   borderRadius: '50%',
-                                  background: `${t?.dotBg ?? ''}`,
+                                  flex: 'none',
+                                  background: `${t?.pic ?? ''}`,
                                   display: `${t?.iconDisplay ?? ''}`,
-                                  placeItems: 'center',
                                 }}
-                              >
-                                <span
-                                  style={{
-                                    width: '60%',
-                                    height: '60%',
-                                    background: `${t?.logo ?? ''} center/contain no-repeat`,
-                                  }}
-                                />
+                              />
+                              <span style={{ maxWidth: '140px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                                {$t(t?.label)}
                               </span>
-                              {$t(t?.label)}
                               <span style={{ fontSize: '11px', fontWeight: '500', color: `${t?.tagColor ?? ''}` }}>
                                 {$t(t?.tag)}
                               </span>{' '}
@@ -3530,6 +3554,7 @@ export function renderDashboard($v) {
                                   <div
                                     style={{
                                       position: 'relative',
+                                      overflow: 'hidden',
                                       width: '84px',
                                       height: '84px',
                                       borderRadius: '10px',
@@ -3541,7 +3566,34 @@ export function renderDashboard($v) {
                                     }}
                                   >
                                     {' '}
-                                    <span>{$t(m?.label)}</span>{' '}
+                                    {m?.isVideo ? (
+                                      <>
+                                        <video
+                                          src={m?.video}
+                                          muted=""
+                                          preload="metadata"
+                                          style={{
+                                            position: 'absolute',
+                                            inset: '0',
+                                            width: '100%',
+                                            height: '100%',
+                                            objectFit: 'cover',
+                                            pointerEvents: 'none',
+                                          }}
+                                        />
+                                      </>
+                                    ) : null}
+                                    <span
+                                      style={{
+                                        position: 'relative',
+                                        padding: '2px 6px',
+                                        borderRadius: '6px',
+                                        background: `${m?.labelBg ?? ''}`,
+                                        textShadow: '0 1px 2px rgba(0,0,0,.4)',
+                                      }}
+                                    >
+                                      {$t(m?.label)}
+                                    </span>{' '}
                                     <button
                                       onClick={m?.remove}
                                       style={{
@@ -4061,23 +4113,28 @@ export function renderDashboard($v) {
                                   title={pt?.title}
                                   aria-label={`Preview ${pt?.title ?? ''}`}
                                   style={{
+                                    position: 'relative',
                                     width: '28px',
                                     height: '28px',
                                     padding: '0',
                                     borderRadius: '50%',
                                     cursor: 'pointer',
-                                    display: 'grid',
-                                    placeItems: 'center',
-                                    background: `${pt?.color ?? ''}`,
+                                    background: `${pt?.pic ?? ''}`,
                                     border: '0',
                                     boxShadow: `${pt?.ringShadow ?? ''}`,
                                   }}
                                 >
                                   <span
                                     style={{
-                                      width: '14px',
-                                      height: '14px',
-                                      background: `${pt?.logo ?? ''} center/contain no-repeat`,
+                                      position: 'absolute',
+                                      right: '-3px',
+                                      bottom: '-3px',
+                                      width: '13px',
+                                      height: '13px',
+                                      borderRadius: '50%',
+                                      border: '2px solid #fff',
+                                      background: `${pt?.badge ?? ''}`,
+                                      display: `${pt?.badgeDisplay ?? ''}`,
                                     }}
                                   />
                                 </button>{' '}
@@ -4151,6 +4208,8 @@ export function renderDashboard($v) {
                                     {' '}
                                     <div
                                       style={{
+                                        position: 'relative',
+                                        overflow: 'hidden',
                                         aspectRatio: '1',
                                         borderRadius: '8px',
                                         background: `${m?.bg ?? ''}`,
@@ -4160,7 +4219,34 @@ export function renderDashboard($v) {
                                         color: '#f3e9d8',
                                       }}
                                     >
-                                      {$t(m?.label)}
+                                      {m?.isVideo ? (
+                                        <>
+                                          <video
+                                            src={m?.video}
+                                            muted=""
+                                            preload="metadata"
+                                            style={{
+                                              position: 'absolute',
+                                              inset: '0',
+                                              width: '100%',
+                                              height: '100%',
+                                              objectFit: 'cover',
+                                              pointerEvents: 'none',
+                                            }}
+                                          />
+                                        </>
+                                      ) : null}
+                                      <span
+                                        style={{
+                                          position: 'relative',
+                                          padding: '2px 6px',
+                                          borderRadius: '6px',
+                                          background: `${m?.labelBg ?? ''}`,
+                                          textShadow: '0 1px 2px rgba(0,0,0,.4)',
+                                        }}
+                                      >
+                                        {$t(m?.label)}
+                                      </span>
                                     </div>{' '}
                                   </Fragment>
                                 ))}{' '}
@@ -5734,6 +5820,8 @@ export function renderDashboard($v) {
                             <div
                               onClick={m?.preview}
                               style={{
+                                position: 'relative',
+                                overflow: 'hidden',
                                 cursor: 'zoom-in',
                                 aspectRatio: `${$v['libRatio'] ?? ''}`,
                                 width: `${$v['libThumbW'] ?? ''}`,
@@ -5748,8 +5836,27 @@ export function renderDashboard($v) {
                                 textShadow: '0 1px 2px rgba(0,0,0,.5)',
                               }}
                             >
-                              <span>{$t(m?.badge)}</span>
-                              <span style={{ display: `${$v['libUsedThumb'] ?? ''}` }}>{$t(m?.used)}</span>
+                              {m?.isVideo ? (
+                                <>
+                                  <video
+                                    src={m?.video}
+                                    muted=""
+                                    preload="metadata"
+                                    style={{
+                                      position: 'absolute',
+                                      inset: '0',
+                                      width: '100%',
+                                      height: '100%',
+                                      objectFit: 'cover',
+                                      pointerEvents: 'none',
+                                    }}
+                                  />
+                                </>
+                              ) : null}
+                              <span style={{ position: 'relative' }}>{$t(m?.badge)}</span>
+                              <span style={{ position: 'relative', display: `${$v['libUsedThumb'] ?? ''}` }}>
+                                {$t(m?.used)}
+                              </span>
                             </div>{' '}
                             <div style={{ padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                               {' '}

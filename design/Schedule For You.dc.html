@@ -358,7 +358,7 @@ textarea{resize:vertical}
                     <sc-if value="{{ p.hasMedia }}" hint-placeholder-val="{{ false }}">
                       <div style="display:flex;gap:6px">
                         <sc-for list="{{ p.media }}" as="m" hint-placeholder-count="1">
-                          <div style="width:56px;height:56px;border-radius:8px;background:{{ m.bg }};display:grid;place-items:center;font:500 10px 'Geist Mono',monospace;color:#f3e9d8">{{ m.label }}</div>
+                          <div style="position:relative;overflow:hidden;width:56px;height:56px;border-radius:8px;background:{{ m.bg }};display:grid;place-items:center;font:500 10px 'Geist Mono',monospace;color:#f3e9d8"><sc-if value="{{ m.isVideo }}" hint-placeholder-val="{{ false }}"><video src="{{ m.video }}" muted="" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none"></video></sc-if><span style="position:relative;padding:2px 6px;border-radius:6px;background:{{ m.labelBg }};text-shadow:0 1px 2px rgba(0,0,0,.4)">{{ m.label }}</span></div>
                         </sc-for>
                       </div>
                     </sc-if>
@@ -547,8 +547,8 @@ textarea{resize:vertical}
             <div style="background:#fff;border:1px solid #e7e5df;border-radius:12px;display:flex;flex-direction:column;overflow:hidden">
               <div style="display:flex;align-items:center;gap:2px;padding:6px 6px 0;border-bottom:1px solid #efefea;overflow-x:auto">
                 <sc-for list="{{ capTabs }}" as="t" hint-placeholder-count="2">
-                  <button onClick="{{ t.pick }}" style="display:flex;align-items:center;gap:6px;padding:8px 10px;border:0;border-bottom:2px solid {{ t.line }};background:transparent;cursor:pointer;font-size:13px;font-weight:{{ t.weight }};color:{{ t.color }};white-space:nowrap">
-                    <span style="width:16px;height:16px;border-radius:50%;background:{{ t.dotBg }};display:{{ t.iconDisplay }};place-items:center"><span style="width:60%;height:60%;background:{{ t.logo }} center/contain no-repeat"></span></span>{{ t.label }}<span style="font-size:11px;font-weight:500;color:{{ t.tagColor }}">{{ t.tag }}</span>
+                  <button onClick="{{ t.pick }}" title="{{ t.title }}" style="display:flex;align-items:center;gap:6px;padding:8px 10px;border:0;border-bottom:2px solid {{ t.line }};background:transparent;cursor:pointer;font-size:13px;font-weight:{{ t.weight }};color:{{ t.color }};white-space:nowrap">
+                    <span style="width:18px;height:18px;border-radius:50%;flex:none;background:{{ t.pic }};display:{{ t.iconDisplay }}"></span><span style="max-width:140px;overflow:hidden;text-overflow:ellipsis">{{ t.label }}</span><span style="font-size:11px;font-weight:500;color:{{ t.tagColor }}">{{ t.tag }}</span>
                   </button>
                 </sc-for>
               </div>
@@ -590,8 +590,8 @@ textarea{resize:vertical}
                 <sc-if value="{{ hasMedia }}" hint-placeholder-val="{{ false }}">
                   <div style="display:flex;flex-wrap:wrap;gap:8px">
                     <sc-for list="{{ mediaTiles }}" as="m" hint-placeholder-count="1">
-                      <div style="position:relative;width:84px;height:84px;border-radius:10px;background:{{ m.bg }};display:grid;place-items:center;font:500 11px 'Geist Mono',monospace;color:#f3e9d8">
-                        <span>{{ m.label }}</span>
+                      <div style="position:relative;overflow:hidden;width:84px;height:84px;border-radius:10px;background:{{ m.bg }};display:grid;place-items:center;font:500 11px 'Geist Mono',monospace;color:#f3e9d8">
+                        <sc-if value="{{ m.isVideo }}" hint-placeholder-val="{{ false }}"><video src="{{ m.video }}" muted="" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none"></video></sc-if><span style="position:relative;padding:2px 6px;border-radius:6px;background:{{ m.labelBg }};text-shadow:0 1px 2px rgba(0,0,0,.4)">{{ m.label }}</span>
                         <button onClick="{{ m.remove }}" style="position:absolute;top:4px;right:4px;border:0;background:rgba(0,0,0,.6);color:#fff;width:20px;height:20px;border-radius:50%;cursor:pointer;font-size:12px;line-height:1">×</button>
                       </div>
                     </sc-for>
@@ -677,7 +677,7 @@ textarea{resize:vertical}
                 <strong style="font-size:14px">Preview</strong>
                 <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;padding:3px">
                   <sc-for list="{{ previewTabs }}" as="pt" hint-placeholder-count="0">
-                    <button onClick="{{ pt.select }}" title="{{ pt.title }}" aria-label="Preview {{ pt.title }}" style="width:28px;height:28px;padding:0;border-radius:50%;cursor:pointer;display:grid;place-items:center;background:{{ pt.color }};border:0;box-shadow:{{ pt.ringShadow }}"><span style="width:14px;height:14px;background:{{ pt.logo }} center/contain no-repeat"></span></button>
+                    <button onClick="{{ pt.select }}" title="{{ pt.title }}" aria-label="Preview {{ pt.title }}" style="position:relative;width:28px;height:28px;padding:0;border-radius:50%;cursor:pointer;background:{{ pt.pic }};border:0;box-shadow:{{ pt.ringShadow }}"><span style="position:absolute;right:-3px;bottom:-3px;width:13px;height:13px;border-radius:50%;border:2px solid #fff;background:{{ pt.badge }};display:{{ pt.badgeDisplay }}"></span></button>
                   </sc-for>
                 </div>
               </div>
@@ -693,7 +693,7 @@ textarea{resize:vertical}
                   <sc-if value="{{ hasMedia }}" hint-placeholder-val="{{ false }}">
                     <div style="display:grid;grid-template-columns:{{ pv.cols }};gap:4px">
                       <sc-for list="{{ pv.media }}" as="m" hint-placeholder-count="1">
-                        <div style="aspect-ratio:1;border-radius:8px;background:{{ m.bg }};display:grid;place-items:center;font:500 11px 'Geist Mono',monospace;color:#f3e9d8">{{ m.label }}</div>
+                        <div style="position:relative;overflow:hidden;aspect-ratio:1;border-radius:8px;background:{{ m.bg }};display:grid;place-items:center;font:500 11px 'Geist Mono',monospace;color:#f3e9d8"><sc-if value="{{ m.isVideo }}" hint-placeholder-val="{{ false }}"><video src="{{ m.video }}" muted="" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none"></video></sc-if><span style="position:relative;padding:2px 6px;border-radius:6px;background:{{ m.labelBg }};text-shadow:0 1px 2px rgba(0,0,0,.4)">{{ m.label }}</span></div>
                       </sc-for>
                     </div>
                   </sc-if>
@@ -943,7 +943,7 @@ textarea{resize:vertical}
             <sc-for list="{{ libCards }}" as="m" hint-placeholder-count="8">
               <div style="position:relative;background:#fff;border:1px solid {{ m.cardBorder }};border-radius:12px;overflow:hidden;display:flex;flex-direction:{{ libDir }};transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-2px);box-shadow:0 16px 30px -20px rgba(20,23,26,.45)">
                 <button onClick="{{ m.toggleSel }}" aria-label="Select {{ m.name }}" style="position:absolute;margin:8px;width:22px;height:22px;border-radius:6px;border:1.5px solid {{ m.selBorder }};background:{{ m.selBg }};color:#141619;cursor:pointer;font-size:12px;font-weight:800;padding:0;z-index:1">{{ m.selMark }}</button>
-                <div onClick="{{ m.preview }}" style="cursor:zoom-in;aspect-ratio:{{ libRatio }};width:{{ libThumbW }};flex:{{ libThumbFlex }};background:{{ m.thumb }};display:flex;align-items:flex-end;justify-content:space-between;padding:8px;color:#f3e9d8;font:600 10px 'Geist Mono',monospace;text-shadow:0 1px 2px rgba(0,0,0,.5)"><span>{{ m.badge }}</span><span style="display:{{ libUsedThumb }}">{{ m.used }}</span></div>
+                <div onClick="{{ m.preview }}" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:{{ libRatio }};width:{{ libThumbW }};flex:{{ libThumbFlex }};background:{{ m.thumb }};display:flex;align-items:flex-end;justify-content:space-between;padding:8px;color:#f3e9d8;font:600 10px 'Geist Mono',monospace;text-shadow:0 1px 2px rgba(0,0,0,.5)"><sc-if value="{{ m.isVideo }}" hint-placeholder-val="{{ false }}"><video src="{{ m.video }}" muted="" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none"></video></sc-if><span style="position:relative">{{ m.badge }}</span><span style="position:relative;display:{{ libUsedThumb }}">{{ m.used }}</span></div>
                 <div style="padding:10px 12px;display:flex;flex-direction:column;gap:8px">
                   <span style="font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.name }}</span>
                   <span style="display:{{ libUsedText }};font-size:12px;color:#677184">{{ m.used }}</span>
@@ -1604,7 +1604,7 @@ class Component extends DCLogic {
       g.items.push({
         time: p.at ? this.time(p.at) : '—', status: p.status, st: ST[p.status] || ST.draft,
         meta: [`${p.targets.length} account${p.targets.length === 1 ? '' : 's'}`, imgs > 1 ? `carousel of ${imgs}` : imgs ? '1 image' : '', vids ? 'video' : ''].filter(Boolean).join(' · '),
-        caption: p.caption, hasMedia: p.media.length > 0, media: p.media.map((kind) => ({ bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind })),
+        caption: p.caption, hasMedia: p.media.length > 0, media: p.media.map((kind) => ({ bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind, isVideo: false, video: '', labelBg: 'transparent' })),
         targets: p.targets.map((t) => { const a = accById[t.acc] || { username: 'disconnected', platform: 'x' }; const sc = t.status === 'published' ? ST.published : t.status === 'failed' ? ST.failed : { bg: '#fff', border: '#e5e3dc' }; const pid = Component.hash(p.id + t.acc).toString(36), u = a.username;
           const URL_ = { x: `https://x.com/${u}/status/${pid}`, bluesky: `https://bsky.app/profile/${u}/post/${pid}`, instagram: `https://instagram.com/p/${pid}`, linkedin: `https://linkedin.com/feed/update/urn:li:share:${pid}`, tiktok: `https://tiktok.com/@${u}/video/${pid}`, youtube: `https://youtube.com/watch?v=${pid}`, threads: `https://threads.net/@${u}/post/${pid}`, facebook: `https://facebook.com/${u}/posts/${pid}`, pinterest: `https://pinterest.com/pin/${pid}`, google_business: 'https://business.google.com' };
           const live = t.status === 'published';
@@ -1717,7 +1717,7 @@ class Component extends DCLogic {
     const variants = sel.map((a) => {
       const p = P[a.platform], o = d.ov[a.id] || {}, open = d.open === a.id, text = o.caption ?? d.caption;
       return {
-        id: a.id, logo: p.logo, username: a.username, platform: p.label, short: p.short, logo: p.logo, color: p.color, isOpen: open, chevron: open ? '▾' : '▸',
+        id: a.id, logo: p.logo, username: a.username, platform: p.label, short: p.short, color: p.color, pic: Component.pic(a).pic, isOpen: open, chevron: open ? '▾' : '▸',
         custom: o.caption !== undefined || Object.keys(o.opts || {}).length > 0, toggleOpen: () => this.upd({ open: open ? null : a.id }),
         text, countText: `${text.length}/${p.max}`, countColor: text.length > p.max ? '#dc3545' : '#677184',
         onText: (e) => this.setOv(a.id, { caption: e.target.value }), hasOverride: o.caption !== undefined, reset: () => this.setOv(a.id, { caption: undefined }),
@@ -1735,11 +1735,12 @@ class Component extends DCLogic {
     const pvWhen = d.mode === 'schedule' ? `${this.dayLabel(Component.fromLocal(d.when))} ${this.time(Component.fromLocal(d.when))}` : d.mode === 'now' ? 'now' : 'draft';
     const pv = {
       logo: pvAcc ? P[pvAcc.platform].logo : 'none', color: pvAcc ? P[pvAcc.platform].color : '#e9e7e0', ...(pvAcc ? Component.pic(pvAcc) : { pic: '#e9e7e0', badge: 'none', badgeDisplay: 'none' }), name: pvAcc ? pvAcc.display : 'Preview',
-      handle: pvAcc ? `@${pvAcc.username} · ${P[pvAcc.platform].label} · ${pvWhen}` : 'Pick an account to preview',
+      // Pages, profiles and locations are named, not @handles.
+      handle: pvAcc ? `${['facebook', 'linkedin', 'google_business', 'youtube'].includes(pvAcc.platform) ? '' : '@'}${pvAcc.username} · ${P[pvAcc.platform].label} · ${pvWhen}` : 'Pick an account to preview',
       text: pvText || 'Your post will appear here.', textColor: pvText ? '#141619' : '#9aa0a8',
-      media: d.media.slice(0, 4).map((kind) => ({ bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind })), cols: d.media.length === 1 ? '1fr' : '1fr 1fr',
+      media: d.media.slice(0, 4).map((kind) => ({ bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind, isVideo: false, video: '', labelBg: 'transparent' })), cols: d.media.length === 1 ? '1fr' : '1fr 1fr',
     };
-    const previewTabs = sel.map((a) => ({ short: P[a.platform].short, logo: P[a.platform].logo, color: P[a.platform].color, title: `${P[a.platform].label} · ${a.username}`, ringShadow: pvAcc && pvAcc.id === a.id ? '0 0 0 2px #fff, 0 0 0 4px #141619' : 'none', select: () => this.upd({ previewId: a.id }) }));
+    const previewTabs = sel.map((a) => ({ short: P[a.platform].short, logo: P[a.platform].logo, color: P[a.platform].color, ...Component.pic(a), title: `${P[a.platform].label} · ${a.username}`, ringShadow: pvAcc && pvAcc.id === a.id ? '0 0 0 2px #fff, 0 0 0 4px #141619' : 'none', select: () => this.upd({ previewId: a.id }) }));
 
     // accounts
     const HL = (a) => a.health === 'over' ? { hLabel: 'Over plan limit', hFg: '#8a5a00', hBg: '#fff1d6', healthDetail: "Paused. Your plan's account limit is reached", needsFix: true, fixLabel: 'Upgrade' }
@@ -1841,7 +1842,7 @@ class Component extends DCLogic {
       composeTitle: d.id ? 'Edit post' : 'New post', accountChips, allLabel: n === s.accounts.length ? 'Clear' : 'Select all',
       toggleAll: () => this.upd({ targets: n === s.accounts.length ? [] : s.accounts.map((a) => a.id) }),
       caption: d.caption, onCaption: (e) => this.upd({ caption: e.target.value }), counters,
-      hasMedia: d.media.length > 0, mediaTiles: d.media.map((kind, i) => ({ kind, bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind, remove: () => this.upd({ media: d.media.filter((_, j) => j !== i) }) })),
+      hasMedia: d.media.length > 0, mediaTiles: d.media.map((kind, i) => ({ kind, bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind, isVideo: false, video: '', labelBg: 'transparent', remove: () => this.upd({ media: d.media.filter((_, j) => j !== i) }) })),
       addImage: () => this.upd({ media: [...d.media, 'IMG'] }), addVideo: () => this.upd({ media: [...d.media, 'VIDEO'] }),
       ...(() => {
         const w = (typeof window !== 'undefined' && window.innerWidth) || 1400, wide = w >= 1320, mid = w >= 900 && !wide, mob = w < 900, tab = S0.cTab || 'edit';
@@ -1853,7 +1854,7 @@ class Component extends DCLogic {
           showEditCol: !mob || tab === 'edit' ? 'flex' : 'none', showRightCol: !mob || tab === 'preview' ? 'flex' : 'none',
           composeTabs: mob, cTabs: [['edit', 'Edit'], ['preview', 'Preview & publish']].map(([k, label]) => ({ label, bg: tab === k ? '#141619' : 'transparent', color: tab === k ? '#fff' : '#677184', pick: () => this.setState({ cTab: k }) })),
           accQ: S0.accQ || '', onAccQ: (e) => this.setState({ accQ: e.target.value }),
-          capTabs: [{ id: null, label: 'Main caption', tag: '', logo: 'none', dotBg: 'transparent', iconDisplay: 'none' }, ...variants.map((v) => ({ id: v.id, label: v.platform, tag: v.hasOverride ? '· custom' : '· main', logo: v.logo, dotBg: v.color, iconDisplay: 'grid' }))].map((t) => { const on = t.id === ct; return { ...t, line: on ? '#141619' : 'transparent', weight: on ? 600 : 500, color: on ? '#141619' : '#677184', tagColor: t.tag.includes('custom') ? '#15803d' : '#9aa0a8', pick: () => this.setState({ capTab: t.id }) }; }),
+          capTabs: [{ id: null, label: 'Main caption', title: 'Main caption', tag: '', logo: 'none', dotBg: 'transparent', pic: 'none', iconDisplay: 'none' }, ...variants.map((v) => ({ id: v.id, label: variants.filter((x) => x.platform === v.platform).length > 1 ? v.username : v.platform, title: `${v.platform} · ${v.username}`, tag: v.hasOverride ? '· custom' : '· main', logo: v.logo, dotBg: v.color, pic: v.pic, iconDisplay: 'block' }))].map((t) => { const on = t.id === ct; return { ...t, line: on ? '#141619' : 'transparent', weight: on ? 600 : 500, color: on ? '#141619' : '#677184', tagColor: t.tag.includes('custom') ? '#15803d' : '#9aa0a8', pick: () => this.setState({ capTab: t.id }) }; }),
           capValue: cv ? cv.text : d.caption, onCapValue: cv ? cv.onText : (e) => this.upd({ caption: e.target.value, savedAt: Date.now() }),
           capPlaceholder: cv ? `Custom caption for ${cv.platform}. Leave as is to use the main caption.` : "What's happening? Write once, then tailor it per platform with the tabs above.",
           capIsCustom: !!(cv && cv.hasOverride), capReset: cv ? cv.reset : () => {}, capFields: cv ? cv.fields : [],
@@ -2034,7 +2035,7 @@ class Component extends DCLogic {
           libBulkMove: (e) => { const v = e.target.value; if (!v) return; this.setState((st) => ({ library: st.library.map((x) => (libSel.includes(x.id) ? { ...x, folder: v } : x)), libSel: [] })); this.flash(`Moved ${libSel.length} files to ${v}`); },
           hasPreviewMedia: !!S0.pvMediaId, closePreview: () => this.setState({ pvMediaId: null }),
           pvMedia: (() => { const m = lib.find((x) => x.id === S0.pvMediaId); return m ? { name: m.name, folder: m.folder, thumb: thumb(m), badge: m.kind === 'VIDEO' ? '▶ VIDEO' : 'IMAGE', use: () => this.setState({ pvMediaId: null, draft: { ...Component.blank(), media: [m.kind] }, screen: 'compose' }) } : { name: '', folder: '', thumb: '#ddd', badge: '', use: () => {} }; })(),
-          libCards: inFolder.map((m) => ({ toggleSel: (e) => { e.stopPropagation(); this.setState((st) => { const cur = st.libSel || []; return { libSel: cur.includes(m.id) ? cur.filter((x) => x !== m.id) : [...cur, m.id] }; }); }, selBg: libSel.includes(m.id) ? '#d9ff35' : 'rgba(255,255,255,.85)', selBorder: libSel.includes(m.id) ? '#141619' : 'rgba(255,255,255,.9)', selMark: libSel.includes(m.id) ? '✓' : '', cardBorder: libSel.includes(m.id) ? '#141619' : '#e7e5df', preview: () => this.setState({ pvMediaId: m.id }), name: m.name, thumb: thumb(m), badge: m.kind === 'VIDEO' ? (S0.libView === 'list' ? '▶' : '▶ VIDEO') : (S0.libView === 'list' || m.url ? '' : 'IMG'), used: m.used ? `used ${m.used}×` : '', folder: m.folder,
+          libCards: inFolder.map((m) => ({ toggleSel: (e) => { e.stopPropagation(); this.setState((st) => { const cur = st.libSel || []; return { libSel: cur.includes(m.id) ? cur.filter((x) => x !== m.id) : [...cur, m.id] }; }); }, selBg: libSel.includes(m.id) ? '#d9ff35' : 'rgba(255,255,255,.85)', selBorder: libSel.includes(m.id) ? '#141619' : 'rgba(255,255,255,.9)', selMark: libSel.includes(m.id) ? '✓' : '', cardBorder: libSel.includes(m.id) ? '#141619' : '#e7e5df', preview: () => this.setState({ pvMediaId: m.id }), name: m.name, thumb: thumb(m), isVideo: !!m.videoUrl, video: m.videoUrl ? `${m.videoUrl}#t=0.1` : '', badge: m.kind === 'VIDEO' ? (S0.libView === 'list' ? '▶' : '▶ VIDEO') : (S0.libView === 'list' || m.url ? '' : 'IMG'), used: m.used ? `used ${m.used}×` : '', folder: m.folder,
             move: (e) => { const v = e.target.value; this.setState((st) => ({ library: st.library.map((x) => (x.id === m.id ? { ...x, folder: v } : x)) })); this.flash(`Moved to ${v}`); },
             use: () => { this.setState({ draft: { ...Component.blank(), media: [m.kind] }, screen: 'compose' }); } })),
           newFolder: S0.newFolder, onNewFolder: (e) => this.setState({ newFolder: e.target.value }),
