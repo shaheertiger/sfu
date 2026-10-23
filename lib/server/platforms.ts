@@ -65,7 +65,7 @@ export const PLATFORMS: Record<PlatformId, PlatformMeta> = {
   },
   pinterest: {
     id: 'pinterest', label: 'Pinterest', color: '#e60023', authMode: 'oauth',
-    maxChars: 500, maxImages: 1, video: true, requiresMedia: 'image', envKeys: ['PINTEREST_APP_ID', 'PINTEREST_APP_SECRET'],
+    maxChars: 500, maxImages: 1, video: false, requiresMedia: 'image', envKeys: ['PINTEREST_APP_ID', 'PINTEREST_APP_SECRET'],
     notes: 'Pins require a board. Select a board per account after connecting.',
     fields: [
       { key: 'title', label: 'Pin title', type: 'text' },

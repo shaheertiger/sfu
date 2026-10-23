@@ -180,9 +180,21 @@ const ERROR_EXAMPLE = toJson({ error: 'Pinterest needs an image; X / Twitter (@h
 const MCP_CONFIG = toJson({
   mcpServers: {
     scheduleforyou: {
-      command: 'node',
-      args: ['/path/to/mcp/server.mjs'],
-      env: { SFY_URL: 'https://scheduleforyou.com', SFY_API_KEY: 'sfy_…' },
+      type: 'http',
+      url: 'https://scheduleforyou.com/api/mcp',
+      headers: { Authorization: 'Bearer sfy_…' },
+    },
+  },
+});
+
+const MCP_CLAUDE_CODE = 'claude mcp add --transport http scheduleforyou https://scheduleforyou.com/api/mcp \\\n  --header "Authorization: Bearer sfy_…"';
+
+// For clients that only run local commands: mcp-remote bridges stdio to the hosted endpoint.
+const MCP_BRIDGE = toJson({
+  mcpServers: {
+    scheduleforyou: {
+      command: 'npx',
+      args: ['-y', 'mcp-remote', 'https://scheduleforyou.com/api/mcp', '--header', 'Authorization: Bearer sfy_…'],
     },
   },
 });
@@ -363,7 +375,8 @@ export default function ApiReference({ crumbs }) {
             <div className={s.cols}>
               <div>
                 <h2 className={s.h2}><a href="#mcp-server" className={s.anchor}>MCP server</a></h2>
-                <p className={s.p}>For assistants and agents that speak the Model Context Protocol, there is an MCP server built on this API. It is a Node.js script that runs on your machine over stdio and authenticates with an API key: <code className={s.ic}>SFY_URL</code> is the site address and <code className={s.ic}>SFY_API_KEY</code> the key. The setup snippet is in the dashboard under <strong>Settings</strong>.</p>
+                <p className={s.p}>For assistants and agents that speak the Model Context Protocol, there is a hosted MCP server at <code className={s.ic}>https://scheduleforyou.com/api/mcp</code> (Streamable HTTP). Nothing to install: add the URL to your client and send an API key in the <code className={s.ic}>Authorization</code> header. Every tool calls this API with that key, so it can do exactly what the key can.</p>
+                <p className={s.p}>Clients that only run local commands can reach it through <code className={s.ic}>mcp-remote</code>, shown in the second example.</p>
                 <h4 className={s.h4}>Tools</h4>
                 <ul className={s.ul}>
                   <li><code className={s.ic}>list_accounts</code>: the connected accounts and their IDs.</li>
@@ -373,7 +386,9 @@ export default function ApiReference({ crumbs }) {
                 </ul>
               </div>
               <div className={s.sticky}>
-                <Code title="MCP client config" code={MCP_CONFIG} />
+                <Code title="MCP client config (URL)" code={MCP_CONFIG} />
+                <Code title="Claude Code" code={MCP_CLAUDE_CODE} lang="curl" />
+                <Code title="Local-command clients" code={MCP_BRIDGE} />
               </div>
             </div>
           </section>

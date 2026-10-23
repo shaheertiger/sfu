@@ -18,6 +18,6 @@ export const PATCH = handler(async ({ req, workspace, params }) => {
 
 export const DELETE = handler(async ({ workspace, params }) => {
   requireEditor(workspace);
-  await exec('DELETE FROM webhooks WHERE id=$1 AND workspace_id=$2', [params.id, workspace.id]);
-  return { ok: true };
+  const n = await exec('DELETE FROM webhooks WHERE id=$1 AND workspace_id=$2', [params.id, workspace.id]);
+  return n ? { ok: true } : json({ error: 'Not found' }, 404);
 });

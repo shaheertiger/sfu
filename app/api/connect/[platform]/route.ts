@@ -14,9 +14,10 @@ export async function GET(req: Request, { params }: { params: Promise<{ platform
   const back = (msg: string) => NextResponse.redirect(`${base}/app?screen=accounts&error=${encodeURIComponent(msg)}`);
   const meta = PLATFORMS[platform as keyof typeof PLATFORMS];
   if (!meta || meta.authMode !== 'oauth') return back('Unknown platform');
-  if (!platformConfigured(meta)) return back(`${meta.label} isn't set up yet. Add ${meta.envKeys.join(' and ')} in Vercel.`);
+  if (!platformConfigured(meta)) return back(`${meta.label} isn't available yet.`);
   let workspace;
   try { ({ workspace } = await requireWorkspace()); } catch { return NextResponse.redirect(`${base}/login?next=/app`); }
+  if (!['owner', 'editor'].includes(workspace.role)) return back('Only the workspace owner or an editor can connect accounts.');
   const state = randomToken(16);
   const verifier = randomToken(32);
   await exec('DELETE FROM oauth_states WHERE created_at < $1', [now() - 60 * 60_000]);
