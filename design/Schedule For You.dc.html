@@ -1660,10 +1660,10 @@ class Component extends DCLogic {
       const errs = p.targets.filter((t) => t.error);
       const errKind = (txt) => /authori|token|revoked|reconnect|permission/i.test(txt || '') ? 'auth' : /character|limit|seconds|too long|too short|format|size|aspect|required/i.test(txt || '') ? 'content' : 'temp';
       const fk = errs.length ? errKind(errs[0].error) : null;
-      const actLabel = ['failed', 'partial'].includes(p.status) ? (fk === 'auth' ? 'Reconnect account' : fk === 'content' ? 'Edit to fix' : 'Retry') : p.status === 'scheduled' ? (p.approval === 'pending' ? '' : 'Post now') : p.status === 'draft' ? 'Publish' : ['failed', 'partial'].includes(p.status) ? 'Retry' : p.status === 'published' ? 'Repost' : '';
+      const actLabel = p.publishing ? '' : ['failed', 'partial'].includes(p.status) ? (fk === 'auth' ? 'Reconnect account' : fk === 'content' ? 'Edit to fix' : 'Retry') : p.status === 'scheduled' ? (p.approval === 'pending' ? '' : 'Post now') : p.status === 'draft' ? 'Publish' : ['failed', 'partial'].includes(p.status) ? 'Retry' : p.status === 'published' ? 'Repost' : '';
       const LEAD = { 15: '15m', 30: '30m', 60: '1h', 180: '3h', 1440: '1 day' };
       g.items.push({
-        time: p.at ? this.time(p.at) : '—', status: p.status, st: ST[p.status] || ST.draft,
+        time: p.at ? this.time(p.at) : '—', status: p.publishing ? 'publishing…' : p.status, st: p.publishing ? ST.scheduled : ST[p.status] || ST.draft,
         meta: [`${p.targets.length} account${p.targets.length === 1 ? '' : 's'}`, imgs > 1 ? `carousel of ${imgs}` : imgs ? '1 image' : '', vids ? 'video' : ''].filter(Boolean).join(' · '),
         caption: p.caption, hasMedia: p.media.length > 0, media: p.media.map((kind) => ({ bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind, isVideo: false, video: '', labelBg: 'transparent' })),
         targets: p.targets.map((t) => { const a = accById[t.acc] || { username: 'disconnected', platform: 'x' }; const sc = t.status === 'published' ? ST.published : t.status === 'failed' ? ST.failed : { bg: '#fff', border: '#e5e3dc' }; const pid = Component.hash(p.id + t.acc).toString(36), u = a.username;
@@ -1684,8 +1684,8 @@ class Component extends DCLogic {
         ...(() => {
           const open = S0.menuFor === p.id, close = (fn) => () => { this.setState({ menuFor: null }); fn(); };
           const doAct = () => g.items.find((x) => x.__id === p.id)?.act();
-          let prim = p.approval === 'pending' && p.status !== 'published' ? ['Approve', () => { this.setPost(p.id, (x) => ({ ...x, approval: 'approved' })); this.flash('Approved'); }, true] : actLabel ? [actLabel, () => doAct(), ['failed', 'partial'].includes(p.status) || actLabel === 'Post now'] : ['Edit', () => this.editPost(p), false];
-          const menu = [p.status !== 'published' ? { label: 'Edit', go: close(() => this.editPost(p)) } : null, { label: 'Duplicate', go: close(() => this.duplicate([p.id])) }, p.approval === 'pending' ? { label: 'Request changes', go: close(() => { this.setPost(p.id, (x) => ({ ...x, approval: null, status: 'draft', at: null })); this.flash('Sent back to drafts'); }) } : null, p.status === 'scheduled' ? { label: 'Move +1 day', go: close(() => { this.setPost(p.id, (x) => ({ ...x, at: x.at + 864e5 })); this.flash('Moved one day later', false, () => this.setPost(p.id, (x) => ({ ...x, at: x.at - 864e5 }))); }) } : null, { label: 'Delete…', color: '#dc3545', go: close(() => this.setState({ confirm: { title: 'Delete this post?', body: (p.caption || '').slice(0, 90), cta: 'Delete post', go: () => { const snap = p; this.setState((st) => ({ posts: st.posts.filter((x) => x.id !== p.id) })); this.flash('Post deleted', false, () => this.setState((st) => ({ posts: [...st.posts, snap] }))); } } })) }].filter(Boolean);
+          let prim = p.publishing ? ['Publishing…', () => {}, false] : p.approval === 'pending' && p.status !== 'published' ? ['Approve', () => { this.setPost(p.id, (x) => ({ ...x, approval: 'approved' })); this.flash('Approved'); }, true] : actLabel ? [actLabel, () => doAct(), ['failed', 'partial'].includes(p.status) || actLabel === 'Post now'] : ['Edit', () => this.editPost(p), false];
+          const menu = p.publishing ? [] : [p.status !== 'published' ? { label: 'Edit', go: close(() => this.editPost(p)) } : null, { label: 'Duplicate', go: close(() => this.duplicate([p.id])) }, p.approval === 'pending' ? { label: 'Request changes', go: close(() => { this.setPost(p.id, (x) => ({ ...x, approval: null, status: 'draft', at: null })); this.flash('Sent back to drafts'); }) } : null, p.status === 'scheduled' ? { label: 'Move +1 day', go: close(() => { const old = p.at; this.setPost(p.id, (x) => ({ ...x, at: this.plusDays(x.at, 1) })); this.flash('Moved one day later', false, () => this.setPost(p.id, (x) => ({ ...x, at: old }))); }) } : null, { label: 'Delete…', color: '#dc3545', go: close(() => this.setState({ confirm: { title: 'Delete this post?', body: (p.caption || '').slice(0, 90), cta: 'Delete post', go: () => { const snap = p; this.setState((st) => ({ posts: st.posts.filter((x) => x.id !== p.id) })); this.flash('Post deleted', false, () => this.setState((st) => ({ posts: [...st.posts, snap] }))); } } })) }].filter(Boolean);
           return { __id: p.id, primLabel: prim[0], primary: prim[1], primBg: prim[2] ? '#141619' : '#fff', primFg: prim[2] ? '#fff' : '#141619', primBorder: prim[2] ? '#141619' : '#e7e5df', menuOpen: open ? 'true' : 'false', showMenu: open, menu, toggleMenu: () => this.setState({ menuFor: open ? null : p.id }) };
         })(),
         hasConflict: !!conflictMap[p.id], conflict: conflictMap[p.id] ? conflictMap[p.id][0].msg : '', hasNote: !!p.note, note: p.note || '',
@@ -1708,7 +1708,7 @@ class Component extends DCLogic {
     const first = new Date(cy, cm, 1), lead = (first.getDay() + 6) % 7, start = new Date(cy, cm, 1 - lead);
     const byDay = {};
     const calMatch = (p) => (!S0.calPlat || p.targets.some((t) => accById[t.acc]?.platform === S0.calPlat)) && (!S0.calAcc || p.targets.some((t) => t.acc === S0.calAcc)) && (!S0.calStatus || (S0.calStatus === 'approval' ? p.approval === 'pending' : S0.calStatus === 'failed' ? ['failed', 'partial'].includes(p.status) : p.status === S0.calStatus));
-    const STL = (p) => p.approval === 'pending' && p.status !== 'published' ? ['Needs approval', '#fff1d6', '#8a5a00'] : p.status === 'published' ? ['Published', '#e7f5ec', '#15803D'] : p.status === 'failed' || p.status === 'partial' ? ['Failed', '#fde8ea', '#DC3545'] : p.status === 'draft' ? ['Draft', '#f1f1ec', '#677184'] : ['Scheduled', '#eef0f3', '#141619'];
+    const STL = (p) => p.publishing ? ['Publishing…', '#eef0f3', '#141619'] : p.approval === 'pending' && p.status !== 'published' ? ['Needs approval', '#fff1d6', '#8a5a00'] : p.status === 'published' ? ['Published', '#e7f5ec', '#15803D'] : p.status === 'failed' || p.status === 'partial' ? ['Failed', '#fde8ea', '#DC3545'] : p.status === 'draft' ? ['Draft', '#f1f1ec', '#677184'] : ['Scheduled', '#eef0f3', '#141619'];
     const TONES = ['linear-gradient(160deg,#9a7a58,#5d4a36)', 'linear-gradient(160deg,#6e7b5a,#3e4a33)', 'linear-gradient(160deg,#7a6a8a,#3f3550)', 'linear-gradient(160deg,#5a6e7b,#2f3e48)'];
     const evOf = (p, i, n) => { const st = STL(p), th = p.media.length ? this.mediaThumb(p) || TONES[Component.hash(p.src || p.id) % 4] : 'transparent';
       return { time: this.time(p.at), timeShort: this.time(p.at).replace(':00', '').replace(' AM', 'a').replace(' PM', 'p'), c1: LG(accById[p.targets[0]?.acc]?.platform).color, l1: LG(accById[p.targets[0]?.acc]?.platform).logo, plus: p.targets.length > 1 ? '+' + (p.targets.length - 1) : '', caption: (p.repeat && p.repeat !== 'none' ? '↻ ' : '') + (p.caption || '(media)'), title: `${this.time(p.at)} · ${st[0]} · ${p.caption}`,
@@ -1769,14 +1769,21 @@ class Component extends DCLogic {
     for (const a of sel) {
       const p = P[a.platform], text = d.ov[a.id]?.caption ?? d.caption;
       if (a.health === 'error') problems.push(`${p.label} @${a.username} is disconnected (${a.error || 'authorization lost'}). Reconnect it in Social accounts or deselect it.`);
+      if (a.health === 'over') problems.push(`${p.label} @${a.username} is over your plan's account limit and can't publish. Upgrade your plan, disconnect another account, or deselect it.`);
       if (text.length > p.max) problems.push(`Your ${p.label} caption is ${text.length - p.max} characters over the ${p.max.toLocaleString()} limit. Shorten it in the ${p.label} tab.`);
       if (p.req === 'any' && !d.media.length) problems.push(`${p.label} posts need an image or video. Add media or deselect @${a.username}.`);
       if (p.req === 'image' && !hasImg) problems.push(`${p.label} pins need an image. Add one or deselect @${a.username}.`);
       if (p.req === 'video' && !hasVid) problems.push(`${p.label} only accepts video. Add a video or deselect @${a.username}.`);
-      const fmt = (d.ov[a.id]?.opts || {}).format;
+      // The effective "Post as": the account's own choice, else the one picked for every Instagram and Facebook account.
+      const fmt = (d.ov[a.id]?.opts || {}).format || (a.platform === 'instagram' || a.platform === 'facebook' ? d.postAs : null);
       if (fmt === 'Reel' && !(d.media.length === 1 && hasVid)) problems.push(`A ${p.label} Reel needs exactly one video. Change "Post as" or the media for @${a.username}.`);
       if (fmt === 'Story' && d.media.length !== 1) problems.push(`A ${p.label} Story needs exactly one image or video. Change "Post as" or the media for @${a.username}.`);
       if (p.maxImages !== undefined && d.media.filter((m) => m === 'IMG').length > p.maxImages) problems.push(`${p.label} allows ${p.maxImages} image${p.maxImages === 1 ? '' : 's'} per post. Remove some or deselect @${a.username}.`);
+    }
+    if (d.mode === 'schedule') {
+      const at = Component.fromLocal(d.when, S0.tz);
+      if (!at) problems.push('Pick a date and time.');
+      else if (at < NOW - 6e4) problems.push(`That time is in the past (${this.dayLabel(at)} ${this.time(at)}). Pick a future time, or choose Publish now.`);
     }
     const uniq = [...new Set(problems)];
     const draftAt = d.mode === 'schedule' ? Component.fromLocal(d.when) : d.mode === 'queue' ? this.nextSlots(1, [], d.id)[0] : null;
@@ -1883,10 +1890,10 @@ class Component extends DCLogic {
         remove: () => this.setState((st) => ({ bulkFiles: st.bulkFiles.filter((x) => x.id !== f.id) })),
         up: () => this.setState((st) => { const a = [...st.bulkFiles], k = a.findIndex((x) => x.id === f.id); if (k > 0) [a[k - 1], a[k]] = [a[k], a[k - 1]]; return { bulkFiles: a }; }),
         down: () => this.setState((st) => { const a = [...st.bulkFiles], k = a.findIndex((x) => x.id === f.id); if (k < a.length - 1) [a[k + 1], a[k]] = [a[k], a[k + 1]]; return { bulkFiles: a }; }),
-        vLabel: !f.at ? 'No time' : warn ? 'Partial' : 'Ready', vBg: !f.at ? '#fde8ea' : warn ? '#fff1d6' : '#e7f5ec', vFg: !f.at ? '#dc3545' : warn ? '#8a5a00' : '#15803d',
+        vLabel: !f.at ? 'No time' : f.at <= NOW ? 'In the past' : warn ? 'Partial' : 'Ready', vBg: !f.at || f.at <= NOW ? '#fde8ea' : warn ? '#fff1d6' : '#e7f5ec', vFg: !f.at || f.at <= NOW ? '#dc3545' : warn ? '#8a5a00' : '#15803d',
       };
     });
-    const bf = s.bulkFiles.length, bulkDisabled = !bf || !s.bulkAccs.length || s.bulkFiles.some((f) => !f.at);
+    const bf = s.bulkFiles.length, bulkDisabled = !bf || !s.bulkAccs.length || s.bulkFiles.some((f) => !f.at || f.at <= NOW);
     const csvParsed = this.parseCsv(), csvOk = csvParsed.filter((r) => r.ok), csvErr = csvParsed.length - csvOk.length;
     const csvRows = csvParsed.map((r, i) => ({
       icon: r.ok ? (r.warn ? '!' : '✓') : '×', iconBg: r.ok ? (r.warn ? '#fff1d6' : '#d9ff35') : '#fde3e1', iconFg: r.ok ? (r.warn ? '#b47100' : '#141619') : '#dc3545',
@@ -1993,7 +2000,7 @@ class Component extends DCLogic {
       ...(() => {
         const step = s.bulkFiles.length ? (S0.bulkStep || 1) : 1, setStep = (n) => () => this.setState({ bulkStep: n });
         const accs = S0.bulkAccs.map((id) => accById[id]).filter(Boolean);
-        const val = (f) => { const bad = accs.filter((a) => { const r = P[a.platform].req; return (r === 'video' && f.kind !== 'VIDEO') || (r === 'image' && f.kind !== 'IMG') || f.caption.length > P[a.platform].max || a.health === 'error'; }); const conflict = f.at && s.posts.some((p) => p.status === 'scheduled' && Math.abs(p.at - f.at) < 18e5 && p.targets.some((t) => S0.bulkAccs.includes(t.acc))); return { ok: !!f.at && bad.length < accs.length, skip: bad.map((a) => P[a.platform].label), conflict, noTime: !f.at }; };
+        const val = (f) => { const bad = accs.filter((a) => { const r = P[a.platform].req; return (r === 'video' && f.kind !== 'VIDEO') || (r === 'image' && f.kind !== 'IMG') || f.caption.length > P[a.platform].max || a.health === 'error'; }); const conflict = f.at && s.posts.some((p) => p.status === 'scheduled' && Math.abs(p.at - f.at) < 18e5 && p.targets.some((t) => S0.bulkAccs.includes(t.acc))); const past = !!f.at && f.at <= NOW; return { ok: !!f.at && !past && bad.length < accs.length, skip: bad.map((a) => P[a.platform].label), conflict, noTime: !f.at, past }; };
         const vs = s.bulkFiles.map(val), valid = vs.filter((v) => v.ok).length, invalid = vs.length - valid, jobs = s.bulkFiles.reduce((n, f, i) => n + (vs[i].ok ? accs.length - vs[i].skip.length : 0), 0);
         const times = s.bulkFiles.map((f) => f.at).filter(Boolean).sort((a, b) => a - b);
         const today = this.wsDate(NOW);
@@ -2008,7 +2015,7 @@ class Component extends DCLogic {
           bulkSummary: [{ label: 'Posts', value: s.bulkFiles.length }, { label: 'Publishing jobs (post × account)', value: jobs }, { label: 'Date range', value: times.length ? `${this.wsDate(times[0]).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} – ${this.wsDate(times[times.length - 1]).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}` : '—' }, { label: 'Invalid posts', value: invalid, color: invalid ? '#dc3545' : '#141619', border: invalid ? '#f5c2c7' : '#e7e5df' }, { label: 'Conflicts', value: conflicts, color: conflicts ? '#b47100' : '#141619', border: conflicts ? '#f3dfb2' : '#e7e5df' }].map((b) => ({ color: '#141619', border: '#e7e5df', ...b })),
           bulkDist: dist, bulkIssues: s.bulkFiles.map((f, i) => vs[i].noTime ? { text: `${f.name}: no time set. Use “Re-space into slots” or pick a time.`, color: '#dc3545' } : vs[i].past ? { text: `${f.name}: that time is in the past. Pick a future time or use “Re-space into slots”.`, color: '#dc3545' } : vs[i].skip.length ? { text: `${f.name}: will skip ${vs[i].skip.join(', ')} (media type, length or connection).`, color: '#b47100' } : vs[i].conflict ? { text: `${f.name}: within 30 min of another post on the same account.`, color: '#b47100' } : null).filter(Boolean),
           bulkHasInvalid: invalid > 0 || vs.some((v) => v.skip.length), bulkNoValid: valid === 0, bulkValidOp: valid ? 1 : 0.45, bulkValidLabel: `Schedule ${valid} valid post${valid === 1 ? '' : 's'}`,
-          bulkReport: () => { const rows = [['file', 'caption', 'issue']].concat(s.bulkFiles.map((f, i) => [f.name, f.caption, vs[i].noTime ? 'No time' : vs[i].skip.length ? 'Skips ' + vs[i].skip.join('; ') : vs[i].conflict ? 'Conflict' : ''] ).filter((r) => r[2])); const b = new Blob([rows.map((r) => r.map((c) => '"' + String(c).replace(/"/g, '""') + '"').join(',')).join('\n')], { type: 'text/csv' }); const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'bulk-schedule-issues.csv'; document.body.appendChild(a); a.click(); a.remove(); },
+          bulkReport: () => { const rows = [['file', 'caption', 'issue']].concat(s.bulkFiles.map((f, i) => [f.name, f.caption, vs[i].noTime ? 'No time' : vs[i].past ? 'Time in the past' : vs[i].skip.length ? 'Skips ' + vs[i].skip.join('; ') : vs[i].conflict ? 'Conflict' : ''] ).filter((r) => r[2])); const b = new Blob([rows.map((r) => r.map((c) => '"' + String(c).replace(/"/g, '""') + '"').join(',')).join('\n')], { type: 'text/csv' }); const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'bulk-schedule-issues.csv'; document.body.appendChild(a); a.click(); a.remove(); },
           bulkScheduleValid: () => {
             const batch = S0.bulkBatch || 'b' + Date.now(), existing = new Set(S0.posts.filter((p) => p.batch === batch).map((p) => p.fileId));
             const add = s.bulkFiles.map((f, i) => ({ f, v: vs[i] })).filter(({ f, v }) => v.ok && !existing.has(f.id)).map(({ f, v }, i) => ({ id: 'p' + Date.now() + i, batch, fileId: f.id, ws: WS, labels: [], status: 'scheduled', at: f.at, caption: f.caption, media: [f.kind], ov: {}, targets: accs.filter((a) => !v.skip.includes(P[a.platform].label)).map((a) => ({ acc: a.id, status: 'scheduled', error: '' })) }));

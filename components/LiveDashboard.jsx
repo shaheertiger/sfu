@@ -19,6 +19,18 @@ const kindOf = (mime) => (mime && mime.startsWith('video/') ? 'VIDEO' : 'IMG');
 const TONES = ['#8a6d4f', '#6e5a42', '#7a6148', '#4f3f2e', '#5d6b4a', '#5d4a36', '#3e4a55', '#7d7a5c'];
 const hashTone = (id) => TONES[Base.hash(id || '') % TONES.length];
 const TIKTOK_PRIVACY = { Public: 'PUBLIC_TO_EVERYONE', Friends: 'MUTUAL_FOLLOW_FRIENDS', 'Only me': 'SELF_ONLY' };
+/** Platforms whose access tokens renew on their own (used when the server doesn't say `has_refresh`). */
+const AUTO_REFRESH = new Set(['x', 'youtube', 'google_business', 'tiktok', 'pinterest', 'threads', 'facebook', 'instagram']);
+/** How long a deleted post waits before it's deleted on the server: the toast's Undo window (6 s) plus a margin. */
+const UNDO_MS = 6500;
+/**
+ * Publish now: false = PUT the post, then POST /api/v1/posts/{id}/publish. Flip to true once PUT /api/app/posts/{id}
+ * accepts `publish_now: true` (it checks billing before saving and returns the post).
+ */
+const PUBLISH_NOW_VIA_PUT = false;
+let tokSeq = 0;
+/** A local identity for one composer session, so uploads land only in the draft they were started from. */
+const newTok = () => `d${Date.now().toString(36)}${(tokSeq++).toString(36)}`;
 
 /**
  * Refreshes the session cache cookie through the Neon Auth proxy. True when the session is still
@@ -89,7 +101,9 @@ function mapMedia(m, usage = {}) {
 }
 
 function mapPost(sp, mediaById) {
-  const status = sp.status === 'publishing' ? 'scheduled' : sp.status;
+  // A post the server is sending right now shows as "publishing…" (with its targets pending), never as scheduled.
+  const publishing = sp.status === 'publishing';
+  const status = publishing ? 'published' : sp.status;
   const ov = {};
   for (const t of sp.targets) {
     const o = {};
@@ -102,12 +116,13 @@ function mapPost(sp, mediaById) {
     media: (sp.media || []).map((id) => kindOf(mediaById[id]?.mime)), mediaIds: [...(sp.media || [])],
     targets: sp.targets.map((t) => ({
       acc: t.account_id,
-      status: t.status === 'published' ? 'published' : t.status === 'failed' ? 'failed' : status === 'draft' ? 'draft' : 'scheduled',
+      status: t.status === 'published' ? 'published' : t.status === 'failed' ? 'failed' : publishing ? 'pending' : status === 'draft' ? 'draft' : 'scheduled',
       error: t.status === 'failed' ? t.error || 'Failed' : '',
       url: t.external_url || '',
     })),
     labels: sp.labels || [], repeat: sp.repeat || 'none', evergreen: !!sp.evergreen, approval: sp.approval || null,
     remind: sp.remind !== false, note: sp.note || '', batch: sp.batch || null,
+    ...(publishing ? { publishing: true } : {}),
   };
 }
 
@@ -140,6 +155,11 @@ export default class LiveDashboard extends Base {
     this._queue = new Map(); // post id → promise chain (keeps saves for one post in order)
     this._uploads = new Map(); // bulk file id → Promise<media id>
     this._busy = 0;
+    this._onServer = new Set(); // post ids the server has saved
+    this._pendingDel = new Map(); // post id → timer: deleted here, deleted on the server once Undo can't bring it back
+    this._drafts = new Map(); // post id → the composer draft it came from, until its first save succeeds
+    this._rescued = new Set(); // post ids already turned into drafts after a refused first save
+    this._accSeen = new Map(); // account id → account, so a refused disconnect can put it back
   }
 
   /* ---------- lifecycle ---------- */
@@ -150,12 +170,26 @@ export default class LiveDashboard extends Base {
     // Coming back to the tab: refresh the session cache first, then reload.
     this._vis = () => { if (document.visibilityState === 'visible') refreshSession().finally(() => this.load(false)); };
     document.addEventListener('visibilitychange', this._vis);
+    // Leaving the page during an Undo window: send the waiting deletes now (keepalive outlives the page).
+    this._onHide = () => {
+      for (const [id, t] of this._pendingDel) {
+        clearTimeout(t);
+        if (this.state.posts.some((p) => p.id === id)) continue;
+        this._srv.delete(id);
+        this._srvStatus.delete(id);
+        fetch(`/api/app/posts/${id}`, { method: 'DELETE', credentials: 'same-origin', keepalive: true }).catch(() => {});
+      }
+      this._pendingDel.clear();
+    };
+    window.addEventListener('pagehide', this._onHide);
   }
   componentWillUnmount() {
     super.componentWillUnmount();
     clearInterval(this._poll);
     clearTimeout(this._prefsT);
     document.removeEventListener('visibilitychange', this._vis);
+    window.removeEventListener('pagehide', this._onHide);
+    this._onHide();
   }
 
   setState(update, cb) {
@@ -163,10 +197,12 @@ export default class LiveDashboard extends Base {
   }
 
   async load(first) {
-    if (!first && (this._busy > 0 || this._queue.size > 0)) return; // don't overwrite unsaved work
+    // Don't overwrite unsaved work, or bring back a post whose delete is waiting out its Undo window.
+    const busy = () => this._busy > 0 || this._queue.size > 0 || this._pendingDel.size > 0;
+    if (!first && busy()) return;
     try {
       const d = await api('/api/app/state');
-      if (!first && (this._busy > 0 || this._queue.size > 0)) return;
+      if (!first && busy()) return;
       this.applyServer(d, first);
       if (first) this.handleReturnParams(d);
       // New workspace without a card: offer the free trial right away (owners only, once per page load).
@@ -185,19 +221,28 @@ export default class LiveDashboard extends Base {
     this.userName = (d.user.name || d.user.email.split('@')[0]).split(' ')[0];
     this._srv = new Map(posts.map((p) => [p.id, JSON.stringify(this.toInput(p, accounts))]));
     this._srvStatus = new Map(posts.map((p) => [p.id, p.status]));
+    this._onServer = new Set(posts.map((p) => p.id));
+    for (const a of accounts) this._accSeen.set(a.id, a);
+    const tz = prefs.tz || Base.localTz();
     const patch = {
       loading: false, posts, accounts,
       library: d.media.map((m) => mapMedia(m, d.mediaUsage)),
       keys: d.keys.map((k) => ({ id: k.id, name: k.name, prefix: k.prefix, meta: `Created ${new Date(k.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} · ${k.last_used_at ? 'last used ' + new Date(k.last_used_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : 'never used'}` })),
       members: d.members, wsId: d.workspace.id, wsList: d.workspaces, plan: d.workspace.plan, accountLimit: d.workspace.account_limit,
       platforms: Object.fromEntries(d.platforms.map((p) => [p.id, p])), storage: d.storage, billing: d.billing || null,
-      tz: prefs.tz || Base.localTz(), remind: prefs.remind || { on: true, lead: 60 }, alerts: prefs.alerts || { fail: true, digest: true },
+      tz, remind: prefs.remind || { on: true, lead: 60 }, alerts: prefs.alerts || { fail: true, digest: true },
       slots: prefs.slots || [], slotDays: prefs.slotDays || [], paused: !!prefs.paused, labelList: prefs.labels || [],
       folders: prefs.folders || [], templates: prefs.templates || [], tagGroups: prefs.tagGroups || [], notes: prefs.notes || {},
     };
     if (first) {
       patch.bulkAccs = accounts.slice(0, 3).map((a) => a.id);
       patch.folder = 'All';
+      // Open the calendar on the workspace's current month and week, not the browser's.
+      const now = new Date(Date.now() + Base.shift(Date.now(), tz));
+      patch.cursor = [now.getFullYear(), now.getMonth()];
+      now.setHours(0, 0, 0, 0);
+      now.setDate(now.getDate() - ((now.getDay() + 6) % 7));
+      patch.weekStart = now.getTime();
     }
     this._lastPosts = posts;
     this._prefsKey = JSON.stringify(this.prefsOf({ ...this.state, ...patch }));
@@ -239,21 +284,25 @@ export default class LiveDashboard extends Base {
     return {
       caption: p.caption || '', media: p.mediaIds || [], scheduled_at: p.at ?? null,
       status: p.status === 'draft' ? 'draft' : 'scheduled',
-      targets: p.targets.map((t) => ({ account_id: t.acc, caption: p.ov?.[t.acc]?.caption ?? null, options: adapterOptions(byId[t.acc], p.ov?.[t.acc]?.opts || {}) })),
-      labels: p.labels || [], repeat: p.repeat || 'none', evergreen: !!p.evergreen, approval: p.approval || null,
-      remind: p.remind !== false, note: p.note || '', batch: p.batch || null,
+      // Accounts disconnected since the post was written are left out; the server would refuse the whole save.
+      targets: p.targets.filter((t) => byId[t.acc]).map((t) => ({ account_id: t.acc, caption: p.ov?.[t.acc]?.caption ?? null, options: adapterOptions(byId[t.acc], p.ov?.[t.acc]?.opts || {}) })),
+      labels: (p.labels || []).slice(0, 50), repeat: p.repeat || 'none', evergreen: !!p.evergreen, approval: p.approval || null,
+      remind: p.remind !== false, note: (p.note || '').slice(0, 2000), batch: p.batch || null,
     };
   }
 
   enqueue(id, job) {
     const prev = this._queue.get(id) || Promise.resolve();
     const next = prev.then(job).catch((e) => {
+      // A post the server never accepted would vanish on the next reload: give it back instead.
+      if (e.firstSave && e.post && this.rescue(e.post, e.message || 'The server refused this post')) return;
       this.flash(e.message || 'Could not save', true);
       this._srv.delete(id);
       setTimeout(() => this.load(false), 500); // resync with the server
     }).finally(() => {
       if (this._queue.get(id) === next) this._queue.delete(id);
-      if (!this._queue.size && this._reloadAfter) { this._reloadAfter = false; this.load(false); }
+      // (Not while a delete waits for its Undo window: load would skip; the DELETE's own save brings us back here.)
+      if (!this._queue.size && this._reloadAfter && !this._pendingDel.size) { this._reloadAfter = false; this.load(false); }
     });
     this._queue.set(id, next);
   }
@@ -262,25 +311,47 @@ export default class LiveDashboard extends Base {
     const s = this.state;
     if (s.loading) return;
     if (s.posts !== this._lastPosts) {
+      const prevById = new Map((this._lastPosts || []).map((p) => [p.id, p]));
       this._lastPosts = s.posts;
-      const seen = new Set();
+      const seen = new Set(), starting = new Map();
       for (const p of s.posts) {
         seen.add(p.id);
         if (p.virtual) continue;
+        // Back from Undo: cancel the delete. Its server copy was never touched, so nothing else to do.
+        if (this._pendingDel.has(p.id)) { clearTimeout(this._pendingDel.get(p.id)); this._pendingDel.delete(p.id); }
         this.attachMedia(p);
-        const wasPublished = this._srvStatus.get(p.id) === 'published';
-        if (p.status === 'published' && !wasPublished) { this._srvStatus.set(p.id, 'published'); this.enqueue(p.id, () => this.publish(p)); continue; }
-        if (wasPublished || p.status === 'partial' || (p.status === 'failed' && this._srvStatus.get(p.id) === 'failed')) continue;
+        const srvStatus = this._srvStatus.get(p.id), prev = prevById.get(p.id);
+        if (p.status === 'published' && srvStatus !== 'published') {
+          // Only a change made here (Publish now, Retry, a new post sent now) publishes. A post that comes back
+          // already "published" (Undo, reload) is never sent again.
+          const isNew = !prev && !this._onServer.has(p.id);
+          if ((prev && prev.status !== 'published') || isNew) {
+            this._srvStatus.set(p.id, 'published');
+            starting.set(p.id, prev);
+            this.enqueue(p.id, () => this.publish(p));
+          }
+          continue;
+        }
+        if (srvStatus === 'published' || p.status === 'partial' || (p.status === 'failed' && srvStatus === 'failed')) continue;
         const ser = JSON.stringify(this.toInput(p));
         if (ser === this._srv.get(p.id)) continue;
         this._srv.set(p.id, ser);
         this.enqueue(p.id, () => this.save(p));
       }
+      // Being published: say so, with each new target pending, until the server answers (see showPublished).
+      if (starting.size) {
+        super.setState((st) => ({
+          posts: st.posts.map((x) => {
+            if (!starting.has(x.id)) return x;
+            const done = new Set((starting.get(x.id)?.targets || []).filter((t) => t.status === 'published').map((t) => t.acc));
+            return { ...x, publishing: true, targets: x.targets.map((t) => (done.has(t.acc) ? { ...t, status: 'published' } : { ...t, status: 'pending', error: '' })) };
+          }),
+        }));
+      }
       for (const id of [...this._srv.keys()]) {
-        if (seen.has(id)) continue;
-        this._srv.delete(id);
-        this._srvStatus.delete(id);
-        this.enqueue(id, () => api(`/api/app/posts/${id}`, { method: 'DELETE' }));
+        if (seen.has(id) || this._pendingDel.has(id)) continue;
+        // Deleted here: wait out the Undo window before deleting on the server (Undo cancels this above).
+        this._pendingDel.set(id, setTimeout(() => this.commitDelete(id), UNDO_MS));
       }
     }
     const prefs = this.prefsOf(s), pk = JSON.stringify(prefs);
@@ -303,10 +374,53 @@ export default class LiveDashboard extends Base {
     }
   }
 
+  /** The Undo window for a deleted post has closed: delete it on the server (unless it came back). */
+  commitDelete(id) {
+    clearTimeout(this._pendingDel.get(id));
+    this._pendingDel.delete(id);
+    if (this.state.posts.some((p) => p.id === id)) return;
+    this._srv.delete(id);
+    this._srvStatus.delete(id);
+    this._onServer.delete(id);
+    this.enqueue(id, () => api(`/api/app/posts/${id}`, { method: 'DELETE' }));
+  }
+
+  /**
+   * The server refused a post's first save (422 and the like). Nothing was stored, so a reload would lose it.
+   * From the composer, and with the composer free: reopen it there with the error. Otherwise keep it as a draft.
+   * True when handled.
+   */
+  rescue(p0, msg) {
+    const p = this.state.posts.find((x) => x.id === p0.id) || p0;
+    this._srv.delete(p.id);
+    this._srvStatus.delete(p.id);
+    const snap = this._drafts.get(p.id);
+    this._drafts.delete(p.id);
+    const d = this.state.draft || {};
+    const composerFree = this.state.screen !== 'compose' || (!d.caption && !(d.media || []).length && !(d.targets || []).length && !(this.state.uploads || []).length);
+    if (snap && composerFree) {
+      super.setState((st) => ({ posts: st.posts.filter((x) => x.id !== p.id), screen: 'compose', uploads: [], draft: { ...snap, id: null, serverError: msg, tok: newTok() } }));
+      this.flash(`Not saved: ${msg}`, true);
+      return true;
+    }
+    if (this._rescued.has(p.id)) return false;
+    this._rescued.add(p.id);
+    // Drafts aren't validated, so this save goes through and nothing is lost.
+    this.setState((st) => ({ posts: st.posts.map((x) => (x.id === p.id ? { ...x, status: 'draft', at: null, publishing: undefined, targets: x.targets.map((t) => (t.status === 'published' ? t : { ...t, status: 'draft', error: '' })) } : x)) }));
+    this.flash(`Couldn't schedule “${(p.caption || 'a post').slice(0, 40)}”: ${msg} It's in Drafts so you can fix it.`, true);
+    return true;
+  }
+
   /** Posts created by the design carry media "kinds" only; attach the uploaded media ids. */
   attachMedia(p) {
     if (p.mediaIds) return;
-    if (this._submitFor && (this._submitFor.id ? p.id === this._submitFor.id : !this._srv.has(p.id))) { p.mediaIds = this._submitFor.mediaIds; this._submitFor = null; return; }
+    if (this._submitFor && (this._submitFor.id ? p.id === this._submitFor.id : !this._srv.has(p.id))) {
+      p.mediaIds = this._submitFor.mediaIds;
+      // Keep the draft until the server accepts the post, so a refused first save can reopen it (see rescue).
+      if (!this._onServer.has(p.id)) this._drafts.set(p.id, this._submitFor.draft);
+      this._submitFor = null;
+      return;
+    }
     if (p.fileId && this._uploads.has(p.fileId)) p.mediaIds = [];
     else p.mediaIds = [];
   }
@@ -316,43 +430,110 @@ export default class LiveDashboard extends Base {
       const id = await this._uploads.get(p.fileId);
       if (id) p.mediaIds = [id];
     }
-    const res = await api(`/api/app/posts/${p.id}`, { method: 'PUT', body: this.toInput(p) });
-    this._srvStatus.set(p.id, res.post.status === 'publishing' ? 'scheduled' : res.post.status);
+    const first = !this._onServer.has(p.id);
+    let res;
+    try {
+      res = await api(`/api/app/posts/${p.id}`, { method: 'PUT', body: this.toInput(p) });
+    } catch (e) {
+      e.firstSave = first;
+      e.post = p;
+      throw e;
+    }
+    this._onServer.add(p.id);
+    this._drafts.delete(p.id);
+    this._srvStatus.set(p.id, res.post.status === 'publishing' ? 'published' : res.post.status);
     this._srv.set(p.id, JSON.stringify(this.toInput(p)));
   }
 
+  /** Sends the post now. The post shows "publishing…" until this returns, then the real per-account result. */
   async publish(p) {
     this._busy++;
     try {
-      await api(`/api/app/posts/${p.id}`, { method: 'PUT', body: { ...this.toInput(p), status: 'scheduled', scheduled_at: Date.now() } });
-      const r = await api(`/api/v1/posts/${p.id}/publish`, { method: 'POST' });
-      const failed = r.post.targets.filter((t) => t.status === 'failed').length;
-      if (failed) this.flash(`${failed} of ${r.post.targets.length} account${r.post.targets.length === 1 ? '' : 's'} failed. See the Failed tab.`, true);
+      let post;
+      try {
+        post = await this.publishRequest(p);
+      } catch (e) {
+        if (e.status === 402) return await this.backToDraft(p.id, e.message);
+        e.firstSave = !this._onServer.has(p.id);
+        e.post = p;
+        throw e;
+      }
+      this._drafts.delete(p.id);
+      this.showPublished(p.id, post);
     } finally {
       this._busy--;
-      this._reloadAfter = true; // pick up the published status and links once saves settle
+      this._reloadAfter = true; // pick up links and anything else once saves settle
     }
+  }
+
+  /** The server calls behind Publish now; returns the post as the server has it afterwards. */
+  async publishRequest(p) {
+    if (PUBLISH_NOW_VIA_PUT) {
+      const r = await api(`/api/app/posts/${p.id}`, { method: 'PUT', body: { ...this.toInput(p), publish_now: true } });
+      this._onServer.add(p.id);
+      return r.post;
+    }
+    await api(`/api/app/posts/${p.id}`, { method: 'PUT', body: { ...this.toInput(p), status: 'scheduled', scheduled_at: Date.now() } });
+    this._onServer.add(p.id);
+    return (await api(`/api/v1/posts/${p.id}/publish`, { method: 'POST' })).post;
+  }
+
+  /** Publishing was refused for billing (402): the post goes back to Drafts, here and on the server. */
+  async backToDraft(id, msg) {
+    const cur = this.state.posts.find((x) => x.id === id);
+    if (!cur) return;
+    const asDraft = (x) => ({ ...x, status: 'draft', at: null, publishing: undefined, targets: x.targets.map((t) => (t.status === 'published' ? t : { ...t, status: 'draft', error: '' })) });
+    const body = this.toInput(asDraft(cur));
+    this._srvStatus.set(id, 'draft');
+    this._srv.set(id, JSON.stringify(body));
+    super.setState((st) => ({ posts: st.posts.map((x) => (x.id === id ? asDraft(x) : x)) }));
+    this.flash(`${msg || 'Publishing is off on your plan.'} The post is saved in Drafts.`, true);
+    await api(`/api/app/posts/${id}`, { method: 'PUT', body });
+    this._onServer.add(id);
+  }
+
+  /** Replaces the optimistic "publishing…" state with what the server reports, and says how it went. */
+  showPublished(id, sp) {
+    const cur = this.state.posts.find((x) => x.id === id);
+    if (!sp || !cur) return;
+    const m = mapPost(sp, {});
+    const next = { ...cur, status: m.status, at: m.at, targets: m.targets, publishing: m.publishing };
+    this._srvStatus.set(id, m.status);
+    this._srv.set(id, JSON.stringify(this.toInput(next)));
+    super.setState((st) => ({ posts: st.posts.map((x) => (x.id === id ? { ...x, status: next.status, at: next.at, targets: next.targets, publishing: next.publishing } : x)) }));
+    const n = m.targets.length, failed = m.targets.filter((t) => t.status === 'failed');
+    const acc = (k) => `${k} account${k === 1 ? '' : 's'}`;
+    if (m.publishing) this.flash(`Still publishing to ${acc(n)}. This updates when it's done.`);
+    else if (failed.length === n && n) this.flash(`Couldn't publish: ${failed[0].error}. See the Failed tab.`, true);
+    else if (failed.length) this.flash(`Published to ${acc(n - failed.length)}. ${failed.length} failed. See the Failed tab.`, true);
+    else this.flash(`Published to ${acc(n)}`);
   }
 
   /* ---------- overrides of design actions ---------- */
   publishNow(p) {
-    // The server handles evergreen re-queueing, so skip the design's local copy.
+    // The server handles evergreen re-queueing, so skip the design's local copy. The targets show as pending
+    // ("publishing…") until the server answers; see _sync and showPublished.
     if (p.approval === 'pending') return this.flash('Approve this post before publishing it', true);
-    this.setPost(p.id, (x) => ({ ...x, status: 'published', at: Date.now(), targets: x.targets.map((t) => ({ ...t, status: 'published', error: '' })) }));
+    if (p.publishing) return;
+    this.setPost(p.id, (x) => ({ ...x, status: 'published', at: Date.now() }));
     this.flash(`Publishing to ${p.targets.length} account${p.targets.length === 1 ? '' : 's'}…`);
   }
 
   editPost(p) {
     const src = p.src ? this.state.posts.find((x) => x.id === p.src) || p : p;
     super.editPost(src);
-    super.setState((st) => ({ draft: { ...st.draft, mediaIds: [...(src.mediaIds || [])] } }));
+    // Drop accounts disconnected since; start a fresh composer session (uploads still running finish into the library).
+    const known = new Set(this.state.accounts.map((a) => a.id));
+    super.setState((st) => ({ uploads: [], draft: { ...st.draft, targets: (st.draft.targets || []).filter((id) => known.has(id)), mediaIds: [...(src.mediaIds || [])], tok: newTok() } }));
   }
 
   submit() {
     if ((this.state.uploads || []).length) return this.flash('Wait for your uploads to finish first', true);
     const d = this.state.draft;
-    this._submitFor = { id: d.id, mediaIds: [...(d.mediaIds || [])] };
+    const { serverError, ...draft } = d;
+    this._submitFor = { id: d.id, mediaIds: [...(d.mediaIds || [])], draft: { ...draft, mediaIds: [...(d.mediaIds || [])], ov: JSON.parse(JSON.stringify(d.ov || {})) } };
     super.submit();
+    if (d.mode === 'now') this.flash(`Publishing to ${d.targets.length} account${d.targets.length === 1 ? '' : 's'}…`);
   }
 
   /** The post's first image as a CSS background. Videos keep the placeholder (CSS can't show a video frame). */
@@ -367,7 +548,13 @@ export default class LiveDashboard extends Base {
 
   newPost(when) {
     super.newPost(when);
-    super.setState((st) => ({ draft: { ...st.draft, mediaIds: [] } }));
+    super.setState((st) => ({ uploads: [], draft: { ...st.draft, mediaIds: [], tok: newTok() } }));
+  }
+
+  /** Pinterest's Board select lists the account's real boards. */
+  fieldOptions(a, f) {
+    if (a.platform === 'pinterest' && f.key === 'board') return (a.boards || []).map((b) => b.name).filter(Boolean);
+    return super.fieldOptions(a, f);
   }
 
   addFiles(list) {
@@ -408,20 +595,29 @@ export default class LiveDashboard extends Base {
   /** Uploads files into the draft. Each file shows as a tile with its progress until it's added. */
   addToDraft(files) {
     if (!files.length) return;
+    // Each upload belongs to the draft it was started from. If you switch posts meanwhile, the file still lands in
+    // the library but is not added to whatever post is open by then.
+    let tok = this.state.draft?.tok || this._lazyTok;
+    if (!tok) { tok = this._lazyTok = newTok(); super.setState((st) => ({ draft: { ...st.draft, tok } }), () => { this._lazyTok = null; }); }
+    const mine = (st) => (st.draft?.tok || null) === tok;
     const jobs = files.map((f, i) => ({ key: `up${Date.now()}_${i}`, name: f.name, kind: kindOf(f.type), pct: 0, file: f }));
     super.setState((st) => ({ uploads: [...(st.uploads || []), ...jobs.map(({ file, ...j }) => j)] }));
     const setPct = (key, pct) => super.setState((st) => ({ uploads: (st.uploads || []).map((u) => (u.key === key ? { ...u, pct } : u)) }));
     const drop = (key) => super.setState((st) => ({ uploads: (st.uploads || []).filter((u) => u.key !== key) }));
     this._busy++;
-    let added = 0;
+    let added = 0, elsewhere = 0;
     Promise.allSettled(jobs.map((j) => this.upload(j.file, null, (pct) => setPct(j.key, pct))
       .then((m) => {
-        added++;
         drop(j.key);
-        super.setState((st) => ({ draft: { ...st.draft, media: [...st.draft.media, kindOf(m.mime)], mediaIds: [...(st.draft.mediaIds || []), m.id] } }));
+        if (!mine(this.state)) { elsewhere++; return; }
+        added++;
+        super.setState((st) => (mine(st) ? { draft: { ...st.draft, media: [...st.draft.media, kindOf(m.mime)], mediaIds: [...(st.draft.mediaIds || []), m.id] } } : null));
       })
       .catch((e) => { drop(j.key); this.flash(`${j.name}: ${e.message}`, true); throw e; })))
-      .then((rs) => { if (added && rs.every((r) => r.status === 'fulfilled')) this.flash(`Added ${added} file${added === 1 ? '' : 's'}`); })
+      .then((rs) => {
+        if (elsewhere) this.flash(`${elsewhere} file${elsewhere === 1 ? '' : 's'} finished uploading after you switched posts. Find ${elsewhere === 1 ? 'it' : 'them'} in the Media library.`);
+        else if (added && rs.every((r) => r.status === 'fulfilled')) this.flash(`Added ${added} file${added === 1 ? '' : 's'}`);
+      })
       .finally(() => { this._busy--; });
   }
 
@@ -521,6 +717,9 @@ export default class LiveDashboard extends Base {
 
   async flushSaves() {
     clearTimeout(this._prefsT);
+    // Leaving this workspace: deletes waiting for their Undo window go out now, and Undo no longer applies.
+    this._undo = null;
+    for (const id of [...this._pendingDel.keys()]) this.commitDelete(id);
     await Promise.all([...this._queue.values()]);
     await api('/api/app/prefs', { method: 'PATCH', body: { prefs: this.prefsOf(this.state) } }).catch(() => {});
   }
@@ -618,13 +817,18 @@ export default class LiveDashboard extends Base {
         />
       );
     }
+    // The server refused this post's first save; it was reopened here. Shown until it's submitted again.
+    if (d.serverError) {
+      v.problems = [`Not saved yet. The server said: ${d.serverError}`, ...(v.problems || [])];
+      v.hasProblems = true;
+    }
 
     // Media library.
     const q = (s.libQ || '').toLowerCase();
     const inFolder = (s.folder === 'All' || !s.folder ? s.library : s.library.filter((m) => m.folder === s.folder))
       .filter((m) => (!q || m.name.toLowerCase().includes(q)) && (!s.libType || m.kind === s.libType))
       .sort((x, y) => (s.libSort === 'name' ? x.name.localeCompare(y.name) : s.libSort === 'used' ? y.used - x.used : 0));
-    const useInNewPost = (m) => super.setState({ pvMediaId: null, screen: 'compose', draft: { ...Base.blank(), media: [m.kind], mediaIds: [m.id] } });
+    const useInNewPost = (m) => super.setState({ pvMediaId: null, screen: 'compose', uploads: [], draft: { ...Base.blank(), media: [m.kind], mediaIds: [m.id], tok: newTok() } });
     (v.libItems || []).forEach((it, i) => { const m = inFolder[i]; if (m) it.use = () => { this.upd({ media: [...d.media, m.kind], mediaIds: [...(d.mediaIds || []), m.id] }); this.flash(`Added ${m.name}`); }; });
     (v.libCards || []).forEach((c, i) => { const m = inFolder[i]; if (m) c.use = () => useInNewPost(m); });
     if (v.pvMedia && s.pvMediaId) { const m = s.library.find((x) => x.id === s.pvMediaId); if (m) v.pvMedia.use = () => useInNewPost(m); }

@@ -1232,28 +1232,30 @@ class Component extends DCLogic {
             ? 'content'
             : 'temp';
       const fk = errs.length ? errKind(errs[0].error) : null;
-      const actLabel = ['failed', 'partial'].includes(p.status)
-        ? fk === 'auth'
-          ? 'Reconnect account'
-          : fk === 'content'
-            ? 'Edit to fix'
-            : 'Retry'
-        : p.status === 'scheduled'
-          ? p.approval === 'pending'
-            ? ''
-            : 'Post now'
-          : p.status === 'draft'
-            ? 'Publish'
-            : ['failed', 'partial'].includes(p.status)
-              ? 'Retry'
-              : p.status === 'published'
-                ? 'Repost'
-                : '';
+      const actLabel = p.publishing
+        ? ''
+        : ['failed', 'partial'].includes(p.status)
+          ? fk === 'auth'
+            ? 'Reconnect account'
+            : fk === 'content'
+              ? 'Edit to fix'
+              : 'Retry'
+          : p.status === 'scheduled'
+            ? p.approval === 'pending'
+              ? ''
+              : 'Post now'
+            : p.status === 'draft'
+              ? 'Publish'
+              : ['failed', 'partial'].includes(p.status)
+                ? 'Retry'
+                : p.status === 'published'
+                  ? 'Repost'
+                  : '';
       const LEAD = { 15: '15m', 30: '30m', 60: '1h', 180: '3h', 1440: '1 day' };
       g.items.push({
         time: p.at ? this.time(p.at) : '—',
-        status: p.status,
-        st: ST[p.status] || ST.draft,
+        status: p.publishing ? 'publishing…' : p.status,
+        st: p.publishing ? ST.scheduled : ST[p.status] || ST.draft,
         meta: [
           `${p.targets.length} account${p.targets.length === 1 ? '' : 's'}`,
           imgs > 1 ? `carousel of ${imgs}` : imgs ? '1 image' : '',
@@ -1344,8 +1346,9 @@ class Component extends DCLogic {
               fn();
             };
           const doAct = () => g.items.find((x) => x.__id === p.id)?.act();
-          let prim =
-            p.approval === 'pending' && p.status !== 'published'
+          let prim = p.publishing
+            ? ['Publishing…', () => {}, false]
+            : p.approval === 'pending' && p.status !== 'published'
               ? [
                   'Approve',
                   () => {
@@ -1357,48 +1360,51 @@ class Component extends DCLogic {
               : actLabel
                 ? [actLabel, () => doAct(), ['failed', 'partial'].includes(p.status) || actLabel === 'Post now']
                 : ['Edit', () => this.editPost(p), false];
-          const menu = [
-            p.status !== 'published' ? { label: 'Edit', go: close(() => this.editPost(p)) } : null,
-            { label: 'Duplicate', go: close(() => this.duplicate([p.id])) },
-            p.approval === 'pending'
-              ? {
-                  label: 'Request changes',
-                  go: close(() => {
-                    this.setPost(p.id, (x) => ({ ...x, approval: null, status: 'draft', at: null }));
-                    this.flash('Sent back to drafts');
-                  }),
-                }
-              : null,
-            p.status === 'scheduled'
-              ? {
-                  label: 'Move +1 day',
-                  go: close(() => {
-                    this.setPost(p.id, (x) => ({ ...x, at: x.at + 864e5 }));
-                    this.flash('Moved one day later', false, () =>
-                      this.setPost(p.id, (x) => ({ ...x, at: x.at - 864e5 })),
-                    );
-                  }),
-                }
-              : null,
-            {
-              label: 'Delete…',
-              color: '#dc3545',
-              go: close(() =>
-                this.setState({
-                  confirm: {
-                    title: 'Delete this post?',
-                    body: (p.caption || '').slice(0, 90),
-                    cta: 'Delete post',
-                    go: () => {
-                      const snap = p;
-                      this.setState((st) => ({ posts: st.posts.filter((x) => x.id !== p.id) }));
-                      this.flash('Post deleted', false, () => this.setState((st) => ({ posts: [...st.posts, snap] })));
-                    },
-                  },
-                }),
-              ),
-            },
-          ].filter(Boolean);
+          const menu = p.publishing
+            ? []
+            : [
+                p.status !== 'published' ? { label: 'Edit', go: close(() => this.editPost(p)) } : null,
+                { label: 'Duplicate', go: close(() => this.duplicate([p.id])) },
+                p.approval === 'pending'
+                  ? {
+                      label: 'Request changes',
+                      go: close(() => {
+                        this.setPost(p.id, (x) => ({ ...x, approval: null, status: 'draft', at: null }));
+                        this.flash('Sent back to drafts');
+                      }),
+                    }
+                  : null,
+                p.status === 'scheduled'
+                  ? {
+                      label: 'Move +1 day',
+                      go: close(() => {
+                        const old = p.at;
+                        this.setPost(p.id, (x) => ({ ...x, at: this.plusDays(x.at, 1) }));
+                        this.flash('Moved one day later', false, () => this.setPost(p.id, (x) => ({ ...x, at: old })));
+                      }),
+                    }
+                  : null,
+                {
+                  label: 'Delete…',
+                  color: '#dc3545',
+                  go: close(() =>
+                    this.setState({
+                      confirm: {
+                        title: 'Delete this post?',
+                        body: (p.caption || '').slice(0, 90),
+                        cta: 'Delete post',
+                        go: () => {
+                          const snap = p;
+                          this.setState((st) => ({ posts: st.posts.filter((x) => x.id !== p.id) }));
+                          this.flash('Post deleted', false, () =>
+                            this.setState((st) => ({ posts: [...st.posts, snap] })),
+                          );
+                        },
+                      },
+                    }),
+                  ),
+                },
+              ].filter(Boolean);
           return {
             __id: p.id,
             primLabel: prim[0],
@@ -1479,15 +1485,17 @@ class Component extends DCLogic {
             ? ['failed', 'partial'].includes(p.status)
             : p.status === S0.calStatus));
     const STL = (p) =>
-      p.approval === 'pending' && p.status !== 'published'
-        ? ['Needs approval', '#fff1d6', '#8a5a00']
-        : p.status === 'published'
-          ? ['Published', '#e7f5ec', '#15803D']
-          : p.status === 'failed' || p.status === 'partial'
-            ? ['Failed', '#fde8ea', '#DC3545']
-            : p.status === 'draft'
-              ? ['Draft', '#f1f1ec', '#677184']
-              : ['Scheduled', '#eef0f3', '#141619'];
+      p.publishing
+        ? ['Publishing…', '#eef0f3', '#141619']
+        : p.approval === 'pending' && p.status !== 'published'
+          ? ['Needs approval', '#fff1d6', '#8a5a00']
+          : p.status === 'published'
+            ? ['Published', '#e7f5ec', '#15803D']
+            : p.status === 'failed' || p.status === 'partial'
+              ? ['Failed', '#fde8ea', '#DC3545']
+              : p.status === 'draft'
+                ? ['Draft', '#f1f1ec', '#677184']
+                : ['Scheduled', '#eef0f3', '#141619'];
     const TONES = [
       'linear-gradient(160deg,#9a7a58,#5d4a36)',
       'linear-gradient(160deg,#6e7b5a,#3e4a33)',
@@ -1686,6 +1694,10 @@ class Component extends DCLogic {
         problems.push(
           `${p.label} @${a.username} is disconnected (${a.error || 'authorization lost'}). Reconnect it in Social accounts or deselect it.`,
         );
+      if (a.health === 'over')
+        problems.push(
+          `${p.label} @${a.username} is over your plan's account limit and can't publish. Upgrade your plan, disconnect another account, or deselect it.`,
+        );
       if (text.length > p.max)
         problems.push(
           `Your ${p.label} caption is ${text.length - p.max} characters over the ${p.max.toLocaleString()} limit. Shorten it in the ${p.label} tab.`,
@@ -1696,7 +1708,9 @@ class Component extends DCLogic {
         problems.push(`${p.label} pins need an image. Add one or deselect @${a.username}.`);
       if (p.req === 'video' && !hasVid)
         problems.push(`${p.label} only accepts video. Add a video or deselect @${a.username}.`);
-      const fmt = (d.ov[a.id]?.opts || {}).format;
+      // The effective "Post as": the account's own choice, else the one picked for every Instagram and Facebook account.
+      const fmt =
+        (d.ov[a.id]?.opts || {}).format || (a.platform === 'instagram' || a.platform === 'facebook' ? d.postAs : null);
       if (fmt === 'Reel' && !(d.media.length === 1 && hasVid))
         problems.push(`A ${p.label} Reel needs exactly one video. Change "Post as" or the media for @${a.username}.`);
       if (fmt === 'Story' && d.media.length !== 1)
@@ -1706,6 +1720,14 @@ class Component extends DCLogic {
       if (p.maxImages !== undefined && d.media.filter((m) => m === 'IMG').length > p.maxImages)
         problems.push(
           `${p.label} allows ${p.maxImages} image${p.maxImages === 1 ? '' : 's'} per post. Remove some or deselect @${a.username}.`,
+        );
+    }
+    if (d.mode === 'schedule') {
+      const at = Component.fromLocal(d.when, S0.tz);
+      if (!at) problems.push('Pick a date and time.');
+      else if (at < NOW - 6e4)
+        problems.push(
+          `That time is in the past (${this.dayLabel(at)} ${this.time(at)}). Pick a future time, or choose Publish now.`,
         );
     }
     const uniq = [...new Set(problems)];
@@ -2165,13 +2187,13 @@ class Component extends DCLogic {
             if (k < a.length - 1) [a[k + 1], a[k]] = [a[k], a[k + 1]];
             return { bulkFiles: a };
           }),
-        vLabel: !f.at ? 'No time' : warn ? 'Partial' : 'Ready',
-        vBg: !f.at ? '#fde8ea' : warn ? '#fff1d6' : '#e7f5ec',
-        vFg: !f.at ? '#dc3545' : warn ? '#8a5a00' : '#15803d',
+        vLabel: !f.at ? 'No time' : f.at <= NOW ? 'In the past' : warn ? 'Partial' : 'Ready',
+        vBg: !f.at || f.at <= NOW ? '#fde8ea' : warn ? '#fff1d6' : '#e7f5ec',
+        vFg: !f.at || f.at <= NOW ? '#dc3545' : warn ? '#8a5a00' : '#15803d',
       };
     });
     const bf = s.bulkFiles.length,
-      bulkDisabled = !bf || !s.bulkAccs.length || s.bulkFiles.some((f) => !f.at);
+      bulkDisabled = !bf || !s.bulkAccs.length || s.bulkFiles.some((f) => !f.at || f.at <= NOW);
     const csvParsed = this.parseCsv(),
       csvOk = csvParsed.filter((r) => r.ok),
       csvErr = csvParsed.length - csvOk.length;
@@ -2699,11 +2721,13 @@ class Component extends DCLogic {
                 Math.abs(p.at - f.at) < 18e5 &&
                 p.targets.some((t) => S0.bulkAccs.includes(t.acc)),
             );
+          const past = !!f.at && f.at <= NOW;
           return {
-            ok: !!f.at && bad.length < accs.length,
+            ok: !!f.at && !past && bad.length < accs.length,
             skip: bad.map((a) => P[a.platform].label),
             conflict,
             noTime: !f.at,
+            past,
           };
         };
         const vs = s.bulkFiles.map(val),
@@ -2820,11 +2844,13 @@ class Component extends DCLogic {
                   f.caption,
                   vs[i].noTime
                     ? 'No time'
-                    : vs[i].skip.length
-                      ? 'Skips ' + vs[i].skip.join('; ')
-                      : vs[i].conflict
-                        ? 'Conflict'
-                        : '',
+                    : vs[i].past
+                      ? 'Time in the past'
+                      : vs[i].skip.length
+                        ? 'Skips ' + vs[i].skip.join('; ')
+                        : vs[i].conflict
+                          ? 'Conflict'
+                          : '',
                 ])
                 .filter((r) => r[2]),
             );
