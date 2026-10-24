@@ -121,6 +121,8 @@ textarea{resize:vertical}
 }
 .sfy-monly{display:none}
 @media (max-width:760px){.sfy-monly{display:inline}}
+/* Narrower laptops: drop the month-view thumbnail so the time stays readable. */
+@media (min-width:761px) and (max-width:1280px){.sfy-mchip > span:nth-child(4){display:none!important}}
 @keyframes sheetUp{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
 @keyframes toastIn{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}
 </style>
@@ -627,7 +629,7 @@ textarea{resize:vertical}
               </div>
               <sc-for list="{{ capFields }}" as="f" hint-placeholder-count="0">
                 <div style="display:flex;align-items:center;gap:10px;padding:8px 14px;border-top:1px solid #efefea">
-                  <span style="font-size:13px;color:#677184;width:120px">{{ f.label }}</span>
+                  <span style="font-size:13px;color:#677184;width:150px;flex:none">{{ f.label }}</span>
                   <sc-if value="{{ f.isSelect }}" hint-placeholder-val="{{ false }}"><select value="{{ f.value }}" onChange="{{ f.onChange }}" style="flex:1;padding:6px 10px;border:1px solid #e7e5df;border-radius:8px;background:#fff"><sc-for list="{{ f.options }}" as="o" hint-placeholder-count="0"><option value="{{ o }}">{{ o }}</option></sc-for></select></sc-if>
                   <sc-if value="{{ f.isText }}" hint-placeholder-val="{{ false }}"><input value="{{ f.value }}" onChange="{{ f.onChange }}" style="flex:1;padding:6px 10px;border:1px solid #e7e5df;border-radius:8px;outline:none"></sc-if>
                 </div>
@@ -1337,7 +1339,7 @@ textarea{resize:vertical}
       </sc-if>
     </div>
     <div style="display:flex;gap:8px;padding:14px 18px;border-top:1px solid #efefea">
-      <button onClick="{{ cp.edit }}" style="flex:1;padding:10px;border-radius:9px;border:0;background:#141619;color:#fff;cursor:pointer;font-weight:600">Open in editor</button>
+      <button onClick="{{ cp.edit }}" style="flex:1;padding:10px;border-radius:9px;border:0;background:#141619;color:#fff;cursor:pointer;font-weight:600">{{ cp.editLabel }}</button>
       <button onClick="{{ cp.dup }}" style="padding:10px 14px;border-radius:9px;border:1px solid #e7e5df;background:#fff;cursor:pointer;font-weight:500">Duplicate</button>
       <button onClick="{{ cp.del }}" style="padding:10px 14px;border-radius:9px;border:1px solid #f5c2c7;background:#fff;color:#dc3545;cursor:pointer;font-weight:500">Delete</button>
     </div>
@@ -1377,9 +1379,9 @@ class Component extends DCLogic {
   static P = {
     bluesky: { label: 'Bluesky', color: '#1185fe', logo: 'url(logos/white/bluesky.svg)', short: 'BS', max: 300, req: 'none', note: 'Handle and app password. No developer approval needed.' },
     x: { label: 'X', color: '#000000', logo: 'url(logos/white/x.svg)', short: 'X', max: 280, req: 'none', note: 'Post text, images and videos to your X profile.' },
-    instagram: { label: 'Instagram', color: '#e1306c', logo: 'url(logos/white/instagram.svg)', short: 'IG', max: 2200, req: 'any', note: 'Business or Creator account linked to a Facebook Page.', fields: [{ key: 'format', label: 'Post as', options: ['Post', 'Reel', 'Story'] }] },
+    instagram: { label: 'Instagram', color: '#e1306c', logo: 'url(logos/white/instagram.svg)', short: 'IG', max: 2200, req: 'any', note: 'Business or Creator account linked to a Facebook Page.', fields: [{ key: 'format', label: 'This account posts as', options: ['Post', 'Reel', 'Story'] }] },
     linkedin: { label: 'LinkedIn', color: '#0a66c2', logo: 'url(logos/white/linkedin.svg)', short: 'in', max: 3000, req: 'none', note: 'Posts to your personal profile.' },
-    facebook: { label: 'Facebook', color: '#1877f2', logo: 'url(logos/white/facebook.svg)', short: 'f', max: 63206, req: 'none', note: 'Posts to Pages you manage.', fields: [{ key: 'format', label: 'Post as', options: ['Post', 'Reel', 'Story'] }] },
+    facebook: { label: 'Facebook', color: '#1877f2', logo: 'url(logos/white/facebook.svg)', short: 'f', max: 63206, req: 'none', note: 'Posts to Pages you manage.', fields: [{ key: 'format', label: 'This account posts as', options: ['Post', 'Reel', 'Story'] }] },
     tiktok: { label: 'TikTok', color: '#000000', logo: 'url(logos/white/tiktok.svg)', short: 'TT', max: 2200, req: 'any', note: 'Post videos and photo carousels to your TikTok.', fields: [{ key: 'privacy', label: 'Privacy', options: ['Only me', 'Friends', 'Public'] }] },
     youtube: { label: 'YouTube', color: '#ff0000', logo: 'url(logos/white/youtube.svg)', short: 'YT', max: 5000, req: 'video', note: 'Upload videos and Shorts with a title and privacy setting.', fields: [{ key: 'title', label: 'Title' }, { key: 'privacy', label: 'Privacy', options: ['public', 'unlisted', 'private'] }] },
     threads: { label: 'Threads', color: '#000000', logo: 'url(logos/white/threads.svg)', short: '@', max: 500, req: 'none', note: 'Post text, images and videos to your Threads profile.' },
@@ -1498,21 +1500,44 @@ class Component extends DCLogic {
   };
 
   componentDidMount() {
+    this._alive = true;
     this._rs = () => this.forceUpdate(); window.addEventListener('resize', this._rs);
     this._t0 = Date.now(); this._iv = setInterval(() => this.setState({ tick: Date.now() }), 1000);
     this._key = (e) => {
+      if (e.key === 'Escape' && this.closeTopLayer()) { e.preventDefault(); return; }
       const t = e.target.tagName;
-      if (t === 'INPUT' || t === 'TEXTAREA' || t === 'SELECT' || e.metaKey || e.ctrlKey) return;
+      if (t === 'INPUT' || t === 'TEXTAREA' || t === 'SELECT' || e.target.isContentEditable || e.metaKey || e.ctrlKey || e.altKey) return;
+      if (document.querySelector('[role="dialog"]')) return;
       if (e.key === 'n' || e.key === 'N') { e.preventDefault(); this.newPost(); }
     };
     window.addEventListener('keydown', this._key);
   }
-  componentWillUnmount() { window.removeEventListener('resize', this._rs); clearInterval(this._iv); window.removeEventListener('keydown', this._key); clearTimeout(this._tt); }
+  // The post panel belongs to the calendar: leaving the calendar by any route closes it.
+  // Select mode only exists on the Upcoming tab: switching tabs or screens by any route ends it.
+  componentDidUpdate() {
+    const s = this.state;
+    if (s.calPost && s.screen !== 'calendar') this.setState({ calPost: null });
+    if (s.selecting && (s.screen !== 'queue' || s.tab !== 'upcoming')) this.setState({ selecting: false, selected: [] });
+  }
+  /** Esc closes the top-most popup. Returns true when something was closed. */
+  closeTopLayer() {
+    const s = this.state;
+    if (s.confirm) { this.setState({ confirm: null }); return true; }
+    if (s.pvMediaId) { this.setState({ pvMediaId: null }); return true; }
+    if (s.calPost) { this.setState({ calPost: null }); return true; }
+    return false;
+  }
+  componentWillUnmount() { this._alive = false; window.removeEventListener('resize', this._rs); clearInterval(this._iv); window.removeEventListener('keydown', this._key); clearTimeout(this._tt); }
 
   flash(msg, bad, undo) { clearTimeout(this._tt); this._undo = undo || null; this.setState({ toast: msg, toastBad: !!bad, toastUndo: !!undo }); this._tt = setTimeout(() => { this._undo = null; this.setState({ toast: '', toastUndo: false }); }, undo ? 6000 : 2800); }
   newPost(when) { this.setState({ draft: Component.blank(when), screen: 'compose', drawer: false }); }
   editPost(p) {
     if (p.src) p = this.state.posts.find((x) => x.id === p.src) || p;
+    // A published post can't be changed on the platforms: open a copy to post again instead.
+    if (p.status === 'published') {
+      this.setState({ screen: 'compose', draft: { ...Component.blank(), caption: p.caption, targets: p.targets.map((t) => t.acc), ov: JSON.parse(JSON.stringify(p.ov || {})), media: [...p.media], labels: [...(p.labels || [])], note: p.note || '' } });
+      return this.flash('Already published, so this is a copy to post again');
+    }
     this.setState({ screen: 'compose', draft: { id: p.id, caption: p.caption, targets: p.targets.map((t) => t.acc), ov: JSON.parse(JSON.stringify(p.ov || {})), media: [...p.media], mode: p.status === 'draft' ? 'draft' : 'schedule', when: Component.toLocal(p.at || Component.soon()), open: null, previewId: null, labels: [...(p.labels || [])], repeat: p.repeat || 'none', evergreen: !!p.evergreen, approval: p.approval === 'pending', approvedBefore: p.approval === 'approved', remind: p.remind !== false, note: p.note || '' } });
   }
   upd(patch) { this.setState((s) => ({ draft: { ...s.draft, ...patch } })); }
@@ -1570,7 +1595,7 @@ class Component extends DCLogic {
     }
     return out;
   }
-  slotLabel(ms) { return ms ? `${this.dayLabel(ms)}, ${this.wsDate(ms).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} · ${this.time(ms)}` : 'No slots set'; }
+  slotLabel(ms) { if (!ms) return 'No slots set'; const l = this.dayLabel(ms); return `${l.includes(',') ? l : `${l}, ${this.wsDate(ms).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`} · ${this.time(ms)}`; }
   dupOf(p, at) { return { ...JSON.parse(JSON.stringify(p)), id: 'p' + Date.now() + Math.random().toString(36).slice(2, 6), status: 'scheduled', at, targets: p.targets.map((t) => ({ acc: t.acc, status: 'scheduled', error: '' })) }; }
   duplicate(ids) {
     const s = this.state, src = s.posts.filter((p) => ids.includes(p.id)), wk = 7 * 864e5;
@@ -1736,7 +1761,7 @@ class Component extends DCLogic {
     const screen = s.screen || this.props.startScreen || 'home';
     const accById = Object.fromEntries(s.accounts.map((a) => [a.id, a]));
     const LG = (pl) => ({ color: P[pl]?.color || '#888', logo: P[pl]?.logo || 'none' });
-    const go = (sc) => () => this.setState({ screen: sc });
+    const go = (sc) => () => this.setState({ screen: sc, calPost: null });
     const upcoming = s.posts.filter((p) => p.status === 'scheduled').sort((a, b) => a.at - b.at);
 
     const failedPosts = s.posts.filter((p) => p.status === 'failed' || p.status === 'partial');
@@ -1758,7 +1783,7 @@ class Component extends DCLogic {
     const conflictMap = {};
     for (const p of s.posts) if (p.status === 'scheduled') { const c = findConflicts(p, s.posts); if (c.length) conflictMap[p.id] = c; }
     const nav = [['home', 'Home', '', ''], ['queue', 'Queue', '☰', upcoming.length], ['calendar', 'Calendar', '▦', ''], ['bulk', 'Bulk schedule', '⇪', ''], ['library', 'Library', '', ''], ['accounts', 'Accounts', '◎', s.accounts.length], ['analytics', 'Analytics', '↗', ''], ['settings', 'Settings', '⚙', '']]
-      .map(([id, label, icon, count]) => ({ id, current: screen === id ? 'page' : 'false', label: { home: 'Overview', bulk: 'Bulk scheduling', library: 'Media library', accounts: 'Social accounts' }[id] || label, icon: `url(icons/${id}${screen === id ? '-on' : ''}.svg)`, count, go: () => this.setState({ screen: id, selecting: false, selected: [], drawer: false }), hasAlert: id === 'queue' && failedPosts.length > 0, alert: failedPosts.length, bg: screen === id ? '#1f2226' : 'transparent', color: screen === id ? '#f8f9f6' : '#a3a9b4' }));
+      .map(([id, label, icon, count]) => ({ id, current: screen === id ? 'page' : 'false', label: { home: 'Overview', bulk: 'Bulk scheduling', library: 'Media library', accounts: 'Social accounts' }[id] || label, icon: `url(icons/${id}${screen === id ? '-on' : ''}.svg)`, count, go: () => this.setState({ screen: id, selecting: false, selected: [], drawer: false, calPost: null }), hasAlert: id === 'queue' && failedPosts.length > 0, alert: failedPosts.length, bg: screen === id ? '#1f2226' : 'transparent', color: screen === id ? '#f8f9f6' : '#a3a9b4' }));
 
     const ST = {
       scheduled: { color: '#141619', bg: '#f1efe9', border: '#e2dfd6' }, published: { color: '#15803d', bg: '#effaf3', border: '#cdebd8' },
@@ -1767,13 +1792,13 @@ class Component extends DCLogic {
     };
     const tabDefs = { upcoming: (p) => p.status === 'scheduled', review: (p) => p.approval === 'pending' && p.status !== 'published', published: (p) => ['published', 'partial'].includes(p.status), drafts: (p) => p.status === 'draft', failed: (p) => ['failed', 'partial'].includes(p.status) };
     const TAB_LABEL = { upcoming: 'Upcoming', review: 'Needs approval', published: 'History', drafts: 'Drafts', failed: 'Failed' };
-    const queueTabs = Object.keys(tabDefs).map((k) => ({ label: TAB_LABEL[k], count: s.posts.filter(tabDefs[k]).length, select: () => this.setState({ tab: k }), bg: s.tab === k ? '#141619' : 'transparent', color: s.tab === k ? '#fff' : '#677184' }));
+    const queueTabs = Object.keys(tabDefs).map((k) => ({ label: TAB_LABEL[k], count: s.posts.filter(tabDefs[k]).length, select: () => this.setState({ tab: k, selecting: false, selected: [] }), bg: s.tab === k ? '#141619' : 'transparent', color: s.tab === k ? '#fff' : '#677184' }));
     const list = s.posts.filter(tabDefs[s.tab]).filter((p) => (!S0.qAcc || p.targets.some((t) => t.acc === S0.qAcc)) && (!S0.qPlat || p.targets.some((t) => accById[t.acc]?.platform === S0.qPlat))).filter((p) => !s.labelFilter || (p.labels || []).includes(s.labelFilter)).sort((a, b) => (s.tab === 'upcoming' ? a.at - b.at : (b.at || 0) - (a.at || 0)));
     const groups = [];
     for (const p of list) {
       const key = p.at ? this.dayKey(p.at) : 'none';
       let g = groups[groups.length - 1];
-      if (!g || g.key !== key) { g = { key, label: p.at ? this.dayLabel(p.at) : 'Drafts', sub: p.at ? this.wsDate(p.at).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) : 'Not scheduled', items: [] }; groups.push(g); }
+      if (!g || g.key !== key) { const label = p.at ? this.dayLabel(p.at) : 'Drafts', sub = p.at ? this.wsDate(p.at).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) : 'Not scheduled'; g = { key, label, sub: label.startsWith(sub) ? '' : sub, items: [] }; groups.push(g); }
       const imgs = p.media.filter((m) => m === 'IMG').length, vids = p.media.length - imgs;
       const errs = p.targets.filter((t) => t.error);
       const errKind = (txt) => /authori|token|revoked|reconnect|permission/i.test(txt || '') ? 'auth' : /character|limit|seconds|too long|too short|format|size|aspect|required/i.test(txt || '') ? 'content' : 'temp';
@@ -2341,7 +2366,7 @@ class Component extends DCLogic {
         if (screen === 'home' && this._lastScreen !== 'home') this._homeT0 = Date.now();
         this._lastScreen = screen;
         const pr = Math.min(1, (Date.now() - (this._homeT0 || 0)) / 900), ease = 1 - Math.pow(1 - pr, 3);
-        if (screen === 'home' && pr < 1) requestAnimationFrame(() => this.forceUpdate());
+        if (screen === 'home' && pr < 1) requestAnimationFrame(() => { if (this._alive) this.forceUpdate(); });
         const cu = (v) => Math.round(v * ease);
         const mon = new Date(this.wsMonday());
         let wkTotal = 0, wkSent = 0;
@@ -2429,7 +2454,7 @@ class Component extends DCLogic {
         const phone = typeof window !== 'undefined' && window.innerWidth <= 760, col = S0.collapsed && !phone;
         const more = ['bulk', 'library', 'accounts', 'analytics', 'settings'].includes(screen);
         const tab = (id, label, kind, go, on, badge) => ({ label, kind, go, on: on ? 'true' : 'false', current: on ? 'page' : 'false', badge: badge || 0, icon: kind === 'nav' ? `url(/icons/${id}${on ? '-on' : ''}.svg)` : 'none' });
-        const goTo = (id) => () => this.setState({ screen: id, selecting: false, selected: [], drawer: false });
+        const goTo = (id) => () => this.setState({ screen: id, selecting: false, selected: [], drawer: false, calPost: null });
         return {
           sideCols: col ? '64px minmax(0,1fr)' : '236px minmax(0,1fr)', sideTxt: col ? 'none' : 'inline', sideBlock: col ? 'none' : 'flex',
           sideArrow: col ? '»' : '«', sideToggleLabel: col ? 'Expand sidebar' : 'Collapse sidebar',
@@ -2446,7 +2471,7 @@ class Component extends DCLogic {
         };
       })(), toggleSide: () => this.setState((st) => ({ collapsed: !st.collapsed })),
       ...(() => {
-        const p = S0.posts.find((x) => x.id === S0.calPost);
+        const p = screen === 'calendar' && S0.posts.find((x) => x.id === S0.calPost);
         if (!p) return { hasCalPost: false, cp: { accs: [] }, closeCalPost: () => {} };
         const st = STL(p), close = () => this.setState({ calPost: null });
         return {
@@ -2455,7 +2480,7 @@ class Component extends DCLogic {
             accs: p.targets.map((t) => { const a = accById[t.acc]; return { name: a ? `${P[a.platform].label} · @${a.username}` : 'Disconnected', color: a ? P[a.platform].color : '#888', logo: a ? P[a.platform].logo : 'none', st: t.error ? 'Failed' : t.status, stColor: t.error ? '#dc3545' : '#677184' }; }),
             canMove: p.status === 'scheduled', local: p.at ? Component.toLocal(p.at) : '',
             onTime: (e) => { const v = e.target.value; if (!v) return; const at = Component.fromLocal(v), old = p.at; if (at <= NOW) return this.flash('Pick a time in the future', true); this.setPost(p.id, (x) => ({ ...x, at })); this.flash(`Moved to ${this.slotLabel(at)}`, false, () => this.setPost(p.id, (x) => ({ ...x, at: old }))); },
-            edit: () => { close(); this.editPost(p); }, dup: () => { close(); this.duplicate([p.id]); },
+            edit: () => { close(); this.editPost(p); }, editLabel: p.status === 'published' ? 'Post again' : 'Open in editor', dup: () => { close(); this.duplicate([p.id]); },
             del: () => this.setState({ confirm: { title: 'Delete this post?', body: p.caption.slice(0, 90), cta: 'Delete post', go: () => { close(); this.setState((s2) => ({ posts: s2.posts.filter((x) => x.id !== p.id) })); this.flash('Post deleted', false, () => this.setState((s2) => ({ posts: [...s2.posts, p] }))); } } }) },
         };
       })(),
