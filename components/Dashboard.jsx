@@ -32,7 +32,7 @@ class Component extends DCLogic {
       max: 2200,
       req: 'any',
       note: 'Business or Creator account linked to a Facebook Page.',
-      fields: [{ key: 'format', label: 'Post as', options: ['Post', 'Reel', 'Story'] }],
+      fields: [{ key: 'format', label: 'This account posts as', options: ['Post', 'Reel', 'Story'] }],
     },
     linkedin: {
       label: 'LinkedIn',
@@ -51,7 +51,7 @@ class Component extends DCLogic {
       max: 63206,
       req: 'none',
       note: 'Posts to Pages you manage.',
-      fields: [{ key: 'format', label: 'Post as', options: ['Post', 'Reel', 'Story'] }],
+      fields: [{ key: 'format', label: 'This account posts as', options: ['Post', 'Reel', 'Story'] }],
     },
     tiktok: {
       label: 'TikTok',
@@ -622,13 +622,28 @@ class Component extends DCLogic {
   };
 
   componentDidMount() {
+    this._alive = true;
     this._rs = () => this.forceUpdate();
     window.addEventListener('resize', this._rs);
     this._t0 = Date.now();
     this._iv = setInterval(() => this.setState({ tick: Date.now() }), 1000);
     this._key = (e) => {
+      if (e.key === 'Escape' && this.closeTopLayer()) {
+        e.preventDefault();
+        return;
+      }
       const t = e.target.tagName;
-      if (t === 'INPUT' || t === 'TEXTAREA' || t === 'SELECT' || e.metaKey || e.ctrlKey) return;
+      if (
+        t === 'INPUT' ||
+        t === 'TEXTAREA' ||
+        t === 'SELECT' ||
+        e.target.isContentEditable ||
+        e.metaKey ||
+        e.ctrlKey ||
+        e.altKey
+      )
+        return;
+      if (document.querySelector('[role="dialog"]')) return;
       if (e.key === 'n' || e.key === 'N') {
         e.preventDefault();
         this.newPost();
@@ -636,7 +651,33 @@ class Component extends DCLogic {
     };
     window.addEventListener('keydown', this._key);
   }
+  // The post panel belongs to the calendar: leaving the calendar by any route closes it.
+  // Select mode only exists on the Upcoming tab: switching tabs or screens by any route ends it.
+  componentDidUpdate() {
+    const s = this.state;
+    if (s.calPost && s.screen !== 'calendar') this.setState({ calPost: null });
+    if (s.selecting && (s.screen !== 'queue' || s.tab !== 'upcoming'))
+      this.setState({ selecting: false, selected: [] });
+  }
+  /** Esc closes the top-most popup. Returns true when something was closed. */
+  closeTopLayer() {
+    const s = this.state;
+    if (s.confirm) {
+      this.setState({ confirm: null });
+      return true;
+    }
+    if (s.pvMediaId) {
+      this.setState({ pvMediaId: null });
+      return true;
+    }
+    if (s.calPost) {
+      this.setState({ calPost: null });
+      return true;
+    }
+    return false;
+  }
   componentWillUnmount() {
+    this._alive = false;
     window.removeEventListener('resize', this._rs);
     clearInterval(this._iv);
     window.removeEventListener('keydown', this._key);
@@ -660,6 +701,22 @@ class Component extends DCLogic {
   }
   editPost(p) {
     if (p.src) p = this.state.posts.find((x) => x.id === p.src) || p;
+    // A published post can't be changed on the platforms: open a copy to post again instead.
+    if (p.status === 'published') {
+      this.setState({
+        screen: 'compose',
+        draft: {
+          ...Component.blank(),
+          caption: p.caption,
+          targets: p.targets.map((t) => t.acc),
+          ov: JSON.parse(JSON.stringify(p.ov || {})),
+          media: [...p.media],
+          labels: [...(p.labels || [])],
+          note: p.note || '',
+        },
+      });
+      return this.flash('Already published, so this is a copy to post again');
+    }
     this.setState({
       screen: 'compose',
       draft: {
@@ -793,9 +850,9 @@ class Component extends DCLogic {
     return out;
   }
   slotLabel(ms) {
-    return ms
-      ? `${this.dayLabel(ms)}, ${this.wsDate(ms).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} · ${this.time(ms)}`
-      : 'No slots set';
+    if (!ms) return 'No slots set';
+    const l = this.dayLabel(ms);
+    return `${l.includes(',') ? l : `${l}, ${this.wsDate(ms).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`} · ${this.time(ms)}`;
   }
   dupOf(p, at) {
     return {
@@ -1220,7 +1277,7 @@ class Component extends DCLogic {
     const screen = s.screen || this.props.startScreen || 'home';
     const accById = Object.fromEntries(s.accounts.map((a) => [a.id, a]));
     const LG = (pl) => ({ color: P[pl]?.color || '#888', logo: P[pl]?.logo || 'none' });
-    const go = (sc) => () => this.setState({ screen: sc });
+    const go = (sc) => () => this.setState({ screen: sc, calPost: null });
     const upcoming = s.posts.filter((p) => p.status === 'scheduled').sort((a, b) => a.at - b.at);
 
     const failedPosts = s.posts.filter((p) => p.status === 'failed' || p.status === 'partial');
@@ -1270,7 +1327,7 @@ class Component extends DCLogic {
         label,
       icon: `url(/icons/${id}${screen === id ? '-on' : ''}.svg)`,
       count,
-      go: () => this.setState({ screen: id, selecting: false, selected: [], drawer: false }),
+      go: () => this.setState({ screen: id, selecting: false, selected: [], drawer: false, calPost: null }),
       hasAlert: id === 'queue' && failedPosts.length > 0,
       alert: failedPosts.length,
       bg: screen === id ? '#1f2226' : 'transparent',
@@ -1301,7 +1358,7 @@ class Component extends DCLogic {
     const queueTabs = Object.keys(tabDefs).map((k) => ({
       label: TAB_LABEL[k],
       count: s.posts.filter(tabDefs[k]).length,
-      select: () => this.setState({ tab: k }),
+      select: () => this.setState({ tab: k, selecting: false, selected: [] }),
       bg: s.tab === k ? '#141619' : 'transparent',
       color: s.tab === k ? '#fff' : '#677184',
     }));
@@ -1319,14 +1376,11 @@ class Component extends DCLogic {
       const key = p.at ? this.dayKey(p.at) : 'none';
       let g = groups[groups.length - 1];
       if (!g || g.key !== key) {
-        g = {
-          key,
-          label: p.at ? this.dayLabel(p.at) : 'Drafts',
-          sub: p.at
+        const label = p.at ? this.dayLabel(p.at) : 'Drafts',
+          sub = p.at
             ? this.wsDate(p.at).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
-            : 'Not scheduled',
-          items: [],
-        };
+            : 'Not scheduled';
+        g = { key, label, sub: label.startsWith(sub) ? '' : sub, items: [] };
         groups.push(g);
       }
       const imgs = p.media.filter((m) => m === 'IMG').length,
@@ -3838,7 +3892,10 @@ class Component extends DCLogic {
         this._lastScreen = screen;
         const pr = Math.min(1, (Date.now() - (this._homeT0 || 0)) / 900),
           ease = 1 - Math.pow(1 - pr, 3);
-        if (screen === 'home' && pr < 1) requestAnimationFrame(() => this.forceUpdate());
+        if (screen === 'home' && pr < 1)
+          requestAnimationFrame(() => {
+            if (this._alive) this.forceUpdate();
+          });
         const cu = (v) => Math.round(v * ease);
         const mon = new Date(this.wsMonday());
         let wkTotal = 0,
@@ -4146,7 +4203,8 @@ class Component extends DCLogic {
           badge: badge || 0,
           icon: kind === 'nav' ? `url(/icons/${id}${on ? '-on' : ''}.svg)` : 'none',
         });
-        const goTo = (id) => () => this.setState({ screen: id, selecting: false, selected: [], drawer: false });
+        const goTo = (id) => () =>
+          this.setState({ screen: id, selecting: false, selected: [], drawer: false, calPost: null });
         return {
           sideCols: col ? '64px minmax(0,1fr)' : '236px minmax(0,1fr)',
           sideTxt: col ? 'none' : 'inline',
@@ -4180,7 +4238,7 @@ class Component extends DCLogic {
       })(),
       toggleSide: () => this.setState((st) => ({ collapsed: !st.collapsed })),
       ...(() => {
-        const p = S0.posts.find((x) => x.id === S0.calPost);
+        const p = screen === 'calendar' && S0.posts.find((x) => x.id === S0.calPost);
         if (!p) return { hasCalPost: false, cp: { accs: [] }, closeCalPost: () => {} };
         const st = STL(p),
           close = () => this.setState({ calPost: null });
@@ -4220,6 +4278,7 @@ class Component extends DCLogic {
               close();
               this.editPost(p);
             },
+            editLabel: p.status === 'published' ? 'Post again' : 'Open in editor',
             dup: () => {
               close();
               this.duplicate([p.id]);

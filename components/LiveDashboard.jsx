@@ -168,7 +168,10 @@ export default class LiveDashboard extends Base {
     super.componentDidMount();
     this.load(true);
     // Keyboard shortcuts: N new post, Ctrl/Cmd+Enter submit the composer, Esc leave the composer.
+    // One key handler: the base class's would also open a new post on N.
+    window.removeEventListener('keydown', this._key);
     this._keys = (e) => {
+      if (e.key === 'Escape' && this.closeTopLayer()) { e.preventDefault(); return; }
       const el = e.target, typing = el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName));
       const dialogOpen = !!document.querySelector('[role="dialog"]');
       if ((e.metaKey || e.ctrlKey) && e.key === 'Enter' && this.state.screen === 'compose') {
@@ -198,6 +201,16 @@ export default class LiveDashboard extends Base {
     };
     window.addEventListener('pagehide', this._onHide);
   }
+  /** Esc closes the top-most popup first (the cropper and Page picker close themselves). */
+  closeTopLayer() {
+    const s = this.state;
+    if (s.cropFiles || s.pickId) return true;
+    if (s.modal) { super.setState({ modal: null }); return true; }
+    if (s.shareLink) { super.setState({ shareLink: null }); return true; }
+    if (s.planPicker) { super.setState({ planPicker: false }); return true; }
+    return super.closeTopLayer();
+  }
+
   componentWillUnmount() {
     super.componentWillUnmount();
     window.removeEventListener('keydown', this._keys);
