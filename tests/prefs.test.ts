@@ -42,3 +42,10 @@ test('account groups are saved, shortened and capped like other settings', async
   assert.equal(prefs.accountGroups![0].name.length, 40);
   assert.deepEqual(prefs.accountGroups![0].ids, ['acc_1', 'acc_2']);
 });
+
+test('the media reuse cooldown is whole days from 0 to a year', () => {
+  assert.equal(cleanPrefs({ reuseCooldownDays: 14 }).prefs.reuseCooldownDays, 14);
+  assert.equal(cleanPrefs({ reuseCooldownDays: 0 }).prefs.reuseCooldownDays, 0);
+  assert.deepEqual(cleanPrefs({ reuseCooldownDays: 400 }).skipped, ['reuseCooldownDays']);
+  assert.deepEqual(cleanPrefs({ reuseCooldownDays: 'soon' }).skipped, ['reuseCooldownDays']);
+});
