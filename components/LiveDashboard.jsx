@@ -271,6 +271,8 @@ export default class LiveDashboard extends Base {
     this._srvStatus = new Map(); // post id → server status
     this._queue = new Map(); // post id → promise chain (keeps saves for one post in order)
     this._uploads = new Map(); // bulk file id → Promise<media id>
+    this._jpegBusy = new Set(); // media ids being converted to JPG for Instagram
+    this._jpegFailed = new Set(); // media ids whose conversion failed this page load
     this._busy = 0;
     this._onServer = new Set(); // post ids the server has saved
     this._pendingDel = new Map(); // post id → timer: deleted here, deleted on the server once Undo can't bring it back
@@ -796,6 +798,37 @@ export default class LiveDashboard extends Base {
     }
   }
 
+  /**
+   * Instagram takes JPEG only. A PNG or WebP attached to a post that targets Instagram is converted
+   * in the browser (from the same-origin /m/<id> copy), uploaded as a JPG next to the original, and
+   * swapped into the draft. Each file is tried once per page load; a failure shows in the problems.
+   */
+  convertForInstagram(items) {
+    for (const m of items) {
+      if (this._jpegBusy.has(m.id) || this._jpegFailed.has(m.id)) continue;
+      this._jpegBusy.add(m.id);
+      (async () => {
+        const img = new Image();
+        img.decoding = 'async';
+        await new Promise((res, rej) => { img.onload = res; img.onerror = () => rej(new Error('load')); img.src = `/m/${m.id}`; });
+        const c = document.createElement('canvas');
+        c.width = img.naturalWidth;
+        c.height = img.naturalHeight;
+        const ctx = c.getContext('2d');
+        ctx.fillStyle = '#fff'; // transparent areas become white, as Instagram would show them
+        ctx.fillRect(0, 0, c.width, c.height);
+        ctx.drawImage(img, 0, 0);
+        const blob = await new Promise((res) => c.toBlob(res, 'image/jpeg', 0.92));
+        if (!blob) throw new Error('encode');
+        const name = m.name.replace(/\.(png|webp|gif|jfif|jpeg|jpg)$/i, '') + '.jpg';
+        const saved = await this.upload(new File([blob], name, { type: 'image/jpeg' }), m.folder || null);
+        // Swap it into whatever draft is open now; the original stays in the library.
+        super.setState((st) => ({ draft: { ...st.draft, mediaIds: (st.draft.mediaIds || []).map((id) => (id === m.id ? saved.id : id)) } }));
+        this.flash(`Converted ${m.name} to JPG for Instagram`);
+      })().catch(() => { this._jpegFailed.add(m.id); this.forceUpdate(); }).finally(() => this._jpegBusy.delete(m.id));
+    }
+  }
+
   async upload(file, folder = null, onProgress = null) {
     if (!this.state.storage) throw new Error("Media storage isn't available right now. Try again later.");
     // Videos bring a JPEG still along, so the library never has to load the video to show a thumbnail.
@@ -1089,8 +1122,15 @@ export default class LiveDashboard extends Base {
     const jpegOnly = d.targets.map((id) => accBy((a) => a.id === id)).filter((a) => a?.platform === 'instagram');
     const notJpeg = (d.mediaIds || []).map((id) => libById.get(id)).filter((m) => m && m.mime?.startsWith('image/') && m.mime !== 'image/jpeg');
     if (jpegOnly.length && notJpeg.length) {
-      const extra = jpegOnly.map((a) => `Instagram only accepts JPEG images: ${notJpeg.map((m) => m.name).join(', ')} ${notJpeg.length === 1 ? "isn't" : "aren't"} JPEG. Use JPG files or deselect @${a.username}.`);
+      // One line, not one per account; and the conversion is happening (or failed) rather than left to the person.
+      const who = jpegOnly.length === 1 ? `@${jpegOnly[0].username}` : `${jpegOnly.length} Instagram accounts`;
+      const names = notJpeg.map((m) => m.name).join(', ');
+      const failed = notJpeg.filter((m) => this._jpegFailed.has(m.id));
+      const extra = failed.length
+        ? [`Instagram only accepts JPEG images and ${failed.map((m) => m.name).join(', ')} could not be converted. Re-save ${failed.length === 1 ? 'it' : 'them'} as JPG and upload again, or deselect ${who}.`]
+        : [`Converting ${names} to JPG for ${who}… (Instagram only accepts JPEG images.)`];
       v.problems = [...new Set([...(v.problems || []), ...extra])];
+      this.convertForInstagram(notJpeg.filter((m) => !this._jpegFailed.has(m.id)));
       v.hasProblems = true;
       v.submitDisabled = d.mode !== 'draft';
       v.submitOpacity = v.submitDisabled ? 0.45 : 1;
