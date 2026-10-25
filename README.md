@@ -209,6 +209,16 @@ Tools: `list_accounts`, `create_post`, `list_posts`, `publish_post`, `delete_pos
 - `lib/server/`: database, auth, encryption, media storage, posts, publisher and platform adapters.
 - `db/migrations/`: SQL migrations, applied in order on each build.
 
+## AI-readable pages
+
+Every public page has a markdown version, built from the same content files and data the HTML uses (never scraped from the rendered page):
+
+- `GET /<page>.md` (`/index.md` for the homepage), `GET /<page>` with `Accept: text/markdown` (only when its q-value beats text/html; `*/*` and browsers get HTML), or `GET /api/md/<page>` directly. `proxy.ts` rewrites the first two to the one handler in `app/api/md/[[...path]]/route.js`.
+- Responses are `text/markdown` with `X-Markdown-Tokens`, `X-Robots-Tag: noindex, follow`, `Content-Location` and a canonical `Link` to the HTML page, `Vary: Accept`, CORS and cache headers; HEAD and OPTIONS work. Unknown or private paths get a markdown 404.
+- `lib/md/registry.js` is the single list of renderers (`ROUTES`) and the skip list with reasons (`SKIPPED`). **To add a page, add one entry there**: `{ path: '/new-page', group: 'core', name: 'New page', render: () => ({ title, summary, updated?, body }) }`, or a `pattern` with `list()` for dynamic pages. llms.txt, llms-full.txt and the catalog pick it up; `tests/markdown-site.test.ts` fails when a `page.jsx` has neither a renderer nor a skip reason.
+- Site-level files, all generated from code: `/llms.txt` (llmstxt.org map, capped lists with links to the full ones), `/llms-full.txt` (every page concatenated, large collections capped), `/ai.txt` (identity, permissions, restrictions, attribution, scope), `/api/md/_catalog` (JSON of every route) and `/.well-known/mcp.json` (discovery for the MCP server at `/api/mcp`). Shared facts live in `lib/seo.js` and `lib/md/identity.js`.
+- Every HTML page advertises its markdown twin with `<link rel="alternate" type="text/markdown">` and carries `<meta name="ai-summary">` (hand-written for home, pricing, blog, tools and docs in `lib/seo-pages.js`, the description elsewhere). A global `Link: …; rel="describedby"` header points at the three txt files. robots.txt allows the AI search crawlers by name and, by choice, the training crawlers too; `.md` URLs stay out of the sitemap.
+
 ## Search engines
 
 What Google and Bing get, and where it lives:
