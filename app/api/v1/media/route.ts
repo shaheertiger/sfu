@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { body, handler, json } from '@/lib/server/api';
 import { now, query, uid } from '@/lib/server/db';
 import { presignUpload } from '@/lib/server/storage';
-import { publicMedia } from '@/lib/server/media';
+import { POSTER_MAX_BYTES, posterKeyFor, publicMedia } from '@/lib/server/media';
 import { mediaUsage } from '@/lib/server/media-usage';
 
 const TYPES: Record<string, number> = {
@@ -25,9 +25,16 @@ export const GET = handler(async ({ workspace }) => {
   };
 });
 
-/** Step 1 of an upload: returns a presigned URL the browser PUTs the file to. Then PATCH /media/:id {uploaded:true}. */
+/**
+ * Step 1 of an upload: returns a presigned URL the browser PUTs the file to. Then PATCH /media/:id {uploaded:true}.
+ * A video upload can bring a JPEG poster still (`poster_size`): the response then also carries
+ * `poster_upload_url`, and the confirm step takes `poster: true`.
+ */
 export const POST = handler(async ({ req, workspace }) => {
-  const b = z.object({ filename: z.string().min(1).max(200), mime: z.string(), size: z.number().int().positive(), folder: z.string().max(80).nullish() }).parse(await body(req));
+  const b = z.object({
+    filename: z.string().min(1).max(200), mime: z.string(), size: z.number().int().positive(), folder: z.string().max(80).nullish(),
+    poster_size: z.number().int().positive().max(POSTER_MAX_BYTES).optional(),
+  }).parse(await body(req));
   const limit = TYPES[b.mime];
   if (!limit) return json({ error: `Unsupported file type ${b.mime}. Use JPG, PNG, GIF, WebP, MP4, MOV or WebM.` }, 415);
   if (b.size > limit) return json({ error: `${b.filename} is too large (max ${Math.round(limit / 1e6)} MB)` }, 413);
@@ -35,5 +42,6 @@ export const POST = handler(async ({ req, workspace }) => {
   const safe = b.filename.replace(/[^\w.\-]+/g, '-').slice(-100);
   const key = `${workspace.id}/${id}/${safe}`;
   await query('INSERT INTO media (id,workspace_id,filename,object_key,mime,size,folder,created_at) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)', [id, workspace.id, b.filename, key, b.mime, b.size, b.folder ?? null, now()]);
-  return json({ id, upload_url: await presignUpload(key, b.mime, b.size), headers: { 'content-type': b.mime } }, 201);
+  const poster = b.poster_size && b.mime.startsWith('video/') ? await presignUpload(posterKeyFor(key), 'image/jpeg', b.poster_size) : null;
+  return json({ id, upload_url: await presignUpload(key, b.mime, b.size), headers: { 'content-type': b.mime }, ...(poster ? { poster_upload_url: poster } : {}) }, 201);
 });
