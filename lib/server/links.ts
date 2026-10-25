@@ -45,7 +45,29 @@ export function isTrackable(url: string, base = shortBase()): boolean {
   }
 }
 
-export type LinkContext = { workspaceId: string; postId: string; targetId: string };
+export type LinkContext = { workspaceId: string; postId: string; targetId: string; utm?: UtmTags | null };
+export type UtmTags = { source: string; campaign?: string | null };
+
+/** A label as a utm_campaign value: lower case, dashes, nothing odd. */
+export const campaignSlug = (label: string | null | undefined) =>
+  String(label || '').toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60) || null;
+
+/**
+ * Adds UTM tags for attribution in analytics tools: utm_source = the platform, utm_medium = social,
+ * utm_campaign = the post's first label (when it has one). Tags the link already carries are kept.
+ */
+export function withUtm(url: string, utm: UtmTags | null | undefined): string {
+  if (!utm) return url;
+  try {
+    const u = new URL(url);
+    if (!u.searchParams.has('utm_source')) u.searchParams.set('utm_source', utm.source);
+    if (!u.searchParams.has('utm_medium')) u.searchParams.set('utm_medium', 'social');
+    if (utm.campaign && !u.searchParams.has('utm_campaign')) u.searchParams.set('utm_campaign', utm.campaign);
+    return u.toString();
+  } catch {
+    return url;
+  }
+}
 
 /**
  * Replaces the trackable links in `text` with short links. The same link on the same target always
@@ -56,7 +78,7 @@ export async function shortenLinks(text: string, ctx: LinkContext): Promise<stri
   let out = text;
   for (const url of findUrls(text)) {
     if (!isTrackable(url, base)) continue;
-    const code = await codeFor(url, ctx);
+    const code = await codeFor(withUtm(url, ctx.utm), ctx);
     out = out.split(url).join(base + code);
   }
   return out;

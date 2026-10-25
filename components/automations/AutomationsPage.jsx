@@ -57,7 +57,8 @@ export default function AutomationsPage() {
           </div>
         </div>
         <Signature initial={data.signature} canEdit={canEdit} />
-        <LinkClicks on={data.track_links} clicks={data.link_clicks} links={data.tracked_links} canEdit={canEdit} reload={load} />
+        <LinkClicks on={data.track_links} utm={data.utm_tags} clicks={data.link_clicks} links={data.tracked_links} canEdit={canEdit} reload={load} />
+        <SharedCalendar calendar={data.calendar} canEdit={canEdit} reload={load} />
         <DefaultComments accounts={data.accounts} canEdit={canEdit} reload={load} />
         <Feeds feeds={data.feeds} accounts={data.accounts} canEdit={canEdit} reload={load} />
         <Webhooks hooks={data.webhooks} canEdit={canEdit} reload={load} />
@@ -155,22 +156,88 @@ function DefaultComments({ accounts, canEdit, reload }) {
   );
 }
 
-function LinkClicks({ on, clicks, links, canEdit, reload }) {
+function SharedCalendar({ calendar, canEdit, reload }) {
+  const [busy, setBusy] = useState('');
+  const [msg, setMsg] = useState(['', '']);
+  const run = async (key, fn, ok) => {
+    setBusy(key);
+    setMsg(['', '']);
+    try {
+      await fn();
+      await reload();
+      if (ok) setMsg(['ok', ok]);
+    } catch (e) {
+      setMsg(['err', e.message]);
+    } finally {
+      setBusy('');
+    }
+  };
+  const copy = (text, what) => navigator.clipboard?.writeText(text).then(() => setMsg(['ok', `${what} copied.`])).catch(() => setMsg(['err', 'Could not copy. Select the link and copy it by hand.']));
+  return (
+    <section className={s.card}>
+      <h2>Shared calendar</h2>
+      <p className={s.help}>
+        A read-only link to your schedule for clients and teammates, no account needed: what goes out when, to which accounts, with captions and media. It also comes as an iCal feed, so it shows up in Google Calendar, Apple Calendar or Outlook and stays up to date. Anyone with the link can see it; rotate it to cut off old copies.
+      </p>
+      {calendar?.enabled ? (
+        <>
+          <div className={s.row}>
+            <strong>Web link</strong>
+            <span className={s.url}>{calendar.url}</span>
+            <div className={s.actions}>
+              <button className={s.btn} onClick={() => copy(calendar.url, 'Calendar link')}>Copy link</button>
+              <a className={s.btn} href={calendar.url} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>Open</a>
+            </div>
+          </div>
+          <div className={s.row}>
+            <strong>Calendar app (iCal)</strong>
+            <span className={s.url}>{calendar.ics_url}</span>
+            <span className={s.meta}>Google Calendar: Other calendars → + → From URL. Apple Calendar: File → New Calendar Subscription. Updates within about an hour.</span>
+            <div className={s.actions}>
+              <button className={s.btn} onClick={() => copy(calendar.ics_url, 'iCal link')}>Copy iCal link</button>
+            </div>
+          </div>
+          {canEdit && (
+            <div className={s.actions}>
+              <button className={s.btn} disabled={!!busy} onClick={() => confirm('Replace the link? Everyone with the old one loses access.') && run('rotate', () => api('/api/v1/calendar-link', { method: 'POST', body: { rotate: true } }), 'New link made. Share it again with whoever needs it.')}>{busy === 'rotate' ? 'Rotating…' : 'Rotate link'}</button>
+              <button className={`${s.btn} ${s.btnDanger}`} disabled={!!busy} onClick={() => confirm('Turn the shared calendar off?') && run('off', () => api('/api/v1/calendar-link', { method: 'DELETE' }), 'Shared calendar turned off.')}>Turn off</button>
+            </div>
+          )}
+        </>
+      ) : (
+        <>
+          <p className={s.empty}>Not shared.</p>
+          {canEdit && (
+            <div className={s.actions}>
+              <button className={`${s.btn} ${s.btnDark}`} disabled={!!busy} onClick={() => run('on', () => api('/api/v1/calendar-link', { method: 'POST', body: {} }), 'Your calendar link is ready.')}>{busy === 'on' ? 'Creating…' : 'Create link'}</button>
+            </div>
+          )}
+        </>
+      )}
+      {msg[0] === 'err' && <p className={s.error}>{msg[1]}</p>}
+      {msg[0] === 'ok' && <p className={s.notice}>{msg[1]}</p>}
+    </section>
+  );
+}
+
+function LinkClicks({ on, utm, clicks, links, canEdit, reload }) {
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState(['', '']);
-  const flip = async () => {
+  const set = async (prefs, ok) => {
     setBusy(true);
     setMsg(['', '']);
     try {
-      await api('/api/app/prefs', { method: 'PATCH', body: { prefs: { trackLinks: !on } } });
+      await api('/api/app/prefs', { method: 'PATCH', body: { prefs } });
       await reload();
-      setMsg(['ok', !on ? 'Link clicks are now counted on every post that publishes from here on.' : 'Link tracking turned off. Existing short links keep working.']);
+      setMsg(['ok', ok]);
     } catch (e) {
       setMsg(['err', e.message]);
     } finally {
       setBusy(false);
     }
   };
+  const flip = () => set({ trackLinks: !on }, !on ? 'Link clicks are now counted on every post that publishes from here on.' : 'Link tracking turned off. Existing short links keep working.');
+  const flipUtm = () => set({ utm: !utm }, !utm ? 'UTM tags will be added to tracked links from the next post on.' : 'UTM tags turned off.');
   return (
     <section className={s.card}>
       <h2>Link clicks</h2>
@@ -185,6 +252,11 @@ function LinkClicks({ on, clicks, links, canEdit, reload }) {
           <label className={s.toggle}>
             <input type="checkbox" checked={!!on} disabled={busy} onChange={flip} /> Count link clicks
           </label>
+          {on && (
+            <label className={s.toggle} title="utm_source = the platform, utm_medium = social, utm_campaign = the post's first label">
+              <input type="checkbox" checked={!!utm} disabled={busy} onChange={flipUtm} /> Add UTM tags for Google Analytics and the like
+            </label>
+          )}
         </div>
       )}
     </section>

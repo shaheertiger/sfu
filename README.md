@@ -10,6 +10,7 @@ Post scheduler: write once, publish to ten social platforms from one queue. Next
 | `/demo`            | The same dashboard with sample data, nothing saved                                             |
 | `/app/automations` | Signature, RSS auto-post, webhooks (workspace menu → Automations)                              |
 | `/p/<token>`       | Client preview link: view a post, approve, ask for changes or comment (no account)             |
+| `/c/<token>`       | Shared calendar: read-only schedule for clients and teammates; `/c/<token>/feed.ics` is the iCal feed |
 | `/brand`           | Logo sheet                                                                                     |
 | `/api/v1/*`        | REST API (session or `Authorization: Bearer sfy_…` API key)                                    |
 | `/api/cron/publish` | Publishing job, run by Vercel Cron every minute                                               |
@@ -168,6 +169,12 @@ Owners, editors and API keys can change signature, webhooks and feeds; members c
 - **Queue runway** on Home: when the queue has 2 or more open slots in the next 7 days, an attention item says when the queue runs dry and how many slots are open, with "Add to queue" ready.
 - **Reconnect alerts**: when a platform rejects an account's sign-in, or a non-renewing token expires within 3 days, the owners get an email naming the account, the reason and the scheduled posts that would fail. One email per account per week; sent by the publishing cron.
 - **Slack and Discord webhooks**: a webhook's `format` can be `slack` or `discord`, so an incoming webhook URL from either works as the endpoint and you get a readable message ("✅ Published: … • X @harbor → link") instead of raw JSON. Migration `012_webhook_format.sql`.
+
+## Sharing the schedule
+
+- **Shared calendar** (Automations → Shared calendar): one read-only link to the workspace's upcoming and recent posts (captions, accounts, media, approval state) for clients and teammates, no account needed. The same token serves an iCal feed, so the schedule appears in Google Calendar, Apple Calendar or Outlook and refreshes about hourly. Rotate the link to cut off old copies; turn it off and both URLs answer 404. API: `GET/POST/DELETE /api/v1/calendar-link`. Migration `013_calendar_link.sql`.
+- **UTM tags** (Automations → Link clicks): with link tracking on, tracked links can carry `utm_source=<platform>`, `utm_medium=social` and `utm_campaign=<first label>` for attribution in Google Analytics and similar tools. Tags a link already has are kept.
+- **Stale drafts nudge** on Home: three or more drafts untouched for a week bring an attention item with "Open drafts".
 
 ## Automations
 

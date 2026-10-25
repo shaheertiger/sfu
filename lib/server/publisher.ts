@@ -12,7 +12,7 @@ import { overLimitAccountIds } from './accounts';
 import { PLATFORMS, type PlatformId } from './platforms';
 import { nextOccurrence, safeTz, zonedTime } from './tz';
 import { firstComment } from './thread';
-import { shortenLinks } from './links';
+import { campaignSlug, shortenLinks } from './links';
 
 export const MAX_ATTEMPTS = 3;
 /** How many times a target may wait for the platform to finish processing media (about 2 minutes apart). */
@@ -128,6 +128,8 @@ async function publishClaimed(postId: string) {
   const signature = post.signature === false ? '' : ((await one('SELECT signature FROM workspaces WHERE id=$1', [post.workspace_id]))?.signature || '').trim();
   const prefs = (await one('SELECT name, prefs FROM workspaces WHERE id=$1', [post.workspace_id]))?.prefs || {};
   const trackLinks = prefs.trackLinks === true;
+  const utmOn = trackLinks && prefs.utm === true;
+  const campaign = campaignSlug(Array.isArray(post.labels) ? post.labels[0] : null);
 
   // Accounts past the plan's limit (e.g. after a downgrade) don't publish.
   const overLimit = await overLimitAccountIds(post.workspace_id);
@@ -170,7 +172,7 @@ async function publishClaimed(postId: string) {
         throw new PublishError("This account is paused because the workspace is over its plan's account limit. Upgrade or disconnect an account, then retry.", false);
       }
       account = await freshAccount(accRow);
-      const linkCtx = { workspaceId: post.workspace_id, postId: post.id, targetId: target.id };
+      const linkCtx = { workspaceId: post.workspace_id, postId: post.id, targetId: target.id, utm: utmOn ? { source: account.platform, campaign } : null };
       let caption = withSignature(target.caption_override ?? post.caption, signature, account.platform);
       if (trackLinks) caption = await shortenLinks(caption, linkCtx);
       const input: PublishInput = {
