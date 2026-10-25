@@ -9,6 +9,7 @@ import { billingSummary } from '@/lib/server/billing';
 import { refreshStaleAvatars } from '@/lib/server/accounts';
 import { setSignedInHint } from '@/lib/server/signed-in-hint';
 import { freshMetaAvatar } from '@/lib/server/adapters/oauth';
+import { mediaUsage } from '@/lib/server/media-usage';
 
 export const dynamic = 'force-dynamic';
 
@@ -27,14 +28,15 @@ export const GET = handler(async ({ user, workspace }) => {
     // Invitations not accepted yet (revoke with DELETE /api/v1/team/invites/{id}).
     query('SELECT id,email,role,created_at FROM invites WHERE workspace_id=$1 AND accepted_at IS NULL ORDER BY created_at DESC', [workspace.id]),
   ]);
-  const usage = await query(`SELECT jsonb_array_elements_text(media) AS id, COUNT(*)::int AS n FROM posts WHERE workspace_id=$1 GROUP BY 1`, [workspace.id]);
+  // Per file: how many posts use it, where it has been published and when it last went out.
+  const usage = await mediaUsage(workspace.id);
   return {
     user,
     workspace: { id: workspace.id, name: workspace.name, plan: workspace.plan, account_limit: workspace.account_limit, role: workspace.role, prefs: workspace.prefs || {} },
     workspaces: workspaces.map((w) => ({ id: w.id, name: w.name, plan: w.plan, role: w.role })),
     accounts, posts, keys, members, invites,
     media: await Promise.all(mediaRows.map(publicMedia)),
-    mediaUsage: Object.fromEntries(usage.map((u) => [u.id, u.n])),
+    mediaUsage: usage,
     platforms: PLATFORM_LIST.map((p) => ({ id: p.id, authMode: p.authMode, configured: platformConfigured(p) })),
     storage: storageConfigured(),
     billing: billingSummary(workspace),

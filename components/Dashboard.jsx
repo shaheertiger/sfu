@@ -590,10 +590,48 @@ class Component extends DCLogic {
       ['studio-tour.mp4', 'VIDEO', '#3e4a55', 'Reels', 1],
       ['spring-lookbook.jpg', 'IMG', '#7d7a5c', 'Archive', 3],
       ['logo-lockup.png', 'IMG', '#2b2e33', 'Product shots', 4],
-    ].map(([name, kind, tone, folder, used], i) => ({ id: 'm' + i, name, kind, tone, folder, used, url: '' })),
+    ].map(([name, kind, tone, folder, used], i) => {
+      const demo =
+        used === 0
+          ? {
+              state: 'unused',
+              usage: 'Never used',
+              usageColor: '#677184',
+              usageLong: 'Not posted anywhere yet. Fresh for Bluesky, Instagram, LinkedIn and X.',
+              unusedOn: ['bluesky', 'instagram', 'linkedin', 'x'],
+            }
+          : i % 3 === 0
+            ? {
+                state: 'recent',
+                usage: `Instagram ×${used} · 6d ago`,
+                usageColor: '#8a5a00',
+                usageLong: `Posted to Instagram ${used === 1 ? 'once' : used === 2 ? 'twice' : used + ' times'} (last 6 days ago). Not yet used on Bluesky, LinkedIn and X. Used recently: your 30-day cooldown ends in 24 days.`,
+                unusedOn: ['bluesky', 'linkedin', 'x'],
+              }
+            : {
+                state: 'rested',
+                usage: `Instagram ×${used} · X ×1 · 3mo ago`,
+                usageColor: '#3b7a2a',
+                usageLong: `Posted to Instagram ${used === 1 ? 'once' : used === 2 ? 'twice' : used + ' times'} and X once (last 3 months ago). Not yet used on Bluesky and LinkedIn. Rested long enough to reuse.`,
+                unusedOn: ['bluesky', 'linkedin'],
+              };
+      return {
+        id: 'm' + i,
+        name,
+        kind,
+        tone,
+        folder,
+        used,
+        url: '',
+        last: used ? Date.now() - (demo.state === 'recent' ? 6 : 95) * 86400000 : null,
+        ...demo,
+      };
+    }),
     tz: 'America/New_York',
     remind: { on: true, lead: 60 },
     alerts: { fail: true, digest: true },
+    cooldown: 30,
+    libUse: '',
     keys: [
       { id: 'k1', name: 'Claude Desktop', prefix: 'sfy_8f2a', meta: 'Created Oct 2 · last used 2 hours ago' },
       { id: 'k2', name: 'Zapier', prefix: 'sfy_c41d', meta: 'Created Sep 14 · never used' },
@@ -3340,11 +3378,23 @@ class Component extends DCLogic {
         const used = [...new Set(s.posts.flatMap((p) => p.labels || []))];
         const lib = S0.library,
           q = (S0.libQ || '').toLowerCase();
+        const useOk = (m) =>
+          !S0.libUse ||
+          (S0.libUse.startsWith('no:')
+            ? (m.unusedOn || []).includes(S0.libUse.slice(3))
+            : (m.state || 'unused') === S0.libUse);
         const inFolder = (S0.folder === 'All' ? lib : lib.filter((m) => m.folder === S0.folder))
-          .filter((m) => (!q || m.name.toLowerCase().includes(q)) && (!S0.libType || m.kind === S0.libType))
+          .filter((m) => (!q || m.name.toLowerCase().includes(q)) && (!S0.libType || m.kind === S0.libType) && useOk(m))
           .sort((x, y) =>
-            S0.libSort === 'name' ? x.name.localeCompare(y.name) : S0.libSort === 'used' ? y.used - x.used : 0,
+            S0.libSort === 'name'
+              ? x.name.localeCompare(y.name)
+              : S0.libSort === 'used'
+                ? y.used - x.used
+                : S0.libSort === 'rested'
+                  ? (x.last || 0) - (y.last || 0)
+                  : 0,
           );
+        const libPlatforms = [...new Set(s.accounts.map((a) => a.platform))];
         const libSel = S0.libSel || [];
         const thumb = (m) => (m.url ? `${m.tone} url(${m.url}) center/cover no-repeat` : m.tone);
         const addLib = (m) => this.upd({ media: [...d.media, m.kind] });
@@ -3537,6 +3587,25 @@ class Component extends DCLogic {
           onLibType: (e) => this.setState({ libType: e.target.value }),
           libSort: S0.libSort || 'new',
           onLibSort: (e) => this.setState({ libSort: e.target.value }),
+          libUse: S0.libUse || '',
+          onLibUse: (e) => this.setState({ libUse: e.target.value }),
+          libUseOptions: [
+            { value: '', label: 'Any usage' },
+            { value: 'unused', label: 'Never used' },
+            { value: 'rested', label: 'Ready to reuse' },
+            { value: 'recent', label: 'Used recently' },
+            ...libPlatforms.map((p) => ({ value: 'no:' + p, label: 'Unused on ' + (Component.P[p]?.label || p) })),
+          ],
+          cooldown: String(S0.cooldown ?? 30),
+          onCooldown: (e) => this.setState({ cooldown: Number(e.target.value) }),
+          cooldownOptions: [
+            [0, 'Off'],
+            [7, '1 week'],
+            [14, '2 weeks'],
+            [30, '30 days'],
+            [60, '60 days'],
+            [90, '90 days'],
+          ].map(([value, label]) => ({ value: String(value), label })),
           libViews: [
             ['grid', 'Grid'],
             ['list', 'List'],
@@ -3575,6 +3644,8 @@ class Component extends DCLogic {
                   folder: m.folder,
                   thumb: thumb(m),
                   badge: m.kind === 'VIDEO' ? '▶ VIDEO' : 'IMAGE',
+                  usage: m.usageLong || m.usage || '',
+                  usageColor: m.usageColor || '#677184',
                   use: () =>
                     this.setState({
                       pvMediaId: null,
@@ -3582,7 +3653,7 @@ class Component extends DCLogic {
                       screen: 'compose',
                     }),
                 }
-              : { name: '', folder: '', thumb: '#ddd', badge: '', use: () => {} };
+              : { name: '', folder: '', thumb: '#ddd', badge: '', usage: '', usageColor: '#677184', use: () => {} };
           })(),
           libCards: inFolder.map((m) => ({
             toggleSel: (e) => {
@@ -3610,6 +3681,8 @@ class Component extends DCLogic {
                   ? ''
                   : 'IMG',
             used: m.used ? `used ${m.used}×` : '',
+            usage: m.usage || (m.used ? `used ${m.used}×` : 'Never used'),
+            usageColor: m.usageColor || '#677184',
             folder: m.folder,
             move: (e) => {
               const v = e.target.value;

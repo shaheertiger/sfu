@@ -6008,6 +6008,25 @@ export function renderDashboard($v) {
                         <option value="new">{'Newest'}</option>
                         <option value="name">{'Name'}</option>
                         <option value="used">{'Most used'}</option>
+                        <option value="rested">{'Longest rested'}</option>
+                      </select>{' '}
+                      <select
+                        value={$dv($v['libUse'])}
+                        onChange={$v['onLibUse']}
+                        aria-label="Usage"
+                        style={{
+                          padding: '7px 10px',
+                          border: '1px solid #e7e5df',
+                          borderRadius: '9px',
+                          background: '#fff',
+                          fontSize: '13px',
+                        }}
+                      >
+                        {$arr($v['libUseOptions']).map((o, $index) => (
+                          <Fragment key={$index}>
+                            <option value={$dv(o?.value)}>{o?.label}</option>
+                          </Fragment>
+                        ))}
                       </select>{' '}
                       <div
                         style={{
@@ -6216,10 +6235,8 @@ export function renderDashboard($v) {
                               >
                                 {$t(m?.name)}
                               </span>{' '}
-                              <span
-                                style={{ display: `${$v['libUsedText'] ?? ''}`, fontSize: '12px', color: '#677184' }}
-                              >
-                                {$t(m?.used)}
+                              <span style={{ fontSize: '12px', lineHeight: '1.35', color: `${m?.usageColor ?? ''}` }}>
+                                {$t(m?.usage)}
                               </span>{' '}
                               <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
                                 {' '}
@@ -7247,6 +7264,43 @@ export function renderDashboard($v) {
                       </button>{' '}
                     </div>{' '}
                   </div>{' '}
+                  <div
+                    style={{
+                      background: '#fff',
+                      border: '1px solid #e7e5df',
+                      borderRadius: '12px',
+                      padding: '20px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '12px',
+                    }}
+                  >
+                    {' '}
+                    <h3 style={{ margin: '0', fontSize: '16px' }}>{'Media reuse cooldown'}</h3>{' '}
+                    <select
+                      value={$dv($v['cooldown'])}
+                      onChange={$v['onCooldown']}
+                      aria-label="Reuse cooldown"
+                      style={{
+                        width: '100%',
+                        padding: '9px 12px',
+                        border: '1px solid #e7e5df',
+                        borderRadius: '10px',
+                        background: '#fff',
+                      }}
+                    >
+                      {$arr($v['cooldownOptions']).map((o, $index) => (
+                        <Fragment key={$index}>
+                          <option value={$dv(o?.value)}>{o?.label}</option>
+                        </Fragment>
+                      ))}
+                    </select>{' '}
+                    <span style={{ fontSize: '13px', color: '#677184' }}>
+                      {
+                        'A file posted within this window shows as “used recently” in the media library, and the composer gives you a heads-up before you reuse it. Nothing is blocked.'
+                      }
+                    </span>{' '}
+                  </div>{' '}
                 </div>{' '}
                 <div
                   style={{
@@ -7880,6 +7934,17 @@ export function renderDashboard($v) {
                   {'Use in post'}
                 </button>{' '}
               </div>{' '}
+              <p
+                style={{
+                  margin: '0',
+                  padding: '0 16px 14px',
+                  fontSize: '13px',
+                  lineHeight: '1.5',
+                  color: `${$v['pvMedia']?.usageColor ?? ''}`,
+                }}
+              >
+                {$t($v['pvMedia']?.usage)}
+              </p>{' '}
             </div>{' '}
           </div>
         </>

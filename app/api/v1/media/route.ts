@@ -3,6 +3,7 @@ import { body, handler, json } from '@/lib/server/api';
 import { now, query, uid } from '@/lib/server/db';
 import { presignUpload } from '@/lib/server/storage';
 import { publicMedia } from '@/lib/server/media';
+import { mediaUsage } from '@/lib/server/media-usage';
 
 const TYPES: Record<string, number> = {
   'image/jpeg': 20e6, 'image/png': 20e6, 'image/gif': 15e6, 'image/webp': 20e6,
@@ -10,8 +11,18 @@ const TYPES: Record<string, number> = {
 };
 
 export const GET = handler(async ({ workspace }) => {
-  const rows = await query('SELECT * FROM media WHERE workspace_id=$1 AND uploaded ORDER BY created_at DESC LIMIT 500', [workspace.id]);
-  return { media: await Promise.all(rows.map(publicMedia)) };
+  const [rows, usage] = await Promise.all([
+    query('SELECT * FROM media WHERE workspace_id=$1 AND uploaded ORDER BY created_at DESC LIMIT 500', [workspace.id]),
+    mediaUsage(workspace.id),
+  ]);
+  // Each file says where it has been published and when it last went out, so a script can pick fresh ones.
+  const empty = { posts: 0, drafts: 0, last: null, platforms: {} };
+  return {
+    media: await Promise.all(rows.map(async (m) => {
+      const u = usage[m.id] || empty;
+      return { ...(await publicMedia(m)), usage: { posts: u.posts, drafts: u.drafts, last_used_at: u.last, platforms: u.platforms } };
+    })),
+  };
 });
 
 /** Step 1 of an upload: returns a presigned URL the browser PUTs the file to. Then PATCH /media/:id {uploaded:true}. */

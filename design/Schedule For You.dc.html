@@ -1009,7 +1009,8 @@ textarea{resize:vertical}
           <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
             <input value="{{ libQ }}" onChange="{{ onLibQ }}" placeholder="Search files" aria-label="Search files by name" style="flex:1 1 180px;padding:7px 12px;border:1px solid #e7e5df;border-radius:9px;outline:none;font-size:13px;background:#fff" style-focus="border-color:#141619">
             <select value="{{ libType }}" onChange="{{ onLibType }}" aria-label="File type" style="padding:7px 10px;border:1px solid #e7e5df;border-radius:9px;background:#fff;font-size:13px"><option value="">All types</option><option value="IMG">Images</option><option value="VIDEO">Videos</option></select>
-            <select value="{{ libSort }}" onChange="{{ onLibSort }}" aria-label="Sort" style="padding:7px 10px;border:1px solid #e7e5df;border-radius:9px;background:#fff;font-size:13px"><option value="new">Newest</option><option value="name">Name</option><option value="used">Most used</option></select>
+            <select value="{{ libSort }}" onChange="{{ onLibSort }}" aria-label="Sort" style="padding:7px 10px;border:1px solid #e7e5df;border-radius:9px;background:#fff;font-size:13px"><option value="new">Newest</option><option value="name">Name</option><option value="used">Most used</option><option value="rested">Longest rested</option></select>
+            <select value="{{ libUse }}" onChange="{{ onLibUse }}" aria-label="Usage" style="padding:7px 10px;border:1px solid #e7e5df;border-radius:9px;background:#fff;font-size:13px"><sc-for list="{{ libUseOptions }}" as="o" hint-placeholder-count="4"><option value="{{ o.value }}">{{ o.label }}</option></sc-for></select>
             <div style="display:inline-flex;border:1px solid #e7e5df;border-radius:9px;background:#fff;padding:2px">
               <sc-for list="{{ libViews }}" as="v" hint-placeholder-count="2"><button onClick="{{ v.pick }}" style="border:0;padding:4px 10px;border-radius:7px;cursor:pointer;font-size:12px;font-weight:500;background:{{ v.bg }};color:{{ v.color }}">{{ v.label }}</button></sc-for>
             </div>
@@ -1036,7 +1037,7 @@ textarea{resize:vertical}
                 <div onClick="{{ m.preview }}" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:{{ libRatio }};width:{{ libThumbW }};flex:{{ libThumbFlex }};background:{{ m.thumb }};display:flex;align-items:flex-end;justify-content:space-between;padding:8px;color:#f3e9d8;font:600 10px 'Geist Mono',monospace;text-shadow:0 1px 2px rgba(0,0,0,.5)"><sc-if value="{{ m.isVideo }}" hint-placeholder-val="{{ false }}"><video src="{{ m.video }}" muted="" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none"></video></sc-if><span style="position:relative">{{ m.badge }}</span><span style="position:relative;display:{{ libUsedThumb }}">{{ m.used }}</span></div>
                 <div style="padding:10px 12px;display:flex;flex-direction:column;gap:8px">
                   <span style="font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.name }}</span>
-                  <span style="display:{{ libUsedText }};font-size:12px;color:#677184">{{ m.used }}</span>
+                  <span style="font-size:12px;line-height:1.35;color:{{ m.usageColor }}">{{ m.usage }}</span>
                   <div style="display:flex;gap:6px;align-items:center">
                     <select value="{{ m.folder }}" onChange="{{ m.move }}" title="Move to folder" style="flex:1;min-width:0;padding:5px 6px;border:1px solid #e7e5df;border-radius:7px;background:#fff;font-size:12px">
                       <sc-for list="{{ folderNames }}" as="o" hint-placeholder-count="0"><option value="{{ o }}">{{ o }}</option></sc-for>
@@ -1216,6 +1217,13 @@ textarea{resize:vertical}
               </button>
             </div>
           </div>
+          <div style="background:#fff;border:1px solid #e7e5df;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px">
+            <h3 style="margin:0;font-size:16px">Media reuse cooldown</h3>
+            <select value="{{ cooldown }}" onChange="{{ onCooldown }}" aria-label="Reuse cooldown" style="width:100%;padding:9px 12px;border:1px solid #e7e5df;border-radius:10px;background:#fff">
+              <sc-for list="{{ cooldownOptions }}" as="o" hint-placeholder-count="0"><option value="{{ o.value }}">{{ o.label }}</option></sc-for>
+            </select>
+            <span style="font-size:13px;color:#677184">A file posted within this window shows as “used recently” in the media library, and the composer gives you a heads-up before you reuse it. Nothing is blocked.</span>
+          </div>
         </div>
         <div style="background:#fff;border:1px solid #e7e5df;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:14px">
           <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap">
@@ -1314,6 +1322,7 @@ textarea{resize:vertical}
         <span style="font-size:13px;color:#677184">{{ pvMedia.folder }}</span>
         <button onClick="{{ pvMedia.use }}" style="padding:7px 13px;border-radius:8px;border:0;background:#d9ff35;color:#141619;cursor:pointer;font-weight:600;font-size:13px">Use in post</button>
       </div>
+      <p style="margin:0;padding:0 16px 14px;font-size:13px;line-height:1.5;color:{{ pvMedia.usageColor }}">{{ pvMedia.usage }}</p>
     </div>
   </div>
 </sc-if>
@@ -1489,8 +1498,13 @@ class Component extends DCLogic {
     templates: [{ name: 'Launch', text: "It's live: [product]. [One line on why it matters]. Link in bio." }, { name: 'Weekly tip', text: 'Tuesday tip: [the tip]. Try it this week and tell me how it went.' }, { name: 'Behind the scenes', text: 'Behind the scenes of [project]. [What surprised us].' }],
     tagGroups: [{ name: 'Field kit', tags: '#fieldkit #madetolast #fw26' }, { name: 'Creator', tags: '#contentcreator #socialmediatips #batching' }, { name: 'Small business', tags: '#smallbusiness #shoplocal' }],
     folders: ['Fall ’26', 'Product shots', 'Reels', 'Archive'], folder: 'All', newFolder: '', pickerOpen: false,
-    library: [['fieldkit-hero.jpg', 'IMG', '#8a6d4f', 'Fall ’26', 2], ['canvas-detail.jpg', 'IMG', '#6e5a42', 'Product shots', 1], ['brass-hardware.jpg', 'IMG', '#7a6148', 'Product shots', 0], ['packing-reel.mp4', 'VIDEO', '#4f3f2e', 'Reels', 1], ['trailhead.jpg', 'IMG', '#5d6b4a', 'Fall ’26', 0], ['workshop-bts.mp4', 'VIDEO', '#5d4a36', 'Reels', 0], ['studio-tour.mp4', 'VIDEO', '#3e4a55', 'Reels', 1], ['spring-lookbook.jpg', 'IMG', '#7d7a5c', 'Archive', 3], ['logo-lockup.png', 'IMG', '#2b2e33', 'Product shots', 4]].map(([name, kind, tone, folder, used], i) => ({ id: 'm' + i, name, kind, tone, folder, used, url: '' })),
-    tz: 'America/New_York', remind: { on: true, lead: 60 }, alerts: { fail: true, digest: true },
+    library: [['fieldkit-hero.jpg', 'IMG', '#8a6d4f', 'Fall ’26', 2], ['canvas-detail.jpg', 'IMG', '#6e5a42', 'Product shots', 1], ['brass-hardware.jpg', 'IMG', '#7a6148', 'Product shots', 0], ['packing-reel.mp4', 'VIDEO', '#4f3f2e', 'Reels', 1], ['trailhead.jpg', 'IMG', '#5d6b4a', 'Fall ’26', 0], ['workshop-bts.mp4', 'VIDEO', '#5d4a36', 'Reels', 0], ['studio-tour.mp4', 'VIDEO', '#3e4a55', 'Reels', 1], ['spring-lookbook.jpg', 'IMG', '#7d7a5c', 'Archive', 3], ['logo-lockup.png', 'IMG', '#2b2e33', 'Product shots', 4]].map(([name, kind, tone, folder, used], i) => {
+      const demo = used === 0 ? { state: 'unused', usage: 'Never used', usageColor: '#677184', usageLong: 'Not posted anywhere yet. Fresh for Bluesky, Instagram, LinkedIn and X.', unusedOn: ['bluesky', 'instagram', 'linkedin', 'x'] }
+        : i % 3 === 0 ? { state: 'recent', usage: `Instagram ×${used} · 6d ago`, usageColor: '#8a5a00', usageLong: `Posted to Instagram ${used === 1 ? 'once' : used === 2 ? 'twice' : used + ' times'} (last 6 days ago). Not yet used on Bluesky, LinkedIn and X. Used recently: your 30-day cooldown ends in 24 days.`, unusedOn: ['bluesky', 'linkedin', 'x'] }
+        : { state: 'rested', usage: `Instagram ×${used} · X ×1 · 3mo ago`, usageColor: '#3b7a2a', usageLong: `Posted to Instagram ${used === 1 ? 'once' : used === 2 ? 'twice' : used + ' times'} and X once (last 3 months ago). Not yet used on Bluesky and LinkedIn. Rested long enough to reuse.`, unusedOn: ['bluesky', 'linkedin'] };
+      return { id: 'm' + i, name, kind, tone, folder, used, url: '', last: used ? Date.now() - (demo.state === 'recent' ? 6 : 95) * 86400000 : null, ...demo };
+    }),
+    tz: 'America/New_York', remind: { on: true, lead: 60 }, alerts: { fail: true, digest: true }, cooldown: 30, libUse: '',
     keys: [{ id: 'k1', name: 'Claude Desktop', prefix: 'sfy_8f2a', meta: 'Created Oct 2 · last used 2 hours ago' }, { id: 'k2', name: 'Zapier', prefix: 'sfy_c41d', meta: 'Created Sep 14 · never used' }],
     newKey: '', keyName: '', invite: '', inviteUrl: '', invites: [],
     selecting: false, selected: [], moveDate: '', alertHidden: false,
@@ -2261,7 +2275,9 @@ class Component extends DCLogic {
         const wsMeta = Component.WS.find((w) => w[0] === WS) || Component.WS[0];
         const used = [...new Set(s.posts.flatMap((p) => p.labels || []))];
         const lib = S0.library, q = (S0.libQ || '').toLowerCase();
-        const inFolder = (S0.folder === 'All' ? lib : lib.filter((m) => m.folder === S0.folder)).filter((m) => (!q || m.name.toLowerCase().includes(q)) && (!S0.libType || m.kind === S0.libType)).sort((x, y) => S0.libSort === 'name' ? x.name.localeCompare(y.name) : S0.libSort === 'used' ? y.used - x.used : 0);
+        const useOk = (m) => !S0.libUse || (S0.libUse.startsWith('no:') ? (m.unusedOn || []).includes(S0.libUse.slice(3)) : (m.state || 'unused') === S0.libUse);
+        const inFolder = (S0.folder === 'All' ? lib : lib.filter((m) => m.folder === S0.folder)).filter((m) => (!q || m.name.toLowerCase().includes(q)) && (!S0.libType || m.kind === S0.libType) && useOk(m)).sort((x, y) => S0.libSort === 'name' ? x.name.localeCompare(y.name) : S0.libSort === 'used' ? y.used - x.used : S0.libSort === 'rested' ? (x.last || 0) - (y.last || 0) : 0);
+        const libPlatforms = [...new Set(s.accounts.map((a) => a.platform))];
         const libSel = S0.libSel || [];
         const thumb = (m) => (m.url ? `${m.tone} url(${m.url}) center/cover no-repeat` : m.tone);
         const addLib = (m) => this.upd({ media: [...d.media, m.kind] });
@@ -2299,13 +2315,17 @@ class Component extends DCLogic {
           isLibrary: screen === 'library', folderName: S0.folder === 'All' ? (S0.folders[0] || 'library') : S0.folder, folderNames: S0.folders,
           libSummary: `${lib.length} files in ${S0.folders.length} folders. Use any file in a post without uploading it again.`,
           libQ: S0.libQ || '', onLibQ: (e) => this.setState({ libQ: e.target.value }), libType: S0.libType || '', onLibType: (e) => this.setState({ libType: e.target.value }), libSort: S0.libSort || 'new', onLibSort: (e) => this.setState({ libSort: e.target.value }),
+          libUse: S0.libUse || '', onLibUse: (e) => this.setState({ libUse: e.target.value }),
+          libUseOptions: [{ value: '', label: 'Any usage' }, { value: 'unused', label: 'Never used' }, { value: 'rested', label: 'Ready to reuse' }, { value: 'recent', label: 'Used recently' }, ...libPlatforms.map((p) => ({ value: 'no:' + p, label: 'Unused on ' + (Component.P[p]?.label || p) }))],
+          cooldown: String(S0.cooldown ?? 30), onCooldown: (e) => this.setState({ cooldown: Number(e.target.value) }),
+          cooldownOptions: [[0, 'Off'], [7, '1 week'], [14, '2 weeks'], [30, '30 days'], [60, '60 days'], [90, '90 days']].map(([value, label]) => ({ value: String(value), label })),
           libViews: [['grid', 'Grid'], ['list', 'List']].map(([k, label]) => ({ label, bg: (S0.libView || 'grid') === k ? '#141619' : 'transparent', color: (S0.libView || 'grid') === k ? '#fff' : '#677184', pick: () => this.setState({ libView: k }) })),
           libCols: S0.libView === 'list' ? 'minmax(0,1fr)' : 'repeat(auto-fill,minmax(150px,1fr))', libDir: S0.libView === 'list' ? 'row' : 'column', libRatio: S0.libView === 'list' ? '1 / 1' : '4 / 3', libThumbW: S0.libView === 'list' ? '72px' : 'auto', libThumbFlex: S0.libView === 'list' ? 'none' : '0 0 auto',
           libUsedThumb: S0.libView === 'list' ? 'none' : 'inline', libUsedText: S0.libView === 'list' ? 'block' : 'none', libSelCount: libSel.length, libEmpty: inFolder.length === 0, libClearSel: () => this.setState({ libSel: [] }),
           libBulkMove: (e) => { const v = e.target.value; if (!v) return; this.setState((st) => ({ library: st.library.map((x) => (libSel.includes(x.id) ? { ...x, folder: v } : x)), libSel: [] })); this.flash(`Moved ${libSel.length} files to ${v}`); },
           hasPreviewMedia: !!S0.pvMediaId, closePreview: () => this.setState({ pvMediaId: null }),
-          pvMedia: (() => { const m = lib.find((x) => x.id === S0.pvMediaId); return m ? { name: m.name, folder: m.folder, thumb: thumb(m), badge: m.kind === 'VIDEO' ? '▶ VIDEO' : 'IMAGE', use: () => this.setState({ pvMediaId: null, draft: { ...Component.blank(), media: [m.kind] }, screen: 'compose' }) } : { name: '', folder: '', thumb: '#ddd', badge: '', use: () => {} }; })(),
-          libCards: inFolder.map((m) => ({ toggleSel: (e) => { e.stopPropagation(); this.setState((st) => { const cur = st.libSel || []; return { libSel: cur.includes(m.id) ? cur.filter((x) => x !== m.id) : [...cur, m.id] }; }); }, selBg: libSel.includes(m.id) ? '#d9ff35' : 'rgba(255,255,255,.85)', selBorder: libSel.includes(m.id) ? '#141619' : 'rgba(255,255,255,.9)', selMark: libSel.includes(m.id) ? '✓' : '', cardBorder: libSel.includes(m.id) ? '#141619' : '#e7e5df', preview: () => this.setState({ pvMediaId: m.id }), name: m.name, thumb: thumb(m), isVideo: !!m.videoUrl, video: m.videoUrl ? `${m.videoUrl}#t=0.1` : '', badge: m.kind === 'VIDEO' ? (S0.libView === 'list' ? '▶' : '▶ VIDEO') : (S0.libView === 'list' || m.url ? '' : 'IMG'), used: m.used ? `used ${m.used}×` : '', folder: m.folder,
+          pvMedia: (() => { const m = lib.find((x) => x.id === S0.pvMediaId); return m ? { name: m.name, folder: m.folder, thumb: thumb(m), badge: m.kind === 'VIDEO' ? '▶ VIDEO' : 'IMAGE', usage: m.usageLong || m.usage || '', usageColor: m.usageColor || '#677184', use: () => this.setState({ pvMediaId: null, draft: { ...Component.blank(), media: [m.kind] }, screen: 'compose' }) } : { name: '', folder: '', thumb: '#ddd', badge: '', usage: '', usageColor: '#677184', use: () => {} }; })(),
+          libCards: inFolder.map((m) => ({ toggleSel: (e) => { e.stopPropagation(); this.setState((st) => { const cur = st.libSel || []; return { libSel: cur.includes(m.id) ? cur.filter((x) => x !== m.id) : [...cur, m.id] }; }); }, selBg: libSel.includes(m.id) ? '#d9ff35' : 'rgba(255,255,255,.85)', selBorder: libSel.includes(m.id) ? '#141619' : 'rgba(255,255,255,.9)', selMark: libSel.includes(m.id) ? '✓' : '', cardBorder: libSel.includes(m.id) ? '#141619' : '#e7e5df', preview: () => this.setState({ pvMediaId: m.id }), name: m.name, thumb: thumb(m), isVideo: !!m.videoUrl, video: m.videoUrl ? `${m.videoUrl}#t=0.1` : '', badge: m.kind === 'VIDEO' ? (S0.libView === 'list' ? '▶' : '▶ VIDEO') : (S0.libView === 'list' || m.url ? '' : 'IMG'), used: m.used ? `used ${m.used}×` : '', usage: m.usage || (m.used ? `used ${m.used}×` : 'Never used'), usageColor: m.usageColor || '#677184', folder: m.folder,
             move: (e) => { const v = e.target.value; this.setState((st) => ({ library: st.library.map((x) => (x.id === m.id ? { ...x, folder: v } : x)) })); this.flash(`Moved to ${v}`); },
             use: () => { this.setState({ draft: { ...Component.blank(), media: [m.kind] }, screen: 'compose' }); } })),
           newFolder: S0.newFolder, onNewFolder: (e) => this.setState({ newFolder: e.target.value }),

@@ -17,6 +17,7 @@ import Base from './Dashboard';
 import { splitThread, THREAD_PLATFORMS } from '@/lib/server/thread';
 import { captionFromFilename } from '@/lib/bulk-caption';
 import { isShare, shareCaption } from '@/lib/share-caption';
+import { DEFAULT_COOLDOWN_DAYS, matchesUsage, mediaState } from '@/lib/media-usage';
 
 const P = Base.P;
 const PLATFORM_IDS = Object.keys(P);
@@ -150,9 +151,24 @@ function mapAccount(a) {
   };
 }
 
-function mapMedia(m, usage = {}) {
-  return { id: m.id, name: m.filename, mime: m.mime, kind: kindOf(m.mime), tone: hashTone(m.id), folder: m.folder || '', used: usage[m.id] || 0, url: m.mime.startsWith('image/') ? m.url : '', videoUrl: m.mime.startsWith('video/') ? m.url : '' };
+/**
+ * A library item. `usage` is the server's per-file record (posts, drafts, last, platforms); `ctx` is
+ * the workspace's cooldown and connected platforms, which turn it into the state, filter keys and
+ * text the library shows. withUsage() re-derives those when the cooldown changes.
+ */
+function mapMedia(m, usage = {}, ctx = {}) {
+  const u = usage[m.id] || null;
+  // Cards, tiles and queue previews use the small cached thumbnail; the preview dialog loads the full image over it.
+  const image = m.mime.startsWith('image/');
+  return withUsage({ id: m.id, name: m.filename, mime: m.mime, kind: kindOf(m.mime), tone: hashTone(m.id), folder: m.folder || '', used: u ? u.posts + u.drafts : 0, u, url: image ? m.thumb_url || m.url : '', fullUrl: image ? m.url : '', videoUrl: m.mime.startsWith('video/') ? m.url : '' }, ctx);
 }
+function withUsage(item, ctx) {
+  const st = mediaState(item.u, { cooldownDays: ctx.cooldownDays, platforms: ctx.platforms || [], labels: PLATFORM_LABELS });
+  return { ...item, state: st.state, unusedOn: st.unusedOn, usage: st.line, usageLong: st.long, usageColor: st.color, last: st.last };
+}
+const PLATFORM_LABELS = Object.fromEntries(Object.entries(P).map(([id, p]) => [id, p.label]));
+/** The library's usage context from the dashboard state. */
+const usageCtx = (s) => ({ cooldownDays: s.cooldown ?? DEFAULT_COOLDOWN_DAYS, platforms: [...new Set((s.accounts || []).map((a) => a.platform))] });
 
 function mapPost(sp, mediaById) {
   // A post the server is sending right now shows as "publishing…" (with its targets pending), never as scheduled.
@@ -311,7 +327,8 @@ export default class LiveDashboard extends Base {
     const tz = prefs.tz || Base.localTz();
     const patch = {
       loading: false, posts, accounts,
-      library: d.media.map((m) => mapMedia(m, d.mediaUsage)),
+      library: d.media.map((m) => mapMedia(m, d.mediaUsage, { cooldownDays: prefs.reuseCooldownDays ?? DEFAULT_COOLDOWN_DAYS, platforms: [...new Set(accounts.map((a) => a.platform))] })),
+      cooldown: prefs.reuseCooldownDays ?? DEFAULT_COOLDOWN_DAYS,
       keys: d.keys.map((k) => ({ id: k.id, name: k.name, prefix: k.prefix, meta: `Created ${new Date(k.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} · ${k.last_used_at ? 'last used ' + new Date(k.last_used_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : 'never used'}` })),
       members: d.members, wsId: d.workspace.id, wsList: d.workspaces, plan: d.workspace.plan, accountLimit: d.workspace.account_limit,
       platforms: Object.fromEntries(d.platforms.map((p) => [p.id, p])), storage: d.storage, billing: d.billing || null,
@@ -378,7 +395,7 @@ export default class LiveDashboard extends Base {
     const name = (v, n) => String(v ?? '').trim().slice(0, n);
     const names = (list, n) => [...new Set((list || []).map((x) => name(x, n)).filter(Boolean))].slice(0, 100);
     return {
-      tz: s.tz, remind: s.remind, alerts: s.alerts, slots: (s.slots || []).slice(0, 48), slotDays: s.slotDays, paused: s.paused,
+      tz: s.tz, remind: s.remind, alerts: s.alerts, slots: (s.slots || []).slice(0, 48), slotDays: s.slotDays, paused: s.paused, reuseCooldownDays: s.cooldown ?? DEFAULT_COOLDOWN_DAYS,
       labels: names(s.labelList, 40), folders: names(s.folders, 60),
       templates: (s.templates || []).slice(0, 100).map((t) => ({ name: name(t.name, 60), text: String(t.text ?? '').slice(0, 5000) })),
       tagGroups: (s.tagGroups || []).slice(0, 100).map((g) => ({ name: name(g.name, 60), tags: String(g.tags ?? '').slice(0, 2000) })),
@@ -1008,13 +1025,29 @@ export default class LiveDashboard extends Base {
 
     // Media library.
     const q = (s.libQ || '').toLowerCase();
+    // Same filter and order as the design's own list, so handlers line up by index.
     const inFolder = (s.folder === 'All' || !s.folder ? s.library : s.library.filter((m) => m.folder === s.folder))
-      .filter((m) => (!q || m.name.toLowerCase().includes(q)) && (!s.libType || m.kind === s.libType))
-      .sort((x, y) => (s.libSort === 'name' ? x.name.localeCompare(y.name) : s.libSort === 'used' ? y.used - x.used : 0));
-    const useInNewPost = (m) => super.setState({ pvMediaId: null, screen: 'compose', uploads: [], draft: { ...Base.blank(), media: [m.kind], mediaIds: [m.id], tok: newTok() } });
-    (v.libItems || []).forEach((it, i) => { const m = inFolder[i]; if (m) it.use = () => { this.upd({ media: [...d.media, m.kind], mediaIds: [...(d.mediaIds || []), m.id] }); this.flash(`Added ${m.name}`); }; });
+      .filter((m) => (!q || m.name.toLowerCase().includes(q)) && (!s.libType || m.kind === s.libType) && matchesUsage(m, s.libUse))
+      .sort((x, y) => (s.libSort === 'name' ? x.name.localeCompare(y.name) : s.libSort === 'used' ? y.used - x.used : s.libSort === 'rested' ? (x.last || 0) - (y.last || 0) : 0));
+    // A file inside its reuse cooldown is still usable; the composer just says so.
+    const headsUp = (m, lead) => this.flash(m.state === 'recent' ? `${lead} ${m.usageLong}` : lead);
+    const useInNewPost = (m) => { super.setState({ pvMediaId: null, screen: 'compose', uploads: [], draft: { ...Base.blank(), media: [m.kind], mediaIds: [m.id], tok: newTok() } }); if (m.state === 'recent') headsUp(m, `${m.name}:`); };
+    (v.libItems || []).forEach((it, i) => { const m = inFolder[i]; if (m) it.use = () => { this.upd({ media: [...d.media, m.kind], mediaIds: [...(d.mediaIds || []), m.id] }); headsUp(m, `Added ${m.name}.`); }; });
     (v.libCards || []).forEach((c, i) => { const m = inFolder[i]; if (m) c.use = () => useInNewPost(m); });
-    if (v.pvMedia && s.pvMediaId) { const m = s.library.find((x) => x.id === s.pvMediaId); if (m) v.pvMedia.use = () => useInNewPost(m); }
+    // Changing the cooldown re-reads every file's state right away (and saves with the other settings).
+    v.onCooldown = (e) => {
+      const cooldown = Number(e.target.value);
+      this.setState((st) => ({ cooldown, library: st.library.map((m) => withUsage(m, usageCtx({ ...st, cooldown }))) }));
+      this.flash(cooldown ? `Files posted in the last ${cooldown} days now show as used recently` : 'Reuse cooldown off: every posted file counts as ready to reuse');
+    };
+    if (v.pvMedia && s.pvMediaId) {
+      const m = s.library.find((x) => x.id === s.pvMediaId);
+      if (m) {
+        v.pvMedia.use = () => useInNewPost(m);
+        // Full-size image on top of the already-loaded thumbnail, so the dialog is never blank while it loads.
+        if (m.fullUrl && m.fullUrl !== m.url) v.pvMedia.thumb = `url("${String(m.fullUrl).replace(/["\\\n]/g, encodeURIComponent)}") center/cover no-repeat, ${m.tone} url("${String(m.url).replace(/["\\\n]/g, encodeURIComponent)}") center/cover no-repeat`;
+      }
+    }
     v.onLibFiles = (e) => {
       const fl = [...(e.target.files || [])];
       e.target.value = '';
@@ -1023,7 +1056,10 @@ export default class LiveDashboard extends Base {
       this.flash(`Uploading ${fl.length} file${fl.length === 1 ? '' : 's'}…`);
       Promise.all(fl.map((f) => this.upload(f, folder))).then(() => this.flash(`Uploaded ${fl.length} file${fl.length === 1 ? '' : 's'}${folder ? ' to ' + folder : ''}`)).catch((err) => this.flash(err.message, true));
     };
-    v.libSummary = `${s.library.length} file${s.library.length === 1 ? '' : 's'} in ${s.folders.length} folder${s.folders.length === 1 ? '' : 's'}. Use any file in a post without uploading it again.`;
+    const tally = { unused: 0, recent: 0, rested: 0 };
+    for (const m of s.library) tally[m.state || 'unused']++;
+    const cd = s.cooldown ?? DEFAULT_COOLDOWN_DAYS;
+    v.libSummary = `${s.library.length} file${s.library.length === 1 ? '' : 's'} in ${s.folders.length} folder${s.folders.length === 1 ? '' : 's'}. ${tally.unused} never used · ${tally.rested} ready to reuse${cd ? ` · ${tally.recent} used in the last ${cd} days` : ''}. Each file shows where it has been posted and where it hasn't.`;
 
     // Bulk uploads keep the real files.
     const toItems = (fl) => fl.filter((f) => /^(image|video)\//.test(f.type)).map((f) => ({ name: f.name, kind: kindOf(f.type), url: f.type.startsWith('image') ? URL.createObjectURL(f) : '', file: f }));
