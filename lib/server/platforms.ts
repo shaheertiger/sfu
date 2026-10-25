@@ -15,33 +15,43 @@ export type PlatformMeta = {
   notes: string;
   /** extra per-target fields rendered in the composer */
   fields?: { key: string; label: string; type: 'text' | 'select'; options?: string[]; required?: boolean }[];
+  /** A caption split by `---` lines is published as a thread (a chain of replies). */
+  supportsThread?: boolean;
 };
+
+/** Posted on the published post right after it goes live: hashtags, a link, a call to action. */
+const FIRST_COMMENT = { key: 'first_comment', label: 'First comment', type: 'text' } as const;
 
 export const PLATFORMS: Record<PlatformId, PlatformMeta> = {
   bluesky: {
     id: 'bluesky', label: 'Bluesky', color: '#1185fe', authMode: 'credentials',
     maxChars: 300, maxImages: 4, video: true, requiresMedia: 'none', envKeys: [],
     notes: 'Connect with your handle and an app password (Settings → App Passwords in Bluesky). No developer approval needed.',
+    fields: [FIRST_COMMENT], supportsThread: true,
   },
   x: {
     id: 'x', label: 'X / Twitter', color: '#000000', authMode: 'oauth',
     maxChars: 280, maxImages: 4, video: true, requiresMedia: 'none', envKeys: ['X_CLIENT_ID', 'X_CLIENT_SECRET'],
     notes: 'Create a project + app at developer.x.com. Enable OAuth 2.0 (confidential client), add the callback URL, request tweet.write.',
+    fields: [FIRST_COMMENT], supportsThread: true,
   },
   instagram: {
     id: 'instagram', label: 'Instagram', color: '#e1306c', authMode: 'oauth',
     maxChars: 2200, maxImages: 10, video: true, requiresMedia: 'any', envKeys: ['FACEBOOK_APP_ID', 'FACEBOOK_APP_SECRET'],
     notes: 'Requires an Instagram Business/Creator account linked to a Facebook Page. Media must be reachable at a public URL (APP_URL must be public).',
+    fields: [FIRST_COMMENT],
   },
   linkedin: {
     id: 'linkedin', label: 'LinkedIn', color: '#0a66c2', authMode: 'oauth',
     maxChars: 3000, maxImages: 9, video: true, requiresMedia: 'none', envKeys: ['LINKEDIN_CLIENT_ID', 'LINKEDIN_CLIENT_SECRET'],
     notes: 'Add the "Share on LinkedIn" and "Sign In with LinkedIn using OpenID Connect" products to your LinkedIn app.',
+    fields: [FIRST_COMMENT],
   },
   facebook: {
     id: 'facebook', label: 'Facebook', color: '#1877f2', authMode: 'oauth',
     maxChars: 63206, maxImages: 10, video: true, requiresMedia: 'none', envKeys: ['FACEBOOK_APP_ID', 'FACEBOOK_APP_SECRET'],
     notes: 'Posts to Facebook Pages you manage. Needs pages_manage_posts + pages_read_engagement permissions.',
+    fields: [FIRST_COMMENT],
   },
   tiktok: {
     id: 'tiktok', label: 'TikTok', color: '#000000', authMode: 'oauth',
@@ -62,6 +72,7 @@ export const PLATFORMS: Record<PlatformId, PlatformMeta> = {
     id: 'threads', label: 'Threads', color: '#000000', authMode: 'oauth',
     maxChars: 500, maxImages: 10, video: true, requiresMedia: 'none', envKeys: ['THREADS_APP_ID', 'THREADS_APP_SECRET'],
     notes: 'Threads uses its own app under your Meta developer account. Media must be at a public URL.',
+    fields: [FIRST_COMMENT], supportsThread: true,
   },
   pinterest: {
     id: 'pinterest', label: 'Pinterest', color: '#e60023', authMode: 'oauth',

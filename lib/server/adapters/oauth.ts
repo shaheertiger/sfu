@@ -6,6 +6,7 @@
 import type { PlatformAdapter, PublishInput, PublishResult, ConnectedAccountFields, SocialAccount } from './types';
 import { PublishError, UPLOAD_TIMEOUT_MS, errorFromResponse, jsonFetch, sleep, timeLeft, timedFetch } from './types';
 import { facebookMixProblem, metaFormat, metaFormatProblem, nonJpegImages } from '../meta-format';
+import { threadParts } from '../thread';
 
 const env = (k: string) => process.env[k] || '';
 const q = (o: Record<string, string>) => new URLSearchParams(o).toString();
@@ -45,23 +46,41 @@ export const x: PlatformAdapter = {
     });
     return { access_token: tok.access_token, refresh_token: tok.refresh_token, token_expires_at: Date.now() + tok.expires_in * 1000 };
   },
-  async publish({ account, caption, media, sending }) {
+  async publish({ account, caption, media, sending, progress, save }) {
     const auth = { authorization: `Bearer ${account.access_token}` };
+    const parts = threadParts(caption, 'x');
+    // Parts an earlier attempt already posted (the run was cut off mid-thread) are not posted again.
+    const posted: string[] = Array.isArray(progress?.thread?.ids) ? [...progress.thread.ids] : [];
     const mediaIds: string[] = [];
-    for (const m of media.slice(0, 4)) {
-      const bytes = (await m.bytes());
-      const category = m.mime.startsWith('video/') ? 'tweet_video' : m.mime === 'image/gif' ? 'tweet_gif' : 'tweet_image';
-      const fd = new FormData();
-      fd.append('media', new Blob([new Uint8Array(bytes)], { type: m.mime }), m.filename);
-      fd.append('media_category', category);
-      const up = await jsonFetch('https://api.x.com/2/media/upload', { method: 'POST', headers: auth, body: fd });
-      mediaIds.push(up.data?.id || up.media_id_string);
+    if (!posted.length) {
+      for (const m of media.slice(0, 4)) {
+        const bytes = (await m.bytes());
+        const category = m.mime.startsWith('video/') ? 'tweet_video' : m.mime === 'image/gif' ? 'tweet_gif' : 'tweet_image';
+        const fd = new FormData();
+        fd.append('media', new Blob([new Uint8Array(bytes)], { type: m.mime }), m.filename);
+        fd.append('media_category', category);
+        const up = await jsonFetch('https://api.x.com/2/media/upload', { method: 'POST', headers: auth, body: fd });
+        mediaIds.push(up.data?.id || up.media_id_string);
+      }
     }
-    const body: any = { text: caption };
-    if (mediaIds.length) body.media = { media_ids: mediaIds };
-    await sending?.();
-    const res = await jsonFetch('https://api.x.com/2/tweets', { method: 'POST', headers: { ...auth, 'content-type': 'application/json' }, body: JSON.stringify(body) });
-    return { externalId: res.data.id, url: `https://x.com/${account.username}/status/${res.data.id}` };
+    for (let i = posted.length; i < parts.length; i++) {
+      const body: any = { text: parts[i] };
+      if (i === 0 && mediaIds.length) body.media = { media_ids: mediaIds };
+      if (i > 0) body.reply = { in_reply_to_tweet_id: posted[i - 1] };
+      if (i === 0) await sending?.();
+      const res = await jsonFetch('https://api.x.com/2/tweets', { method: 'POST', headers: { ...auth, 'content-type': 'application/json' }, body: JSON.stringify(body) });
+      posted.push(res.data.id);
+      // The first post is live: from here a retry continues the thread instead of starting over.
+      if (parts.length > 1) await save?.({ thread: { ids: posted }, sending: null });
+    }
+    return { externalId: posted[0], url: `https://x.com/${account.username}/status/${posted[0]}` };
+  },
+  async comment({ account, externalId, text }) {
+    const res = await jsonFetch('https://api.x.com/2/tweets', {
+      method: 'POST', headers: { authorization: `Bearer ${account.access_token}`, 'content-type': 'application/json' },
+      body: JSON.stringify({ text, reply: { in_reply_to_tweet_id: externalId } }),
+    });
+    return { externalId: res.data?.id };
   },
 };
 
@@ -110,6 +129,15 @@ export const linkedin: PlatformAdapter = {
     if (!res.ok) throw await errorFromResponse(postsUrl, res);
     const id = res.headers.get('x-restli-id') || '';
     return { externalId: id, url: `https://www.linkedin.com/feed/update/${id}` };
+  },
+  async comment({ account, externalId, text }) {
+    const url = `https://api.linkedin.com/rest/socialActions/${encodeURIComponent(externalId)}/comments`;
+    const res = await jsonFetch(url, {
+      method: 'POST',
+      headers: { authorization: `Bearer ${account.access_token}`, 'content-type': 'application/json', 'LinkedIn-Version': '202501', 'X-Restli-Protocol-Version': '2.0.0' },
+      body: JSON.stringify({ actor: `urn:li:person:${account.external_id}`, message: { text } }),
+    });
+    return { externalId: res?.id || res?.['$URN'] };
   },
 };
 
@@ -218,6 +246,10 @@ export const facebook: PlatformAdapter = {
     await sending?.();
     const res = await jsonFetch(`${GRAPH}/${pageId}/feed`, { method: 'POST', form: { message: caption, access_token: token } });
     return { externalId: res.id, url: `https://www.facebook.com/${res.id}` };
+  },
+  async comment({ account, externalId, text }) {
+    const res = await jsonFetch(`${GRAPH}/${encodeURIComponent(externalId)}/comments`, { method: 'POST', form: { message: text, access_token: account.access_token! } });
+    return { externalId: res?.id };
   },
 };
 
@@ -328,6 +360,10 @@ export const instagram: PlatformAdapter = {
     const info = await jsonFetch(`${GRAPH}/${pub.id}?fields=permalink&access_token=${encodeURIComponent(token)}`).catch(() => ({} as any));
     return { externalId: pub.id, url: info.permalink || (format === 'story' ? `https://www.instagram.com/stories/${account.username}/` : undefined) };
   },
+  async comment({ account, externalId, text }) {
+    const res = await jsonFetch(`${GRAPH}/${encodeURIComponent(externalId)}/comments`, { method: 'POST', form: { message: text, access_token: account.access_token! } });
+    return { externalId: res?.id };
+  },
 };
 
 /** Instagram media containers expire after 24 hours; older saved ones are made again. */
@@ -392,27 +428,51 @@ export const threads: PlatformAdapter = {
     const r = await jsonFetch('https://graph.threads.net/refresh_access_token?' + q({ grant_type: 'th_refresh_token', access_token: account.access_token! }));
     return { access_token: r.access_token, token_expires_at: Date.now() + Number(r.expires_in || 60 * 86400) * 1000 };
   },
-  async publish({ account, caption, media, sending }) {
+  async publish({ account, caption, media, sending, progress, save }) {
     const token = account.access_token!;
     const uid = account.external_id;
     const mk = async (params: Record<string, string>) =>
       (await jsonFetch(`${THREADS}/${uid}/threads`, { method: 'POST', form: { ...params, access_token: token } })).id as string;
-    let creationId: string;
-    if (!media.length) creationId = await mk({ media_type: 'TEXT', text: caption });
-    else if (media.length === 1) {
-      const m = media[0];
-      creationId = m.mime.startsWith('video/') ? await mk({ media_type: 'VIDEO', video_url: m.url, text: caption }) : await mk({ media_type: 'IMAGE', image_url: m.url, text: caption });
-    } else {
-      const children: string[] = [];
-      for (const m of media.slice(0, 10)) children.push(await mk(m.mime.startsWith('video/') ? { media_type: 'VIDEO', video_url: m.url, is_carousel_item: 'true' } : { media_type: 'IMAGE', image_url: m.url, is_carousel_item: 'true' }));
-      creationId = await mk({ media_type: 'CAROUSEL', children: children.join(','), text: caption });
+    const publishContainer = async (creationId: string) =>
+      (await jsonFetch(`${THREADS}/${uid}/threads_publish`, { method: 'POST', form: { creation_id: creationId, access_token: token } })).id as string;
+    const parts = threadParts(caption, 'threads');
+    // Parts an earlier attempt already posted (the run was cut off mid-thread) are not posted again.
+    const posted: string[] = Array.isArray(progress?.thread?.ids) ? [...progress.thread.ids] : [];
+    if (!posted.length) {
+      const text = parts[0];
+      let creationId: string;
+      if (!media.length) creationId = await mk({ media_type: 'TEXT', text });
+      else if (media.length === 1) {
+        const m = media[0];
+        creationId = m.mime.startsWith('video/') ? await mk({ media_type: 'VIDEO', video_url: m.url, text }) : await mk({ media_type: 'IMAGE', image_url: m.url, text });
+      } else {
+        const children: string[] = [];
+        for (const m of media.slice(0, 10)) children.push(await mk(m.mime.startsWith('video/') ? { media_type: 'VIDEO', video_url: m.url, is_carousel_item: 'true' } : { media_type: 'IMAGE', image_url: m.url, is_carousel_item: 'true' }));
+        creationId = await mk({ media_type: 'CAROUSEL', children: children.join(','), text });
+      }
+      await sleep(media.length ? 15000 : 2000);
+      await sending?.();
+      posted.push(await publishContainer(creationId));
+      if (parts.length > 1) await save?.({ thread: { ids: posted }, sending: null });
     }
-    await sleep(media.length ? 15000 : 2000);
-    await sending?.();
-    const pub = await jsonFetch(`${THREADS}/${uid}/threads_publish`, { method: 'POST', form: { creation_id: creationId, access_token: token } });
+    for (let i = posted.length; i < parts.length; i++) {
+      const creationId = await mk({ media_type: 'TEXT', text: parts[i], reply_to_id: posted[i - 1] });
+      await sleep(2000);
+      posted.push(await publishContainer(creationId));
+      await save?.({ thread: { ids: posted } });
+    }
+    const rootId = posted[0];
     // Published either way; a missing link must not turn it into a failure that would be sent again.
-    const info = await jsonFetch(`${THREADS}/${pub.id}?fields=permalink&access_token=${encodeURIComponent(token)}`).catch(() => ({} as any));
-    return { externalId: pub.id, url: info.permalink || `https://www.threads.net/@${account.username}` };
+    const info = await jsonFetch(`${THREADS}/${rootId}?fields=permalink&access_token=${encodeURIComponent(token)}`).catch(() => ({} as any));
+    return { externalId: rootId, url: info.permalink || `https://www.threads.net/@${account.username}` };
+  },
+  async comment({ account, externalId, text }) {
+    const token = account.access_token!;
+    const uid = account.external_id;
+    const made = await jsonFetch(`${THREADS}/${uid}/threads`, { method: 'POST', form: { media_type: 'TEXT', text, reply_to_id: externalId, access_token: token } });
+    await sleep(2000);
+    const pub = await jsonFetch(`${THREADS}/${uid}/threads_publish`, { method: 'POST', form: { creation_id: made.id, access_token: token } });
+    return { externalId: pub?.id };
   },
 };
 

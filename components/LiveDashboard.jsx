@@ -14,9 +14,16 @@ import ImageCropper from './dashboard/ImageCropper';
 import ConnectPicker from './dashboard/ConnectPicker';
 import React from 'react';
 import Base from './Dashboard';
+import { splitThread, THREAD_PLATFORMS } from '@/lib/server/thread';
 
 const P = Base.P;
 const PLATFORM_IDS = Object.keys(P);
+// First comment (hashtags, a link, a call to action) posted right after the post goes live. The
+// composer renders one text field per account for platforms that take it.
+for (const id of ['x', 'bluesky', 'instagram', 'linkedin', 'facebook', 'threads']) {
+  const p = P[id];
+  if (p && !(p.fields || []).some((f) => f.key === 'first_comment')) p.fields = [...(p.fields || []), { key: 'first_comment', label: 'First comment' }];
+}
 const kindOf = (mime) => (mime && mime.startsWith('video/') ? 'VIDEO' : 'IMG');
 const TONES = ['#8a6d4f', '#6e5a42', '#7a6148', '#4f3f2e', '#5d6b4a', '#5d4a36', '#3e4a55', '#7d7a5c'];
 const hashTone = (id) => TONES[Base.hash(id || '') % TONES.length];
@@ -120,6 +127,7 @@ function mapPost(sp, mediaById) {
       status: t.status === 'published' ? 'published' : t.status === 'failed' ? 'failed' : publishing ? 'pending' : status === 'draft' ? 'draft' : 'scheduled',
       error: t.status === 'failed' ? t.error || 'Failed' : '',
       url: t.external_url || '',
+      clicks: Number(t.stats?.clicks || 0),
     })),
     labels: sp.labels || [], repeat: sp.repeat || 'none', evergreen: !!sp.evergreen, approval: sp.approval || null,
     remind: sp.remind !== false, note: sp.note || '', batch: sp.batch || null,
@@ -131,6 +139,7 @@ function mapPost(sp, mediaById) {
 function adapterOptions(account, ui = {}) {
   const o = { ui };
   if (!account) return o;
+  if (typeof ui.first_comment === 'string' && ui.first_comment.trim()) o.first_comment = ui.first_comment.trim();
   if (account.platform === 'tiktok' && ui.privacy) o.privacy = TIKTOK_PRIVACY[ui.privacy] || ui.privacy;
   if (account.platform === 'youtube') { if (ui.title) o.title = ui.title; if (ui.privacy) o.privacy = ui.privacy; }
   if ((account.platform === 'instagram' || account.platform === 'facebook') && ui.format) o.format = String(ui.format).toLowerCase();
@@ -260,7 +269,7 @@ export default class LiveDashboard extends Base {
       members: d.members, wsId: d.workspace.id, wsList: d.workspaces, plan: d.workspace.plan, accountLimit: d.workspace.account_limit,
       platforms: Object.fromEntries(d.platforms.map((p) => [p.id, p])), storage: d.storage, billing: d.billing || null,
       tz, remind: prefs.remind || { on: true, lead: 60 }, alerts: prefs.alerts || { fail: true, digest: true },
-      slots: prefs.slots || [], slotDays: prefs.slotDays || [], paused: !!prefs.paused, labelList: prefs.labels || [],
+      slots: prefs.slots || [], slotDays: prefs.slotDays || [], paused: !!prefs.paused, labelList: prefs.labels || [], trackLinks: prefs.trackLinks === true,
       folders: prefs.folders || [], templates: prefs.templates || [], tagGroups: prefs.tagGroups || [], notes: prefs.notes || {}, accGroups: prefs.accountGroups || [],
     };
     // Pending invites (server field `invites`: [{ email, role }]). Older servers don't send it: ask the team API once.
@@ -849,6 +858,28 @@ export default class LiveDashboard extends Base {
       }
     }
 
+    // Threads: on X, Bluesky and Threads a caption split by `---` lines is several posts, each with
+    // the platform's limit. The counter says so, and the design's "over the limit" problem is lifted
+    // when every part fits.
+    const lifted = [];
+    for (const va of v.variants || []) {
+      const a = accBy((x) => x.id === va.id);
+      if (!a || !THREAD_PLATFORMS.has(a.platform)) continue;
+      const parts = splitThread(va.text || '');
+      if (parts.length < 2) continue;
+      const max = P[a.platform].max;
+      const longest = Math.max(...parts.map((x) => x.length));
+      va.countText = `${parts.length}-post thread · longest ${longest}/${max}`;
+      va.countColor = longest > max ? '#dc3545' : '#677184';
+      if (longest <= max) lifted.push(`Your ${P[a.platform].label} caption is ${(va.text || '').length - max} characters over the ${max.toLocaleString()} limit. Shorten it in the ${P[a.platform].label} tab.`);
+    }
+    if (lifted.length) {
+      v.problems = (v.problems || []).filter((m) => !lifted.includes(m));
+      v.hasProblems = v.problems.length > 0;
+      v.submitDisabled = d.targets.length === 0 || (v.hasProblems && d.mode !== 'draft');
+      v.submitOpacity = v.submitDisabled ? 0.45 : 1;
+    }
+
     // Composer media: real uploads.
     v.addImage = () => this.pickFiles('image/jpeg,image/png,image/gif,image/webp', true, (fs) => this.cropThenAdd(fs));
     v.mediaDrop = (e) => {
@@ -949,7 +980,13 @@ export default class LiveDashboard extends Base {
     }
 
     // Analytics: engagement isn't fetched from the platforms yet.
-    v.postStats = (v.postStats || []).map((r) => ({ ...r, imp: '—', eng: '—', clicks: '—', rate: '—', rateColor: '#677184' }));
+    // Impressions and engagement aren't fetched from the platforms yet. Clicks are real when link
+    // tracking is on (Automations → Link clicks): the same six posts the design lists, in its order.
+    const recent = s.posts.filter((p) => p.status === 'published' || p.status === 'partial').sort((a, b) => b.at - a.at).slice(0, 6);
+    v.postStats = (v.postStats || []).map((r, i) => {
+      const clicks = (recent[i]?.targets || []).reduce((n, t) => n + (t.clicks || 0), 0);
+      return { ...r, imp: '—', eng: '—', clicks: s.trackLinks ? clicks.toLocaleString('en-US') : '—', rate: '—', rateColor: '#677184' };
+    });
 
     // Calendar CSV with the real post URLs.
     v.exportCalCsv = () => {

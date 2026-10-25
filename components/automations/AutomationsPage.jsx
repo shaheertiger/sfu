@@ -57,6 +57,7 @@ export default function AutomationsPage() {
           </div>
         </div>
         <Signature initial={data.signature} canEdit={canEdit} />
+        <LinkClicks on={data.track_links} clicks={data.link_clicks} links={data.tracked_links} canEdit={canEdit} reload={load} />
         <Feeds feeds={data.feeds} accounts={data.accounts} canEdit={canEdit} reload={load} />
         <Webhooks hooks={data.webhooks} canEdit={canEdit} reload={load} />
         <section className={s.card}>
@@ -100,6 +101,42 @@ function Signature({ initial, canEdit }) {
         <div className={s.actions}>
           <button className={`${s.btn} ${s.btnDark}`} disabled={busy || value.trim() === saved} onClick={save}>{busy ? 'Saving…' : 'Save signature'}</button>
           <span className={s.meta}>{value.length}/500</span>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function LinkClicks({ on, clicks, links, canEdit, reload }) {
+  const [busy, setBusy] = useState(false);
+  const [msg, setMsg] = useState(['', '']);
+  const flip = async () => {
+    setBusy(true);
+    setMsg(['', '']);
+    try {
+      await api('/api/app/prefs', { method: 'PATCH', body: { prefs: { trackLinks: !on } } });
+      await reload();
+      setMsg(['ok', !on ? 'Link clicks are now counted on every post that publishes from here on.' : 'Link tracking turned off. Existing short links keep working.']);
+    } catch (e) {
+      setMsg(['err', e.message]);
+    } finally {
+      setBusy(false);
+    }
+  };
+  return (
+    <section className={s.card}>
+      <h2>Link clicks</h2>
+      <p className={s.help}>
+        When this is on, links in your captions and first comments are swapped for short links on scheduleforyou.com when the post publishes, and every click is counted. Analytics then shows real clicks per post. A link is only swapped when the short link is not longer than it.
+      </p>
+      <p className={s.meta}>{links} tracked link{links === 1 ? '' : 's'} · {clicks} click{clicks === 1 ? '' : 's'} so far</p>
+      {msg[0] === 'err' && <p className={s.error}>{msg[1]}</p>}
+      {msg[0] === 'ok' && <p className={s.notice}>{msg[1]}</p>}
+      {canEdit && (
+        <div className={s.actions}>
+          <label className={s.toggle}>
+            <input type="checkbox" checked={!!on} disabled={busy} onChange={flip} /> Count link clicks
+          </label>
         </div>
       )}
     </section>

@@ -11,6 +11,8 @@ import { withSignature } from './signature';
 import { overLimitAccountIds } from './accounts';
 import { PLATFORMS, type PlatformId } from './platforms';
 import { nextOccurrence, safeTz, zonedTime } from './tz';
+import { firstComment } from './thread';
+import { shortenLinks } from './links';
 
 export const MAX_ATTEMPTS = 3;
 /** How many times a target may wait for the platform to finish processing media (about 2 minutes apart). */
@@ -124,6 +126,8 @@ async function publishClaimed(postId: string) {
   const targets = await query('SELECT * FROM post_targets WHERE post_id=$1', [postId]);
   const media = await mediaFiles(post.workspace_id, post.media || []);
   const signature = post.signature === false ? '' : ((await one('SELECT signature FROM workspaces WHERE id=$1', [post.workspace_id]))?.signature || '').trim();
+  const prefs = (await one('SELECT name, prefs FROM workspaces WHERE id=$1', [post.workspace_id]))?.prefs || {};
+  const trackLinks = prefs.trackLinks === true;
 
   // Accounts past the plan's limit (e.g. after a downgrade) don't publish.
   const overLimit = await overLimitAccountIds(post.workspace_id);
@@ -166,9 +170,12 @@ async function publishClaimed(postId: string) {
         throw new PublishError("This account is paused because the workspace is over its plan's account limit. Upgrade or disconnect an account, then retry.", false);
       }
       account = await freshAccount(accRow);
+      const linkCtx = { workspaceId: post.workspace_id, postId: post.id, targetId: target.id };
+      let caption = withSignature(target.caption_override ?? post.caption, signature, account.platform);
+      if (trackLinks) caption = await shortenLinks(caption, linkCtx);
       const input: PublishInput = {
         account,
-        caption: withSignature(target.caption_override ?? post.caption, signature, account.platform),
+        caption,
         media,
         options: target.options || {},
         progress: { ...progress },
@@ -186,6 +193,10 @@ async function publishClaimed(postId: string) {
         : await adapterFor(account.platform).publish(input);
       await exec(`UPDATE post_targets SET status='published', external_id=$1, external_url=$2, error=NULL, published_at=$3, progress='{}'::jsonb WHERE id=$4`,
         [result.externalId, result.url ?? null, now(), target.id]);
+      // The first comment goes on after the post is recorded as published: the post is live either way,
+      // so a comment that fails is noted on the target but never fails or resends the post.
+      const comment = firstComment(target.options);
+      if (comment && !DRY_RUN) await addFirstComment(target.id, account, result.externalId, trackLinks ? await shortenLinks(comment, linkCtx) : comment);
     } catch (e: any) {
       const pe = e instanceof PublishError ? e : null;
       let msg = userFacingError(e);
@@ -239,6 +250,20 @@ async function publishClaimed(postId: string) {
   await notifyFailures(post, failures);
   if (status !== 'scheduled' && status !== 'draft') await firePostEvent(post.workspace_id, postId, `post.${status}`);
   return status;
+}
+
+/** Posts the first comment on a published target. Problems are recorded on the target, never thrown. */
+async function addFirstComment(targetId: string, account: SocialAccount, externalId: string, text: string) {
+  const adapter = adapterFor(account.platform);
+  if (!adapter.comment) return;
+  try {
+    await adapter.comment({ account, externalId, text });
+  } catch (e: any) {
+    const pe = e instanceof PublishError ? e : null;
+    const why = pe?.code === OUT_OF_TIME_CODE ? 'there was no time left in this publishing run' : userFacingError(e);
+    console.error(`[publish] first comment on ${targetId} failed:`, pe ? why : e);
+    await exec('UPDATE post_targets SET error=$1 WHERE id=$2', [`Published, but the first comment was not added: ${why}`, targetId]).catch(() => {});
+  }
 }
 
 /**

@@ -156,6 +156,12 @@ curl -H "Authorization: Bearer sfy_..." -H "Content-Type: application/json" \
 
 Owners, editors and API keys can change signature, webhooks and feeds; members can only read them.
 
+## Composer extras
+
+- **First comment:** every X, Bluesky, Threads, Instagram, Facebook and LinkedIn account in the composer has a "First comment" field (and the API takes `options.first_comment` on a target). It is posted by the same account right after the post goes live, which is where hashtags, links and calls to action usually go. A comment that fails never fails the post: the target stays published and its `error` says what happened.
+- **Threads:** on X, Bluesky and Threads a caption with a line holding only `---` is published as a thread. Each part becomes a reply to the one before, media goes on the first post, and each part has to fit the platform's limit (the composer counter shows "3-post thread · longest 262/280"). A run that is cut off mid-thread continues from the next part instead of posting the first ones again. Up to 25 parts.
+- **Link clicks** (Automations → Link clicks): when on, links in captions and first comments are swapped for short links on the app's domain (`/l/<code>`) as the post publishes, and each visit is counted. Analytics shows real clicks per post; the API returns `stats.clicks` per target and workspace totals in `GET /automations`. A link is only swapped when the short link is not longer than it, so a post can never grow past a character limit. Migration `011_links.sql`.
+
 ## Automations
 
 - **Signature:** added on its own paragraph when a post publishes; skipped if the post already contains it or it would exceed the platform's character limit.
