@@ -2096,6 +2096,8 @@ class Component extends DCLogic {
           label: kind,
           isVideo: false,
           video: '',
+          poster: '',
+          preload: 'metadata',
           labelBg: 'transparent',
           controls: false,
           pe: 'none',
@@ -3628,11 +3630,24 @@ class Component extends DCLogic {
           libBulkMove: (e) => {
             const v = e.target.value;
             if (!v) return;
+            const folder = v === '-' ? '' : v;
             this.setState((st) => ({
-              library: st.library.map((x) => (libSel.includes(x.id) ? { ...x, folder: v } : x)),
+              library: st.library.map((x) => (libSel.includes(x.id) ? { ...x, folder } : x)),
               libSel: [],
             }));
-            this.flash(`Moved ${libSel.length} files to ${v}`);
+            this.flash(
+              folder ? `Moved ${libSel.length} files to ${folder}` : `Took ${libSel.length} files out of their folders`,
+            );
+          },
+          libBulkDelete: () => {
+            if (
+              !confirm(
+                `Delete ${libSel.length} file${libSel.length === 1 ? '' : 's'}? Posts that use them keep publishing only if they have already gone out.`,
+              )
+            )
+              return;
+            this.setState((st) => ({ library: st.library.filter((x) => !libSel.includes(x.id)), libSel: [] }));
+            this.flash(`Deleted ${libSel.length} file${libSel.length === 1 ? '' : 's'}`);
           },
           hasPreviewMedia: !!S0.pvMediaId,
           closePreview: () => this.setState({ pvMediaId: null }),
@@ -3643,7 +3658,11 @@ class Component extends DCLogic {
                   name: m.name,
                   folder: m.folder,
                   thumb: thumb(m),
-                  badge: m.kind === 'VIDEO' ? '▶ VIDEO' : 'IMAGE',
+                  badge: m.kind === 'VIDEO' ? (m.videoUrl ? '' : '▶ VIDEO') : 'IMAGE',
+                  isVideo: !!m.videoUrl,
+                  video: m.videoUrl || '',
+                  poster: m.url || '',
+                  stop: (e) => e.stopPropagation(),
                   usage: m.usageLong || m.usage || '',
                   usageColor: m.usageColor || '#677184',
                   use: () =>
@@ -3653,7 +3672,19 @@ class Component extends DCLogic {
                       screen: 'compose',
                     }),
                 }
-              : { name: '', folder: '', thumb: '#ddd', badge: '', usage: '', usageColor: '#677184', use: () => {} };
+              : {
+                  name: '',
+                  folder: '',
+                  thumb: '#ddd',
+                  badge: '',
+                  isVideo: false,
+                  video: '',
+                  poster: '',
+                  stop: () => {},
+                  usage: '',
+                  usageColor: '#677184',
+                  use: () => {},
+                };
           })(),
           libCards: inFolder.map((m) => ({
             toggleSel: (e) => {
@@ -3670,8 +3701,8 @@ class Component extends DCLogic {
             preview: () => this.setState({ pvMediaId: m.id }),
             name: m.name,
             thumb: thumb(m),
-            isVideo: !!m.videoUrl,
-            video: m.videoUrl ? `${m.videoUrl}#t=0.1` : '',
+            isVideo: !!m.videoUrl && !m.url,
+            video: m.videoUrl && !m.url ? `${m.videoUrl}#t=0.1` : '',
             badge:
               m.kind === 'VIDEO'
                 ? S0.libView === 'list'

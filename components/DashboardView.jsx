@@ -4552,9 +4552,10 @@ export function renderDashboard($v) {
                                             <>
                                               <video
                                                 src={m?.video}
+                                                poster={m?.poster}
                                                 controls={m?.controls}
                                                 playsInline=""
-                                                preload="metadata"
+                                                preload={m?.preload}
                                                 style={{
                                                   position: 'absolute',
                                                   inset: '0',
@@ -6094,12 +6095,28 @@ export function renderDashboard($v) {
                             }}
                           >
                             <option value="">{'Choose folder'}</option>
+                            <option value="-">{'No folder'}</option>
                             {$arr($v['folderNames']).map((o, $index) => (
                               <Fragment key={$index}>
                                 <option value={$dv(o)}>{o}</option>
                               </Fragment>
                             ))}
                           </select>{' '}
+                          <button
+                            onClick={$v['libBulkDelete']}
+                            style={{
+                              padding: '5px 10px',
+                              borderRadius: '7px',
+                              border: '1px solid #5a2a2a',
+                              background: 'transparent',
+                              color: '#ffb4ab',
+                              cursor: 'pointer',
+                              fontWeight: '600',
+                              fontSize: '12px',
+                            }}
+                          >
+                            {'Delete'}
+                          </button>{' '}
                           <button
                             onClick={$v['libClearSel']}
                             style={{
@@ -6218,9 +6235,6 @@ export function renderDashboard($v) {
                                 </>
                               ) : null}
                               <span style={{ position: 'relative' }}>{$t(m?.badge)}</span>
-                              <span style={{ position: 'relative', display: `${$v['libUsedThumb'] ?? ''}` }}>
-                                {$t(m?.used)}
-                              </span>
                             </div>{' '}
                             <div style={{ padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                               {' '}
@@ -6254,6 +6268,7 @@ export function renderDashboard($v) {
                                     fontSize: '12px',
                                   }}
                                 >
+                                  <option value="">{'No folder'}</option>
                                   {$arr($v['folderNames']).map((o, $index) => (
                                     <Fragment key={$index}>
                                       <option value={$dv(o)}>{o}</option>
@@ -7902,7 +7917,9 @@ export function renderDashboard($v) {
             >
               {' '}
               <div
+                onClick={$v['pvMedia']?.stop}
                 style={{
+                  position: 'relative',
                   aspectRatio: '16/10',
                   background: `${$v['pvMedia']?.thumb ?? ''}`,
                   display: 'flex',
@@ -7912,7 +7929,26 @@ export function renderDashboard($v) {
                   font: "600 12px 'Geist Mono',monospace",
                 }}
               >
-                {$t($v['pvMedia']?.badge)}
+                {$v['pvMedia']?.isVideo ? (
+                  <>
+                    <video
+                      src={$v['pvMedia']?.video}
+                      poster={$v['pvMedia']?.poster}
+                      controls={true}
+                      playsInline=""
+                      preload="metadata"
+                      style={{
+                        position: 'absolute',
+                        inset: '0',
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'contain',
+                        background: '#000',
+                      }}
+                    />
+                  </>
+                ) : null}
+                <span style={{ position: 'relative' }}>{$t($v['pvMedia']?.badge)}</span>
               </div>{' '}
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '14px 16px' }}>
                 {' '}

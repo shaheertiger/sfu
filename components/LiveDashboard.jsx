@@ -75,6 +75,47 @@ function videoFrame(file, { width = 256, timeoutMs = 8000 } = {}) {
     v.src = url;
   });
 }
+/** A data URL from videoFrame() as a JPEG Blob, or null. */
+async function posterBlob(dataUrl) {
+  if (!dataUrl || !dataUrl.startsWith('data:image/jpeg')) return null;
+  try {
+    const blob = await (await fetch(dataUrl)).blob();
+    return blob.size > 0 && blob.size <= 2_000_000 ? blob : null;
+  } catch {
+    return null;
+  }
+}
+/**
+ * A still from a video that is already in storage (for videos uploaded before posters existed).
+ * Needs the bucket to allow cross-origin reads; when it doesn't, the canvas is tainted and this gives null.
+ */
+function posterFromUrl(url, { width = 640, timeoutMs = 20000 } = {}) {
+  return new Promise((resolve) => {
+    const v = document.createElement('video');
+    let settled = false;
+    const done = (out) => { if (settled) return; settled = true; clearTimeout(timer); v.removeAttribute('src'); resolve(out); };
+    const timer = setTimeout(() => done(null), timeoutMs);
+    v.crossOrigin = 'anonymous';
+    v.muted = true;
+    v.playsInline = true;
+    v.preload = 'auto';
+    v.onerror = () => done(null);
+    v.onloadedmetadata = () => { try { v.currentTime = Math.min(0.5, Math.max(0.05, (v.duration || 1) / 10)); } catch { done(null); } };
+    v.onseeked = () => {
+      try {
+        const h = Math.max(1, Math.round(((v.videoHeight || 1) / (v.videoWidth || 1)) * width));
+        const c = document.createElement('canvas');
+        c.width = width;
+        c.height = h;
+        c.getContext('2d').drawImage(v, 0, 0, width, h);
+        c.toBlob((b) => done(b && b.size <= 2_000_000 ? b : null), 'image/jpeg', 0.82);
+      } catch {
+        done(null);
+      }
+    };
+    v.src = url;
+  });
+}
 /** Platforms whose access tokens renew on their own (used when the server doesn't say `has_refresh`). */
 const AUTO_REFRESH = new Set(['x', 'youtube', 'google_business', 'tiktok', 'pinterest', 'threads', 'facebook', 'instagram']);
 /** How long a deleted post waits before it's deleted on the server: the toast's Undo window (6 s) plus a margin. */
@@ -158,9 +199,12 @@ function mapAccount(a) {
  */
 function mapMedia(m, usage = {}, ctx = {}) {
   const u = usage[m.id] || null;
-  // Cards, tiles and queue previews use the small cached thumbnail; the preview dialog loads the full image over it.
+  // Cards, tiles and queue previews use the small cached thumbnail (for a video, its poster still); the
+  // preview dialog loads the full image over it, or plays the video. A video without a poster yet keeps
+  // the <video> thumbnail until backfillPosters() makes one.
   const image = m.mime.startsWith('image/');
-  return withUsage({ id: m.id, name: m.filename, mime: m.mime, kind: kindOf(m.mime), tone: hashTone(m.id), folder: m.folder || '', used: u ? u.posts + u.drafts : 0, u, url: image ? m.thumb_url || m.url : '', fullUrl: image ? m.url : '', videoUrl: m.mime.startsWith('video/') ? m.url : '' }, ctx);
+  const video = m.mime.startsWith('video/');
+  return withUsage({ id: m.id, name: m.filename, mime: m.mime, kind: kindOf(m.mime), tone: hashTone(m.id), folder: m.folder || '', used: u ? u.posts + u.drafts : 0, u, url: image ? m.thumb_url || m.url : video && m.thumb_url ? m.thumb_url : '', fullUrl: image ? m.url : '', videoUrl: video ? m.url : '', poster: !!m.poster }, ctx);
 }
 function withUsage(item, ctx) {
   const st = mediaState(item.u, { cooldownDays: ctx.cooldownDays, platforms: ctx.platforms || [], labels: PLATFORM_LABELS });
@@ -238,7 +282,7 @@ export default class LiveDashboard extends Base {
   /* ---------- lifecycle ---------- */
   componentDidMount() {
     super.componentDidMount();
-    this.load(true);
+    this.load(true).then(() => this.backfillPosters());
     // Keyboard shortcuts: N new post, Ctrl/Cmd+Enter submit the composer, Esc leave the composer.
     // One key handler: the base class's would also open a new post on N.
     window.removeEventListener('keydown', this._key);
@@ -725,12 +769,43 @@ export default class LiveDashboard extends Base {
   }
 
   /* ---------- uploads ---------- */
+  /**
+   * Videos uploaded before posters existed get one made in this browser, one at a time, so from the
+   * next load on they show a still instead of loading the video. Stops at the first failure (usually
+   * a bucket that doesn't allow cross-origin reads) rather than downloading every video for nothing.
+   */
+  async backfillPosters() {
+    if (this._backfilling) return;
+    this._backfilling = true;
+    try {
+      const todo = (this.state.library || []).filter((m) => m.videoUrl && !m.poster && !m.url);
+      for (const m of todo) {
+        const blob = await posterFromUrl(m.videoUrl);
+        if (!blob) return;
+        const r = await api(`/api/v1/media/${m.id}`, { method: 'PATCH', body: { poster_size: blob.size } });
+        if (!r.poster_upload_url) return;
+        await putWithProgress(r.poster_upload_url, blob, null);
+        const done = await api(`/api/v1/media/${m.id}`, { method: 'PATCH', body: { poster: true } });
+        const fresh = mapMedia(done.media, {}, usageCtx(this.state));
+        super.setState((st) => ({ library: st.library.map((x) => (x.id === m.id ? { ...x, url: fresh.url, poster: true } : x)) }));
+      }
+    } catch {
+      /* best effort */
+    } finally {
+      this._backfilling = false;
+    }
+  }
+
   async upload(file, folder = null, onProgress = null) {
     if (!this.state.storage) throw new Error("Media storage isn't available right now. Try again later.");
-    const r = await api('/api/v1/media', { method: 'POST', body: { filename: file.name, mime: file.type, size: file.size, folder } });
+    // Videos bring a JPEG still along, so the library never has to load the video to show a thumbnail.
+    const poster = file.type.startsWith('video/') ? await posterBlob(await videoFrame(file, { width: 640 })) : null;
+    const r = await api('/api/v1/media', { method: 'POST', body: { filename: file.name, mime: file.type, size: file.size, folder, ...(poster ? { poster_size: poster.size } : {}) } });
     await putWithProgress(r.upload_url, file, onProgress);
-    const done = await api(`/api/v1/media/${r.id}`, { method: 'PATCH', body: { uploaded: true } });
-    const item = mapMedia(done.media);
+    let withPoster = false;
+    if (poster && r.poster_upload_url) withPoster = await putWithProgress(r.poster_upload_url, poster, null).then(() => true, () => false);
+    const done = await api(`/api/v1/media/${r.id}`, { method: 'PATCH', body: { uploaded: true, ...(withPoster ? { poster: true } : {}) } });
+    const item = mapMedia(done.media, {}, usageCtx(this.state));
     this._libKey = JSON.stringify([[item.id, item.folder], ...JSON.parse(this._libKey || '[]')]);
     super.setState((st) => ({ library: [item, ...st.library] }));
     return done.media;
@@ -971,10 +1046,13 @@ export default class LiveDashboard extends Base {
     const libById = new Map((s.library || []).map((m) => [m.id, m]));
     const look = (kind, i, ids = d.mediaIds) => {
       const m = libById.get((ids || [])[i]);
-      const none = { isVideo: false, video: '', labelBg: 'transparent' };
-      if (m?.url) return { ...none, bg: `#2a2e34 url("${String(m.url).replace(/["\\\n]/g, encodeURIComponent)}") center/cover no-repeat`, label: '' };
-      // Videos show their first frame (#t=0.1 makes Safari render one) with a play badge.
-      if (m?.videoUrl) return { bg: '#1d2025', label: '▶', isVideo: true, video: `${m.videoUrl}#t=0.5`, labelBg: 'rgba(0,0,0,.5)' };
+      const none = { isVideo: false, video: '', labelBg: 'transparent', poster: '', preload: 'metadata' };
+      const css = (u) => `#2a2e34 url("${String(u).replace(/["\\\n]/g, encodeURIComponent)}") center/cover no-repeat`;
+      // A video with a poster still shows the still (no video bytes); the preview can still play it.
+      if (m?.url && m.videoUrl) return { ...none, bg: css(m.url), label: '▶', labelBg: 'rgba(0,0,0,.5)', play: m.videoUrl, poster: m.url };
+      if (m?.url) return { ...none, bg: css(m.url), label: '' };
+      // Videos without a still show their first frame (#t=0.1 makes Safari render one) with a play badge.
+      if (m?.videoUrl) return { ...none, bg: '#1d2025', label: '▶', isVideo: true, video: `${m.videoUrl}#t=0.5`, labelBg: 'rgba(0,0,0,.5)' };
       return { ...none, bg: 'linear-gradient(160deg,#9a7a58,#5d4a36)', label: kind === 'VIDEO' ? '▶ VIDEO' : kind };
     };
     v.mediaTiles = d.media.map((kind, i) => ({ kind, ...look(kind, i), remove: () => this.upd({ media: d.media.filter((_, j) => j !== i), mediaIds: (d.mediaIds || []).filter((_, j) => j !== i) }) }));
@@ -985,7 +1063,7 @@ export default class LiveDashboard extends Base {
     }
     if ((s.uploads || []).length) v.hasMedia = true;
     // The preview plays videos (with controls); the composer tiles stay still thumbnails.
-    if (v.pv) v.pv.media = d.media.slice(0, v.pv.media.length || 4).map((kind, i) => { const t = look(kind, i); return t.isVideo ? { ...t, label: '', labelBg: 'transparent', controls: true, pe: 'auto' } : { ...t, controls: false, pe: 'none' }; });
+    if (v.pv) v.pv.media = d.media.slice(0, v.pv.media.length || 4).map((kind, i) => { const t = look(kind, i); return t.isVideo || t.play ? { ...t, isVideo: true, video: t.play || t.video, preload: t.play ? 'none' : 'metadata', label: '', labelBg: 'transparent', controls: true, pe: 'auto' } : { ...t, controls: false, pe: 'none' }; });
     // Realistic preview (Instagram/Facebook feed, Reels, Stories) in place of the generic card.
     {
       const sel = s.accounts.filter((a) => d.targets.includes(a.id));
@@ -1052,9 +1130,21 @@ export default class LiveDashboard extends Base {
       const fl = [...(e.target.files || [])];
       e.target.value = '';
       if (!fl.length) return;
-      const folder = s.folder === 'All' ? s.folders[0] || null : s.folder;
+      // From "All", files land in the library itself, not silently in the first folder.
+      const folder = s.folder === 'All' ? null : s.folder;
       this.flash(`Uploading ${fl.length} file${fl.length === 1 ? '' : 's'}…`);
       Promise.all(fl.map((f) => this.upload(f, folder))).then(() => this.flash(`Uploaded ${fl.length} file${fl.length === 1 ? '' : 's'}${folder ? ' to ' + folder : ''}`)).catch((err) => this.flash(err.message, true));
+    };
+    v.folderName = s.folder === 'All' || !s.folder ? 'library' : s.folder;
+    // Deleting selected files removes them from storage too; posts that already published keep their copies on the platforms.
+    v.libBulkDelete = () => {
+      const ids = s.libSel || [];
+      if (!ids.length) return;
+      const inPosts = s.posts.filter((p) => ['scheduled', 'draft'].includes(p.status) && (p.mediaIds || []).some((id) => ids.includes(id))).length;
+      const warn = inPosts ? ` ${inPosts} scheduled or draft post${inPosts === 1 ? ' uses' : 's use'} them and would publish without media.` : '';
+      if (!confirm(`Delete ${ids.length} file${ids.length === 1 ? '' : 's'} from the library and storage?${warn}`)) return;
+      super.setState((st) => ({ library: st.library.filter((x) => !ids.includes(x.id)), libSel: [] }));
+      Promise.all(ids.map((id) => api(`/api/v1/media/${id}`, { method: 'DELETE' }))).then(() => this.flash(`Deleted ${ids.length} file${ids.length === 1 ? '' : 's'}`)).catch((e) => { this.flash(e.message, true); this.load(false); });
     };
     const tally = { unused: 0, recent: 0, rested: 0 };
     for (const m of s.library) tally[m.state || 'unused']++;
