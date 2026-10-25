@@ -7,6 +7,7 @@ import { overLimitAccountIds } from './accounts';
 import { facebookMixProblem, metaFormat, metaFormatProblem, nonJpegImages } from './meta-format';
 import { getBytes, readUrl } from './storage';
 import { PLATFORMS, type PlatformId } from './platforms';
+import { COMMENT_PLATFORMS, MAX_THREAD_PARTS, commentLimit, firstComment, threadParts } from './thread';
 import type { MediaFile, SocialAccount } from './adapters/types';
 
 export type TargetInput = { account_id: string; caption?: string | null; options?: Record<string, any> };
@@ -194,7 +195,17 @@ export async function validatePost(workspaceId: string, input: PostInput) {
     }
     if (over.has(acc.id)) errors.push(`${p.label} (@${acc.username}) is paused because the workspace is over its plan's account limit. Upgrade or disconnect an account.`);
     const text = t.caption ?? input.caption ?? '';
-    if (text.length > p.maxChars) errors.push(`${p.label} (@${acc.username}): ${text.length}/${p.maxChars} characters`);
+    // On X, Bluesky and Threads a caption split by `---` lines is a thread: each part has the limit.
+    const parts = threadParts(text, acc.platform);
+    if (parts.length > MAX_THREAD_PARTS) errors.push(`${p.label} (@${acc.username}): a thread can have up to ${MAX_THREAD_PARTS} posts (this one has ${parts.length})`);
+    else if (parts.length > 1) {
+      parts.forEach((part, i) => { if (part.length > p.maxChars) errors.push(`${p.label} (@${acc.username}): part ${i + 1} of the thread is ${part.length}/${p.maxChars} characters`); });
+    } else if (text.length > p.maxChars) errors.push(`${p.label} (@${acc.username}): ${text.length}/${p.maxChars} characters`);
+    const comment = firstComment(t.options);
+    if (comment) {
+      if (!COMMENT_PLATFORMS.has(acc.platform)) errors.push(`${p.label} (@${acc.username}) cannot post a first comment`);
+      else if (comment.length > commentLimit(acc.platform)) errors.push(`${p.label} (@${acc.username}): first comment ${comment.length}/${commentLimit(acc.platform)} characters`);
+    }
     if (p.requiresMedia === 'any' && !media.length) errors.push(`${p.label} needs an image or video`);
     if (p.requiresMedia === 'image' && !hasImg) errors.push(`${p.label} needs an image`);
     if (p.requiresMedia === 'video' && !hasVid) errors.push(`${p.label} needs a video`);

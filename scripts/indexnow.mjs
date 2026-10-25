@@ -12,12 +12,16 @@ if (fs.existsSync(envFile)) {
     if (m && process.env[m[1]] === undefined) process.env[m[1]] = m[2].replace(/^["']|["']$/g, '');
   }
 }
-const key = process.env.INDEXNOW_KEY;
 const base = (process.env.APP_URL || 'https://scheduleforyou.com').replace(/\/$/, '');
+// The key: INDEXNOW_KEY, or the key file committed to public/<key>.txt (IndexNow's standard location).
+const pub = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'public');
+const committed = fs.readdirSync(pub).map((f) => /^([a-f0-9]{16,64})\.txt$/i.exec(f)?.[1]).find(Boolean);
+const key = process.env.INDEXNOW_KEY || committed;
 if (!key) {
-  console.error('INDEXNOW_KEY is not set. Generate one (openssl rand -hex 16), add it to the environment, deploy, then run this again.');
+  console.error('No IndexNow key: set INDEXNOW_KEY or add public/<key>.txt (openssl rand -hex 16), deploy, then run this again.');
   process.exit(1);
 }
+const keyLocation = committed === key ? `${base}/${key}.txt` : `${base}/indexnow-key.txt`;
 async function sitemapUrls() {
   const res = await fetch(`${base}/sitemap.xml`);
   if (!res.ok) return [`${base}/`, `${base}/signup`];
@@ -27,7 +31,7 @@ const urls = process.argv.slice(2).length ? process.argv.slice(2) : await sitema
 const res = await fetch('https://api.indexnow.org/indexnow', {
   method: 'POST',
   headers: { 'content-type': 'application/json; charset=utf-8' },
-  body: JSON.stringify({ host: new URL(base).host, key, keyLocation: `${base}/indexnow-key.txt`, urlList: urls }),
+  body: JSON.stringify({ host: new URL(base).host, key, keyLocation, urlList: urls }),
 });
 // 200 = accepted, 202 = accepted and the key will be checked shortly.
 console.log(`IndexNow answered ${res.status} for ${urls.length} URL${urls.length === 1 ? '' : 's'}`);

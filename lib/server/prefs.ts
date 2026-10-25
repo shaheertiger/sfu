@@ -34,6 +34,8 @@ const PREF_FIELDS = {
     return out;
   }),
   tzSet: z.boolean(),
+  /** Swap links in captions and first comments for short links that count clicks (Analytics). */
+  trackLinks: z.boolean(),
   /** Saved sets of accounts the composer can select in one click. */
   accountGroups: list(z.object({ id: clip(40), name: clip(40), ids: list(z.string().max(64), 200) }), 50),
 } as const;

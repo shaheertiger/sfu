@@ -45,6 +45,9 @@ export type PublishInput = {
 
 export type PublishResult = { externalId: string; url?: string };
 
+/** A comment to post on something this account just published (its `externalId` from PublishResult). */
+export type CommentInput = { account: SocialAccount; externalId: string; text: string };
+
 export type ConnectedAccountFields = {
   external_id: string;
   username: string;
@@ -67,6 +70,8 @@ export interface PlatformAdapter {
   /** Refresh an expired token; returns updated token fields */
   refresh?(account: SocialAccount): Promise<Partial<ConnectedAccountFields>>;
   publish(input: PublishInput): Promise<PublishResult>;
+  /** Posts a comment (a reply) on a published post. Used for the "first comment" option. */
+  comment?(input: CommentInput): Promise<{ externalId?: string }>;
 }
 
 export type PublishErrorInfo = {
