@@ -58,6 +58,7 @@ export default function AutomationsPage() {
         </div>
         <Signature initial={data.signature} canEdit={canEdit} />
         <LinkClicks on={data.track_links} clicks={data.link_clicks} links={data.tracked_links} canEdit={canEdit} reload={load} />
+        <DefaultComments accounts={data.accounts} canEdit={canEdit} reload={load} />
         <Feeds feeds={data.feeds} accounts={data.accounts} canEdit={canEdit} reload={load} />
         <Webhooks hooks={data.webhooks} canEdit={canEdit} reload={load} />
         <section className={s.card}>
@@ -103,6 +104,53 @@ function Signature({ initial, canEdit }) {
           <span className={s.meta}>{value.length}/500</span>
         </div>
       )}
+    </section>
+  );
+}
+
+const COMMENT_PLATFORMS = ['x', 'bluesky', 'threads', 'instagram', 'facebook', 'linkedin'];
+
+function DefaultComments({ accounts, canEdit, reload }) {
+  const list = accounts.filter((a) => COMMENT_PLATFORMS.includes(a.platform));
+  const [values, setValues] = useState(() => Object.fromEntries(list.map((a) => [a.id, a.default_first_comment || ''])));
+  const [busy, setBusy] = useState('');
+  const [msg, setMsg] = useState(['', '']);
+  useEffect(() => { setValues(Object.fromEntries(list.map((a) => [a.id, a.default_first_comment || '']))); }, [accounts]); // eslint-disable-line react-hooks/exhaustive-deps
+  const save = async (a) => {
+    setBusy(a.id);
+    setMsg(['', '']);
+    try {
+      const text = (values[a.id] || '').trim();
+      await api(`/api/v1/accounts/${a.id}`, { method: 'PATCH', body: { default_first_comment: text || null } });
+      await reload();
+      setMsg(['ok', text ? `Saved. Every post to @${a.username || a.display_name} without its own first comment gets this one.` : `Removed the default first comment for @${a.username || a.display_name}.`]);
+    } catch (e) {
+      setMsg(['err', e.message]);
+    } finally {
+      setBusy('');
+    }
+  };
+  return (
+    <section className={s.card}>
+      <h2>Default first comments</h2>
+      <p className={s.help}>
+        Your hashtag set or standing link, posted under every post to the account right after it goes live, unless the post has a first comment of its own in the composer. Type a single <b>-</b> as a post&apos;s first comment to skip the default for that post.
+      </p>
+      {list.length === 0 && <p className={s.empty}>Connect an X, Bluesky, Threads, Instagram, Facebook or LinkedIn account first.</p>}
+      {list.map((a) => (
+        <div key={a.id} className={s.row}>
+          <strong>{PLATFORM[a.platform] || a.platform} · @{a.username || a.display_name || '?'}</strong>
+          <textarea className={s.textarea} rows={2} value={values[a.id] || ''} maxLength={2200} disabled={!canEdit} onChange={(e) => setValues((v) => ({ ...v, [a.id]: e.target.value }))} placeholder={a.platform === 'instagram' ? '#yourbrand #yourcity #whatyoudo' : 'e.g. Full story: https://yoursite.com/blog'} />
+          {canEdit && (
+            <div className={s.actions}>
+              <button className={`${s.btn} ${s.btnDark}`} disabled={busy === a.id || (values[a.id] || '').trim() === (a.default_first_comment || '')} onClick={() => save(a)}>{busy === a.id ? 'Saving…' : 'Save'}</button>
+              <span className={s.meta}>{(values[a.id] || '').length} characters</span>
+            </div>
+          )}
+        </div>
+      ))}
+      {msg[0] === 'err' && <p className={s.error}>{msg[1]}</p>}
+      {msg[0] === 'ok' && <p className={s.notice}>{msg[1]}</p>}
     </section>
   );
 }
@@ -239,6 +287,7 @@ function Feeds({ feeds, accounts, canEdit, reload }) {
 function Webhooks({ hooks, canEdit, reload }) {
   const [url, setUrl] = useState('');
   const [events, setEvents] = useState(EVENTS.map((e) => e[0]));
+  const [format, setFormat] = useState('json');
   const [created, setCreated] = useState(null);
   const [busy, setBusy] = useState('');
   const [msg, setMsg] = useState(['', '']);
@@ -257,7 +306,7 @@ function Webhooks({ hooks, canEdit, reload }) {
     }
   };
   const add = async () => {
-    const r = await run('add', () => api('/api/v1/webhooks', { method: 'POST', body: { url: url.trim(), events } }));
+    const r = await run('add', () => api('/api/v1/webhooks', { method: 'POST', body: { url: url.trim(), events, format } }));
     if (r?.webhook) {
       setCreated(r.webhook);
       setUrl('');
@@ -267,7 +316,7 @@ function Webhooks({ hooks, canEdit, reload }) {
   return (
     <section className={s.card}>
       <h2>Webhooks</h2>
-      <p className={s.help}>Send post results to Zapier, Make, n8n or your own server. Each event is a JSON POST, signed so you can check it came from us.</p>
+      <p className={s.help}>Send post results to Slack, Discord, Zapier, Make, n8n or your own server. For Slack or Discord, paste an incoming webhook URL and pick that format: you get a readable message with links. Other endpoints get a signed JSON POST.</p>
       {hooks.length === 0 && <p className={s.empty}>No webhooks yet.</p>}
       {hooks.map((h) => (
         <div key={h.id} className={s.row}>
@@ -286,7 +335,7 @@ function Webhooks({ hooks, canEdit, reload }) {
             )}
           </div>
           <span className={s.meta}>
-            {h.events.map((e) => EVENTS.find((x) => x[0] === e)?.[1] || e).join(', ')} · last delivery {ago(h.last_sent_at)}
+            {{ slack: 'Slack message', discord: 'Discord message', json: 'Signed JSON' }[h.format] || 'Signed JSON'} · {h.events.map((e) => EVENTS.find((x) => x[0] === e)?.[1] || e).join(', ')} · last delivery {ago(h.last_sent_at)}
           </span>
           {h.last_sent_at && (h.last_error ? <span className={s.bad}>Last delivery failed: {h.last_error}</span> : <span className={s.good}>Last delivery OK (HTTP {h.last_status})</span>)}
         </div>
@@ -306,7 +355,15 @@ function Webhooks({ hooks, canEdit, reload }) {
         <div className={s.form}>
           <label>
             <span>Endpoint URL</span>
-            <input className={s.input} value={url} onChange={(e) => setUrl(e.target.value)} placeholder="https://hooks.zapier.com/…" inputMode="url" />
+            <input className={s.input} value={url} onChange={(e) => setUrl(e.target.value)} placeholder="https://hooks.slack.com/services/… or https://hooks.zapier.com/…" inputMode="url" />
+          </label>
+          <label>
+            <span>Send as</span>
+            <select className={s.select} value={format} onChange={(e) => setFormat(e.target.value)}>
+              <option value="json">Signed JSON (Zapier, Make, n8n, your server)</option>
+              <option value="slack">Slack message</option>
+              <option value="discord">Discord message</option>
+            </select>
           </label>
           <div className={s.chips}>
             {EVENTS.map(([id, label]) => (

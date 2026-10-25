@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { refreshExpiringTokens, runDue } from '@/lib/server/publisher';
-import { sendDigests, sendReminders } from '@/lib/server/notify';
+import { sendDigests, sendReconnectAlerts, sendReminders } from '@/lib/server/notify';
 import { pollFeeds } from '@/lib/server/rss';
 import { exec, now } from '@/lib/server/db';
 
@@ -28,9 +28,10 @@ export async function GET(req: Request) {
   // Emails run after publishing so a slow email provider never delays posts.
   const reminders = await sendReminders().catch((e) => (console.error('[cron] reminders', e), 0));
   const digests = await sendDigests().catch((e) => (console.error('[cron] digests', e), 0));
+  const reconnects = await sendReconnectAlerts().catch((e) => (console.error('[cron] reconnect alerts', e), 0));
   const rss = await pollFeeds({ deadline }).catch((e) => (console.error('[cron] rss', e), 0));
   await cleanup().catch((e) => console.error('[cron] cleanup', e));
-  return NextResponse.json({ ...result, tokens, reminders, digests, rss, ms: now() - started });
+  return NextResponse.json({ ...result, tokens, reminders, digests, reconnects, rss, ms: now() - started });
 }
 
 /** Rows that outlived their purpose: uploads that never finished and OAuth handshakes that were abandoned. */

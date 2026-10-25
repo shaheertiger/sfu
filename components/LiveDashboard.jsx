@@ -980,6 +980,40 @@ export default class LiveDashboard extends Base {
     }
 
     // Analytics: engagement isn't fetched from the platforms yet.
+    // Queue runway: a frequent poster wants to know before the queue runs dry, not after.
+    // Counts the open posting slots in the next 7 days and the last scheduled post.
+    if (s.screen === 'home' && (s.slots || []).length && (s.slotDays || []).length) {
+      const weekEnd = Date.now() + 7 * 864e5;
+      const openSlots = this.nextSlots(60).filter((ms) => ms <= weekEnd);
+      const future = s.posts.filter((p) => p.status === 'scheduled' && p.at && p.at > Date.now()).map((p) => p.at).sort((a, b) => a - b);
+      const lastAt = future.length ? future[future.length - 1] : null;
+      const thisWeek = future.filter((at) => at <= weekEnd).length;
+      if (openSlots.length >= 2 && (!lastAt || lastAt < weekEnd)) {
+        const item = {
+          icon: '◷',
+          iconBg: '#e8f1ff',
+          iconFg: '#1d4ed8',
+          title: lastAt ? `Queue runs dry after ${this.dayLabel(lastAt)}` : 'Nothing scheduled for the next 7 days',
+          when: '',
+          body: `${openSlots.length} open slot${openSlots.length === 1 ? '' : 's'} this week, the next ${this.slotLabel(openSlots[0])}. ${thisWeek} post${thisWeek === 1 ? '' : 's'} scheduled. Add a few now and the queue places them for you.`,
+          actions: [
+            { label: 'Add to queue', go: () => { this.newPost(); this.upd({ mode: 'queue' }); }, bg: '#141619', color: '#fff', border: '#141619' },
+            { label: 'Open calendar', go: () => super.setState({ screen: 'calendar', calView: 'week', weekStart: this.wsMonday() }), bg: '#fff', color: '#141619', border: '#e7e5df' },
+          ],
+        };
+        v.attention = [...(v.attention || []), item];
+        v.attentionShown = s.allIssues ? v.attention : v.attention.slice(0, 3);
+        v.hasMoreIssues = v.attention.length > 3;
+        v.issuesLabel = s.allIssues ? 'Show fewer' : `View all ${v.attention.length} issues`;
+        v.attnEmpty = false;
+        v.attnCount = `${v.attention.length} item${v.attention.length === 1 ? '' : 's'}`;
+        const n = v.attention.length;
+        v.needText = `${n} item${n === 1 ? '' : 's'} that need attention`;
+        v.needColor = '#a1281f';
+        v.needBg = 'linear-gradient(transparent 62%,#fdd9d5 62%)';
+      }
+    }
+
     // Impressions and engagement aren't fetched from the platforms yet. Clicks are real when link
     // tracking is on (Automations → Link clicks): the same six posts the design lists, in its order.
     const recent = s.posts.filter((p) => p.status === 'published' || p.status === 'partial').sort((a, b) => b.at - a.at).slice(0, 6);

@@ -195,7 +195,7 @@ async function publishClaimed(postId: string) {
         [result.externalId, result.url ?? null, now(), target.id]);
       // The first comment goes on after the post is recorded as published: the post is live either way,
       // so a comment that fails is noted on the target but never fails or resends the post.
-      const comment = firstComment(target.options);
+      const comment = commentFor(target.options, account);
       if (comment && !DRY_RUN) await addFirstComment(target.id, account, result.externalId, trackLinks ? await shortenLinks(comment, linkCtx) : comment);
     } catch (e: any) {
       const pe = e instanceof PublishError ? e : null;
@@ -250,6 +250,19 @@ async function publishClaimed(postId: string) {
   await notifyFailures(post, failures);
   if (status !== 'scheduled' && status !== 'draft') await firePostEvent(post.workspace_id, postId, `post.${status}`);
   return status;
+}
+
+/**
+ * The first comment for a target: its own, else the account's default (set in Automations). A post
+ * can skip the default with `first_comment: false` (API) or a comment of just `-` (composer).
+ */
+export function commentFor(options: Record<string, any> | null | undefined, account: { meta?: Record<string, any> | null }): string | null {
+  const own = options?.first_comment;
+  if (own === false || (typeof own === 'string' && own.trim() === '-')) return null;
+  const set = firstComment(options);
+  if (set) return set;
+  const def = account.meta?.default_first_comment;
+  return typeof def === 'string' && def.trim() ? def.trim() : null;
 }
 
 /** Posts the first comment on a published target. Problems are recorded on the target, never thrown. */
