@@ -1,10 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { markdownTarget } from '@/lib/md/negotiate';
 
 // Signed-out visitors to the dashboard go to /login (and come back afterwards via ?next=).
 // Neon Auth's middleware also refreshes the session cookie. Real checks happen in the API.
 let gate: ((req: NextRequest) => Promise<Response>) | null = null;
 
 export async function proxy(req: NextRequest) {
+  // Markdown versions of public pages: /<path>.md, or Accept: text/markdown on the page itself.
+  const mdTarget = markdownTarget(req.nextUrl.pathname, req.headers.get('accept'), req.method);
+  if (mdTarget !== null) return NextResponse.rewrite(new URL(`/api/md${mdTarget === '/' ? '/index' : mdTarget}`, req.url));
+  // Everything below is the sign-in gate, which only the dashboard and the auth pages go through.
+  if (!/^\/(app(\/|$)|login$|signup$)/.test(req.nextUrl.pathname)) return NextResponse.next();
   if (!gate) {
     const { neonAuth } = await import('@/lib/server/neon-auth');
     gate = neonAuth().middleware({ loginUrl: '/login' });
@@ -47,4 +53,5 @@ function isLoginRedirect(res: Response, req: NextRequest) {
   return !!location && new URL(location, req.url).pathname === '/login';
 }
 
-export const config = { matcher: ['/app', '/app/:path*', '/login', '/signup'] };
+// The dashboard gate, plus every path that can carry a .md suffix or an Accept: text/markdown request.
+export const config = { matcher: ['/app', '/app/:path*', '/login', '/signup', '/((?!api/|_next/|\\.well-known/|fonts/|brand/|logos/|icons/|favicon\\.ico|robots\\.txt|sitemap\\.xml|llms\\.txt|llms-full\\.txt|ai\\.txt|manifest\\.webmanifest|opengraph-image|apple-icon|[^/]+\\.(?:png|jpg|svg|txt|xml|ico|webp|woff2)$).*)'] };
