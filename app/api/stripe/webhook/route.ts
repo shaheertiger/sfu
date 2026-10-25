@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { stripe, syncSubscription } from '@/lib/server/billing';
 import { exec, now, query } from '@/lib/server/db';
+import { rewardReferrer } from '@/lib/server/referrals';
 
 export const dynamic = 'force-dynamic';
 
@@ -25,12 +26,14 @@ export async function POST(req: Request) {
   if (!fresh.length) return NextResponse.json({ received: true, duplicate: true });
   try {
     let workspace: string | null = null;
+    let status: string | null = null;
     switch (event.type) {
       case 'checkout.session.completed': {
         const s = event.data.object;
         if (s.mode === 'subscription' && s.subscription && s.metadata?.app === 'schedule-for-you') {
           const sub = await stripe().subscriptions.retrieve(typeof s.subscription === 'string' ? s.subscription : s.subscription.id);
           workspace = await syncSubscription(sub);
+          status = sub.status;
         }
         break;
       }
@@ -38,9 +41,15 @@ export async function POST(req: Request) {
       case 'customer.subscription.updated':
       case 'customer.subscription.deleted':
         workspace = await syncSubscription(event.data.object);
+        status = event.data.object.status;
         break;
     }
     if (workspace) console.log(`[stripe] ${event.type} → ${workspace}`);
+    // A referred workspace's first real payment pays the person who sent them (once; see referrals.ts).
+    if (workspace && status === 'active') {
+      const reward = await rewardReferrer(workspace);
+      if (reward) console.log(`[stripe] referral credit ${reward.cents}¢ → ${reward.referrer}`);
+    }
     return NextResponse.json({ received: true });
   } catch (e: any) {
     await exec('DELETE FROM stripe_events WHERE id=$1', [event.id]).catch(() => {});

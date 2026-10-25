@@ -8,7 +8,7 @@ import { exec, now, one } from './db';
  * STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET; optional STRIPE_PRICE_SOLO / STRIPE_PRICE_STUDIO and the
  * yearly STRIPE_PRICE_SOLO_YEARLY / STRIPE_PRICE_STUDIO_YEARLY (all default to the live prices created
  * for Schedule For You) and STRIPE_PORTAL_CONFIGURATION. Yearly costs 10 months: 2 months free.
- * The 7-day free trial needs a card: the owner starts it in Checkout and Stripe charges on day 8.
+ * The 7-day free trial (14 days from a referral link) needs a card: the owner starts it in Checkout and Stripe charges when it ends.
  * Until STRIPE_SECRET_KEY is set, billing is off and nothing is blocked.
  */
 export const PLANS = {
@@ -28,6 +28,9 @@ export type Interval = 'month' | 'year';
 export const priceFor = (plan: PlanId, interval: Interval = 'month') => (interval === 'year' ? PLANS[plan].yearlyPrice() : PLANS[plan].price());
 const DEFAULT_ACCOUNT_LIMIT = 15;
 export const TRIAL_DAYS = 7;
+/** Workspaces that signed up from a referral link (see referrals.ts) get a longer trial. */
+export const REFERRED_TRIAL_DAYS = 14;
+export const trialDaysFor = (ws: { referred_by?: string | null } | null | undefined) => (ws?.referred_by ? REFERRED_TRIAL_DAYS : TRIAL_DAYS);
 
 export const billingEnabled = () => !!process.env.STRIPE_SECRET_KEY;
 
@@ -138,6 +141,7 @@ export function billingSummary(ws: any) {
     periodEnd: ws.current_period_end ? Number(ws.current_period_end) : null,
     cancelAtPeriodEnd: !!ws.cancel_at_period_end,
     hasCustomer: !!ws.stripe_customer_id,
+    trialDays: trialDaysFor(ws),
     interval: (ws.billing_interval as Interval | null) ?? null,
     plans: Object.values(PLANS).map((p) => ({ id: p.id, name: p.name, amount: p.amount, yearlyAmount: p.yearlyAmount, accountLimit: p.accountLimit, team: p.team })),
   };
