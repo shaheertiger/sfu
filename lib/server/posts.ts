@@ -107,6 +107,8 @@ export function publicAccount(r: any) {
     // Only an expiry the person has to act on (by reconnecting) is shown.
     token_expires_at: renews ? null : r.token_expires_at ?? null,
     created_at: r.created_at,
+    // Posted under every post to this account that has no first comment of its own.
+    default_first_comment: typeof r.meta?.default_first_comment === 'string' && r.meta.default_first_comment.trim() ? r.meta.default_first_comment : null,
     meta: { boards: r.meta?.boards },
   };
 }

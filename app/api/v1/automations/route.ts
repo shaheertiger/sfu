@@ -11,7 +11,7 @@ export const GET = handler(async ({ workspace }) => {
   const [hooks, feeds, accounts, ws, links] = await Promise.all([
     query('SELECT * FROM webhooks WHERE workspace_id=$1 ORDER BY created_at', [workspace.id]),
     query('SELECT * FROM rss_feeds WHERE workspace_id=$1 ORDER BY created_at', [workspace.id]),
-    query('SELECT id, platform, username, display_name FROM social_accounts WHERE workspace_id=$1 ORDER BY platform, username', [workspace.id]),
+    query(`SELECT id, platform, username, display_name, NULLIF(TRIM(meta->>'default_first_comment'), '') AS default_first_comment FROM social_accounts WHERE workspace_id=$1 ORDER BY platform, username`, [workspace.id]),
     query('SELECT signature FROM workspaces WHERE id=$1', [workspace.id]),
     linkTotals(workspace.id),
   ]);

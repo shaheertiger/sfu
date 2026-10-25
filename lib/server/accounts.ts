@@ -3,6 +3,7 @@ import { exec, now, query, tx, uid } from './db';
 import { decrypt, encrypt } from './crypto';
 import { HttpError } from './http-error';
 import type { ConnectedAccountFields } from './adapters/types';
+import { COMMENT_PLATFORMS, commentLimit } from './thread';
 
 const UPSERT_SQL = `INSERT INTO social_accounts (id,workspace_id,platform,external_id,username,display_name,avatar_url,access_token,refresh_token,token_expires_at,meta,status,created_at)
      VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,'active',$12)
@@ -126,4 +127,23 @@ export async function refreshStaleAvatars(workspaceId: string, fetchAvatar: (a: 
   }));
   await Promise.race([work.catch(() => {}), new Promise((res) => setTimeout(res, REFRESH_BUDGET_MS))]);
   return done;
+}
+
+/**
+ * Sets the comment this account posts under every post that has no first comment of its own
+ * (hashtag sets, a standing link). An empty value removes it. Returns the account row, or null.
+ */
+export async function setDefaultFirstComment(workspaceId: string, accountId: string, text: string | null) {
+  const [acc] = await query('SELECT id, platform FROM social_accounts WHERE id=$1 AND workspace_id=$2', [accountId, workspaceId]);
+  if (!acc) return null;
+  const value = (text || '').trim();
+  if (value && !COMMENT_PLATFORMS.has(acc.platform)) throw new HttpError(422, 'This platform cannot post a first comment');
+  if (value.length > commentLimit(acc.platform)) throw new HttpError(422, `A first comment on this platform can have up to ${commentLimit(acc.platform)} characters`);
+  const [row] = await query(
+    value
+      ? `UPDATE social_accounts SET meta = meta || jsonb_build_object('default_first_comment', $2::text) WHERE id=$1 RETURNING *`
+      : `UPDATE social_accounts SET meta = meta - 'default_first_comment' WHERE id=$1 RETURNING *`,
+    value ? [acc.id, value] : [acc.id],
+  );
+  return row;
 }

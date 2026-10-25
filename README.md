@@ -162,6 +162,13 @@ Owners, editors and API keys can change signature, webhooks and feeds; members c
 - **Threads:** on X, Bluesky and Threads a caption with a line holding only `---` is published as a thread. Each part becomes a reply to the one before, media goes on the first post, and each part has to fit the platform's limit (the composer counter shows "3-post thread · longest 262/280"). A run that is cut off mid-thread continues from the next part instead of posting the first ones again. Up to 25 parts.
 - **Link clicks** (Automations → Link clicks): when on, links in captions and first comments are swapped for short links on the app's domain (`/l/<code>`) as the post publishes, and each visit is counted. Analytics shows real clicks per post; the API returns `stats.clicks` per target and workspace totals in `GET /automations`. A link is only swapped when the short link is not longer than it, so a post can never grow past a character limit. Migration `011_links.sql`.
 
+## For frequent posters
+
+- **Default first comments** (Automations → Default first comments): a hashtag set or standing link per account, posted under every post to it unless the post has its own first comment. A post skips the default with a first comment of just `-` (API: `first_comment: false`). `PATCH /api/v1/accounts/{id}`.
+- **Queue runway** on Home: when the queue has 2 or more open slots in the next 7 days, an attention item says when the queue runs dry and how many slots are open, with "Add to queue" ready.
+- **Reconnect alerts**: when a platform rejects an account's sign-in, or a non-renewing token expires within 3 days, the owners get an email naming the account, the reason and the scheduled posts that would fail. One email per account per week; sent by the publishing cron.
+- **Slack and Discord webhooks**: a webhook's `format` can be `slack` or `discord`, so an incoming webhook URL from either works as the endpoint and you get a readable message ("✅ Published: … • X @harbor → link") instead of raw JSON. Migration `012_webhook_format.sql`.
+
 ## Automations
 
 - **Signature:** added on its own paragraph when a post publishes; skipped if the post already contains it or it would exceed the platform's character limit.

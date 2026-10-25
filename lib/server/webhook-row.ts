@@ -3,6 +3,7 @@ export const webhookRow = (h: any, revealSecret = false) => ({
   id: h.id,
   url: h.url,
   events: h.events,
+  format: h.format || 'json',
   active: h.active,
   secret: revealSecret ? h.secret : `${String(h.secret).slice(0, 10)}…`,
   last_status: h.last_status,

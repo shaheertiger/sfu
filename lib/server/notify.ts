@@ -198,6 +198,68 @@ export async function sendDigests(limit = 50) {
   return sent;
 }
 
+/* ---------- reconnect alerts ---------- */
+/** How far ahead an expiring sign-in is announced, and how often one account is mailed about. */
+export const RECONNECT_AHEAD_MS = 3 * 86400_000;
+const RECONNECT_REPEAT_MS = 7 * 86400_000;
+
+/**
+ * Tells the owners when an account needs reconnecting before a post fails over it: the platform
+ * rejected its sign-in, or its token expires within 3 days and doesn't renew by itself. One email
+ * per account per week, claimed with UPDATE … RETURNING so overlapping runs send once.
+ */
+export async function sendReconnectAlerts(limit = 50) {
+  const t = now();
+  const due = await query(
+    `SELECT a.id FROM social_accounts a
+     WHERE (a.status = 'error'
+         OR (a.token_expires_at IS NOT NULL AND a.token_expires_at < $1 AND a.refresh_token IS NULL
+             AND a.platform NOT IN ('threads','facebook','bluesky')
+             AND NOT (a.platform = 'instagram' AND a.meta->>'token_kind' = 'page')))
+       AND COALESCE((a.meta->>'reconnect_mailed_at')::bigint, 0) < $2
+     ORDER BY a.token_expires_at NULLS FIRST LIMIT $3`,
+    [t + RECONNECT_AHEAD_MS, t - RECONNECT_REPEAT_MS, limit],
+  );
+  let sent = 0;
+  for (const d of due) {
+    const [acc] = await query(
+      `UPDATE social_accounts SET meta = meta || jsonb_build_object('reconnect_mailed_at', $2::bigint)
+       WHERE id=$1 AND COALESCE((meta->>'reconnect_mailed_at')::bigint, 0) < $3 RETURNING *`,
+      [d.id, t, t - RECONNECT_REPEAT_MS],
+    );
+    if (!acc) continue;
+    try {
+      const ws = await one('SELECT name, prefs FROM workspaces WHERE id=$1', [acc.workspace_id]);
+      const tz = ws?.prefs?.tz || 'UTC';
+      const upcoming = await query(
+        `SELECT p.scheduled_at FROM posts p JOIN post_targets t ON t.post_id = p.id
+         WHERE t.account_id=$1 AND p.status='scheduled' AND p.scheduled_at > $2 ORDER BY p.scheduled_at LIMIT 50`,
+        [acc.id, t],
+      );
+      const who = accountLabel(acc.platform, acc.username);
+      const broken = acc.status === 'error';
+      const reason = broken ? (acc.last_error ? `${platformLabel(acc.platform)} no longer accepts its sign-in (${acc.last_error}).` : `${platformLabel(acc.platform)} no longer accepts its sign-in.`) : `Its sign-in expires ${when(Number(acc.token_expires_at), tz)}.`;
+      const stakes = upcoming.length
+        ? `${upcoming.length} scheduled post${upcoming.length === 1 ? '' : 's'} go${upcoming.length === 1 ? 'es' : ''} to this account, the first on ${when(Number(upcoming[0].scheduled_at), tz)}. ${upcoming.length === 1 ? 'It' : 'They'} will fail unless the account is reconnected first.`
+        : 'Nothing is scheduled for it right now, but new posts to it will fail until it is reconnected.';
+      const subject = broken ? `Reconnect ${who}: posts to it will fail` : `Reconnect ${who} before ${when(Number(acc.token_expires_at), tz)}`;
+      const url = `${appUrl()}/app?screen=accounts`;
+      await sendEmail({
+        to: await ownerEmails(acc.workspace_id),
+        subject,
+        text: `${who} in ${ws?.name || 'your workspace'} needs reconnecting. ${reason}\n\n${stakes}\n\nReconnect it: ${url}`,
+        html: layout(`${who} needs reconnecting`,
+          `<p style="margin:0 0 12px">${esc(reason)}</p><p style="margin:0">${esc(stakes)}</p>`,
+          { label: 'Reconnect account', url }),
+      });
+      sent++;
+    } catch (e: any) {
+      console.error('[email] reconnect alert:', acc.id, e?.message || e);
+    }
+  }
+  return sent;
+}
+
 /* ---------- team invites ---------- */
 export async function sendInviteEmail(opts: { to: string; inviter: { name: string; email: string }; workspaceName: string; url: string }) {
   const who = opts.inviter.name || opts.inviter.email;
