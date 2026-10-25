@@ -176,6 +176,11 @@ Owners, editors and API keys can change signature, webhooks and feeds; members c
 - **UTM tags** (Automations → Link clicks): with link tracking on, tracked links can carry `utm_source=<platform>`, `utm_medium=social` and `utm_campaign=<first label>` for attribution in Google Analytics and similar tools. Tags a link already has are kept.
 - **Stale drafts nudge** on Home: three or more drafts untouched for a week bring an attention item with "Open drafts".
 
+## Growth without gimmicks
+
+- **Referral program** ("give a month, get a month"): every workspace has a link, `/r/<code>`, shown under Automations with copy, X, Bluesky, LinkedIn and email buttons. Opening it sets a 30-day cookie and lands on `/signup`; the workspace created there records `referred_by` and gets a 14-day trial instead of 7 (`REFERRED_TRIAL_DAYS` in `lib/server/billing.ts`, used by Checkout). The first time that workspace's subscription is `active`, the Stripe webhook credits the sender's customer balance with one month of their plan (`rewardReferrer` in `lib/server/referrals.ts`). The reward is claimed with one atomic update, so a replayed webhook never pays twice, and a Stripe failure releases the claim so the retry can. Your own link on your own account does nothing.
+- **Share to queue**: the installed app registers a Web Share Target (`app/manifest.js`), so Android and desktop Chrome and Edge list it in the Share menu; a bookmarklet (Automations → Share to queue) does the same from any browser, with the page title, selected text and address. Both open `/app?share=1&title=…&text=…&url=…`, which the dashboard turns into a new post (`lib/share-caption.js`). Signed-out visitors keep the query through the login redirect (`proxy.ts`).
+
 ## Automations
 
 - **Signature:** added on its own paragraph when a post publishes; skipped if the post already contains it or it would exceed the platform's character limit.

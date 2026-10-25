@@ -16,6 +16,7 @@ import React from 'react';
 import Base from './Dashboard';
 import { splitThread, THREAD_PLATFORMS } from '@/lib/server/thread';
 import { captionFromFilename } from '@/lib/bulk-caption';
+import { isShare, shareCaption } from '@/lib/share-caption';
 
 const P = Base.P;
 const PLATFORM_IDS = Object.keys(P);
@@ -344,6 +345,13 @@ export default class LiveDashboard extends Base {
   handleReturnParams() {
     const q = new URLSearchParams(window.location.search);
     if (!q.toString()) return;
+    // Shared from another app (Share sheet or bookmarklet): open the composer with the text and link.
+    if (isShare(q)) {
+      const caption = shareCaption(q);
+      this.newPost();
+      if (caption) this.upd({ caption });
+      this.flash(caption ? 'Shared text added. Pick your accounts and a time.' : 'Nothing to share was received. Start your post below.', !caption);
+    }
     if (q.get('screen')) super.setState({ screen: q.get('screen') });
     if (q.get('pick')) super.setState({ pickId: q.get('pick') });
     if (q.get('refreshed')) this.flash(`Refreshed ${q.get('refreshed')} connected account${q.get('refreshed') === '1' ? '' : 's'}`);
@@ -1271,7 +1279,7 @@ const stateName = (b) => ({ needs_card: 'No plan yet', trial: `${planName(b.plan
 
 function billingLine(b) {
   const day = (t) => new Date(t).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-  if (b.state === 'needs_card') return 'Start your 7-day free trial';
+  if (b.state === 'needs_card') return `Start your ${b.trialDays || 7}-day free trial`;
   if (b.state === 'trial') return b.daysLeft != null ? `${planName(b.plan)} trial · ${b.daysLeft} day${b.daysLeft === 1 ? '' : 's'} left` : `${planName(b.plan)} trial`;
   if (b.state === 'expired') return 'Plan ended · choose a plan';
   if (b.state === 'past_due') return 'Payment failed · update card';
@@ -1287,7 +1295,7 @@ function BillingBanner({ billing: b, owner, onChoose }) {
   let cta = 'Choose a plan';
   const cur = b.plans?.find((p) => p.id === b.plan);
   const price = cur && (b.interval === 'year' ? `${cur.yearlyAmount} for the year` : cur.amount);
-  if (b.state === 'needs_card') { text = 'Add a card to start your 7-day free trial. Publishing is off until then.'; cta = 'Start free trial'; }
+  if (b.state === 'needs_card') { text = `Add a card to start your ${b.trialDays || 7}-day free trial. Publishing is off until then.`; cta = 'Start free trial'; }
   else if (b.state === 'trial' && b.daysLeft != null && b.daysLeft <= 2 && !b.cancelAtPeriodEnd) { text = `Your free trial ends in ${b.daysLeft} day${b.daysLeft === 1 ? '' : 's'}${price ? `. Your card will be charged $${price}` : ''}.`; cta = 'Manage billing'; }
   else if (b.state === 'expired') { text = 'Your plan has ended. Scheduled posts are paused.'; tone = 'alert'; }
   else if (b.state === 'past_due') { text = 'Your last payment failed. Update your card to avoid interruption.'; tone = 'alert'; cta = 'Update card'; }
@@ -1321,7 +1329,7 @@ function PlanDialog({ billing: b, onPick, onClose }) {
     <div role="dialog" aria-modal="true" aria-label="Choose a plan" onClick={(e) => e.target === e.currentTarget && onClose()} style={{ position: 'fixed', inset: 0, zIndex: 95, display: 'grid', placeItems: 'center', padding: 16, background: 'rgba(20,22,25,.45)', fontFamily: 'Geist, system-ui, sans-serif' }}>
       <div style={{ width: 'min(560px, 100%)', background: '#fff', borderRadius: 18, padding: 22, display: 'grid', gap: 14, boxShadow: '0 24px 60px rgba(20,22,25,.25)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
-          <strong style={{ fontSize: 18, letterSpacing: '-0.02em' }}>{b?.trialEligible ? 'Start your 7-day free trial' : 'Choose a plan'}</strong>
+          <strong style={{ fontSize: 18, letterSpacing: '-0.02em' }}>{b?.trialEligible ? `Start your ${b.trialDays || 7}-day free trial` : 'Choose a plan'}</strong>
           <button type="button" onClick={onClose} aria-label="Close" style={{ border: 0, background: 'transparent', fontSize: 20, cursor: 'pointer', color: '#677184' }}>×</button>
         </div>
         <div role="group" aria-label="Billing period" style={{ display: 'flex', gap: 4, padding: 4, borderRadius: 12, background: '#f1f1ec', alignSelf: 'start', maxWidth: 320 }}>
@@ -1330,7 +1338,7 @@ function PlanDialog({ billing: b, onPick, onClose }) {
         </div>
         <p style={{ margin: 0, fontSize: 14, color: '#677184', lineHeight: 1.5 }}>
           {b?.trialEligible
-            ? `7 days free, then billed ${yearly ? 'yearly' : 'monthly'}. A card is required to start; you are not charged until day 8, and you can cancel before then.`
+            ? `${b?.trialDays || 7} days free, then billed ${yearly ? 'yearly' : 'monthly'}. A card is required to start; you are not charged until day ${(b?.trialDays || 7) + 1}, and you can cancel before then.`
             : `Billed ${yearly ? 'yearly' : 'monthly'}. Cancel anytime.`}{' '}Payments are handled by Stripe.
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12 }}>

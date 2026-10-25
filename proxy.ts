@@ -34,7 +34,8 @@ export async function proxy(req: NextRequest) {
   if (location) {
     const url = new URL(location, req.url);
     if (url.pathname === '/login' && !url.searchParams.has('next')) {
-      url.searchParams.set('next', req.nextUrl.pathname);
+      // Keep the query too: a shared link (/app?share=…) must still open the composer after signing in.
+      url.searchParams.set('next', req.nextUrl.pathname + req.nextUrl.search);
       res.headers.set('location', url.toString());
     }
   }

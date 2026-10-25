@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { body, handler, json } from '@/lib/server/api';
 import { HttpError } from '@/lib/server/auth';
-import { accessFor, priceFor, stripe, TRIAL_DAYS } from '@/lib/server/billing';
+import { accessFor, priceFor, stripe, trialDaysFor } from '@/lib/server/billing';
 import { exec, one } from '@/lib/server/db';
 import { appUrl } from '@/lib/server/url';
 
@@ -31,7 +31,7 @@ export const POST = handler(async ({ req, workspace, user }) => {
     customer = (await one('SELECT stripe_customer_id FROM workspaces WHERE id=$1', [ws.id])).stripe_customer_id;
   }
 
-  // One 7-day free trial per workspace. Checkout always collects a card; Stripe charges when the trial ends.
+  // One free trial per workspace (7 days, 14 from a referral link). Checkout always collects a card; Stripe charges when the trial ends.
   const trial = !ws.trial_used && !ws.stripe_subscription_id;
   const session = await s.checkout.sessions.create({
     mode: 'subscription',
@@ -43,7 +43,7 @@ export const POST = handler(async ({ req, workspace, user }) => {
     payment_method_collection: 'always',
     subscription_data: {
       metadata: { workspace_id: ws.id, app: 'schedule-for-you' },
-      ...(trial ? { trial_period_days: TRIAL_DAYS, trial_settings: { end_behavior: { missing_payment_method: 'cancel' } } } : {}),
+      ...(trial ? { trial_period_days: trialDaysFor(ws), trial_settings: { end_behavior: { missing_payment_method: 'cancel' } } } : {}),
     },
     success_url: `${base}/app?billing=success`,
     cancel_url: `${base}/app?billing=cancel`,

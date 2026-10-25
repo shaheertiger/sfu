@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { ensureUser } from '@/lib/server/auth';
 import { assertSameOrigin, body, errorResponse, json } from '@/lib/server/api';
 import { neonAuth } from '@/lib/server/neon-auth';
+import { attributeSignup, readRefCookie } from '@/lib/server/referrals';
 import { setSignedInHint } from '@/lib/server/signed-in-hint';
 
 const Input = z.object({ email: z.string().email().max(200), password: z.string().min(8).max(200), name: z.string().max(80).optional() });
@@ -19,7 +20,10 @@ export async function POST(req: Request) {
       return json({ error: error.message || 'Could not create the account' }, error.status && error.status < 500 ? 400 : 502);
     }
     if (!data?.user) return json({ error: 'Could not create the account' }, 502);
-    await ensureUser(data.user);
+    const profile = await ensureUser(data.user);
+    // Came here from someone's referral link? Their workspace gets the credit when this one first pays.
+    const ref = readRefCookie(req.headers.get('cookie'));
+    if (ref && profile.active_workspace_id) await attributeSignup(profile.active_workspace_id, data.user.id, ref).catch(() => null);
     // No token means Neon Auth is set to verify emails before the first sign-in.
     if (!data.token) return json({ ok: true, verify: true, message: 'Check your email to confirm your address, then sign in.' });
     await setSignedInHint(true);

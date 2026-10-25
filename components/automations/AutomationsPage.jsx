@@ -1,8 +1,8 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import s from './automations.module.css';
 
-/** Signature, webhooks and RSS auto-post for the active workspace. */
+/** Referrals, share-to-queue, signature, link tracking, calendar, webhooks and RSS auto-post for the active workspace. */
 
 const EVENTS = [
   ['post.published', 'Published'],
@@ -56,6 +56,8 @@ export default function AutomationsPage() {
             <p className={s.lead}>{data.workspace.name}{canEdit ? '' : ' · view only (ask the owner to change these)'}</p>
           </div>
         </div>
+        {data.referral && <ReferFriend referral={data.referral} />}
+        {data.share && <ShareToQueue share={data.share} />}
         <Signature initial={data.signature} canEdit={canEdit} />
         <LinkClicks on={data.track_links} utm={data.utm_tags} clicks={data.link_clicks} links={data.tracked_links} canEdit={canEdit} reload={load} />
         <SharedCalendar calendar={data.calendar} canEdit={canEdit} reload={load} />
@@ -70,6 +72,80 @@ export default function AutomationsPage() {
         </section>
       </div>
     </main>
+  );
+}
+
+const money = (cents) => `$${(cents / 100).toFixed(cents % 100 ? 2 : 0)}`;
+
+function ReferFriend({ referral }) {
+  const [msg, setMsg] = useState(['', '']);
+  const copy = (text, what) => navigator.clipboard?.writeText(text).then(() => setMsg(['ok', `${what} copied.`])).catch(() => setMsg(['err', 'Could not copy. Select the link and copy it by hand.']));
+  const enc = encodeURIComponent;
+  const text = referral.share_text;
+  const pending = Math.max(0, referral.signups - referral.rewarded);
+  return (
+    <section className={s.card}>
+      <h2>Give a month, get a month</h2>
+      <p className={s.help}>
+        Anyone who signs up through your link gets a {referral.trial_days}-day free trial instead of 7. When they pay for their first month, you get one month of your plan ({money(referral.credit_cents)}) taken off your next bill. No limit on how many people you invite, and the credit stacks.
+      </p>
+      <div className={s.row}>
+        <strong>Your link</strong>
+        <span className={s.url}>{referral.url}</span>
+        <div className={s.actions}>
+          <button className={`${s.btn} ${s.btnDark}`} onClick={() => copy(referral.url, 'Your link')}>Copy link</button>
+          <button className={s.btn} onClick={() => copy(text, 'Message')}>Copy message</button>
+          <a className={s.btn} style={{ textDecoration: 'none' }} target="_blank" rel="noreferrer" href={`https://x.com/intent/post?text=${enc(text)}`}>Post on X</a>
+          <a className={s.btn} style={{ textDecoration: 'none' }} target="_blank" rel="noreferrer" href={`https://bsky.app/intent/compose?text=${enc(text)}`}>Post on Bluesky</a>
+          <a className={s.btn} style={{ textDecoration: 'none' }} target="_blank" rel="noreferrer" href={`https://www.linkedin.com/sharing/share-offsite/?url=${enc(referral.url)}`}>Share on LinkedIn</a>
+          <a className={s.btn} style={{ textDecoration: 'none' }} href={`mailto:?subject=${enc('Try Schedule For You (14 days free)')}&body=${enc(text)}`}>Email</a>
+        </div>
+      </div>
+      <div className={s.row}>
+        <strong>So far</strong>
+        <span className={s.meta}>
+          {referral.signups === 0
+            ? 'Nobody has used your link yet. Share it where your audience already is: a pinned post, your newsletter footer, a community you are in.'
+            : `${referral.signups} signed up · ${referral.rewarded} paying (${money(referral.rewarded * referral.credit_cents)} credited)${pending ? ` · ${pending} still on trial` : ''}`}
+        </span>
+      </div>
+      {msg[0] === 'err' && <p className={s.error}>{msg[1]}</p>}
+      {msg[0] === 'ok' && <p className={s.notice}>{msg[1]}</p>}
+    </section>
+  );
+}
+
+function ShareToQueue({ share }) {
+  // React warns about javascript: URLs in JSX; the bookmarklet is set as a plain DOM attribute instead.
+  const link = useRef(null);
+  useEffect(() => { if (link.current) link.current.setAttribute('href', share.bookmarklet); }, [share.bookmarklet]);
+  const [msg, setMsg] = useState(['', '']);
+  const copy = () => navigator.clipboard?.writeText(share.bookmarklet).then(() => setMsg(['ok', 'Bookmarklet copied. Make a new bookmark and paste it as the address.'])).catch(() => setMsg(['err', 'Could not copy.']));
+  return (
+    <section className={s.card}>
+      <h2>Share to queue</h2>
+      <p className={s.help}>
+        Found something worth posting? Send it straight to the composer with the page title, your selected text and the link already filled in.
+      </p>
+      <div className={s.row}>
+        <strong>Browser bookmarklet</strong>
+        <span className={s.meta}>Drag this button to your bookmarks bar, then click it on any page. Select some text first to quote it.</span>
+        <div className={s.actions}>
+          <a ref={link} className={`${s.btn} ${s.btnDark}`} style={{ textDecoration: 'none', cursor: 'grab' }} onClick={(e) => { e.preventDefault(); copy(); }} draggable>Queue this page</a>
+        </div>
+      </div>
+      <div className={s.row}>
+        <strong>Phone and desktop Share sheet</strong>
+        <span className={s.meta}>Install the app from your browser menu (Add to Home Screen, or Install). Schedule For You then shows up in the Share menu of other apps on Android and desktop Chrome and Edge. On iPhone, use the bookmarklet in Safari.</span>
+      </div>
+      <div className={s.row}>
+        <strong>From anywhere</strong>
+        <span className={s.url}>{share.app_url}?share=1&amp;text=…&amp;url=…</span>
+        <span className={s.meta}>Any tool that can open a URL (Shortcuts, Zapier, a script) can prefill a post this way.</span>
+      </div>
+      {msg[0] === 'err' && <p className={s.error}>{msg[1]}</p>}
+      {msg[0] === 'ok' && <p className={s.notice}>{msg[1]}</p>}
+    </section>
   );
 }
 
