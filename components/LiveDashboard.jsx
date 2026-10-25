@@ -1032,6 +1032,18 @@ export default class LiveDashboard extends Base {
     }
 
     // Analytics: engagement isn't fetched from the platforms yet.
+    // Queue toolbar: the Select button stays in place on every tab (so the tab bar never shifts);
+    // off the Upcoming tab it is shown muted and explains itself, since bulk actions apply to
+    // scheduled posts (the design turns selection off anywhere else).
+    if (s.screen === 'queue' && s.tab !== 'upcoming') {
+      v.canSelect = true;
+      v.selectLabel = 'Select';
+      v.selectBorder = '#ebe9e3';
+      v.selectBg = '#fff';
+      v.selectColor = '#b9bec6';
+      v.toggleSelect = () => this.flash('Select works on the Upcoming tab: switch there to pick posts to move or delete.');
+    }
+
     // Bulk rows: an empty caption is flagged before review (it is allowed, but rarely meant).
     (v.bulkRows || []).forEach((row, i) => {
       const f = s.bulkFiles[i];
