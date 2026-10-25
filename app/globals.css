@@ -5,8 +5,12 @@ html, body { height: 100%; margin: 0; }
 /* Keep the page from shifting sideways when a shorter view makes the scrollbar disappear. */
 html { scrollbar-gutter: stable; }
 
-/* Dashboard screens whose content changes size on a tab switch (Queue: Upcoming → History → …)
-   keep a minimum height, so the page doesn't collapse and jump on every click. */
+/* Every dashboard screen keeps a minimum height, so switching screens or tabs never collapses the
+   page (which would drop the scrollbar and shift everything). The phone layout has a top bar and
+   a bottom tab bar, so its floor is lower. */
 @media (min-width: 761px) {
-  [data-screen-label="Queue"] { min-height: calc(100dvh - 120px); }
+  .sfy-main > section[data-screen-label] { min-height: calc(100dvh - 120px); }
+}
+@media (max-width: 760px) {
+  .sfy-main > section[data-screen-label] { min-height: calc(100dvh - 190px); }
 }
