@@ -77,6 +77,7 @@ test('markdown responses carry the agent headers; HEAD has no body', async () =>
   assert.equal(res.headers.get('content-type'), 'text/markdown; charset=utf-8');
   assert.equal(res.headers.get('x-markdown-tokens'), String(Math.ceil('# Hi\n\nfour chars'.length / 4)));
   assert.equal(res.headers.get('x-robots-tag'), 'noindex, follow');
+  assert.equal(res.headers.get('x-aeo-version'), '1.0');
   assert.equal(res.headers.get('content-location'), 'https://scheduleforyou.com/pricing');
   assert.equal(res.headers.get('link'), '<https://scheduleforyou.com/pricing>; rel="canonical"');
   assert.equal(res.headers.get('vary'), 'Accept');
@@ -90,7 +91,7 @@ test('markdown responses carry the agent headers; HEAD has no body', async () =>
 });
 
 test('Accept negotiation: only an explicit text/markdown preference wins', async () => {
-  const { wantsMarkdown, markdownTarget } = await import('../lib/md/negotiate.js');
+  const { wantsMarkdown, markdownTarget, isAiAgent, acceptsNeither } = await import('../lib/md/negotiate.js');
   assert.equal(wantsMarkdown(null), false);
   assert.equal(wantsMarkdown('*/*'), false);
   assert.equal(wantsMarkdown('text/html,application/xhtml+xml,*/*;q=0.8'), false);
@@ -107,4 +108,21 @@ test('Accept negotiation: only an explicit text/markdown preference wins', async
   assert.equal(markdownTarget('/login', 'text/markdown'), null, 'skipped pages never negotiate');
   assert.equal(markdownTarget('/pricing', 'text/markdown', 'POST'), null);
   for (const p of ['/api/md/x.md', '/llms.txt', '/robots.txt', '/sitemap.xml', '/_next/static/a.md', '/.well-known/mcp.json']) assert.equal(markdownTarget(p, 'text/markdown'), null, p);
+  // AI agents from the registry get markdown whatever they accept; browsers and Googlebot do not.
+  assert.equal(isAiAgent('Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.2; +https://openai.com/gptbot)'), true);
+  assert.equal(isAiAgent('Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'), false);
+  assert.equal(isAiAgent('Mozilla/5.0 (Windows NT 10.0) Chrome/130.0'), false);
+  assert.equal(markdownTarget('/pricing', '*/*', 'GET', 'GPTBot/1.2'), '/pricing');
+  assert.equal(markdownTarget('/pricing', 'text/html', 'GET', 'PerplexityBot/1.0'), '/pricing');
+  assert.equal(markdownTarget('/login', '*/*', 'GET', 'GPTBot/1.2'), null, 'skipped pages stay HTML for bots too');
+  assert.equal(markdownTarget('/pricing', '*/*', 'GET', 'Googlebot/2.1'), null);
+  // 406 only when a client rules out both representations.
+  assert.equal(acceptsNeither(null), false);
+  assert.equal(acceptsNeither('*/*'), false);
+  assert.equal(acceptsNeither('text/html'), false);
+  assert.equal(acceptsNeither('text/markdown'), false);
+  assert.equal(acceptsNeither('text/*;q=0.5'), false);
+  assert.equal(acceptsNeither('application/json'), true);
+  assert.equal(acceptsNeither('image/avif,image/webp'), true);
+  assert.equal(acceptsNeither('text/html;q=0, application/json'), true);
 });

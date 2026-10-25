@@ -1,16 +1,40 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { markdownTarget } from '@/lib/md/negotiate';
+import { acceptsNeither, markdownTarget } from '@/lib/md/negotiate';
+import { isMarkdownPath } from '@/lib/md/registry';
+import { AEO_VERSION } from '@/lib/md/http';
+import { siteUrl } from '@/lib/site';
+
+/** Where agents find the site map for models, the full content and the usage policy (lib/md). */
+const DESCRIBED_BY = '</llms.txt>; rel="describedby"; type="text/plain", </llms-full.txt>; rel="describedby"; type="text/markdown", </ai.txt>; rel="describedby"; type="text/plain"';
 
 // Signed-out visitors to the dashboard go to /login (and come back afterwards via ?next=).
 // Neon Auth's middleware also refreshes the session cookie. Real checks happen in the API.
 let gate: ((req: NextRequest) => Promise<Response>) | null = null;
 
 export async function proxy(req: NextRequest) {
-  // Markdown versions of public pages: /<path>.md, or Accept: text/markdown on the page itself.
-  const mdTarget = markdownTarget(req.nextUrl.pathname, req.headers.get('accept'), req.method);
+  // Markdown versions of public pages: /<path>.md, Accept: text/markdown, or an AI agent's User-Agent.
+  const path = req.nextUrl.pathname;
+  const accept = req.headers.get('accept');
+  const mdTarget = markdownTarget(path, accept, req.method, req.headers.get('user-agent'));
   if (mdTarget !== null) return NextResponse.rewrite(new URL(`/api/md${mdTarget === '/' ? '/index' : mdTarget}`, req.url));
   // Everything below is the sign-in gate, which only the dashboard and the auth pages go through.
-  if (!/^\/(app(\/|$)|login$|signup$)/.test(req.nextUrl.pathname)) return NextResponse.next();
+  if (!/^\/(app(\/|$)|login$|signup$)/.test(path)) {
+    const twin = isMarkdownPath(path);
+    // A page with a markdown twin is negotiated on Accept: a client that takes neither HTML nor
+    // markdown gets 406 (AEO spec §3). The app's own router requests are never negotiated.
+    const appRouter = req.headers.has('rsc') || req.headers.has('next-router-state-tree');
+    if (twin && !appRouter && (req.method === 'GET' || req.method === 'HEAD') && acceptsNeither(accept)) {
+      return new NextResponse('406 Not Acceptable: this page is available as text/html or text/markdown.\n', { status: 406, headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Vary': 'Accept', 'X-AEO-Version': AEO_VERSION } });
+    }
+    const res = NextResponse.next();
+    // Every HTML page advertises the policy files; one with a markdown twin also names it and varies on Accept.
+    const alternate = twin ? `, <${siteUrl()}${path === '/' ? '/index.md' : `${path}.md`}>; rel="alternate"; type="text/markdown"` : '';
+    res.headers.set('Link', DESCRIBED_BY + alternate);
+    // Next replaces Vary on page responses with its own router list, so `Accept` can't be added here (or in
+    // next.config headers); the markdown responses carry it, and the agent registry serves bots by User-Agent.
+    if (twin) res.headers.set('X-AEO-Version', AEO_VERSION);
+    return res;
+  }
   if (!gate) {
     const { neonAuth } = await import('@/lib/server/neon-auth');
     gate = neonAuth().middleware({ loginUrl: '/login' });

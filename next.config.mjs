@@ -11,8 +11,6 @@ const securityHeaders = [
   // Keep everything on https once it has been seen over https.
   { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains' },
   { key: 'X-DNS-Prefetch-Control', value: 'on' },
-  // Where AI agents find the site map for models, the full content and the usage policy (see lib/md).
-  { key: 'Link', value: '</llms.txt>; rel="describedby"; type="text/plain", </llms-full.txt>; rel="describedby"; type="text/markdown", </ai.txt>; rel="describedby"; type="text/plain"' },
 ];
 
 const nextConfig = {
