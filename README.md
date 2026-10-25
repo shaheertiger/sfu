@@ -213,6 +213,12 @@ What Google and Bing get, and where it lives:
 
 After the first deploy: submit `https://scheduleforyou.com/sitemap.xml` in Search Console and Bing Webmaster Tools, and check `/` with Google's Rich Results Test and Bing's URL Inspection.
 
+## Layout stability
+
+- Fonts (Geist, Geist Mono, Bodoni Moda) are self-hosted from `public/fonts` with `font-display: optional` and preloaded in `app/layout.jsx`: text is laid out in its final font on first paint, and on a slow first visit the fallback font is kept for that page view rather than swapped in later. `node scripts/fonts.mjs` refreshes the files and `app/fonts.css`.
+- `html { scrollbar-gutter: stable }` keeps the page from shifting sideways when a short view loses its scrollbar, and every dashboard screen keeps a minimum height so switching screens or tabs never collapses the page (`app/globals.css`).
+- Thumbnails, avatars and media grids are sized by their containers, so images arriving later don't move content.
+
 ## Security notes
 
 - Sign-in: Neon Auth (Managed Better Auth) stores users, passwords and sessions; the app keeps httpOnly session cookies on its own domain.

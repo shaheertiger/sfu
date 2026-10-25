@@ -1,4 +1,5 @@
 import './globals.css';
+import './fonts.css';
 import { Analytics } from '@vercel/analytics/next';
 import { siteUrl } from '@/lib/site';
 import { DESCRIPTION, SITE_NAME, TAGLINE } from '@/lib/seo';
@@ -36,12 +37,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
-        />
+        {/* Fonts are self-hosted (app/fonts.css) and preloaded, so text is laid out in its final font
+            on first paint instead of reflowing when a web font arrives. */}
+        <link rel="preload" href="/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/geist-mono-normal-400-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
       </head>
       <body>
         {children}
