@@ -131,6 +131,7 @@ function mapPost(sp, mediaById) {
     })),
     labels: sp.labels || [], repeat: sp.repeat || 'none', evergreen: !!sp.evergreen, approval: sp.approval || null,
     remind: sp.remind !== false, note: sp.note || '', batch: sp.batch || null,
+    updated: Number(sp.updated_at || sp.created_at || 0),
     ...(publishing ? { publishing: true } : {}),
   };
 }
@@ -980,8 +981,20 @@ export default class LiveDashboard extends Base {
     }
 
     // Analytics: engagement isn't fetched from the platforms yet.
-    // Queue runway: a frequent poster wants to know before the queue runs dry, not after.
-    // Counts the open posting slots in the next 7 days and the last scheduled post.
+    // Extra Home attention items: a frequent poster wants to know before the queue runs dry, and
+    // about drafts that have quietly piled up. Added after the design's own items; counters follow.
+    const addAttention = (item) => {
+      v.attention = [...(v.attention || []), item];
+      v.attentionShown = s.allIssues ? v.attention : v.attention.slice(0, 3);
+      v.hasMoreIssues = v.attention.length > 3;
+      v.issuesLabel = s.allIssues ? 'Show fewer' : `View all ${v.attention.length} issues`;
+      v.attnEmpty = false;
+      v.attnCount = `${v.attention.length} item${v.attention.length === 1 ? '' : 's'}`;
+      const n = v.attention.length;
+      v.needText = `${n} item${n === 1 ? '' : 's'} that need attention`;
+      v.needColor = '#a1281f';
+      v.needBg = 'linear-gradient(transparent 62%,#fdd9d5 62%)';
+    };
     if (s.screen === 'home' && (s.slots || []).length && (s.slotDays || []).length) {
       const weekEnd = Date.now() + 7 * 864e5;
       const openSlots = this.nextSlots(60).filter((ms) => ms <= weekEnd);
@@ -989,7 +1002,7 @@ export default class LiveDashboard extends Base {
       const lastAt = future.length ? future[future.length - 1] : null;
       const thisWeek = future.filter((at) => at <= weekEnd).length;
       if (openSlots.length >= 2 && (!lastAt || lastAt < weekEnd)) {
-        const item = {
+        addAttention({
           icon: '◷',
           iconBg: '#e8f1ff',
           iconFg: '#1d4ed8',
@@ -1000,17 +1013,23 @@ export default class LiveDashboard extends Base {
             { label: 'Add to queue', go: () => { this.newPost(); this.upd({ mode: 'queue' }); }, bg: '#141619', color: '#fff', border: '#141619' },
             { label: 'Open calendar', go: () => super.setState({ screen: 'calendar', calView: 'week', weekStart: this.wsMonday() }), bg: '#fff', color: '#141619', border: '#e7e5df' },
           ],
-        };
-        v.attention = [...(v.attention || []), item];
-        v.attentionShown = s.allIssues ? v.attention : v.attention.slice(0, 3);
-        v.hasMoreIssues = v.attention.length > 3;
-        v.issuesLabel = s.allIssues ? 'Show fewer' : `View all ${v.attention.length} issues`;
-        v.attnEmpty = false;
-        v.attnCount = `${v.attention.length} item${v.attention.length === 1 ? '' : 's'}`;
-        const n = v.attention.length;
-        v.needText = `${n} item${n === 1 ? '' : 's'} that need attention`;
-        v.needColor = '#a1281f';
-        v.needBg = 'linear-gradient(transparent 62%,#fdd9d5 62%)';
+        });
+      }
+    }
+    if (s.screen === 'home') {
+      const stale = s.posts.filter((p) => p.status === 'draft' && p.updated && p.updated < Date.now() - 7 * 864e5);
+      if (stale.length >= 3) {
+        const oldest = Math.min(...stale.map((p) => p.updated));
+        const days = Math.floor((Date.now() - oldest) / 864e5);
+        addAttention({
+          icon: '✎',
+          iconBg: '#f1efe8',
+          iconFg: '#5d4a36',
+          title: `${stale.length} drafts have waited more than a week`,
+          when: '',
+          body: `The oldest is ${days} days old. Schedule the ones that are ready, or delete what you won't post, so the drafts list stays something you can work from.`,
+          actions: [{ label: 'Open drafts', go: () => super.setState({ screen: 'queue', tab: 'drafts' }), bg: '#141619', color: '#fff', border: '#141619' }],
+        });
       }
     }
 
