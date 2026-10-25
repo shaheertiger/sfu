@@ -1,7 +1,7 @@
 ---
 layout: feature
 title: "Social Media Scheduler Pricing: Two Plans, No Post Limits"
-description: "Social media scheduler pricing: Solo at $19/month or Studio at $59/month, 2 months free when billed yearly, unlimited posts on 10 platforms and a 7-day trial."
+description: "Social media scheduler pricing: Solo at $19/month or Studio at $59/month, 2 months free when billed yearly, unlimited posts on 10 platforms, a 7-day trial and a referral program that gives you a month for every friend who pays."
 h1: Social media scheduler pricing
 lead: Two plans, both with unlimited posts and every publishing feature. Choose by how many accounts you connect and whether you need teammates.
 keyword: social media scheduler pricing
@@ -71,6 +71,21 @@ If it isn't right for you, cancel before day 8 and you won't be charged. You can
 ### There's no free plan
 Schedule For You is a paid product. After the trial, you need an active Solo or Studio subscription to keep publishing.
 
+## Refer a friend: give a month, get a month
+Every workspace has a referral link, found under **Automations** in the dashboard. Share it anywhere: a pinned post, your newsletter footer, a community you're part of.
+
+### What they get
+Anyone who signs up through your link gets a 14-day free trial instead of the usual 7. The same card rule applies: they aren't charged until day 15 and can cancel before then.
+
+### What you get
+When someone you referred pays for their first month, one month of your plan is credited to your account: $19 on Solo or $59 on Studio. The credit comes off your next invoice automatically. There's no limit on how many people you can refer, and credits stack, so a few referrals can cover a whole year.
+
+### The small print
+- The credit is paid once per referred workspace, after its first successful payment, not at sign-up.
+- Referring yourself doesn't count: a new workspace you own through your own link gets no bonus and earns no credit.
+- Credits apply to future invoices and aren't paid out in cash. If you cancel, any unused credit stays on your account for when you come back.
+- Workspaces created from a yearly plan count the same way: the referrer still receives one month of their own plan.
+
 ## Changing or cancelling your plan
 The workspace owner manages billing. Open **Billing** from the workspace menu and you'll land in Stripe's secure customer portal, where you can switch between Solo and Studio, update your card, download invoices or cancel. For anything else about billing, contact support. The [change or cancel your plan guide](/blog/change-or-cancel-your-plan) walks through each step.
 
@@ -98,6 +113,12 @@ The workspace owner opens Billing from the workspace menu and cancels in the Str
 
 ### Is the API included on Solo?
 Yes. The REST API, webhooks and RSS feeds are part of every workspace on both plans.
+
+### How does the referral program work?
+Share the referral link from Automations. People who sign up through it get a 14-day trial instead of 7, and when they pay for their first month you get one month of your plan credited to your next invoice. Credits stack with no cap, and self-referrals don't count.
+
+### When do I receive my referral credit?
+After the person you referred makes their first payment, which is at the end of their 14-day trial if they keep the plan. The credit appears on your Stripe invoice as a balance adjustment.
 
 ### Is the plan per workspace?
 

@@ -44,7 +44,7 @@ function PlanTable() {
           </div>
         ))}
       </dl>
-      <p className={m.meta} style={{ textAlign: 'left', marginTop: -8 }}>7-day free trial on both plans, billed monthly or yearly. Card required, not charged until day 8, cancel anytime.</p>
+      <p className={m.meta} style={{ textAlign: 'left', marginTop: -8 }}>7-day free trial on both plans, billed monthly or yearly. Card required, not charged until day 8, cancel anytime. Refer a friend and you both gain: they get a 14-day trial, you get <a href="#refer-a-friend-give-a-month-get-a-month">a free month</a> when they pay.</p>
     </section>
   );
 }
