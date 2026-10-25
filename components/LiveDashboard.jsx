@@ -15,6 +15,7 @@ import ConnectPicker from './dashboard/ConnectPicker';
 import React from 'react';
 import Base from './Dashboard';
 import { splitThread, THREAD_PLATFORMS } from '@/lib/server/thread';
+import { captionFromFilename } from '@/lib/bulk-caption';
 
 const P = Base.P;
 const PLATFORM_IDS = Object.keys(P);
@@ -28,6 +29,50 @@ const kindOf = (mime) => (mime && mime.startsWith('video/') ? 'VIDEO' : 'IMG');
 const TONES = ['#8a6d4f', '#6e5a42', '#7a6148', '#4f3f2e', '#5d6b4a', '#5d4a36', '#3e4a55', '#7d7a5c'];
 const hashTone = (id) => TONES[Base.hash(id || '') % TONES.length];
 const TIKTOK_PRIVACY = { Public: 'PUBLIC_TO_EVERYONE', Friends: 'MUTUAL_FOLLOW_FRIENDS', 'Only me': 'SELF_ONLY' };
+
+/** A still from a video file (a data URL), for thumbnails before the upload exists. '' when the browser can't decode it. */
+function videoFrame(file, { width = 256, timeoutMs = 8000 } = {}) {
+  return new Promise((resolve) => {
+    let url;
+    try {
+      url = URL.createObjectURL(file);
+    } catch {
+      return resolve('');
+    }
+    const v = document.createElement('video');
+    let settled = false;
+    const done = (out) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      try { URL.revokeObjectURL(url); } catch {}
+      v.removeAttribute('src');
+      resolve(out);
+    };
+    const timer = setTimeout(() => done(''), timeoutMs);
+    v.muted = true;
+    v.playsInline = true;
+    v.preload = 'auto';
+    v.onerror = () => done('');
+    v.onloadedmetadata = () => {
+      // A frame a little way in: the first frame of many clips is black.
+      try { v.currentTime = Math.min(0.5, Math.max(0.05, (v.duration || 1) / 10)); } catch { done(''); }
+    };
+    v.onseeked = () => {
+      try {
+        const w = width, h = Math.max(1, Math.round(((v.videoHeight || 1) / (v.videoWidth || 1)) * w));
+        const c = document.createElement('canvas');
+        c.width = w;
+        c.height = h;
+        c.getContext('2d').drawImage(v, 0, 0, w, h);
+        done(c.toDataURL('image/jpeg', 0.82));
+      } catch {
+        done('');
+      }
+    };
+    v.src = url;
+  });
+}
 /** Platforms whose access tokens renew on their own (used when the server doesn't say `has_refresh`). */
 const AUTO_REFRESH = new Set(['x', 'youtube', 'google_business', 'tiktok', 'pinterest', 'threads', 'facebook', 'instagram']);
 /** How long a deleted post waits before it's deleted on the server: the toast's Undo window (6 s) plus a margin. */
@@ -635,8 +680,14 @@ export default class LiveDashboard extends Base {
   }
 
   addFiles(list) {
-    const items = list.map((f, i) => ({ id: 'f' + Date.now() + i, name: f.name, kind: f.kind, url: f.url || '', tone: f.tone || '#7a6148', caption: f.name.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ').replace(/^./, (c) => c.toUpperCase()), at: null }));
+    // Captions start from the file name only when a person wrote it; camera and app names start empty.
+    const items = list.map((f, i) => ({ id: 'f' + Date.now() + i, name: f.name, kind: f.kind, url: f.url || '', tone: f.tone || '#7a6148', caption: captionFromFilename(f.name), at: null }));
     list.forEach((f, i) => { if (f.file) this._uploads.set(items[i].id, this.upload(f.file).then((m) => m.id).catch((e) => { this.flash(e.message, true); return null; })); });
+    // Videos get a real still as their thumbnail, like images, once the browser has decoded a frame.
+    list.forEach((f, i) => {
+      if (!f.file || f.kind !== 'VIDEO' || f.url) return;
+      videoFrame(f.file).then((url) => { if (url) super.setState((st) => ({ bulkFiles: st.bulkFiles.map((x) => (x.id === items[i].id ? { ...x, url } : x)) })); });
+    });
     super.setState((st) => ({ bulkFiles: [...st.bulkFiles, ...items], bulkStep: 2 }), () => this.respace(false));
   }
 
@@ -981,6 +1032,16 @@ export default class LiveDashboard extends Base {
     }
 
     // Analytics: engagement isn't fetched from the platforms yet.
+    // Bulk rows: an empty caption is flagged before review (it is allowed, but rarely meant).
+    (v.bulkRows || []).forEach((row, i) => {
+      const f = s.bulkFiles[i];
+      if (!f || (f.caption || '').trim() || row.vLabel === 'No time' || row.vLabel === 'In the past') return;
+      row.vLabel = 'No caption';
+      row.vBg = '#fff1d6';
+      row.vFg = '#8a5a00';
+      if (!row.hasWarn) { row.hasWarn = true; row.warn = 'Add a caption, or use "Apply to all rows" above. Posting without one is allowed.'; }
+    });
+
     // Extra Home attention items: a frequent poster wants to know before the queue runs dry, and
     // about drafts that have quietly piled up. Added after the design's own items; counters follow.
     const addAttention = (item) => {

@@ -1,3 +1,12 @@
 /* Full-page frame the prototypes were designed in. Page-specific styles live with each screen. */
 html, body { height: 100%; margin: 0; }
 #dc-root, #dc-root > .sc-host { height: 100%; }
+
+/* Keep the page from shifting sideways when a shorter view makes the scrollbar disappear. */
+html { scrollbar-gutter: stable; }
+
+/* Dashboard screens whose content changes size on a tab switch (Queue: Upcoming → History → …)
+   keep a minimum height, so the page doesn't collapse and jump on every click. */
+@media (min-width: 761px) {
+  [data-screen-label="Queue"] { min-height: calc(100dvh - 120px); }
+}
