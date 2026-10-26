@@ -50,7 +50,7 @@ Pick a topic your audience has opinions about and a list of 10 to 25 items: snac
 The most popular tier list videos show the ranking happening. Start your phone's screen recording, place items one by one, and talk through each decision. Write your commentary first and run it through the [speech time calculator](/tools/speech-time-calculator) so a 60-second video doesn't turn into three minutes.
 
 ### Instagram carousels
-For a reveal carousel, press **Save as image** after you fill each tier: the first image shows only the S tier, the next adds A, and so on, with the full list on the last slide. Instagram feed posts accept portrait images up to 4:5 at the time of writing, so a tall tier list may be cropped. Run it through the [Instagram photo resizer](/tools/instagram-photo-resizer) and choose fit to pad it to 1080×1350 without cutting off the bottom tier.
+For a reveal carousel, press **Save as image** after you fill each tier: the first image shows only the S tier, the next adds A, and so on, with the full list on the last slide. Instagram feed posts accept portrait images up to 4:5 at the time of writing, so a tall tier list may be cropped. Run it through the [Instagram photo resizer](/tools/instagram-photo-resizer) and choose **Fit (add background)** to pad it to 1080×1350 without cutting off the bottom tier.
 
 ### TikTok photo posts and YouTube
 TikTok photo posts look best at full-screen 9:16; the [TikTok photo resizer](/tools/tiktok-photo-resizer) pads your tier list to 1080×1920. For a YouTube thumbnail or a video background, check the shape you need with the [aspect ratio calculator](/tools/aspect-ratio-calculator).

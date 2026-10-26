@@ -4,7 +4,6 @@ description: Free EXIF remover. See the GPS location, camera and date hidden in 
 h1: EXIF Remover
 lead: See exactly what your photos reveal (location, camera, date taken) and remove it in one tap. JPEG and PNG files are cleaned without touching the image, and nothing leaves your device.
 keyword: exif remover
-keywords: remove exif data, remove location from photo, exif data remover, remove metadata from photo
 ---
 ## What this EXIF remover does
 This EXIF remover shows the hidden data stored inside your photos and removes it before you share them. Add one photo or a whole batch, check the **Location (GPS)** row for each, then press **Remove location & metadata** and download clean copies. It's built for the moment just before you post, sell or send a picture: one quick check that the file isn't telling strangers where you live.

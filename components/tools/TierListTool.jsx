@@ -40,7 +40,7 @@ const T = {
     editTiers: 'Edit tiers',
     done: 'Done',
     addTier: 'Add tier',
-    color: 'Colour',
+    color: 'Color',
     up: 'Move tier up',
     down: 'Move tier down',
     removeTier: 'Remove tier',

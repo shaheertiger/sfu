@@ -47,7 +47,7 @@ const T = {
     downscaled: 'Reduced to {w} × {h} to stay within the 16-megapixel limit browsers on phones can draw.',
     unsupported: 'Not supported: this browser can’t open this file type. Try a JPEG, PNG or WebP.',
     notImage: 'Not an image.',
-    hint: 'JPEG and PNG files are cleaned without re-compressing: only the metadata blocks (EXIF with GPS, XMP, IPTC, comments) are removed; the colour profile is kept. Extras such as HDR gain maps and motion-photo video embedded in some phone JPEGs are removed too.',
+    hint: 'JPEG and PNG files are cleaned without re-compressing: only the metadata blocks (EXIF with GPS, XMP, IPTC, comments) are removed; the color profile is kept. Extras such as HDR gain maps and motion-photo video embedded in some phone JPEGs are removed too.',
   },
   ja: {
     choose: '写真を選択、またはここにドロップ',

@@ -6,7 +6,7 @@ lead: Paste the usernames from your giveaway comments, leave out duplicates and 
 keyword: instagram giveaway picker
 ---
 ## How this Instagram giveaway picker works
-This Instagram giveaway picker draws random winners from a list of usernames you paste in. It does **not** connect to Instagram or read your comments automatically: you copy the usernames from your comments and paste them into the box, then press **Draw**. That takes a few extra minutes on a big post, but it means you never log in, never hand over account access, and can use the same giveaway picker for TikTok, X, YouTube or anywhere else people enter.
+This Instagram giveaway picker draws random winners from a list of usernames you paste in. It does **not** connect to Instagram or read your comments automatically: you copy the usernames from your comments and paste them into the box, then press **Draw**. It takes a few extra minutes, but you never log in or hand over account access, and the same giveaway picker works for TikTok, X, YouTube or anywhere else.
 
 ### 1. Paste your entrants
 Put one username per line, or separate them with commas, in the **Entrants** box. A leading @ is removed, so "@alice" and "alice" are the same entrant. Below the box, a line keeps count as you paste, for example "212 entrants from 240 lines · 28 duplicates." Paste usernames only: if you paste a whole comment, the entire line counts as one entrant. The box handles up to 20,000 lines.
@@ -42,11 +42,11 @@ Match the settings to your giveaway's rules:
 | Every comment is an entry, one win per person | **Remove duplicates** on, **Extra chance** on |
 | Every comment is an entry, people can win twice | **Remove duplicates** off |
 
-To collect names, go through the comments and copy each username into a notes app or a spreadsheet column, one per line, then paste the whole column here. Doing this on a computer is usually faster than on a phone. While you go, skip anyone who didn't follow the rules, such as not tagging a friend; the picker can't check that for you.
+To collect names, go through the comments and copy each username into a notes app or a spreadsheet column, one per line, then paste the whole column here. While you go, skip anyone who didn't follow the rules, such as not tagging a friend; the picker can't check that for you.
 
 ## How to run a fair giveaway on Instagram, TikTok and X
 ### Write the rules before you post
-Put the rules in the caption or link to them: who can enter (age, country), how to enter, the deadline with a time zone, the prize, how many winners, how winners are picked and contacted, and how long they have to reply before you move to an alternate. Clear rules prevent arguments later, and the [Instagram line break generator](/tools/instagram-line-break-generator) keeps a long rules caption readable.
+Put the rules in the caption or link to them: who can enter (age, country), how to enter, the deadline with a time zone, the prize, how many winners, how winners are picked and contacted, and how long they have to reply before you move to an alternate. Clear rules prevent arguments later; the [Instagram line break generator](/tools/instagram-line-break-generator) keeps a long rules caption readable.
 
 ### Follow each platform's promotion rules
 Instagram (Meta) publishes promotion guidelines for anyone running a contest or giveaway on the platform. At the time of writing, they make you responsible for running the promotion lawfully and expect you to make clear that Instagram doesn't sponsor or endorse it. TikTok and X have their own rules on promotions and spam, which generally discourage things like rewarding people for creating extra accounts or posting the same content over and over. Read the current versions before you launch; they change.
