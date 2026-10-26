@@ -112,7 +112,7 @@ function OneHandleTool({ config }) {
             </div>
           )}
           {res.ok && !rule.profile && (
-            <p className={s.hint}>{rule.label} has no public profile page you can open by {rule.noun}, so the only way to see whether it’s free is to try it in the app: User Settings → My Account → Username.</p>
+            <p className={s.hint}>{rule.label} has no public profile page you can open by {rule.noun}, so the only way to see whether it’s free is to try it in the app{rule.whereToTry ? `: ${rule.whereToTry}` : ''}.</p>
           )}
           {ideas.length > 0 && (
             <>

@@ -98,7 +98,7 @@ Fixing these is usually enough. You don't need to stop posting links; our guide 
 
 Avoid anyone who offers to remove a restriction for money or asks for your login codes. Reviews through Facebook are free.
 
-To keep a steady rhythm without posting in bursts, see [how to schedule a post on Facebook](/blog/how-to-schedule-a-post-on-facebook). For how other platforms handle the same problem, read our [Instagram shadowban guide](/blog/instagram-shadowban) and [social media myths about shadowbans](/blog/social-media-shadowban-myths).
+To keep a steady rhythm without posting in bursts, see [how to schedule a post on Facebook](/blog/how-to-schedule-a-post-on-facebook). Schedule For You can queue posts to Facebook Pages alongside your other accounts, with a caption tailored to each platform. It won't lift a restriction, but it makes a steady pace of original posts easier to keep; see [scheduling for Facebook](/facebook). For how other platforms handle the same problem, read our [Instagram shadowban guide](/blog/instagram-shadowban) and [social media myths about shadowbans](/blog/social-media-shadowban-myths).
 
 ## Frequently asked questions
 
@@ -121,7 +121,3 @@ Scheduling your own posts to a Page through Meta's official tools or API is norm
 ### Can my posts be hidden in a Facebook group but not elsewhere?
 
 Yes. Group admins can require approval, decline posts automatically or restrict members, and that only affects that group. Check the group rules and ask an admin.
-
-## Keep your Page posting on a steady schedule
-
-Schedule For You publishes to Facebook Pages, plus Instagram, X, TikTok, YouTube and more, from one queue with a caption tailored to each platform. It won't lift a restriction, but it makes it easy to post original content at a steady pace instead of in bursts. See [scheduling for Facebook](/facebook) or start a 7-day free trial.

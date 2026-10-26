@@ -6,6 +6,7 @@ category: X
 excerpt: X doesn't use the word "shadowban", but it does limit the visibility of some posts and accounts. Here's how to check your account status, spot the signs and fix the cause.
 keyword: shadowban x
 date: 2026-10-23
+updated: 2026-10-26
 ---
 If your posts on X (formerly Twitter) suddenly get far fewer views, or people say they can't find you in search, you may be under what users call a "shadowban". X itself talks about **visibility filtering** and **limits on reach** rather than shadowbans. The quickest way to check is to look at your **Account status** page in X's settings and any notices X has sent you, then rule out simpler explanations such as a protected account or a normal drop in engagement.
 
@@ -74,6 +75,22 @@ Open your recent posts. If X has limited a specific post, you may see a notice o
 
 Various websites claim to test whether you're shadowbanned by searching for your account in different ways. They can't see X's internal systems, so their results are guesses at best and can be out of date when X changes how search works. Don't treat them as authoritative, and never give any of them your X password. Your Account status page and X's own notices are the reliable sources.
 
+## Search ban, search suggestion ban and ghost ban on X: how to test each
+
+The three restrictions people search for most often are narrower than a general drop in reach, and each has its own quick test. Our free [shadowban checker](/tools/shadowban-checker) walks you through all of them for X and turns your answers into a plain verdict. Like any outside tool, it can't see inside X, so your Account status page still has the final word.
+
+### Search ban (Twitter search ban)
+
+A search ban means your posts don't show up in search results for people who don't follow you. To test it, open a private browser window, search for `from:yourusername` and switch to the **Latest** tab. If X asks you to log in, ask a friend who doesn't follow you to run the same search. If your recent posts are missing while other accounts' posts on the same topic appear, search visibility may be limited. Before concluding anything, check that your account isn't protected and your media isn't marked as sensitive, since both hide posts from search.
+
+### Search suggestion ban
+
+A search suggestion ban means your account doesn't appear in the drop-down list as someone types your name or @username into search. Ask a non-follower to start typing your handle. If you only appear after they type it in full and press enter, or not at all, that's the pattern people call a search suggestion ban. New accounts and accounts with little activity often take a while to show up in suggestions, so give a brand-new account a few weeks before reading much into it.
+
+### Ghost ban and reply deboosting
+
+A ghost ban (or Twitter ghost ban) usually means your replies are hidden from other people in a conversation. Reply deboosting is the milder version: your replies are visible but ranked low, often behind **Show more replies** or **Show probable spam**. To test it, reply to a post, then ask a friend who doesn't follow you to open that conversation and see where your reply sits. One low-ranked reply is normal, since X orders replies by its own relevance signals. If your replies are consistently hidden across several conversations, cut back on link-heavy or repetitive replies to people who don't follow you, and check Account status.
+
 ## Common causes of reduced visibility
 
 X doesn't always explain why reach drops, but these behaviors are commonly linked to spam detection and enforcement:
@@ -132,3 +149,11 @@ Scheduling your own original posts through X's official API at a normal pace is 
 ### How do I appeal a restriction on X?
 
 Use the appeal option shown on your Account status page or the relevant form in X's help center. Explain briefly why you think the action is a mistake. Response times vary and aren't guaranteed.
+
+### What is a search ban on Twitter?
+
+A search ban is when your posts or account don't appear in X search results for other people, even though your account works normally. Test it with a logged-out or non-follower search for `from:yourusername` on the Latest tab, and check your Account status page.
+
+### What is a ghost ban on Twitter?
+
+A ghost ban is when your replies are hidden from others in a conversation, or pushed behind "Show more replies". Ask a non-follower to open a thread you replied to; if your replies are consistently hidden, X may be limiting them.
