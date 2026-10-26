@@ -188,11 +188,11 @@ async function cleanItem(item) {
   }
 }
 
-function MetaTable({ meta, t, num }) {
+function MetaTable({ meta, t }) {
   const camera = meta.model && meta.make && !meta.model.toLowerCase().startsWith(meta.make.toLowerCase().split(' ')[0]) ? `${meta.make} ${meta.model}` : meta.model || meta.make;
   const other = [meta.hasXmp && t.xmp, meta.hasIptc && t.iptc, meta.hasComment && t.comment, meta.hasText && t.text].filter(Boolean).join(', ');
   const rows = [
-    [t.gps, meta.gps ? `${num(Number(meta.gps.lat.toFixed(3)))}, ${num(Number(meta.gps.lon.toFixed(3)))}` : t.gpsNone, !!meta.gps],
+    [t.gps, meta.gps ? `${meta.gps.lat.toFixed(3)}, ${meta.gps.lon.toFixed(3)}` : t.gpsNone, !!meta.gps],
     [t.camera, camera || '—'],
     meta.lens && [t.lens, meta.lens],
     [t.date, formatExifDate(meta.dateTime) || '—'],
@@ -367,7 +367,7 @@ export function ExifTool({ config = {} }) {
                   ) : (
                     meta && (
                       <>
-                        {hasAnyMetadata(meta) ? <MetaTable meta={meta} t={t} num={num} /> : <p className={`${s.hint} ${s.good}`}>{t.none}</p>}
+                        {hasAnyMetadata(meta) ? <MetaTable meta={meta} t={t} /> : <p className={`${s.hint} ${s.good}`}>{t.none}</p>}
                         {meta.orientation !== 1 && <p className={s.hint}>{fmt(t.rotated, { o: meta.orientation })}</p>}
                       </>
                     )

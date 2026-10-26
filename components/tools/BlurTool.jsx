@@ -149,8 +149,8 @@ function scaleBlur(src, sigma) {
     const steps = [];
     let w = W;
     let h = H;
-    const tw = Math.max(1, Math.round(W / Math.max(1, sigma)));
-    const th = Math.max(1, Math.round(H / Math.max(1, sigma)));
+    const tw = Math.max(1, Math.round(W / Math.max(1, sigma * 2)));
+    const th = Math.max(1, Math.round(H / Math.max(1, sigma * 2)));
     while (w / 2 > tw && h / 2 > th) steps.push([(w = Math.round(w / 2)), (h = Math.round(h / 2))]);
     steps.push([tw, th]);
     for (let i = steps.length - 2; i >= 0; i--) steps.push(steps[i]);

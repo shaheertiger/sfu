@@ -229,10 +229,7 @@ export function AspectTool({ config = {} }) {
               className={s.btn}
               aria-label={t.lockSwap}
               title={t.lockSwap}
-              onClick={() => {
-                if (solved) setSide(String(locked === 'width' ? solved.height : solved.width));
-                setLocked(locked === 'width' ? 'height' : 'width');
-              }}
+              onClick={() => setLocked(locked === 'width' ? 'height' : 'width')}
             >
               🔒 ⇄
             </button>
