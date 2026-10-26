@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import s from './tools.module.css';
+import { useToolText } from './locale';
 
 async function copyText(text) {
   try {
@@ -22,8 +23,9 @@ async function copyText(text) {
   }
 }
 
-export default function CopyButton({ text, label = 'Copy' }) {
+export default function CopyButton({ text, label }) {
   const [done, setDone] = useState(false);
+  const { t } = useToolText();
   return (
     <button
       type="button"
@@ -37,7 +39,7 @@ export default function CopyButton({ text, label = 'Copy' }) {
       }}
       aria-live="polite"
     >
-      {done ? 'Copied' : label}
+      {done ? t('copied') : label || t('copy')}
     </button>
   );
 }

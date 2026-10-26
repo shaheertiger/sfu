@@ -3,6 +3,7 @@ import m from './marketing.module.css';
 import { PLATFORM_PAGES } from '@/lib/platform-pages';
 import { LANDING_PAGES } from '@/lib/landing-pages';
 import NavAuth from './NavAuth';
+import { pageString } from '@/lib/i18n';
 
 /** Header, footer and breadcrumbs shared by the tools, blog and comparison pages. Server components. */
 
@@ -119,25 +120,47 @@ export function Breadcrumbs({ items }) {
   );
 }
 
-export function TrialCta({ heading, html, children }) {
+/** `locale` translates the buttons on localized pages (the sign-up flow itself is in English). */
+export function TrialCta({ heading, html, children, locale = 'en' }) {
   return (
     <section className={m.cta} aria-labelledby="cta-heading">
       <h2 id="cta-heading">{heading}</h2>
       {html ? <div dangerouslySetInnerHTML={{ __html: html }} /> : children}
       <div className={m.ctaRow}>
-        <Link href="/signup" className={`${m.btn} ${m.btnPrimary}`}>Start your 7-day free trial</Link>
-        <Link href="/pricing" className={m.btn}>See pricing</Link>
+        <Link href="/signup" className={`${m.btn} ${m.btnPrimary}`}>{pageString(locale, 'trial')}</Link>
+        <Link href="/pricing" className={m.btn}>{pageString(locale, 'pricing')}</Link>
       </div>
-      <p className={m.ctaNote}>Card required. Not charged until day 8. Cancel anytime.</p>
+      <p className={m.ctaNote}>{pageString(locale, 'trialNote')}</p>
     </section>
   );
 }
 
-export function MarketingPage({ children }) {
+/**
+ * Links to the same page in other languages. `current` is the page's own language; `links` is
+ * [{ locale, name, path }] including English.
+ */
+export function LanguageLinks({ current = 'en', links }) {
+  const others = (links || []).filter((l) => l.locale !== current);
+  if (!others.length) return null;
+  return (
+    <nav className={m.meta} aria-label={pageString(current, 'otherLanguages')} style={{ marginTop: 28 }}>
+      {pageString(current, 'otherLanguages')}:{' '}
+      {others.map((l, i) => (
+        <span key={l.locale}>
+          {i > 0 && ' · '}
+          <Link href={l.path} hrefLang={l.locale} lang={l.locale}>{l.name}</Link>
+        </span>
+      ))}
+    </nav>
+  );
+}
+
+/** `lang` marks the main content's language on localized pages; header and footer stay English. */
+export function MarketingPage({ children, lang }) {
   return (
     <div className={m.page}>
       <SiteHeader />
-      <main>{children}</main>
+      <main lang={lang}>{children}</main>
       <SiteFooter />
     </div>
   );

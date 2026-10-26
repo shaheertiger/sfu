@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import s from './tools.module.css';
 import CopyButton, { Chips, Result } from './CopyButton';
+import { useToolText } from './locale';
 import { convert, stylesFor } from '@/lib/tools/unicode';
 import { DISCORD_LIMITS, X_LIMITS, instagramLineBreaks, plainLength, stats, xLength } from '@/lib/tools/counters';
 import { BIO_PLATFORMS, BIO_TONES, COMMENT_TONES, EXTRA_NAME_STYLES, NAME_RULES, NAME_STYLES, generateBios, generateComments, generateNames } from '@/lib/tools/generators';
@@ -10,17 +11,18 @@ import { BIO_PLATFORMS, BIO_TONES, COMMENT_TONES, EXTRA_NAME_STYLES, NAME_RULES,
 const fmt = (n) => n.toLocaleString('en-US');
 
 export function FontTool({ config }) {
+  const { t, label } = useToolText();
   const [text, setText] = useState(config.sample || 'Your text here');
   const styles = useMemo(() => stylesFor(config.group || 'all'), [config.group]);
   return (
     <div className={s.widget}>
       <label className={s.label}>
-        Type your text
-        <textarea className={s.textarea} value={text} onChange={(e) => setText(e.target.value)} rows={3} placeholder="Type something…" />
+        {t('typeText')}
+        <textarea className={s.textarea} value={text} onChange={(e) => setText(e.target.value)} rows={3} placeholder={t('typePlaceholder')} />
       </label>
       <div className={s.results}>
         {styles.map((st) => (
-          <Result key={st.id} meta={st.name} text={convert(text, st.id)} />
+          <Result key={st.id} meta={label('styles', st.id, st.name)} text={convert(text, st.id)} />
         ))}
       </div>
     </div>
@@ -108,30 +110,32 @@ export function CounterTool({ config }) {
   return config.mode === 'discord' ? <DiscordCounter /> : <XCounter />;
 }
 
-export function LineBreakTool() {
-  const [text, setText] = useState('First line of your caption.\n\nA new paragraph that keeps its space.\n\n.\n.\n#hashtags #below');
+export function LineBreakTool({ config = {} }) {
+  const { t, num } = useToolText();
+  const [text, setText] = useState(config.sample || 'First line of your caption.\n\nA new paragraph that keeps its space.\n\n.\n.\n#hashtags #below');
   const out = instagramLineBreaks(text);
   return (
     <div className={s.widget}>
       <label className={s.label}>
-        Write your caption or bio with the spacing you want
+        {t('lbLabel')}
         <textarea className={s.textarea} value={text} onChange={(e) => setText(e.target.value)} rows={8} />
       </label>
       <div className={s.result}>
         <span className={s.resultText}>
-          <span className={s.resultMeta}>Ready to paste · {fmt(plainLength(out))} / 2,200 characters</span>
+          <span className={s.resultMeta}>{t('lbMeta', { n: num(plainLength(out)), limit: num(2200) })}</span>
           {out}
         </span>
-        <CopyButton text={out} label="Copy caption" />
+        <CopyButton text={out} label={t('lbCopy')} />
       </div>
-      <p className={s.hint}>Empty lines get an invisible character so Instagram keeps them. Trailing spaces are removed.</p>
+      <p className={s.hint}>{t('lbHint')}</p>
     </div>
   );
 }
 
 export function NameTool({ config }) {
+  const { t, label } = useToolText();
   const rule = NAME_RULES[config.rule] || NAME_RULES.generic;
-  const styles = [...NAME_STYLES, ...(config.extraStyles || []).map((id) => EXTRA_NAME_STYLES[id]).filter(Boolean)];
+  const styles = [...NAME_STYLES, ...(config.extraStyles || []).map((id) => EXTRA_NAME_STYLES[id]).filter(Boolean)].map((o) => ({ ...o, label: label('nameStyles', o.id, o.label) }));
   const [keyword, setKeyword] = useState(config.sample || '');
   const [style, setStyle] = useState('cool');
   const [seed, setSeed] = useState(0);
@@ -139,19 +143,19 @@ export function NameTool({ config }) {
   return (
     <div className={s.widget}>
       <label className={s.label}>
-        A word about you or your topic
-        <input className={s.input} value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="e.g. coffee, travel, pixel" maxLength={40} />
+        {t('nameLabel')}
+        <input className={s.input} value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder={t('namePlaceholder')} maxLength={40} />
       </label>
-      <Chips options={styles} value={style} onChange={setStyle} label="Style" />
+      <Chips options={styles} value={style} onChange={setStyle} label={t('nameStyleGroup')} />
       <div className={s.results}>
         {names.map((n) => (
           <Result key={n} text={n} />
         ))}
       </div>
       <div className={s.row}>
-        <button type="button" className={`${s.btn} ${s.btnPrimary}`} onClick={() => setSeed((x) => x + 1)}>More ideas</button>
+        <button type="button" className={`${s.btn} ${s.btnPrimary}`} onClick={() => setSeed((x) => x + 1)}>{t('moreIdeas')}</button>
         <p className={s.hint}>
-          {rule.label}: {rule.min}–{rule.max} characters{rule.mode === 'handle' ? ', allowed characters only' : ''}. Check availability on the platform before you settle on one.
+          {t('nameHint', { label: label('nameRules', config.rule || 'generic', rule.label), min: rule.min, max: rule.max, allowed: rule.mode === 'handle' ? t('nameAllowed') : '' })}
         </p>
       </div>
     </div>
@@ -159,37 +163,39 @@ export function NameTool({ config }) {
 }
 
 export function BioTool({ config }) {
+  const { t, label, num, locale } = useToolText();
   const platform = BIO_PLATFORMS[config.platform] || BIO_PLATFORMS.instagram;
   const [role, setRole] = useState(config.role || '');
   const [topic, setTopic] = useState(config.topic || '');
   const [tone, setTone] = useState('friendly');
   const [emoji, setEmoji] = useState(true);
   const [seed, setSeed] = useState(0);
-  const bios = useMemo(() => generateBios({ role, topic, tone, platform: config.platform, emoji, seed }), [role, topic, tone, config.platform, emoji, seed]);
+  const bios = useMemo(() => generateBios({ role, topic, tone, platform: config.platform, emoji, seed, lang: locale }), [role, topic, tone, config.platform, emoji, seed, locale]);
+  const tones = BIO_TONES.map((o) => ({ ...o, label: label('bioTones', o.id, o.label) }));
   return (
     <div className={s.widget}>
       <div className={s.row}>
         <label className={s.label}>
-          What you do
-          <input className={s.input} value={role} onChange={(e) => setRole(e.target.value)} placeholder="e.g. photographer" maxLength={40} />
+          {t('bioRole')}
+          <input className={s.input} value={role} onChange={(e) => setRole(e.target.value)} placeholder={t('bioRolePlaceholder')} maxLength={40} />
         </label>
         <label className={s.label}>
-          What you post about
-          <input className={s.input} value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="e.g. street photos" maxLength={60} />
+          {t('bioTopic')}
+          <input className={s.input} value={topic} onChange={(e) => setTopic(e.target.value)} placeholder={t('bioTopicPlaceholder')} maxLength={60} />
         </label>
       </div>
-      <Chips options={BIO_TONES} value={tone} onChange={setTone} label="Tone" />
+      <Chips options={tones} value={tone} onChange={setTone} label={t('toneGroup')} />
       <label className={s.toggle}>
-        <input type="checkbox" checked={emoji} onChange={(e) => setEmoji(e.target.checked)} /> Include emoji
+        <input type="checkbox" checked={emoji} onChange={(e) => setEmoji(e.target.checked)} /> {t('bioEmoji')}
       </label>
       <div className={`${s.results} ${platform.long ? s.resultsWide : ''}`}>
         {bios.map((b) => (
-          <Result key={b} text={b} meta={`${fmt(plainLength(b))} / ${fmt(platform.limit)} characters`} />
+          <Result key={b} text={b} meta={t('bioMeta', { n: num(plainLength(b)), limit: num(platform.limit) })} />
         ))}
       </div>
       <div className={s.row}>
-        <button type="button" className={`${s.btn} ${s.btnPrimary}`} onClick={() => setSeed((x) => x + 1)}>More ideas</button>
-        <p className={s.hint}>Edit any bio to make it yours: specifics beat templates.</p>
+        <button type="button" className={`${s.btn} ${s.btnPrimary}`} onClick={() => setSeed((x) => x + 1)}>{t('moreIdeas')}</button>
+        <p className={s.hint}>{t('bioHint')}</p>
       </div>
     </div>
   );

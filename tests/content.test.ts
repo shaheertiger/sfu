@@ -114,3 +114,75 @@ test('the privacy policy covers every platform we publish to and names a contact
   assert.match(privacy, /privacy@scheduleforyou\.com/);
   assert.match(privacy, /Limited Use/);
 });
+
+/* Localized pages (content/i18n/<locale>/{tools,platforms}) ----------------------------------- */
+
+import { getLocalizedPages } from '../lib/content.js';
+import { LOCALES, LOCALE_CODES } from '../lib/i18n.js';
+import { allLocalizedPages, hreflangMap } from '../lib/i18n-pages.js';
+
+const I18N = path.join(ROOT, 'i18n');
+const localizedFiles = () =>
+  LOCALE_CODES.flatMap((l) => ['tools', 'platforms'].flatMap((kind) => {
+    const dir = path.join(I18N, l, kind);
+    return fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith('.md')).map((f) => ({ locale: l, kind, slug: f.slice(0, -3), raw: fs.readFileSync(path.join(dir, f), 'utf8') })) : [];
+  }));
+
+test('every localized page has an English twin, metadata, a FAQ and a call to action', () => {
+  const files = localizedFiles();
+  assert.ok(files.length >= 20, `only ${files.length} localized pages`);
+  for (const f of files) {
+    const id = `${f.locale}/${f.kind}/${f.slug}`;
+    assert.ok(f.kind === 'tools' ? toolBySlug(f.slug) : PLATFORM_PAGES.some((p) => p.slug === f.slug), `${id}: no English page`);
+    const p = (getLocalizedPages(f.locale, f.kind) as any[]).find((x) => x.slug === f.slug);
+    for (const k of ['title', 'description', 'h1', 'lead', 'keyword']) assert.ok(p[k], `${id}: ${k}`);
+    assert.ok(Array.from(p.title as string).length <= 70, `${id}: title too long`);
+    const len = Array.from(p.description as string).length;
+    if (f.locale === 'ja') assert.ok(len >= 50 && len <= 170, `${id}: description length ${len}`);
+    else assert.ok(len >= 100 && len <= 170, `${id}: description length ${len}`);
+    assert.ok(p.sections.length >= 3, `${id}: sections`);
+    assert.ok(p.faq.length >= 4, `${id}: faq (heading must be "${(LOCALES as any)[f.locale].faqHeading}")`);
+    assert.ok(p.cta, `${id}: cta`);
+    assert.equal(p.extra.length, 0, `${id}: nothing may follow the call to action`);
+    for (const s of p.sections) assert.ok(s.id, `${id}: heading "${s.heading}" has no anchor`);
+  }
+});
+
+test('localized pages link only to pages that exist', () => {
+  const tools = new Set(TOOLS.map((t) => t.slug));
+  const posts = new Set(files('blog').map(([s]) => s));
+  const localized = new Set(allLocalizedPages().map((p: any) => p.path));
+  const ok = (href: string) => {
+    const [p] = href.split('#');
+    if (['/', '/signup', '/login', '/tools', '/blog', '/pricing', '/docs', '/about'].includes(p) || localized.has(p)) return true;
+    if (PLATFORM_PAGES.some((x) => p === `/${x.slug}`) || LANDING_PAGES.some((x) => p === `/${x.slug}`)) return true;
+    let m = /^\/tools\/([a-z0-9-]+)$/.exec(p);
+    if (m) return tools.has(m[1]);
+    m = /^\/blog\/([a-z0-9-]+)$/.exec(p);
+    return !!m && posts.has(m[1]);
+  };
+  for (const f of localizedFiles()) {
+    for (const [, href] of f.raw.matchAll(/\]\((\/[^)\s]*)\)/g)) assert.ok(ok(href), `${f.locale}/${f.kind}/${f.slug}: broken link ${href}`);
+  }
+});
+
+test('localized copy never claims a free plan or a trial without a card', () => {
+  // Only sentences about Schedule For You: sample bios may offer a free plan of their own.
+  const banned = [/kostenlose[nr]? (?:Tarif|Plan)\b/i, /ohne Kreditkarte/i, /plan gratuit|offre gratuite|sans carte/i, /無料プラン|カード不要|カード登録不要/, /gratis abonnement|gratis plan|zonder creditcard/i, /free plan/i];
+  const negated = /\b(?:kein\w*|nicht|pas|aucun\w*|geen|niet|no|not)\b|ありません|ない|なし|ません/i;
+  for (const f of localizedFiles()) {
+    const sentences = f.raw.replace(/\n+/g, ' ').split(/(?<=[.!?。！？])\s*/);
+    for (const s of sentences) {
+      if (!banned.some((re) => re.test(s)) || !/Schedule For You/.test(s) || s.trim().endsWith('?') || s.trim().endsWith('？')) continue;
+      assert.ok(negated.test(s), `${f.locale}/${f.slug}: "${s.slice(0, 160)}"`);
+    }
+  }
+});
+
+test('hreflang maps list English, every translation and x-default', () => {
+  const map = hreflangMap('tools', 'instagram-font-generator') as Record<string, string>;
+  assert.equal(map.en, '/tools/instagram-font-generator');
+  assert.equal(map['x-default'], '/tools/instagram-font-generator');
+  for (const l of ['de', 'fr', 'ja', 'nl']) assert.equal(map[l], `/${l}/tools/instagram-font-generator`);
+  assert.equal(hreflangMap('tools', 'x-character-counter'), undefined);
+});
