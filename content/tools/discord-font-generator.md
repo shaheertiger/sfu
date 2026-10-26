@@ -1,8 +1,8 @@
 ---
 title: Discord Font Generator (𝔤𝔬𝔱𝔥𝔦𝔠 & Ⓑⓤⓑⓑⓛⓔ) – 30+ Free Styles
-description: Free Discord font generator with 30+ Unicode styles for display names, statuses, server names and channels. Tap to copy, then paste into Discord.
+description: Free Discord font generator with 30+ Unicode styles to copy and paste into display names, bios, statuses, server names and channels.
 h1: Discord Font Generator
-lead: Copy 30+ Unicode text styles for the parts of Discord that markdown can't format: display names, nicknames, custom statuses, server, role and channel names.
+lead: Copy and paste 30+ Unicode text styles for the parts of Discord that markdown can't format: display names, nicknames, custom statuses, server, role and channel names.
 keyword: discord font generator
 ---
 ## Styles you can generate for Discord
@@ -24,6 +24,18 @@ Serif and sans bold, italic and bold italic, plus strikethrough, underline and s
 ### What you're actually copying
 
 These are Unicode look-alike characters, not fonts. Discord displays them because they're valid text, but bots, search and screen readers see different characters from the letters you typed.
+
+## What font does Discord use?
+
+Discord's interface font is gg sans, a typeface made for Discord. It replaced Whitney, the font Discord had used since launch, at the end of 2022, and it's used across the desktop app, mobile apps and website.
+
+### You can't change the Discord text font
+
+There's no setting that swaps gg sans for another typeface, for you or for anyone reading your messages. Discord's appearance settings let you scale the chat text size, but the font stays the same.
+
+### Why copied styles still show up
+
+Styled text from this generator isn't a font, so Discord doesn't need to support it. You copy and paste the characters themselves, and every member sees them in your messages, display name, server nickname, About Me (your Discord bio) and custom status. That's how people get a different Discord name font without changing any settings.
 
 ## Native markdown or Unicode: which to use
 
@@ -76,6 +88,10 @@ Use the [Discord character counter](/tools/discord-character-counter) to check m
 ### How do I change my font on Discord?
 
 Discord doesn't let you change the app font for others. You can format messages with markdown, or paste Unicode look-alike characters from this generator into your display name, status or server labels.
+
+### How do Discord fonts copy and paste into a name or bio?
+
+Type your text above, tap a style to copy it, then open **User Settings → Profiles** and paste it into your display name or About Me. For one server only, paste it into your server nickname instead.
 
 ### Can I use fancy fonts in my Discord username?
 

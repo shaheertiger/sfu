@@ -7,7 +7,7 @@ keyword: facebook font generator
 ---
 ## Styles you can generate for Facebook
 
-Facebook doesn't let you pick a font for a regular post, but it does display Unicode characters. Type your text once and this generator shows it in more than 30 look-alike styles; tap any result to copy it, then paste it into Facebook.
+Facebook doesn't let you pick a font for a regular post, but it does display Unicode characters. That's how this Facebook font changer works: type your text once and it shows it in more than 30 look-alike styles; tap any result to copy it, then paste it into Facebook.
 
 ### Bold and italic families
 
@@ -83,7 +83,7 @@ A bold date line at the top of an event description gives people the key detail 
 
 ### Can I change the actual font on Facebook?
 
-No. Facebook uses its own system font for posts and you can't swap it. This tool gives you Unicode characters that look like other typefaces, which Facebook displays as normal text.
+No. Facebook uses its own system font for posts, and there's no font changer in its settings. This tool changes your text instead, into Unicode characters that look like other typefaces. Paste them into Facebook and they display as normal text, so these FB fonts show up for everyone who reads the post.
 
 ### Why do some styled letters show up as boxes?
 

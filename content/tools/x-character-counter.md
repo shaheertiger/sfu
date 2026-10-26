@@ -61,8 +61,8 @@ Add your URL before you finish editing, not after. Knowing it costs exactly 23 c
 If you don't have Premium, or the content splits naturally into steps, a short thread of linked posts often reads better than one dense post.
 
 ## Frequently asked questions
-### How many characters can you use in a post on X?
-Standard posts allow 280 weighted characters. X Premium subscribers can post long posts of up to 25,000 characters at the time of writing.
+### What is the tweet character limit?
+X, formerly Twitter, limits a standard post (still widely called a tweet) to 280 weighted characters, the same as before the rename. X Premium subscribers can publish long posts of up to 25,000 characters at the time of writing. This Twitter character counter checks both.
 
 ### Do links count toward the X character limit?
 Yes. Every link counts as 23 characters regardless of its real length, because X shortens all links with its own service.

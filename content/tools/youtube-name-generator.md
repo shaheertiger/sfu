@@ -2,11 +2,11 @@
 title: YouTube Name Generator – 30 Free Channel Name Ideas
 description: Free YouTube name generator for creators. Enter your topic, pick a style and get 30 channel name ideas that fit YouTube's limits. Tap any idea to copy it.
 h1: YouTube Name Generator
-lead: Type what your videos are about, choose a style, and get 30 channel name ideas you can copy, tweak and check on YouTube.
+lead: Type what your videos are about, choose a style, and get 30 unique channel name ideas you can copy, tweak and turn into your @username.
 keyword: youtube name generator
 ---
 ## What makes a good YouTube channel name
-A good YouTube name tells a new viewer what kind of videos to expect, is easy to say out loud, and still works as a handle. Enter a topic above to get 30 starting points, then use the checks below to pick the one worth keeping.
+A good YouTube name tells a new viewer what kind of videos to expect, is easy to say out loud, and still works as a handle. Enter a topic in the channel name generator above to get 30 starting points, then use the checks below to pick the one worth keeping.
 
 ### It survives being said out loud
 Viewers recommend channels in conversation, in comments and in other creators' videos. If you have to spell your name for someone, you lose some of those mentions.
@@ -24,7 +24,7 @@ It takes under a minute, and you can repeat it as often as you like.
 1. **Enter a keyword.** Use your video topic ("budget travel", "houseplants") or a word you want in the name.
 2. **Pick a style.** Funny and gaming lean playful; professional and minimal suit tutorials and reviews.
 3. **Scan the 30 ideas.** Each one follows YouTube's character rules. Tap a name to copy it.
-4. **Regenerate.** Generate again, or try a synonym for your keyword.
+4. **Get more ideas.** Tap **More ideas** for a random new batch, or try a synonym for your keyword.
 5. **Check it on YouTube.** The tool cannot see whether a name or handle is taken. Search the name on YouTube and try the handle in YouTube Studio before you commit.
 
 ### Shortlist before you decide
@@ -62,6 +62,12 @@ Invented for this page; check availability before using any.
 Combine the strong halves of two ideas: "Golden Hour" plus "Supper" gives "Golden Hour Supper", which may be free when both originals are taken.
 
 ## Frequently asked questions
+### Is this a YouTube username generator too?
+Yes. Your YouTube username is your @handle, and most ideas here work as one once you remove the spaces. Handles take 3–30 letters, numbers, underscores, hyphens or periods, so "Golden Hour Kitchen" becomes @goldenhourkitchen. Check that the handle is free in YouTube Studio.
+
+### Can I get random channel names?
+Yes. Each tap of **More ideas** shuffles a random set of 30 names for the same keyword and style. For more unique results, change the style or add a second word that's specific to you, like your name or city.
+
 ### Is the YouTube name generator free?
 Yes. It runs in your browser with no sign-up, and nothing you type is uploaded.
 

@@ -6,7 +6,7 @@ lead: Describe who you are and what you post, pick a tone, and copy one of 12 In
 keyword: instagram bio generator
 ---
 ## What makes a good Instagram bio
-An Instagram bio has 150 characters to tell a visitor who you are, what they'll see if they follow, and what to do next. This free generator gives you 12 drafts inside that limit, so you can pick the closest one and adjust it instead of staring at an empty field.
+An Instagram bio has 150 characters to tell a visitor who you are, what they'll see if they follow, and what to do next. This free bio maker gives you 12 drafts inside that limit, so you can pick the closest one and adjust it instead of staring at an empty field.
 
 ### It says what you post, not only who you are
 "Designer and dog person" describes you. "Small-batch ceramics, studio process and kiln fails" tells a visitor what will show up in their feed. The second version gives people a reason to tap Follow.
@@ -74,6 +74,9 @@ You can press return in the bio field on most versions of the app, but spacing s
 
 ### Can I use fancy fonts in my Instagram bio?
 You can paste styled Unicode text from the [Instagram font generator](/tools/instagram-font-generator), but use it sparingly. Those characters aren't a real font, screen readers may read them letter by letter, and search may not match them. Keep your key words in plain text.
+
+### Is this the same as an Instagram bio maker?
+Yes. Bio generator and IG bio maker are two names for the same kind of tool: you describe your account and it writes bio options for you. This one gives 12 at a time, each already under 150 characters, so you can paste it straight into Instagram.
 
 ### Is this Instagram bio generator free?
 Yes. It's free, needs no account and works in your browser. Generate as many sets of bios as you like.
