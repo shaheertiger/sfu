@@ -73,7 +73,7 @@ test('copy never promises what the product does not do', () => {
 });
 
 test('pages for platforms we do not publish to never say we schedule there', () => {
-  const unsupported = ['Discord', 'Telegram', 'Reddit', 'Slack'];
+  const unsupported = ['Discord', 'Telegram', 'Reddit', 'Slack', 'Twitch', 'Roblox'];
   const claim = (p: string) => new RegExp(`(?:schedul\\w*|publish\\w*|auto-?post\\w*)\\s+(?:your\\s+)?(?:posts?|messages?|content|updates?)?\\s*(?:to|on)\\s+${p}\\b`, 'i');
   for (const [slug, raw] of all) {
     for (const p of unsupported) {

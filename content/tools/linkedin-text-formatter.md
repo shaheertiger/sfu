@@ -1,12 +1,12 @@
 ---
 title: LinkedIn Text Formatter – Bold, Italic, Lists & "…more" Preview
-description: Free LinkedIn text formatter: bold, italic, underline or strikethrough selected words, add bullet lists, track the 3,000 limit and preview the "…more" cut-off.
+description: Free LinkedIn formatter: bold, italic, underline or strikethrough words, add bullet lists, track the 3,000-character limit and preview the "…more" cut-off.
 h1: LinkedIn Text Formatter
 lead: Write your LinkedIn post, style selected words, add bullet or numbered lists, and see roughly where the feed will cut it off with "…more" before you copy it over.
 keyword: linkedin text formatter
 ---
 ## What the formatter does
-LinkedIn's composer doesn't offer bold, italic or list buttons for regular posts at the time of writing. This formatter fills that gap: write your post, select a word or phrase, apply a style, and copy the finished text into LinkedIn. It also counts characters against the 3,000 limit and previews where the "…more" link is likely to fall.
+LinkedIn's composer doesn't offer bold, italic or list buttons for regular posts at the time of writing. This LinkedIn formatter fills that gap: write your post, select a word or phrase, apply a style, and copy the finished text into LinkedIn. It also counts characters against the 3,000 limit and previews where the "…more" link is likely to fall.
 
 ### Text styles
 - **Bold** and *italic*, plus bold italic
@@ -55,6 +55,10 @@ LinkedIn search and hashtags may not match styled letters to their plain equival
 Formatting improves readability, but a well-sized image often does more for attention in the feed. See [image sizes for LinkedIn posts](/blog/image-sizes-for-linkedin-posts) before you attach one.
 
 ## Frequently asked questions
+
+### Why doesn't LinkedIn have built-in text formatting?
+
+LinkedIn's post composer doesn't offer bold, italic or underline buttons, and pasted formatting from Word or Google Docs is stripped out. A LinkedIn formatter like this one works around that by swapping your letters for Unicode characters that look bold or italic. LinkedIn treats them as ordinary text, so the formatting survives when you paste.
 ### How do I bold text on LinkedIn?
 LinkedIn's regular post composer doesn't have a bold button at the time of writing. Write the post here, select the words, apply bold and paste the result into LinkedIn. The bold letters are Unicode characters, so they keep their look.
 
