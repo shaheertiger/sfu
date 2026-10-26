@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import JsonLd from '@/components/JsonLd';
-import { Breadcrumbs, MarketingPage, TrialCta } from '@/components/marketing/Chrome';
+import { Breadcrumbs, LanguageLinks, MarketingPage, TrialCta } from '@/components/marketing/Chrome';
 import m from '@/components/marketing/marketing.module.css';
 import { getPlatformPage, getPosts, getToolPage, renderMarkdown } from '@/lib/content';
 import { PLATFORM_PAGES, platformPage } from '@/lib/platform-pages';
@@ -9,6 +9,7 @@ import { postsForPlatform } from '@/lib/related';
 import { TOOLS } from '@/lib/tools/registry';
 import { abs, breadcrumbLd, faqPageLd, pageMetadata } from '@/lib/seo-pages';
 import { organizationLd } from '@/lib/seo';
+import { hreflangMap, translationsOf } from '@/lib/i18n-pages';
 
 /** Landing pages for each platform we publish to: /instagram, /facebook, /x, … */
 export const dynamicParams = false;
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }) {
   const { platform } = await params;
   const page = getPlatformPage(platform);
   if (!page) return {};
-  return pageMetadata({ title: page.title, description: page.description, path: `/${platform}`, absolute: true, keyword: page.keyword });
+  return pageMetadata({ title: page.title, description: page.description, path: `/${platform}`, absolute: true, keyword: page.keyword, languages: hreflangMap('platforms', platform) });
 }
 
 export default async function PlatformPage({ params }) {
@@ -93,6 +94,7 @@ export default async function PlatformPage({ params }) {
             </section>
           )}
           {page.cta && <TrialCta heading={page.cta.heading} html={page.cta.html} />}
+          <LanguageLinks links={translationsOf('platforms', platform)} />
           <div className={m.more}>
             {(tools.length > 0 || posts.length > 0) && (
               <section>

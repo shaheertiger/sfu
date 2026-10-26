@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import s from './tools.module.css';
 import { Chips } from './CopyButton';
+import { useToolText } from './locale';
 import { PLATFORM_NAMES } from '@/lib/tools/registry';
 
 function download(canvas, name, type) {
@@ -250,6 +251,7 @@ function tileBlob(full, x, y, w, h) {
 }
 
 export function SliceTool({ config }) {
+  const { t: tr } = useToolText();
   const grid = config.mode === 'grid';
   const [img, setImg] = useState(null);
   const [error, setError] = useState('');
@@ -270,14 +272,14 @@ export function SliceTool({ config }) {
   function load(file) {
     setError('');
     if (!file) return;
-    if (!file.type.startsWith('image/')) return setError('Choose an image file (JPG, PNG or WebP).');
+    if (!file.type.startsWith('image/')) return setError(tr('sliceBadType'));
     const url = URL.createObjectURL(file);
     const im = new Image();
     im.onload = () => {
       setImg(im);
       URL.revokeObjectURL(url);
     };
-    im.onerror = () => setError('That image could not be opened.');
+    im.onerror = () => setError(tr('sliceBadImage'));
     im.src = url;
   }
 
@@ -299,24 +301,24 @@ export function SliceTool({ config }) {
   return (
     <div className={s.widget}>
       <div className={s.drop} role="button" tabIndex={0} onClick={() => input.current?.click()} onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && input.current?.click()} onDragOver={(e) => e.preventDefault()} onDrop={(e) => { e.preventDefault(); load(e.dataTransfer.files?.[0]); }}>
-        <strong style={{ color: '#f6f5f1' }}>{img ? 'Choose a different image' : grid ? 'Choose the image for your grid' : 'Choose a wide image or panorama'}</strong>
-        <span>Stays on your device. Nothing is uploaded.</span>
+        <strong style={{ color: '#f6f5f1' }}>{img ? tr('sliceChooseAgain') : grid ? tr('sliceChooseGrid') : tr('sliceChooseWide')}</strong>
+        <span>{tr('sliceLocal')}</span>
         <input ref={input} type="file" accept="image/*" hidden onChange={(e) => load(e.target.files?.[0])} />
       </div>
       {error && <p className={`${s.hint} ${s.over}`}>{error}</p>}
       {grid ? (
-        <Chips options={[1, 2, 3, 4].map((n) => ({ id: n, label: `3×${n} · ${3 * n} posts` }))} value={rows} onChange={setRows} label="Grid" />
+        <Chips options={[1, 2, 3, 4].map((n) => ({ id: n, label: tr('sliceGridOption', { rows: n, n: 3 * n }) }))} value={rows} onChange={setRows} label={tr('sliceGrid')} />
       ) : (
-        <Chips options={[2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => ({ id: n, label: `${n} slides` }))} value={cols} onChange={setCols} label="Slides" />
+        <Chips options={[2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => ({ id: n, label: tr('sliceSlidesOption', { n }) }))} value={cols} onChange={setCols} label={tr('sliceSlides')} />
       )}
       <div className={s.row}>
-        <Chips options={TILE_SIZES.map((x) => ({ id: x.id, label: x.label }))} value={size} onChange={setSize} label="Tile size" />
-        <Chips options={[{ id: 'jpg', label: 'JPG' }, { id: 'png', label: 'PNG' }]} value={format} onChange={setFormat} label="Format" />
+        <Chips options={TILE_SIZES.map((x) => ({ id: x.id, label: tr(x.id === 'portrait' ? 'slicePortrait' : 'sliceSquare') }))} value={size} onChange={setSize} label={tr('sliceTileSize')} />
+        <Chips options={[{ id: 'jpg', label: 'JPG' }, { id: 'png', label: 'PNG' }]} value={format} onChange={setFormat} label={tr('sliceFormat')} />
       </div>
       <div className={s.preview}>
         {img ? (
           <div style={{ position: 'relative', width: '100%', maxWidth: grid ? 420 : '100%' }}>
-            <canvas ref={canvas} style={{ width: '100%', height: 'auto', maxHeight: 'none' }} aria-label="Preview" />
+            <canvas ref={canvas} style={{ width: '100%', height: 'auto', maxHeight: 'none' }} aria-label={tr('slicePreview')} />
             <div style={{ position: 'absolute', inset: 0, display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, gridTemplateRows: `repeat(${rows}, 1fr)` }}>
               {tiles.map((tile) => (
                 <div key={tile.i} style={{ border: '1px solid rgba(255,255,255,.7)', display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-start', padding: 4 }}>
@@ -326,25 +328,23 @@ export function SliceTool({ config }) {
             </div>
           </div>
         ) : (
-          <p className={s.hint}>Your {grid ? 'grid' : 'slides'} preview appears here.</p>
+          <p className={s.hint}>{tr(grid ? 'slicePreviewGrid' : 'slicePreviewSlides')}</p>
         )}
       </div>
       {img && (
         <>
           <button type="button" className={`${s.btn} ${s.btnPrimary}`} onClick={saveAll}>
-            Download all {tiles.length} {grid ? 'tiles' : 'slides'}
+            {tr(grid ? 'sliceDownloadTiles' : 'sliceDownloadSlides', { n: tiles.length })}
           </button>
           <div className={s.chips}>
             {[...tiles].sort((a, b) => order(a.i) - order(b.i)).map((tile) => (
               <button key={tile.i} type="button" className={s.chip} onClick={() => save(tile)}>
-                {grid ? 'Tile' : 'Slide'} {order(tile.i)}
+                {tr(grid ? 'sliceTile' : 'sliceSlide', { n: order(tile.i) })}
               </button>
             ))}
           </div>
           <p className={s.hint}>
-            {grid
-              ? 'Numbers show posting order: post 1 first and the last number last, so the top-left tile is your newest post. Your browser may ask to allow multiple downloads.'
-              : 'Numbers show slide order. Upload them in that order as one carousel (up to 10 slides).'}
+            {tr(grid ? 'sliceHintGrid' : 'sliceHintSlides')}
           </p>
         </>
       )}

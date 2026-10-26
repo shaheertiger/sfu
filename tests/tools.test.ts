@@ -125,3 +125,22 @@ test('TikTok captions use the topic, the call to action and the hashtags', () =>
   }
   assert.notDeepEqual(caps, generateCaptions({ topic: 'sourdough', style: 'howto', cta: 'save', hashtags: 'baking', seed: 1 }));
 });
+
+test('accented letters keep their accent on a styled base letter', () => {
+  assert.equal(convert('é', 'bold'), '𝐞́');
+  assert.equal(convert('Grüße', 'sansBold'), '𝗚𝗿𝘂̈ß𝗲');
+  assert.equal(convert('ça', 'script'), '𝒸̧𝒶');
+  assert.equal(convert('インスタ', 'bold'), 'インスタ', 'Japanese text passes through');
+});
+
+test('French bios fit Instagram’s limit and use the French templates', () => {
+  for (const tone of ['friendly', 'professional', 'funny', 'minimal', 'aesthetic']) {
+    for (const emoji of [true, false]) {
+      const bios = generateBios({ role: 'photographe', topic: 'photos de rue', tone, platform: 'instagram', emoji, lang: 'fr' });
+      assert.ok(bios.length >= 8, `${tone}: ${bios.length}`);
+      for (const b of bios) assert.ok(Array.from(b).length <= 150, b);
+      assert.ok(bios.some((b) => /photographe|photos de rue/i.test(b)));
+    }
+  }
+  assert.deepEqual(generateBios({ role: 'baker', topic: 'bread', lang: 'xx' }), generateBios({ role: 'baker', topic: 'bread' }));
+});

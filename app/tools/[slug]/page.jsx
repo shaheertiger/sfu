@@ -2,12 +2,13 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import JsonLd from '@/components/JsonLd';
 import ToolWidget from '@/components/tools/ToolWidget';
-import { Breadcrumbs, MarketingPage, TrialCta } from '@/components/marketing/Chrome';
+import { Breadcrumbs, LanguageLinks, MarketingPage, TrialCta } from '@/components/marketing/Chrome';
 import m from '@/components/marketing/marketing.module.css';
 import { getPosts, getToolPage, getToolPages, renderMarkdown } from '@/lib/content';
 import { PLATFORM_NAMES, relatedTools, samePlatformTools, toolBySlug } from '@/lib/tools/registry';
 import { postsForPlatform } from '@/lib/related';
 import { pageMetadata, toolPageLd } from '@/lib/seo-pages';
+import { hreflangMap, translationsOf } from '@/lib/i18n-pages';
 
 export const dynamicParams = false;
 
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }) {
   const page = getToolPage(slug);
   if (!page) return {};
   const path = `/tools/${slug}`;
-  return pageMetadata({ title: page.title, description: page.description, path, absolute: true, keyword: page.keyword });
+  return pageMetadata({ title: page.title, description: page.description, path, absolute: true, keyword: page.keyword, languages: hreflangMap('tools', slug) });
 }
 
 const titleOf = (slug) => getToolPage(slug)?.h1 || slug;
@@ -77,6 +78,7 @@ export default async function ToolPage({ params }) {
           )}
 
           {page.cta && <TrialCta heading={page.cta.heading} html={page.cta.html} />}
+          <LanguageLinks links={translationsOf('tools', slug)} />
 
           <div className={m.more}>
             <section>
