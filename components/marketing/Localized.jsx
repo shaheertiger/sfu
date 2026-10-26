@@ -6,10 +6,11 @@ import { Breadcrumbs, LanguageLinks, MarketingPage, TrialCta } from '@/component
 import m from '@/components/marketing/marketing.module.css';
 import { getLocalizedPages, getPlatformPage, getToolPage, renderMarkdownIntl } from '@/lib/content';
 import { localeData, localePath, pageString } from '@/lib/i18n';
-import { allLocalizedPages, basePath, extraKeywords, hreflangMap, localizedPage, translationsOf } from '@/lib/i18n-pages';
+import { allLocalizedPages, basePath, extraKeywords, hasTwin, hreflangMap, localizedPage, translationsOf } from '@/lib/i18n-pages';
 import { PLATFORM_PAGES, platformPage } from '@/lib/platform-pages';
 import { PLATFORM_NAMES, relatedTools, toolBySlug } from '@/lib/tools/registry';
 import { abs, breadcrumbLd, faqPageLd, pageMetadata, toolPageLd } from '@/lib/seo-pages';
+import Article from '@/components/marketing/Article';
 import { organizationLd } from '@/lib/seo';
 
 /**
@@ -17,17 +18,19 @@ import { organizationLd } from '@/lib/seo';
  * app/<locale>/ are one-liners that call these factories with their language.
  */
 
-/** Every language version of a page, English first, for the language links. */
-const versions = (kind, slug) => [{ locale: 'en', name: localeData('en').name, path: basePath(kind, slug) }, ...translationsOf(kind, slug)];
+/** Every language version of a page, English first (when it exists), for the language links. */
+const versions = (kind, slug) => [...(hasTwin(kind, slug) ? [{ locale: 'en', name: localeData('en').name, path: basePath(kind, slug) }] : []), ...translationsOf(kind, slug)];
 
 function metadataFor(locale, kind, slug) {
   const page = localizedPage(locale, kind, slug);
   if (!page) return {};
+  const blog = kind === 'blog';
   return pageMetadata({
     title: page.title,
     description: page.description,
     path: localePath(locale, basePath(kind, slug)),
-    absolute: true,
+    absolute: !blog,
+    ...(blog ? { type: 'article', publishedTime: page.date, section: page.category } : {}),
     keyword: page.keyword,
     keywords: extraKeywords(page),
     languages: hreflangMap(kind, slug),
@@ -243,6 +246,33 @@ export function localizedPlatformRoute(locale) {
         </div>
       </MarketingPage>
     );
+  }
+
+  return { generateStaticParams, generateMetadata, Page };
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+/** Localized blog posts (/es/blog/<slug>): the English article layout with translated chrome. */
+export function localizedBlogRoute(locale) {
+  const generateStaticParams = () => getLocalizedPages(locale, 'blog').map((p) => ({ slug: p.slug }));
+
+  const generateMetadata = async ({ params }) => metadataFor(locale, 'blog', (await params).slug);
+
+  async function Page({ params }) {
+    const { slug } = await params;
+    const post = localizedPage(locale, 'blog', slug);
+    if (!post) notFound();
+    const path = localePath(locale, basePath('blog', slug));
+    const crumbs = [
+      { name: pageString(locale, 'home'), href: '/' },
+      { name: pageString(locale, 'blog'), href: '/blog' },
+      { name: post.h1, href: path },
+    ];
+    const local = sameLanguagePages(locale, path);
+    const related = local.filter((p) => p.kind === 'blog').slice(0, 3).map((p) => ({ href: p.path, name: p.page.h1, kicker: p.page.category }));
+    const tools = local.filter((p) => p.kind !== 'blog').slice(0, 4).map((p) => ({ href: p.path, name: p.page.h1 }));
+    return <Article post={post} path={path} crumbs={crumbs} related={related} tools={tools} locale={locale} languages={versions('blog', slug)} />;
   }
 
   return { generateStaticParams, generateMetadata, Page };
