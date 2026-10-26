@@ -65,10 +65,10 @@ To test, ask a friend in the same stream whether they can see your messages, the
 
 ## YouTube shadowban checker: how to test it yourself
 
-There's no official YouTube shadowban checker, and no outside site can see how YouTube ranks or filters your account. What you can do is run the same tests consistently. Our free [shadowban checker](/tools/shadowban-checker) is a guided self-test: pick YouTube, optionally enter your handle to open your videos page, then answer yes or no to five checks:
+There's no official YouTube shadowban checker, and no outside site can see how YouTube ranks or filters your account. What you can do is run the same tests consistently. Our free [shadowban checker](/tools/shadowban-checker) is a guided self-test: pick YouTube, optionally enter your handle to fill in a logged-out YouTube search for it, then answer yes or no to five checks:
 
 - Does YouTube Studio show a strike, a warning or a lost feature?
-- Does a recent video appear when a logged-out viewer searches its exact title?
+- Do your channel and a recent video appear in a logged-out search?
 - Do your comments on other channels disappear for logged-out viewers?
 - Do your live chat messages show for you but not for others?
 - Did impressions fall sharply on several new videos?
