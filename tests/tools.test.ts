@@ -203,3 +203,14 @@ test('the ZIP writer produces a valid stored archive', () => {
   assert.equal(view.getUint32(end, true), 0x06054b50);
   assert.equal(view.getUint16(end + 10, true), 2);
 });
+
+test('Portuguese bios fit Instagram’s limit and use the Portuguese templates', () => {
+  for (const tone of ['friendly', 'professional', 'funny', 'minimal', 'aesthetic']) {
+    for (const emoji of [true, false]) {
+      const bios = generateBios({ role: 'fotógrafa', topic: 'fotos de rua', tone, platform: 'instagram', emoji, lang: 'pt' });
+      assert.ok(bios.length >= 8, `${tone}: ${bios.length}`);
+      for (const b of bios) assert.ok(Array.from(b).length <= 150, b);
+      assert.ok(bios.some((b) => /fotógrafa|fotos de rua/i.test(b)));
+    }
+  }
+});

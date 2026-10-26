@@ -3,9 +3,17 @@
 import { BioTool, CommentTool, CounterTool, FontTool, LineBreakTool, NameTool } from './TextTools';
 import { LogoTool, ResizerTool, SliceTool } from './ImageTools';
 import { CaptionTool, HandleTool, LinkedInTool, ShadowbanTool, TagTool, TitleTool, UnfollowersTool } from './MoreTools';
+import { CollageTool } from './CollageTool';
+import { TextImageTool } from './TextImageTool';
+import { BlurTool } from './BlurTool';
+import { ExifTool } from './ExifTool';
+import { AspectTool } from './AspectTool';
+import { ReadTimeTool } from './ReadTimeTool';
+import { TierListTool } from './TierListTool';
+import { GiveawayTool } from './GiveawayTool';
 import { ToolLocale } from './locale';
 
-const WIDGETS = { font: FontTool, counter: CounterTool, linebreak: LineBreakTool, name: NameTool, bio: BioTool, comment: CommentTool, resizer: ResizerTool, logo: LogoTool, slice: SliceTool, handle: HandleTool, linkedin: LinkedInTool, yttitle: TitleTool, yttags: TagTool, unfollowers: UnfollowersTool, caption: CaptionTool, shadowban: ShadowbanTool };
+const WIDGETS = { font: FontTool, counter: CounterTool, linebreak: LineBreakTool, name: NameTool, bio: BioTool, comment: CommentTool, resizer: ResizerTool, logo: LogoTool, slice: SliceTool, handle: HandleTool, linkedin: LinkedInTool, yttitle: TitleTool, yttags: TagTool, unfollowers: UnfollowersTool, caption: CaptionTool, shadowban: ShadowbanTool, collage: CollageTool, textimage: TextImageTool, blur: BlurTool, exif: ExifTool, aspect: AspectTool, readtime: ReadTimeTool, tierlist: TierListTool, giveaway: GiveawayTool };
 
 /**
  * The interactive part of a free tool page. Everything runs in the browser. `locale` switches the
