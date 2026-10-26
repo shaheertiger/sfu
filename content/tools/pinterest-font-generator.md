@@ -45,7 +45,7 @@ Styled text works in comments on pins, though comments are a small part of Pinte
 
 ### Text on the pin image
 
-Text overlaid on the image itself, typically on a 1000×1500 (2:3) pin, should be designed in your image editor or Pinterest's own editing tools with real fonts. Unicode styles are for text fields, not graphics.
+Text overlaid on the image itself, typically on a 1000×1500 (2:3) pin, should be designed in your image editor or Pinterest's own editing tools with real fonts. Unicode styles are for text fields, not graphics. To get the image itself to 1000×1500, use the [Pinterest photo resizer](/tools/pinterest-photo-resizer).
 
 ## Best practices for Pinterest
 

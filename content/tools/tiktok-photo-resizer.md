@@ -66,6 +66,9 @@ Use 1080×1920, a 9:16 vertical image, so it fills the screen without bars.
 ### What is the TikTok profile picture size?
 At the time of writing, TikTok recommends at least 200×200. Upload a square image and keep the subject centered, since it's displayed as a circle.
 
+### What is the TikTok logo size for a brand account?
+Your logo is your profile photo, so the same rules apply. TikTok accepts images as small as 20×20, but upload a square of at least 200×200 so it stays sharp, and keep the mark centered because it's shown as a circle. Need a simple logo first? Try the [TikTok logo generator](/tools/tiktok-logo-generator).
+
 ### Can I post square images on TikTok?
 Yes, but they won't fill the screen. Use fit with a background color if you want a full-screen frame without cropping the square.
 

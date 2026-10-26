@@ -126,3 +126,15 @@ test('Accept negotiation: only an explicit text/markdown preference wins', async
   assert.equal(acceptsNeither('image/avif,image/webp'), true);
   assert.equal(acceptsNeither('text/html;q=0, application/json'), true);
 });
+
+import { buildAgentGuide } from '../lib/md/agent-guide.js';
+
+test('the llms-full guide lists every public URL and the facts assistants must get right', () => {
+  process.env.APP_URL = 'https://scheduleforyou.com';
+  const guide = buildAgentGuide();
+  for (const r of listMarkdownRoutes()) assert.ok(guide.includes(`(https://scheduleforyou.com${r.path === '/' ? '/' : r.path})`), `${r.path} missing from the URL index`);
+  assert.match(guide, /a card is required/);
+  assert.match(guide, /There is no free plan/);
+  assert.match(guide, /\| `create_post` \|/);
+  assert.match(guide, /\| POST \| `\/posts` \| Create a post \|/);
+});

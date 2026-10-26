@@ -74,6 +74,19 @@ All of these fit within 80 characters.
 ### Comedy
 - Acting out every group chat you've ever been in.
 
+## TikTok bio templates
+Fill in the brackets with your own words. Each template is under 80 characters as written, so keep your replacements about the same length and check the count before you paste.
+
+- [Niche] for [audience]. New video every [day] 📅
+- [Job] sharing [topic] I wish I'd known sooner
+- Daily [topic] tips in under 60 seconds
+- Part [number] of [series name]. Start with the pinned video 📌
+- 📍 [City] | [what you make] | DM to order 💌
+- [Hobby] fails and wins. Follow for part 2
+- Teaching [skill] to total beginners, one clip at a time
+
+If a filled-in template runs long, type the same idea into the generator above and pick a shorter version.
+
 ## Frequently asked questions
 ### How long can a TikTok bio be?
 A TikTok bio can be up to 80 characters, including spaces, emoji and line breaks. Your username and display name are separate fields with their own limits.

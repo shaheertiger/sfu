@@ -2,17 +2,18 @@
 title: Reddit Photo Resizer – Banner, Community Icon & Avatar Sizes
 description: Free Reddit photo resizer for community banners (1920×384), icons and avatars (256×256) and post images (1200×628). Crop or fit and download a PNG or JPG.
 h1: Reddit Photo Resizer
-lead: Resize images for a subreddit banner, community icon, profile avatar or post. Choose a preset, crop or pad, and download the result.
+lead: Resize images for a subreddit banner, profile banner, community icon, avatar or post. Choose a preset, crop or pad, and download the result.
 keyword: reddit photo resizer
 ---
 ## Reddit image sizes at a glance
-A Reddit community banner should be 1920×384, community icons and avatars 256×256, and a landscape post image around 1200×628. The resizer covers all four, so moderators and regular users can prepare images in one place.
+A Reddit community banner should be 1920×384, community icons and avatars 256×256, and a landscape post image around 1200×628. The resizer covers all of these plus a 1000×300 profile banner, so moderators and regular users can prepare images in one place.
 
 | Preset | Size | Ratio | Who uses it |
 |---|---|---|---|
 | Community banner | 1920×384 | 5:1 | Moderators |
 | Community icon | 256×256 | 1:1 | Moderators |
 | Avatar | 256×256 | 1:1 | Any user |
+| Profile banner | 1000×300 | 10:3 | Any user |
 | Post image | 1200×628 | About 1.91:1 | Any user |
 
 ### Community banner
@@ -24,12 +25,15 @@ Both are small squares shown as circles in most places. The community icon appea
 ### Post image
 Reddit accepts many image shapes for posts. The 1200×628 preset gives you a clean landscape frame that displays well in the feed and also works as a link preview elsewhere.
 
+### Profile banner
+Your own profile has a banner too, separate from any community's. Reddit doesn't publish an official spec for it, but 1000×300 (10:3) is the most commonly cited Reddit profile banner size. Your avatar overlaps part of it, so keep faces and text away from where it sits, and check the preview on desktop and mobile after uploading.
+
 ## How to resize an image for Reddit
 ### 1. Upload your image
 Pick a PNG or JPG. Processing happens in your browser, so nothing is uploaded.
 
 ### 2. Select a preset
-Choose banner, community icon, avatar or post image to set the right dimensions.
+Choose community banner, community icon, avatar, profile banner or post image to set the right dimensions.
 
 ### 3. Fill or fit
 **Fill (crop)** covers the frame and trims what overflows. On the banner preset, that usually means losing a lot of the top and bottom. **Fit (add background)** keeps everything visible and pads the rest with your chosen color, which is useful for placing a logo or wordmark on a plain banner.
@@ -63,6 +67,9 @@ Turn a tall screenshot or an odd-shaped chart into a 1200×628 post image with f
 ## Frequently asked questions
 ### What size is a Reddit banner?
 The recommended community banner size is 1920×384, a 5:1 strip. Keep important details in the center because the edges may be cropped on some screens.
+
+### What is the Reddit profile banner size?
+Reddit doesn't state one officially, but 1000×300 is the size most guides recommend, and the Profile banner preset uses it. The community banner (1920×384) is a different image that only moderators can change.
 
 ### What size is a subreddit icon?
 Use 256×256. It's displayed as a circle, so keep the design centered.
