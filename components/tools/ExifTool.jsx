@@ -14,6 +14,7 @@ const T = {
     local: 'Read and cleaned on your device. Nothing is uploaded.',
     summary: '{n} photo(s) · {g} with a location',
     summaryNone: '{n} photo(s) · no location found',
+    skipped: '{n} more photo(s) were left out: add up to {max} at a time.',
     gpsFlag: 'This photo contains the location where it was taken',
     gps: 'Location (GPS)',
     gpsNone: 'None',
@@ -55,6 +56,7 @@ const T = {
     local: '読み取りも削除もすべて端末内で行います。アップロードはされません。',
     summary: '写真 {n} 枚 · 位置情報あり {g} 枚',
     summaryNone: '写真 {n} 枚 · 位置情報は見つかりませんでした',
+    skipped: 'ほかの {n} 枚は読み込んでいません。一度に追加できるのは {max} 枚までです。',
     gpsFlag: 'この写真には撮影場所の位置情報が含まれています',
     gps: '位置情報 (GPS)',
     gpsNone: 'なし',
@@ -224,13 +226,16 @@ export function ExifTool({ config = {} }) {
   const [busy, setBusy] = useState(false);
   const [zipping, setZipping] = useState(false);
   const [drag, setDrag] = useState(false);
+  const [skipped, setSkipped] = useState(0);
   const input = useRef(null);
 
   async function load(fileList) {
     const files = Array.from(fileList || []);
     if (!files.length) return;
     const loaded = [];
-    for (const file of files.slice(0, config.maxFiles || 50)) {
+    const max = config.maxFiles || 50;
+    setSkipped(Math.max(0, files.length - max));
+    for (const file of files.slice(0, max)) {
       const item = { id: nextId++, file, bytes: null, meta: null, error: '', out: null };
       if (file.type && !file.type.startsWith('image/') && !/\.(hei[cf]|avif)$/i.test(file.name)) item.error = 'notImage';
       else {
@@ -319,6 +324,7 @@ export function ExifTool({ config = {} }) {
           <p aria-live="polite" style={{ margin: 0, fontSize: 15, fontWeight: 600, color: withGps ? '#ff8a8f' : '#dcff2e' }}>
             {fmt(withGps ? t.summary : t.summaryNone, { n: num(items.length), g: num(withGps) })}
           </p>
+          {skipped > 0 && <p className={s.hint}>{fmt(t.skipped, { n: num(skipped), max: num(config.maxFiles || 50) })}</p>}
           <div className={s.row}>
             <button type="button" className={`${s.btn} ${s.btnPrimary}`} onClick={cleanAll} disabled={busy || !pending}>
               {busy ? t.cleaning : t.clean}
@@ -328,7 +334,7 @@ export function ExifTool({ config = {} }) {
                 {zipping ? t.zipping : fmt(t.zip, { n: cleaned.length })}
               </button>
             )}
-            <button type="button" className={s.btn} onClick={() => setItems([])}>
+            <button type="button" className={s.btn} onClick={() => { setItems([]); setSkipped(0); }}>
               {t.clear}
             </button>
           </div>
