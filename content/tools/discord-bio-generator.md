@@ -71,6 +71,14 @@ Swap in your own games, tools and time zone.
 ### Study server member
 - Med student, Pomodoro enthusiast. Usually in the silent study VC from 9 to 5 (UTC+1).
 
+### Aesthetic Discord bio ideas
+An aesthetic Discord bio leans on soft emoji, small symbols and a few lowercase words. Pick the aesthetic tone above for more, and use the [Discord font generator](/tools/discord-font-generator) if you want one styled line.
+- ☁️ soft hours only · lo-fi, sketchbooks & cozy games · be kind ⋆｡˚
+- 🌙 night owl | matcha > coffee | currently farming in stardew
+- ✧ slow mornings ✧ plants, polaroids & playlists. dms open for art swaps
+- 🌸 drawing mostly flowers · UTC+1 · gentle pings welcome
+- ⋆ lilac skies & long voice calls ⋆ indie games, journaling, tea
+
 ## Frequently asked questions
 ### How long can a Discord bio be?
 The Discord About Me holds up to 190 characters. Formatting symbols, emoji and line breaks count toward that total, so a heavily formatted bio fits less text.

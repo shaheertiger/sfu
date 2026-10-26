@@ -226,7 +226,7 @@ export function TierListTool({ config = {} }) {
   const [confirmReset, setConfirmReset] = useState(false);
   const [drag, setDrag] = useState(null); // { id, listId, index } while dragging
   const dragRef = useRef(null);
-  const lastDrag = useRef(0);
+  const lastDrag = useRef(0); // when the last drag ended, so its trailing click doesn't select
   const ghost = useRef(null);
   const fileInput = useRef(null);
   const update = (fn) => setState((st) => fn(st));
@@ -259,6 +259,7 @@ export function TierListTool({ config = {} }) {
 
   /* Pointer dragging: works for mouse, pen and touch. A short move is a tap (select). */
   function onPointerDown(e, it) {
+    lastDrag.current = 0;
     if (e.button !== 0) return;
     dragRef.current = { id: it.id, x: e.clientX, y: e.clientY, active: false, target: null, w: e.currentTarget.offsetWidth };
     e.currentTarget.setPointerCapture(e.pointerId);
@@ -355,7 +356,7 @@ export function TierListTool({ config = {} }) {
         onPointerUp={onPointerUp}
         onPointerCancel={() => { dragRef.current = null; setDrag(null); }}
         onClick={() => {
-          if (Date.now() - lastDrag.current < 300) return;
+          if (Date.now() - lastDrag.current < 400) return;
           setSelected(isSel ? null : it.id);
         }}
         style={it.type === 'image' ? { ...base, width: TILE, background: '#0c0d0f' } : { ...base, maxWidth: 200, padding: '0 12px', background: '#2b2f36', color: '#f6f5f1', font: 'inherit', fontSize: 14, fontWeight: 600, lineHeight: 1.2, overflowWrap: 'anywhere' }}

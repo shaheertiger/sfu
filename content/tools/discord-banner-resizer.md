@@ -63,6 +63,9 @@ Swap the banner for a tournament, a game launch or a holiday event, then switch 
 Give your profile a banner that matches your interests or your stream overlay. If you also want a refreshed About Me, read our [Discord bio guide](/blog/discord-bio).
 
 ## Frequently asked questions
+### What size is a Discord banner?
+It depends on the banner. A Discord profile banner is 680×240 pixels (wide and short, about 17:6), a server banner is 960×540 (16:9), and an invite background is 1920×1080 (16:9). Choose the matching preset and the resizer exports exactly those dimensions.
+
 ### What size is a Discord server banner?
 Use 960×540, a 16:9 image. Discord may show a narrower slice in the channel sidebar, so center the key details.
 

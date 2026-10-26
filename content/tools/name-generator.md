@@ -64,6 +64,9 @@ Made up for this page; check availability before using any.
 - **Gaming:** maplesniper, xmaplex, maple_respawn
 - **Minimal:** maple, plainmaple, maple_one
 
+### As an aesthetic username generator
+Pick the **Aesthetic** style and the generator pairs your word with soft, dreamy words like petal, velvet, honey, dusk, glow, haze and bloom. Type something you love rather than your full name: "luna" gives ideas such as lunaglow, velvet_luna and lunadiary, while "sketch" gives sketchbloom, soft_sketch and sketch_diary. Every aesthetic username still uses only lowercase letters, numbers and underscores, so it works across platforms.
+
 ### Check the fit before you pick
 Look at each idea in a sentence: "Follow @maple_drift for more." If it reads cleanly, matches what you post, and fits every platform in the table above, it is a strong candidate.
 

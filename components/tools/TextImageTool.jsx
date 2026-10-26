@@ -376,7 +376,15 @@ export function TextImageTool({ config = {} }) {
         <textarea className={s.textarea} style={{ minHeight: 90 }} value={text} onChange={(e) => setText(e.target.value)} />
       </label>
 
-      <Chips label={tx.style} value={style} onChange={setStyle} options={STYLES.map((id) => ({ id, label: tx.styles[id] }))} />
+      <Chips
+        label={tx.style}
+        value={style}
+        onChange={(id) => {
+          if (id === 'breaking' && style !== 'breaking') setAlign('left');
+          if (id !== 'breaking' && style === 'breaking') setAlign('center');
+          setStyle(id);
+        }}
+        options={STYLES.map((id) => ({ id, label: tx.styles[id] }))} />
       {breaking && (
         <p className={s.hint} role="note" style={{ padding: '10px 12px', borderRadius: 10, background: '#2a1416', border: '1px solid #5a2328', color: '#ffb4b8' }}>
           {tx.note}
@@ -409,7 +417,7 @@ export function TextImageTool({ config = {} }) {
             <label className={s.toggle}>
               <input type="checkbox" checked={showTime} onChange={(e) => setShowTime(e.target.checked)} /> {tx.time}
             </label>
-            {showTime && <input className={s.input} style={{ width: 130 }} type="time" aria-label={tx.timeInput} value={time} onChange={(e) => setTime(e.target.value)} />}
+            {showTime && <input className={s.input} style={{ width: 160 }} type="time" aria-label={tx.timeInput} value={time} onChange={(e) => setTime(e.target.value)} />}
           </>
         ) : (
           <>

@@ -198,7 +198,6 @@ export function CollageTool({ config = {} }) {
   useEffect(() => {
     const n = photos.length;
     if (layoutById(layout).n !== n && COLLAGE_LAYOUTS.some((l) => l.n === n)) setLayout(layoutsFor(n)[0].id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [photos.length]);
 
   useEffect(() => {
