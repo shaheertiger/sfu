@@ -1,12 +1,12 @@
 ---
 title: Add Text to Image – Free Text on Photo Maker, No Sign-up
-description: Add text to an image for free. Type your words on a photo or a solid color, pick a plain, band or outline style, set font, size and position, and download a PNG or JPG.
+description: Free add text to image tool. Type your words on a photo or a solid color, pick a plain, band or outline style, set the font and position, and download a PNG or JPG.
 h1: Add Text to Image
 lead: Add a photo or pick a background color, type your text, choose a style and download a finished image sized for Instagram, Stories, TikTok or X. Nothing is uploaded.
 keyword: add text to image
 ---
 ## How to add text to an image
-To add text to an image, drop your photo into the box (or skip it and use a solid color), type your words in the **Text** box, choose a style, font, size and position, then press the download button. The preview redraws as you type, and the finished file is a PNG or JPG at full resolution, ready to post.
+This add text to image tool works in a few taps: drop your photo into the box (or skip it and use a solid color), type your words in the **Text** box, choose a style, font, size and position, then press the download button. The preview redraws as you type, and the finished file is a PNG or JPG at full resolution, ready to post.
 
 1. **Add a photo, or don't.** Tap **Add a photo or drop it here (optional)**. Without a photo, choose a **Background color** from the swatches or the color picker.
 2. **Type your text.** Line breaks you type are kept, and long lines wrap on their own.
@@ -18,7 +18,7 @@ To add text to an image, drop your photo into the box (or skip it and use a soli
 ### Everything happens in your browser
 Your photo is never uploaded. The image is drawn on your device, there's no account and no watermark. Fonts come from your device too, so nothing is downloaded; the exact letter shapes vary a little between iPhone, Android and Windows, and on devices without a rounded font, Rounded falls back to the regular sans.
 
-## Text styles: plain, band and outline
+## Add text to image styles: plain, band and outline
 ### Plain
 Text in any color you pick with **Text color**, with an optional soft **Shadow** that helps it stand out from a photo. Plain on a solid background is the classic quote image.
 

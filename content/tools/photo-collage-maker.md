@@ -9,10 +9,10 @@ keyword: photo collage maker
 This photo collage maker puts 2 to 9 photos into a single image. Add your photos, choose one of 11 layouts, pick the output size (square, portrait feed, Stories/Reels or landscape), set the gap, outer padding, corner radius and background color, then download the collage as a JPG or PNG. Every size is 1080 pixels on its short side, the width Instagram, TikTok and most feeds display images at, so the file is ready to post without resizing.
 
 ### Your photos stay on your device
-The collage is drawn in your browser. Nothing is uploaded, there's no account to create and no watermark is added. Large phone photos are scaled down as they load so nine of them don't slow your phone down, but they stay larger than any cell they fill, so the result stays sharp.
+The collage is drawn in your browser. Nothing is uploaded, there's no account to create and no watermark is added. Large phone photos are scaled down as they load, but stay larger than any cell they fill, so the result stays sharp.
 
 ### Files it accepts
-JPG, PNG, WebP and GIF images. iPhone photos saved as HEIC may not open in every browser; if one can't be opened, the tool tells you, and converting it to JPG first fixes it. You can add up to 9 photos. If you pick more, the extra ones are left out and a note says so.
+JPG, PNG, WebP and GIF images, up to 9 at a time. iPhone photos saved as HEIC may not open in every browser; the tool tells you if one fails, and converting it to JPG fixes it.
 
 ## Layouts for 2 to 9 photos
 | Photos | Layouts | What it looks like |
@@ -36,7 +36,7 @@ Tap **Choose photos or drop them here (2–9)**, or drag image files onto the bo
 Each thumbnail under **Photo order** carries a number. Use the ← and → buttons to move a photo and × to remove it. Photo 1 fills the first cell: the top-left one, or the large cell in the 1 + 2 and 1 + 3 layouts, so put your strongest shot first.
 
 ### 3. Choose a layout and output size
-Pick a layout under **Layout** and a shape under **Output size**. The preview updates as you go.
+Pick a layout under **Layout** and a shape under **Output size**.
 
 ### 4. Frame each photo
 Photos fill their cells completely, and whatever doesn't fit is cropped. Drag a photo in the preview to choose which part shows in its cell, which helps when a face sits near the edge of the frame. **Re-center photos** puts every photo back in the middle. Your framing is kept when you switch layout or size.
@@ -63,7 +63,7 @@ For the feed, 4:5 shows the largest. At the time of writing, Instagram's feed ta
 Choose **9:16 · Stories/Reels** for a full-screen story collage. Keep faces and text away from the very top and bottom, where the account name and the reply bar sit. Stacked, 1 + 3 and 3 + 4 layouts suit the tall shape because each photo keeps a sensible width. The same 9:16 file works as a slide in a TikTok photo post.
 
 ### Collage or carousel?
-A collage shows every photo at once, each one smaller. A carousel shows one photo at a time at full size. Use a collage for before-and-after shots, a quick event recap or the cover slide of a carousel, and a carousel when each photo needs detail. To spread one wide picture across several swipeable slides, use the [Instagram carousel splitter](/tools/instagram-carousel-splitter); to turn one image into a puzzle across your profile, use the [Instagram grid maker](/tools/instagram-grid-maker).
+A collage shows every photo at once, each one smaller; a carousel shows one at a time at full size. Use a collage for before-and-after shots, event recaps or a carousel's cover slide. To spread one wide picture across several swipeable slides, use the [Instagram carousel splitter](/tools/instagram-carousel-splitter); to turn one image into a puzzle across your profile, use the [Instagram grid maker](/tools/instagram-grid-maker).
 
 ## Tips for a photo grid collage that reads on a phone
 ### Use fewer, bigger photos
@@ -73,7 +73,7 @@ On a 1080-pixel square with the default spacing, each photo in a 3×3 grid is on
 Side by side on a square gives two tall cells, which suit portrait photos. Stacked gives two wide cells for landscapes. Choosing the right one means less cropping and less dragging.
 
 ### Make the gap part of the design
-A white gap with a little padding looks like a printed photo strip. Black works for nightlife and concert shots. A custom color that matches your brand, with a corner radius of 16 to 24 px, keeps a series of collages looking consistent.
+A white gap looks like a printed photo strip, and black suits concert shots. A brand color with a 16 to 24 px corner radius keeps a series of collages consistent.
 
 ### Add a headline afterwards
 Want a title over your collage, like "Weekend in Lisbon" or "New arrivals"? Download it, then open it in the [add text to image](/tools/add-text-to-image) tool to place text on top in a plain, band or outline style.
@@ -83,7 +83,7 @@ Want a title over your collage, like "Weekend in Lisbon" or "New arrivals"? Down
 Add 2 to 9 photos, choose a layout and an output size, drag photos to frame them, set the gap and background, and press download. The photo collage maker is free, needs no sign-up and adds no watermark.
 
 ### How many photos can I put in one collage?
-Up to 9. The layouts cover every count from 2 to 9, from Side by side for two photos to a 3×3 grid for nine. If a layout has more cells than photos, the empty cells are saved in the background color.
+Up to 9, with layouts for every count from Side by side (two photos) to a 3×3 grid (nine).
 
 ### What size should an Instagram collage be?
 For a feed post, 1080×1350 (4:5) takes up the most room, and 1080×1080 (1:1) is the safe square. For Stories, use 1080×1920 (9:16). The 3:4 option (1080×1440) matches the profile grid but should be posted from the Instagram app.
