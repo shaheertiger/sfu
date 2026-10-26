@@ -57,7 +57,7 @@ Choose **Ellipse** under **Shape**, pick **Pixelate** or **Blur**, and drag from
 Choose **Rectangle** and **Solid bar**, then drag over the plate with a small margin. A bar in the plate's own color (white, yellow or black) looks tidier than a mosaic and hides the characters completely. The same goes for a house number or a name on a package.
 
 ### Screenshots with names and messages
-Screenshots of group chats, comments or DMs carry names, profile photos and phone numbers. Cover each with a **Solid bar** rectangle before you share the screenshot. If you want readers to see that something was removed, a black bar makes that clear.
+Screenshots of group chats, comments or DMs carry names, profile photos and phone numbers. Cover each with a **Solid bar** rectangle before you share the screenshot.
 
 ## Full-size download, and no hidden location data
 The download is drawn again at the photo's full resolution, not at the size of the preview, so the parts you didn't cover stay as sharp as the original. Photos up to 16 megapixels download at their original size. Larger ones are scaled to just under 16 megapixels, the largest image phone browsers can reliably draw, and a note tells you the exact size before you save.
@@ -66,10 +66,7 @@ The download is drawn again at the photo's full resolution, not at the size of t
 The download is a newly drawn image, so EXIF data such as GPS location and camera details is not included. That's a useful side effect: a photo can show nothing private and still carry the coordinates of where it was taken. To check and remove that data without changing anything else in the photo, use the [EXIF remover](/tools/remove-exif-data).
 
 ### JPG or PNG
-JPG gives smaller files and suits photos. PNG is lossless, so choose it for screenshots and graphics; the format defaults to PNG when you open a PNG. Transparent areas are saved on white in a JPG.
-
-### Nothing is uploaded
-Everything happens in your browser: the photo is edited on your device and saved straight back to it. There's no account and no watermark.
+JPG gives smaller files and suits photos. PNG is lossless, so choose it for screenshots; it's preselected when you open a PNG. Everything happens in your browser, with no account and no watermark. Transparent areas are saved on white in a JPG.
 
 ## Frequently asked questions
 ### How do I blur part of an image for free?

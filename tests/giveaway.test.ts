@@ -81,3 +81,8 @@ test('results text lists winners and alternates', () => {
   const txt = resultsText({ winners: ['a', 'b'], alternates: ['c'] }, { when: '2026-10-26 12:00', entrants: '42 entrants' });
   assert.equal(txt, '2026-10-26 12:00\n42 entrants\n\nWinners:\n1. @a\n2. @b\n\nAlternates:\n1. @c');
 });
+
+test('first-word mode keeps only the username from pasted comments', () => {
+  const { pool } = parseEntries('@maya love this! 😍\n@leo: count me in, please\n@Maya again\n\nsam_k 🙌', { firstWord: true });
+  assert.deepEqual(pool.map((p) => p.name), ['maya', 'leo', 'sam_k']);
+});

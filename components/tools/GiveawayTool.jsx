@@ -12,6 +12,7 @@ const T = {
     placeholder: 'One username per line or separated by commas.\n@alice\n@bob\n@carol',
     pasteHint: 'Copy the usernames from your comments and paste them here. A leading @ is removed.',
     dedupe: 'Remove duplicates',
+    firstWord: 'Pasted whole comments? Keep only the first word (the username) of each line',
     weight: 'Extra chance for each extra entry (one win per person)',
     winners: 'Winners',
     alternates: 'Alternates',
@@ -39,6 +40,7 @@ const T = {
     placeholder: '1行に1人、またはカンマ区切りで入力\n@alice\n@bob\n@carol',
     pasteHint: 'コメント欄のユーザー名をコピーして貼り付けてください。先頭の @ は自動で外します。',
     dedupe: '重複を除く',
+    firstWord: 'コメントをそのまま貼り付けた場合：各行の最初の単語（ユーザー名）だけを使う',
     weight: '複数回の応募は回数分だけ当たりやすくする（当選は1人1回）',
     winners: '当選者',
     alternates: '補欠',
@@ -167,6 +169,7 @@ export function GiveawayTool({ config = {} }) {
   const tx = T[locale] || T.en;
   const [text, setText] = useState('');
   const [dedupe, setDedupe] = useState(true);
+  const [firstWord, setFirstWord] = useState(false);
   const [weight, setWeight] = useState(false);
   const [winners, setWinners] = useState(Math.min(MAX_WINNERS, Math.max(1, Number(config.winners) || 1)));
   const [alternates, setAlternates] = useState(0);
@@ -178,7 +181,7 @@ export function GiveawayTool({ config = {} }) {
   const rotation = useRef(0);
   const frame = useRef(0);
 
-  const parsed = useMemo(() => parseEntries(text, { dedupe, weight: dedupe && weight, exclude }), [text, dedupe, weight, exclude]);
+  const parsed = useMemo(() => parseEntries(text, { dedupe, weight: dedupe && weight, exclude, firstWord }), [text, dedupe, weight, exclude, firstWord]);
   const segs = useMemo(() => segments(parsed.pool), [parsed]);
 
   useEffect(() => {
@@ -241,6 +244,9 @@ export function GiveawayTool({ config = {} }) {
       <p className={s.hint} aria-live="polite">
         {parsed.lines ? tx.count(num(parsed.pool.length), num(parsed.lines), dedupe ? parsed.duplicates : 0, parsed.excluded) : tx.pasteHint}
       </p>
+      <label className={s.toggle}>
+        <input type="checkbox" checked={firstWord} onChange={(e) => setFirstWord(e.target.checked)} /> {tx.firstWord}
+      </label>
       <div className={s.row}>
         <label className={s.toggle}>
           <input type="checkbox" checked={dedupe} onChange={(e) => setDedupe(e.target.checked)} /> {tx.dedupe}

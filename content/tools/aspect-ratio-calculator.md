@@ -1,6 +1,6 @@
 ---
 title: Aspect Ratio Calculator – 16:9, 4:5, 9:16 & Social Media Sizes
-description: Free aspect ratio calculator. Find the ratio of any size, like 1920×1080, or calculate the missing width or height for 16:9, 4:5, 9:16 and more. Social sizes included.
+description: Free aspect ratio calculator. Find the ratio of any size, like 1920×1080, or get the missing width or height for 16:9, 4:5, 9:16 and more. Social sizes included.
 h1: Aspect Ratio Calculator
 lead: Type a width and height to get the aspect ratio, or pick a ratio and one side to get the other. A table of recommended social media image sizes is built in.
 keyword: aspect ratio calculator
