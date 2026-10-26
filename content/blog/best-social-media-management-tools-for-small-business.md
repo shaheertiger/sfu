@@ -24,7 +24,7 @@ These four criteria decide most purchases. Score each tool you're considering ag
 
 ### Cost per account, not headline price
 
-Tools price in different ways. Some charge per user, which suits a solo owner but gets expensive when you add staff. Others charge per connected social account, which gets expensive as you add channels. Some sell bundles of accounts. As a hypothetical example: if a tool's plan includes five accounts and you have a Facebook Page, an Instagram account, a LinkedIn profile, a TikTok and a Google Business Profile, you're already at the limit. Count your accounts before comparing plans.
+Tools price in different ways. Some charge per user, which suits a solo owner but gets expensive when you add staff. Others charge per connected social account, which gets expensive as you add channels. Some sell bundles of accounts. As a hypothetical example: if a tool's plan includes five accounts and you have a Facebook Page, an Instagram account, a LinkedIn profile, a TikTok and a Google Business Profile, you're already at the limit. Count your accounts before comparing plans. Our guide to [social media management software cost](/blog/social-media-management-software-cost) compares entry prices across popular tools.
 
 ### Platforms, including Google Business Profile
 

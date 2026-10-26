@@ -97,7 +97,7 @@ Marketplace works differently from Page posts: buyers browse when they have time
 
 ## Timing is half the job
 
-Good timing gets your post in front of people, but whether they react depends on the post. A few habits that help on Facebook:
+Good timing gets your post in front of people, but whether they react depends on the post; our guide to [what type of content works best on Facebook](/blog/what-type-of-content-works-best-on-facebook) covers formats. A few habits that help on Facebook:
 
 - **Ask a real question** your audience wants to answer, instead of "like if you agree"-style bait, which Facebook downranks.
 - **Use photos and short videos.** Several photos in one post work well for events and product ranges.
