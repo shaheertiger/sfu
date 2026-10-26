@@ -2,10 +2,10 @@
 
 import { BioTool, CommentTool, CounterTool, FontTool, LineBreakTool, NameTool } from './TextTools';
 import { LogoTool, ResizerTool, SliceTool } from './ImageTools';
-import { CaptionTool, HandleTool, LinkedInTool, TagTool, TitleTool, UnfollowersTool } from './MoreTools';
+import { CaptionTool, HandleTool, LinkedInTool, ShadowbanTool, TagTool, TitleTool, UnfollowersTool } from './MoreTools';
 import { ToolLocale } from './locale';
 
-const WIDGETS = { font: FontTool, counter: CounterTool, linebreak: LineBreakTool, name: NameTool, bio: BioTool, comment: CommentTool, resizer: ResizerTool, logo: LogoTool, slice: SliceTool, handle: HandleTool, linkedin: LinkedInTool, yttitle: TitleTool, yttags: TagTool, unfollowers: UnfollowersTool, caption: CaptionTool };
+const WIDGETS = { font: FontTool, counter: CounterTool, linebreak: LineBreakTool, name: NameTool, bio: BioTool, comment: CommentTool, resizer: ResizerTool, logo: LogoTool, slice: SliceTool, handle: HandleTool, linkedin: LinkedInTool, yttitle: TitleTool, yttags: TagTool, unfollowers: UnfollowersTool, caption: CaptionTool, shadowban: ShadowbanTool };
 
 /**
  * The interactive part of a free tool page. Everything runs in the browser. `locale` switches the

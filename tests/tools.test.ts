@@ -144,3 +144,50 @@ test('French bios fit Instagram’s limit and use the French templates', () => {
   }
   assert.deepEqual(generateBios({ role: 'baker', topic: 'bread', lang: 'xx' }), generateBios({ role: 'baker', topic: 'bread' }));
 });
+
+import { HANDLE_RULES, checkEverywhere, checkList } from '../lib/tools/handles.js';
+import { SHADOWBAN_PLATFORMS, shadowbanVerdict } from '../lib/tools/shadowban.js';
+
+test('handle rules per platform', () => {
+  assert.equal(checkHandle('@golden.hour', 'instagram').ok, true);
+  assert.match(checkHandle('golden..hour', 'instagram').problems.join(' '), /Two periods/);
+  assert.equal(checkHandle('pixel_raider', 'twitch').ok, true);
+  assert.match(checkHandle('_pixel', 'twitch').problems.join(' '), /underscore/);
+  assert.match(checkHandle('abc', 'twitch').problems.join(' '), /Too short/);
+  assert.equal(checkHandle('Night.Owl', 'discord').handle, 'night.owl', 'Discord lowercases');
+  assert.equal(checkHandle('Night.Owl', 'discord').ok, true);
+  assert.match(checkHandle('night..owl', 'discord').problems.join(' '), /Two periods/);
+  assert.equal(checkHandle('Block_Builder', 'roblox').ok, true);
+  assert.match(checkHandle('Block_Build_er', 'roblox').problems.join(' '), /one underscore/);
+  assert.match(checkHandle('_Block', 'roblox').problems.join(' '), /start or end/);
+  assert.equal(checkHandle('market_notes', 'telegram').ok, true);
+  assert.match(checkHandle('1market', 'telegram').problems.join(' '), /start with a letter/);
+  assert.match(checkHandle('market_', 'telegram').problems.join(' '), /end with an underscore/);
+  assert.equal(checkHandle('weeknight-dinners', 'youtube').ok, true);
+  assert.equal(checkHandle('すし大好き', 'youtube').ok, true, 'YouTube handles allow other scripts');
+});
+
+test('every platform, lists and variations', () => {
+  const all = checkEverywhere('pixel_raider');
+  assert.equal(all.length, 9);
+  assert.equal(all.find((r) => r.platform === 'discord')!.profile, null);
+  assert.equal(all.find((r) => r.platform === 'twitch')!.profile, 'https://www.twitch.tv/pixel_raider');
+  assert.equal(all.find((r) => r.platform === 'x')!.ok, true);
+  const list = checkList('one.two\n@one.two, bad name\n\nthree', 'instagram');
+  assert.deepEqual(list.map((r) => r.handle), ['one.two', 'bad name', 'three']);
+  assert.deepEqual(list.map((r) => r.ok), [true, false, true]);
+  for (const p of Object.keys(HANDLE_RULES)) for (const v of handleVariations('golden hour', p)) assert.ok(checkHandle(v, p).ok, `${p}: ${v}`);
+});
+
+test('shadowban verdicts', () => {
+  assert.equal(shadowbanVerdict('x', {}).level, 'unknown');
+  assert.equal(shadowbanVerdict('x', { status: 'yes' }).level, 'confirmed');
+  assert.equal(shadowbanVerdict('x', { status: 'no' }).level, 'clear');
+  assert.equal(shadowbanVerdict('x', { status: 'no', search: 'no' }).level, 'watch');
+  assert.equal(shadowbanVerdict('x', { search: 'no', replies: 'yes' }).level, 'likely');
+  assert.equal(shadowbanVerdict('reddit', { profile: 'no' }).level, 'confirmed');
+  for (const [id, p] of Object.entries(SHADOWBAN_PLATFORMS)) {
+    assert.ok(p.checks.some((c: any) => c.strong), `${id} needs a decisive check`);
+    for (const c of p.checks as any[]) assert.ok(['yes', 'no'].includes(c.bad), `${id}.${c.id}`);
+  }
+});
