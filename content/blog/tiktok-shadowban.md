@@ -56,7 +56,7 @@ Videos stuck at 0 views are sometimes still processing or under review; check ag
 
 Searches for a "TikTok shadow ban checker" or "TikTok shadowbanned checker" mostly lead to sites that ask for your username and return a score. None of them can see inside TikTok. At best they check whether your public profile loads, which says nothing about For You eligibility. Never give one your password or log in through it.
 
-Our free [shadowban checker](/tools/shadowban-checker) works differently: it's a guided self-test. Pick TikTok, optionally type your handle to fill in a profile link, then answer yes or no to each test above (Account status, For You traffic, search, 0-view uploads and a drop across several videos). It turns your answers into a plain-language verdict. A restriction on your Account status page settles it on its own, because that's TikTok's own word. Everything runs in your browser and nothing is sent anywhere.
+Our free [shadowban checker](/tools/shadowban-checker) works differently: it's a guided self-test. Pick TikTok, optionally type your handle to fill in the test links (such as a TikTok user search for your name), then answer yes or no to each test above (Account status, For You traffic, search, 0-view uploads and a drop across several videos). It turns your answers into a plain-language verdict. A restriction on your Account status page settles it on its own, because that's TikTok's own word. Everything runs in your browser and nothing is sent anywhere.
 
 ## What causes a TikTok shadowban?
 

@@ -14,9 +14,7 @@ This Instagram username checker tells you whether a handle follows Instagram's u
 - No spaces
 - Doesn't start or end with a period
 - No two periods in a row
-- At least one letter, so people can find and remember it
-
-If a rule fails, the checker says which one and why, then suggests close variations that pass every rule.
+If a rule fails, the checker says which one and why, then suggests close variations that pass every rule. If a handle is all numbers or symbols, you'll also see a tip to add at least one letter so people can find and remember it.
 
 ### Check a list of names at once
 Switch to **Check a list** to paste up to 200 names, one per line or separated by commas. The checker marks each one as valid or gives the first rule it breaks, links every valid name to its profile URL, and has a button to copy only the valid ones. It's the quickest way to check for Instagram names in bulk after a brainstorm.
@@ -57,7 +55,7 @@ Open Instagram, go to your profile, tap Edit profile and enter the handle in the
 Periods are allowed in the middle of a handle but not at either end, and never two in a row. Underscores have no such restriction, so "_studio_" is valid while ".studio." is not. Hyphens, apostrophes, ampersands and emoji aren't allowed at all.
 
 ### Length and letters
-A handle can be up to 30 characters. Very short handles are valid but rarely free, and a name made only of numbers and symbols is hard to find, so the checker asks for at least one letter.
+A handle can be up to 30 characters. Very short handles are valid but rarely free, and a name made only of numbers and symbols is hard to find, so the checker suggests adding at least one letter.
 
 ### Keep it easy to say out loud
 A handle that people can spell after hearing it once is easier to share on a podcast, a business card or a shop sign. Mixing periods and underscores ("the_bloom.studio") is valid but tends to get mistyped.

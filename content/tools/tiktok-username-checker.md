@@ -5,8 +5,8 @@ h1: TikTok Username Checker
 lead: Check a TikTok username against the platform's format rules, get valid alternatives if it fails, test a whole list at once, and open tiktok.com/@name to see whether someone already has it.
 keyword: tiktok username checker
 ---
-## A rule check, not an availability guarantee
-The checker confirms whether a username follows TikTok's format rules and gives you a one-tap link to tiktok.com/@yourname. It can't tell you for certain that a name is free, because TikTok has no public availability lookup and names can stay attached to accounts you can't see. To know for sure, try the name in TikTok under Edit profile, where the app tells you if it's taken.
+## What the TikTok username checker can and can't confirm
+The TikTok username checker confirms whether a username follows TikTok's format rules and gives you a one-tap link to tiktok.com/@yourname. It can't tell you for certain that a name is free, because TikTok has no public availability lookup and names can stay attached to accounts you can't see. To know for sure, try the name in TikTok under Edit profile, where the app tells you if it's taken.
 
 ### The rules it tests
 - 2 to 24 characters
@@ -14,9 +14,7 @@ The checker confirms whether a username follows TikTok's format rules and gives 
 - No spaces or other symbols
 - Doesn't end with a period
 
-- At least one letter, so people can find and remember it
-
-When a name breaks a rule, the checker explains the problem in plain words and lists close variations that pass.
+When a name breaks a rule, the checker explains the problem in plain words and lists close variations that pass. A name made only of numbers or symbols also gets a tip to add a letter, which makes it easier to find.
 
 ### Check a list of usernames
 Switch to **Check a list** to paste up to 200 names, one per line or separated by commas. Each one is marked as valid or gets the first rule it breaks, valid names link straight to their tiktok.com/@ profile, and you can copy only the valid ones. It turns a long brainstorm into a short list worth opening.

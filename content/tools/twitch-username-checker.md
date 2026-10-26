@@ -13,9 +13,7 @@ The Twitch username checker tests a name against Twitch's format rules and links
 - Letters, numbers and underscores only
 - Can't start with an underscore
 - No spaces, periods, hyphens or emoji
-- At least one letter, so people can find and remember it
-
-When a name breaks a rule, the checker says which one and lists close variations that pass, such as adding "live," "tv" or "plays."
+When a name breaks a rule, the checker says which one and lists close variations that pass, such as adding "live," "tv" or "plays." A name made only of numbers also gets a tip to add a letter, so viewers can find and remember it.
 
 ### Check a list of names
 Switch to **Check a list** to paste up to 200 names, one per line or separated by commas. Each one is marked as valid or gets a short reason it fails, valid names link to their channel URL, and you can copy only the valid ones. Paste a brainstorm, keep the names that pass, then open the links for your favorites.

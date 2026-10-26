@@ -22,7 +22,7 @@ A profile that opens means the name is taken on that platform. A page saying the
 The checks run on your device. The names you type aren't sent to us or stored; the profile links are ordinary links to each platform.
 
 ## Username rules on each platform
-These are the rules the checker tests. Every platform also expects at least one letter, so the checker flags names made only of numbers and symbols.
+These are the rules the checker tests. If a name is made only of numbers and symbols, the checker also suggests adding at least one letter: that's not a platform rule, just advice, because such names are hard to find and remember.
 
 | Platform | Length | Allowed characters | Other rules | How to confirm |
 |---|---|---|---|---|

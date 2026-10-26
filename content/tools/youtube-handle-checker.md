@@ -12,9 +12,7 @@ The YouTube name checker tests your @handle against YouTube's format rules and g
 - 3 to 30 characters
 - Letters (including non-Latin scripts), numbers, underscores, hyphens, periods and the middle dot (·)
 - No spaces
-- At least one letter, so people can find and remember it
-
-If a rule fails, the checker says which one, then suggests close variations that pass every rule.
+If a rule fails, the checker says which one, then suggests close variations that pass every rule. A handle made only of numbers or symbols also gets a tip to add at least one letter, so people can find and remember it.
 
 ### Check a list of handles
 Switch to **Check a list** to paste up to 200 handles, one per line or separated by commas. The checker marks each one as valid or says what's wrong, links the valid ones to their channel URL, and lets you copy just the valid handles. It's a quick way to narrow a brainstorm down to names worth opening.
