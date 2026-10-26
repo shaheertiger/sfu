@@ -186,7 +186,7 @@ async function renderPng(state) {
     ctx.fillStyle = textColorFor(t.color);
     let size = 44;
     ctx.font = `700 ${size}px ${FONT}`;
-    while (size > 18 && ctx.measureText(t.label).width > LW - 20 * 3) ctx.font = `700 ${(size -= 2)}px ${FONT}`;
+    while (size > 18 && ctx.measureText(t.label).width > (LW - 20) * 2.5) ctx.font = `700 ${(size -= 2)}px ${FONT}`;
     const lines = wrap(ctx, t.label, LW - 20, 3);
     lines.forEach((ln, i) => ctx.fillText(ln, LW / 2, y + h / 2 + (i - (lines.length - 1) / 2) * size * 1.15));
     for (const p of placed) {
@@ -195,9 +195,11 @@ async function renderPng(state) {
       if (im) ctx.drawImage(im, x, iy, TS, TS);
       else {
         ctx.fillStyle = '#2b2f36';
-        ctx.beginPath();
-        ctx.roundRect(x, iy, p.w, TS, 12);
-        ctx.fill();
+        if (ctx.roundRect) {
+          ctx.beginPath();
+          ctx.roundRect(x, iy, p.w, TS, 12);
+          ctx.fill();
+        } else ctx.fillRect(x, iy, p.w, TS);
         ctx.fillStyle = '#f6f5f1';
         ctx.font = `600 22px ${FONT}`;
         const tl = wrap(ctx, p.it.text, p.w - 24, 4);
@@ -224,6 +226,7 @@ export function TierListTool({ config = {} }) {
   const [confirmReset, setConfirmReset] = useState(false);
   const [drag, setDrag] = useState(null); // { id, listId, index } while dragging
   const dragRef = useRef(null);
+  const lastDrag = useRef(0);
   const ghost = useRef(null);
   const fileInput = useRef(null);
   const update = (fn) => setState((st) => fn(st));
@@ -296,8 +299,7 @@ export function TierListTool({ config = {} }) {
     if (!d?.active) return;
     if (d.target) update((st) => moveItem(st, d.id, d.target.listId, d.target.index));
     setDrag(null);
-    d.suppressClick = true;
-    dragRef.lastDrag = Date.now();
+    lastDrag.current = Date.now();
   }
   useLayoutEffect(() => {
     const d = dragRef.current;
@@ -331,11 +333,14 @@ export function TierListTool({ config = {} }) {
     }, 'image/png');
   }
 
-  function renderItem(it, list, i) {
-    const marker = drag?.listId === list.id && drag.id !== it.id ? drag.index : -1;
-    const others = list.items.filter((x) => x.id !== drag?.id);
-    const pos = others.indexOf(it);
-    const shadow = marker === pos ? '-4px 0 0 #dcff2e' : marker === others.length && pos === others.length - 1 ? '4px 0 0 #dcff2e' : undefined;
+  function renderItem(it, list) {
+    let shadow;
+    if (drag && drag.listId === list.id && drag.id !== it.id) {
+      const others = list.items.filter((x) => x.id !== drag.id);
+      const pos = others.indexOf(it);
+      if (drag.index === pos) shadow = '-4px 0 0 #dcff2e';
+      else if (drag.index === others.length && pos === others.length - 1) shadow = '4px 0 0 #dcff2e';
+    }
     const isSel = selected === it.id;
     const base = { height: TILE, minWidth: TILE, borderRadius: 10, border: isSel ? '2px solid #dcff2e' : '1px solid #2a2e34', padding: 0, cursor: 'grab', touchAction: 'none', userSelect: 'none', WebkitUserSelect: 'none', boxShadow: shadow, opacity: drag?.id === it.id ? 0.35 : 1, overflow: 'hidden', flex: 'none' };
     return (
@@ -350,7 +355,7 @@ export function TierListTool({ config = {} }) {
         onPointerUp={onPointerUp}
         onPointerCancel={() => { dragRef.current = null; setDrag(null); }}
         onClick={() => {
-          if (Date.now() - (dragRef.lastDrag || 0) < 300) return;
+          if (Date.now() - lastDrag.current < 300) return;
           setSelected(isSel ? null : it.id);
         }}
         style={it.type === 'image' ? { ...base, width: TILE, background: '#0c0d0f' } : { ...base, maxWidth: 200, padding: '0 12px', background: '#2b2f36', color: '#f6f5f1', font: 'inherit', fontSize: 14, fontWeight: 600, lineHeight: 1.2, overflowWrap: 'anywhere' }}
@@ -368,7 +373,7 @@ export function TierListTool({ config = {} }) {
         onClick={(e) => e.target === e.currentTarget && sel && place(list.id)}
         style={{ flex: 1, minWidth: 0, minHeight: TILE + 8, display: 'flex', flexWrap: 'wrap', gap: 4, padding: 4, alignContent: 'flex-start', background: hot ? '#22262c' : '#1a1c20', outline: hot ? '2px solid #dcff2e' : 'none', outlineOffset: -2 }}
       >
-        {list.items.map((it, i) => renderItem(it, list, i))}
+        {list.items.map((it) => renderItem(it, list))}
         {list.id === POOL && !list.items.length && !sel && <p className={s.hint} style={{ padding: 8 }}>{tx.poolEmpty}</p>}
         {sel && (
           <button type="button" className={s.chip} onClick={() => place(list.id)} aria-label={tx.moveTo(list.name)} style={{ height: TILE, borderStyle: 'dashed', background: 'transparent' }}>
