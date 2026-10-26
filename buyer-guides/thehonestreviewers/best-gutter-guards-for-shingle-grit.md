@@ -214,7 +214,7 @@ Micro-mesh stops needles from entering the gutter, though they'll sit on top unt
 For DIY, stainless micro-mesh kits like Raptor and Atlas by Gutterglove use the same basic approach for a fraction of the cost. For professional installation, get quotes from local gutter contractors that install stainless micro-mesh, and compare them with national brands like LeafFilter, Gutter Helmet and LeafGuard on a per-foot basis. Our roundup of the [best gutter guards](https://www.thehonestreviewers.com/best-gutter-guards/) covers more options.
 
 ### Is LeafFilter a reputable company?
-LeafFilter is a large, established national installer with a lifetime transferable warranty, and many owners are happy with the product. It also has a long record of consumer complaints, mostly about high initial quotes, pressure sales and service follow-up, and it has settled a class action over product performance. Get competing quotes, ask for the per-foot price in writing, and remember the FTC's Cooling-Off Rule generally gives you three business days to cancel a sale made in your home.
+LeafFilter is a large, established national installer with a lifetime transferable warranty, and many owners are happy with the product. It also has a long record of consumer complaints, mostly about high initial quotes, pressure sales and service follow-up, and in 2022 it settled a class action over debris building up on its filters, without admitting wrongdoing. Get competing quotes, ask for the per-foot price in writing, and remember the FTC's Cooling-Off Rule generally gives you three business days to cancel a sale made in your home.
 
 ## Related guides
 - [Best Gutter Guards](https://www.thehonestreviewers.com/best-gutter-guards/)
