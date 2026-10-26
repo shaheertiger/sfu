@@ -5,7 +5,7 @@ import s from './tools.module.css';
 import CopyButton, { Chips, Result } from './CopyButton';
 import { convert, stylesFor } from '@/lib/tools/unicode';
 import { DISCORD_LIMITS, X_LIMITS, instagramLineBreaks, plainLength, stats, xLength } from '@/lib/tools/counters';
-import { BIO_PLATFORMS, BIO_TONES, COMMENT_TONES, NAME_RULES, NAME_STYLES, generateBios, generateComments, generateNames } from '@/lib/tools/generators';
+import { BIO_PLATFORMS, BIO_TONES, COMMENT_TONES, EXTRA_NAME_STYLES, NAME_RULES, NAME_STYLES, generateBios, generateComments, generateNames } from '@/lib/tools/generators';
 
 const fmt = (n) => n.toLocaleString('en-US');
 
@@ -131,6 +131,7 @@ export function LineBreakTool() {
 
 export function NameTool({ config }) {
   const rule = NAME_RULES[config.rule] || NAME_RULES.generic;
+  const styles = [...NAME_STYLES, ...(config.extraStyles || []).map((id) => EXTRA_NAME_STYLES[id]).filter(Boolean)];
   const [keyword, setKeyword] = useState(config.sample || '');
   const [style, setStyle] = useState('cool');
   const [seed, setSeed] = useState(0);
@@ -141,7 +142,7 @@ export function NameTool({ config }) {
         A word about you or your topic
         <input className={s.input} value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="e.g. coffee, travel, pixel" maxLength={40} />
       </label>
-      <Chips options={NAME_STYLES} value={style} onChange={setStyle} label="Style" />
+      <Chips options={styles} value={style} onChange={setStyle} label="Style" />
       <div className={s.results}>
         {names.map((n) => (
           <Result key={n} text={n} />
