@@ -88,6 +88,11 @@ function OneHandleTool({ config }) {
                   <span className={s.over}>{p}</span>
                 </div>
               ))}
+              {res.tips.map((p) => (
+                <div key={p} className={s.limit}>
+                  <span>{p}</span>
+                </div>
+              ))}
               <div className={s.limit}>
                 <span>Length</span>
                 <span>{fmt(Array.from(res.handle).length)} / {rule.max}</span>
