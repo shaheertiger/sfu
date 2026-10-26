@@ -1,14 +1,15 @@
 ---
 title: Instagram Carousel Splitter – Split an Image into Seamless Slides
-description: Free Instagram carousel splitter. Cut a wide photo or panorama into 2–10 equal portrait or square slides for a seamless swipe, then download each in order.
+description: Free Instagram carousel splitter. Cut a wide photo or panorama into 2–10 equal 3:4, 4:5 or square slides for a seamless swipe, then save them in order as a ZIP.
 h1: Instagram Carousel Splitter
 lead: A carousel post cutter for Instagram: turn a panorama or wide design into 2–10 equal slides that join up perfectly as people swipe through your Instagram carousel.
 keyword: instagram carousel splitter
 ---
 ## What the carousel splitter does
-Upload a wide image to the Instagram carousel splitter, choose how many slides you want (from 2 to 10) and whether they should be portrait or square, and the splitter cuts it into equal pieces. Each slide is exported at 1080×1350 or 1080×1080 and numbered in order. Post them as one carousel and the image flows from one slide to the next as followers swipe.
+Upload a wide image to the Instagram carousel splitter, choose how many slides you want (from 2 to 10) and their shape (3:4, 4:5 or square), and the splitter cuts it into equal pieces. Each slide is exported at 1080×1440, 1080×1350 or 1080×1080 and numbered in order. Post them as one carousel and the image flows from one slide to the next as followers swipe.
 
 ### Slide shapes
+- **3:4, 1080×1440:** the tallest option, for scenes with plenty of height (post it from the Instagram app: at the time of writing, scheduling tools that use Instagram's API need 4:5 or wider)
 - **Portrait, 1080×1350 (4:5):** takes up more of the screen in the feed, so the panorama looks bigger
 - **Square, 1080×1080 (1:1):** shows more of a short, very wide image without as much cropping top and bottom
 
@@ -25,11 +26,11 @@ Phone panoramas, landscape photos and wide graphics designed for a carousel all 
 ### 2. Choose the number of slides
 More slides means each one shows a narrower strip at a larger size. Fewer slides keeps more of the scene on screen at once. For most panoramas, three to five slides is a comfortable swipe.
 
-### 3. Choose portrait or square
-Match the shape to your image. A tall-enough scene benefits from portrait; a very thin panorama usually looks better square so less is cropped from the top and bottom.
+### 3. Choose the slide shape and framing
+Match the shape to your image. A tall-enough scene benefits from 3:4 or 4:5; a very thin panorama usually looks better square so less is cropped from the top and bottom. Drag the preview to choose which part of the image stays in the frame, and zoom in to crop tighter.
 
 ### 4. Download and keep the order
-Download every slide and keep the numbering. When you upload, add them in order from slide 1 so the picture runs left to right.
+Save all slides as one ZIP, or one at a time, and keep the numbering. When you upload, add them in order from slide 1 so the picture runs left to right.
 
 ## Designing a carousel that swipes smoothly
 ### Put something across the seams
@@ -59,7 +60,7 @@ Lay products side by side in one wide shot and split it so every item gets a ful
 Create or choose one wide image, split it into equal slides with this tool, and upload the slides in order as a single carousel post. Because each slide is the same size, the edges line up as people swipe.
 
 ### What size should seamless carousel slides be?
-Each slide should be 1080×1350 for portrait or 1080×1080 for square. Your source image should be roughly 1,080 pixels wide per slide to stay sharp.
+Each slide should be 1080×1350 for portrait (4:5), 1080×1440 for 3:4 or 1080×1080 for square, and every slide in one carousel should be the same size. Your source image should be roughly 1,080 pixels wide per slide to stay sharp.
 
 ### How many slides can I split my image into?
 Between 2 and 10. Pick fewer slides for a quick swipe or more for a long, detailed panorama.

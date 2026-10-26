@@ -191,3 +191,15 @@ test('shadowban verdicts', () => {
     for (const c of p.checks as any[]) assert.ok(['yes', 'no'].includes(c.bad), `${id}.${c.id}`);
   }
 });
+
+import { crc32, makeZip } from '../lib/tools/zip.js';
+
+test('the ZIP writer produces a valid stored archive', () => {
+  assert.equal(crc32(new TextEncoder().encode('123456789')), 0xcbf43926);
+  const zip = makeZip([{ name: 'grid-01.jpg', data: new Uint8Array([1, 2, 3]) }, { name: 'grid-02.jpg', data: new Uint8Array([4, 5]) }], new Date(2026, 9, 26, 12, 0, 0));
+  const view = new DataView(zip.buffer);
+  assert.equal(view.getUint32(0, true), 0x04034b50);
+  const end = zip.length - 22;
+  assert.equal(view.getUint32(end, true), 0x06054b50);
+  assert.equal(view.getUint16(end + 10, true), 2);
+});

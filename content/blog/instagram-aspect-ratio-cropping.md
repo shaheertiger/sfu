@@ -87,7 +87,7 @@ Phone screenshots (about 9:16) and tall infographics can't fit the feed without 
 
 ### Plan grid layouts around the 3:4 crop
 
-If you split one image across several posts to create a big picture on your profile, use a tool that accounts for the grid crop. Our [Instagram grid maker](/tools/instagram-grid-maker) splits an image into 3×1 to 3×4 tiles at 1080×1350 or 1080×1080 and numbers them in posting order. Keep important detail away from tile edges, since each tile is cropped to 3:4 on the grid.
+If you split one image across several posts to create a big picture on your profile, use a tool that accounts for the grid crop. Our [Instagram grid maker](/tools/instagram-grid-maker) splits an image into 3×1 to 3×4 tiles at 1080×1350, 1080×1440 (3:4) or 1080×1080 and numbers them in posting order. 3:4 tiles line up on the grid without being trimmed when you post them from the app; with 4:5 or square tiles, keep important detail away from tile edges, since each tile is cropped to 3:4 on the grid.
 
 ### Export at 1080 pixels wide
 
