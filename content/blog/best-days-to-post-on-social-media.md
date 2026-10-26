@@ -39,7 +39,7 @@ LinkedIn is used mostly in a professional context. Many people check it during w
 
 ### Facebook: broad and steady
 
-Facebook audiences span ages, interests and routines. Many people check in briefly every day rather than in a burst. That makes Facebook less dependent on any single day. Local businesses and community Pages often find that posting before the weekend helps, because people are making plans.
+Facebook audiences span ages, interests and routines. Many people check in briefly every day rather than in a burst. That makes Facebook less dependent on any single day. Local businesses and community Pages often find that posting before the weekend helps, because people are making plans. For hour-by-hour starting points, see the [best time to post on Facebook](/blog/best-time-to-post-on-facebook).
 
 ### Instagram: work breaks and downtime
 
@@ -47,7 +47,7 @@ Instagram is used for leisure, but people scroll at lunch and on commutes as wel
 
 ### TikTok: entertainment first
 
-TikTok is built around entertainment and discovery. Since the For You feed recommends videos to people who don't follow you, a post can keep finding viewers for days. The day you post still matters for the first wave of views, and evenings and weekends, when people have time to watch, are worth testing.
+TikTok is built around entertainment and discovery. Since the For You feed recommends videos to people who don't follow you, a post can keep finding viewers for days. The day you post still matters for the first wave of views, and evenings and weekends, when people have time to watch, are worth testing. Our guide to the [best time to post on TikTok](/blog/best-time-to-post-on-tiktok) gives a starting time for each day.
 
 ### X, Threads and Bluesky: conversation in real time
 

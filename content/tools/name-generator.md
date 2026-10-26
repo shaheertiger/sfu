@@ -30,7 +30,7 @@ The generator is template-based. It combines your keyword with word lists and pa
 It cannot check whether a name is taken. Before you fall for a handle, search for it on each platform you plan to use. If you are naming a business, also run a trademark search in the countries where you sell.
 
 ### Need a platform-specific list?
-Try the dedicated tools for [TikTok](/tools/tiktok-name-generator), [YouTube](/tools/youtube-name-generator), [X](/tools/x-name-generator), [Discord](/tools/discord-name-generator), [Reddit](/tools/reddit-name-generator) or [Telegram](/tools/telegram-name-generator).
+Try the dedicated tools for [Instagram](/tools/instagram-name-generator), [TikTok](/tools/tiktok-name-generator), [YouTube](/tools/youtube-name-generator), [X](/tools/x-name-generator), [Discord](/tools/discord-name-generator), [Reddit](/tools/reddit-name-generator) or [Telegram](/tools/telegram-name-generator).
 
 ## Username rules and limits by platform
 Each network sets its own rules. The table compares username or handle limits on the major platforms (values at the time of writing).

@@ -48,7 +48,7 @@ Type instagram.com/ followed by the name into a browser.
 - **A profile loads:** the name is taken by an active account. Private accounts still show their name and profile photo, even if the posts are hidden.
 - **"Sorry, this page isn't available":** no active profile is showing at that address. This is where people get misled. The name may be free, but it may also belong to a deactivated, disabled or restricted account.
 
-Our free [Instagram handle checker](/tools/instagram-handle-checker) makes this quicker. Type a handle and it checks Instagram's username rules, explains any problem, suggests close valid variations, and gives you a button to open instagram.com/handle in one tap. Like any outside tool, it can't confirm a name is free, because Instagram doesn't offer a public availability check. Use it to shortlist names, then test the winner in Edit profile.
+Our free [Instagram handle checker](/tools/instagram-handle-checker) makes this quicker. Type a handle and it checks Instagram's username rules, explains any problem, suggests close valid variations, and gives you a button to open instagram.com/handle in one tap. Like any outside tool, it can't confirm a name is free, because Instagram doesn't offer a public availability check. Use it to shortlist names, then test the winner in Edit profile. Need ideas first? The [Instagram name generator](/tools/instagram-name-generator) suggests 30 valid handles from a single word.
 
 ## Method 3: Search in the app
 

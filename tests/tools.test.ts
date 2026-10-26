@@ -33,7 +33,7 @@ test('Instagram line breaks keep empty lines with an invisible character', () =>
 
 test('name ideas follow each platform’s rules', () => {
   for (const [platform, rule] of Object.entries(NAME_RULES) as [string, any][]) {
-    for (const style of ['cool', 'aesthetic', 'funny', 'professional', 'gaming', 'minimal']) {
+    for (const style of ['cool', 'aesthetic', 'funny', 'professional', 'gaming', 'minimal', 'finsta']) {
       const names = generateNames({ keyword: 'Café Art 2', style, platform });
       assert.ok(names.length >= 20, `${platform}/${style}: ${names.length}`);
       for (const n of names) {
