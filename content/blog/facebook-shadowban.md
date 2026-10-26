@@ -1,5 +1,5 @@
 ---
-title: Shadow Ban on Facebook: How to Check Page Status and Recover Reach
+title: Shadow Ban on Facebook: How to Check Page Status and Fix Reach
 description: Think you have a shadow ban on Facebook? See what Meta actually limits, how to check Page status and Account status, and how to request a review and recover.
 h1: Shadow Ban on Facebook: How to Check and Fix Reduced Reach
 category: Facebook
