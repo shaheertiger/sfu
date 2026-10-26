@@ -28,7 +28,7 @@ export default function sitemap() {
       .map((p) => ({ url: `${base}/tools/${p.slug}`, changeFrequency: 'monthly', priority: 0.7, ...alternates('tools', p.slug) })),
     ...allLocalizedPages().map((p) => ({ url: `${base}${p.path}`, changeFrequency: 'monthly', priority: p.kind === 'platforms' ? 0.8 : 0.7, ...alternates(p.kind, p.slug) })),
     { url: `${base}/blog`, lastModified: latest(posts), changeFrequency: 'weekly', priority: 0.7 },
-    ...posts.map((p) => ({ url: `${base}/blog/${p.slug}`, lastModified: p.updated || p.date, changeFrequency: 'monthly', priority: 0.6 })),
+    ...posts.map((p) => ({ url: `${base}/blog/${p.slug}`, lastModified: p.updated || p.date, changeFrequency: 'monthly', priority: 0.6, ...alternates('blog', p.slug) })),
     { url: `${base}/compare`, changeFrequency: 'monthly', priority: 0.5 },
     ...getComparisons().map((c) => ({ url: `${base}/compare/${c.aSlug}/${c.bSlug}`, lastModified: c.updated || c.date, changeFrequency: 'monthly', priority: 0.6 })),
   ];
