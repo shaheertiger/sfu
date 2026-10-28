@@ -1,124 +1,99 @@
 ---
 title: How to Schedule Instagram Stories (and Facebook Stories)
-description: How to schedule Instagram Stories and Facebook Stories with Meta Business Suite, what a scheduler can and can't do, and tips for Stories that get watched.
+description: How to schedule Instagram Stories and Facebook Page Stories with Meta Business Suite or a scheduler, where each method falls short, and a fair comparison.
 h1: How to Schedule Instagram Stories and Facebook Stories
 category: Guides
-excerpt: Meta Business Suite can schedule Stories for Instagram and Facebook at the time of writing. Here's how, plus honest alternatives and tips for Stories people watch to the end.
+excerpt: You can schedule Instagram Stories and Facebook Page Stories in Meta Business Suite or with a scheduler such as Schedule For You. Here's how each works and which fits your week.
 keyword: how to schedule instagram stories
-date: 2026-10-23
+date: 2026-10-28
 ---
-If you want to know how to schedule Instagram Stories, the most reliable route at the time of writing is Meta Business Suite, Meta's free tool for professional accounts. It lets you create a Story, choose your Instagram account, your Facebook Page or both, and pick a date and time for it to go live. Schedule For You doesn't post Stories, so this guide explains the Meta Business Suite method step by step, then covers what you can schedule instead and how to make Stories that work.
-
-## Story scheduling options at a glance
-
-| Option | Instagram Stories | Facebook Stories | Notes |
-|---|---|---|---|
-| Meta Business Suite | Yes, at the time of writing | Yes, for Pages | Needs a professional Instagram account linked to a Page |
-| Instagram app | Post in the moment | Not applicable | Check the app for any schedule option on your account |
-| Facebook app | Not applicable | Post in the moment | Pages and profiles can post Stories live |
-| Schedule For You | No | No | Schedules feed posts, Reels and carousels instead |
-
-Meta changes its tools often. Menu names and features below were accurate when this was written, but if something looks different, check [Instagram's help center](https://help.instagram.com) or Meta Business Suite's own help.
-
-## Before you start
-
-To schedule Stories through Meta Business Suite you'll need:
-
-- An Instagram **Business or Creator** account (for Instagram Stories)
-- A **Facebook Page** linked to that Instagram account (for Facebook Stories, the Page itself)
-- Access to the Page with full control, or the right permissions in a business portfolio
-- Your Story media ready in a vertical 9:16 format, ideally 1080×1920 pixels
-
-Personal Instagram accounts and personal Facebook profiles can't use Meta Business Suite's scheduling for Stories. Switching Instagram to a professional account is free.
+You can schedule Instagram Stories in two ways: in **Meta Business Suite**, Meta's free tool for professional accounts, or with a scheduler that publishes Stories through Meta's API, such as Schedule For You. Both need an Instagram **Business or Creator** account linked to a **Facebook Page**, and both can also schedule **Facebook Page Stories**. Meta Business Suite gives you its Story editor and some stickers; a scheduler gives you one queue for Stories, feed posts, Reels and your other platforms. Personal Instagram accounts and personal Facebook profiles can't schedule Stories either way.
 
 ## How to schedule Instagram Stories in Meta Business Suite
 
+Before you start, check that your Instagram account is a Business or Creator account linked to a Facebook Page you manage, and have your media ready at 9:16 (1080×1920).
+
 1. **Open Meta Business Suite** on a computer (business.facebook.com) or in the Meta Business Suite mobile app.
-2. **Choose Create story.** You'll find it on the home screen or in the Planner, sometimes under a general Create button.
-3. **Select where it should post.** Tick your Instagram account, your Facebook Page or both.
+2. **Choose Create story.** It's on the home screen or in the Planner, sometimes under a general Create button.
+3. **Pick where it posts.** Tick your Instagram account, your Facebook Page or both.
 4. **Add your media.** Upload images or videos. Each one becomes a separate Story frame.
-5. **Edit the frames.** Crop to 9:16, add text or simple elements. The editor here offers fewer creative tools and stickers than the Instagram app, so keep designs simple or finish them in another editor first.
+5. **Edit the frames.** Crop to 9:16 and add text or simple elements. The editor has fewer creative tools and stickers than the Instagram app.
 6. **Open the publishing options** and choose **Schedule** instead of sharing now.
 7. **Pick the date and time**, then confirm with **Schedule story**.
-8. **Check the Planner.** Your scheduled Story appears there, where you can change or delete it before it goes live.
+8. **Check the Planner.** The Story appears there, where you can change or delete it before it goes live.
 
-### How to schedule Facebook Stories
+**Facebook Stories** work the same way: tick your Facebook Page in step 3. Scheduling is available for Pages, not personal profiles. Meta renames menus often, so if a label above looks different, check [Instagram's help center](https://help.instagram.com) or Meta Business Suite's help.
 
-The steps are the same. In step 3, tick your Facebook Page (with or without Instagram). If you post to both, the same frames go to each, so design with both audiences in mind. Facebook Stories can only be scheduled for Pages, not for personal profiles.
+### Limits of scheduled Stories
 
-### Limits to keep in mind
+- **Fewer stickers.** Polls, quizzes, music and some other stickers may not be offered when scheduling. Stories that depend on them are best posted live from the app.
+- **Still 24 hours.** A scheduled Story disappears 24 hours after it goes live, like any other. Add it to a Highlight if you want it to stay.
 
-- **Fewer interactive stickers.** Polls, quizzes and some other stickers may not be available when scheduling. If a Story depends on them, post it by hand in the app.
-- **Limited music options.** Music stickers may not be offered when scheduling. Use audio you have the rights to in your video editor before uploading, or post music Stories live.
-- **24-hour lifespan still applies.** A scheduled Story disappears 24 hours after it goes live, like any other Story. Add it to a Highlight afterward if you want it to stay on your profile.
+## Where the native method gets awkward
+
+Picture a café that runs the same routine every Friday. At 7:30 a.m. a short video of the day's special goes out as an Instagram Story and a Facebook Page Story. At noon the longer cut goes out as a Reel, a TikTok and a YouTube Short, and a photo goes to the Google Business Profile.
+
+Meta Business Suite handles the 7:30 Stories and the Reel well. It doesn't publish to TikTok, YouTube or Google Business Profile, so the owner schedules those somewhere else, keeps two calendars in step and checks two places when something fails. On a busy morning, that's how the TikTok gets forgotten.
 
 <!-- cta -->
 
-## Can you schedule Instagram Stories with Schedule For You?
+## Your options compared
 
-No. Schedule For You doesn't post Instagram or Facebook Stories. It publishes to Instagram as feed photo posts, Reels and carousels, and to Facebook Pages as text, image or video posts. If Stories are central to your plan, use Meta Business Suite for them and a scheduler for everything else.
+| Option | Instagram Stories | Facebook Page Stories | Other platforms | Stickers and music | Cost |
+|---|---|---|---|---|---|
+| Instagram or Facebook app | Post live only | Post live only | No | All of them | Free |
+| Meta Business Suite | Yes | Yes | No | Some, at the time of writing | Free |
+| Schedule For You | Yes | Yes | 8 more, from the same queue | None (the file is posted as is) | From $19/month |
 
-Here's how to cover the same goals without Stories.
+If Instagram and Facebook are your only channels, or your Stories rely on polls, links or music stickers, Meta Business Suite is the better fit. A scheduler earns its place when Stories are one part of a plan that also covers TikTok, YouTube, X, LinkedIn or Google Business Profile.
 
-### Post a Reel instead
+## How to schedule Stories with Schedule For You
 
-Vertical video made for Stories usually works as a Reel too, with one big advantage: Reels stay on your profile and can keep reaching people long after 24 hours. Upload the same 9:16 video with a caption, and schedule it like any other post. The same file can also go to TikTok, YouTube or Facebook from the same post, each with its own caption.
+Here is the café's Friday in one place.
 
-### Turn Story frames into a carousel
+1. **Connect Instagram and your Facebook Page.** Instagram needs a Business or Creator account linked to a Facebook Page. Our guide to [connecting Instagram](/blog/connect-instagram) covers the setup.
+2. **Create a post and choose the accounts.** Select the Instagram account and the Facebook Page.
+3. **Set "Post as" to Story.** In the composer, choose **Story 9:16**. Each Instagram or Facebook account can post as a feed post, a Reel or a Story, so one account can post a Story while another posts the same file as a feed post.
+4. **Attach exactly one image or one video.** A Story is one frame: one image or one video, 9:16, with no caption. The composer flags anything else before you can schedule it. For a three-frame sequence, schedule three Stories a minute or two apart.
+5. **Pick the time** and schedule it, or add it to the queue.
 
-A run of Story frames, such as "5 tips" or "before and after," often makes a strong carousel. Re-export frames at 4:5 (1080×1350) so they fit Instagram's feed range, then schedule up to 10 as one carousel. Schedule For You doesn't crop images, so our [Instagram photo resizer](/tools/instagram-photo-resizer) is handy for converting sizes.
+![The Schedule For You composer with an Instagram account selected and "Post as" set to Story 9:16, showing the note "One image or video · 9:16, no caption" and a warning that a Story needs exactly one image or video](/images/blog/composer-instagram-story-1440x900.webp)
 
-### Use reminders as your cue
+Then the noon posts: create a second post with the longer video, select the Instagram account (Post as: Reel), TikTok and YouTube, and give each its own caption. Both posts sit in the same queue and calendar, and a failed Story shows up next to everything else with the reason and a retry button.
 
-If a Story needs to go out at the same moment as a planned post, schedule the feed post or Reel and let the reminder email before it go out be your signal to post the matching Story by hand. That keeps a launch coordinated without adding another tool.
+![The Schedule For You queue showing scheduled posts by time with account chips, and a panel listing posts that failed to publish with reasons and a Retry button](/images/blog/queue-1440x900.webp)
 
-## Tips for Stories people actually watch
+What it doesn't do: Stories go out exactly as uploaded, so add text, stickers or music in your editor first. Interactive stickers (polls, questions, links) and music from Instagram's library aren't available through Meta's publishing API. Design the frame in a tool such as our [Instagram photo resizer](/tools/instagram-photo-resizer) and post Stories that need stickers live from the app.
 
-### Get the format right
+## Tips for Stories people watch
 
-Use 9:16 at 1080×1920. Images that are too small or heavily compressed look soft once Instagram processes them; our guide on [why Instagram Stories look blurry](/blog/why-does-my-instagram-story-look-blurry) explains the usual causes.
-
-### Respect the safe zones
-
-The top of a Story shows your profile name and the progress bar, and the bottom has the reply bar and buttons. Keep text and faces away from both edges so nothing important is covered.
-
-### Lead with the point
-
-People tap through Stories fast. Put the main message in the first frame, keep each frame to one idea, and use short sequences rather than long ones.
-
-### Add a clear next step
-
-A link sticker, a question or a "reply with a word" prompt gives viewers something to do. Link stickers are widely available at the time of writing, but check your account if you don't see one.
-
-### Save the good ones to Highlights
-
-Highlights turn short-lived Stories into a permanent menu on your profile: FAQs, reviews, how-tos or product lines.
-
-## A simple weekly Stories plan
-
-1. **Monday:** prepare and schedule two or three evergreen Stories in Meta Business Suite, such as a tip and a product highlight.
-2. **Midweek:** post live, behind-the-scenes Stories from the Instagram app; these benefit from being spontaneous.
-3. **Launch days:** schedule your main post or Reel, and use its reminder email as your cue for the matching Story.
-4. **Friday:** add the week's best Stories to a Highlight.
+- **Use 9:16 at 1080×1920.** Small or heavily compressed files look soft after Instagram processes them; see [why Instagram Stories look blurry](/blog/why-does-my-instagram-story-look-blurry).
+- **Respect the safe zones.** The profile name sits at the top and the reply bar at the bottom, so keep text and faces in the middle.
+- **One idea per frame.** People tap through fast; put the point in the first frame.
+- **Save the good ones to Highlights.** Our guide to [Instagram highlights](/blog/how-to-make-highlights-on-instagram) shows how.
 
 ## Frequently asked questions
 
 ### Can you schedule Instagram Stories?
 
-Yes. At the time of writing, Meta Business Suite lets professional Instagram accounts linked to a Facebook Page schedule Stories for a set date and time. Some interactive stickers and music may not be available when scheduling.
+Yes. Professional Instagram accounts linked to a Facebook Page can schedule Stories in Meta Business Suite or with a scheduler that uses Meta's API, such as Schedule For You. Some stickers and music may not be available when scheduling.
 
 ### How do I schedule Facebook Stories?
 
-Use Meta Business Suite, choose Create story, select your Facebook Page, add your media, then choose Schedule and pick a time. Scheduling Stories is available for Pages, not personal profiles.
+In Meta Business Suite, choose Create story, select your Facebook Page, add media, then choose Schedule. In Schedule For You, select the Page, set Post as to Story and attach one image or video. Both work for Pages, not personal profiles.
 
 ### Is there a free way to schedule Instagram Stories?
 
-Meta Business Suite is free for professional accounts. It's the official option for scheduling Stories on Instagram and Facebook.
+Meta Business Suite is free for professional accounts and is the official option. Schedule For You is paid, from $19 a month, and adds the other platforms to the same queue.
 
-### Does Schedule For You post Instagram Stories?
+### Can I add link stickers or polls to a scheduled Story?
 
-No. Schedule For You publishes Instagram feed posts, Reels and carousels, but not Stories. Many people use Meta Business Suite for Stories and a scheduler for the rest of their content.
+Not through a scheduler: Meta's publishing API posts the image or video only. Meta Business Suite offers some stickers when scheduling at the time of writing. Stories that rely on polls, questions or music are best posted live.
 
-### What size should Instagram Stories be?
+### Can a scheduled Story have several frames?
 
-Use a vertical 9:16 ratio at 1080×1920 pixels. Keep important text away from the top and bottom edges, where Instagram places your profile name and the reply bar.
+In Meta Business Suite, yes: each image or video you add becomes a frame. In Schedule For You each Story is one image or video, so schedule a sequence as separate Stories a minute or two apart.
+
+### What should I read next?
+
+For feed posts and Reels, see [how to schedule Instagram posts](/blog/how-to-schedule-instagram-posts). For sizes, see the [Instagram post size guide](/blog/instagram-post-size).
