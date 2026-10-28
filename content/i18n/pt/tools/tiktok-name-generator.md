@@ -116,4 +116,4 @@ Não. O @ só aceita letras, números, underlines e pontos comuns. Texto estiliz
 
 ## Agende seus TikToks com o Schedule For You
 
-Com o nome escolhido, o Schedule For You ajuda a manter a frequência: você sobe os vídeos, escreve a legenda com contagem de 4.000 caracteres ao vivo e agenda os TikToks junto com Reels e YouTube num calendário só. É pago, com posts ilimitados em todos os planos a partir de US$ 19/mês, e o app está em inglês. O teste grátis de 7 dias pede cartão e não cobra antes do 8º dia. [Comece seu teste grátis de 7 dias](/signup).
+Com o nome escolhido, o Schedule For You ajuda a manter a frequência: você sobe os vídeos, escreve a legenda com contagem de 4.000 caracteres ao vivo e agenda os TikToks junto com Reels e YouTube num calendário só. Tem um plano gratuito para 3 contas, e os planos pagos têm posts ilimitados a partir de US$ 19/mês, e o app está em inglês. O teste grátis de 7 dias pede cartão e não cobra antes do 8º dia. [Comece seu teste grátis de 7 dias](/signup).

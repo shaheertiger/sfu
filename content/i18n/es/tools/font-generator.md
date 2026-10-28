@@ -113,4 +113,4 @@ En general, sí, aunque las redes las limitan en ciertos campos, como los nombre
 
 ## Programa tus publicaciones con Schedule For You
 
-Schedule For You te permite escribir una publicación una vez, adaptarla a cada una de sus 10 plataformas, entre ellas X, Instagram, LinkedIn y TikTok, y publicarla desde un solo calendario con control en vivo del límite de caracteres. Todos los planes incluyen publicaciones ilimitadas, desde 19 $ (USD) al mes, y la app está en inglés. La prueba de 7 días requiere tarjeta, no se cobra hasta el día 8 y puedes cancelar cuando quieras. [Empieza tu prueba gratis](/signup).
+Schedule For You te permite escribir una publicación una vez, adaptarla a cada una de sus 10 plataformas, entre ellas X, Instagram, LinkedIn y TikTok, y publicarla desde un solo calendario con control en vivo del límite de caracteres. Los planes de pago incluyen publicaciones ilimitadas, desde 19 $ (USD) al mes, y la app está en inglés. La prueba de 7 días requiere tarjeta, no se cobra hasta el día 8 y puedes cancelar cuando quieras. [Empieza tu prueba gratis](/signup).

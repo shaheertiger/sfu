@@ -94,7 +94,7 @@ Até 10 imagens num único post. Ou, em vez de imagens, um vídeo.
 
 ### Posso gerenciar várias Páginas do Facebook?
 
-Sim. Conecte todas as Páginas que você gerencia. O plano Solo (US$ 19/mês) inclui 15 contas conectadas e o Studio (US$ 59/mês) inclui 100 por workspace, com membros de equipe. Os preços são em dólar, com posts ilimitados em todos os planos; no anual você paga o equivalente a 10 meses. Para clientes diferentes, use workspaces separados: cada um tem seu próprio plano.
+Sim. Conecte todas as Páginas que você gerencia. O plano Solo (US$ 19/mês) inclui 15 contas conectadas e o Studio (US$ 59/mês) inclui 100 por workspace, com membros de equipe. Os preços são em dólar, com posts ilimitados nos planos pagos; no anual você paga o equivalente a 10 meses. Para clientes diferentes, use workspaces separados: cada um tem seu próprio plano.
 
 ### O Schedule For You está em português?
 

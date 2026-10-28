@@ -77,7 +77,7 @@ test('copy never promises what the product does not do', () => {
 test('copy never says Schedule For You has no free plan (it has one)', () => {
   const denial = /\bno free (?:plan|tier)\b|\bisn['’]t free\b|\bdoesn['’]t (?:have|offer) a free (?:plan|tier)\b|\bnot a free one\b|\bpaid product\b|\bpaid scheduler with two plans\b/i;
   const ours = /Schedule For You|\bour (?:plan|product|app|scheduler)|\bwe\b|^\s*-?\s*No free plan/i;
-  const sources: [string, string][] = [...all, ['lib/seo.js', fs.readFileSync('lib/seo.js', 'utf8')], ['lib/seo-pages.js', fs.readFileSync('lib/seo-pages.js', 'utf8')], ['lib/md/agent-guide.js', fs.readFileSync('lib/md/agent-guide.js', 'utf8')], ['app/llms.txt/route.js', fs.readFileSync('app/llms.txt/route.js', 'utf8')]];
+  const sources: (readonly [string, string])[] = [...all, ['lib/seo.js', fs.readFileSync('lib/seo.js', 'utf8')], ['lib/seo-pages.js', fs.readFileSync('lib/seo-pages.js', 'utf8')], ['lib/md/agent-guide.js', fs.readFileSync('lib/md/agent-guide.js', 'utf8')], ['app/llms.txt/route.js', fs.readFileSync('app/llms.txt/route.js', 'utf8')]];
   for (const [slug, raw] of sources) {
     for (const sentence of raw.replace(/\n+/g, ' ').split(/(?<=[.!?])\s+/)) {
       assert.ok(!(denial.test(sentence) && ours.test(sentence)), `${slug}: "${sentence.slice(0, 160)}"`);
