@@ -15,7 +15,7 @@ Up to 3,000 characters. That's room for a short story, a list of lessons or a cl
 Attach up to 9 images to one post. Use a single image for a chart or a quote, or several for an event recap or a step-by-step. Our guide to [image sizes for LinkedIn posts](/blog/image-sizes-for-linkedin-posts) covers the shapes that display well.
 
 ### Video posts
-Attach one video in place of images. Short talking-head clips and product walkthroughs are common choices.
+Attach one video in place of images: an MP4 between 3 seconds and 30 minutes long. Short talking-head clips and product walkthroughs are common choices. LinkedIn processes the video after upload, and the post goes live as soon as it's ready.
 
 ## How it works
 1. **Connect LinkedIn.** Open the Accounts screen, choose LinkedIn and sign in to authorize Schedule For You.

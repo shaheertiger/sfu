@@ -191,6 +191,11 @@ export async function validatePost(workspaceId: string, input: PostInput) {
       const problem = metaFormatProblem(format, media) ?? (acc.platform === 'facebook' && format === 'post' ? facebookMixProblem(media) : null);
       if (problem) errors.push(`${p.label} (@${acc.username}): ${problem}`);
     }
+    if (acc.platform === 'linkedin') {
+      // Same rule as a Facebook feed post: one video or images, never both.
+      const problem = facebookMixProblem(media);
+      if (problem) errors.push(`${p.label} (@${acc.username}): ${problem}`);
+    }
     if (acc.platform === 'instagram') {
       const notJpeg = nonJpegImages(media);
       if (notJpeg.length) errors.push(`Instagram only accepts JPEG images. Convert ${notJpeg.map((m) => m.filename || m.id).join(', ')} to JPEG or deselect @${acc.username}.`);
@@ -290,9 +295,9 @@ export async function savePost(workspaceId: string, input: PostInput, userId: st
       if (status === 'scheduled') {
         await q(`UPDATE post_targets SET status='pending', error=NULL, attempts=0, progress='{}'::jsonb WHERE post_id=$1 AND status='failed'`, [id]);
       }
-      // An Instagram upload saved by an earlier attempt holds the old caption and media.
+      // An Instagram or LinkedIn upload saved by an earlier attempt holds the old caption or media.
       const changed = existing && ((input.caption !== undefined && input.caption !== existing.caption) || (input.media !== undefined && JSON.stringify(input.media) !== JSON.stringify(existing.media)));
-      if (changed) await q(`UPDATE post_targets SET progress = progress - 'ig' - 'waits' WHERE post_id=$1 AND status <> 'published'`, [id]);
+      if (changed) await q(`UPDATE post_targets SET progress = progress - 'ig' - 'li' - 'waits' WHERE post_id=$1 AND status <> 'published'`, [id]);
     }
   });
   return (await getPost(workspaceId, id))!;

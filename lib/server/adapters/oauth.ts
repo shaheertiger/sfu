@@ -3,7 +3,7 @@
  * Endpoints follow each platform's current public API docs; treat the publish paths as
  * "wired but unverified until you plug in real keys" and check the README per platform.
  */
-import type { PlatformAdapter, PublishInput, PublishResult, ConnectedAccountFields, SocialAccount } from './types';
+import type { MediaFile, PlatformAdapter, PublishInput, PublishResult, ConnectedAccountFields, SocialAccount } from './types';
 import { PublishError, UPLOAD_TIMEOUT_MS, errorFromResponse, jsonFetch, sleep, timeLeft, timedFetch } from './types';
 import { facebookMixProblem, metaFormat, metaFormatProblem, nonJpegImages } from '../meta-format';
 import { threadParts } from '../thread';
@@ -103,12 +103,15 @@ export const linkedin: PlatformAdapter = {
       access_token: tok.access_token, token_expires_at: Date.now() + tok.expires_in * 1000,
     }];
   },
-  async publish({ account, caption, media, sending }) {
+  async publish({ account, caption, media, sending, progress, save }) {
     const auth = { authorization: `Bearer ${account.access_token}`, 'content-type': 'application/json', 'LinkedIn-Version': '202501', 'X-Restli-Protocol-Version': '2.0.0' };
     const author = `urn:li:person:${account.external_id}`;
     let content: any = undefined;
+    const video = media.find((m) => m.mime.startsWith('video/'));
     const images = media.filter((m) => m.mime.startsWith('image/'));
-    if (images.length) {
+    if (video) {
+      content = { media: { id: await linkedinVideo(video, author, auth, progress, save) } };
+    } else if (images.length) {
       const urns: string[] = [];
       for (const img of images.slice(0, 9)) {
         const init = await jsonFetch('https://api.linkedin.com/rest/images?action=initializeUpload', {
@@ -140,6 +143,62 @@ export const linkedin: PlatformAdapter = {
     return { externalId: res?.id || res?.['$URN'] };
   },
 };
+
+const LINKEDIN_API = 'https://api.linkedin.com/rest';
+/** How long one attempt waits for LinkedIn to process a video before handing over to a later attempt. */
+export const LINKEDIN_WAIT_MS = 20_000;
+const LINKEDIN_POLL_MS = 3_000;
+
+/**
+ * Uploads a video with LinkedIn's Videos API and waits until it can be posted. Returns the video URN.
+ * The URN is saved once the upload is finalized, so a later attempt only waits for processing.
+ */
+async function linkedinVideo(
+  file: MediaFile, owner: string, auth: Record<string, string>,
+  progress: Record<string, any> | undefined, save: PublishInput['save'],
+): Promise<string> {
+  let urn: string | undefined = progress?.li?.video;
+  if (!urn) {
+    const bytes = await file.bytes();
+    const init = await jsonFetch(`${LINKEDIN_API}/videos?action=initializeUpload`, {
+      method: 'POST', headers: auth,
+      body: JSON.stringify({ initializeUploadRequest: { owner, fileSizeBytes: bytes.length, uploadCaptions: false, uploadThumbnail: false } }),
+    });
+    const { video, uploadInstructions, uploadToken } = init.value || {};
+    // Each part goes to its own URL; LinkedIn links them together from the ETags, in order.
+    const partIds: string[] = [];
+    for (const part of uploadInstructions || []) {
+      const put = await timedFetch(part.uploadUrl, {
+        method: 'PUT', headers: { 'content-type': 'application/octet-stream' },
+        body: new Uint8Array(bytes.subarray(part.firstByte, part.lastByte + 1)), timeoutMs: UPLOAD_TIMEOUT_MS,
+      });
+      if (!put.ok) throw await errorFromResponse(part.uploadUrl, put);
+      const etag = put.headers.get('etag');
+      if (!etag) throw new PublishError('LinkedIn didn’t confirm part of the video upload. It will be uploaded again.', true);
+      partIds.push(etag.replace(/^"|"$/g, ''));
+    }
+    await jsonFetch(`${LINKEDIN_API}/videos?action=finalizeUpload`, {
+      method: 'POST', headers: auth,
+      body: JSON.stringify({ finalizeUploadRequest: { video, uploadToken: uploadToken || '', uploadedPartIds: partIds } }),
+    });
+    urn = video as string;
+    await save?.({ li: { video: urn } });
+  }
+  const until = Date.now() + Math.max(0, Math.min(LINKEDIN_WAIT_MS, timeLeft() - 15_000));
+  for (;;) {
+    const v = await jsonFetch(`${LINKEDIN_API}/videos/${encodeURIComponent(urn)}`, { headers: auth });
+    if (v.status === 'AVAILABLE') return urn;
+    if (v.status === 'PROCESSING_FAILED') {
+      console.error('[linkedin] video processing failed:', urn, v.processingFailureReason);
+      await save?.({ li: null });
+      throw new PublishError('LinkedIn couldn’t process the video. It needs to be an MP4 between 3 seconds and 30 minutes long.', false);
+    }
+    if (Date.now() + LINKEDIN_POLL_MS > until) {
+      throw new PublishError('LinkedIn is still processing the video. Publishing continues in a couple of minutes.', true, { processing: true });
+    }
+    await sleep(LINKEDIN_POLL_MS);
+  }
+}
 
 /* ───────────────────────── Facebook Pages ───────────────────────── */
 const GRAPH = 'https://graph.facebook.com/v21.0';
