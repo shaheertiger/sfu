@@ -81,7 +81,7 @@ If you mainly post as a company page, LinkedIn's own scheduler or a tool that su
 
 ![The Social accounts screen with Bluesky, X, Instagram, LinkedIn and Threads accounts connected, each with its status and number of queued posts, and a Connect LinkedIn card that says it posts to your personal profile](/images/blog/social-accounts-1440x900.webp)
 
-**2. Write each post once, then tailor it.** Open **Create post**, pick the founder's LinkedIn profile plus the company's X and Bluesky accounts, and write the announcement. The composer has a tab for each platform, so the LinkedIn version can run to several paragraphs while the X version stays under 280 characters and Bluesky under 300. The counters under the text show each limit as you type. Attach up to nine images to the LinkedIn version, and put the link in the **first comment**, which publishes right after the post.
+**2. Write each post once, then tailor it.** Open **Create post**, pick the founder's LinkedIn profile plus the company's X and Bluesky accounts, and write the announcement. The composer has a tab for each platform, so the LinkedIn version can run to several paragraphs while the X version stays under 280 characters and Bluesky under 300. The counters under the text show each limit as you type. Attach up to nine images or one video to the LinkedIn version, and put the link in the **first comment**, which publishes right after the post.
 
 ![The composer with Bluesky, LinkedIn and TikTok selected, the LinkedIn tab open and a character counter for each platform under the caption](/images/blog/composer-linkedin-1440x900.webp)
 
@@ -110,7 +110,7 @@ Natively, only by signing in to each account in turn; company pages you manage a
 No. It publishes to personal profiles only. Schedule company page posts with LinkedIn's built-in scheduler from the page's admin view.
 
 ### Can I schedule a LinkedIn carousel or poll?
-It depends on your account and LinkedIn version, so check whether the clock icon appears once you've added the poll or document. Schedule For You publishes text posts and posts with up to nine images, not polls or PDF documents.
+It depends on your account and LinkedIn version, so check whether the clock icon appears once you've added the poll or document. Schedule For You publishes text posts, posts with up to nine images and posts with one video, not polls or PDF documents.
 
 ### Do scheduled LinkedIn posts get less reach?
 There's no sign that LinkedIn ranks scheduled posts lower. Timing, the first lines and early replies matter more; see [do scheduled posts get fewer views](/blog/do-scheduled-posts-get-less-views) and the [LinkedIn character limit](/blog/linkedin-post-character-limit) guide. Next, read how to [find, edit or cancel scheduled LinkedIn posts](/blog/how-to-see-scheduled-posts-on-linkedin).
