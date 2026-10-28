@@ -67,7 +67,7 @@ Instagram lets you pin a small number of posts to the top of your profile grid (
 
 ### Scheduling a multi-part series
 
-A series is easier to run when the parts go out on a fixed rhythm. Schedule For You publishes a single video to Instagram as a Reel, so you can upload each part once, write its caption and place them in the calendar at the times you choose. It works with Instagram Business and Creator accounts linked to a Facebook Page, and Instagram's own length limits still apply to every upload, so check each part fits before you schedule it. It doesn't post Stories.
+A series is easier to run when the parts go out on a fixed rhythm. Schedule For You publishes a single video to Instagram as a Reel, so you can upload each part once, write its caption and place them in the calendar at the times you choose. It works with Instagram Business and Creator accounts linked to a Facebook Page, and Instagram's own length limits still apply to every upload, so check each part fits before you schedule it.
 
 ## Option 3: Use a carousel with several videos
 

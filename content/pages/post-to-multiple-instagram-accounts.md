@@ -47,8 +47,8 @@ Schedule For You publishes feed content within Instagram's own rules.
 | Caption | Up to 2,200 characters per account's version |
 | Carousel | 2–10 images or videos, mixed allowed |
 | Feed image shape | Between 4:5 portrait and 1.91:1 landscape, at the time of writing |
-| Stories | Not supported; post them in the Instagram app |
-| First comment | Not supported; put hashtags in the caption |
+| Stories | One image or video per Story, 9:16, no caption |
+| First comment | Supported: set one per post, or a default per account |
 | Connected accounts | 15 on Solo, 100 on Studio, across all platforms |
 
 ### Prepare images first

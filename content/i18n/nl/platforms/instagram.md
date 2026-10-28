@@ -69,13 +69,13 @@ Meta trekt soms de toegang in, bijvoorbeeld nadat je je wachtwoord hebt gewijzig
 - **Zet je hook vóór het afbreekpunt.** In de feed zie je alleen de eerste regel of twee van een caption. Begin dus met de kern en bewaar hashtags voor het einde. Een paar woorden in een opvallende stijl kun je maken met de [Instagram lettertype generator](/nl/tools/instagram-font-generator).
 - **Denk ook aan je profielraster.** Elke feedpost en elke carrouselcover komt in je raster terecht. Kijk dus hoe een week aan afbeeldingen naast elkaar oogt voordat ze online gaan.
 - **Wissel formats af.** Een wachtrij met afwisselend foto’s, Reels en carrousels geeft volgers telkens een andere reden om te stoppen met scrollen.
-- **Hashtags in de caption.** Schedule For You plaatst geen eerste reactie, dus zet je hashtags in de caption zelf.
+- **Hashtags in de eerste reactie.** Schedule For You kan direct na het publiceren een eerste reactie plaatsen; daar passen je hashtags goed.
 
 ## Veelgestelde vragen
 
 ### Kan ik Instagram Stories inplannen met Schedule For You?
 
-Nee. Schedule For You publiceert feedfoto’s, Reels en carrousels. Stories plaats je in de Instagram-app zelf. Een eerste reactie plaatsen kan ook niet, dus zet hashtags in je caption als je ze gebruikt.
+Ja. Kies bij „Post as” voor Story en voeg één afbeelding of video toe (9:16). Stories gaan zonder caption online, en stickers, polls of muziek zijn via de API van Meta niet mogelijk. Onder feedposts en Reels kan Schedule For You ook een eerste reactie plaatsen.
 
 ### Heb ik een zakelijk account nodig om Instagram berichten in te plannen?
 

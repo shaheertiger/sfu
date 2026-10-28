@@ -84,7 +84,7 @@ Not always, and the best social media management tools for small business includ
 
 Schedule For You is one of the low-cost cross-platform schedulers. It publishes to X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile. You write one post, adjust the caption for each platform with live character-limit checks, and schedule from a queue with posting time slots or a drag-and-drop calendar. It includes approvals, client preview links that don't need an account, bulk CSV scheduling and separate workspaces per brand.
 
-Be clear on what it doesn't do: it has no analytics or social inbox, doesn't post Instagram or Facebook Stories, and doesn't post to LinkedIn company pages. If those are must-haves, an all-in-one suite may suit you better. Pricing is $19/month for 15 connected accounts (Solo) or $59/month for 100 accounts plus team members (Studio), both with unlimited posts, after a 7-day free trial that requires a card. You can [compare plans](/#pricing) or read how to [connect a Google Business Profile](/blog/connect-google-business-profile).
+Be clear on what it doesn't do: it has no engagement analytics or social inbox, and doesn't post to LinkedIn company pages. If those are must-haves, an all-in-one suite may suit you better. Pricing is $19/month for 15 connected accounts (Solo) or $59/month for 100 accounts plus team members (Studio), both with unlimited posts, after a 7-day free trial that requires a card. You can [compare plans](/#pricing) or read how to [connect a Google Business Profile](/blog/connect-google-business-profile).
 
 ## Frequently asked questions
 

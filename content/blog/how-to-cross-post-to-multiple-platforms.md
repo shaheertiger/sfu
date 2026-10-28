@@ -96,7 +96,7 @@ Here's the workflow from start to finish. You can see an overview on the [cross-
 
 ### What this workflow doesn't cover
 
-Each post goes out as a single post, so multi-post threads on X or Threads aren't supported. Instagram and Facebook Stories, first comments, and LinkedIn company pages aren't supported either. Plan those separately in each platform's own app.
+Threads on X, Bluesky and Threads, Instagram and Facebook Stories, and first comments are all supported. LinkedIn company pages, TikTok Stories and Facebook Groups aren't, so plan those in each platform's own app.
 
 ## Frequently asked questions
 

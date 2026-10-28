@@ -134,7 +134,7 @@ Meta renames metrics and menus from time to time, so labels may differ on your P
 
 ## Planning and scheduling your Facebook content
 
-Once you know your mix, consistency matters more than any single post. Schedule For You publishes text posts, photo posts with up to 10 images, and video posts to Facebook Pages from the same queue and calendar as Instagram, TikTok, YouTube and six other platforms, with a separate caption for each. It doesn't post Facebook Stories, Lives or Group posts, so do those in Facebook itself. Our guide on [how to schedule a post on Facebook](/blog/how-to-schedule-a-post-on-facebook) also covers Meta Business Suite, and the [Facebook Page scheduler](/facebook) page lists what you can publish.
+Once you know your mix, consistency matters more than any single post. Schedule For You publishes text posts, photo posts with up to 10 images, and video posts to Facebook Pages from the same queue and calendar as Instagram, TikTok, YouTube and six other platforms, with a separate caption for each. It can also post Page Stories (one image or video each), but not Lives or Group posts, so do those in Facebook itself. Our guide on [how to schedule a post on Facebook](/blog/how-to-schedule-a-post-on-facebook) also covers Meta Business Suite, and the [Facebook Page scheduler](/facebook) page lists what you can publish.
 
 ## Frequently asked questions
 

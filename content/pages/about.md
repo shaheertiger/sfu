@@ -26,7 +26,7 @@ A few principles shape what we add and what we leave out.
 A caption that works on LinkedIn rarely works on X. You write once, then edit any platform's version without touching the others, with live character-limit checks for each network as you type.
 
 ### Honest about limits
-Platforms decide what third-party tools can do. We say plainly what isn't supported, such as Instagram Stories, first comments, Facebook personal profiles and Groups, so you can plan around it instead of finding out after a post fails.
+Platforms decide what third-party tools can do. We say plainly what isn't supported, such as LinkedIn company pages, Facebook personal profiles and Groups, and stickers on Stories, so you can plan around it instead of finding out after a post fails.
 
 ### No AI writing that floods feeds
 There are no AI writing features. We think feeds have enough generic, generated content, and your audience follows you for your voice. Schedule For You handles the timing and publishing; the words are yours.

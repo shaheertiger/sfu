@@ -3,7 +3,7 @@ title: How Do I Post a Video to Twitter (X)? Videos and Threads
 description: How do I post a video to Twitter? Step-by-step for the X app, web and Schedule For You, plus what to do when you want to schedule a thread on X or Threads.
 h1: How Do I Post a Video to Twitter (X)? Plus How to Handle Threads
 category: Guides
-excerpt: Post a video on X from the app or web in a few taps, or schedule it ahead. Here's how, plus the limits on scheduling threads on X and Threads and the best workarounds.
+excerpt: Post a video on X from the app or web in a few taps, or schedule it ahead. Here's how, plus how to schedule a whole thread on X, Threads or Bluesky.
 keyword: how do i post a video to twitter
 date: 2026-10-23
 ---
@@ -19,7 +19,7 @@ This guide covers posting a video on X in the app, on the web and with Schedule 
 | Mix video with images | No | No |
 | Text length | 280 characters (longer with Premium, at the time of writing) | 280 characters, checked live |
 | Schedule for later | Check the composer's options for your account | Yes, at a set time or in your queue |
-| Multi-post threads | Yes, by hand | No: single posts only |
+| Multi-post threads | Yes, by hand | Yes, scheduled: parts separated by `---`, up to 25 |
 
 At the time of writing, most X accounts can upload videos of up to 2 minutes and 20 seconds, and Premium subscribers can upload longer ones. MP4 or MOV files with H.264 video and AAC audio are the safest choice. Limits change, so check [X's help center](https://help.x.com) if a video is rejected for its length or size.
 
@@ -66,28 +66,28 @@ If a platform rejects the post, you'll get a failed-post alert so you can fix it
 
 You can write and post a thread on X by hand: write the first post, tap the plus button to add the next one, repeat, then post them all together. Scheduling a full thread is a different question.
 
-Schedule For You publishes single posts. It doesn't publish multi-post threads on X, so each scheduled item goes out as one standalone post. If you need the whole thread to go out at a set time automatically, check the scheduling options in X's own composer for your account, as features change and can differ by account type.
+Schedule For You can schedule a whole thread. Write the parts in one caption and put a line with only `---` between them; each part goes out as a reply to the one before, media goes on the first post, and the composer checks every part against X's limit. Up to 25 parts. The same works for Threads and Bluesky.
 
 ## Threads thread scheduling
 
-The same limit applies to Threads, Meta's text-first app. Schedule For You can publish a single Threads post, but not a chain of connected posts. Here's what a single Threads post can include through Schedule For You:
+Threads, Meta's text-first app, works the same way: separate the parts with `---` and each one goes out as a reply to the one before. Here's what a Threads post can include through Schedule For You:
 
 | Threads post type | Supported |
 |---|---|
 | Text-only post | Yes, up to 500 characters |
 | One image or one video | Yes |
 | Carousel | Yes, up to 10 items |
-| Multi-post thread | No |
+| Multi-post thread | Yes, each part up to 500 characters |
 
 The 500-character limit gives you nearly twice the room of a standard X post, which is often enough for an idea you'd otherwise split into two or three posts.
 
-## Workarounds when you need a thread
+## Alternatives to a thread
 
-You have a few good options, depending on how important the thread format is.
+A thread isn't always the best format. A few options, depending on the idea:
 
-### Schedule the opener, add the rest when it goes live
+### Schedule the thread, then reply in person
 
-Schedule the first post with your hook and main point. When it publishes, reply to it in the X or Threads app with the remaining posts. Reminder emails before posts help you be ready at the right moment. This keeps the timing you planned while still giving you a thread.
+Schedule the whole thread so the timing is right, then be around when it publishes to answer replies. Reminder emails before posts help you be ready at the right moment.
 
 ### Turn the thread into slides
 
@@ -103,7 +103,7 @@ If each point can stand alone, turn the thread into a series of separate posts a
 
 ### Post the full thread by hand
 
-For a launch or a big announcement, writing the thread in the app at the moment it matters is still the simplest option. Draft it in advance in your notes so posting takes a minute.
+If the thread reacts to something happening right now, writing it in the app in the moment is still the simplest option.
 
 ## Frequently asked questions
 
@@ -121,7 +121,7 @@ No. X allows one video per post, and you can't mix a video with images. If you h
 
 ### Can I schedule a thread on X with Schedule For You?
 
-No. Schedule For You publishes single posts on X and Threads, not multi-post threads. You can schedule the first post and add replies by hand when it goes live, or turn the thread into a carousel or a single longer post.
+Yes. Separate the parts with a line holding only `---` and Schedule For You publishes them as a thread at the scheduled time, each part as a reply to the one before. It works on X, Threads and Bluesky, up to 25 parts.
 
 ### Can I post the same video to X and Threads at once?
 

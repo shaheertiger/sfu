@@ -46,7 +46,7 @@ Meta sometimes revokes access, for example after a password change. If a post ca
 
 ## Frequently asked questions
 ### Can Schedule For You post Instagram Stories?
-No. It publishes feed photos, Reels and carousels. Stories need to be posted in the Instagram app. It also doesn't post a first comment, so put hashtags in the caption if you use them.
+Yes. Set "Post as" to Story and attach one image or video (9:16). Stories go out without a caption, and stickers, polls and music aren't available through Meta's API. Feed photos, Reels and carousels can also have a first comment, posted by your account right after the post goes live, which is a good place for hashtags.
 
 ### Do I need a business account?
 You need an Instagram Business or Creator account that's linked to a Facebook Page. Personal Instagram accounts can't be connected. You can switch account type in Instagram's settings; see [Instagram's help center](https://help.instagram.com) for the current steps.

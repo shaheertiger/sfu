@@ -54,7 +54,7 @@ Instagram does not resize images for you, so size them first. The free [Instagra
 | --- | --- | --- | --- |
 | Photos and carousels | Yes | Yes | Yes (up to 10) |
 | Reels | Yes | Yes | Yes |
-| Stories | No, at the time of writing | Yes | No |
+| Stories | No, at the time of writing | Yes | Yes, one image or video, no stickers |
 | Schedule for later | No | Yes | Yes, with a queue and calendar |
 | Other platforms | No | Facebook | X, Bluesky, LinkedIn, Threads, TikTok, YouTube, Facebook, Pinterest, Google Business |
 | Account type | Any | Professional | Business or Creator linked to a Page |
@@ -62,7 +62,7 @@ Instagram does not resize images for you, so size them first. The free [Instagra
 ## Frequently asked questions
 
 ### Can you post an Instagram Story from desktop?
-From instagram.com, not at the time of writing. Meta Business Suite can post and schedule Stories for professional accounts. Third-party tools can't publish Stories through Instagram's API.
+From instagram.com, not at the time of writing. Meta Business Suite can post and schedule Stories for professional accounts. Schedulers that use Instagram's API, including Schedule For You, can publish Stories too, as a single image or video without stickers or music.
 
 ### Can you post on Instagram from a desktop without the app?
 Yes. The website handles photos, carousels and Reels in any modern browser, and no app is needed.
