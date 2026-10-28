@@ -4,6 +4,8 @@ import { decrypt, encrypt } from './crypto';
 import { HttpError } from './http-error';
 import type { ConnectedAccountFields } from './adapters/types';
 import { COMMENT_PLATFORMS, commentLimit } from './thread';
+import { accountLimitOf } from './billing';
+import { FREE_PLAN, accountLimitMessage } from '@/lib/plan-limits';
 
 const UPSERT_SQL = `INSERT INTO social_accounts (id,workspace_id,platform,external_id,username,display_name,avatar_url,access_token,refresh_token,token_expires_at,meta,status,created_at)
      VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,'active',$12)
@@ -22,9 +24,9 @@ export type ConnectResult = { saved: any[]; added: number; updated: number; skip
  */
 export async function connectAccounts(workspaceId: string, platform: string, list: ConnectedAccountFields[]): Promise<ConnectResult> {
   return tx(async (q) => {
-    const [ws] = await q('SELECT account_limit FROM workspaces WHERE id=$1 FOR UPDATE', [workspaceId]);
+    const [ws] = await q('SELECT * FROM workspaces WHERE id=$1 FOR UPDATE', [workspaceId]);
     if (!ws) throw new HttpError(404, 'Workspace not found');
-    const limit = Number(ws.account_limit);
+    const limit = accountLimitOf(ws);
     const [{ c }] = await q('SELECT COUNT(*)::int AS c FROM social_accounts WHERE workspace_id=$1', [workspaceId]);
     let count = Number(c);
     const out: ConnectResult = { saved: [], added: 0, updated: 0, skipped: 0, limit };
@@ -84,18 +86,22 @@ export async function disconnectAccount(workspaceId: string, accountId: string):
 }
 
 export const limitMessage = (limit: number) =>
-  `Your plan allows ${limit} connected accounts. Upgrade your plan or disconnect an account to add more.`;
+  limit === FREE_PLAN.accountLimit
+    ? accountLimitMessage()
+    : `Your plan allows ${limit} connected accounts. Upgrade your plan or disconnect an account to add more.`;
 
 /**
  * Accounts beyond the plan's limit (after a downgrade, say). The oldest accounts keep working; the
  * newest ones past the limit are paused until the workspace upgrades or disconnects some.
  */
 export async function overLimitAccountIds(workspaceId: string): Promise<Set<string>> {
+  const [ws] = await query('SELECT * FROM workspaces WHERE id=$1', [workspaceId]);
+  if (!ws) return new Set();
   const rows = await query(
-    `SELECT a.id FROM (
+    `SELECT id FROM (
        SELECT id, ROW_NUMBER() OVER (ORDER BY created_at, id) AS rn FROM social_accounts WHERE workspace_id=$1
-     ) a, workspaces w WHERE w.id=$1 AND a.rn > w.account_limit`,
-    [workspaceId],
+     ) a WHERE a.rn > $2`,
+    [workspaceId, accountLimitOf(ws)],
   );
   return new Set(rows.map((r: any) => r.id));
 }

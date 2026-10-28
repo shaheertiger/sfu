@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { body, handler, json } from '@/lib/server/api';
 import { now, one, query, uid } from '@/lib/server/db';
 import { requireEditor } from '@/lib/server/roles';
+import { requirePaid } from '@/lib/server/billing';
 import { assertPublicUrl } from '@/lib/server/safe-url';
 import { webhookRow } from '@/lib/server/webhook-row';
 import { WEBHOOK_EVENTS, WEBHOOK_FORMATS } from '@/lib/server/webhooks';
@@ -14,6 +15,7 @@ export const GET = handler(async ({ workspace }) => ({
 /** Adds a webhook. The response includes the signing secret once. */
 export const POST = handler(async ({ req, workspace }) => {
   requireEditor(workspace);
+  requirePaid(workspace, 'webhooks');
   const b = z.object({ url: z.string().max(2000), events: z.array(z.enum(WEBHOOK_EVENTS)).min(1).optional(), format: z.enum(WEBHOOK_FORMATS).optional() }).parse(await body(req));
   const url = (await assertPublicUrl(b.url.trim())).toString();
   const count = (await one('SELECT count(*)::int AS n FROM webhooks WHERE workspace_id=$1', [workspace.id])).n;

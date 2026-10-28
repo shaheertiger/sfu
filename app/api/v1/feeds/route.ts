@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { body, handler, json } from '@/lib/server/api';
 import { now, one, query, uid } from '@/lib/server/db';
 import { requireEditor } from '@/lib/server/roles';
+import { requirePaid } from '@/lib/server/billing';
 import { checkFeed, feedRow, fetchFeed } from '@/lib/server/rss';
 
 export const Feed = z.object({
@@ -18,6 +19,7 @@ export const GET = handler(async ({ workspace }) => ({
 /** Adds a feed. It is read once right away, so a wrong URL fails here instead of silently later. */
 export const POST = handler(async ({ req, workspace }) => {
   requireEditor(workspace);
+  requirePaid(workspace, 'rss');
   const b = Feed.parse(await body(req));
   const count = (await one('SELECT count(*)::int AS n FROM rss_feeds WHERE workspace_id=$1', [workspace.id])).n;
   if (count >= 20) return json({ error: 'A workspace can have up to 20 feeds' }, 400);

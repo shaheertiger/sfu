@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { FREE_PLAN } from '@/lib/plan-limits';
 import { body, handler } from '@/lib/server/api';
 import { DEFAULT_PREFS, HttpError, switchWorkspace } from '@/lib/server/auth';
 import { now, tx, uid } from '@/lib/server/db';
@@ -16,7 +17,7 @@ export const POST = handler(async ({ req, user }) => {
   if (!user) throw new HttpError(403, 'Sign in first');
   const id = uid('ws');
   await tx(async (q) => {
-    await q('INSERT INTO workspaces (id,name,plan,account_limit,owner_id,prefs,created_at) VALUES ($1,$2,$3,$4,$5,$6,$7)', [id, name, 'trial', 15, user.id, JSON.stringify(DEFAULT_PREFS), now()]);
+    await q('INSERT INTO workspaces (id,name,plan,account_limit,owner_id,prefs,created_at) VALUES ($1,$2,$3,$4,$5,$6,$7)', [id, name, FREE_PLAN.id, FREE_PLAN.accountLimit, user.id, JSON.stringify(DEFAULT_PREFS), now()]);
     await q('INSERT INTO workspace_members (workspace_id,user_id,role) VALUES ($1,$2,$3)', [id, user.id, 'owner']);
   });
   await switchWorkspace(user.id, id);

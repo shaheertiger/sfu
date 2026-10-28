@@ -1,4 +1,5 @@
 import 'server-only';
+import { isPaid } from './billing';
 import { randomToken } from './crypto';
 import { exec, now, one, query } from './db';
 import { PLATFORMS, type PlatformId } from './platforms';
@@ -48,8 +49,9 @@ export type CalendarPost = IcsPost & {
 /** Everything the calendar page and feed show, or null for an unknown token. */
 export async function loadCalendar(token: string): Promise<{ workspace: { id: string; name: string; tz: string }; posts: CalendarPost[] } | null> {
   if (!TOKEN_RE.test(token)) return null;
-  const ws = await one('SELECT id, name, prefs FROM workspaces WHERE calendar_token=$1', [token]);
-  if (!ws) return null;
+  const ws = await one('SELECT * FROM workspaces WHERE calendar_token=$1', [token]);
+  // The shared calendar is a paid feature: on Free the link answers as if it were off.
+  if (!ws || !isPaid(ws)) return null;
   const t = now();
   const posts = await query(
     `SELECT id, caption, scheduled_at, status, approval, labels, media FROM posts

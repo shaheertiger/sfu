@@ -1,5 +1,4 @@
 import { handler, json } from '@/lib/server/api';
-import { requireCanPublish } from '@/lib/server/billing';
 import { exec, now } from '@/lib/server/db';
 import { getPost, publicPost } from '@/lib/server/posts';
 import { claimAndPublish } from '@/lib/server/publish-now';
@@ -14,8 +13,6 @@ export const POST = handler(async ({ workspace, params }) => {
   if (post.status === 'published') return json({ error: 'This post is already published' }, 409);
   if (post.status === 'publishing') return json({ error: 'This post is publishing right now' }, 409);
   if (!post.targets.length) return json({ error: 'Pick at least one account' }, 422);
-  // Check the plan before touching the post, so a refused publish leaves it exactly as it was.
-  await requireCanPublish(workspace.id);
   await exec(`UPDATE posts SET status='scheduled', scheduled_at=$1, updated_at=$1 WHERE id=$2 AND status <> 'publishing'`, [now(), post.id]);
   // Asked for by a person, so even a target that may have gone out is sent again.
   await exec(`UPDATE post_targets SET status='pending', attempts=0, error=NULL, progress='{}'::jsonb WHERE post_id=$1 AND status <> 'published'`, [post.id]);

@@ -5,12 +5,12 @@ process.env.TOKEN_ENCRYPTION_KEY ||= 'a'.repeat(64);
 
 // A tiny in-memory stand-in for Postgres that understands the queries connectAccounts runs.
 type Row = { id: string; workspace_id: string; platform: string; external_id: string };
-function fakeDb(limit: number, existing: Row[] = []) {
+function fakeDb(limit: number, existing: Row[] = [], status: string | null = 'active') {
   const accounts = [...existing];
   const run = async (text: string, params: any[] = []) => {
     const sql = text.replace(/\s+/g, ' ').trim();
     if (/^(BEGIN|COMMIT|ROLLBACK)$/.test(sql)) return { rows: [], rowCount: 0 };
-    if (sql.startsWith('SELECT account_limit FROM workspaces')) return { rows: [{ account_limit: limit }], rowCount: 1 };
+    if (sql.startsWith('SELECT * FROM workspaces WHERE id=$1')) return { rows: [{ id: params[0], account_limit: limit, subscription_status: status }], rowCount: 1 };
     if (sql.startsWith('SELECT COUNT(*)::int AS c FROM social_accounts')) return { rows: [{ c: accounts.filter((a) => a.workspace_id === params[0]).length }], rowCount: 1 };
     if (sql.startsWith('SELECT id FROM social_accounts WHERE workspace_id=$1 AND platform=$2 AND external_id=$3')) {
       const rows = accounts.filter((a) => a.workspace_id === params[0] && a.platform === params[1] && a.external_id === params[2]);
@@ -29,6 +29,9 @@ function fakeDb(limit: number, existing: Row[] = []) {
   (globalThis as any).__sfyPool = { query: run, connect: async () => client };
   return accounts;
 }
+
+// Limits come from the plan, so billing is on here (no Stripe calls are made).
+process.env.STRIPE_SECRET_KEY = 'sk_test_x';
 
 const page = (n: number) => ({ external_id: `page${n}`, username: `Page ${n}`, display_name: `Page ${n}`, access_token: 't' });
 
@@ -53,4 +56,15 @@ test('reconnecting accounts that are already connected works even at the limit',
   assert.equal(r.added, 0);
   assert.equal(r.skipped, 1);
   await assert.rejects(() => upsertAccount('ws', 'facebook', page(9)), /allows 2 connected accounts/);
+});
+
+test('a Free workspace connects 3 accounts, whatever limit its row still has', async () => {
+  const { connectAccounts, upsertAccount } = await import('../lib/server/accounts.ts');
+  const accounts = fakeDb(15, [], null);
+  const r = await connectAccounts('ws', 'facebook', Array.from({ length: 5 }, (_, i) => page(i)));
+  assert.equal(r.added, 3);
+  assert.equal(r.skipped, 2);
+  assert.equal(r.limit, 3);
+  assert.equal(accounts.length, 3);
+  await assert.rejects(() => upsertAccount('ws', 'facebook', page(9)), /Free plan connects up to 3 accounts/);
 });

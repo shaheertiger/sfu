@@ -4,6 +4,8 @@ import { exec, now, one, query, tx, uid } from './db';
 import { decrypt } from './crypto';
 import { HttpError } from './http-error';
 import { overLimitAccountIds } from './accounts';
+import { isPaid } from './billing';
+import { FREE_PLAN, paidOnlyMessage, queueLimitMessage } from '@/lib/plan-limits';
 import { facebookMixProblem, metaFormat, metaFormatProblem, nonJpegImages } from './meta-format';
 import { getBytes, readUrl } from './storage';
 import { PLATFORMS, type PlatformId } from './platforms';
@@ -255,6 +257,20 @@ export function repeatSeries(input: PostInput, existing: any, at: number | null)
 }
 
 /** Create or replace a post (and its targets). Published targets are kept as they are. */
+/**
+ * What a Free workspace can't do with this save, as the message to show, or null. Only turning an
+ * option on is refused: a post made on a paid plan keeps what it had and can still be edited.
+ * Drafts may hold repeat, evergreen and approval; they are checked when the post is scheduled.
+ */
+export function freePlanProblem(input: PostInput, existing: any, status: string): string | null {
+  if (input.batch && input.batch !== (existing?.batch ?? null)) return paidOnlyMessage('bulk');
+  if (status !== 'scheduled') return null;
+  const repeat = input.repeat ?? existing?.repeat ?? 'none';
+  if ((repeat !== 'none' && repeat !== (existing?.repeat ?? 'none')) || (input.evergreen === true && !existing?.evergreen)) return paidOnlyMessage('repeat');
+  if (input.approval === 'pending' && existing?.approval !== 'pending') return paidOnlyMessage('approvals');
+  return null;
+}
+
 export async function savePost(workspaceId: string, input: PostInput, userId: string | null) {
   const existing = input.id ? await getPost(workspaceId, input.id) : null;
   if (input.id && !existing && !/^[\w-]{1,64}$/.test(input.id)) throw new HttpError(400, 'Bad post id');
@@ -264,6 +280,14 @@ export async function savePost(workspaceId: string, input: PostInput, userId: st
   const { status, at } = statusFor(input, existing);
   const past = pastScheduleProblem(status, at, existing, input.publish_now, t);
   if (past) throw new HttpError(422, past);
+  const ws = await one('SELECT * FROM workspaces WHERE id=$1', [workspaceId]);
+  const free = !!ws && !isPaid(ws);
+  if (free) {
+    const problem = freePlanProblem(input, existing, status);
+    if (problem) throw new HttpError(402, problem);
+  }
+  // Free holds a limited number of posts waiting to publish. Publishing now doesn't wait, so it doesn't count.
+  const queues = free && status === 'scheduled' && !input.publish_now && existing?.status !== 'scheduled';
   const series = repeatSeries(input, existing, at);
   const fields = [
     input.caption ?? existing?.caption ?? '', JSON.stringify(input.media ?? existing?.media ?? []), at, status,
@@ -274,6 +298,12 @@ export async function savePost(workspaceId: string, input: PostInput, userId: st
     series.anchor, series.n,
   ];
   await tx(async (q) => {
+    if (queues) {
+      // Locked so two saves at once can't both take the last place in the queue.
+      await q('SELECT id FROM workspaces WHERE id=$1 FOR UPDATE', [workspaceId]);
+      const [{ c }] = await q(`SELECT COUNT(*)::int AS c FROM posts WHERE workspace_id=$1 AND status='scheduled' AND id <> $2`, [workspaceId, id]);
+      if (Number(c) >= FREE_PLAN.queueLimit) throw new HttpError(402, queueLimitMessage());
+    }
     if (existing) {
       if (existing.status === 'published' && status !== 'published') throw new HttpError(409, 'Published posts cannot be rescheduled. Duplicate it instead.');
       await q(`UPDATE posts SET caption=$1, media=$2, scheduled_at=$3, status=$4, labels=$5, repeat=$6, evergreen=$7, approval=$8, remind=$9, note=$10, batch=$11, signature=$12, repeat_anchor=$13, repeat_n=$14, updated_at=$15 WHERE id=$16 AND workspace_id=$17`,

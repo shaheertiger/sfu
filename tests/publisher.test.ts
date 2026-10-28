@@ -16,6 +16,7 @@ function fakeDb(targets: Partial<Target>[], post: Record<string, any> = {}) {
     targets: targets.map((t, i) => ({ id: `t${i + 1}`, post_id: 'post1', account_id: 'acc1', status: 'pending', attempts: 0, error: null, progress: {}, options: {}, caption_override: null, ...t })) as Target[],
     accounts: [{ id: 'acc1', workspace_id: 'ws', platform: 'x', username: 'harbor', access_token: null, refresh_token: null, token_expires_at: null, meta: {}, status: 'active', last_error: null as string | null }],
     sql: [] as string[],
+    workspace: {} as Record<string, any>,
   };
   const tgt = (id: string) => db.targets.find((t) => t.id === id)!;
   const rows = (r: any[]) => ({ rows: r, rowCount: r.length });
@@ -25,7 +26,8 @@ function fakeDb(targets: Partial<Target>[], post: Record<string, any> = {}) {
     if (sql.startsWith('SELECT * FROM posts WHERE id=$1')) return rows([{ ...db.post }]);
     if (sql.startsWith('SELECT * FROM post_targets WHERE post_id=$1')) return rows(db.targets.map((t) => ({ ...t, progress: { ...t.progress } })));
     if (sql.startsWith('SELECT status FROM post_targets')) return rows(db.targets.map((t) => ({ status: t.status })));
-    if (sql.startsWith('SELECT a.id FROM')) return rows([]);
+    if (sql.startsWith('SELECT a.id FROM') || sql.startsWith('SELECT id FROM ( SELECT id, ROW_NUMBER()')) return rows([]);
+    if (sql.startsWith('SELECT * FROM workspaces WHERE id=$1')) return rows([{ id: 'ws', name: 'WS', prefs: { alerts: { fail: false } }, signature: '', ...db.workspace }]);
     if (sql.startsWith('SELECT * FROM social_accounts WHERE id=$1')) return rows(db.accounts.filter((a) => a.id === p[0]));
     if (sql.startsWith('SELECT platform, username FROM social_accounts')) return rows(db.accounts.filter((a) => a.id === p[0]));
     if (sql.startsWith('SELECT name, prefs FROM workspaces')) return rows([{ name: 'WS', prefs: { alerts: { fail: false } } }]);
@@ -162,4 +164,30 @@ test('accounts say whether they renew themselves; only expiries a person must ac
   assert.deepEqual([publicAccount({ ...base, platform: 'instagram', meta: { token_kind: 'page' } })].map((a) => [a.has_refresh, a.token_expires_at]), [[true, null]]);
   assert.deepEqual([publicAccount({ ...base, platform: 'linkedin' })].map((a) => [a.has_refresh, a.token_expires_at]), [[false, t]]);
   assert.equal('user_token' in publicAccount({ ...base, platform: 'facebook', meta: { user_token: 'secret' } }).meta, false);
+});
+
+test('a Free workspace’s posts end with a link back to us when it fits; paid posts go out as written', async () => {
+  const { publishPost } = await import('../lib/server/publisher.ts');
+  process.env.STRIPE_SECRET_KEY = 'sk_test_x';
+  try {
+    const captions: string[] = [];
+    fakeX(async (input) => { captions.push(input.caption); await input.sending(); return { externalId: 'tw1' }; });
+
+    let db = fakeDb([{}]);
+    db.workspace = { subscription_status: null };
+    await quietly(() => publishPost('post1'));
+    assert.equal(captions[0], 'Hello\n\nScheduled with Schedule For You: https://scheduleforyou.com');
+
+    db = fakeDb([{}], { caption: 'x'.repeat(270) });
+    db.workspace = { subscription_status: null };
+    await quietly(() => publishPost('post1'));
+    assert.equal(captions[1], 'x'.repeat(270), 'left off when it would push the post past the limit');
+
+    db = fakeDb([{}]);
+    db.workspace = { subscription_status: 'active' };
+    await quietly(() => publishPost('post1'));
+    assert.equal(captions[2], 'Hello');
+  } finally {
+    delete process.env.STRIPE_SECRET_KEY;
+  }
 });

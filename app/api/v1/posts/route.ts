@@ -2,7 +2,6 @@ import { body, handler, json } from '@/lib/server/api';
 import { HttpError } from '@/lib/server/http-error';
 import { getPost, listPosts, parsePostBody, publicPost, savePost, validatePost } from '@/lib/server/posts';
 import { claimAndPublish } from '@/lib/server/publish-now';
-import { requireCanPublish } from '@/lib/server/billing';
 import { now } from '@/lib/server/db';
 
 export const maxDuration = 300;
@@ -30,8 +29,6 @@ export const POST = handler(async ({ req, workspace, user }) => {
   if (b.publish_now) {
     if (b.status === 'draft') return json({ error: 'publish_now cannot be combined with status "draft"' }, 422);
     if (b.approval === 'pending') return json({ error: 'A post waiting for approval cannot be published now. Approve it first, or leave out publish_now.' }, 409);
-    // Check the plan before saving, so a refused publish doesn't leave a queued post behind.
-    await requireCanPublish(workspace.id);
     b.status = 'scheduled';
     b.scheduled_at = now();
   } else if (b.status === 'scheduled' && b.scheduled_at == null) {

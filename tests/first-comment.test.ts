@@ -80,7 +80,8 @@ function fakeDb(targets: Partial<Target>[], prefs: Record<string, any> = {}) {
     if (sql.startsWith('SELECT * FROM posts WHERE id=$1')) return rows([{ ...db.post }]);
     if (sql.startsWith('SELECT * FROM post_targets WHERE post_id=$1')) return rows(db.targets.map((t) => ({ ...t })));
     if (sql.startsWith('SELECT status FROM post_targets')) return rows(db.targets.map((t) => ({ status: t.status })));
-    if (sql.startsWith('SELECT a.id FROM')) return rows([]);
+    if (sql.startsWith('SELECT a.id FROM') || sql.startsWith('SELECT id FROM ( SELECT id, ROW_NUMBER()')) return rows([]);
+    if (sql.startsWith('SELECT * FROM workspaces WHERE id=$1')) return rows([{ id: 'ws', name: 'WS', signature: '', prefs: { alerts: { fail: false }, ...prefs } }]);
     if (sql.startsWith('SELECT * FROM social_accounts WHERE id=$1')) return rows([account]);
     if (sql.startsWith('SELECT name, prefs FROM workspaces')) return rows([{ name: 'WS', prefs: { alerts: { fail: false }, ...prefs } }]);
     if (sql.startsWith('SELECT') && sql.includes('FROM webhooks')) return rows([]);

@@ -4,6 +4,8 @@ import { randomToken, sha256 } from './crypto';
 import { neonAuth } from './neon-auth';
 import { isTransientAuthError } from '../auth-errors.js';
 import { HttpError } from './http-error';
+import { requirePaid } from './billing';
+import { FREE_PLAN } from '@/lib/plan-limits';
 
 export { HttpError };
 
@@ -49,7 +51,7 @@ export async function ensureUser(nu: NeonUser): Promise<User & { active_workspac
     // ON CONFLICT: two first requests can race; only the one that inserts creates the workspace.
     const ins = await q('INSERT INTO users (id,email,name,created_at,active_workspace_id) VALUES ($1,$2,$3,$4,NULL) ON CONFLICT (id) DO NOTHING RETURNING id', [nu.id, email, display, t]);
     if (!ins.length) return;
-    await q('INSERT INTO workspaces (id,name,plan,account_limit,owner_id,prefs,created_at) VALUES ($1,$2,$3,$4,$5,$6,$7)', [wsId, `${display}'s workspace`, 'trial', 15, nu.id, JSON.stringify(DEFAULT_PREFS), t]);
+    await q('INSERT INTO workspaces (id,name,plan,account_limit,owner_id,prefs,created_at) VALUES ($1,$2,$3,$4,$5,$6,$7)', [wsId, `${display}'s workspace`, FREE_PLAN.id, FREE_PLAN.accountLimit, nu.id, JSON.stringify(DEFAULT_PREFS), t]);
     await q('INSERT INTO workspace_members (workspace_id,user_id,role) VALUES ($1,$2,$3)', [wsId, nu.id, 'owner']);
     await q('UPDATE users SET active_workspace_id=$1 WHERE id=$2', [wsId, nu.id]);
   });
@@ -114,6 +116,8 @@ export async function requireWorkspace(req?: Request): Promise<{ workspace: Work
     await exec('UPDATE api_keys SET last_used_at=$1 WHERE id=$2', [now(), row.id]);
     const ws = await one('SELECT * FROM workspaces WHERE id=$1', [row.workspace_id]);
     if (!ws) throw new HttpError(401, 'This API key belongs to a workspace that no longer exists');
+    // The API and MCP server are paid features; keys made on a paid plan stop working on Free.
+    requirePaid(ws, 'api');
     return { workspace: { ...ws, role: 'api' }, user: null };
   }
   const u = await sessionUser();

@@ -2,6 +2,7 @@ import 'server-only';
 import Stripe from 'stripe';
 import { HttpError } from './http-error';
 import { exec, now, one } from './db';
+import { FREE_PLAN, paidOnlyMessage } from '@/lib/plan-limits';
 
 /**
  * Stripe billing: one subscription per workspace.
@@ -9,7 +10,8 @@ import { exec, now, one } from './db';
  * yearly STRIPE_PRICE_SOLO_YEARLY / STRIPE_PRICE_STUDIO_YEARLY (all default to the live prices created
  * for Schedule For You) and STRIPE_PORTAL_CONFIGURATION. Yearly costs 10 months: 2 months free.
  * The 7-day free trial (14 days from a referral link) needs a card: the owner starts it in Checkout and Stripe charges when it ends.
- * Until STRIPE_SECRET_KEY is set, billing is off and nothing is blocked.
+ * A workspace without a paid plan is on Free (lib/plan-limits.js): 3 accounts, 10 scheduled posts at a time,
+ * and the paid-only features refused with a 402. Until STRIPE_SECRET_KEY is set, billing is off and nothing is limited.
  */
 export const PLANS = {
   solo: {
@@ -50,8 +52,12 @@ export const intervalForPrice = (priceId?: string | null): Interval | null =>
 const PAID = ['active', 'trialing', 'past_due', 'comped'];
 
 export type Access = {
-  /** needs_card: no plan yet (start the free trial). trial: Stripe trial. expired: plan ended. */
-  state: 'needs_card' | 'trial' | 'active' | 'past_due' | 'expired';
+  /** free: no paid plan (never had one, or it ended). trial: Stripe trial. */
+  state: 'free' | 'trial' | 'active' | 'past_due';
+  /** On Solo or Studio (trial included), or billing is off: every feature, no Free limits. */
+  paid: boolean;
+  /** On Free after a trial or plan ended (rather than never having had one). */
+  ended: boolean;
   plan: string;
   trialEndsAt: number | null;
   daysLeft: number | null;
@@ -65,12 +71,14 @@ export function accessFor(ws: any): Access {
   const trialEndsAt = ws.trial_ends_at ? Number(ws.trial_ends_at) : null;
   const trialEligible = !ws.trial_used && status !== 'comped';
   if (!billingEnabled()) {
-    return { state: 'active', plan: ws.plan, trialEndsAt: null, daysLeft: null, trialEligible, canPublish: true, canInvite: true };
+    return { state: 'active', paid: true, ended: false, plan: ws.plan, trialEndsAt: null, daysLeft: null, trialEligible, canPublish: true, canInvite: true };
   }
   if (status && PAID.includes(status)) {
     const trialing = status === 'trialing';
     return {
       state: status === 'past_due' ? 'past_due' : trialing ? 'trial' : 'active',
+      paid: true,
+      ended: false,
       plan: ws.plan,
       trialEndsAt,
       daysLeft: trialing && trialEndsAt ? Math.max(0, Math.ceil((trialEndsAt - now()) / 86400000)) : null,
@@ -80,22 +88,36 @@ export function accessFor(ws: any): Access {
       canInvite: ws.plan === 'studio',
     };
   }
-  const never = !ws.stripe_subscription_id && !ws.trial_used;
-  return { state: never ? 'needs_card' : 'expired', plan: ws.plan, trialEndsAt, daysLeft: null, trialEligible, canPublish: false, canInvite: false };
+  const ended = !!ws.stripe_subscription_id || !!ws.trial_used;
+  return { state: 'free', paid: false, ended, plan: FREE_PLAN.id, trialEndsAt: null, daysLeft: null, trialEligible, canPublish: true, canInvite: false };
 }
 
-/** SQL condition (workspace alias `w`) matching accessFor(...).canPublish. */
-export const canPublishSql = () =>
-  billingEnabled()
-    ? `w.subscription_status IN ('active','trialing','past_due','comped')`
-    : 'true';
+/** SQL condition (workspace alias `w` by default) matching isPaid. */
+export const paidSql = (w = 'w') =>
+  billingEnabled() ? `${w}.subscription_status IN ('active','trialing','past_due','comped')` : 'true';
 
-export async function requireCanPublish(workspaceId: string) {
+/** Solo, Studio (trial included) or billing off: no Free limits apply. */
+export const isPaid = (ws: any) => accessFor(ws).paid;
+
+/** Refuses a paid-only feature (see PAID_FEATURES in lib/plan-limits.js) for a Free workspace with a 402. */
+export function requirePaid(ws: any, feature: string) {
+  if (!isPaid(ws)) throw new HttpError(402, paidOnlyMessage(feature));
+}
+
+/** Loads the workspace, then requirePaid. */
+export async function requirePaidWorkspace(workspaceId: string, feature: string) {
   const ws = await one('SELECT * FROM workspaces WHERE id=$1', [workspaceId]);
-  if (!ws) return;
-  const a = accessFor(ws);
-  if (a.state === 'needs_card') throw new HttpError(402, 'Start your 7-day free trial to publish. Add a card in Billing; you are not charged until the trial ends.');
-  if (!a.canPublish) throw new HttpError(402, 'Your plan has ended. Choose a plan to keep publishing.');
+  if (ws) requirePaid(ws, feature);
+}
+
+/**
+ * How many accounts the workspace may connect. Free is always Free's limit, whatever is stored; with
+ * billing off nothing is limited below the old default of 15.
+ */
+export function accountLimitOf(ws: any): number {
+  const stored = Number(ws?.account_limit) || DEFAULT_ACCOUNT_LIMIT;
+  if (!billingEnabled()) return Math.max(stored, DEFAULT_ACCOUNT_LIMIT);
+  return isPaid(ws) ? stored : FREE_PLAN.accountLimit;
 }
 
 /** Writes a Stripe subscription's state onto its workspace. Ignores subscriptions that aren't Schedule For You's. */
@@ -119,8 +141,8 @@ export async function syncSubscription(sub: Stripe.Subscription) {
        trial_ends_at=$9, trial_used = trial_used OR $10, billing_interval=$11 WHERE id=$8`,
     [
       customerId ?? null, sub.id, sub.status,
-      live && p ? p.id : 'none',
-      live && p ? p.accountLimit : DEFAULT_ACCOUNT_LIMIT,
+      live && p ? p.id : FREE_PLAN.id,
+      live && p ? p.accountLimit : FREE_PLAN.accountLimit,
       periodEnd ? periodEnd * 1000 : null,
       !!sub.cancel_at_period_end, ws.id,
       sub.status === 'trialing' && sub.trial_end ? sub.trial_end * 1000 : null,
@@ -143,6 +165,8 @@ export function billingSummary(ws: any) {
     hasCustomer: !!ws.stripe_customer_id,
     trialDays: trialDaysFor(ws),
     interval: (ws.billing_interval as Interval | null) ?? null,
+    accountLimit: accountLimitOf(ws),
+    free: { accountLimit: FREE_PLAN.accountLimit, queueLimit: FREE_PLAN.queueLimit },
     plans: Object.values(PLANS).map((p) => ({ id: p.id, name: p.name, amount: p.amount, yearlyAmount: p.yearlyAmount, accountLimit: p.accountLimit, team: p.team })),
   };
 }
