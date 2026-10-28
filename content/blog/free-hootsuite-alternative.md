@@ -117,9 +117,9 @@ Whichever category you choose, run through this checklist before switching.
 
 ## Where Schedule For You fits
 
-To be clear: Schedule For You isn't free. It's a low-cost paid scheduler with a 7-day free trial (card required, cancel anytime, no charge until day 8). The Solo plan is $19/month for up to 15 connected accounts, and the Studio plan is $59/month for up to 100 connected accounts plus team members and priority support. Every plan includes unlimited posts.
+Schedule For You has a Free plan with limits: 3 connected accounts, up to 10 scheduled posts waiting at a time, and a short "Scheduled with Schedule For You" link added to each post when it fits. No card is needed. The paid plans remove those limits: Solo is $19/month for up to 15 connected accounts, and Studio is $59/month for up to 100 connected accounts plus team members and priority support, both with unlimited posts and a 7-day free trial (card required, cancel anytime, no charge until day 8).
 
-It publishes to X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile. You write one post, tailor the caption for each platform with live character-limit checks, and schedule it from a queue or drag-and-drop calendar. It includes bulk scheduling by CSV, approvals, client preview links that don't need an account, RSS auto-posting, webhooks and a REST API. It's focused on publishing and doesn't include AI writing tools, so if AI writing or in-depth analytics reports are must-haves, check that it covers what you need during the trial. You can compare plans on the [pricing section](/#pricing).
+It publishes to X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile. You write one post, tailor the caption for each platform with live character-limit checks, and schedule it from a queue or drag-and-drop calendar. Paid plans add bulk scheduling by CSV, approvals, client preview links that don't need an account, RSS auto-posting, webhooks and a REST API. It's focused on publishing and doesn't include AI writing tools, so if AI writing or in-depth analytics reports are must-haves, check that it covers what you need during the trial. You can compare plans on the [pricing section](/#pricing).
 
 ## Frequently asked questions
 
@@ -141,4 +141,4 @@ They can be, if your needs are small. Check the limits on connected accounts, sc
 
 ### Is Schedule For You free?
 
-No. Schedule For You has a 7-day free trial that requires a card, then plans start at $19/month. There is no free plan. You can cancel during the trial and you won't be charged.
+There's a Free plan: 3 connected accounts and up to 10 scheduled posts at a time, no card needed, and posts carry a short link back to Schedule For You. Bulk scheduling, the API, RSS, webhooks and approvals need a paid plan, which starts at $19/month after a 7-day free trial that requires a card. You can cancel during the trial and you won't be charged.

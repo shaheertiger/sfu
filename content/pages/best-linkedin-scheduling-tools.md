@@ -76,7 +76,7 @@ Schedule For You posts to **personal LinkedIn profiles only, not company pages**
 ## Where Schedule For You fits for LinkedIn
 Schedule For You suits creators, consultants and founders who post from a personal LinkedIn profile and also publish to other networks. You write a post once, tailor the LinkedIn version, and schedule it through a queue with posting time slots or a drag-and-drop calendar. Agencies and ghostwriters can connect several people's profiles and keep each client in a separate workspace, with client preview links for approval.
 
-It doesn't post to company pages, and it has no engagement analytics or AI writing. First comments on LinkedIn posts are supported. Plans are Solo at $19 a month (15 connected accounts) and Studio at $59 a month (100 accounts plus team members), with unlimited posts. There's no free plan; the 7-day free trial requires a card, and you aren't charged until day 8.
+It doesn't post to company pages, and it has no engagement analytics or AI writing. First comments on LinkedIn posts are supported. Plans are Solo at $19 a month (15 connected accounts) and Studio at $59 a month (100 accounts plus team members), with unlimited posts. There's also a Free plan with 3 connected accounts and up to 10 scheduled posts at a time; the paid plans' 7-day free trial requires a card, and you aren't charged until day 8.
 
 ## How to choose a LinkedIn scheduler
 
@@ -95,7 +95,7 @@ Even among the best LinkedIn scheduling tools, the right one is the one that fit
 Yes. At the time of writing, LinkedIn's composer lets you pick a date and time for a post. Check LinkedIn's help center for current steps and limits.
 
 ### What is the best free LinkedIn scheduler?
-For LinkedIn alone, the native scheduler is free and supports LinkedIn's own formats. Some third-party tools have free tiers; check their limits. Schedule For You isn't free, but it has a 7-day free trial (card required).
+For LinkedIn alone, the native scheduler is free and supports LinkedIn's own formats. Some third-party tools have free tiers; check their limits. Schedule For You's Free plan schedules to 3 connected accounts, LinkedIn included, with up to 10 scheduled posts at a time and no card needed.
 
 ### Can Schedule For You post to a LinkedIn company page?
 No. Schedule For You posts to personal LinkedIn profiles only. For a company page, use LinkedIn's own scheduler or a tool that confirms company page support.

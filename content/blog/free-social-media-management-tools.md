@@ -104,7 +104,7 @@ A stack of free social media management tools works well when you post to one or
 - You want to bulk-load a month of posts from a spreadsheet.
 - A failed post goes unnoticed because nothing alerts you.
 
-At that point a low-cost paid scheduler is often the practical move. To be clear about our own product: Schedule For You isn't free. It has a 7-day free trial that requires a card (you aren't charged until day 8 and can cancel before then), then plans start at $19/month for 15 connected accounts, with unlimited posts. It publishes to X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile from one queue and calendar. It doesn't include analytics, so you'd keep using the native insights tools above. If you're weighing schedulers specifically, see our roundup of the [best free social media schedulers](/blog/best-free-social-media-schedulers).
+At that point a low-cost paid scheduler is often the practical move. To be clear about our own product: Schedule For You has a Free plan with limits (3 connected accounts, up to 10 scheduled posts at a time, and a short link back to us on each post, no card needed). The paid plans start at $19/month for 15 connected accounts with unlimited posts, after a 7-day free trial that requires a card (you aren't charged until day 8 and can cancel before then). It publishes to X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile from one queue and calendar. It doesn't include analytics, so you'd keep using the native insights tools above. If you're weighing schedulers specifically, see our roundup of the [best free social media schedulers](/blog/best-free-social-media-schedulers).
 
 ## Frequently asked questions
 
@@ -126,4 +126,4 @@ Not from one place. You can schedule on most major platforms for free using thei
 
 ### Does Schedule For You have a free plan?
 
-No. Schedule For You offers a 7-day free trial with a card required, and you're not charged until day 8. After that, plans are $19/month (Solo) or $59/month (Studio). Our browser tools at /tools are free to use without an account.
+Yes. The Free plan connects 3 accounts and holds up to 10 scheduled posts at a time, with no card needed; each post ends with a short link back to Schedule For You when it fits. The paid plans, $19/month (Solo) or $59/month (Studio), remove those limits and start with a 7-day free trial that needs a card. Our browser tools at /tools are free to use without an account.

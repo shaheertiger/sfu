@@ -95,11 +95,10 @@ Schedule For You is one option in the lightweight cross-posting category. Here's
 
 **What it doesn't do:**
 
-- No Instagram Stories and no first comments.
 - No analytics dashboard, so you'll use each platform's own insights.
 - No AI caption writing.
 - No posting to Discord, Telegram, Reddit, Slack or Snapchat.
-- No free plan. There's a 7-day free trial that requires a card; you can cancel anytime, and you aren't charged until day 8.
+- The Free plan is small: 3 accounts, 10 scheduled posts at a time and a link back to us on each post. The paid plans have a 7-day free trial that requires a card; you can cancel anytime, and you aren't charged until day 8.
 
 If that tradeoff fits how you work, you can compare plans on the [pricing section](/#pricing).
 

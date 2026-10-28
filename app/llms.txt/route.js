@@ -1,7 +1,7 @@
 import { listMarkdownRoutes, renderPath } from '@/lib/md/registry';
 import { abs } from '@/lib/md/format';
 import { preflight, textResponse } from '@/lib/md/http';
-import { DESCRIPTION, PLANS, SITE_NAME } from '@/lib/seo';
+import { DESCRIPTION, FREE, PLANS, SITE_NAME } from '@/lib/seo';
 import { CONTACT_EMAIL } from '@/lib/md/identity';
 
 export const dynamic = 'force-static';
@@ -27,7 +27,7 @@ function build() {
     '',
     `> ${DESCRIPTION} It is for creators, small businesses and agencies that post to several platforms and want one queue, per-platform captions, approvals and a REST API instead of a suite of tools.`,
     '',
-    `Paid product, no free plan: ${PLANS.map((p) => `${p.name} $${p.price}/month (${p.accounts} connected accounts)`).join(', ')}, yearly billing is 10 months. 7-day free trial with a card. Contact: ${CONTACT_EMAIL}.`,
+    `Plans: Free ($0, ${FREE.accounts} connected accounts, up to ${FREE.queue} scheduled posts at a time, no card; posts end with a short link back to Schedule For You when it fits), ${PLANS.map((p) => `${p.name} $${p.price}/month (${p.accounts} connected accounts, unlimited posts)`).join(', ')}; yearly billing is 10 months. Bulk scheduling, approvals, RSS, webhooks, the REST API and the MCP server are on the paid plans, which start with a 7-day free trial with a card. Contact: ${CONTACT_EMAIL}.`,
     `Keep this file in sync with ${abs('/ai.txt')} and ${abs('/robots.txt')}.`,
     '',
     '## Core pages',

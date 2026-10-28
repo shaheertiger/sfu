@@ -75,7 +75,7 @@ Schedule For You is one of several Later alternatives, built around one idea: wr
 | Posts per month | Unlimited on every plan | Check |
 
 ### What Schedule For You includes
-Two plans: Solo at $19 a month with 15 connected accounts, and Studio at $59 a month with 100 connected accounts, team members and priority support. Both include unlimited posts. There's a 7-day free trial; a card is required, you aren't charged until day 8 and you can cancel anytime. There's no free plan. [Start your 7-day free trial](/signup) to try it with your own accounts.
+Two plans: Solo at $19 a month with 15 connected accounts, and Studio at $59 a month with 100 connected accounts, team members and priority support. Both include unlimited posts. There's a 7-day free trial; a card is required, you aren't charged until day 8 and you can cancel anytime. There's also a Free plan: 3 connected accounts and up to 10 scheduled posts at a time, no card needed. [Start free](/signup) to try it with your own accounts.
 
 ### Where it's different in practice
 - **Text-first networks are first-class.** Threads, X, Bluesky, LinkedIn and Facebook all accept text-only posts, and you can schedule them without attaching an image.
@@ -108,7 +108,7 @@ The goal is to avoid losing or double-posting anything:
 
 ## Frequently asked questions
 ### Is there a free Later alternative?
-Each platform's own tools, like Meta Business Suite for Facebook and Instagram, are free but separate. Schedule For You isn't free: it has a 7-day free trial (card required) and paid plans from $19 a month. Our [free Hootsuite alternative guide](/blog/free-hootsuite-alternative) covers free options in more detail.
+Each platform's own tools, like Meta Business Suite for Facebook and Instagram, are free but separate. Schedule For You has a Free plan (3 accounts, up to 10 scheduled posts at a time, no card) and paid plans from $19 a month with a 7-day free trial. Our [free Hootsuite alternative guide](/blog/free-hootsuite-alternative) covers free options in more detail.
 
 ### What is the best Later alternative?
 It depends on the job. If you need one queue for many networks with a tailored caption for each, a multi-platform scheduler like Schedule For You fits. If visual grid planning, Stories or link-in-bio matter most, Later may still be the better choice.

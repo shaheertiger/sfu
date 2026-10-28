@@ -77,7 +77,7 @@ Where we're not confident about Postiz's current offering, the table says "Check
 | Failed-post alerts with reconnect prompt | Yes | Check |
 
 ### What Schedule For You includes
-Two plans: Solo at $19 a month with 15 connected accounts, and Studio at $59 a month with 100 connected accounts, team members and priority support. Both include unlimited posts. There's a 7-day free trial; a card is required, you aren't charged until day 8 and you can cancel anytime. There's no free plan and no self-hosted edition. [Start your 7-day free trial](/signup) to try it with your own accounts.
+Two plans: Solo at $19 a month with 15 connected accounts, and Studio at $59 a month with 100 connected accounts, team members and priority support. Both include unlimited posts. There's a 7-day free trial; a card is required, you aren't charged until day 8 and you can cancel anytime. There's also a Free plan (3 connected accounts, up to 10 scheduled posts at a time, no card) but no self-hosted edition. [Start free](/signup) to try it with your own accounts.
 
 ### Where it's different in practice
 - **Nothing to install.** You sign in, connect accounts through each network's login, and start scheduling. There are no developer apps to register.

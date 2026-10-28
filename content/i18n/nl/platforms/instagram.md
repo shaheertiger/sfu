@@ -99,7 +99,7 @@ Nee, de app zelf (het dashboard) is alleen in het Engels beschikbaar. Je caption
 
 ### Wat kost Schedule For You?
 
-Solo kost $19 per maand voor 15 gekoppelde accounts, Studio $59 per maand voor 100 accounts plus teamleden. De bedragen zijn in Amerikaanse dollars en bij een jaarabonnement betaal je de prijs van 10 maanden. Elk abonnement heeft onbeperkt posts. Er is geen gratis abonnement, wel een proefperiode van 7 dagen. Meer details staan op de [prijspagina](/pricing) (Engelstalig).
+Solo kost $19 per maand voor 15 gekoppelde accounts, Studio $59 per maand voor 100 accounts plus teamleden. De bedragen zijn in Amerikaanse dollars en bij een jaarabonnement betaal je de prijs van 10 maanden. De betaalde abonnementen hebben onbeperkt posts. Er is ook een gratis abonnement (3 accounts, tot 10 ingeplande posts tegelijk, zonder creditcard), en de betaalde abonnementen kun je 7 dagen gratis proberen. Meer details staan op de [prijspagina](/pricing) (Engelstalig).
 
 ### Wat gebeurt er als een post mislukt?
 

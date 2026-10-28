@@ -55,7 +55,7 @@ Schedule For You is built around one workflow: write once, tailor each platform'
 | Capability | Schedule For You | Buffer |
 |---|---|---|
 | Platforms | 10: Instagram, Facebook Pages, X, LinkedIn, Threads, Bluesky, TikTok, YouTube, Pinterest, Google Business Profile | Most major networks, including some Schedule For You doesn't support, such as Mastodon; check its current list |
-| Free plan | No (7-day free trial, card required) | Historically yes, for a few channels; check |
+| Free plan | Yes: 3 accounts, up to 10 scheduled posts at a time | Historically yes, for a few channels; check |
 | Pricing model | Flat plans: 15 or 100 connected accounts | Typically per channel; check |
 | Link-in-bio page | No | Yes (Start Page) |
 | Built-in analytics | No | Yes; check which plans |
@@ -76,18 +76,18 @@ Schedule For You is built around one workflow: write once, tailor each platform'
 | Posts per month | Unlimited on every plan | Check |
 
 ### What Schedule For You includes
-Two plans: Solo at $19 a month with 15 connected accounts, and Studio at $59 a month with 100 connected accounts, team members and priority support. Both include unlimited posts, and you can connect several accounts on the same platform. There's a 7-day free trial; a card is required, you aren't charged until day 8 and you can cancel anytime. There's no free plan. See the [pricing page](/pricing) for details, or [start your 7-day free trial](/signup).
+Two plans: Solo at $19 a month with 15 connected accounts, and Studio at $59 a month with 100 connected accounts, team members and priority support. Both include unlimited posts, and you can connect several accounts on the same platform. There's a 7-day free trial; a card is required, you aren't charged until day 8 and you can cancel anytime. There's also a Free plan with 3 connected accounts and up to 10 scheduled posts at a time, no card needed. See the [pricing page](/pricing) for details, or [start free](/signup).
 
 ### Where it's different in practice
 - **Accounts, not channels, set the price.** If you run 12 profiles across several brands in one workspace, they fit on the Solo plan. Each workspace has its own plan, so splitting brands into separate workspaces means a subscription per workspace. Our page on [managing multiple social media accounts](/manage-multiple-social-media-accounts) covers the setup.
 - **Each version is yours to edit.** Change the LinkedIn version without touching the X one. The guide to [customizing captions for each platform](/blog/customize-captions-for-each-platform) shows the workflow.
-- **Automation is included.** Every workspace gets the [REST API](/api), webhooks and RSS auto-post on both plans.
+- **Automation is included.** Both paid plans get the [REST API](/api), webhooks and RSS auto-post.
 - **No AI writing.** If you want an assistant to draft posts, Schedule For You isn't that tool.
 
 ## Where Buffer may suit you better
 Buffer may be the better choice if:
 
-- **You need a free plan.** If you post to a couple of channels and don't want to pay, check Buffer's current free tier. Schedule For You has no free plan.
+- **You need more on a free plan.** Schedule For You's Free plan covers 3 accounts and 10 scheduled posts at a time; if you need more channels without paying, compare Buffer's current free tier.
 - **You rely on Start Page.** Schedule For You doesn't offer a link-in-bio or landing page.
 - **You want analytics in the same tool.** Schedule For You focuses on planning and publishing and leaves reporting to each platform's own insights.
 - **You post to a network Schedule For You doesn't cover.** It publishes to 10 platforms only. If Mastodon or another network is central for you, check Buffer's list.
@@ -110,7 +110,7 @@ The goal is to avoid losing or double-posting anything:
 
 ## Frequently asked questions
 ### Is there a free Buffer alternative?
-Each platform's own tools, such as Meta Business Suite for Facebook and Instagram or YouTube Studio, are free but separate. Schedule For You isn't free: it has a 7-day free trial (card required) and paid plans from $19 a month. Our roundup of the [best free social media schedulers](/blog/best-free-social-media-schedulers) covers free options.
+Each platform's own tools, such as Meta Business Suite for Facebook and Instagram or YouTube Studio, are free but separate. Schedule For You has a Free plan (3 accounts, up to 10 scheduled posts at a time, no card) and paid plans from $19 a month with a 7-day free trial. Our roundup of the [best free social media schedulers](/blog/best-free-social-media-schedulers) covers free options.
 
 ### Is Schedule For You cheaper than Buffer?
 It depends on how many channels you run. Schedule For You charges $19 a month for up to 15 connected accounts or $59 for up to 100, with unlimited posts. Compare that with Buffer's current pricing for your exact account count.

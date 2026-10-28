@@ -112,7 +112,7 @@ Software is usually the smaller cost. Managing social media yourself costs your 
 
 ## Where Schedule For You fits
 
-Schedule For You is a paid scheduler with two plans. Solo costs $19 a month for 15 connected accounts, and Studio costs $59 a month for 100 connected accounts, team members and priority support. Both include unlimited posts, and yearly billing costs the same as 10 months ($190 or $590 a year). There's a 7-day free trial; a card is required and you aren't charged until day 8. There's no free plan.
+Schedule For You has a Free plan and two paid plans. Free connects 3 accounts and holds up to 10 scheduled posts at a time, with no card needed. Solo costs $19 a month for 15 connected accounts, and Studio costs $59 a month for 100 connected accounts, team members and priority support. Both include unlimited posts, and yearly billing costs the same as 10 months ($190 or $590 a year). The paid plans have a 7-day free trial; a card is required and you aren't charged until day 8.
 
 It publishes to X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile, with per-platform captions, approvals, client preview links, RSS auto-posting, a REST API and an MCP server. It doesn't include analytics or a social inbox, so if those are must-haves, a suite may suit you better. See [pricing](/pricing) for details, or compare it as a [Buffer alternative](/buffer-alternative), [Later alternative](/later-alternative) or [Postiz alternative](/postiz-alternative).
 
@@ -136,4 +136,4 @@ If you're sure about a tool after the trial, yearly billing usually saves money.
 
 ### Does Schedule For You have a free plan?
 
-No. Schedule For You has a 7-day free trial that requires a card, then Solo costs $19 a month and Studio $59 a month.
+Yes, with limits: 3 connected accounts, up to 10 scheduled posts at a time, and a short link back to Schedule For You on each post. No card is needed. Bulk scheduling, approvals, the API, RSS and webhooks are on the paid plans: Solo at $19 a month and Studio at $59 a month, each with a 7-day free trial that requires a card.

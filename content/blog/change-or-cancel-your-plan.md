@@ -107,7 +107,7 @@ A few tips for trials in general:
 - **Test the workflows you'll actually use**: connect your accounts, schedule a week of posts, and try the calendar and queue. Our guide to [planning content in advance](/blog/plan-content-in-advance) suggests a routine to try.
 - **Check the confirmation** after cancelling so you know it went through.
 
-There's no free plan, so once a trial ends without cancelling, your chosen plan starts.
+Once a trial ends without cancelling, your chosen plan starts. If you cancel, or a paid plan ends, the workspace drops to the Free plan: 3 connected accounts and up to 10 scheduled posts at a time, with the newest accounts past 3 paused until you upgrade.
 
 ## How to cancel any social media scheduler subscription
 
