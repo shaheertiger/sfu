@@ -99,4 +99,4 @@ Yes. There's no cost and no sign-up, and because the conversion happens in your 
 
 ## Manage your other social channels with Schedule For You
 
-Schedule For You doesn't post to Telegram. If you also publish to Instagram, X, LinkedIn, YouTube or other networks, it lets you write once, tailor each version and schedule everything from one calendar, with unlimited posts on every plan. You'll need a card for the 7-day trial, but nothing is charged before day 8 and you can cancel whenever you like. [Start your 7-day free trial](/signup).
+Schedule For You doesn't post to Telegram. If you also publish to Instagram, X, LinkedIn, YouTube or other networks, it lets you write once, tailor each version and schedule everything from one calendar, with unlimited posts on the paid plans. You'll need a card for the 7-day trial, but nothing is charged before day 8 and you can cancel whenever you like. [Start your 7-day free trial](/signup).

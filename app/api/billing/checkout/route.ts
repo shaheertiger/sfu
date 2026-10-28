@@ -14,7 +14,7 @@ export const POST = handler(async ({ req, workspace, user }) => {
   const base = appUrl(req);
 
   // Already subscribed: plan changes, cards and cancelling happen in the billing portal.
-  if (ws.stripe_subscription_id && accessFor(ws).canPublish) {
+  if (ws.stripe_subscription_id && accessFor(ws).paid) {
     const portal = await s.billingPortal.sessions.create({
       customer: ws.stripe_customer_id,
       return_url: `${base}/app`,

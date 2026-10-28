@@ -137,7 +137,7 @@ On Friday, ask: *"Did this week's posts all go out?"* Claude calls `list_posts` 
 - **The queue is your safety net.** Everything Claude creates is visible, editable and deletable in the dashboard before it publishes.
 - **It publishes, it doesn't engage.** There are no tools for replies, DMs or platform analytics.
 
-Plans start at $19 a month for 15 connected accounts, and the API and MCP server are included on every plan.
+Plans start at $19 a month for 15 connected accounts, and the API and MCP server are included on both paid plans.
 
 ## Frequently asked questions
 

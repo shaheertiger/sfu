@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import s from './automations.module.css';
+import { paidOnlyMessage } from '@/lib/plan-limits';
 
 /** Referrals, share-to-queue, signature, link tracking, calendar, webhooks and RSS auto-post for the active workspace. */
 
@@ -20,6 +21,17 @@ async function api(path, { method = 'GET', body } = {}) {
   }
   if (!res.ok) throw new Error(data.issues?.[0]?.message || data.error || `Request failed (${res.status})`);
   return data;
+}
+
+/** On the Free plan: says the section below is a paid feature, with the way to upgrade. */
+function PaidNote({ feature, paid }) {
+  if (paid !== false) return null;
+  return (
+    <p role="note" style={{ margin: '0 0 -6px', padding: '10px 14px', borderRadius: 12, background: '#f4ffc2', color: '#2c3300', fontSize: 14, lineHeight: 1.45 }}>
+      {paidOnlyMessage(feature)}{' '}
+      <a href={`/app?upgrade=${feature}`} style={{ color: '#2c3300', fontWeight: 600 }}>See plans</a>
+    </p>
+  );
 }
 
 const ago = (t) => {
@@ -59,11 +71,16 @@ export default function AutomationsPage() {
         {data.referral && <ReferFriend referral={data.referral} />}
         {data.share && <ShareToQueue share={data.share} />}
         <Signature initial={data.signature} canEdit={canEdit} />
+        <PaidNote feature="links" paid={data.paid} />
         <LinkClicks on={data.track_links} utm={data.utm_tags} clicks={data.link_clicks} links={data.tracked_links} canEdit={canEdit} reload={load} />
+        <PaidNote feature="calendar" paid={data.paid} />
         <SharedCalendar calendar={data.calendar} canEdit={canEdit} reload={load} />
         <DefaultComments accounts={data.accounts} canEdit={canEdit} reload={load} />
+        <PaidNote feature="rss" paid={data.paid} />
         <Feeds feeds={data.feeds} accounts={data.accounts} canEdit={canEdit} reload={load} />
+        <PaidNote feature="webhooks" paid={data.paid} />
         <Webhooks hooks={data.webhooks} canEdit={canEdit} reload={load} />
+        <PaidNote feature="preview" paid={data.paid} />
         <section className={s.card}>
           <h2>Client preview links</h2>
           <p className={s.help}>

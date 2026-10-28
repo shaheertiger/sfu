@@ -89,6 +89,18 @@ class Component extends DCLogic {
       window.location.href = `/signup?${q}`;
     };
     const plans = {
+      free: [
+        'Free',
+        '$0',
+        [
+          '3 connected accounts',
+          '10 scheduled posts at a time',
+          'Per-platform captions',
+          'Queue & calendar',
+          'No card needed',
+        ],
+        0,
+      ],
       solo: [
         'Solo',
         '$19',
@@ -122,10 +134,14 @@ class Component extends DCLogic {
         'What happens if a post fails?',
         'You get an alert right away with the reason, and a one-tap retry or reconnect.',
       ],
-      ['Is there an API?', 'Every workspace includes a REST API and an MCP server.'],
       [
-        'Do I need a card for the trial?',
-        'Yes. Add a card to start the 7-day free trial. You are not charged until day 8, and you can cancel before then.',
+        'Is there a free plan?',
+        'Yes. Free connects 3 accounts and holds up to 10 scheduled posts at a time, with no card. Posts from it end with a short link back to Schedule For You when it fits.',
+      ],
+      ['Is there an API?', 'Solo and Studio include a REST API and an MCP server.'],
+      [
+        'Do I need a card?',
+        'Not for Free. Solo and Studio start with a 7-day free trial that needs a card; you are not charged until day 8, and you can cancel before then.',
       ],
       ['Can I cancel?', 'Cancel anytime. There is no contract.'],
     ];
@@ -152,13 +168,13 @@ class Component extends DCLogic {
       return `${h} hr${h === '1' ? '' : 's'}`;
     };
     const yearH = Math.round((savedMin * 52) / 60);
-    const price = (s.plan === 'studio' ? 59 : 19) * (s.yearly ? 10 / 12 : 1),
+    const price = pl[3] * (s.yearly ? 10 / 12 : 1),
       hrsMonth = (savedMin * 4.33) / 60;
     const ctaLabel = s.done
       ? 'One moment…'
       : nPick
         ? `Start posting to ${nPick} platform${nPick === 1 ? '' : 's'}`
-        : 'Start free trial';
+        : 'Start free';
     return {
       topLabel: s.signedIn ? 'Open dashboard' : 'Sign in',
       topHref: s.signedIn ? '/app' : '/login',
@@ -238,7 +254,7 @@ class Component extends DCLogic {
         [
           '1',
           'Connect your accounts',
-          'Link up to 15 accounts across ten platforms. Several per platform is fine.',
+          'Link accounts across ten platforms: 3 on Free, up to 100 on paid plans. Several per platform is fine.',
           '#dcff2e',
           '#15171a',
           '#dcff2e',
@@ -274,8 +290,18 @@ class Component extends DCLogic {
         fg: s.plan === k ? '#15171a' : '#a7abb2',
         pick: () => this.setState({ plan: k }),
       })),
-      planPrice: s.yearly ? '$' + +((pl[3] * 10) / 12).toFixed(2) : pl[1],
-      planBilled: s.yearly ? `$${pl[3] * 10} billed yearly · save $${pl[3] * 2}` : 'Billed monthly',
+      planPrice: s.yearly && pl[3] ? '$' + +((pl[3] * 10) / 12).toFixed(2) : pl[1],
+      planBilled: !pl[3]
+        ? 'No card needed'
+        : s.yearly
+          ? `$${pl[3] * 10} billed yearly · save $${pl[3] * 2}`
+          : 'Billed monthly',
+      valueLine: pl[3]
+        ? `About $${(price / 30).toFixed(2)} a day. Less than ${hrsMonth > 0 ? `$${Math.max(0.01, price / hrsMonth).toFixed(2)}` : `$${price}`} per hour you get back.`
+        : 'Free for as long as you like. Upgrade when you need more.',
+      planNote: pl[3]
+        ? `Create your free account, then try ${pl[0]} free for 7 days from Billing. Cancel before it ends and you won't be charged.`
+        : 'No card needed. Upgrade whenever you need more accounts or posts.',
       moPressed: s.yearly ? 'false' : 'true',
       yrPressed: s.yearly ? 'true' : 'false',
       moBg: s.yearly ? 'transparent' : '#dcff2e',
@@ -297,9 +323,9 @@ class Component extends DCLogic {
       barY: s.showBar && !s.sheet && !s.done ? 0 : 110,
       barPE: s.showBar && !s.sheet && !s.done ? 'auto' : 'none',
       sheetOpen: s.sheet,
-      sheetPlan: s.yearly
-        ? `${pl[0]} plan · $${pl[3] * 10}/year after the trial`
-        : `${pl[0]} plan · ${pl[1]}/mo after the trial`,
+      sheetPlan: !pl[3]
+        ? 'Free plan · no card needed'
+        : `Starts on Free · try ${pl[0]} free for 7 days, then ${s.yearly ? `$${pl[3] * 10}/year` : `${pl[1]}/mo`}`,
       openSheet: () => {
         this.setState({ sheet: true });
         setTimeout(() => this.sheetRef.current?.focus(), 80);

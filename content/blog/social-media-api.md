@@ -71,7 +71,7 @@ Be honest about the trade-off: a scheduling API publishes and reports what happe
 
 ## The same scenario with the Schedule For You API
 
-Schedule For You's REST API comes with every workspace. You connect accounts once in the dashboard (each platform's sign-in, or a Bluesky app password), then create a key under **Settings → API keys**. Base URL: `https://scheduleforyou.com/api/v1`. Every request sends `Authorization: Bearer sfy_…`.
+Schedule For You's REST API comes with Solo and Studio. You connect accounts once in the dashboard (each platform's sign-in, or a Bluesky app password), then create a key under **Settings → API keys**. Base URL: `https://scheduleforyou.com/api/v1`. Every request sends `Authorization: Bearer sfy_…`.
 
 ![Settings page in the Schedule For You dashboard with posting slots and an API keys section listing keys named Claude Desktop and Zapier](/images/blog/settings-posting-slots-api-keys-1440x900.webp)
 
@@ -163,7 +163,7 @@ The same posts appear in the dashboard's queue and calendar, so the people who d
 
 If your release notes already live on a blog with an RSS feed, you may not need code at all: RSS auto-post turns each new item into a draft or a queued post for the accounts you choose.
 
-The [API overview](/api) has a shorter tour, and the [API reference](/docs) lists every endpoint, field and error. Plans start at $19 a month for 15 connected accounts, and the API is included on every plan.
+The [API overview](/api) has a shorter tour, and the [API reference](/docs) lists every endpoint, field and error. Plans start at $19 a month for 15 connected accounts, and the API is included on both paid plans.
 
 ## Frequently asked questions
 

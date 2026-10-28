@@ -2,6 +2,7 @@ import 'server-only';
 import crypto from 'node:crypto';
 import { exec, now, one, query } from './db';
 import { safeFetch } from './safe-url';
+import { paidSql } from './billing';
 
 /**
  * Outgoing webhooks (Zapier, Make, n8n, your own server). Each delivery is a JSON POST with
@@ -82,7 +83,9 @@ async function postData(postId: string) {
 /** Fires a post event at every active webhook of the workspace that listens to it. Never throws. */
 export async function firePostEvent(workspaceId: string, postId: string, event: string) {
   try {
-    const hooks = await query(`SELECT * FROM webhooks WHERE workspace_id=$1 AND active AND events ? $2`, [workspaceId, event]);
+    // Webhooks are a paid feature: a workspace on Free keeps its hooks but they don't fire.
+    const hooks = await query(`SELECT h.* FROM webhooks h JOIN workspaces w ON w.id = h.workspace_id
+       WHERE h.workspace_id=$1 AND h.active AND h.events ? $2 AND ${paidSql('w')}`, [workspaceId, event]);
     if (!hooks.length) return;
     const data = await postData(postId);
     await Promise.all(hooks.map((h) => deliver(h, event, data)));

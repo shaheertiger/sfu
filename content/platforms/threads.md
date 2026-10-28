@@ -63,4 +63,4 @@ You get a failed-post alert. If access was revoked, reconnect Threads from the A
 No. There are no AI writing or suggestion features. You write the posts, and Schedule For You handles tailoring, timing and publishing.
 
 ## Keep Threads active alongside everything else
-Plan Threads posts in the same calendar as your other channels, tailor each version and let the queue publish them. Unlimited posts on every plan. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Plan Threads posts in the same calendar as your other channels, tailor each version and let the queue publish them. Unlimited posts on Solo and Studio. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.

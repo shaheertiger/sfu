@@ -301,7 +301,7 @@ class Component extends DCLogic {
       ],
       [
         'API + MCP',
-        'A REST API and an MCP server ship with every workspace, so Claude, Cursor or your own scripts can post for you.',
+        'A REST API and an MCP server come with Solo and Studio, so Claude, Cursor or your own scripts can post for you.',
       ],
     ];
     const featSteps = STEPS.map(([title, body], i) => ({

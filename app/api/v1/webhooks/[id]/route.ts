@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { body, handler, json } from '@/lib/server/api';
 import { exec, one } from '@/lib/server/db';
 import { requireEditor } from '@/lib/server/roles';
+import { requirePaid } from '@/lib/server/billing';
 import { webhookRow } from '@/lib/server/webhook-row';
 import { WEBHOOK_EVENTS, WEBHOOK_FORMATS } from '@/lib/server/webhooks';
 
@@ -10,6 +11,8 @@ export const PATCH = handler(async ({ req, workspace, params }) => {
   const h = await one('SELECT * FROM webhooks WHERE id=$1 AND workspace_id=$2', [params.id, workspace.id]);
   if (!h) return json({ error: 'Not found' }, 404);
   const b = z.object({ active: z.boolean().optional(), events: z.array(z.enum(WEBHOOK_EVENTS)).min(1).optional(), format: z.enum(WEBHOOK_FORMATS).optional() }).parse(await body(req));
+  // On Free a webhook can still be switched off or deleted, never on or changed.
+  if (b.active !== false || b.events || b.format) requirePaid(workspace, 'webhooks');
   await exec('UPDATE webhooks SET active=COALESCE($1, active), events=COALESCE($2::jsonb, events), format=COALESCE($3, format) WHERE id=$4', [
     b.active ?? null, b.events ? JSON.stringify(b.events) : null, b.format ?? null, h.id,
   ]);

@@ -77,12 +77,12 @@ Where we're not confident about Postiz's current offering, the table says "Check
 | Failed-post alerts with reconnect prompt | Yes | Check |
 
 ### What Schedule For You includes
-Two plans: Solo at $19 a month with 15 connected accounts, and Studio at $59 a month with 100 connected accounts, team members and priority support. Both include unlimited posts. There's a 7-day free trial; a card is required, you aren't charged until day 8 and you can cancel anytime. There's no free plan and no self-hosted edition. [Start your 7-day free trial](/signup) to try it with your own accounts.
+Two plans: Solo at $19 a month with 15 connected accounts, and Studio at $59 a month with 100 connected accounts, team members and priority support. Both include unlimited posts. There's a 7-day free trial; a card is required, you aren't charged until day 8 and you can cancel anytime. There's also a Free plan (3 connected accounts, up to 10 scheduled posts at a time, no card) but no self-hosted edition. [Start free](/signup) to try it with your own accounts.
 
 ### Where it's different in practice
 - **Nothing to install.** You sign in, connect accounts through each network's login, and start scheduling. There are no developer apps to register.
 - **No AI writing.** Captions are yours. If you want an assistant to draft them, Postiz or another tool will suit you better.
-- **Automation without hosting.** Every workspace includes the [REST API](/api), webhooks for Zapier, Make or n8n, and RSS auto-post, plus an MCP server for tools that use it.
+- **Automation without hosting.** Both paid plans include the [REST API](/api), webhooks for Zapier, Make or n8n, and RSS auto-post, plus an MCP server for tools that use it.
 - **Built for client work.** Separate workspaces, approvals and client preview links let clients approve or comment without signing up.
 
 ## Postiz API vs. the Schedule For You API
@@ -92,10 +92,10 @@ Both tools let you schedule posts from your own code, so if automation is the re
 Postiz has a public API on its hosted service and on self-hosted instances. At the time of writing, you create a key in its settings, send it in the `Authorization` header, and can list connected channels, upload media and create posts that publish now or at a set time. Its docs describe an hourly limit on creating posts, and there's an official Node SDK and an n8n node. Because the code is open, self-hosters can also read or change what sits behind the API. Check the [Postiz docs](https://docs.postiz.com) for current endpoints and limits.
 
 ### What Schedule For You offers
-Every workspace on both plans includes a REST API. You create a key in **Settings → API keys** and send it as `Authorization: Bearer sfy_…`. `POST /api/v1/posts` creates a post for one or many accounts, scheduled or published now, and checks each platform's limits first, returning a `422` with the errors if something won't fit. Signed webhooks report `post.published`, `post.partial` and `post.failed`, and an MCP server at `/api/mcp` serves tools that use the Model Context Protocol. The [API overview](/api) covers the basics, and the [API reference](/docs) lists every endpoint.
+Both paid plans include a REST API. You create a key in **Settings → API keys** and send it as `Authorization: Bearer sfy_…`. `POST /api/v1/posts` creates a post for one or many accounts, scheduled or published now, and checks each platform's limits first, returning a `422` with the errors if something won't fit. Signed webhooks report `post.published`, `post.partial` and `post.failed`, and an MCP server at `/api/mcp` serves tools that use the Model Context Protocol. The [API overview](/api) covers the basics, and the [API reference](/docs) lists every endpoint.
 
 ### Which fits
-If you self-host or want to extend the code itself, the Postiz API is the natural choice. If you want a hosted API with per-platform validation and webhooks included on every plan, Schedule For You covers that without a server to run.
+If you self-host or want to extend the code itself, the Postiz API is the natural choice. If you want a hosted API with per-platform validation and webhooks included on both paid plans, Schedule For You covers that without a server to run.
 
 ## Who should pick Postiz, and who should pick Schedule For You
 Postiz is likely the better fit if:
@@ -142,4 +142,4 @@ No. Schedule For You is a hosted service only. If self-hosting is a requirement,
 Yes. Postiz offers a public API for its hosted service and self-hosted installs, with endpoints for channels, media uploads and posts. See its documentation for current details.
 
 ### Does Schedule For You have an API?
-It has a REST API on both plans, with endpoints for accounts, posts, media, webhooks and RSS feeds. You create a key in Settings → API keys.
+It has a REST API on both paid plans (Solo and Studio), with endpoints for accounts, posts, media, webhooks and RSS feeds. You create a key in Settings → API keys.

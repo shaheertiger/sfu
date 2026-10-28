@@ -94,7 +94,7 @@ To go the other way and create posts from those tools, use their HTTP request st
 
 ## Step 7: Schedule social media posts with the REST API
 
-The REST API lets your own systems create and manage posts. It's included in every workspace on both plans.
+The REST API lets your own systems create and manage posts. It's included on both paid plans, Solo and Studio.
 
 1. Create a key in **Settings → API keys**.
 2. Send it as `Authorization: Bearer sfy_…` on each request.

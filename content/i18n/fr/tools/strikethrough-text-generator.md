@@ -132,4 +132,4 @@ Oui. Il fonctionne dans votre navigateur, sans inscription, et n’envoie rien d
 
 ## Programmez vos promos avec Schedule For You
 
-Une fois votre publication soldes prête, Schedule For You vous permet de l’adapter pour Instagram, Facebook, X et sept autres réseaux, de voir le nombre de caractères de chaque version en direct et de tout programmer depuis un seul calendrier. Publications illimitées sur tous les forfaits. L’essai de 7 jours demande une carte bancaire, mais rien n’est prélevé avant le 8e jour et vous pouvez annuler à tout moment. [Commencez votre essai gratuit de 7 jours](/signup).
+Une fois votre publication soldes prête, Schedule For You vous permet de l’adapter pour Instagram, Facebook, X et sept autres réseaux, de voir le nombre de caractères de chaque version en direct et de tout programmer depuis un seul calendrier. Publications illimitées sur les forfaits payants. L’essai de 7 jours demande une carte bancaire, mais rien n’est prélevé avant le 8e jour et vous pouvez annuler à tout moment. [Commencez votre essai gratuit de 7 jours](/signup).

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { hasSignedInHint } from '@/lib/signed-in-hint';
 
-/** "Sign in" and "Start free trial", or "Open dashboard" for people who are already signed in. */
+/** "Sign in" and "Start free", or "Open dashboard" for people who are already signed in. */
 export default function NavAuth({ className, hideClass, ctaClass }) {
   const [signedIn, setSignedIn] = useState(false);
   useEffect(() => setSignedIn(hasSignedInHint()), []);
@@ -11,7 +11,7 @@ export default function NavAuth({ className, hideClass, ctaClass }) {
   return (
     <>
       <Link href="/login" className={hideClass}>Sign in</Link>
-      <Link href="/signup" className={ctaClass}>Start free trial</Link>
+      <Link href="/signup" className={ctaClass}>Start free</Link>
     </>
   );
 }

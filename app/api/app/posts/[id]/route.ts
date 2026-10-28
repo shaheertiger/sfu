@@ -1,6 +1,5 @@
 import { body, handler, json } from '@/lib/server/api';
 import { deletePost, getPost, parsePostBody, savePost, validatePost } from '@/lib/server/posts';
-import { requireCanPublish } from '@/lib/server/billing';
 import { claimAndPublish } from '@/lib/server/publish-now';
 import { one } from '@/lib/server/db';
 
@@ -22,7 +21,6 @@ export const PUT = handler(async ({ req, workspace, user, params }) => {
     const existing = await getPost(workspace.id, params.id);
     if (existing?.status === 'published') return json({ error: 'This post is already published' }, 409);
     if (existing?.status === 'publishing') return json({ error: 'This post is publishing right now' }, 409);
-    await requireCanPublish(workspace.id);
     b.status = 'scheduled';
   }
   if (b.status === 'scheduled') {

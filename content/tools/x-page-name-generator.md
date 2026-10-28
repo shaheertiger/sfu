@@ -84,4 +84,4 @@ Yes, you can change it in your account settings. Old mentions and links that use
 No. It only suggests names. Check availability on X and search trademark records for any new brand name before you announce it.
 
 ## Publish to your brand's X account with Schedule For You
-Schedule For You lets your team draft X posts with a live character check, collect approvals, and publish on a schedule alongside LinkedIn, Instagram and the rest of your brand channels. Unlimited posts on every plan; the Studio plan adds team members. [Start your 7-day free trial](/signup). A card is required and you won't be charged until day 8.
+Schedule For You lets your team draft X posts with a live character check, collect approvals, and publish on a schedule alongside LinkedIn, Instagram and the rest of your brand channels. Unlimited posts on Solo and Studio; the Studio plan adds team members. [Start your 7-day free trial](/signup). A card is required and you won't be charged until day 8.

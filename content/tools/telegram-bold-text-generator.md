@@ -93,4 +93,4 @@ Yes. It's free, requires no account and runs in your browser, so nothing you typ
 
 ## Plan your other social channels with Schedule For You
 
-Schedule For You doesn't post to Telegram, but if you also run Instagram, X, LinkedIn, Threads or YouTube accounts, you can write once, tailor each version and schedule them all from one calendar. Unlimited posts are included on every plan. The 7-day trial takes a card up front, but your first charge isn't until day 8, and canceling before then costs nothing. [Start your 7-day free trial](/signup).
+Schedule For You doesn't post to Telegram, but if you also run Instagram, X, LinkedIn, Threads or YouTube accounts, you can write once, tailor each version and schedule them all from one calendar. Unlimited posts are included on Solo and Studio. The 7-day trial takes a card up front, but your first charge isn't until day 8, and canceling before then costs nothing. [Start your 7-day free trial](/signup).

@@ -69,7 +69,7 @@ Zapier, Make and n8n connect apps with triggers, such as "when a new blog post a
 ## Where Schedule For You fits
 Schedule For You is a cross-posting scheduler. One post can go to many accounts and platforms at once, each with its own caption version and live limit checks, and any target that fails alerts you so you can retry it. It publishes to Instagram, Facebook Pages, X, LinkedIn, Threads, Bluesky, TikTok, YouTube, Pinterest and Google Business Profile, with a queue, drag-and-drop calendar, bulk CSV scheduling, RSS auto-post and a REST API. The [cross-posting](/cross-posting) page shows how it works.
 
-Be clear on the limits too. It doesn't post TikTok Stories, doesn't crop images, posts to personal LinkedIn profiles only (not company pages), and has no engagement analytics or AI writing. It has no free plan: Solo is $19 a month and Studio $59 a month, with a 7-day free trial that needs a card.
+Be clear on the limits too. It doesn't post TikTok Stories, doesn't crop images, posts to personal LinkedIn profiles only (not company pages), and has no engagement analytics or AI writing. Its Free plan covers 3 accounts and up to 10 scheduled posts at a time; bulk CSV scheduling, RSS and the API are on the paid plans, Solo at $19 a month and Studio at $59 a month, with a 7-day free trial that needs a card.
 
 ## How to choose the best cross-posting tool for you
 
@@ -92,7 +92,7 @@ No app posts everywhere. Pick the one that covers the networks you actually use 
 Posting the identical caption everywhere can look out of place, since each network has different norms and limits. Tailoring each version, and using native formats like Reels or carousels, matters more than which tool sends the post.
 
 ### Is there a free cross-posting tool?
-Native tools such as Meta Business Suite are free but limited to their own networks. Some third-party tools offer free tiers with limits; check each one. Schedule For You isn't free, but it has a 7-day free trial (card required).
+Native tools such as Meta Business Suite are free but limited to their own networks. Some third-party tools offer free tiers with limits; check each one. Schedule For You has a Free plan that cross-posts to 3 connected accounts with up to 10 scheduled posts at a time, no card needed.
 
 ### How do I cross-post from Instagram to Facebook?
 Meta lets you link the accounts in Accounts Center and has offered automatic sharing settings, or you can post to both from Meta Business Suite. Check Meta's help center for the current steps.

@@ -395,7 +395,7 @@ export default function ApiReference({ crumbs }) {
 
           <div className={s.cta}>
             <TrialCta heading="Start building with the API">
-              <p>The API, webhooks and RSS feeds come with both plans. Start the trial, create a key under Settings → API keys and schedule your first post. For a shorter tour, see the <Link href="/api">API overview</Link>.</p>
+              <p>The API, webhooks and RSS feeds come with both paid plans, Solo and Studio. Start the trial, create a key under Settings → API keys and schedule your first post. For a shorter tour, see the <Link href="/api">API overview</Link>.</p>
             </TrialCta>
           </div>
         </div>

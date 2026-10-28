@@ -41,15 +41,16 @@ Platforms sometimes revoke access, for example after a password change. When a p
 Webhooks connect to Zapier, Make or n8n. There's a REST API and an MCP server if you'd rather create and schedule posts from your own tools and workflows.
 
 ## What's included on each plan
-| | Solo | Studio |
-|---|---|---|
-| Price | $19/month | $59/month |
-| Connected accounts | 15 | 100 |
-| Posts | Unlimited | Unlimited |
-| Team members | No | Yes |
-| Priority support | No | Yes |
+| | Free | Solo | Studio |
+|---|---|---|---|
+| Price | $0 | $19/month | $59/month |
+| Connected accounts | 3 | 15 | 100 |
+| Scheduled posts | Up to 10 at a time | Unlimited | Unlimited |
+| Bulk scheduling, API, RSS, webhooks, approvals | No | Yes | Yes |
+| Team members | No | No | Yes |
+| Priority support | No | No | Yes |
 
-Both plans start with a 7-day free trial. A card is required to start, you aren't charged until day 8, and you can cancel anytime. There's no free plan. See full details on the [pricing section](/#pricing).
+The Free plan needs no card; posts published from it end with a short "Scheduled with Schedule For You" link when it fits. Solo and Studio start with a 7-day free trial: a card is required to start, you aren't charged until day 8, and you can cancel anytime. See full details on the [pricing page](/pricing).
 
 ## The platforms we publish to
 Schedule For You publishes to 10 platforms:

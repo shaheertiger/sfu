@@ -135,4 +135,4 @@ Ja. Hij werkt in je browser, je hebt geen account nodig en er wordt niets geüpl
 
 ## Plan je posts met Schedule For You
 
-Staat je actiepost klaar? Met Schedule For You pas je hem aan voor Instagram, Facebook-pagina’s, X en zeven andere platforms, zie je per platform hoeveel tekens je over hebt en plan je alles vanuit één kalender. Elk abonnement heeft onbeperkt posts. De app is Engelstalig, je posts schrijf je in het Nederlands. Voor de proefperiode van 7 dagen is een betaalkaart nodig, maar je betaalt niets tot dag 8 en je kunt op elk moment opzeggen. [Probeer Schedule For You 7 dagen gratis](/signup).
+Staat je actiepost klaar? Met Schedule For You pas je hem aan voor Instagram, Facebook-pagina’s, X en zeven andere platforms, zie je per platform hoeveel tekens je over hebt en plan je alles vanuit één kalender. De betaalde abonnementen hebben onbeperkt posts. De app is Engelstalig, je posts schrijf je in het Nederlands. Voor de proefperiode van 7 dagen is een betaalkaart nodig, maar je betaalt niets tot dag 8 en je kunt op elk moment opzeggen. [Probeer Schedule For You 7 dagen gratis](/signup).

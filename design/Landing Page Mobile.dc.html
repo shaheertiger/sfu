@@ -64,9 +64,9 @@ input,button{font-family:inherit}
         <button type="submit" style="height:56px;border-radius:14px;border:0;background:#dcff2e;color:#15171a;font-size:17px;font-weight:700;letter-spacing:-0.01em;cursor:pointer;transition:transform .12s" style-active="transform:scale(.98)">{{ ctaLabel }}</button>
       </form>
       <div style="display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:#a7abb2">
-        <span style="display:flex;gap:6px"><span style="color:#dcff2e">✓</span>7-day free trial</span>
-        <span style="display:flex;gap:6px"><span style="color:#dcff2e">✓</span>Card required</span>
-        <span style="display:flex;gap:6px"><span style="color:#dcff2e">✓</span>Cancel anytime</span>
+        <span style="display:flex;gap:6px"><span style="color:#dcff2e">✓</span>Free for 3 accounts</span>
+        <span style="display:flex;gap:6px"><span style="color:#dcff2e">✓</span>No card needed</span>
+        <span style="display:flex;gap:6px"><span style="color:#dcff2e">✓</span>Upgrade anytime</span>
       </div>
     </sc-if>
   </section>
@@ -164,10 +164,10 @@ input,button{font-family:inherit}
   <section id="pricing" data-screen-label="Pricing" style="padding:8px 20px 44px;display:flex;flex-direction:column;gap:16px">
     <div style="display:flex;flex-direction:column;gap:6px">
       <h2 style="margin:0;font-size:32px;line-height:1.02;letter-spacing:-0.045em;font-weight:700">Simple pricing</h2>
-      <p style="margin:0;color:#a7abb2;font-size:15px">Unlimited posts on every plan. 7-day free trial, card required. Cancel anytime.</p>
+      <p style="margin:0;color:#a7abb2;font-size:15px">Start free. Paid plans add unlimited posts, bulk scheduling and the API, with a 7-day free trial.</p>
     </div>
-    <div role="tablist" aria-label="Plan" style="display:grid;grid-template-columns:1fr 1fr;padding:4px;border-radius:14px;background:#17191c;border:1px solid #22252a">
-      <sc-for list="{{ plans }}" as="p" hint-placeholder-count="2">
+    <div role="tablist" aria-label="Plan" style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:4px;border-radius:14px;background:#17191c;border:1px solid #22252a">
+      <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
         <button role="tab" aria-selected="{{ p.sel }}" onClick="{{ p.pick }}" style="height:44px;border:0;border-radius:10px;cursor:pointer;font-size:15px;font-weight:600;background:{{ p.bg }};color:{{ p.fg }};transition:background .2s,color .2s">{{ p.name }}</button>
       </sc-for>
     </div>
@@ -179,13 +179,13 @@ input,button{font-family:inherit}
           <button aria-pressed="{{ moPressed }}" onClick="{{ pickMonthly }}" style="padding:7px 12px;border-radius:8px;border:0;cursor:pointer;font-size:13px;font-weight:600;background:{{ moBg }};color:{{ moFg }}">Monthly</button>
           <button aria-pressed="{{ yrPressed }}" onClick="{{ pickYearly }}" style="padding:7px 12px;border-radius:8px;border:0;cursor:pointer;font-size:13px;font-weight:600;background:{{ yrBg }};color:{{ yrFg }}">Yearly · 2 months free</button>
         </div>
-        <span style="font-size:14px;color:#a7abb2">About {{ perDay }} a day. Less than {{ perHour }} per hour you get back.</span>
+        <span style="font-size:14px;color:#a7abb2">{{ valueLine }}</span>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;color:#c9ccd1;font-size:15px">
         <sc-for list="{{ planFeatures }}" as="f" hint-placeholder-count="5"><span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>{{ f }}</span></sc-for>
       </div>
-      <button onClick="{{ openSheet }}" style="height:54px;border-radius:14px;border:0;background:#dcff2e;color:#15171a;font-size:16px;font-weight:700;cursor:pointer" style-active="transform:scale(.98)">Start 7-day trial</button>
-      <span style="font-size:13px;color:#a7abb2;text-align:center;margin-top:-6px">Try every feature for 7 days. Cancel before it ends and you won't be charged.</span>
+      <button onClick="{{ openSheet }}" style="height:54px;border-radius:14px;border:0;background:#dcff2e;color:#15171a;font-size:16px;font-weight:700;cursor:pointer" style-active="transform:scale(.98)">Start free</button>
+      <span style="font-size:13px;color:#a7abb2;text-align:center;margin-top:-6px">{{ planNote }}</span>
     </div>
   </section>
 
@@ -227,11 +227,11 @@ input,button{font-family:inherit}
 
 <sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
   <div onClick="{{ closeSheet }}" style="position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.55)"></div>
-  <div role="dialog" aria-modal="true" aria-label="Start your trial" style="position:fixed;left:0;right:0;bottom:0;z-index:41;display:flex;justify-content:center">
+  <div role="dialog" aria-modal="true" aria-label="Create your free account" style="position:fixed;left:0;right:0;bottom:0;z-index:41;display:flex;justify-content:center">
     <div style="width:100%;max-width:480px;padding:10px 20px calc(22px + env(safe-area-inset-bottom));border-radius:24px 24px 0 0;background:#15171a;border-top:1px solid #2a2e34;display:flex;flex-direction:column;gap:14px">
       <span style="align-self:center;width:40px;height:4px;border-radius:4px;background:#3a3e45"></span>
       <div style="display:flex;align-items:flex-start;gap:12px">
-        <span style="flex:1;display:flex;flex-direction:column;gap:4px"><strong style="font-size:22px;letter-spacing:-0.03em">Start your 7-day trial</strong><span style="font-size:14px;color:#a7abb2">{{ sheetPlan }}</span>
+        <span style="flex:1;display:flex;flex-direction:column;gap:4px"><strong style="font-size:22px;letter-spacing:-0.03em">Create your free account</strong><span style="font-size:14px;color:#a7abb2">{{ sheetPlan }}</span>
           <span style="display:flex;align-items:center;gap:8px;margin-top:6px"><span style="flex:1;height:4px;border-radius:4px;background:#22252a;overflow:hidden"><span style="display:block;height:100%;width:{{ progW }};background:#dcff2e;border-radius:4px;transition:width .3s"></span></span><span style="font-size:12px;color:#a7abb2;white-space:nowrap">{{ progLabel }}</span></span></span>
         <button onClick="{{ closeSheet }}" aria-label="Close" style="width:40px;height:40px;border-radius:12px;border:1px solid #3a3e45;background:transparent;color:#f6f5f1;font-size:20px;cursor:pointer">×</button>
       </div>
@@ -289,14 +289,15 @@ class Component extends DCLogic {
       const q = new URLSearchParams({ email: this.state.email.trim() });
       window.location.href = `/signup?${q}`;
     };
-    const plans = { solo: ['Solo', '$19', ['15 connected accounts', 'Unlimited posts & scheduling', 'Per-platform captions', 'API + MCP access', 'Basic analytics'], 19], studio: ['Studio', '$59', ['Everything in Solo', '100 connected accounts', 'Team members', 'Priority support'], 59] };
+    const plans = { free: ['Free', '$0', ['3 connected accounts', '10 scheduled posts at a time', 'Per-platform captions', 'Queue & calendar', 'No card needed'], 0], solo: ['Solo', '$19', ['15 connected accounts', 'Unlimited posts & scheduling', 'Per-platform captions', 'API + MCP access', 'Basic analytics'], 19], studio: ['Studio', '$59', ['Everything in Solo', '100 connected accounts', 'Team members', 'Priority support'], 59] };
     const pl = plans[s.plan];
     const faqs = [
       ['Which platforms can I post to?', 'X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook, Pinterest and Google Business Profile.'],
       ['Can I change a post for one platform?', 'Yes. Write one caption, then tailor it per platform. Edits to one never touch the others.'],
       ['What happens if a post fails?', 'You get an alert right away with the reason, and a one-tap retry or reconnect.'],
-      ['Is there an API?', 'Every workspace includes a REST API and an MCP server.'],
-      ['Do I need a card for the trial?', 'Yes. Add a card to start the 7-day free trial. You are not charged until day 8, and you can cancel before then.'],
+      ['Is there a free plan?', 'Yes. Free connects 3 accounts and holds up to 10 scheduled posts at a time, with no card. Posts from it end with a short link back to Schedule For You when it fits.'],
+      ['Is there an API?', 'Solo and Studio include a REST API and an MCP server.'],
+      ['Do I need a card?', 'Not for Free. Solo and Studio start with a 7-day free trial that needs a card; you are not charged until day 8, and you can cancel before then.'],
       ['Can I cancel?', 'Cancel anytime. There is no contract.'],
     ];
     const PK = ['instagram', 'x', 'linkedin', 'tiktok', 'facebook', 'youtube', 'threads', 'bluesky', 'pinterest', 'googlemybusiness'];
@@ -304,8 +305,8 @@ class Component extends DCLogic {
     const manualMin = s.ppw * accN * 2, toolMin = s.ppw * 2, savedMin = Math.max(0, manualMin - toolMin);
     const fmtT = (m) => { if (m < 60) return `${m} min`; const h = (m / 60).toFixed(m >= 600 ? 0 : 1).replace('.0', ''); return `${h} hr${h === '1' ? '' : 's'}`; };
     const yearH = Math.round((savedMin * 52) / 60);
-    const price = (s.plan === 'studio' ? 59 : 19) * (s.yearly ? 10 / 12 : 1), hrsMonth = (savedMin * 4.33) / 60;
-    const ctaLabel = s.done ? 'One moment…' : nPick ? `Start posting to ${nPick} platform${nPick === 1 ? '' : 's'}` : 'Start free trial';
+    const price = pl[3] * (s.yearly ? 10 / 12 : 1), hrsMonth = (savedMin * 4.33) / 60;
+    const ctaLabel = s.done ? 'One moment…' : nPick ? `Start posting to ${nPick} platform${nPick === 1 ? '' : 's'}` : 'Start free';
     return {
       topLabel: s.signedIn ? 'Open dashboard' : 'Sign in', topHref: s.signedIn ? '/app' : '/login', topColor: s.signedIn ? '#dcff2e' : '#a7abb2',
       pickers: PK.map((k) => { const on = s.picks.includes(k); return { name: P[k][0], pressed: on ? 'true' : 'false', border: on ? '#dcff2e' : '#2a2e34', bg: on ? P[k][1] : '#0f1113', op: on ? 1 : 0.55, check: on ? 'grid' : 'none', logo: `url(logos/white/${k}.svg)`, toggle: () => this.setState((st) => ({ picks: on ? st.picks.filter((x) => x !== k) : [...st.picks, k] })) }; }),
@@ -329,7 +330,7 @@ class Component extends DCLogic {
       ctaLabel, submit,
       notSignedUp: true, signedUp: false,
       steps: [
-        ['1', 'Connect your accounts', 'Link up to 15 accounts across ten platforms. Several per platform is fine.', '#dcff2e', '#15171a', '#dcff2e'],
+        ['1', 'Connect your accounts', 'Link accounts across ten platforms: 3 on Free, up to 100 on paid plans. Several per platform is fine.', '#dcff2e', '#15171a', '#dcff2e'],
         ['2', 'Write once, tweak per platform', 'One caption with per-platform edits, limit checks and a live preview.', '#15171a', '#f6f5f1', '#2a2e34'],
         ['3', 'The queue posts on time', 'Drop posts into your slots. Drag them around the calendar whenever plans change.', '#15171a', '#f6f5f1', '#2a2e34'],
       ].map(([n, title, body, bg, fg, border]) => ({ n, title, body, bg, fg, border })),
@@ -341,13 +342,15 @@ class Component extends DCLogic {
         ['Multi-account dashboard', 'Every brand and client in one place, with separate workspaces.'],
       ].map(([title, body], i) => ({ n: String(i + 1).padStart(2, '0'), title, body })),
       plans: Object.entries(plans).map(([k, v]) => ({ name: v[0], sel: s.plan === k ? 'true' : 'false', bg: s.plan === k ? '#dcff2e' : 'transparent', fg: s.plan === k ? '#15171a' : '#a7abb2', pick: () => this.setState({ plan: k }) })),
-      planPrice: s.yearly ? '$' + +(pl[3] * 10 / 12).toFixed(2) : pl[1], planBilled: s.yearly ? `$${pl[3] * 10} billed yearly · save $${pl[3] * 2}` : 'Billed monthly',
+      planPrice: s.yearly && pl[3] ? '$' + +(pl[3] * 10 / 12).toFixed(2) : pl[1], planBilled: !pl[3] ? 'No card needed' : s.yearly ? `$${pl[3] * 10} billed yearly · save $${pl[3] * 2}` : 'Billed monthly',
+      valueLine: pl[3] ? `About $${(price / 30).toFixed(2)} a day. Less than ${hrsMonth > 0 ? `$${Math.max(0.01, price / hrsMonth).toFixed(2)}` : `$${price}`} per hour you get back.` : 'Free for as long as you like. Upgrade when you need more.',
+      planNote: pl[3] ? `Create your free account, then try ${pl[0]} free for 7 days from Billing. Cancel before it ends and you won't be charged.` : 'No card needed. Upgrade whenever you need more accounts or posts.',
       moPressed: s.yearly ? 'false' : 'true', yrPressed: s.yearly ? 'true' : 'false', moBg: s.yearly ? 'transparent' : '#dcff2e', moFg: s.yearly ? '#a7abb2' : '#15171a', yrBg: s.yearly ? '#dcff2e' : 'transparent', yrFg: s.yearly ? '#15171a' : '#a7abb2',
       pickMonthly: () => this.setState({ yearly: false }), pickYearly: () => this.setState({ yearly: true }),
       planFeatures: pl[2], planBorder: s.plan === 'studio' ? '#dcff2e' : '#2a2e34',
       faqs: faqs.map(([q, a], i) => ({ q, a, open: s.faq === i ? 'true' : 'false', display: s.faq === i ? 'block' : 'none', rot: s.faq === i ? 45 : 0, toggle: () => this.setState({ faq: s.faq === i ? -1 : i }) })),
       barY: s.showBar && !s.sheet && !s.done ? 0 : 110, barPE: s.showBar && !s.sheet && !s.done ? 'auto' : 'none',
-      sheetOpen: s.sheet, sheetPlan: s.yearly ? `${pl[0]} plan · $${pl[3] * 10}/year after the trial` : `${pl[0]} plan · ${pl[1]}/mo after the trial`,
+      sheetOpen: s.sheet, sheetPlan: !pl[3] ? 'Free plan · no card needed' : `Starts on Free · try ${pl[0]} free for 7 days, then ${s.yearly ? `$${pl[3] * 10}/year` : `${pl[1]}/mo`}`,
       openSheet: () => { this.setState({ sheet: true }); setTimeout(() => this.sheetRef.current?.focus(), 80); },
       closeSheet: () => this.setState({ sheet: false }),
     };

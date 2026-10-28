@@ -27,8 +27,10 @@ test('the landing graph has the expected types and the FAQ only when asked for',
   assert.deepEqual(types(landingLd()), ['Organization', 'WebSite', 'SoftwareApplication']);
   assert.deepEqual(types(landingLd({ withFaq: true })), ['Organization', 'WebSite', 'SoftwareApplication', 'FAQPage']);
   const app: any = landingLd()['@graph'][2];
-  assert.equal(app.offers.length, 4);
-  assert.deepEqual(app.offers.map((o: any) => o.priceSpecification.billingDuration), ['P1M', 'P1Y', 'P1M', 'P1Y']);
+  assert.equal(app.offers.length, 5);
+  assert.equal(app.offers[0].name, 'Free');
+  assert.equal(app.offers[0].price, 0);
+  assert.deepEqual(app.offers.slice(1).map((o: any) => o.priceSpecification.billingDuration), ['P1M', 'P1Y', 'P1M', 'P1Y']);
   assert.equal(app.offers[0].priceCurrency, 'USD');
   assert.ok(app.url.startsWith('https://example.com/'));
   delete process.env.APP_URL;

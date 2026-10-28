@@ -79,8 +79,8 @@ button{font:inherit;color:inherit}
     </sc-if>
     <div style="position:relative;max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px">
       <span style="display:inline-flex;align-items:center;gap:8px;padding:5px 12px 5px 6px;border:1px solid #2a2e34;border-radius:999px;background:#15171a;font-size:13px;color:#a7abb2">
-        <span style="padding:1px 8px;border-radius:999px;background:#dcff2e;color:#15171a;font-weight:600;font-size:12px">New</span>
-        REST API and MCP server in every workspace
+        <span style="padding:1px 8px;border-radius:999px;background:#dcff2e;color:#15171a;font-weight:600;font-size:12px">Free</span>
+        Start free with 3 accounts, no card needed
       </span>
       <h1 style="margin:0;font-size:clamp(48px,8.4vw,116px);line-height:.95;letter-spacing:-0.05em;font-weight:700;text-wrap:balance">Write it once.<br><span style="color:#dcff2e">Post it everywhere.</span></h1>
       <p style="margin:0;max-width:600px;font-size:clamp(17px,1.6vw,20px);color:#a7abb2;text-wrap:pretty">One composer, every social account you run. Schedule, tweak per platform, and let the queue do the posting while you build.</p>
@@ -88,7 +88,7 @@ button{font:inherit;color:inherit}
         <a href="/signup" style="padding:14px 22px;font-size:16px;font-weight:600;border-radius:12px;background:#dcff2e;color:#15171a;transition:transform .15s" style-hover="transform:translateY(-2px);color:#15171a">Start posting free</a>
         <a href="#how" style="padding:14px 22px;font-size:16px;font-weight:500;border-radius:12px;border:1px solid #3a3e45;background:#15171a;color:#f6f5f1;transition:border-color .15s" style-hover="border-color:#6b7079;color:#f6f5f1">See how it works</a>
       </div>
-      <span style="font-size:13px;color:#6b7079">7-day free trial · Card required · Cancel anytime</span>
+      <span style="font-size:13px;color:#6b7079">Free for 3 accounts · No card needed · Upgrade anytime</span>
     </div>
 
     <div id="how" data-demo-root="" style="transform:{{ tilt }};transform-origin:50% 0;will-change:transform;position:relative;max-width:1180px;margin:72px auto 0;border:1px solid #2a2e34;border-radius:14px;background:#121417;box-shadow:0 50px 100px -40px rgba(0,0,0,.95);overflow:hidden">
@@ -485,13 +485,25 @@ button{font:inherit;color:inherit}
     <div style="max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:40px;align-items:center;text-align:center">
       <div style="display:flex;flex-direction:column;gap:14px;align-items:center">
         <h2 style="margin:0;font-size:clamp(34px,4.6vw,60px);line-height:1.02;letter-spacing:-0.04em;font-weight:700">Simple pricing</h2>
-        <p style="margin:0;color:#a7abb2">Unlimited posts on every plan. 7-day free trial, card required. Cancel anytime.</p>
+        <p style="margin:0;color:#a7abb2">Start free. Paid plans add unlimited posts, bulk scheduling and the API, with a 7-day free trial (card required). Cancel anytime.</p>
       </div>
       <div role="group" aria-label="Billing period" style="display:flex;gap:4px;padding:4px;border-radius:14px;border:1px solid #22252a;background:#0f1113;margin-top:-12px">
         <button aria-pressed="{{ moPressed }}" onClick="{{ pickMonthly }}" style="padding:9px 18px;border-radius:10px;border:0;cursor:pointer;font-size:14px;font-weight:600;background:{{ moBg }};color:{{ moFg }};transition:background .2s,color .2s">Monthly</button>
         <button aria-pressed="{{ yrPressed }}" onClick="{{ pickYearly }}" style="padding:9px 18px;border-radius:10px;border:0;cursor:pointer;font-size:14px;font-weight:600;background:{{ yrBg }};color:{{ yrFg }};transition:background .2s,color .2s">Yearly <span style="color:{{ yrTag }};font-size:12px">2 months free</span></button>
       </div>
-      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;width:100%;max-width:760px;text-align:left">
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;width:100%;max-width:1060px;text-align:left">
+        <div style="padding:30px;border:1px solid #22252a;border-radius:20px;background:#0f1113;display:flex;flex-direction:column;gap:20px">
+          <span style="align-self:flex-start;padding:2px 10px;border-radius:999px;border:1px solid #3a3e45;font-size:12px;font-weight:600">Free</span>
+          <div style="display:flex;align-items:baseline;gap:4px"><span style="font-size:52px;font-weight:700;letter-spacing:-0.04em;line-height:1">$0</span><span style="color:#6b7079">/mo</span></div>
+          <span style="margin-top:-12px;font-size:13px;color:#6b7079">No card needed</span>
+          <div style="display:flex;flex-direction:column;gap:10px;color:#a7abb2;font-size:15px">
+            <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>3 connected accounts</span>
+            <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>10 scheduled posts at a time</span>
+            <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>Per-platform captions</span>
+            <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>Queue &amp; calendar</span>
+          </div>
+          <a href="/signup" style="margin-top:auto;text-align:center;padding:12px;border-radius:11px;border:1px solid #3a3e45;font-weight:600;transition:border-color .2s" style-hover="border-color:#f6f5f1;color:#f6f5f1">Start free</a>
+        </div>
         <div style="padding:30px;border:1px solid #22252a;border-radius:20px;background:#0f1113;display:flex;flex-direction:column;gap:20px">
           <span style="align-self:flex-start;padding:2px 10px;border-radius:999px;border:1px solid #3a3e45;font-size:12px;font-weight:600">Solo</span>
           <div style="display:flex;align-items:baseline;gap:4px"><span style="font-size:52px;font-weight:700;letter-spacing:-0.04em;line-height:1">{{ soloPrice }}</span><span style="color:#6b7079">/mo</span></div>
@@ -499,7 +511,7 @@ button{font:inherit;color:inherit}
           <div style="display:flex;flex-direction:column;gap:10px;color:#a7abb2;font-size:15px">
             <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>15 connected accounts</span>
             <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>Unlimited posts &amp; scheduling</span>
-            <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>Per-platform captions</span>
+            <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>Bulk scheduling &amp; approvals</span>
             <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>API + MCP access</span>
             <span style="display:flex;gap:10px"><span style="color:#dcff2e">✓</span>Basic analytics</span>
           </div>
@@ -705,7 +717,7 @@ class Component extends DCLogic {
     const STEPS = [
       ['Per-platform captions', 'Start from one caption and adjust it per account. The counter tracks each platform\'s limit as you type.'],
       ['Queue and calendar', 'Every scheduled post on one calendar. Click a day to fill a gap, click a post to change it.'],
-      ['API + MCP', 'A REST API and an MCP server ship with every workspace, so Claude, Cursor or your own scripts can post for you.'],
+      ['API + MCP', 'A REST API and an MCP server come with Solo and Studio, so Claude, Cursor or your own scripts can post for you.'],
     ];
     const featSteps = STEPS.map(([title, body], i) => ({
       n: '0' + (i + 1), title, body,

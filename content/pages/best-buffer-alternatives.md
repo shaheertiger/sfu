@@ -102,7 +102,7 @@ Scheduling plus analytics and client reports, including ads data. Counts brands 
 Meta Business Suite, YouTube Studio, LinkedIn and TikTok all schedule posts for free and support their own formats best. Each covers one network (Business Suite covers two), so you upload and write every post separately.
 
 ### Schedule For You
-A cross-posting scheduler for 10 platforms: Instagram (posts, Reels, carousels and Stories), Facebook Pages, X, LinkedIn personal profiles, Threads, Bluesky, TikTok, YouTube, Pinterest and Google Business Profile. One draft with a tailored version per platform, a queue and drag-and-drop calendar, bulk scheduling and CSV import, first comments, repeating and evergreen posts, approvals, client preview links, RSS auto-post, webhooks, a REST API and an MCP server. Solo is $19 a month for 15 accounts and Studio $59 for 100 accounts with team members; there's no free plan, and the 7-day trial needs a card. Our [Buffer alternative](/buffer-alternative) page compares the two directly.
+A cross-posting scheduler for 10 platforms: Instagram (posts, Reels, carousels and Stories), Facebook Pages, X, LinkedIn personal profiles, Threads, Bluesky, TikTok, YouTube, Pinterest and Google Business Profile. One draft with a tailored version per platform, a queue and drag-and-drop calendar, bulk scheduling and CSV import, first comments, repeating and evergreen posts, approvals, client preview links, RSS auto-post, webhooks, a REST API and an MCP server. Solo is $19 a month for 15 accounts and Studio $59 for 100 accounts with team members; there's also a Free plan (3 accounts, up to 10 scheduled posts at a time, no card), and the paid plans' 7-day trial needs a card. Our [Buffer alternative](/buffer-alternative) page compares the two directly.
 
 ## How to choose by need
 
@@ -115,7 +115,7 @@ A cross-posting scheduler for 10 platforms: Instagram (posts, Reels, carousels a
 | Scheduling plus client reports | Metricool |
 | Many accounts at a flat price, tailored per platform | Schedule For You or SocialBee |
 | Client approvals without giving clients a login | Schedule For You |
-| An API, webhooks and RSS auto-posting on every plan | Schedule For You; check others' API access by plan |
+| An API, webhooks and RSS auto-posting on both paid plans | Schedule For You; check others' API access by plan |
 | LinkedIn company pages | Buffer, the suites or LinkedIn itself, not Schedule For You |
 
 ### Run a real week in each trial
@@ -129,7 +129,7 @@ Add up every profile, Page and channel, including clients' accounts and second a
 For one to three channels, Buffer's own free plan and the native schedulers cost nothing. For 5 to 15 accounts, Schedule For You's Solo plan is $19 a month and Later's Starter is $25 (one profile per network). Publer costs about the same at five accounts and more as you add accounts.
 
 ### What is the best free Buffer alternative?
-Each platform's native scheduler is free and supports its own formats. Publer and Metricool have free tiers with limits (Publer excludes X, Metricool excludes LinkedIn and X). Schedule For You isn't free: it has a 7-day trial with a card required.
+Each platform's native scheduler is free and supports its own formats. Publer and Metricool have free tiers with limits (Publer excludes X, Metricool excludes LinkedIn and X). Schedule For You has a Free plan for 3 accounts with up to 10 scheduled posts at a time and no card; bulk scheduling, approvals and the API need a paid plan.
 
 ### Which Buffer alternative is best for agencies?
 Look for pricing by account rather than by user, a way to keep clients separate, and client approval without a seat. Schedule For You has account groups, workspaces, approvals and preview links on both plans; Hootsuite and Sprout Social add inbox and reporting at a much higher per-user price.

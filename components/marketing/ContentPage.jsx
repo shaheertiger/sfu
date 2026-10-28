@@ -6,7 +6,7 @@ import { Breadcrumbs, MarketingPage, TrialCta } from './Chrome';
 import m from './marketing.module.css';
 import { getComparisons, getContentPage, renderMarkdown } from '@/lib/content';
 import { LANDING_PAGES } from '@/lib/landing-pages';
-import { PLANS, organizationLd, softwareLd } from '@/lib/seo';
+import { FREE, PLANS, organizationLd, softwareLd } from '@/lib/seo';
 import { abs, breadcrumbLd, faqPageLd, pageMetadata } from '@/lib/seo-pages';
 
 /** Metadata for a standalone page in content/pages. */
@@ -18,6 +18,7 @@ export function contentMetadata(slug) {
 }
 
 const PLAN_FEATURES = {
+  free: [`${FREE.accounts} connected accounts`, `Up to ${FREE.queue} scheduled posts at a time`, 'All 10 platforms', 'Queue, calendar and per-platform captions', 'No card needed', 'A short link back to us on each post'],
   solo: ['15 connected accounts', 'Unlimited posts', 'All 10 platforms', 'Queue, calendar and bulk CSV', 'Approvals and client preview links', 'RSS, webhooks and REST API'],
   studio: ['100 connected accounts', 'Team members', 'Priority support', 'Everything in Solo'],
 };
@@ -27,6 +28,18 @@ function PlanTable() {
     <section className={m.narrow} aria-labelledby="plans">
       <h2 id="plans" className={m.specTitle}>Plans</h2>
       <dl className={m.specs}>
+        <div className={m.spec}>
+          <dt>{FREE.name}</dt>
+          <dd>
+            <strong style={{ fontSize: 28, letterSpacing: '-0.03em' }}>$0</strong>
+            <div style={{ marginTop: 4, fontSize: 14, color: '#c4c7cc' }}>Free for as long as you like</div>
+            <ul style={{ margin: '10px 0 0', paddingLeft: 18, color: '#c4c7cc', fontSize: 14, lineHeight: 1.6 }}>
+              {PLAN_FEATURES.free.map((f) => (
+                <li key={f}>{f}</li>
+              ))}
+            </ul>
+          </dd>
+        </div>
         {PLANS.map((p) => (
           <div key={p.id} className={m.spec}>
             <dt>{p.name}</dt>
@@ -44,7 +57,7 @@ function PlanTable() {
           </div>
         ))}
       </dl>
-      <p className={m.meta} style={{ textAlign: 'left', marginTop: -8 }}>7-day free trial on both plans, billed monthly or yearly. Card required, not charged until day 8, cancel anytime. Refer a friend and you both gain: they get a 14-day trial, you get <a href="#refer-a-friend-give-a-month-get-a-month">a free month</a> when they pay.</p>
+      <p className={m.meta} style={{ textAlign: 'left', marginTop: -8 }}>Free needs no card. Solo and Studio start with a 7-day free trial, billed monthly or yearly: card required, not charged until day 8, cancel anytime. Refer a friend and you both gain: they get a 14-day trial, you get <a href="#refer-a-friend-give-a-month-get-a-month">a free month</a> when they pay.</p>
     </section>
   );
 }
@@ -72,11 +85,11 @@ function FeaturePage({ slug, page }) {
           <h1 className={m.h1}>{page.h1}</h1>
           {page.lead && <p className={m.lead}>{page.lead}</p>}
           <div className={m.ctaRow} style={{ justifyContent: 'center', marginTop: 22 }}>
-            <Link href="/signup" className={`${m.btn} ${m.btnPrimary}`}>Start your 7-day free trial</Link>
+            <Link href="/signup" className={`${m.btn} ${m.btnPrimary}`}>Start free</Link>
             {slug === 'api' && <Link href="/docs" className={m.btn}>Read the API reference</Link>}
             {slug !== 'pricing' && <Link href="/pricing" className={m.btn}>See pricing</Link>}
           </div>
-          <p className={m.meta}>Card required. Not charged until day 8. Cancel anytime.</p>
+          <p className={m.meta}>Free for 3 accounts, no card. Solo and Studio start with a 7-day free trial.</p>
         </section>
         {slug === 'pricing' && <PlanTable />}
         <article className={`${m.narrow} ${m.prose}`}>

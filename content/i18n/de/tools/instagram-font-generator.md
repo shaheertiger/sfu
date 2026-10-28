@@ -121,4 +121,4 @@ Der Reels-Editor hat für Text-Overlays eigene Schriftarten. Eingefügter Unicod
 
 ## Gestylte Instagram-Beiträge mit Schedule For You planen
 
-Schreib deine Caption einmal, pass sie für Instagram und deine anderen Kanäle an und plane alles aus einer Warteschlange und einem Kalender. Schedule For You prüft beim Tippen, ob deine Caption unter 2.200 Zeichen bleibt, und jeder Tarif enthält unbegrenzt viele Beiträge. Wie das Planen genau funktioniert, liest du unter [Instagram-Beiträge planen](/de/instagram). Die 7-tägige Testphase erfordert eine Karte, du kannst jederzeit kündigen und zahlst erst ab Tag 8. [Jetzt 7 Tage kostenlos testen](/signup).
+Schreib deine Caption einmal, pass sie für Instagram und deine anderen Kanäle an und plane alles aus einer Warteschlange und einem Kalender. Schedule For You prüft beim Tippen, ob deine Caption unter 2.200 Zeichen bleibt, und die bezahlten Tarife enthalten unbegrenzt viele Beiträge. Wie das Planen genau funktioniert, liest du unter [Instagram-Beiträge planen](/de/instagram). Die 7-tägige Testphase erfordert eine Karte, du kannst jederzeit kündigen und zahlst erst ab Tag 8. [Jetzt 7 Tage kostenlos testen](/signup).

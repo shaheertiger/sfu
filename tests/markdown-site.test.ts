@@ -134,7 +134,8 @@ test('the llms-full guide lists every public URL and the facts assistants must g
   const guide = buildAgentGuide();
   for (const r of listMarkdownRoutes()) assert.ok(guide.includes(`(https://scheduleforyou.com${r.path === '/' ? '/' : r.path})`), `${r.path} missing from the URL index`);
   assert.match(guide, /a card is required/);
-  assert.match(guide, /There is no free plan/);
+  assert.match(guide, /Free needs no card/);
+  assert.doesNotMatch(guide, /no free plan/i);
   assert.match(guide, /\| `create_post` \|/);
   assert.match(guide, /\| POST \| `\/posts` \| Create a post \|/);
 });

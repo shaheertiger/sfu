@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { body, handler, json } from '@/lib/server/api';
 import { exec, one, query } from '@/lib/server/db';
 import { requireEditor } from '@/lib/server/roles';
+import { requirePaid } from '@/lib/server/billing';
 import { feedRow, getFeed } from '@/lib/server/rss';
 
 export const PATCH = handler(async ({ req, workspace, params }) => {
@@ -14,6 +15,8 @@ export const PATCH = handler(async ({ req, workspace, params }) => {
     template: z.string().min(1).max(2000).optional(),
     account_ids: z.array(z.string()).max(100).optional(),
   }).parse(await body(req));
+  // On Free a feed can still be switched off or removed, never on or changed.
+  if (b.active !== false || b.mode || b.template || b.account_ids) requirePaid(workspace, 'rss');
   let accounts = b.account_ids;
   if (accounts) {
     const valid = new Set((await query('SELECT id FROM social_accounts WHERE workspace_id=$1', [workspace.id])).map((r) => r.id));

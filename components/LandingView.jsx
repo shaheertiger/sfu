@@ -200,9 +200,9 @@ export function renderLanding($v) {
                   fontSize: '12px',
                 }}
               >
-                {'New'}
+                {'Free'}
               </span>
-              {' REST API and MCP server in every workspace '}
+              {' Start free with 3 accounts, no card needed '}
             </span>{' '}
             <h1
               style={{
@@ -266,7 +266,7 @@ export function renderLanding($v) {
               </a>{' '}
             </div>{' '}
             <span style={{ fontSize: '13px', color: '#6b7079' }}>
-              {'7-day free trial · Card required · Cancel anytime'}
+              {'Free for 3 accounts · No card needed · Upgrade anytime'}
             </span>{' '}
           </div>{' '}
           <div
@@ -2352,7 +2352,9 @@ export function renderLanding($v) {
                 {'Simple pricing'}
               </h2>{' '}
               <p style={{ margin: '0', color: '#a7abb2' }}>
-                {'Unlimited posts on every plan. 7-day free trial, card required. Cancel anytime.'}
+                {
+                  'Start free. Paid plans add unlimited posts, bulk scheduling and the API, with a 7-day free trial (card required). Cancel anytime.'
+                }
               </p>{' '}
             </div>{' '}
             <div
@@ -2409,14 +2411,82 @@ export function renderLanding($v) {
               data-reveal=""
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,320px),1fr))',
+                gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,280px),1fr))',
                 gap: '16px',
                 width: '100%',
-                maxWidth: '760px',
+                maxWidth: '1060px',
                 textAlign: 'left',
               }}
             >
               {' '}
+              <div
+                style={{
+                  padding: '30px',
+                  border: '1px solid #22252a',
+                  borderRadius: '20px',
+                  background: '#0f1113',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '20px',
+                }}
+              >
+                {' '}
+                <span
+                  style={{
+                    alignSelf: 'flex-start',
+                    padding: '2px 10px',
+                    borderRadius: '999px',
+                    border: '1px solid #3a3e45',
+                    fontSize: '12px',
+                    fontWeight: '600',
+                  }}
+                >
+                  {'Free'}
+                </span>{' '}
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+                  <span style={{ fontSize: '52px', fontWeight: '700', letterSpacing: '-0.04em', lineHeight: '1' }}>
+                    {'$0'}
+                  </span>
+                  <span style={{ color: '#6b7079' }}>{'/mo'}</span>
+                </div>{' '}
+                <span style={{ marginTop: '-12px', fontSize: '13px', color: '#6b7079' }}>{'No card needed'}</span>{' '}
+                <div
+                  style={{ display: 'flex', flexDirection: 'column', gap: '10px', color: '#a7abb2', fontSize: '15px' }}
+                >
+                  {' '}
+                  <span style={{ display: 'flex', gap: '10px' }}>
+                    <span style={{ color: '#dcff2e' }}>{'✓'}</span>
+                    {'3 connected accounts'}
+                  </span>{' '}
+                  <span style={{ display: 'flex', gap: '10px' }}>
+                    <span style={{ color: '#dcff2e' }}>{'✓'}</span>
+                    {'10 scheduled posts at a time'}
+                  </span>{' '}
+                  <span style={{ display: 'flex', gap: '10px' }}>
+                    <span style={{ color: '#dcff2e' }}>{'✓'}</span>
+                    {'Per-platform captions'}
+                  </span>{' '}
+                  <span style={{ display: 'flex', gap: '10px' }}>
+                    <span style={{ color: '#dcff2e' }}>{'✓'}</span>
+                    {'Queue & calendar'}
+                  </span>{' '}
+                </div>{' '}
+                <a
+                  href="/signup"
+                  style={{
+                    marginTop: 'auto',
+                    textAlign: 'center',
+                    padding: '12px',
+                    borderRadius: '11px',
+                    border: '1px solid #3a3e45',
+                    fontWeight: '600',
+                    transition: 'border-color .2s',
+                  }}
+                  className="landing-hover-8"
+                >
+                  {'Start free'}
+                </a>{' '}
+              </div>{' '}
               <div
                 style={{
                   padding: '30px',
@@ -2462,7 +2532,7 @@ export function renderLanding($v) {
                   </span>{' '}
                   <span style={{ display: 'flex', gap: '10px' }}>
                     <span style={{ color: '#dcff2e' }}>{'✓'}</span>
-                    {'Per-platform captions'}
+                    {'Bulk scheduling & approvals'}
                   </span>{' '}
                   <span style={{ display: 'flex', gap: '10px' }}>
                     <span style={{ color: '#dcff2e' }}>{'✓'}</span>

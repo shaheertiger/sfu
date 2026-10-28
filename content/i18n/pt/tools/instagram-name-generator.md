@@ -157,4 +157,4 @@ Não. O @ só aceita letras, números, pontos e underlines comuns. Letras estili
 
 ## Agende seus posts do Instagram com o Schedule For You
 
-Com o @ escolhido, escreva a bio com o [gerador de bio para Instagram](/pt/tools/instagram-bio-generator) e deixe o resto com o Schedule For You. É um agendador pago para posts, carrosséis e Reels do Instagram junto com TikTok, YouTube e outras sete redes, com posts ilimitados em todos os planos a partir de US$ 19/mês. O app está em inglês, e o teste grátis de 7 dias pede cartão, sem cobrança antes do 8º dia. [Comece seu teste grátis de 7 dias](/signup).
+Com o @ escolhido, escreva a bio com o [gerador de bio para Instagram](/pt/tools/instagram-bio-generator) e deixe o resto com o Schedule For You. É um agendador pago para posts, carrosséis e Reels do Instagram junto com TikTok, YouTube e outras sete redes, com posts ilimitados nos planos pagos a partir de US$ 19/mês. O app está em inglês, e o teste grátis de 7 dias pede cartão, sem cobrança antes do 8º dia. [Comece seu teste grátis de 7 dias](/signup).

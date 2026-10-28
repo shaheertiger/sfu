@@ -4,6 +4,7 @@ import { exec, now, one, query } from './db';
 import { savePost } from './posts';
 import { nextOpenSlot } from './publisher';
 import { safeFetch } from './safe-url';
+import { paidSql } from './billing';
 
 /**
  * RSS / Atom auto-post. The cron checks each feed every 15 minutes. The first check only records
@@ -86,8 +87,9 @@ export async function checkFeed(feed: any, first = !feed.last_checked_at): Promi
  */
 export async function pollFeeds({ limit = 20, deadline = now() + 60_000 } = {}) {
   const due = await query(
-    `SELECT id, last_checked_at FROM rss_feeds WHERE active AND (last_checked_at IS NULL OR last_checked_at < $1)
-     ORDER BY last_checked_at NULLS FIRST LIMIT $2`,
+    `SELECT f.id, f.last_checked_at FROM rss_feeds f JOIN workspaces w ON w.id = f.workspace_id
+     WHERE f.active AND (f.last_checked_at IS NULL OR f.last_checked_at < $1) AND ${paidSql('w')}
+     ORDER BY f.last_checked_at NULLS FIRST LIMIT $2`,
     [now() - INTERVAL, limit],
   );
   let created = 0;

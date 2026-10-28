@@ -80,7 +80,7 @@ Open-source schedulers you host yourself are the other free route. The software 
 
 Even the best free social media schedulers make you repeat work across apps. A paid scheduler earns its cost when the time you spend repeating posts across native tools is worth more than the subscription. Typical signs: you post to four or more platforms, you plan a month at a time, or someone else needs to approve posts.
 
-Schedule For You is a paid option, not a free one: there's a 7-day free trial (card required, no charge until day 8), then $19/month for up to 15 connected accounts or $59/month for up to 100, with unlimited posts. It schedules one post to X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile, with a per-platform caption for each, a queue with time slots, evergreen posts and CSV bulk scheduling. See [pricing](/#pricing) for details.
+Schedule For You has a Free plan too: 3 connected accounts, up to 10 scheduled posts waiting at a time and no card, with a short "Scheduled with Schedule For You" link added to each post when it fits. It schedules one post to X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile, with a per-platform caption for each and a queue with time slots. The paid plans, $19/month for up to 15 connected accounts or $59/month for up to 100, add unlimited scheduling, evergreen posts and CSV bulk scheduling, with a 7-day free trial (card required, no charge until day 8). See [pricing](/#pricing) for details.
 
 ## Frequently asked questions
 

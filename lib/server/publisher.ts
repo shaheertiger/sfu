@@ -5,9 +5,11 @@ import { adapterFor } from './adapters';
 import { OUT_OF_TIME_CODE, PublishError, isAuthError, timeLeft, userFacingError, withDeadline, type PublishInput, type SocialAccount } from './adapters/types';
 import { mediaFiles, rowToAccount } from './posts';
 import { notifyFailures, type Failure } from './notify';
-import { canPublishSql } from './billing';
 import { firePostEvent } from './webhooks';
 import { withSignature } from './signature';
+import { isPaid } from './billing';
+import { freeBrandLine } from '@/lib/plan-limits';
+import { siteUrl } from '@/lib/site';
 import { overLimitAccountIds } from './accounts';
 import { PLATFORMS, type PlatformId } from './platforms';
 import { nextOccurrence, safeTz, zonedTime } from './tz';
@@ -125,9 +127,13 @@ async function publishClaimed(postId: string) {
   if (!post) return null;
   const targets = await query('SELECT * FROM post_targets WHERE post_id=$1', [postId]);
   const media = await mediaFiles(post.workspace_id, post.media || []);
-  const signature = post.signature === false ? '' : ((await one('SELECT signature FROM workspaces WHERE id=$1', [post.workspace_id]))?.signature || '').trim();
-  const prefs = (await one('SELECT name, prefs FROM workspaces WHERE id=$1', [post.workspace_id]))?.prefs || {};
-  const trackLinks = prefs.trackLinks === true;
+  const ws = await one('SELECT * FROM workspaces WHERE id=$1', [post.workspace_id]);
+  const signature = post.signature === false ? '' : (ws?.signature || '').trim();
+  const prefs = ws?.prefs || {};
+  // Free workspaces: no link tracking (a paid feature), and a line linking back to us when it fits.
+  const free = !!ws && !isPaid(ws);
+  const brand = free ? freeBrandLine(siteUrl()) : '';
+  const trackLinks = !free && prefs.trackLinks === true;
   const utmOn = trackLinks && prefs.utm === true;
   const campaign = campaignSlug(Array.isArray(post.labels) ? post.labels[0] : null);
 
@@ -174,6 +180,7 @@ async function publishClaimed(postId: string) {
       account = await freshAccount(accRow);
       const linkCtx = { workspaceId: post.workspace_id, postId: post.id, targetId: target.id, utm: utmOn ? { source: account.platform, campaign } : null };
       let caption = withSignature(target.caption_override ?? post.caption, signature, account.platform);
+      if (brand) caption = withSignature(caption, brand, account.platform);
       if (trackLinks) caption = await shortenLinks(caption, linkCtx);
       const input: PublishInput = {
         account,
@@ -301,8 +308,11 @@ async function scheduleFollowUps(post: any) {
   let at: number | null = null;
   let anchor: number | null = null;
   let n = 0;
+  if (post.repeat !== 'weekly' && post.repeat !== 'monthly' && !post.evergreen) return;
+  const ws = await one('SELECT * FROM workspaces WHERE id=$1', [post.workspace_id]);
+  // Repeating and evergreen posts are a paid feature: on Free the series stops after this copy.
+  if (!ws || !isPaid(ws)) return;
   if (post.repeat === 'weekly' || post.repeat === 'monthly') {
-    const ws = await one('SELECT prefs FROM workspaces WHERE id=$1', [post.workspace_id]);
     const next = nextRepeat(post, safeTz(ws?.prefs?.tz));
     if (next) ({ at, anchor, n } = next);
   } else if (post.evergreen) at = await nextOpenSlot(post.workspace_id);
@@ -359,7 +369,6 @@ export async function runDue({ deadline = now() + 200_000, batch = 1 }: { deadli
          WHERE p.status='scheduled' AND p.scheduled_at IS NOT NULL AND p.scheduled_at <= $1
            AND p.approval IS DISTINCT FROM 'pending'
            AND COALESCE((w.prefs->>'paused')::boolean, false) = false
-           AND ${canPublishSql()}
          ORDER BY p.scheduled_at LIMIT $2 FOR UPDATE OF p SKIP LOCKED)
        RETURNING id`,
       [now(), batch],

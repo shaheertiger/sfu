@@ -84,4 +84,4 @@ YouTube allows up to 50 characters at the time of writing, but shorter is better
 Some symbols may be accepted, but Unicode "fonts" are hard to search for and screen readers may read them letter by letter. Keep the name plain and save styled text for descriptions and community posts, for example with the [YouTube bold text generator](/tools/youtube-bold-text-generator). For the About section, try the [YouTube bio generator](/tools/youtube-bio-generator).
 
 ## Plan your new channel's uploads with Schedule For You
-Once the name is settled, Schedule For You helps you keep a steady upload rhythm: schedule YouTube videos next to your TikTok, Instagram and X posts from one calendar, with unlimited posts on every plan. [Start your 7-day free trial](/signup). A card is required, and you are not charged until day 8.
+Once the name is settled, Schedule For You helps you keep a steady upload rhythm: schedule YouTube videos next to your TikTok, Instagram and X posts from one calendar, with unlimited posts on the paid plans. [Start your 7-day free trial](/signup). A card is required, and you are not charged until day 8.

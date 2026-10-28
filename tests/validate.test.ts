@@ -14,7 +14,8 @@ function fakeDb(media: { id: string; mime: string; filename: string }[]) {
     const sql = text.replace(/\s+/g, ' ').trim();
     if (sql.startsWith('SELECT id, mime, filename FROM media')) return { rows: media.filter((m) => p[1].includes(m.id)), rowCount: 0 };
     if (sql.startsWith('SELECT id, platform, username FROM social_accounts')) return { rows: accounts.filter((a) => p[1].includes(a.id)), rowCount: 0 };
-    if (sql.startsWith('SELECT a.id FROM')) return { rows: [], rowCount: 0 };
+    if (sql.startsWith('SELECT a.id FROM') || sql.startsWith('SELECT id FROM ( SELECT id, ROW_NUMBER()')) return { rows: [], rowCount: 0 };
+    if (sql.startsWith('SELECT * FROM workspaces WHERE id=$1')) return { rows: [{ id: p[0], account_limit: 15 }], rowCount: 1 };
     throw new Error('unexpected query: ' + sql.slice(0, 80));
   };
   (globalThis as any).__sfyPool = { query: run, connect: async () => ({ query: run, release() {} }) };

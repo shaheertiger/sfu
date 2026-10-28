@@ -7,6 +7,7 @@ import { calendarToken, calendarUrls } from '@/lib/server/calendar';
 import { referralSummary } from '@/lib/server/referrals';
 import { bookmarklet } from '@/lib/share-caption';
 import { appUrl } from '@/lib/server/url';
+import { isPaid } from '@/lib/server/billing';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,6 +24,8 @@ export const GET = handler(async ({ req, workspace }) => {
   ]);
   return {
     workspace: { id: workspace.id, name: workspace.name, role: workspace.role },
+    // False on the Free plan: link tracking, the shared calendar, RSS, webhooks and preview links are paid.
+    paid: isPaid(workspace),
     signature: ws[0]?.signature || '',
     track_links: workspace.prefs?.trackLinks === true,
     utm_tags: workspace.prefs?.utm === true,

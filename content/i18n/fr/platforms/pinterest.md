@@ -104,7 +104,7 @@ Non. L’interface de Schedule For You est uniquement en anglais. Vos titres, de
 
 ### Combien coûte Schedule For You ?
 
-Le forfait Solo coûte 19 $ par mois (15 comptes connectés) et le forfait Studio 59 $ par mois (100 comptes et des membres d’équipe). Les publications sont illimitées dans les deux cas, et l’abonnement annuel coûte le prix de 10 mois. Il n’y a pas de forfait gratuit, mais un essai de 7 jours.
+Le forfait Solo coûte 19 $ par mois (15 comptes connectés) et le forfait Studio 59 $ par mois (100 comptes et des membres d’équipe). Les publications sont illimitées dans les deux cas, et l’abonnement annuel coûte le prix de 10 mois. Il existe aussi un forfait gratuit (3 comptes, jusqu’à 10 publications programmées à la fois, sans carte), et les forfaits payants s’essaient gratuitement pendant 7 jours.
 
 ### Que se passe-t-il si une épingle programmée échoue ?
 

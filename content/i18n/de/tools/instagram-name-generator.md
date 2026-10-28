@@ -128,4 +128,4 @@ Ja. Der Generator entfernt die Pünktchen automatisch, aus „schön“ wird „
 
 ## Instagram-Beiträge mit Schedule For You planen
 
-Wenn dein Handle steht, kann Schedule For You das Posten für dich übernehmen. Plane Fotobeiträge, Karussells und Reels zusammen mit TikTok, YouTube und sieben weiteren Plattformen in einem Kalender, mit unbegrenzt vielen Beiträgen in jedem Tarif, ab 19 US-Dollar im Monat. Mehr dazu unter [Instagram-Beiträge planen](/de/instagram). Für die Testphase ist eine Karte nötig, abgebucht wird erst ab Tag 8. [Jetzt 7 Tage kostenlos testen](/signup).
+Wenn dein Handle steht, kann Schedule For You das Posten für dich übernehmen. Plane Fotobeiträge, Karussells und Reels zusammen mit TikTok, YouTube und sieben weiteren Plattformen in einem Kalender, mit unbegrenzt vielen Beiträgen in den bezahlten Tarifen ab 19 US-Dollar im Monat. Mehr dazu unter [Instagram-Beiträge planen](/de/instagram). Für die Testphase ist eine Karte nötig, abgebucht wird erst ab Tag 8. [Jetzt 7 Tage kostenlos testen](/signup).
