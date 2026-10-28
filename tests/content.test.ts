@@ -44,6 +44,7 @@ test('internal links point at pages that exist', () => {
   const ok = (href: string) => {
     const [p] = href.split('#');
     if (['', '/', '/signup', '/login', '/tools', '/blog', '/compare', '/about', '/later-alternative', '/docs'].includes(p)) return true;
+    if (p.startsWith('/images/')) return fs.existsSync(path.join(process.cwd(), 'public', p));
     if (PLATFORM_PAGES.some((x) => p === `/${x.slug}`)) return true;
     if (LANDING_PAGES.some((x) => p === `/${x.slug}`)) return true;
     let m = /^\/tools\/([a-z0-9-]+)$/.exec(p);
