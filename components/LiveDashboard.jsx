@@ -18,6 +18,7 @@ import { splitThread, THREAD_PLATFORMS } from '@/lib/server/thread';
 import { captionFromFilename } from '@/lib/bulk-caption';
 import { isShare, shareCaption } from '@/lib/share-caption';
 import { DEFAULT_COOLDOWN_DAYS, matchesUsage, mediaState } from '@/lib/media-usage';
+import { FREE_PLAN, PAID_FEATURES, paidOnlyMessage } from '@/lib/plan-limits';
 
 const P = Base.P;
 const PLATFORM_IDS = Object.keys(P);
@@ -172,6 +173,8 @@ async function api(path, { method = 'GET', body } = {}, retried = false) {
   if (!res.ok) {
     const err = new Error(data.error || `Request failed (${res.status})`);
     err.status = res.status;
+    // 402: the Free plan's limit or a paid feature. The dashboard opens the plan picker with the reason.
+    if (res.status === 402 && typeof window !== 'undefined') window.dispatchEvent(new CustomEvent('sfy:upgrade', { detail: { message: err.message } }));
     throw err;
   }
   return data;
@@ -265,7 +268,7 @@ export default class LiveDashboard extends Base {
       ...this.state,
       loading: true, posts: [], accounts: [], library: [], keys: [], invites: [], notes: {}, templates: [], tagGroups: [],
       folders: [], labelList: [], bulkAccs: [], csv: 'date,time,accounts,caption\n', bulkFiles: [],
-      wsId: null, wsList: [], members: [], pendingInvites: [], platforms: {}, storage: false, plan: 'trial', accountLimit: 15, modal: null, billing: null, planPicker: false, shareLink: null,
+      wsId: null, wsList: [], members: [], pendingInvites: [], platforms: {}, storage: false, plan: 'trial', accountLimit: 15, modal: null, billing: null, planPicker: false, upgradeReason: '', shareLink: null,
     };
     this._srv = new Map(); // post id → JSON of what the server has
     this._srvStatus = new Map(); // post id → server status
@@ -318,6 +321,8 @@ export default class LiveDashboard extends Base {
       this._pendingDel.clear();
     };
     window.addEventListener('pagehide', this._onHide);
+    this._onUpgrade = (e) => this.askUpgrade(e.detail?.message);
+    window.addEventListener('sfy:upgrade', this._onUpgrade);
   }
   /** Esc closes the top-most popup first (the cropper and Page picker close themselves). */
   closeTopLayer() {
@@ -325,7 +330,7 @@ export default class LiveDashboard extends Base {
     if (s.cropFiles || s.pickId) return true;
     if (s.modal) { super.setState({ modal: null }); return true; }
     if (s.shareLink) { super.setState({ shareLink: null }); return true; }
-    if (s.planPicker) { super.setState({ planPicker: false }); return true; }
+    if (s.planPicker) { super.setState({ planPicker: false, upgradeReason: '' }); return true; }
     return super.closeTopLayer();
   }
 
@@ -336,11 +341,21 @@ export default class LiveDashboard extends Base {
     clearTimeout(this._prefsT);
     document.removeEventListener('visibilitychange', this._vis);
     window.removeEventListener('pagehide', this._onHide);
+    window.removeEventListener('sfy:upgrade', this._onUpgrade);
     this._onHide();
   }
 
   setState(update, cb) {
     super.setState(update, () => { this._sync(); if (cb) cb(); });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    super.componentDidUpdate(prevProps, prevState);
+    // Free: the bulk screen is a paid feature, however it was reached (menu, link, shortcut).
+    if (this.isFree() && this.state.screen === 'bulk' && prevState.screen !== 'bulk') {
+      super.setState({ screen: prevState.screen || 'home' });
+      this.askUpgrade(paidOnlyMessage('bulk'));
+    }
   }
 
   async load(first) {
@@ -352,8 +367,6 @@ export default class LiveDashboard extends Base {
       if (!first && busy()) return;
       this.applyServer(d, first);
       if (first) this.handleReturnParams(d);
-      // New workspace without a card: offer the free trial right away (owners only, once per page load).
-      if (first && d.billing?.enabled && d.billing.state === 'needs_card' && d.workspace.role === 'owner' && !/billing=/.test(window.location.search)) super.setState({ planPicker: true });
     } catch (e) {
       if (first) this.flash(e.message || 'Could not load your workspace', true);
     }
@@ -432,6 +445,7 @@ export default class LiveDashboard extends Base {
       setTimeout(() => this.load(false), 4000);
     }
     if (q.get('billing') === 'cancel') this.flash('Checkout cancelled. Nothing was charged.');
+    if (q.has('upgrade')) this.askUpgrade(PAID_FEATURES[q.get('upgrade')] ? paidOnlyMessage(q.get('upgrade')) : '');
     window.history.replaceState(null, '', '/app');
   }
 
@@ -962,6 +976,29 @@ export default class LiveDashboard extends Base {
   }
 
   /* ---------- billing ---------- */
+  /** On Free (billing on): no Free limits. */
+  isFree() {
+    const b = this.state.billing;
+    return !!b?.enabled && b.state === 'free';
+  }
+
+  /** Scheduled posts waiting to publish: what the Free plan's queue limit counts. */
+  queuedCount() {
+    return this.state.posts.filter((p) => p.status === 'scheduled').length;
+  }
+
+  /**
+   * Something needs a paid plan (a 402 from the server, a locked feature, an upgrade link): owners get the
+   * plan picker with the reason; anyone else is told to ask the owner.
+   */
+  askUpgrade(reason = '') {
+    const b = this.state.billing;
+    if (!b?.enabled) { if (reason) this.flash(reason, true); return; }
+    const owner = this.state.wsList.find((w) => w.id === this.state.wsId)?.role === 'owner';
+    if (!owner) { this.flash(`${reason ? reason + ' ' : ''}Ask the workspace owner to upgrade.`, true); return; }
+    super.setState({ planPicker: true, upgradeReason: reason || '' });
+  }
+
   openBilling() {
     const b = this.state.billing;
     if (b && ['trial', 'active', 'past_due'].includes(b.state) && b.hasCustomer) return this.goBilling('/api/billing/portal');
@@ -1012,7 +1049,19 @@ export default class LiveDashboard extends Base {
       { name: 'Sign out', sub: this.userEmail || '', tone: '#2a2e34', mark: '', bg: 'transparent', pick: () => this.signOut() },
     ];
     v.wsName = cur?.name || 'Workspace';
-    v.wsSub = `${s.billing?.enabled ? stateName(s.billing) : planName(s.plan)} · ${s.accounts.length} account${s.accounts.length === 1 ? '' : 's'}`;
+    v.wsSub = this.isFree()
+      ? `Free · ${s.accounts.length}/${s.billing.accountLimit ?? FREE_PLAN.accountLimit} accounts`
+      : `${s.billing?.enabled ? stateName(s.billing) : planName(s.plan)} · ${s.accounts.length} account${s.accounts.length === 1 ? '' : 's'}`;
+    // Free: bulk scheduling is a paid feature. It stays in the menu, marked, and opens the upgrade.
+    if (this.isFree()) {
+      for (const g of v.navGroups || []) {
+        for (const n of g.items || []) {
+          if (n.id !== 'bulk') continue;
+          n.count = 'Paid';
+          n.go = () => { super.setState({ drawer: false }); this.askUpgrade(paidOnlyMessage('bulk')); };
+        }
+      }
+    }
     v.wsTone = '#d9ff35';
     v.greetName = this.userName || '';
     if (typeof v.greeting === 'string') v.greeting = v.greeting.replace(/, [^,]*$/, `, ${this.userName || 'there'}`);
@@ -1358,6 +1407,7 @@ export default class LiveDashboard extends Base {
         {!this.state.loading && (
           <BillingBanner
             billing={this.state.billing}
+            usage={{ accounts: this.state.accounts.length, queued: this.queuedCount() }}
             owner={this.state.wsList.find((w) => w.id === this.state.wsId)?.role === 'owner'}
             onChoose={() => this.openBilling()}
           />
@@ -1365,7 +1415,7 @@ export default class LiveDashboard extends Base {
         {!this.state.loading && this.state.screen === 'compose' && this.state.draft?.id && this._srv.has(this.state.draft.id) && (
           <button type="button" className="sfy-share-btn" onClick={() => this.shareDraft()} style={{ position: 'fixed', right: 20, zIndex: 70, padding: '10px 14px', borderRadius: 12, border: '1px solid #141619', background: '#fff', color: '#141619', font: '600 14px Geist, system-ui, sans-serif', cursor: 'pointer', boxShadow: '0 8px 24px rgba(20,22,25,.15)' }}>
             <style>{'.sfy-share-btn{bottom:20px}@media (max-width:760px){.sfy-share-btn{bottom:calc(156px + env(safe-area-inset-bottom));right:12px!important}}'}</style>
-            Share for review
+            Share for review{this.isFree() ? ' · Paid' : ''}
           </button>
         )}
         {this.state.pickId && (
@@ -1391,8 +1441,10 @@ export default class LiveDashboard extends Base {
         {this.state.planPicker && (
           <PlanDialog
             billing={this.state.billing}
+            reason={this.state.upgradeReason}
+            usage={{ accounts: this.state.accounts.length, queued: this.queuedCount() }}
             onPick={(plan, interval) => this.goBilling('/api/billing/checkout', { plan, interval })}
-            onClose={() => super.setState({ planPicker: false })}
+            onClose={() => super.setState({ planPicker: false, upgradeReason: '' })}
           />
         )}
       </>
@@ -1440,37 +1492,46 @@ function FormDialog({ modal, onClose }) {
 
 
 /* ---------- billing UI ---------- */
-const planName = (p) => ({ trial: 'Trial', none: 'No plan', solo: 'Solo', studio: 'Studio' })[p] || p;
-const stateName = (b) => ({ needs_card: 'No plan yet', trial: `${planName(b.plan)} trial`, expired: 'Plan ended', past_due: planName(b.plan) })[b.state] || planName(b.plan);
+const planName = (p) => ({ trial: 'Trial', none: 'Free', free: 'Free', solo: 'Solo', studio: 'Studio' })[p] || p;
+const stateName = (b) => ({ free: 'Free', trial: `${planName(b.plan)} trial`, past_due: planName(b.plan) })[b.state] || planName(b.plan);
 
 function billingLine(b) {
   const day = (t) => new Date(t).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-  if (b.state === 'needs_card') return `Start your ${b.trialDays || 7}-day free trial`;
+  if (b.state === 'free') return b.trialEligible ? `Free plan · try Solo or Studio free for ${b.trialDays || 7} days` : 'Free plan · upgrade';
   if (b.state === 'trial') return b.daysLeft != null ? `${planName(b.plan)} trial · ${b.daysLeft} day${b.daysLeft === 1 ? '' : 's'} left` : `${planName(b.plan)} trial`;
-  if (b.state === 'expired') return 'Plan ended · choose a plan';
   if (b.state === 'past_due') return 'Payment failed · update card';
   if (b.cancelAtPeriodEnd && b.periodEnd) return `${planName(b.plan)} · ends ${day(b.periodEnd)}`;
   return `${planName(b.plan)} plan`;
 }
 
-/** Slim notice for trial countdown, expired trial or failed payment. Nothing when the plan is fine. */
-function BillingBanner({ billing: b, owner, onChoose }) {
+/**
+ * Slim notice: Free nearing its limits (or a plan that just ended), a trial about to charge, or a failed
+ * payment. Nothing when the plan is fine.
+ */
+function BillingBanner({ billing: b, usage, owner, onChoose }) {
   if (!b?.enabled) return null;
   let text = '';
   let tone = 'calm';
   let cta = 'Choose a plan';
   const cur = b.plans?.find((p) => p.id === b.plan);
   const price = cur && (b.interval === 'year' ? `${cur.yearlyAmount} for the year` : cur.amount);
-  if (b.state === 'needs_card') { text = `Add a card to start your ${b.trialDays || 7}-day free trial. Publishing is off until then.`; cta = 'Start free trial'; }
+  if (b.state === 'free') {
+    const qMax = b.free?.queueLimit ?? FREE_PLAN.queueLimit, aMax = b.free?.accountLimit ?? FREE_PLAN.accountLimit;
+    const queued = usage?.queued ?? 0, accounts = usage?.accounts ?? 0;
+    cta = b.trialEligible ? `Try ${b.trialDays || 7} days free` : 'Upgrade';
+    if (queued >= qMax) { text = `Your Free queue is full: ${queued} of ${qMax} scheduled posts. Upgrade for unlimited scheduling.`; tone = 'alert'; }
+    else if (accounts > aMax) { text = `Free connects ${aMax} accounts, so ${accounts - aMax} of yours ${accounts - aMax === 1 ? 'is' : 'are'} paused. Upgrade to post to all ${accounts}.`; tone = 'alert'; }
+    else if (queued >= qMax - 2) text = `${queued} of ${qMax} Free scheduled posts used. Upgrade for unlimited scheduling.`;
+    else if (b.ended) text = `Your plan has ended, so you're on Free: ${aMax} accounts and ${qMax} scheduled posts at a time.`;
+  }
   else if (b.state === 'trial' && b.daysLeft != null && b.daysLeft <= 2 && !b.cancelAtPeriodEnd) { text = `Your free trial ends in ${b.daysLeft} day${b.daysLeft === 1 ? '' : 's'}${price ? `. Your card will be charged $${price}` : ''}.`; cta = 'Manage billing'; }
-  else if (b.state === 'expired') { text = 'Your plan has ended. Scheduled posts are paused.'; tone = 'alert'; }
   else if (b.state === 'past_due') { text = 'Your last payment failed. Update your card to avoid interruption.'; tone = 'alert'; cta = 'Update card'; }
   if (!text) return null;
   const alert = tone === 'alert';
   return (
     <div role="status" className="sfy-billing-banner" style={{ position: 'fixed', left: '50%', transform: 'translateX(-50%)', zIndex: 80, display: 'flex', alignItems: 'center', gap: 12, maxWidth: 'calc(100vw - 32px)', padding: '10px 12px 10px 16px', borderRadius: 14, background: alert ? '#fff1ef' : '#141619', color: alert ? '#a1281f' : '#fff', border: alert ? '1px solid #f3c9c3' : '1px solid #141619', boxShadow: '0 8px 24px rgba(20,22,25,.18)', font: '500 14px Geist, system-ui, sans-serif' }}>
       <style>{'.sfy-billing-banner{bottom:20px}@media (max-width:760px){.sfy-billing-banner{bottom:auto;top:calc(64px + env(safe-area-inset-top));width:calc(100vw - 24px);box-sizing:border-box;font-size:13px!important}}'}</style>
-      <span>{text}{!owner && ' Ask the workspace owner to choose a plan.'}</span>
+      <span>{text}{!owner && ' Ask the workspace owner to upgrade.'}</span>
       {owner && (
         <button type="button" onClick={onChoose} style={{ flex: 'none', padding: '7px 12px', borderRadius: 10, border: 0, background: '#dcff2e', color: '#15171a', fontWeight: 600, cursor: 'pointer' }}>
           {cta}
@@ -1480,7 +1541,7 @@ function BillingBanner({ billing: b, owner, onChoose }) {
   );
 }
 
-function PlanDialog({ billing: b, onPick, onClose }) {
+function PlanDialog({ billing: b, reason, usage, onPick, onClose }) {
   const [busy, setBusy] = React.useState('');
   const [interval, setInterval_] = React.useState('month');
   const yearly = interval === 'year';
@@ -1490,14 +1551,27 @@ function PlanDialog({ billing: b, onPick, onClose }) {
     try { await onPick(id, interval); } catch { setBusy(''); }
   };
   const tab = (on) => ({ flex: 1, padding: '7px 12px', borderRadius: 9, border: 0, cursor: 'pointer', fontWeight: 600, fontSize: 13, background: on ? '#141619' : 'transparent', color: on ? '#fff' : '#3d434d' });
-  const features = { solo: ['15 connected accounts', 'Unlimited posts & scheduling', 'API + MCP access'], studio: ['100 connected accounts', 'Team members', 'Priority support'] };
+  const features = {
+    solo: ['15 connected accounts', 'Unlimited scheduled posts', 'Bulk scheduling & CSV import', 'API, MCP server & webhooks', 'RSS auto-post', 'Approvals, client previews & shared calendar', 'Repeating & evergreen posts', 'No “Scheduled with” line on posts'],
+    studio: ['100 connected accounts', 'Team members', 'Everything in Solo', 'Priority support'],
+  };
+  const free = b?.state === 'free';
+  const fMax = b?.free || { accountLimit: FREE_PLAN.accountLimit, queueLimit: FREE_PLAN.queueLimit };
   return (
     <div role="dialog" aria-modal="true" aria-label="Choose a plan" onClick={(e) => e.target === e.currentTarget && onClose()} style={{ position: 'fixed', inset: 0, zIndex: 95, display: 'grid', placeItems: 'center', padding: 16, background: 'rgba(20,22,25,.45)', fontFamily: 'Geist, system-ui, sans-serif' }}>
       <div style={{ width: 'min(560px, 100%)', background: '#fff', borderRadius: 18, padding: 22, display: 'grid', gap: 14, boxShadow: '0 24px 60px rgba(20,22,25,.25)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
-          <strong style={{ fontSize: 18, letterSpacing: '-0.02em' }}>{b?.trialEligible ? `Start your ${b.trialDays || 7}-day free trial` : 'Choose a plan'}</strong>
+          <strong style={{ fontSize: 18, letterSpacing: '-0.02em' }}>{free ? (b?.trialEligible ? `Upgrade: ${b.trialDays || 7} days free` : 'Upgrade your plan') : b?.trialEligible ? `Start your ${b.trialDays || 7}-day free trial` : 'Choose a plan'}</strong>
           <button type="button" onClick={onClose} aria-label="Close" style={{ border: 0, background: 'transparent', fontSize: 20, cursor: 'pointer', color: '#677184' }}>×</button>
         </div>
+        {reason && (
+          <p role="alert" style={{ margin: 0, padding: '10px 12px', borderRadius: 10, background: '#f4ffc2', color: '#2c3300', fontSize: 14, lineHeight: 1.45 }}>{reason}</p>
+        )}
+        {free && (
+          <p style={{ margin: 0, fontSize: 13, color: '#3d434d', lineHeight: 1.5 }}>
+            You&apos;re on <strong>Free</strong>: {usage?.accounts ?? 0} of {fMax.accountLimit} accounts and {usage?.queued ?? 0} of {fMax.queueLimit} scheduled posts used, and your posts end with a &ldquo;Scheduled with Schedule For You&rdquo; link. Upgrade to lift the limits and unlock everything below.
+          </p>
+        )}
         <div role="group" aria-label="Billing period" style={{ display: 'flex', gap: 4, padding: 4, borderRadius: 12, background: '#f1f1ec', alignSelf: 'start', maxWidth: 320 }}>
           <button type="button" aria-pressed={!yearly} onClick={() => setInterval_('month')} style={tab(!yearly)}>Monthly</button>
           <button type="button" aria-pressed={yearly} onClick={() => setInterval_('year')} style={tab(yearly)}>Yearly <span style={{ color: yearly ? '#d9ff35' : '#15803d', fontWeight: 600 }}>2 months free</span></button>
