@@ -75,7 +75,7 @@ Instagram's buttons, username and caption sit on top of the bottom and right sid
 
 Stories are also **1080×1920 pixels (9:16)**. Instagram shows your profile picture and name at the top and the reply bar at the bottom, so keep text and logos out of roughly the **top and bottom 250 pixels**.
 
-Have a square or landscape photo? Put it in the middle of the Story and use the space above and below for text, stickers or a background color. Schedule For You doesn't post Stories; our guide on [scheduling Instagram Stories](/blog/schedule-instagram-and-facebook-stories) shows how to do it with Meta Business Suite.
+Have a square or landscape photo? Put it in the middle of the Story and use the space above and below for text, stickers or a background color. Our guide on [scheduling Instagram Stories](/blog/schedule-instagram-and-facebook-stories) shows how to schedule them with Meta Business Suite or Schedule For You.
 
 ## Instagram profile picture size
 

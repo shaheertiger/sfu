@@ -61,7 +61,7 @@ Where we're not confident about Postiz's current offering, the table says "Check
 | AI features | No | Yes; check which |
 | Platforms | 10: Instagram, Facebook Pages, X, LinkedIn, Threads, Bluesky, TikTok, YouTube, Pinterest, Google Business Profile | A wide range, including some community and chat platforms Schedule For You doesn't support; check its current list |
 | LinkedIn company pages | No (personal profiles only) | Check |
-| Instagram Stories | No | Check |
+| Instagram Stories | Yes (one image or video, no stickers) | Check |
 | One post with separate per-platform versions | Yes | Check |
 | Live character-limit checks per platform | Yes | Check |
 | Queue with posting time slots | Yes | Check |

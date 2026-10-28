@@ -76,7 +76,7 @@ Schedule For You posts to **personal LinkedIn profiles only, not company pages**
 ## Where Schedule For You fits for LinkedIn
 Schedule For You suits creators, consultants and founders who post from a personal LinkedIn profile and also publish to other networks. You write a post once, tailor the LinkedIn version, and schedule it through a queue with posting time slots or a drag-and-drop calendar. Agencies and ghostwriters can connect several people's profiles and keep each client in a separate workspace, with client preview links for approval.
 
-It doesn't post to company pages, Stories or first comments, and it has no analytics or AI writing. Plans are Solo at $19 a month (15 connected accounts) and Studio at $59 a month (100 accounts plus team members), with unlimited posts. There's no free plan; the 7-day free trial requires a card, and you aren't charged until day 8.
+It doesn't post to company pages, and it has no engagement analytics or AI writing. First comments on LinkedIn posts are supported. Plans are Solo at $19 a month (15 connected accounts) and Studio at $59 a month (100 accounts plus team members), with unlimited posts. There's no free plan; the 7-day free trial requires a card, and you aren't charged until day 8.
 
 ## How to choose a LinkedIn scheduler
 

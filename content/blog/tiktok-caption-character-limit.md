@@ -38,7 +38,7 @@ The feed shows about one line, then **…more**. Put the hook or the keyword fir
 
 ## Counting captions across platforms
 
-If the same video goes to TikTok, Instagram Reels, YouTube Shorts and Facebook, the limits differ: Instagram allows 2,200 characters, YouTube's description 5,000 and a Shorts title 100, Facebook far more. Schedule For You shows a live count for each platform as you type and lets you tailor the TikTok caption on its own, including the privacy setting per post. The [TikTok caption generator](/tools/tiktok-caption-generator) gives starting points you edit yourself, and the [TikTok scheduler page](/tiktok) lists what's supported, including photo posts with several images.
+If the same video goes to TikTok, Instagram Reels, YouTube Shorts and Facebook, the limits differ: Instagram allows 2,200 characters, YouTube's description 5,000 and a Shorts title 100, Facebook far more. One catch for scheduled posts: TikTok's API, which every scheduling tool uses, caps video captions at 2,200 characters, so the 4,000 limit only applies when you post in the app. Schedule For You shows a live count for each platform as you type (2,200 for TikTok) and lets you tailor the TikTok caption on its own, including the privacy setting per post. The [TikTok caption generator](/tools/tiktok-caption-generator) gives starting points you edit yourself, and the [TikTok scheduler page](/tiktok) lists what's supported, including photo posts with several images.
 
 ## Frequently asked questions
 

@@ -92,7 +92,7 @@ A steady rhythm teaches your audience when to expect you. Check when your follow
 
 ## Keep it sustainable with scheduling
 
-Most people stall around a few hundred followers because posting becomes a chore. Batching helps: film or design a week of content in one sitting, write the captions, then schedule everything so it goes out at your best times. Schedule For You can publish Instagram feed posts, Reels and carousels on a schedule for Business or Creator accounts linked to a Facebook Page, so your plan keeps running on busy weeks. It doesn't post Stories, so share those live.
+Most people stall around a few hundred followers because posting becomes a chore. Batching helps: film or design a week of content in one sitting, write the captions, then schedule everything so it goes out at your best times. Schedule For You can publish Instagram feed posts, Reels, carousels and Stories on a schedule for Business or Creator accounts linked to a Facebook Page, so your plan keeps running on busy weeks. Stories that need polls or question stickers are still best shared live.
 
 ## Frequently asked questions
 

@@ -87,4 +87,4 @@ Either works, but both are easy to forget when someone types your name from memo
 No. Usernames only accept plain letters, numbers, underscores and periods. You can try styled text in your display name or bio with the [TikTok font generator](/tools/tiktok-font-generator), though some symbols may not display everywhere.
 
 ## Schedule your TikToks with Schedule For You
-With your username ready, Schedule For You lets you upload videos, write captions with a live 4,000-character check, and schedule TikToks alongside Instagram Reels and YouTube from one calendar. Unlimited posts on every plan, from $19/month. [Start your 7-day free trial](/signup); a card is required and you aren't charged until day 8.
+With your username ready, Schedule For You lets you upload videos, write captions with a live check against TikTok's 2,200-character limit for scheduled posts, and schedule TikToks alongside Instagram Reels and YouTube from one calendar. Unlimited posts on every plan, from $19/month. [Start your 7-day free trial](/signup); a card is required and you aren't charged until day 8.

@@ -57,8 +57,8 @@ Schedule For You is one of several Later alternatives, built around one idea: wr
 | Platforms | 10: Instagram, Facebook Pages, X, LinkedIn, Threads, Bluesky, TikTok, YouTube, Pinterest, Google Business Profile | Instagram, Facebook, TikTok, Pinterest, LinkedIn, X and YouTube; check for others |
 | Visual Instagram grid planner | No | Yes |
 | Link-in-bio page | No | Yes |
-| Instagram Stories | No | Yes |
-| Instagram first comment | No | Yes |
+| Instagram Stories | Yes (one image or video, no stickers) | Yes |
+| Instagram first comment | Yes | Yes |
 | Built-in analytics | No | Yes |
 | One post with separate per-platform versions | Yes | Check |
 | Live character-limit checks per platform | Yes | Check |
@@ -87,7 +87,7 @@ Later may be the better choice if:
 
 - **You plan Instagram visually.** If previewing your grid before posting is central to how you work, Schedule For You doesn't offer a grid planner. (For one-off grid layouts, our free [Instagram grid maker](/tools/instagram-grid-maker) splits an image into tiles, but it isn't a planner.)
 - **You depend on a link-in-bio page.** Schedule For You doesn't provide one.
-- **You schedule Instagram Stories or first comments.** Schedule For You publishes feed photos, Reels and carousels, not Stories, and doesn't post first comments.
+- **Your Stories rely on stickers or music.** Schedule For You publishes Stories as one image or video with no caption, so polls, link stickers and music aren't available.
 - **You want analytics in the same tool.** Schedule For You focuses on planning and publishing and doesn't include analytics.
 - **You run influencer campaigns.** Later also offers influencer marketing products; Schedule For You doesn't.
 
@@ -114,7 +114,7 @@ Each platform's own tools, like Meta Business Suite for Facebook and Instagram, 
 It depends on the job. If you need one queue for many networks with a tailored caption for each, a multi-platform scheduler like Schedule For You fits. If visual grid planning, Stories or link-in-bio matter most, Later may still be the better choice.
 
 ### Can Schedule For You post Instagram Stories like Later?
-No. It publishes Instagram feed photos, Reels and carousels of up to 10 items, but not Stories, and it doesn't post a first comment.
+Yes. It publishes Instagram Stories (one image or video, 9:16, no caption) as well as feed photos, Reels and carousels of up to 10 items, and it can post a first comment under feed posts and Reels.
 
 ### Does Schedule For You have a link-in-bio page?
 No. If you rely on a link-in-bio page, keep your existing one or choose a dedicated tool before you move.

@@ -69,7 +69,7 @@ Zapier, Make and n8n connect apps with triggers, such as "when a new blog post a
 ## Where Schedule For You fits
 Schedule For You is a cross-posting scheduler. One post can go to many accounts and platforms at once, each with its own caption version and live limit checks, and any target that fails alerts you so you can retry it. It publishes to Instagram, Facebook Pages, X, LinkedIn, Threads, Bluesky, TikTok, YouTube, Pinterest and Google Business Profile, with a queue, drag-and-drop calendar, bulk CSV scheduling, RSS auto-post and a REST API. The [cross-posting](/cross-posting) page shows how it works.
 
-Be clear on the limits too. It doesn't post Stories, first comments or multi-post threads, doesn't crop images, posts to personal LinkedIn profiles only (not company pages), and has no analytics or AI writing. It has no free plan: Solo is $19 a month and Studio $59 a month, with a 7-day free trial that needs a card.
+Be clear on the limits too. It doesn't post TikTok Stories, doesn't crop images, posts to personal LinkedIn profiles only (not company pages), and has no engagement analytics or AI writing. It has no free plan: Solo is $19 a month and Studio $59 a month, with a 7-day free trial that needs a card.
 
 ## How to choose the best cross-posting tool for you
 

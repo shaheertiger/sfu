@@ -6,7 +6,7 @@ lead: Draft once, trim the X version to fit 280 characters, and let Schedule For
 keyword: x scheduler
 ---
 ## What you can schedule on X
-Schedule For You publishes single posts to X (formerly Twitter). Each one can include text plus one kind of media.
+Schedule For You publishes posts and threads to X (formerly Twitter). Each post can include text plus one kind of media.
 
 ### Text posts
 Up to 280 characters. X weights some characters differently: links count as 23 however long they are, and most emoji count as 2. The composer checks your X version against the limit as you type, so you find out it's too long before you schedule it, not when it fails.
@@ -46,7 +46,7 @@ If you already automate, use the REST API, webhooks for Zapier, Make or n8n, or 
 
 ## Frequently asked questions
 ### Can I schedule threads on X?
-Schedule For You publishes single posts to X. If you want a thread, you can post it directly in X, or schedule the parts as separate posts that each make sense alone.
+Yes. Put a line with only `---` between the parts and Schedule For You publishes them as a thread, each part as a reply to the one before. Each part must fit 280 characters, and media goes on the first post. Up to 25 parts.
 
 ### Does the 280 limit include links and emoji?
 Yes. Every link counts as 23 characters and most emoji count as 2. The composer checks the X version against the 280 limit as you write, and you can paste a draft into the free [X character counter](/tools/x-character-counter) to see the weighted count in detail.

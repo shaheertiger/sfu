@@ -125,7 +125,7 @@ People archive posts for plenty of reasons: a seasonal promotion that's ended, a
 
 If you find yourself archiving a lot, it often helps to plan the grid before posting. Our [Instagram grid maker](/tools/instagram-grid-maker) shows how a split image will look across your profile, and the [Instagram photo resizer](/tools/instagram-photo-resizer) gets each image to the right shape so posts don't need fixing later.
 
-A scheduler helps here too. Schedule For You lets you lay out feed posts, Reels and carousels on a calendar before they go live, so you can see how your grid will come together and move things around without publishing and then archiving. It doesn't post Stories, so keep those in the Instagram app.
+A scheduler helps here too. Schedule For You lets you lay out feed posts, Reels and carousels on a calendar before they go live, so you can see how your grid will come together and move things around without publishing and then archiving. It can schedule Stories too, one image or video each.
 
 ## Frequently asked questions
 

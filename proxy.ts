@@ -78,4 +78,4 @@ function isLoginRedirect(res: Response, req: NextRequest) {
 }
 
 // The dashboard gate, plus every path that can carry a .md suffix or an Accept: text/markdown request.
-export const config = { matcher: ['/app', '/app/:path*', '/login', '/signup', '/((?!api/|_next/|\\.well-known/|fonts/|brand/|logos/|icons/|favicon\\.ico|robots\\.txt|sitemap\\.xml|llms\\.txt|llms-full\\.txt|ai\\.txt|manifest\\.webmanifest|opengraph-image|apple-icon|[^/]+\\.(?:png|jpg|svg|txt|xml|ico|webp|woff2)$).*)'] };
+export const config = { matcher: ['/app', '/app/:path*', '/login', '/signup', '/((?!api/|_next/|\\.well-known/|fonts/|brand/|logos/|icons/|images/|favicon\\.ico|robots\\.txt|sitemap\\.xml|llms\\.txt|llms-full\\.txt|ai\\.txt|manifest\\.webmanifest|opengraph-image|apple-icon|[^/]+\\.(?:png|jpg|svg|txt|xml|ico|webp|woff2)$).*)'] };

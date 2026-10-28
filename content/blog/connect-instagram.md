@@ -83,8 +83,7 @@ Captions can be up to 2,200 characters, and the composer checks the limit live. 
 
 ### What isn't supported
 
-- **Stories.** Schedule For You doesn't post Instagram Stories.
-- **First comments.** It doesn't add a first comment to posts.
+- **Story stickers and music.** Stories go out as the one image or video you upload, with no caption, so polls, link stickers and Instagram's music library aren't available.
 - **Automatic cropping.** Images aren't cropped or resized, so they must already sit between 4:5 portrait and 1.91:1 landscape (Instagram's feed range at the time of writing). The [Instagram photo resizer](/tools/instagram-photo-resizer) has presets for each shape.
 
 ### Your first scheduled post
@@ -125,7 +124,7 @@ No. You log in through Meta's own window, and Meta gives the app a token with th
 
 ### Can I schedule Instagram Stories after connecting?
 
-No. Schedule For You publishes feed photo posts, Reels and carousels, but not Stories. You can still post Stories in the Instagram app.
+Yes. Set "Post as" to Story in the composer and attach one image or video (9:16, no caption). Feed photo posts, Reels and carousels work the same way, and you can add a first comment to feed posts and Reels. Our guide to [scheduling Instagram Stories](/blog/schedule-instagram-and-facebook-stories) covers the details.
 
 ### How long does it take to connect Instagram?
 

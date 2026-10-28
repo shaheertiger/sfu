@@ -75,7 +75,7 @@ Il arrive que Meta révoque l’accès, par exemple après un changement de mot 
 
 ### Peut-on programmer des stories Instagram avec Schedule For You ?
 
-Non. Schedule For You publie des photos dans le fil, des Reels et des carrousels. Les stories se publient depuis l’appli Instagram. L’outil ne publie pas non plus de premier commentaire : si vous utilisez des hashtags, mettez-les dans la légende.
+Oui. Choisissez « Story » dans « Post as » et joignez une image ou une vidéo (9:16). Les stories partent sans légende, et les stickers, sondages ou musiques ne sont pas disponibles via l’API de Meta. Sous les publications du fil et les Reels, Schedule For You peut aussi publier un premier commentaire, pratique pour les hashtags.
 
 ### Faut-il un compte professionnel pour programmer un post Instagram ?
 

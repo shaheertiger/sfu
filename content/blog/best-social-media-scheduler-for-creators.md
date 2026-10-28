@@ -125,7 +125,7 @@ There's no official statement from Instagram or TikTok that posts published thro
 
 ### Can a scheduler post Instagram Stories?
 
-Some tools can, some only send reminders, and some don't support Stories at all. Schedule For You doesn't post Stories, so you'd keep posting those in the Instagram app.
+Some tools can, some only send reminders, and some don't support Stories at all. Schedule For You posts Instagram and Facebook Stories directly: one image or video per Story, with no caption, so stickers and music still need the app.
 
 ### What matters more for creators: analytics or scheduling?
 

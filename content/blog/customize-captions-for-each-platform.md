@@ -34,7 +34,7 @@ These are the limits Schedule For You checks against when you write. Platform li
 | Google Business Profile | 1,500 characters | One image, optional button link, no video |
 | Instagram | 2,200 characters | One image, a Reel, or a carousel of 2–10 items |
 | LinkedIn | 3,000 characters | Up to 9 images or a video |
-| TikTok | 4,000 characters (at the time of writing) | A video, or a photo post with up to 35 images |
+| TikTok | 2,200 characters when scheduled through TikTok's API; 4,000 in the app | A video, or a photo post with up to 35 images |
 | YouTube | Title up to 100, description up to 5,000 | Title comes from the title field or first line |
 | Facebook Pages | 63,206 characters | Up to 10 images or a video |
 | Pinterest | Short description works best | Image required, pick a board, optional title and link |

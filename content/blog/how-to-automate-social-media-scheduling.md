@@ -9,7 +9,7 @@ date: 2026-10-23
 ---
 Here's how to automate social media scheduling: set up a queue with recurring posting time slots, load posts in bulk from a spreadsheet, mark proven posts as evergreen so they repeat, connect an RSS feed so new articles become posts, and use webhooks or an API to link your scheduler with tools like Zapier, Make or n8n. Keep a person in charge of what gets published and of every reply.
 
-This guide covers each method, when it's worth using, and how to set it up step by step in Schedule For You. The same principles apply to any scheduler with similar features.
+This guide covers each method, when it's worth using, and how to set it up step by step in Schedule For You. The same principles apply to any scheduler with similar features. New to scheduling? Start with [how to schedule social media posts](/blog/how-to-schedule-social-media-posts), which covers each platform's built-in scheduler first.
 
 ## How to automate social media scheduling: methods at a glance
 

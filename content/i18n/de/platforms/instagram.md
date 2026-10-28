@@ -72,7 +72,7 @@ Verbinde dein Business- oder Creator-Konto im Bereich **Accounts**, schreib dein
 
 ### Kann Schedule For You Instagram-Storys posten?
 
-Nein. Es veröffentlicht Feed-Fotos, Reels und Karussells. Storys musst du in der Instagram-App posten. Einen ersten Kommentar postet Schedule For You ebenfalls nicht, schreib Hashtags also direkt in die Caption, wenn du welche nutzt.
+Ja. Stell „Post as“ auf Story und häng ein Bild oder ein Video an (9:16). Storys gehen ohne Caption raus, und Sticker, Umfragen oder Musik sind über Metas Schnittstelle nicht möglich. Unter Feed-Posts und Reels kann Schedule For You außerdem einen ersten Kommentar setzen, gut für Hashtags.
 
 ### Brauche ich ein Business-Konto?
 

@@ -59,8 +59,8 @@ Schedule For You is built around one workflow: write once, tailor each platform'
 | Pricing model | Flat plans: 15 or 100 connected accounts | Typically per channel; check |
 | Link-in-bio page | No | Yes (Start Page) |
 | Built-in analytics | No | Yes; check which plans |
-| Instagram Stories | No | Check |
-| Instagram first comment | No | Check |
+| Instagram Stories | Yes (one image or video, no stickers) | Check |
+| Instagram first comment | Yes | Check |
 | AI writing features | No | Check |
 | One post with separate per-platform versions | Yes | Check |
 | Live character-limit checks per platform | Yes | Check |

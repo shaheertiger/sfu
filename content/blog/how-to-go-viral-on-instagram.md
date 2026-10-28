@@ -74,7 +74,7 @@ The first line of your caption shows before "more", so use it to add context or 
 
 The more good posts you publish, the more chances one has to break out. Pick a rhythm you can keep, such as three Reels a week.
 
-Schedule For You helps with the consistency part. You can batch a week of Reels and carousels, write each caption, and drop them into a calendar so they publish at the times you choose, even on days you're busy. It doesn't make posts go viral, and it doesn't post Stories, but it takes the "I forgot to post" problem off the table.
+Schedule For You helps with the consistency part. You can batch a week of Reels and carousels, write each caption, and drop them into a calendar so they publish at the times you choose, even on days you're busy. It schedules Stories too, but it doesn't make posts go viral; it takes the "I forgot to post" problem off the table.
 
 Then check your numbers. In your professional dashboard, look at which posts got the most shares, saves and reach from non-followers, and make more of what worked. If you haven't set that up yet, here's [how to turn on Insights on Instagram](/blog/how-to-turn-on-insights-on-instagram).
 
