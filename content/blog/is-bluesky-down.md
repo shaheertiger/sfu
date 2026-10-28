@@ -24,7 +24,7 @@ Bluesky has had a handful of notable outages in 2026, including a multi-day disr
 | --- | --- | --- |
 | Feeds spin or won't refresh | Outage, or a custom feed's server is down | Check status page; switch to Following |
 | One custom feed is empty | That feed's creator runs it on their own server | Wait, or use another feed |
-| "Post failed" when posting | Outage, or media too large | Retry later; keep images under 1 MB |
+| "Post failed" when posting | Outage, or media too large | Retry later; keep images under 2 MB |
 | Profile says "Account not found" | Account deactivated, deleted or taken down | Nothing to fix on your side |
 | Notifications missing | Notification delay or settings | Check Settings, Notifications |
 | Signed out unexpectedly | See below | Sign in again |

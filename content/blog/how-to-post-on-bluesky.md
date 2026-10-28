@@ -27,7 +27,7 @@ The post goes to your profile and your followers' Following feed straight away, 
 | --- | --- |
 | Text | 300 characters |
 | Images | Up to 4 per post |
-| Video | 1 per post, up to 3 minutes |
+| Video | 1 per post, up to 10 minutes and 300 MB at the time of writing |
 | GIF | 1, from the GIF picker or uploaded |
 | Alt text | Up to 2,000 characters per image |
 | Link preview | 1 link card, generated from the first link |

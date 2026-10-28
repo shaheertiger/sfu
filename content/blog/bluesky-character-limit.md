@@ -15,8 +15,8 @@ The Bluesky character limit is **300 characters** per post, counted in graphemes
 | --- | --- |
 | Post text | 300 characters (graphemes) |
 | Images per post | 4 |
-| Image size | Up to 1,000,000 bytes after Bluesky's compression; keep uploads under 1 MB |
-| Video per post | 1, up to 3 minutes and 100 MB at the time of writing |
+| Image size | Up to 2 MB and 4,000 × 4,000 px since the April 2026 app update (1 MB and 2,000 px before) |
+| Video per post | 1, up to 10 minutes and 300 MB since August 2026 (3 minutes before) |
 | Alt text | 2,000 characters per image |
 | Display name | 64 characters |
 | Bio | 256 characters |
@@ -56,7 +56,7 @@ The same draft can carry a longer caption for LinkedIn or Instagram, tailored pe
 300 characters per post, counted in graphemes so emoji count as one.
 
 ### Can you post videos on Bluesky?
-Yes, one video per post, up to about 3 minutes and 100 MB at the time of writing.
+Yes, one video per post. Since August 2026 a video can run up to 10 minutes and 300 MB; before that the cap was 3 minutes.
 
 ### Does Bluesky have a scheduling feature?
 No. Scheduling needs a third-party tool connected with an app password from Bluesky's settings.
