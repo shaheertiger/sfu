@@ -9,7 +9,7 @@ date: 2026-10-23
 ---
 Here's how to plan social media content in advance: decide your themes and posting frequency, sketch the month on a calendar, then batch-write and schedule a week or more at a time so posts go out automatically at set times. A queue with fixed time slots does most of the heavy lifting, and a short weekly review keeps everything on track.
 
-This guide walks through the system step by step, shows which scheduling features help at each stage, and ends with a weekly planning routine you can copy.
+This guide walks through the planning system step by step, shows which features help at each stage, and ends with a weekly planning routine you can copy. If you're after the publishing side, platform by platform, read [how to schedule social media posts](/blog/how-to-schedule-social-media-posts).
 
 ## The planning system at a glance
 
@@ -47,7 +47,7 @@ A content calendar shows the month at a glance so you can see gaps, clashes and 
 
 ### Use a calendar you can act on
 
-A spreadsheet works for outlining, but it can't publish anything. A drag-and-drop calendar inside your scheduler lets you see what's planned and move a post to another day by dragging it, without rewriting anything. Schedule For You pairs a drag-and-drop calendar with its queue, so the plan you see is the plan that publishes.
+A spreadsheet works for outlining, but it can't publish anything. A drag-and-drop calendar inside your scheduler lets you see what's planned and move a post to another day by dragging it, without rewriting anything. Schedule For You pairs a drag-and-drop calendar with its queue, so the plan you see is the plan that publishes. Our guide to building a [social media content calendar](/blog/social-media-content-calendar) has a copyable template and a worked example week.
 
 ## Step 3: Batch your content creation
 
@@ -67,7 +67,7 @@ Resize images before you upload them, especially for Instagram, which only accep
 
 <!-- cta -->
 
-## Step 4: Schedule social media posts in advance with a queue
+## Step 4: Fill a queue with posting time slots
 
 The fastest way to schedule a lot of posts is a queue with posting time slots.
 
