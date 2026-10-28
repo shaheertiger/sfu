@@ -18,7 +18,7 @@ Attach several images to publish a photo post that people swipe through, with up
 Choose who can see each post: public, friends, or only me. "Only me" is useful when you want something live on your account to check before you make it public in TikTok.
 
 ### Captions
-TikTok captions can be long, up to 4,000 characters at the time of writing. The composer checks the TikTok version as you type.
+TikTok's app allows captions of up to 4,000 characters, but posts published through TikTok's API, which every scheduler uses, are capped at 2,200 for videos. The composer checks the TikTok version against that limit as you type.
 
 ## How it works
 1. **Connect TikTok.** Open the Accounts screen, choose TikTok and sign in to authorize Schedule For You.

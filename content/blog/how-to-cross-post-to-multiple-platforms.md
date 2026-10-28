@@ -23,7 +23,7 @@ These are the limits Schedule For You checks when you publish, which match the p
 | Instagram | 2,200 characters | One image, one video (posted as a Reel), or a 2–10 item carousel | Media required; Business or Creator account linked to a Facebook Page |
 | Facebook Pages | 63,206 characters | Text, up to 10 images, or a video | Pages only, not personal profiles or Groups |
 | LinkedIn | 3,000 characters | Up to 9 images or a video | |
-| TikTok | 4,000 characters | A video, or a photo post of up to 35 images | Choose privacy per post |
+| TikTok | 2,200 characters when scheduled through TikTok's API (4,000 in the app) | A video, or a photo post of up to 35 images | Choose privacy per post |
 | YouTube | Title 100, description 5,000 | A video is required | Public, unlisted or private |
 | Pinterest | Pin description, optional title and link | An image is required | Choose a board |
 | Google Business Profile | 1,500 characters | One image; no video | Optional button link |

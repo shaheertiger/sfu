@@ -49,7 +49,7 @@ TikTok doesn't let you change the font of your bio, username or caption. The "fo
 
 Our free [TikTok font generator](/tools/tiktok-font-generator) turns plain text into those styles so you can copy and paste them into your bio or caption. Keep it to a word or two. Screen readers read many of these characters letter by letter or skip them, and search doesn't always match them, so keep your name and key words in plain text. For bio ideas, try the [TikTok bio generator](/tools/tiktok-bio-generator).
 
-If you write captions ahead of time, you can paste styled text into a scheduled post the same way. Schedule For You publishes the caption exactly as you write it, and [TikTok captions can run to 4,000 characters](/blog/tiktok-caption-character-limit).
+If you write captions ahead of time, you can paste styled text into a scheduled post the same way. Schedule For You publishes the caption exactly as you write it, up to 2,200 characters, TikTok's limit for posts sent through its API ([more on TikTok caption limits](/blog/tiktok-caption-character-limit)).
 
 ## Frequently asked questions
 
