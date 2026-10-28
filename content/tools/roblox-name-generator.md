@@ -97,4 +97,4 @@ Often, yes. If you post Roblox videos, test the name on several platforms at onc
 No. It combines your word with curated word lists and patterns for each style, then keeps only names that fit Roblox's format. That's why it's instant and every idea is a valid username.
 
 ## For Roblox creators who post videos
-Schedule For You doesn't post to Roblox. If you make Roblox clips for YouTube or TikTok, it can schedule those uploads, plus Instagram and seven other networks, from one queue with a separate caption for each. Every plan includes unlimited posts. [Start your 7-day free trial](/signup). A card is required and you aren't charged until day 8.
+Schedule For You doesn't post to Roblox. If you make Roblox clips for YouTube or TikTok, it can schedule those uploads, plus Instagram and seven other networks, from one queue with a separate caption for each. Solo and Studio include unlimited posts. [Start your 7-day free trial](/signup). A card is required and you aren't charged until day 8.

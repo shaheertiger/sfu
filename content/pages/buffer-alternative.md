@@ -73,7 +73,7 @@ Schedule For You is built around one workflow: write once, tailor each platform'
 | RSS auto-post | Yes | Check |
 | REST API, webhooks and MCP server | Yes | Check |
 | Failed-post alerts with reconnect prompt | Yes | Check |
-| Posts per month | Unlimited on every plan | Check |
+| Posts per month | Unlimited on Solo and Studio | Check |
 
 ### What Schedule For You includes
 Two plans: Solo at $19 a month with 15 connected accounts, and Studio at $59 a month with 100 connected accounts, team members and priority support. Both include unlimited posts, and you can connect several accounts on the same platform. There's a 7-day free trial; a card is required, you aren't charged until day 8 and you can cancel anytime. There's also a Free plan with 3 connected accounts and up to 10 scheduled posts at a time, no card needed. See the [pricing page](/pricing) for details, or [start free](/signup).

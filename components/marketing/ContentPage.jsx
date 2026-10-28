@@ -85,11 +85,11 @@ function FeaturePage({ slug, page }) {
           <h1 className={m.h1}>{page.h1}</h1>
           {page.lead && <p className={m.lead}>{page.lead}</p>}
           <div className={m.ctaRow} style={{ justifyContent: 'center', marginTop: 22 }}>
-            <Link href="/signup" className={`${m.btn} ${m.btnPrimary}`}>Start your 7-day free trial</Link>
+            <Link href="/signup" className={`${m.btn} ${m.btnPrimary}`}>Start free</Link>
             {slug === 'api' && <Link href="/docs" className={m.btn}>Read the API reference</Link>}
             {slug !== 'pricing' && <Link href="/pricing" className={m.btn}>See pricing</Link>}
           </div>
-          <p className={m.meta}>Card required. Not charged until day 8. Cancel anytime.</p>
+          <p className={m.meta}>Free for 3 accounts, no card. Solo and Studio start with a 7-day free trial.</p>
         </section>
         {slug === 'pricing' && <PlanTable />}
         <article className={`${m.narrow} ${m.prose}`}>

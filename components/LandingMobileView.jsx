@@ -258,15 +258,15 @@ export function renderLandingMobile($v) {
                   {' '}
                   <span style={{ display: 'flex', gap: '6px' }}>
                     <span style={{ color: '#dcff2e' }}>{'✓'}</span>
-                    {'7-day free trial'}
+                    {'Free for 3 accounts'}
                   </span>{' '}
                   <span style={{ display: 'flex', gap: '6px' }}>
                     <span style={{ color: '#dcff2e' }}>{'✓'}</span>
-                    {'Card required'}
+                    {'No card needed'}
                   </span>{' '}
                   <span style={{ display: 'flex', gap: '6px' }}>
                     <span style={{ color: '#dcff2e' }}>{'✓'}</span>
-                    {'Cancel anytime'}
+                    {'Upgrade anytime'}
                   </span>{' '}
                 </div>{' '}
               </>
@@ -710,7 +710,7 @@ export function renderLandingMobile($v) {
                 {'Simple pricing'}
               </h2>{' '}
               <p style={{ margin: '0', color: '#a7abb2', fontSize: '15px' }}>
-                {'Unlimited posts on every plan. 7-day free trial, card required. Cancel anytime.'}
+                {'Start free. Paid plans add unlimited posts, bulk scheduling and the API, with a 7-day free trial.'}
               </p>{' '}
             </div>{' '}
             <div
@@ -718,7 +718,7 @@ export function renderLandingMobile($v) {
               aria-label="Plan"
               style={{
                 display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
+                gridTemplateColumns: '1fr 1fr 1fr',
                 padding: '4px',
                 borderRadius: '14px',
                 background: '#17191c',
@@ -818,13 +818,7 @@ export function renderLandingMobile($v) {
                     {'Yearly · 2 months free'}
                   </button>{' '}
                 </div>{' '}
-                <span style={{ fontSize: '14px', color: '#a7abb2' }}>
-                  {'About '}
-                  {$t($v['perDay'])}
-                  {' a day. Less than '}
-                  {$t($v['perHour'])}
-                  {' per hour you get back.'}
-                </span>{' '}
+                <span style={{ fontSize: '14px', color: '#a7abb2' }}>{$t($v['valueLine'])}</span>{' '}
               </div>{' '}
               <div
                 style={{ display: 'flex', flexDirection: 'column', gap: '10px', color: '#c9ccd1', fontSize: '15px' }}
@@ -853,10 +847,10 @@ export function renderLandingMobile($v) {
                 }}
                 className="landingmobile-active-2"
               >
-                {'Start 7-day trial'}
+                {'Start free'}
               </button>{' '}
               <span style={{ fontSize: '13px', color: '#a7abb2', textAlign: 'center', marginTop: '-6px' }}>
-                {"Try every feature for 7 days. Cancel before it ends and you won't be charged."}
+                {$t($v['planNote'])}
               </span>{' '}
             </div>{' '}
           </section>{' '}
@@ -1090,7 +1084,7 @@ export function renderLandingMobile($v) {
             <div
               role="dialog"
               aria-modal="true"
-              aria-label="Start your trial"
+              aria-label="Create your free account"
               style={{
                 position: 'fixed',
                 left: '0',
@@ -1128,7 +1122,7 @@ export function renderLandingMobile($v) {
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                   {' '}
                   <span style={{ flex: '1', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                    <strong style={{ fontSize: '22px', letterSpacing: '-0.03em' }}>{'Start your 7-day trial'}</strong>
+                    <strong style={{ fontSize: '22px', letterSpacing: '-0.03em' }}>{'Create your free account'}</strong>
                     <span style={{ fontSize: '14px', color: '#a7abb2' }}>{$t($v['sheetPlan'])}</span>{' '}
                     <span style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '6px' }}>
                       <span

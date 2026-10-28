@@ -93,4 +93,4 @@ Yes. It runs in your browser, needs no account, and doesn't upload your text.
 
 ## Schedule bold Instagram captions with Schedule For You
 
-Paste your finished caption into Schedule For You, check it against Instagram's limits as you type, and schedule it with versions adapted for TikTok, Facebook and your other channels from one calendar. Unlimited posts come with every plan. The 7-day trial needs a card, and you can cancel anytime before you're charged on day 8. [Start your 7-day free trial](/signup).
+Paste your finished caption into Schedule For You, check it against Instagram's limits as you type, and schedule it with versions adapted for TikTok, Facebook and your other channels from one calendar. Unlimited posts come with Solo and Studio. The 7-day trial needs a card, and you can cancel anytime before you're charged on day 8. [Start your 7-day free trial](/signup).

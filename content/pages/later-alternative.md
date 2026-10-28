@@ -72,7 +72,7 @@ Schedule For You is one of several Later alternatives, built around one idea: wr
 | REST API, webhooks and MCP server | Yes | Check |
 | Failed-post alerts with reconnect prompt | Yes | Check |
 | AI writing features | No | Check |
-| Posts per month | Unlimited on every plan | Check |
+| Posts per month | Unlimited on Solo and Studio | Check |
 
 ### What Schedule For You includes
 Two plans: Solo at $19 a month with 15 connected accounts, and Studio at $59 a month with 100 connected accounts, team members and priority support. Both include unlimited posts. There's a 7-day free trial; a card is required, you aren't charged until day 8 and you can cancel anytime. There's also a Free plan: 3 connected accounts and up to 10 scheduled posts at a time, no card needed. [Start free](/signup) to try it with your own accounts.

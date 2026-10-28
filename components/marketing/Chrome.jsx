@@ -70,7 +70,7 @@ const FOOTER = [
       ['/docs', 'API reference'],
       ['/blog/connect-facebook-page', 'Connect a Facebook Page'],
       ['/blog/connect-google-business-profile', 'Connect Google Business'],
-      ['/signup', 'Start free trial'],
+      ['/signup', 'Start free'],
       ['/login', 'Sign in'],
     ],
   },

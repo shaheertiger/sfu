@@ -115,7 +115,7 @@ A cross-posting scheduler for 10 platforms: Instagram (posts, Reels, carousels a
 | Scheduling plus client reports | Metricool |
 | Many accounts at a flat price, tailored per platform | Schedule For You or SocialBee |
 | Client approvals without giving clients a login | Schedule For You |
-| An API, webhooks and RSS auto-posting on every plan | Schedule For You; check others' API access by plan |
+| An API, webhooks and RSS auto-posting on both paid plans | Schedule For You; check others' API access by plan |
 | LinkedIn company pages | Buffer, the suites or LinkedIn itself, not Schedule For You |
 
 ### Run a real week in each trial

@@ -103,4 +103,4 @@ Generally, yes, but platforms restrict it in certain fields, like legal names on
 
 ## Schedule your styled posts with Schedule For You
 
-Schedule For You lets you write a post once, tailor it for each of its 10 supported platforms, including Instagram, LinkedIn, TikTok and X, and publish from one calendar with live character-limit checks. Every plan includes unlimited posts. The 7-day trial requires a card; cancel anytime, and you won't be charged until day 8. [Start your 7-day free trial](/signup).
+Schedule For You lets you write a post once, tailor it for each of its 10 supported platforms, including Instagram, LinkedIn, TikTok and X, and publish from one calendar with live character-limit checks. Solo and Studio include unlimited posts. The 7-day trial requires a card; cancel anytime, and you won't be charged until day 8. [Start your 7-day free trial](/signup).

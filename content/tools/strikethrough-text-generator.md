@@ -109,4 +109,4 @@ Yes. It runs in your browser, needs no sign-up, and doesn't upload anything you 
 
 ## Schedule your posts with Schedule For You
 
-Once your sale post is ready, Schedule For You lets you tailor it for Instagram, X, Facebook Pages and seven other platforms, see live character counts for each, and schedule everything from one calendar. Every plan includes unlimited posts. Start with a 7-day trial: it asks for a card, charges nothing until day 8, and can be canceled at any point. [Start your 7-day free trial](/signup).
+Once your sale post is ready, Schedule For You lets you tailor it for Instagram, X, Facebook Pages and seven other platforms, see live character counts for each, and schedule everything from one calendar. Solo and Studio include unlimited posts. Start with a 7-day trial: it asks for a card, charges nothing until day 8, and can be canceled at any point. [Start your 7-day free trial](/signup).

@@ -105,4 +105,4 @@ Yes. It's free, needs no account and runs in your browser, so nothing you type l
 
 ## Keep your other channels on schedule with Schedule For You
 
-Schedule For You doesn't post to Discord. It handles the public side of your community, letting you plan announcements for Instagram, X, YouTube, TikTok, Bluesky and more from one calendar, with unlimited posts on every plan. The 7-day trial requires a card; you can cancel anytime and won't be charged until day 8. [Start your 7-day free trial](/signup).
+Schedule For You doesn't post to Discord. It handles the public side of your community, letting you plan announcements for Instagram, X, YouTube, TikTok, Bluesky and more from one calendar, with unlimited posts on the paid plans. The 7-day trial requires a card; you can cancel anytime and won't be charged until day 8. [Start your 7-day free trial](/signup).

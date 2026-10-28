@@ -1,13 +1,13 @@
 ---
 layout: feature
 title: "Social Media Scheduling API: REST, Webhooks and RSS"
-description: "A social media scheduling API for 10 platforms: create, schedule and retry posts over REST, receive signed webhooks and auto-post from RSS. On every plan."
+description: "A social media scheduling API for 10 platforms: create, schedule and retry posts over REST, receive signed webhooks and auto-post from RSS. On Solo and Studio."
 h1: Social media scheduling API
 lead: Schedule posts via API to X, Instagram, LinkedIn, TikTok and six more platforms from your own code, and get a signed webhook when each post publishes or fails.
 keyword: social media scheduling api
 ---
 ## What the social media scheduling API does
-Schedule For You includes a social media scheduling API that lets your own code do what the composer does: create posts, schedule them for one or many accounts, publish on demand and retry failures. It's a plain REST API with JSON in and out, and it comes with every workspace on both plans.
+Schedule For You includes a social media scheduling API that lets your own code do what the composer does: create posts, schedule them for one or many accounts, publish on demand and retry failures. It's a plain REST API with JSON in and out, and it comes with both paid plans, Solo and Studio.
 
 ### One API for 10 platforms
 Posts can go to X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile. You send one request; Schedule For You handles each platform's publishing.
@@ -84,7 +84,7 @@ More ideas: [how to automate social media scheduling](/blog/how-to-automate-soci
 
 ## Frequently asked questions
 ### Is the social media posting API included on every plan?
-Yes. Every workspace on Solo and Studio includes the REST API, webhooks and RSS feeds at no extra cost. See [pricing](/pricing) for what else each plan includes.
+It's included on both paid plans: every workspace on Solo and Studio gets the REST API, the MCP server, webhooks and RSS feeds at no extra cost. The Free plan doesn't include them. See [pricing](/pricing) for what else each plan includes.
 
 ### How do I authenticate API requests?
 Create a key in Settings → API keys, then send it in the `Authorization` header as `Bearer sfy_…` on every request.
@@ -105,4 +105,4 @@ Register a webhook. You'll receive `post.published`, `post.partial` or `post.fai
 Yes. Call `POST /api/v1/posts/:id/publish` to retry the targets that failed. If a platform revoked access, reconnect the account from the Accounts screen first.
 
 ## Start building with the Schedule For You API
-Create an API key on day one of your trial and schedule your first post with a single request. The API, webhooks and RSS feeds come with both plans, alongside the composer and calendar. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Create an API key on day one of your trial and schedule your first post with a single request. The API, webhooks and RSS feeds come with both paid plans, Solo and Studio, alongside the composer and calendar. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.

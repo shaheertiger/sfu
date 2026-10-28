@@ -59,16 +59,28 @@ test('internal links point at pages that exist', () => {
 });
 
 test('copy never promises what the product does not do', () => {
-  // Free plans and no-card trials may be discussed for other tools; any sentence about our own
-  // product that mentions one must say we don't offer it.
-  const banned = [/\bfree plan\b/i, /\bno card\b/i, /\bno credit card\b/i, /free forever/i, /\bAI[- ](?:powered|writer|generated|assistant)\b/i];
+  // Claims about our own product that would be false: unlimited free use, AI features, or a paid
+  // trial without a card (the Free plan needs no card; the Solo and Studio trial does).
+  const banned = [/free forever/i, /unlimited free/i, /\bAI[- ](?:powered|writer|generated|assistant)\b/i,
+    /\bno[- ]card (?:free )?trial\b/i, /\btrial[^.,;]{0,20}\b(?:no|without a) (?:credit )?card\b/i, /\b(?:no|without a) (?:credit )?card (?:needed |required )?(?:for|to start) the (?:free )?trial\b/i];
   const ours = /Schedule For You|\bour (?:plan|trial|tool|app|scheduler)|\bwe (?:offer|have|include)/i;
   const negated = /\b(?:no|not|never|without)\b|n['’]t\b/i;
   for (const [slug, raw] of all) {
     const sentences = raw.replace(/\n+/g, ' ').split(/(?<=[.!?])\s+/);
     for (const sentence of sentences) {
       if (!banned.some((re) => re.test(sentence)) || !ours.test(sentence) || sentence.trim().endsWith('?')) continue;
-      assert.ok(negated.test(sentence), `${slug}: "${sentence.slice(0, 160)}"`);
+      assert.ok(negated.test(sentence.replace(/\b(?:no|without a) (?:credit )?card\b/gi, '')), `${slug}: "${sentence.slice(0, 160)}"`);
+    }
+  }
+});
+
+test('copy never says Schedule For You has no free plan (it has one)', () => {
+  const denial = /\bno free (?:plan|tier)\b|\bisn['’]t free\b|\bdoesn['’]t (?:have|offer) a free (?:plan|tier)\b|\bnot a free one\b|\bpaid product\b|\bpaid scheduler with two plans\b/i;
+  const ours = /Schedule For You|\bour (?:plan|product|app|scheduler)|\bwe\b|^\s*-?\s*No free plan/i;
+  const sources: [string, string][] = [...all, ['lib/seo.js', fs.readFileSync('lib/seo.js', 'utf8')], ['lib/seo-pages.js', fs.readFileSync('lib/seo-pages.js', 'utf8')], ['lib/md/agent-guide.js', fs.readFileSync('lib/md/agent-guide.js', 'utf8')], ['app/llms.txt/route.js', fs.readFileSync('app/llms.txt/route.js', 'utf8')]];
+  for (const [slug, raw] of sources) {
+    for (const sentence of raw.replace(/\n+/g, ' ').split(/(?<=[.!?])\s+/)) {
+      assert.ok(!(denial.test(sentence) && ours.test(sentence)), `${slug}: "${sentence.slice(0, 160)}"`);
     }
   }
 });
@@ -167,15 +179,12 @@ test('localized pages link only to pages that exist', () => {
   }
 });
 
-test('localized copy never claims a free plan or a trial without a card', () => {
-  // Only sentences about Schedule For You: sample bios may offer a free plan of their own.
-  const banned = [/kostenlose[nr]? (?:Tarif|Plan)\b/i, /ohne Kreditkarte/i, /plan gratuit|offre gratuite|sans carte/i, /無料プラン|カード不要|カード登録不要/, /gratis abonnement|gratis plan|zonder creditcard/i, /free plan/i];
-  const negated = /\b(?:kein\w*|nicht|pas|aucun\w*|geen|niet|no|not)\b|ありません|ない|なし|ません/i;
+test('localized copy never says there is no free plan (there is one)', () => {
+  const denial = [/kein(?:en)? kostenlose[nr]? (?:Tarif|Plan)/i, /pas de (?:forfait|plan|offre) gratuit|aucun (?:forfait|plan) gratuit/i, /無料プランはありません|無料プランはない|無料プランはなし/,
+    /geen gratis (?:abonnement|plan)/i, /no hay (?:un )?plan gratuito|sin plan gratuito/i, /não há (?:um )?plano gratuito|sem plano gratuito/i, /no free plan/i];
   for (const f of localizedFiles()) {
-    const sentences = f.raw.replace(/\n+/g, ' ').split(/(?<=[.!?。！？])\s*/);
-    for (const s of sentences) {
-      if (!banned.some((re) => re.test(s)) || !/Schedule For You/.test(s) || s.trim().endsWith('?') || s.trim().endsWith('？')) continue;
-      assert.ok(negated.test(s), `${f.locale}/${f.slug}: "${s.slice(0, 160)}"`);
+    for (const s of f.raw.replace(/\n+/g, ' ').split(/(?<=[.!?。！？])\s*/)) {
+      assert.ok(!denial.some((re) => re.test(s)), `${f.locale}/${f.slug}: "${s.slice(0, 160)}"`);
     }
   }
 });
