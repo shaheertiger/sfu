@@ -3452,6 +3452,7 @@ class Component extends DCLogic {
               this.setState({
                 ws: id,
                 wsOpen: false,
+                drawer: false,
                 labelFilter: null,
                 selected: [],
                 selecting: false,

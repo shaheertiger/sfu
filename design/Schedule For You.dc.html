@@ -2350,7 +2350,7 @@ class Component extends DCLogic {
         const leadOpts = [[15, '15 minutes'], [30, '30 minutes'], [60, '1 hour'], [180, '3 hours'], [1440, '1 day']];
         const z2 = (n) => String(n).padStart(2, '0');
         return {
-          workspaces: Component.WS.map(([id, name, sub, tone]) => ({ name, sub, tone, mark: id === WS ? '✓' : '', bg: id === WS ? '#22252a' : 'transparent', pick: () => { this.setState({ ws: id, wsOpen: false, labelFilter: null, selected: [], selecting: false, draft: Component.blank() }); this.flash(`Switched to ${name}`); } })),
+          workspaces: Component.WS.map(([id, name, sub, tone]) => ({ name, sub, tone, mark: id === WS ? '✓' : '', bg: id === WS ? '#22252a' : 'transparent', pick: () => { this.setState({ ws: id, wsOpen: false, drawer: false, labelFilter: null, selected: [], selecting: false, draft: Component.blank() }); this.flash(`Switched to ${name}`); } })),
           wsOpen: S0.wsOpen, toggleWs: () => this.setState((st) => ({ wsOpen: !st.wsOpen })), wsName: wsMeta[1], wsSub: wsMeta[2], wsTone: wsMeta[3],
           paused: !!S0.paused, togglePause: () => { this.setState((st) => ({ paused: !st.paused })); this.flash(S0.paused ? 'Queue resumed' : 'Queue paused'); },
           pauseLabel: S0.paused ? 'Resume queue' : 'Pause queue', pauseBg: S0.paused ? '#141619' : '#fff', pauseColor: S0.paused ? '#fff' : '#141619', pauseBorder: S0.paused ? '#141619' : '#e7e5df',
