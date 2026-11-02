@@ -85,6 +85,29 @@ textarea{resize:vertical}
   .sfy-filters > select{flex:none;max-width:70vw}
   .sfy-chiprow{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px}
   .sfy-chiprow > *{flex:none;white-space:nowrap}
+  /* ---- Phone UX ---- */
+  /* One Create per screen: the tab bar's. */
+  .sfy-top .sfy-plus,.sfy-sideplus{display:none!important}
+  .sfy-top{min-height:56px}
+  /* Large title in the page, compact title in the bar once it scrolls away (where supported). */
+  @supports (animation-timeline:scroll()){
+    .sfy-top-title > span{animation:sfyTitleIn linear both;animation-timeline:scroll(root);animation-range:24px 72px}
+  }
+  /* Tab bar: icons and labels share one baseline, press feedback. */
+  .sfy-tab{min-height:52px;justify-content:flex-end;transition:transform .12s,color .15s}
+  .sfy-tab:active{transform:scale(.92)}
+  .sfy-tab-ic{margin:3px 0}
+  .sfy-tab[data-kind="create"] .sfy-tab-ic{margin:0;box-shadow:0 6px 16px -6px rgba(217,255,53,.55)}
+  /* Press feedback everywhere in the page. */
+  .sfy-main button,.sfy-side button,.sfy-sheet button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+  .sfy-main button:not(:disabled):active,.sfy-sheet button:not(:disabled):active{transform:scale(.97)}
+  /* Account chips in the composer: clearly tappable, clearly picked. */
+  .sfy-accchip{min-height:40px;padding:5px 12px 5px 6px!important;font-weight:500}
+  .sfy-accchip[aria-pressed="false"]{border-color:#e2e0d9!important;background:#fff!important}
+  .sfy-accchip[aria-pressed="true"]{border-color:#141619!important;background:#141619!important;color:#fff}
+  .sfy-accchip[aria-pressed="true"]::after{content:"✓";margin-left:2px;color:#d9ff35;font-weight:700}
+  /* Bottom sheets get a grab handle. */
+  .sfy-sheet::before{content:"";display:block;flex:none;width:38px;height:4px;border-radius:4px;background:#d6d4cd;margin:8px auto 0}
   .sfy-caltools{row-gap:10px!important}
   .sfy-filters,.sfy-chiprow,.sfy-steps{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent)}
   .sfy-calhint{white-space:normal!important}
@@ -129,6 +152,7 @@ textarea{resize:vertical}
 @media (max-width:760px){.sfy-monly{display:inline}}
 /* Narrower laptops: drop the month-view thumbnail so the time stays readable. */
 @media (min-width:761px) and (max-width:1280px){.sfy-mchip > span:nth-child(4){display:none!important}}
+@keyframes sfyTitleIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @keyframes sheetUp{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
 @keyframes toastIn{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}
 </style>
@@ -141,7 +165,7 @@ textarea{resize:vertical}
         <span style="display:{{ sideTxt }};font-weight:800;letter-spacing:-0.05em;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ wsName }}</span>
         <span style="display:{{ sideTxt }};font-size:10px;color:#7d828a">▼</span>
       </button>
-      <button onClick="{{ goCompose }}" aria-label="Create post" title="Create post (N)" style="display:{{ sideTxt }};width:32px;height:32px;flex:none;border-radius:9px;border:0;background:#d9ff35;color:#141619;cursor:pointer;font-size:18px;font-weight:600;line-height:1" style-hover="background:#e6ff6e">+</button>
+      <button class="sfy-sideplus" onClick="{{ goCompose }}" aria-label="Create post" title="Create post (N)" style="display:{{ sideTxt }};width:32px;height:32px;flex:none;border-radius:9px;border:0;background:#d9ff35;color:#141619;cursor:pointer;font-size:18px;font-weight:600;line-height:1" style-hover="background:#e6ff6e">+</button>
     </div>
     <button onClick="{{ goCompose }}" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:9px 12px;margin:0 0 14px;border-radius:9px;border:0;background:#d9ff35;color:#141619;font-weight:600;font-size:14px;cursor:pointer" style-hover="background:#e6ff6e">
       <span>+</span><span style="display:{{ sideTxt }}">Create post</span>
@@ -231,7 +255,7 @@ textarea{resize:vertical}
         <div style="display:flex;flex-direction:column;gap:14px">
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
             <strong style="font-size:18px;letter-spacing:-0.02em">Up next</strong>
-            <span style="display:flex;align-items:center;gap:6px"><button onClick="{{ goQueueTab }}" style="border:0;background:transparent;cursor:pointer;color:#677184;font-size:13px;padding:0 6px">See all {{ upcomingCount }}</button><button onClick="{{ upPrev }}" aria-label="Scroll left" style="width:30px;height:30px;border-radius:8px;border:1px solid #e7e5df;background:#fff;cursor:pointer">‹</button><button onClick="{{ upNextBtn }}" aria-label="Scroll right" style="width:30px;height:30px;border-radius:8px;border:1px solid #e7e5df;background:#fff;cursor:pointer">›</button></span>
+            <span style="display:flex;align-items:center;gap:6px"><button onClick="{{ goQueueTab }}" style="border:0;background:transparent;cursor:pointer;color:#677184;font-size:13px;padding:0 6px">See all {{ upcomingCount }}</button><button class="sfy-mhide" onClick="{{ upPrev }}" aria-label="Scroll left" style="width:30px;height:30px;border-radius:8px;border:1px solid #e7e5df;background:#fff;cursor:pointer">‹</button><button class="sfy-mhide" onClick="{{ upNextBtn }}" aria-label="Scroll right" style="width:30px;height:30px;border-radius:8px;border:1px solid #e7e5df;background:#fff;cursor:pointer">›</button></span>
           </div>
           <div ref="{{ upRef }}" style="scroll-behavior:smooth;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(280px,300px);gap:14px;overflow-x:auto;padding:4px 2px 18px;margin:0 -2px;scroll-snap-type:x mandatory;scrollbar-width:none">
             <sc-for list="{{ upNext }}" as="c" hint-placeholder-count="4">
@@ -614,7 +638,7 @@ textarea{resize:vertical}
             <sc-if value="{{ inlineAccounts }}" hint-placeholder-val="{{ false }}">
               <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
                 <sc-for list="{{ accountChips }}" as="a" hint-placeholder-count="6">
-                  <button onClick="{{ a.toggle }}" style="display:inline-flex;align-items:center;gap:7px;padding:4px 10px 4px 4px;border-radius:999px;cursor:pointer;border:1px solid {{ a.border }};background:{{ a.bg }};font-size:13px"><span style="width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:{{ a.color }}"><span style="width:56%;height:56%;background:{{ a.logo }} center/contain no-repeat"></span></span>{{ a.username }}</button>
+                  <button class="sfy-accchip" onClick="{{ a.toggle }}" aria-pressed="{{ a.pressed }}" style="display:inline-flex;align-items:center;gap:7px;padding:4px 10px 4px 4px;border-radius:999px;cursor:pointer;border:1px solid {{ a.border }};background:{{ a.bg }};font-size:13px"><span style="width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:{{ a.color }}"><span style="width:56%;height:56%;background:{{ a.logo }} center/contain no-repeat"></span></span>{{ a.username }}</button>
                 </sc-for>
               </div>
             </sc-if>
