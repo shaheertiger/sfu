@@ -1327,7 +1327,7 @@ textarea{resize:vertical}
           </div>
           <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
             <sc-for list="{{ slotChips }}" as="c" hint-placeholder-count="3">
-              <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 6px 5px 12px;border-radius:999px;background:#141619;color:#f6f5f1;font:500 13px 'Geist Mono',monospace">{{ c.label }}<button onClick="{{ c.remove }}" title="Remove slot" style="width:20px;height:20px;border-radius:50%;border:0;background:#3a3e45;color:#f6f5f1;cursor:pointer;font-size:12px;line-height:1">×</button></span>
+              <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 6px 5px 12px;border-radius:999px;background:#141619;color:#f6f5f1;font:500 13px 'Geist Mono',monospace">{{ c.label }}<button onClick="{{ c.remove }}" title="Remove slot" aria-label="Remove {{ c.label }} slot" style="width:20px;height:20px;border-radius:50%;border:0;background:#3a3e45;color:#f6f5f1;cursor:pointer;font-size:12px;line-height:1">×</button></span>
             </sc-for>
             <input type="time" value="{{ newSlot }}" onChange="{{ onNewSlot }}" style="padding:6px 10px;border:1px solid #e5e3dc;border-radius:999px;outline:none">
             <button onClick="{{ addSlot }}" style="padding:6px 10px;font-size:13px;border-radius:8px;border:1px solid #e5e3dc;background:#fff;cursor:pointer;font-weight:500;border-radius:999px">Add slot</button>
@@ -1650,10 +1650,21 @@ class Component extends DCLogic {
     this.setState({ draft: { ...Component.blank(when), targets: this.defaultTargets() }, screen: 'compose', drawer: false });
     return true;
   }
+  /** The accounts of the last post, per workspace; kept in this browser so they survive a reload. */
+  targetsKey() { return 'sfy:lastTargets:' + (this.state.wsId || this.state.ws || 'default'); }
+  rememberTargets(ids) {
+    this._lastTargets = { key: this.targetsKey(), ids: [...ids] };
+    try { localStorage.setItem(this._lastTargets.key, JSON.stringify(ids)); } catch {}
+  }
+  recallTargets() {
+    const key = this.targetsKey();
+    if (this._lastTargets && this._lastTargets.key === key) return this._lastTargets.ids;
+    try { const v = JSON.parse(localStorage.getItem(key) || '[]'); return Array.isArray(v) ? v : []; } catch { return []; }
+  }
   /** A new post starts with the accounts used last time, or the only account when there is just one. */
   defaultTargets() {
     const accs = this.state.accounts || [], ids = new Set(accs.map((a) => a.id));
-    const last = (this._lastTargets || []).filter((id) => ids.has(id));
+    const last = this.recallTargets().filter((id) => ids.has(id));
     if (last.length) return last;
     return accs.length === 1 ? [accs[0].id] : [];
   }
@@ -1705,7 +1716,7 @@ class Component extends DCLogic {
     const post = { id: d.id || 'p' + Date.now(), note: d.note || '', ws: s.ws || 'maya', labels: d.labels || [], repeat: d.repeat, evergreen: d.evergreen, remind: d.remind, approval: d.approval ? 'pending' : d.approvedBefore ? 'approved' : null, status: st, at, caption: d.caption, media: d.media, ov, targets: d.targets.map((id) => ({ acc: id, status: st, error: '' })) };
     const posts = d.id ? s.posts.map((p) => (p.id === d.id ? post : p)) : [...s.posts, post];
     const tab = st === 'published' ? 'published' : st === 'draft' ? 'drafts' : 'upcoming';
-    if (d.targets.length) this._lastTargets = [...d.targets];
+    if (d.targets.length) this.rememberTargets(d.targets);
     this.setState({ posts, screen: 'queue', tab, draft: Component.blank() });
     const n = d.targets.length;
     this.flash(st === 'published' ? `Published to ${n} account${n === 1 ? '' : 's'}` : st === 'draft' ? 'Draft saved' : `Scheduled for ${this.dayLabel(at)} at ${this.time(at)}`);
@@ -2058,6 +2069,9 @@ class Component extends DCLogic {
       for (const f of p.fields || []) if (f.options && !this.fieldOptions(a, f).length) problems.push(`${p.label} @${a.username} has no ${f.label.toLowerCase()}s to post to. Create one on ${p.label}, then reconnect the account.`);
       if (p.maxImages !== undefined && d.media.filter((m) => m === 'IMG').length > p.maxImages) problems.push(`${p.label} allows ${p.maxImages} image${p.maxImages === 1 ? '' : 's'} per post. Remove some or deselect @${a.username}.`);
     }
+    // Nothing to post: no text for any picked account and no media. Drafts may stay empty.
+    if (sel.length && d.mode !== 'draft' && !d.media.length && sel.every((a) => !String(d.ov[a.id]?.caption ?? d.caption).trim())) problems.unshift('Write something or add an image or video.');
+    if (d.mode === 'queue' && !this.nextSlots(1, [], d.id).length) problems.push('You have no open posting slots. Add one in Settings, or pick a date and time.');
     if (d.mode === 'schedule') {
       const at = Component.fromLocal(d.when, S0.tz);
       if (!at) problems.push('Pick a date and time.');
@@ -2363,7 +2377,7 @@ class Component extends DCLogic {
       },
       postStats,
       slotDayBtns, slotChips, newSlot: s.newSlot, onNewSlot: (e) => this.setState({ newSlot: e.target.value }),
-      addSlot: () => { if (!s.newSlot || s.slots.includes(s.newSlot)) return; this.setState((st) => ({ slots: [...st.slots, st.newSlot] })); this.flash('Slot added'); },
+      addSlot: () => { if (!s.newSlot) return; if (s.slots.includes(s.newSlot)) { const [h, m] = s.newSlot.split(':').map(Number); return this.flash(`You already have a ${new Date(2026, 0, 1, h, m).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })} slot`); } this.setState((st) => ({ slots: [...st.slots, st.newSlot].sort() })); this.flash('Slot added'); },
       nextSlotsLabel: this.nextSlots(3).map((ms) => this.slotLabel(ms)).join('  ·  ') || 'No slots set',
       ...(() => {
         const nowMs = Date.now(), nx = upcoming.find((p) => p.at > nowMs);
