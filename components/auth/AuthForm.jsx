@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import styles from './auth.module.css';
+import { FREE_PLAN } from '@/lib/plan-limits';
 
 export default function AuthForm({ mode }) {
   const router = useRouter();
@@ -46,8 +47,15 @@ export default function AuthForm({ mode }) {
         <span>schedule for you</span>
       </a>
       <form className={styles.card} onSubmit={submit}>
-        <h1>{signup ? 'Start your free trial' : 'Welcome back'}</h1>
-        <p className={styles.sub}>{referred ? 'Your invite gives you a 14-day free trial, double the usual. Card required, cancel anytime. You are not charged until day 15.' : signup ? '7-day free trial. Card required, cancel anytime. You are not charged until day 8.' : 'Sign in to your workspace.'}</p>
+        <h1>{signup ? 'Create your free account' : 'Welcome back'}</h1>
+        {/* Every workspace starts on Free (no card). A card is only asked for when starting a paid trial from Billing. */}
+        <p className={styles.sub}>
+          {referred
+            ? `Free for ${FREE_PLAN.accountLimit} accounts, no card needed. Your invite also doubles the Solo and Studio trial to 14 days whenever you upgrade.`
+            : signup
+              ? `Free for ${FREE_PLAN.accountLimit} accounts and up to ${FREE_PLAN.queueLimit} scheduled posts. No card needed. Upgrade anytime.`
+              : 'Sign in to your workspace.'}
+        </p>
         {signup && (
           <label>
             <span>Name</span>
