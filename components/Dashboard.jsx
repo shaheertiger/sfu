@@ -692,6 +692,9 @@ class Component extends DCLogic {
   // The post panel belongs to the calendar: leaving the calendar by any route closes it.
   // Select mode only exists on the Upcoming tab: switching tabs or screens by any route ends it.
   // A new screen starts at the top, not wherever the last one was scrolled to (most noticeable on phones).
+  static autoCollapse() {
+    return typeof window !== 'undefined' && window.innerWidth < 1180;
+  }
   componentDidUpdate(prevProps, prevState) {
     const s = this.state;
     if (prevState && prevState.screen !== s.screen && typeof window !== 'undefined') window.scrollTo(0, 0);
@@ -4297,8 +4300,9 @@ class Component extends DCLogic {
       navBottom: nav.filter((n) => n.id === 'settings'),
       ...(() => {
         // Phones: the sidebar becomes a slide-in drawer, so it is never collapsed there.
+        // Small laptops and tablets (under 1180px) start collapsed to give the page room, until the user picks.
         const phone = typeof window !== 'undefined' && window.innerWidth <= 760,
-          col = S0.collapsed && !phone;
+          col = !phone && (S0.collapsed ?? Component.autoCollapse());
         const more = ['bulk', 'library', 'accounts', 'analytics', 'settings'].includes(screen);
         const tab = (id, label, kind, go, on, badge) => ({
           label,
@@ -4342,7 +4346,7 @@ class Component extends DCLogic {
           ],
         };
       })(),
-      toggleSide: () => this.setState((st) => ({ collapsed: !st.collapsed })),
+      toggleSide: () => this.setState((st) => ({ collapsed: !(st.collapsed ?? Component.autoCollapse()) })),
       ...(() => {
         const p = screen === 'calendar' && S0.posts.find((x) => x.id === S0.calPost);
         if (!p) return { hasCalPost: false, cp: { accs: [] }, closeCalPost: () => {} };

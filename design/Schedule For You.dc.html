@@ -148,6 +148,10 @@ textarea{resize:vertical}
   .sfy-trow{column-gap:10px!important}
 }
 @media (max-width:400px){.sfy-trow{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+/* Focus rings are for the keyboard: a mouse click doesn't leave one behind. */
+.sfy-shell :focus:not(:focus-visible){outline:none!important}
+/* Very wide screens: keep the page centred next to the sidebar. */
+@media (min-width:761px){.sfy-main{margin-inline:auto}}
 .sfy-monly{display:none}
 @media (max-width:760px){.sfy-monly{display:inline}}
 /* Narrower laptops: drop the month-view thumbnail so the time stays readable. */
@@ -534,7 +538,7 @@ textarea{resize:vertical}
         </sc-if>
         <sc-if value="{{ isWeek }}" hint-placeholder-val="{{ false }}">
           <div style="overflow-x:auto;border:1px solid #e7e5df;border-radius:12px;background:#fff">
-          <div class="sfy-week" style="display:grid;grid-template-columns:repeat(7,minmax(150px,1fr));min-width:1050px">
+          <div class="sfy-week" style="display:grid;grid-template-columns:repeat(7,minmax(118px,1fr));min-width:840px">
             <sc-for list="{{ weekDays }}" as="d" hint-placeholder-count="7">
               <div class="sfy-wday" onDragOver="{{ d.over }}" onDrop="{{ d.drop }}" style="min-height:260px;min-width:0;border-right:1px solid #efefea;background:{{ d.bg }};padding:8px;display:flex;flex-direction:column;gap:6px;transition:background .15s">
                 <div style="display:flex;align-items:center;gap:6px;padding:2px 2px 6px">
@@ -548,7 +552,7 @@ textarea{resize:vertical}
                 <sc-for list="{{ d.events }}" as="e" hint-placeholder-count="1">
                   <div draggable="{{ e.draggable }}" onDragStart="{{ e.dragStart }}" onDragEnd="{{ e.dragEnd }}" style="opacity:{{ e.op }};display:flex;flex-direction:column;gap:6px;padding:8px;border-radius:9px;border:1px solid {{ e.border }};background:#fff;cursor:{{ e.cursor }};min-width:0;transition:border-color .15s,box-shadow .15s" style-hover="border-color:#141619;box-shadow:0 6px 16px -10px rgba(20,22,25,.4)">
                     <button onClick="{{ e.open }}" style="display:flex;flex-direction:column;gap:6px;padding:0;border:0;background:transparent;cursor:inherit;text-align:left;min-width:0">
-                      <span style="display:flex;align-items:center;gap:6px;justify-content:space-between"><span style="font-size:12px;font-weight:600">{{ e.time }}</span><span style="padding:1px 7px;border-radius:999px;font-size:11px;font-weight:600;background:{{ e.stBg }};color:{{ e.stFg }};white-space:nowrap">{{ e.stLabel }}</span></span>
+                      <span style="display:flex;align-items:center;gap:4px 6px;justify-content:space-between;flex-wrap:wrap"><span style="font-size:12px;font-weight:600;white-space:nowrap">{{ e.time }}</span><span style="padding:1px 7px;border-radius:999px;font-size:11px;font-weight:600;background:{{ e.stBg }};color:{{ e.stFg }};white-space:nowrap">{{ e.stLabel }}</span></span>
                       <span style="display:flex;gap:6px;align-items:flex-start;min-width:0">
                         <span style="width:30px;height:30px;border-radius:6px;flex:none;background:{{ e.thumb }};display:{{ e.thumbDisplay }}"></span>
                         <span style="font-size:12px;line-height:1.35;color:#3b414b;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere">{{ e.caption }}</span>
@@ -1560,6 +1564,7 @@ class Component extends DCLogic {
   // The post panel belongs to the calendar: leaving the calendar by any route closes it.
   // Select mode only exists on the Upcoming tab: switching tabs or screens by any route ends it.
   // A new screen starts at the top, not wherever the last one was scrolled to (most noticeable on phones).
+  static autoCollapse() { return typeof window !== 'undefined' && window.innerWidth < 1180; }
   componentDidUpdate(prevProps, prevState) {
     const s = this.state;
     if (prevState && prevState.screen !== s.screen && typeof window !== 'undefined') window.scrollTo(0, 0);
@@ -2505,7 +2510,8 @@ class Component extends DCLogic {
       navBottom: nav.filter((n) => n.id === 'settings'),
       ...(() => {
         // Phones: the sidebar becomes a slide-in drawer, so it is never collapsed there.
-        const phone = typeof window !== 'undefined' && window.innerWidth <= 760, col = S0.collapsed && !phone;
+        // Small laptops and tablets (under 1180px) start collapsed to give the page room, until the user picks.
+        const phone = typeof window !== 'undefined' && window.innerWidth <= 760, col = !phone && (S0.collapsed ?? Component.autoCollapse());
         const more = ['bulk', 'library', 'accounts', 'analytics', 'settings'].includes(screen);
         const tab = (id, label, kind, go, on, badge) => ({ label, kind, go, on: on ? 'true' : 'false', current: on ? 'page' : 'false', badge: badge || 0, icon: kind === 'nav' ? `url(/icons/${id}${on ? '-on' : ''}.svg)` : 'none' });
         const goTo = (id) => () => this.setState({ screen: id, selecting: false, selected: [], drawer: false, calPost: null });
@@ -2523,7 +2529,7 @@ class Component extends DCLogic {
             tab('more', 'More', 'more', () => this.setState((st) => ({ drawer: !st.drawer })), more),
           ],
         };
-      })(), toggleSide: () => this.setState((st) => ({ collapsed: !st.collapsed })),
+      })(), toggleSide: () => this.setState((st) => ({ collapsed: !(st.collapsed ?? Component.autoCollapse()) })),
       ...(() => {
         const p = screen === 'calendar' && S0.posts.find((x) => x.id === S0.calPost);
         if (!p) return { hasCalPost: false, cp: { accs: [] }, closeCalPost: () => {} };
