@@ -3,6 +3,10 @@ import { body, handler, json } from '@/lib/server/api';
 import { exec, one } from '@/lib/server/db';
 import { head, presignUpload, remove } from '@/lib/server/storage';
 import { POSTER_MAX_BYTES, posterKeyFor, publicMedia } from '@/lib/server/media';
+import { stripUploadMetadata, stripsMetadata } from '@/lib/server/media-privacy';
+
+// Scrubbing a large video means a few ranged reads plus a server-side recompose; give it room.
+export const maxDuration = 120;
 
 /**
  * Confirms an upload, moves a file between folders, or adds a poster still to a video:
@@ -17,10 +21,16 @@ export const PATCH = handler(async ({ req, workspace, params }) => {
     poster_size: z.number().int().positive().max(POSTER_MAX_BYTES).optional(),
     poster: z.literal(true).optional(),
   }).parse(await body(req));
+  let privacy: { stripped: boolean; location_removed: boolean } | undefined;
   if (b.uploaded) {
     const h = await head(m.object_key);
     if (!h) return json({ error: 'Upload not found in storage. Try uploading again.' }, 409);
     await exec('UPDATE media SET uploaded=true, size=$1 WHERE id=$2', [h.size, m.id]);
+    // Photos lose their EXIF/GPS/XMP and videos their location/camera atoms here, before anything can read them, unless the workspace opted out.
+    if (stripsMetadata(workspace.prefs)) {
+      const r = await stripUploadMetadata(m);
+      privacy = { stripped: r.stripped, location_removed: r.hadGps };
+    }
   }
   if (b.folder !== undefined) await exec('UPDATE media SET folder=$1 WHERE id=$2', [b.folder, m.id]);
   let poster_upload_url: string | undefined;
@@ -33,7 +43,7 @@ export const PATCH = handler(async ({ req, workspace, params }) => {
     if (!h) return json({ error: 'Poster not found in storage. Upload it again.' }, 409);
     await exec('UPDATE media SET poster_key=$1 WHERE id=$2', [posterKeyFor(m.object_key), m.id]);
   }
-  return { media: await publicMedia(await one('SELECT * FROM media WHERE id=$1', [m.id])), ...(poster_upload_url ? { poster_upload_url } : {}) };
+  return { media: await publicMedia(await one('SELECT * FROM media WHERE id=$1', [m.id])), ...(poster_upload_url ? { poster_upload_url } : {}), ...(privacy ? { privacy } : {}) };
 });
 
 export const DELETE = handler(async ({ workspace, params }) => {

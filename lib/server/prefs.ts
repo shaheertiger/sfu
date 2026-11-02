@@ -40,6 +40,8 @@ const PREF_FIELDS = {
   utm: z.boolean(),
   /** Saved sets of accounts the composer can select in one click. */
   accountGroups: list(z.object({ id: clip(40), name: clip(40), ids: list(z.string().max(64), 200) }), 50),
+  /** Remove EXIF, GPS, XMP and IPTC from photos when they are uploaded (on unless set to false). */
+  stripMetadata: z.boolean(),
   /** Days after a file is posted during which the media library marks it "used recently" (0 = off). */
   reuseCooldownDays: z.number().int().min(0).max(365),
 } as const;

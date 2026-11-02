@@ -1,5 +1,8 @@
 import 'server-only';
-import { S3Client, PutObjectCommand, GetObjectCommand, HeadObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
+import {
+  S3Client, PutObjectCommand, GetObjectCommand, HeadObjectCommand, DeleteObjectCommand,
+  CreateMultipartUploadCommand, UploadPartCommand, UploadPartCopyCommand, CompleteMultipartUploadCommand, AbortMultipartUploadCommand,
+} from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { HttpError } from './http-error';
 
@@ -90,6 +93,53 @@ export async function head(key: string) {
 export async function getBytes(key: string): Promise<Buffer> {
   const r = await s3().send(new GetObjectCommand({ Bucket: bucket(), Key: key }));
   return Buffer.from(await r.Body!.transformToByteArray());
+}
+
+/** Reads `length` bytes of an object from `start` with a ranged GET. */
+export async function getRange(key: string, start: number, length: number): Promise<Uint8Array> {
+  if (length <= 0) return new Uint8Array(0);
+  const r = await s3().send(new GetObjectCommand({ Bucket: bucket(), Key: key, Range: `bytes=${start}-${start + length - 1}` }));
+  return await r.Body!.transformToByteArray();
+}
+
+export type ComposePart = { copy: [number, number] } | { bytes: Uint8Array };
+
+/**
+ * Rewrites an object from pieces of itself plus new bytes, server side, with a multipart upload:
+ * `copy` parts are byte ranges of the current object (UploadPartCopy, nothing downloaded) and
+ * `bytes` parts are uploaded. Every part but the last must be at least 5 MB. Used to scrub a
+ * few KB of metadata out of a 1 GB video without moving the video through a function.
+ */
+export async function composeObject(key: string, mime: string, parts: ComposePart[]) {
+  const Bucket = bucket();
+  const { UploadId } = await s3().send(new CreateMultipartUploadCommand({ Bucket, Key: key, ContentType: mime }));
+  try {
+    const done: { PartNumber: number; ETag: string }[] = [];
+    for (let i = 0; i < parts.length; i++) {
+      const PartNumber = i + 1;
+      const p = parts[i];
+      if ('copy' in p) {
+        const r = await s3().send(new UploadPartCopyCommand({
+          Bucket, Key: key, UploadId, PartNumber,
+          CopySource: `${Bucket}/${key.split('/').map(encodeURIComponent).join('/')}`,
+          CopySourceRange: `bytes=${p.copy[0]}-${p.copy[1] - 1}`,
+        }));
+        done.push({ PartNumber, ETag: r.CopyPartResult!.ETag! });
+      } else {
+        const r = await s3().send(new UploadPartCommand({ Bucket, Key: key, UploadId, PartNumber, Body: p.bytes, ContentLength: p.bytes.length }));
+        done.push({ PartNumber, ETag: r.ETag! });
+      }
+    }
+    await s3().send(new CompleteMultipartUploadCommand({ Bucket, Key: key, UploadId, MultipartUpload: { Parts: done } }));
+  } catch (e) {
+    await s3().send(new AbortMultipartUploadCommand({ Bucket, Key: key, UploadId })).catch(() => {});
+    throw e;
+  }
+}
+
+/** Overwrites an object in place (used after metadata is stripped from an upload). */
+export async function putBytes(key: string, bytes: Uint8Array, mime: string) {
+  await s3().send(new PutObjectCommand({ Bucket: bucket(), Key: key, Body: bytes, ContentType: mime, ContentLength: bytes.length }));
 }
 
 export async function remove(key: string) {

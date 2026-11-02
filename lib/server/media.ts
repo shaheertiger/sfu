@@ -31,5 +31,8 @@ export async function publicMedia(m: any) {
     url: await readUrl(m.object_key, 3600),
     thumb_url: thumbUrlFor(m.id, m.mime, appUrl(), !!m.poster_key),
     poster: !!m.poster_key,
+    // Photo privacy: EXIF/GPS were removed at upload; location_removed says a GPS position was in the original.
+    metadata_stripped: !!m.metadata_stripped,
+    location_removed: !!m.metadata_had_gps,
   };
 }
