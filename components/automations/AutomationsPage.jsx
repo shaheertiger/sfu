@@ -323,7 +323,7 @@ function PhotoPrivacy({ on, canEdit, reload }) {
     try {
       await api('/api/app/prefs', { method: 'PATCH', body: { prefs: { stripMetadata: !on } } });
       await reload();
-      setMsg(['ok', !on ? 'Photos uploaded from now on have their location and camera data removed.' : 'Metadata is kept from now on. Photos already uploaded stay as they are.']);
+      setMsg(['ok', !on ? 'Photos and videos uploaded from now on have their location and camera data removed.' : 'Metadata is kept from now on. Files already uploaded stay as they are.']);
     } catch (e) {
       setMsg(['err', e.message]);
     } finally {
@@ -332,16 +332,16 @@ function PhotoPrivacy({ on, canEdit, reload }) {
   };
   return (
     <section className={s.card}>
-      <h2>Photo privacy</h2>
+      <h2>Photo and video privacy</h2>
       <p className={s.help}>
-        Phone photos carry hidden data: GPS location, camera make and serial number, the time they were taken, editing software. When this is on, every JPG, PNG and WebP is cleaned the moment it finishes uploading, before it reaches the queue or any platform. The picture itself is not re-encoded, and a photo's orientation is kept.
+        Phone photos and videos carry hidden data: GPS location, camera make and serial number, the time they were taken, editing software. When this is on, every JPG, PNG, WebP, MP4, MOV and WebM is cleaned the moment it finishes uploading, before it reaches the queue or any platform. Nothing is re-encoded: a photo's orientation is kept, and a video keeps its exact bytes apart from the metadata, so there is no quality loss and no wait.
       </p>
       {msg[0] === 'err' && <p className={s.error}>{msg[1]}</p>}
       {msg[0] === 'ok' && <p className={s.notice}>{msg[1]}</p>}
       {canEdit && (
         <div className={s.actions}>
           <label className={s.toggle}>
-            <input type="checkbox" checked={!!on} disabled={busy} onChange={flip} /> Remove location and camera data from uploaded photos
+            <input type="checkbox" checked={!!on} disabled={busy} onChange={flip} /> Remove location and camera data from uploaded photos and videos
           </label>
         </div>
       )}

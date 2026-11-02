@@ -5,6 +5,9 @@ import { head, presignUpload, remove } from '@/lib/server/storage';
 import { POSTER_MAX_BYTES, posterKeyFor, publicMedia } from '@/lib/server/media';
 import { stripUploadMetadata, stripsMetadata } from '@/lib/server/media-privacy';
 
+// Scrubbing a large video means a few ranged reads plus a server-side recompose; give it room.
+export const maxDuration = 120;
+
 /**
  * Confirms an upload, moves a file between folders, or adds a poster still to a video:
  * `poster_size` returns a presigned `poster_upload_url` for a JPEG; `poster: true` confirms it is there.
@@ -23,7 +26,7 @@ export const PATCH = handler(async ({ req, workspace, params }) => {
     const h = await head(m.object_key);
     if (!h) return json({ error: 'Upload not found in storage. Try uploading again.' }, 409);
     await exec('UPDATE media SET uploaded=true, size=$1 WHERE id=$2', [h.size, m.id]);
-    // Photos lose their EXIF/GPS/XMP here, before anything can read them, unless the workspace opted out.
+    // Photos lose their EXIF/GPS/XMP and videos their location/camera atoms here, before anything can read them, unless the workspace opted out.
     if (stripsMetadata(workspace.prefs)) {
       const r = await stripUploadMetadata(m);
       privacy = { stripped: r.stripped, location_removed: r.hadGps };
