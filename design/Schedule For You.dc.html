@@ -57,6 +57,9 @@ textarea{resize:vertical}
 }
 @media (max-width:760px){
   .sfy-g2{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .sfy-homeacts{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
+  .sfy-homeacts > button{min-height:44px}
+  .sfy-stat{align-items:flex-start!important;padding:12px!important;gap:10px!important}
   .sfy-qrow{grid-template-columns:auto minmax(0,1fr) auto!important;row-gap:10px!important;padding:14px!important}
   .sfy-qbody{grid-column:1/-1;grid-row:2}
   .sfy-qact{grid-column:3;grid-row:1;justify-self:end}
@@ -83,6 +86,7 @@ textarea{resize:vertical}
   .sfy-chiprow{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px}
   .sfy-chiprow > *{flex:none;white-space:nowrap}
   .sfy-caltools{row-gap:10px!important}
+  .sfy-filters,.sfy-chiprow,.sfy-steps{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent)}
   .sfy-calhint{white-space:normal!important}
   .sfy-week{grid-template-columns:minmax(0,1fr)!important;min-width:0!important}
   .sfy-wday{min-height:0!important;border-right:0!important;border-bottom:1px solid #efefea}
@@ -117,8 +121,10 @@ textarea{resize:vertical}
   .sfy-bfoot > button:first-child{flex:1 1 100%;margin-right:0!important}
   .sfy-bfoot > button:not(:first-child){flex:1}
   .sfy-trow > span[data-l]{text-align:left!important;display:flex;flex-direction:column;gap:1px}
-  .sfy-trow > span[data-l]::before{content:attr(data-l);font:500 11px Geist,system-ui,sans-serif;color:#9aa0a8}
+  .sfy-trow > span[data-l]::before{content:attr(data-l);font:500 11px Geist,system-ui,sans-serif;color:#9aa0a8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sfy-trow{column-gap:10px!important}
 }
+@media (max-width:400px){.sfy-trow{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 .sfy-monly{display:none}
 @media (max-width:760px){.sfy-monly{display:inline}}
 /* Narrower laptops: drop the month-view thumbnail so the time stays readable. */
@@ -208,15 +214,15 @@ textarea{resize:vertical}
             <h1 style="margin:0;font-size:30px;line-height:1.1;letter-spacing:-0.03em;font-weight:700">{{ greetWord }}, {{ greetName }} 👋</h1>
             <p style="margin:0;font-size:15px;color:#677184">You have <strong style="color:#141619">{{ weekPosts }}</strong> scheduled this week and <button onClick="{{ jumpAttn }}" style="font:inherit;padding:0;border:0;background:transparent;cursor:pointer;color:{{ needColor }};font-weight:600;text-decoration:underline;text-underline-offset:3px">{{ needText }}</button>.</p>
           </div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <div class="sfy-homeacts" style="display:flex;gap:8px;flex-wrap:wrap">
             <button onClick="{{ goCalWeek }}" style="padding:9px 14px;border-radius:10px;border:1px solid #e7e5df;background:#fff;cursor:pointer;font-weight:500;font-size:14px" style-hover="border-color:#141619">View calendar</button>
             <button onClick="{{ goReview }}" style="padding:9px 14px;border-radius:10px;border:1px solid #e7e5df;background:#fff;cursor:pointer;font-weight:500;font-size:14px" style-hover="border-color:#141619">{{ reviewLabel }}</button>
-            <button onClick="{{ goCompose }}" style="padding:9px 16px;border-radius:10px;border:0;background:#d9ff35;color:#141619;cursor:pointer;font-weight:600;font-size:14px" style-hover="background:#e6ff6e">+ Create post</button>
+            <button class="sfy-mhide" onClick="{{ goCompose }}" style="padding:9px 16px;border-radius:10px;border:0;background:#d9ff35;color:#141619;cursor:pointer;font-weight:600;font-size:14px" style-hover="background:#e6ff6e">+ Create post</button>
           </div>
         </div>
         <div class="sfy-g2" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px">
           <sc-for list="{{ homeStats }}" as="h" hint-placeholder-count="4">
-            <button onClick="{{ h.go }}" style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;border:1px solid #e7e5df;background:#fff;cursor:pointer;text-align:left;transition:border-color .15s" style-hover="border-color:#141619">
+            <button class="sfy-stat" onClick="{{ h.go }}" style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;border:1px solid #e7e5df;background:#fff;cursor:pointer;text-align:left;transition:border-color .15s" style-hover="border-color:#141619">
               <span style="width:32px;height:32px;border-radius:9px;background:#f3f4f0;display:grid;place-items:center;flex:none"><span style="width:18px;height:18px;background:{{ h.icon }} center/contain no-repeat"></span></span>
               <span style="display:flex;flex-direction:column;line-height:1.2"><span style="font-size:22px;font-weight:700;letter-spacing:-0.03em;color:{{ h.color }}">{{ h.value }}</span><span style="font-size:12px;color:#677184">{{ h.label }}</span></span>
             </button>
@@ -679,7 +685,7 @@ textarea{resize:vertical}
                 </sc-if>
                 <div onDragOver="{{ mediaOver }}" onDragLeave="{{ mediaLeave }}" onDrop="{{ mediaDrop }}" style="border:1.5px dashed {{ mediaDropBorder }};background:{{ mediaDropBg }};border-radius:10px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#677184;transition:background .15s,border-color .15s">
                   <span style="font-size:14px">Drop images or videos here. Several images become a carousel.</span>
-                  <div style="display:flex;gap:8px">
+                  <div style="display:flex;gap:8px;flex-wrap:wrap">
                     <button onClick="{{ addImage }}" style="white-space:nowrap;padding:6px 10px;font-size:13px;border-radius:8px;border:1px solid #e5e3dc;background:#fff;cursor:pointer;font-weight:500">Add image</button>
                     <button onClick="{{ addVideo }}" style="white-space:nowrap;padding:6px 10px;font-size:13px;border-radius:8px;border:1px solid #e5e3dc;background:#fff;cursor:pointer;font-weight:500">Add video</button>
                     <button onClick="{{ togglePicker }}" style="white-space:nowrap;padding:6px 10px;font-size:13px;border-radius:8px;border:1px solid #141619;background:#141619;color:#fff;cursor:pointer;font-weight:500">From library</button>
@@ -866,9 +872,9 @@ textarea{resize:vertical}
               <input type="file" multiple="{{ true }}" accept="image/*,video/*" onChange="{{ onFiles }}" style="display:none">
               <strong style="font-size:16px">Drop images and videos here</strong>
               <span style="font-size:14px;color:#677184">Or click to choose files. Each file is placed in the next open posting slot.</span>
-              <span style="display:flex;gap:8px;margin-top:4px">
-                <span style="padding:8px 14px;border-radius:10px;background:#141619;color:#fff;font-weight:500;font-size:14px">Choose files</span>
-                <button onClick="{{ addSamples }}" style="padding:8px 14px;border-radius:10px;border:1px solid #e5e3dc;background:#fff;cursor:pointer;font-weight:500;font-size:14px">Use 6 sample files</button>
+              <span style="display:flex;gap:8px;margin-top:4px;flex-wrap:wrap;justify-content:center">
+                <span style="padding:8px 14px;border-radius:10px;background:#141619;color:#fff;font-weight:500;font-size:14px;white-space:nowrap">Choose files</span>
+                <button onClick="{{ addSamples }}" style="white-space:nowrap;padding:8px 14px;border-radius:10px;border:1px solid #e5e3dc;background:#fff;cursor:pointer;font-weight:500;font-size:14px">Use 6 sample files</button>
               </span>
             </label>
           </div>
@@ -1529,8 +1535,10 @@ class Component extends DCLogic {
   }
   // The post panel belongs to the calendar: leaving the calendar by any route closes it.
   // Select mode only exists on the Upcoming tab: switching tabs or screens by any route ends it.
-  componentDidUpdate() {
+  // A new screen starts at the top, not wherever the last one was scrolled to (most noticeable on phones).
+  componentDidUpdate(prevProps, prevState) {
     const s = this.state;
+    if (prevState && prevState.screen !== s.screen && typeof window !== 'undefined') window.scrollTo(0, 0);
     if (s.calPost && s.screen !== 'calendar') this.setState({ calPost: null });
     if (s.selecting && (s.screen !== 'queue' || s.tab !== 'upcoming')) this.setState({ selecting: false, selected: [] });
   }
@@ -2127,7 +2135,7 @@ class Component extends DCLogic {
           composeTabs: mob, cTabs: [['edit', 'Edit'], ['preview', 'Preview & publish']].map(([k, label]) => ({ label, bg: tab === k ? '#141619' : 'transparent', color: tab === k ? '#fff' : '#677184', pick: () => { this.setState({ cTab: k }); if (typeof window !== 'undefined') window.scrollTo(0, 0); } })),
           // Phones: a sticky bar on the Edit tab so the next step is always one tap away.
           showNextBar: mob && tab === 'edit', goPreviewTab: () => { this.setState({ cTab: 'preview' }); if (typeof window !== 'undefined') window.scrollTo(0, 0); },
-          nextBarLabel: d.targets.length ? `${d.targets.length} account${d.targets.length === 1 ? '' : 's'} · ${d.media.length ? d.media.length + ' file' + (d.media.length === 1 ? '' : 's') : 'no media'}` : 'Pick at least one account',
+          nextBarLabel: d.targets.length ? `${d.targets.length} account${d.targets.length === 1 ? '' : 's'} · ${d.media.length ? d.media.length + ' file' + (d.media.length === 1 ? '' : 's') : 'no media'}` : 'Pick accounts',
           accQ: S0.accQ || '', onAccQ: (e) => this.setState({ accQ: e.target.value }),
           capTabs: [{ id: null, label: 'Main caption', title: 'Main caption', tag: '', logo: 'none', dotBg: 'transparent', pic: 'none', iconDisplay: 'none' }, ...variants.map((v) => ({ id: v.id, label: variants.filter((x) => x.platform === v.platform).length > 1 ? v.username : v.platform, title: `${v.platform} · ${v.username}`, tag: v.hasOverride ? '· custom' : '· main', logo: v.logo, dotBg: v.color, pic: v.pic, iconDisplay: 'block' }))].map((t) => { const on = t.id === ct; return { ...t, line: on ? '#141619' : 'transparent', weight: on ? 600 : 500, color: on ? '#141619' : '#677184', tagColor: t.tag.includes('custom') ? '#15803d' : '#9aa0a8', pick: () => this.setState({ capTab: t.id }) }; }),
           capValue: cv ? cv.text : d.caption, onCapValue: cv ? cv.onText : (e) => this.upd({ caption: e.target.value, savedAt: Date.now() }),

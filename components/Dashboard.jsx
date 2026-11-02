@@ -691,8 +691,10 @@ class Component extends DCLogic {
   }
   // The post panel belongs to the calendar: leaving the calendar by any route closes it.
   // Select mode only exists on the Upcoming tab: switching tabs or screens by any route ends it.
-  componentDidUpdate() {
+  // A new screen starts at the top, not wherever the last one was scrolled to (most noticeable on phones).
+  componentDidUpdate(prevProps, prevState) {
     const s = this.state;
+    if (prevState && prevState.screen !== s.screen && typeof window !== 'undefined') window.scrollTo(0, 0);
     if (s.calPost && s.screen !== 'calendar') this.setState({ calPost: null });
     if (s.selecting && (s.screen !== 'queue' || s.tab !== 'upcoming'))
       this.setState({ selecting: false, selected: [] });
@@ -2638,7 +2640,7 @@ class Component extends DCLogic {
           },
           nextBarLabel: d.targets.length
             ? `${d.targets.length} account${d.targets.length === 1 ? '' : 's'} · ${d.media.length ? d.media.length + ' file' + (d.media.length === 1 ? '' : 's') : 'no media'}`
-            : 'Pick at least one account',
+            : 'Pick accounts',
           accQ: S0.accQ || '',
           onAccQ: (e) => this.setState({ accQ: e.target.value }),
           capTabs: [

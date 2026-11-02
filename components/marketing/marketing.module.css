@@ -38,11 +38,11 @@
 .prose li{margin:0 0 8px}
 .prose a{color:#dcff2e;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 .prose strong{color:#f6f5f1}
-.prose code{font-family:"Geist Mono",ui-monospace,monospace;font-size:.9em;background:#1a1c20;border:1px solid #2a2e34;border-radius:6px;padding:1px 6px}
+.prose code{font-family:"Geist Mono",ui-monospace,monospace;font-size:.9em;background:#1a1c20;border:1px solid #2a2e34;border-radius:6px;padding:1px 6px;overflow-wrap:anywhere;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .prose blockquote{margin:0 0 18px;padding:12px 16px;border-left:3px solid #dcff2e;background:#131417;border-radius:0 12px 12px 0;color:#d6d9de}
 .prose hr{border:0;border-top:1px solid #22252a;margin:36px 0}
 .prose img{display:block;width:100%;height:auto;margin:8px 0 6px;border:1px solid #22252a;border-radius:14px;background:#131417}
-.prose :global(.table-wrap){overflow-x:auto;margin:0 0 20px;border:1px solid #22252a;border-radius:14px}
+.prose :global(.table-wrap){overflow-x:auto;margin:0 0 20px;border:1px solid #22252a;border-radius:14px;overscroll-behavior-x:contain;background:linear-gradient(to right,#0c0d0f 30%,rgba(12,13,15,0)) left/40px 100% no-repeat local,linear-gradient(to left,#0c0d0f 30%,rgba(12,13,15,0)) right/40px 100% no-repeat local,radial-gradient(farthest-side at 0 50%,rgba(0,0,0,.6),transparent) left/14px 100% no-repeat scroll,radial-gradient(farthest-side at 100% 50%,rgba(0,0,0,.6),transparent) right/14px 100% no-repeat scroll}
 .prose table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.45}
 .prose th,.prose td{text-align:left;padding:11px 14px;border-bottom:1px solid #22252a;vertical-align:top}
 .prose th{background:#131417;color:#f6f5f1;font-weight:600;white-space:nowrap}
@@ -119,6 +119,10 @@
   .hero{padding:20px 0}
   .lead{font-size:16px}
   .prose{font-size:16px}
+  /* Tables: keep columns readable (scroll sideways) instead of crushing them to one word per line. */
+  .prose table{font-size:14px}
+  .prose th,.prose td{padding:10px 12px;min-width:96px}
+  .prose th:first-child,.prose td:first-child{min-width:128px}
   .cta{padding:20px}
   .footGrid{grid-template-columns:1fr 1fr;gap:22px}
 }
