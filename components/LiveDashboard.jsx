@@ -754,8 +754,10 @@ export default class LiveDashboard extends Base {
   }
 
   newPost(when) {
-    super.newPost(when);
+    // Resuming an unsent post keeps its uploads; only a fresh draft gets a new upload session.
+    if (!super.newPost(when)) return false;
     super.setState((st) => ({ uploads: [], draft: { ...st.draft, mediaIds: [], tok: newTok() } }));
+    return true;
   }
 
   /** Pinterest's Board select lists the account's real boards. */

@@ -4801,7 +4801,7 @@ export function renderDashboard($v) {
                       <button
                         data-sfy="cancel"
                         title="Esc"
-                        onClick={$v['goQueue']}
+                        onClick={$v['cancelCompose']}
                         style={{
                           padding: '6px',
                           border: '0',
@@ -6168,10 +6168,28 @@ export function renderDashboard($v) {
                           }}
                         >
                           {' '}
-                          <strong style={{ fontSize: '15px' }}>{'Nothing here yet'}</strong>{' '}
-                          <span style={{ fontSize: '13px', color: '#677184' }}>
-                            {'Upload images or videos to this folder, or change your search.'}
-                          </span>{' '}
+                          <strong style={{ fontSize: '15px' }}>{$t($v['libEmptyTitle'])}</strong>{' '}
+                          <span style={{ fontSize: '13px', color: '#677184' }}>{$t($v['libEmptyHint'])}</span>{' '}
+                          {$v['libFiltered'] ? (
+                            <>
+                              <button
+                                onClick={$v['libClearFilters']}
+                                style={{
+                                  marginTop: '6px',
+                                  padding: '7px 12px',
+                                  borderRadius: '9px',
+                                  border: '1px solid #e7e5df',
+                                  background: '#fff',
+                                  cursor: 'pointer',
+                                  fontWeight: '500',
+                                  fontSize: '13px',
+                                }}
+                                className="dashboard-hover-5"
+                              >
+                                {'Clear search and filters'}
+                              </button>
+                            </>
+                          ) : null}{' '}
                         </div>{' '}
                       </>
                     ) : null}{' '}
@@ -6414,6 +6432,43 @@ export function renderDashboard($v) {
                   }}
                 >
                   {' '}
+                  {$v['acNone'] ? (
+                    <>
+                      {' '}
+                      <div
+                        style={{
+                          padding: '28px 20px',
+                          textAlign: 'center',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '6px',
+                          alignItems: 'center',
+                        }}
+                      >
+                        {' '}
+                        <strong style={{ fontSize: '15px' }}>{'No connected accounts match'}</strong>{' '}
+                        <span style={{ fontSize: '13px', color: '#677184' }}>
+                          {'Search by name, handle or platform, or clear the filters.'}
+                        </span>{' '}
+                        <button
+                          onClick={$v['acClear']}
+                          style={{
+                            marginTop: '6px',
+                            padding: '7px 12px',
+                            borderRadius: '9px',
+                            border: '1px solid #e7e5df',
+                            background: '#fff',
+                            cursor: 'pointer',
+                            fontWeight: '500',
+                            fontSize: '13px',
+                          }}
+                          className="dashboard-hover-5"
+                        >
+                          {'Clear search and filters'}
+                        </button>{' '}
+                      </div>{' '}
+                    </>
+                  ) : null}{' '}
                   {$arr($v['connected']).map((a, $index) => (
                     <Fragment key={$index}>
                       {' '}
