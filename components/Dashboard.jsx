@@ -762,11 +762,31 @@ class Component extends DCLogic {
     });
     return true;
   }
+  /** The accounts of the last post, per workspace; kept in this browser so they survive a reload. */
+  targetsKey() {
+    return 'sfy:lastTargets:' + (this.state.wsId || this.state.ws || 'default');
+  }
+  rememberTargets(ids) {
+    this._lastTargets = { key: this.targetsKey(), ids: [...ids] };
+    try {
+      localStorage.setItem(this._lastTargets.key, JSON.stringify(ids));
+    } catch {}
+  }
+  recallTargets() {
+    const key = this.targetsKey();
+    if (this._lastTargets && this._lastTargets.key === key) return this._lastTargets.ids;
+    try {
+      const v = JSON.parse(localStorage.getItem(key) || '[]');
+      return Array.isArray(v) ? v : [];
+    } catch {
+      return [];
+    }
+  }
   /** A new post starts with the accounts used last time, or the only account when there is just one. */
   defaultTargets() {
     const accs = this.state.accounts || [],
       ids = new Set(accs.map((a) => a.id));
-    const last = (this._lastTargets || []).filter((id) => ids.has(id));
+    const last = this.recallTargets().filter((id) => ids.has(id));
     if (last.length) return last;
     return accs.length === 1 ? [accs[0].id] : [];
   }
@@ -890,7 +910,7 @@ class Component extends DCLogic {
     };
     const posts = d.id ? s.posts.map((p) => (p.id === d.id ? post : p)) : [...s.posts, post];
     const tab = st === 'published' ? 'published' : st === 'draft' ? 'drafts' : 'upcoming';
-    if (d.targets.length) this._lastTargets = [...d.targets];
+    if (d.targets.length) this.rememberTargets(d.targets);
     this.setState({ posts, screen: 'queue', tab, draft: Component.blank() });
     const n = d.targets.length;
     this.flash(
@@ -1970,6 +1990,16 @@ class Component extends DCLogic {
           `${p.label} allows ${p.maxImages} image${p.maxImages === 1 ? '' : 's'} per post. Remove some or deselect @${a.username}.`,
         );
     }
+    // Nothing to post: no text for any picked account and no media. Drafts may stay empty.
+    if (
+      sel.length &&
+      d.mode !== 'draft' &&
+      !d.media.length &&
+      sel.every((a) => !String(d.ov[a.id]?.caption ?? d.caption).trim())
+    )
+      problems.unshift('Write something or add an image or video.');
+    if (d.mode === 'queue' && !this.nextSlots(1, [], d.id).length)
+      problems.push('You have no open posting slots. Add one in Settings, or pick a date and time.');
     if (d.mode === 'schedule') {
       const at = Component.fromLocal(d.when, S0.tz);
       if (!at) problems.push('Pick a date and time.');
@@ -3342,8 +3372,14 @@ class Component extends DCLogic {
       newSlot: s.newSlot,
       onNewSlot: (e) => this.setState({ newSlot: e.target.value }),
       addSlot: () => {
-        if (!s.newSlot || s.slots.includes(s.newSlot)) return;
-        this.setState((st) => ({ slots: [...st.slots, st.newSlot] }));
+        if (!s.newSlot) return;
+        if (s.slots.includes(s.newSlot)) {
+          const [h, m] = s.newSlot.split(':').map(Number);
+          return this.flash(
+            `You already have a ${new Date(2026, 0, 1, h, m).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })} slot`,
+          );
+        }
+        this.setState((st) => ({ slots: [...st.slots, st.newSlot].sort() }));
         this.flash('Slot added');
       },
       nextSlotsLabel:

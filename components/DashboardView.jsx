@@ -7710,6 +7710,7 @@ export function renderDashboard($v) {
                           <button
                             onClick={c?.remove}
                             title="Remove slot"
+                            aria-label={`Remove ${c?.label ?? ''} slot`}
                             style={{
                               width: '20px',
                               height: '20px',
