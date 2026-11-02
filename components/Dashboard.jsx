@@ -755,8 +755,20 @@ class Component extends DCLogic {
       });
       return false;
     }
-    this.setState({ draft: Component.blank(when), screen: 'compose', drawer: false });
+    this.setState({
+      draft: { ...Component.blank(when), targets: this.defaultTargets() },
+      screen: 'compose',
+      drawer: false,
+    });
     return true;
+  }
+  /** A new post starts with the accounts used last time, or the only account when there is just one. */
+  defaultTargets() {
+    const accs = this.state.accounts || [],
+      ids = new Set(accs.map((a) => a.id));
+    const last = (this._lastTargets || []).filter((id) => ids.has(id));
+    if (last.length) return last;
+    return accs.length === 1 ? [accs[0].id] : [];
   }
   /** Cancel (or Esc) in the composer throws the unsent post away, with Undo. */
   cancelCompose() {
@@ -878,6 +890,7 @@ class Component extends DCLogic {
     };
     const posts = d.id ? s.posts.map((p) => (p.id === d.id ? post : p)) : [...s.posts, post];
     const tab = st === 'published' ? 'published' : st === 'draft' ? 'drafts' : 'upcoming';
+    if (d.targets.length) this._lastTargets = [...d.targets];
     this.setState({ posts, screen: 'queue', tab, draft: Component.blank() });
     const n = d.targets.length;
     this.flash(
@@ -2762,6 +2775,13 @@ class Component extends DCLogic {
       connected,
       platformCards,
       acNone: connected.length === 0 && s.accounts.length > 0,
+      hasAccounts: s.accounts.length > 0,
+      noAccounts: s.accounts.length === 0,
+      goConnect: () => this.setState({ screen: 'accounts' }),
+      acIntro: s.accounts.length
+        ? `${s.accounts.length} of ${s.accountLimit || 15} connected. Multiple accounts per platform are fine.`
+        : 'Pick where you post. You can add more, or several of the same platform, anytime.',
+      acConnectTitle: s.accounts.length ? 'Connect a platform' : 'Connect your first account',
       acClear: () => this.setState({ acQ: '', acPlat: '', acSt: '' }),
       acQ: S0.acQ || '',
       onAcQ: (e) => this.setState({ acQ: e.target.value }),
@@ -4192,6 +4212,57 @@ class Component extends DCLogic {
           upNext,
           upcomingCount: upcoming.length,
           healthTiles,
+          // First run: a two-step checklist until an account is connected and a post has been scheduled.
+          ...(() => {
+            const hasAcc = s.accounts.length > 0,
+              hasPost = s.posts.some((p) => p.status !== 'draft');
+            const step = (n, done, active, title, hint, cta, go) => ({
+              title,
+              hint,
+              cta,
+              go,
+              showCta: !done,
+              mark: done ? '✓' : String(n),
+              markBg: done ? '#d9ff35' : 'transparent',
+              markFg: done ? '#141619' : '#f8f9f6',
+              markBorder: done ? '#d9ff35' : '#4a4f57',
+              titleColor: done ? '#7d828a' : '#f8f9f6',
+              titleDeco: done ? 'line-through' : 'none',
+              border: active ? '#d9ff35' : '#2a2e34',
+              ctaBg: active ? '#d9ff35' : '#2a2e34',
+              ctaFg: active ? '#141619' : '#f8f9f6',
+            });
+            const startSteps = [
+              step(
+                1,
+                hasAcc,
+                !hasAcc,
+                'Connect an account',
+                'Pick where you post. Bluesky needs only your handle and an app password; the others sign in with one click.',
+                'Connect an account',
+                () => this.setState({ screen: 'accounts' }),
+              ),
+              step(
+                2,
+                hasPost,
+                hasAcc && !hasPost,
+                'Schedule your first post',
+                'Write it once, pick a time, and it goes out on its own. You can change it until then.',
+                'Write a post',
+                () => this.newPost(),
+              ),
+            ];
+            return {
+              showStart: !(hasAcc && hasPost),
+              notStart: hasAcc && hasPost,
+              startSteps,
+              startDone: `${startSteps.filter((x) => !x.showCta).length} of 2 done`,
+              hasHomeData: hasAcc && s.posts.length > 0,
+              showUpNext: upcoming.length > 0 || (hasAcc && hasPost),
+              upEmpty: upcoming.length === 0,
+              hasAccounts: hasAcc,
+            };
+          })(),
           upRef: (this._upRef ||= React.createRef()),
           upPrev: () => this._upRef.current && this._upRef.current.scrollBy({ left: -320 }),
           upNextBtn: () => this._upRef.current && this._upRef.current.scrollBy({ left: 320 }),
