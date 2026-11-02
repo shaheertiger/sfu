@@ -28,6 +28,7 @@ export const GET = handler(async ({ req, workspace }) => {
     paid: isPaid(workspace),
     signature: ws[0]?.signature || '',
     track_links: workspace.prefs?.trackLinks === true,
+    strip_metadata: workspace.prefs?.stripMetadata !== false,
     utm_tags: workspace.prefs?.utm === true,
     link_clicks: links.clicks,
     tracked_links: links.links,

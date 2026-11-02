@@ -92,6 +92,11 @@ export async function getBytes(key: string): Promise<Buffer> {
   return Buffer.from(await r.Body!.transformToByteArray());
 }
 
+/** Overwrites an object in place (used after metadata is stripped from an upload). */
+export async function putBytes(key: string, bytes: Uint8Array, mime: string) {
+  await s3().send(new PutObjectCommand({ Bucket: bucket(), Key: key, Body: bytes, ContentType: mime, ContentLength: bytes.length }));
+}
+
 export async function remove(key: string) {
   await s3().send(new DeleteObjectCommand({ Bucket: bucket(), Key: key }));
 }
