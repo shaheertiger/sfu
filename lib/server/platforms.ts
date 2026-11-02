@@ -1,3 +1,5 @@
+import { readEnv } from './env';
+
 export type PlatformId =
   | 'bluesky' | 'x' | 'instagram' | 'linkedin' | 'facebook'
   | 'tiktok' | 'youtube' | 'threads' | 'pinterest' | 'google_business';
@@ -95,5 +97,5 @@ export const PLATFORMS: Record<PlatformId, PlatformMeta> = {
 export const PLATFORM_LIST = Object.values(PLATFORMS);
 
 export function platformConfigured(p: PlatformMeta) {
-  return p.envKeys.every((k) => !!process.env[k]);
+  return p.envKeys.every((k) => !!readEnv(k));
 }

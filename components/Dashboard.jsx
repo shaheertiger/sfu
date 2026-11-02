@@ -739,8 +739,30 @@ class Component extends DCLogic {
       undo ? 6000 : 2800,
     );
   }
+  /** An unsent new post with something in it. Create picks it back up instead of wiping it. */
+  static unsent(d) {
+    return !!d && !d.id && (!!(d.caption || '').trim() || (d.media || []).length > 0);
+  }
+  /** Opens the composer. Returns true when it started a fresh draft, false when it resumed an unsent one. */
   newPost(when) {
+    const d = this.state.draft;
+    if (Component.unsent(d)) {
+      // A day picked on the calendar moves the resumed post to that day.
+      this.setState({
+        screen: 'compose',
+        drawer: false,
+        draft: when ? { ...d, mode: 'schedule', when: Component.toLocal(when) } : d,
+      });
+      return false;
+    }
     this.setState({ draft: Component.blank(when), screen: 'compose', drawer: false });
+    return true;
+  }
+  /** Cancel (or Esc) in the composer throws the unsent post away, with Undo. */
+  cancelCompose() {
+    const d = this.state.draft;
+    this.setState({ screen: 'queue', draft: Component.blank() });
+    if (Component.unsent(d)) this.flash('Draft discarded', false, () => this.setState({ draft: d, screen: 'compose' }));
   }
   editPost(p) {
     if (p.src) p = this.state.posts.find((x) => x.id === p.src) || p;
@@ -2164,10 +2186,12 @@ class Component extends DCLogic {
       this.flash(`Reconnected ${P[a.platform].label} @${a.username}`);
     };
     const acQ = (S0.acQ || '').toLowerCase();
+    const acHit = (a) =>
+      !acQ || [a.username, a.display || '', P[a.platform].label].some((x) => x.toLowerCase().includes(acQ));
     const connected = s.accounts
       .filter(
         (a) =>
-          (!acQ || a.username.toLowerCase().includes(acQ)) &&
+          acHit(a) &&
           (!S0.acPlat || a.platform === S0.acPlat) &&
           (!S0.acSt ||
             (S0.acSt === 'issue') === !!(a.health === 'error' || a.health === 'expiring' || a.health === 'over')),
@@ -2490,6 +2514,7 @@ class Component extends DCLogic {
       nav,
       accountCount: s.accounts.length,
       goCompose: () => this.newPost(),
+      cancelCompose: () => this.cancelCompose(),
       goQueue: go('queue'),
       isQueue: screen === 'queue',
       isCalendar: screen === 'calendar',
@@ -2679,14 +2704,14 @@ class Component extends DCLogic {
             };
           }),
           capValue: cv ? cv.text : d.caption,
-          onCapValue: cv ? cv.onText : (e) => this.upd({ caption: e.target.value, savedAt: Date.now() }),
+          onCapValue: cv ? cv.onText : (e) => this.upd({ caption: e.target.value }),
           capPlaceholder: cv
             ? `Custom caption for ${cv.platform}. Leave as is to use the main caption.`
             : "What's happening? Write once, then tailor it per platform with the tabs above.",
           capIsCustom: !!(cv && cv.hasOverride),
           capReset: cv ? cv.reset : () => {},
           capFields: cv ? cv.fields : [],
-          savedLabel: d.caption ? (d.savedAt ? 'Draft saved' : 'Autosaves as you type') : '',
+          savedLabel: d.caption && !d.id ? 'Kept until you post or cancel' : '',
           toggleAdv: () => this.setState((st) => ({ advOpen: !st.advOpen })),
           advOpen: S0.advOpen ? 'true' : 'false',
           advDisplay: S0.advOpen ? 'flex' : 'none',
@@ -2736,6 +2761,8 @@ class Component extends DCLogic {
       formatFor: !sel.length || metaSel.length < sel.length ? 'Applies to Instagram and Facebook' : '',
       connected,
       platformCards,
+      acNone: connected.length === 0 && s.accounts.length > 0,
+      acClear: () => this.setState({ acQ: '', acPlat: '', acSt: '' }),
       acQ: S0.acQ || '',
       onAcQ: (e) => this.setState({ acQ: e.target.value }),
       acPlat: S0.acPlat || '',
@@ -3425,6 +3452,7 @@ class Component extends DCLogic {
               this.setState({
                 ws: id,
                 wsOpen: false,
+                drawer: false,
                 labelFilter: null,
                 selected: [],
                 selecting: false,
@@ -3631,6 +3659,18 @@ class Component extends DCLogic {
           libUsedText: S0.libView === 'list' ? 'block' : 'none',
           libSelCount: libSel.length,
           libEmpty: inFolder.length === 0,
+          libFiltered: !!(q || S0.libType || S0.libUse),
+          libEmptyTitle:
+            q || S0.libType || S0.libUse
+              ? q
+                ? `No files match “${S0.libQ.trim()}”`
+                : 'No files match these filters'
+              : 'Nothing here yet',
+          libEmptyHint:
+            q || S0.libType || S0.libUse
+              ? 'Try another name or clear the filters.'
+              : 'Upload images or videos to this folder.',
+          libClearFilters: () => this.setState({ libQ: '', libType: '', libUse: '' }),
           libClearSel: () => this.setState({ libSel: [] }),
           libBulkMove: (e) => {
             const v = e.target.value;

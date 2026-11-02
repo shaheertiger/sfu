@@ -7,8 +7,9 @@ import type { MediaFile, PlatformAdapter, PublishInput, PublishResult, Connected
 import { PublishError, UPLOAD_TIMEOUT_MS, errorFromResponse, jsonFetch, sleep, timeLeft, timedFetch } from './types';
 import { facebookMixProblem, metaFormat, metaFormatProblem, nonJpegImages } from '../meta-format';
 import { threadParts } from '../thread';
+import { readEnv } from '../env';
 
-const env = (k: string) => process.env[k] || '';
+const env = (k: string) => readEnv(k);
 const q = (o: Record<string, string>) => new URLSearchParams(o).toString();
 
 function splitTitle(caption: string, fallback = 'Untitled') {

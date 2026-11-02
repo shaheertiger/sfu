@@ -754,8 +754,10 @@ export default class LiveDashboard extends Base {
   }
 
   newPost(when) {
-    super.newPost(when);
+    // Resuming an unsent post keeps its uploads; only a fresh draft gets a new upload session.
+    if (!super.newPost(when)) return false;
     super.setState((st) => ({ uploads: [], draft: { ...st.draft, mediaIds: [], tok: newTok() } }));
+    return true;
   }
 
   /** Pinterest's Board select lists the account's real boards. */
@@ -1047,7 +1049,7 @@ export default class LiveDashboard extends Base {
         ? [{ name: 'Billing', sub: billingLine(s.billing), tone: '#2a2e34', mark: '', bg: 'transparent', pick: () => { super.setState({ wsOpen: false }); this.openBilling(); } }]
         : []),
       { name: 'Sign out', sub: this.userEmail || '', tone: '#2a2e34', mark: '', bg: 'transparent', pick: () => this.signOut() },
-    ];
+    ].map((w) => ({ ...w, pick: () => { super.setState({ drawer: false }); w.pick(); } })); // On phones the menu sits in the drawer: any choice closes it.
     v.wsName = cur?.name || 'Workspace';
     v.wsSub = this.isFree()
       ? `Free · ${s.accounts.length}/${s.billing.accountLimit ?? FREE_PLAN.accountLimit} accounts`

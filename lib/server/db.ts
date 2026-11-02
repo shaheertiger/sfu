@@ -1,6 +1,7 @@
 import 'server-only';
 import pg from 'pg';
 import { attachDatabasePool } from '@vercel/functions';
+import { explicitSslMode } from '../pg-url.js';
 
 /**
  * Postgres access with node-postgres, as Neon recommends for Vercel (Fluid compute):
@@ -18,7 +19,7 @@ pg.types.setTypeParser(20, (v: string) => Number(v));
 function makePool(): pg.Pool {
   const url = process.env.DATABASE_URL;
   if (!url) throw new Error('DATABASE_URL is not set');
-  const p = new pg.Pool({ connectionString: url, max: 5, idleTimeoutMillis: 5_000 });
+  const p = new pg.Pool({ connectionString: explicitSslMode(url), max: 5, idleTimeoutMillis: 5_000 });
   attachDatabasePool(p);
   return p;
 }

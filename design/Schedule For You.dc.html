@@ -854,7 +854,7 @@ textarea{resize:vertical}
                 <div role="alert" style="padding:9px 11px;border-radius:9px;border:1px solid #f5c2c7;background:#fff5f5;color:#a1281f;font-size:12px;line-height:1.45;display:flex;flex-direction:column;gap:4px"><strong>Fix before publishing</strong><sc-for list="{{ problems }}" as="pr" hint-placeholder-count="1"><span>• {{ pr }}</span></sc-for></div>
               </sc-if>
               <button data-sfy="submit" title="Ctrl/⌘ + Enter" onClick="{{ submit }}" disabled="{{ submitDisabled }}" style="padding:12px 14px;border-radius:10px;border:0;background:#d9ff35;color:#141619;font-weight:600;font-size:15px;cursor:pointer;opacity:{{ submitOpacity }}" style-hover="background:#e6ff6e">{{ submitLabel }}</button>
-              <button data-sfy="cancel" title="Esc" onClick="{{ goQueue }}" style="padding:6px;border:0;background:transparent;color:#677184;cursor:pointer;font-size:13px">Cancel</button>
+              <button data-sfy="cancel" title="Esc" onClick="{{ cancelCompose }}" style="padding:6px;border:0;background:transparent;color:#677184;cursor:pointer;font-size:13px">Cancel</button>
             </div>
           </div>
         </div>
@@ -1061,8 +1061,9 @@ textarea{resize:vertical}
           </sc-if>
           <sc-if value="{{ libEmpty }}" hint-placeholder-val="{{ false }}">
             <div style="padding:48px 20px;border:1px dashed #d8d5cc;border-radius:12px;text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center">
-              <strong style="font-size:15px">Nothing here yet</strong>
-              <span style="font-size:13px;color:#677184">Upload images or videos to this folder, or change your search.</span>
+              <strong style="font-size:15px">{{ libEmptyTitle }}</strong>
+              <span style="font-size:13px;color:#677184">{{ libEmptyHint }}</span>
+              <sc-if value="{{ libFiltered }}" hint-placeholder-val="{{ false }}"><button onClick="{{ libClearFilters }}" style="margin-top:6px;padding:7px 12px;border-radius:9px;border:1px solid #e7e5df;background:#fff;cursor:pointer;font-weight:500;font-size:13px" style-hover="border-color:#141619">Clear search and filters</button></sc-if>
             </div>
           </sc-if>
           <div style="display:grid;grid-template-columns:{{ libCols }};gap:12px">
@@ -1100,6 +1101,13 @@ textarea{resize:vertical}
           <select value="{{ acSt }}" onChange="{{ onAcSt }}" aria-label="Connection status" style="padding:7px 10px;border:1px solid #e7e5df;border-radius:9px;background:#fff;font-size:13px"><option value="">All statuses</option><option value="issue">Needs attention</option><option value="ok">Connected</option></select>
         </div>
         <div style="background:#fff;border:1px solid #e7e5df;border-radius:12px;box-shadow:0 1px 0 rgba(20,23,26,.03),0 16px 40px -28px rgba(20,23,26,.3);overflow:hidden">
+          <sc-if value="{{ acNone }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:28px 20px;text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center">
+              <strong style="font-size:15px">No connected accounts match</strong>
+              <span style="font-size:13px;color:#677184">Search by name, handle or platform, or clear the filters.</span>
+              <button onClick="{{ acClear }}" style="margin-top:6px;padding:7px 12px;border-radius:9px;border:1px solid #e7e5df;background:#fff;cursor:pointer;font-weight:500;font-size:13px" style-hover="border-color:#141619">Clear search and filters</button>
+            </div>
+          </sc-if>
           <sc-for list="{{ connected }}" as="a" hint-placeholder-count="5">
             <div class="sfy-arow" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border-top:{{ a.divider }}">
               <span style="position:relative;width:36px;height:36px;border-radius:50%;background:{{ a.pic }};flex:none"><span style="position:absolute;right:-3px;bottom:-3px;width:16px;height:16px;border-radius:50%;border:2px solid #fff;background:{{ a.badge }};display:{{ a.badgeDisplay }}"></span></span>
@@ -1582,7 +1590,25 @@ class Component extends DCLogic {
   componentWillUnmount() { this._alive = false; window.removeEventListener('resize', this._rs); clearInterval(this._iv); window.removeEventListener('keydown', this._key); clearTimeout(this._tt); }
 
   flash(msg, bad, undo) { clearTimeout(this._tt); this._undo = undo || null; this.setState({ toast: msg, toastBad: !!bad, toastUndo: !!undo }); this._tt = setTimeout(() => { this._undo = null; this.setState({ toast: '', toastUndo: false }); }, undo ? 6000 : 2800); }
-  newPost(when) { this.setState({ draft: Component.blank(when), screen: 'compose', drawer: false }); }
+  /** An unsent new post with something in it. Create picks it back up instead of wiping it. */
+  static unsent(d) { return !!d && !d.id && (!!(d.caption || '').trim() || (d.media || []).length > 0); }
+  /** Opens the composer. Returns true when it started a fresh draft, false when it resumed an unsent one. */
+  newPost(when) {
+    const d = this.state.draft;
+    if (Component.unsent(d)) {
+      // A day picked on the calendar moves the resumed post to that day.
+      this.setState({ screen: 'compose', drawer: false, draft: when ? { ...d, mode: 'schedule', when: Component.toLocal(when) } : d });
+      return false;
+    }
+    this.setState({ draft: Component.blank(when), screen: 'compose', drawer: false });
+    return true;
+  }
+  /** Cancel (or Esc) in the composer throws the unsent post away, with Undo. */
+  cancelCompose() {
+    const d = this.state.draft;
+    this.setState({ screen: 'queue', draft: Component.blank() });
+    if (Component.unsent(d)) this.flash('Draft discarded', false, () => this.setState({ draft: d, screen: 'compose' }));
+  }
   editPost(p) {
     if (p.src) p = this.state.posts.find((x) => x.id === p.src) || p;
     // A published post can't be changed on the platforms: open a copy to post again instead.
@@ -2032,7 +2058,8 @@ class Component extends DCLogic {
       : { hLabel: 'Connected', hFg: '#15803d', hBg: '#eaf6ee', healthDetail: 'Token valid for 58 days', needsFix: false, fixLabel: 'Reconnect' };
     const reconnect = (a) => () => { this.setState((st) => ({ accounts: st.accounts.map((x) => (x.id === a.id ? { ...x, health: 'ok', error: '', expires: null } : x)) })); this.flash(`Reconnected ${P[a.platform].label} @${a.username}`); };
     const acQ = (S0.acQ || '').toLowerCase();
-    const connected = s.accounts.filter((a) => (!acQ || a.username.toLowerCase().includes(acQ)) && (!S0.acPlat || a.platform === S0.acPlat) && (!S0.acSt || (S0.acSt === 'issue') === !!(a.health === 'error' || a.health === 'expiring' || a.health === 'over'))).sort((x, y) => !!(y.health === 'error' || y.health === 'expiring' || y.health === 'over') - !!(x.health === 'error' || x.health === 'expiring' || x.health === 'over')).map((a, i) => ({
+    const acHit = (a) => !acQ || [a.username, a.display || '', P[a.platform].label].some((x) => x.toLowerCase().includes(acQ));
+    const connected = s.accounts.filter((a) => acHit(a) && (!S0.acPlat || a.platform === S0.acPlat) && (!S0.acSt || (S0.acSt === 'issue') === !!(a.health === 'error' || a.health === 'expiring' || a.health === 'over'))).sort((x, y) => !!(y.health === 'error' || y.health === 'expiring' || y.health === 'over') - !!(x.health === 'error' || x.health === 'expiring' || x.health === 'over')).map((a, i) => ({
       ...a, ...HL(a), reconnect: reconnect(a), initial: a.username[0].toUpperCase(), color: P[a.platform].color, short: P[a.platform].short, logo: P[a.platform].logo, ...Component.pic(a), platform: P[a.platform].label, divider: i ? '1px solid #e5e3dc' : '0',
       queued: (() => { const q = upcoming.filter((p) => p.targets.some((t) => t.acc === a.id)).length; return q ? `${q} queued` : ''; })(),
       disconnect: () => { const q = upcoming.filter((p) => p.targets.some((t) => t.acc === a.id)).length; this.setState({ confirm: { title: `Disconnect @${a.username}?`, body: q ? `${q} scheduled post${q === 1 ? '' : 's'} will stop publishing to this account. Other accounts on those posts are not affected.` : 'No scheduled posts use this account.', cta: 'Disconnect', go: () => { this.setState((st) => ({ accounts: st.accounts.filter((x) => x.id !== a.id) })); this.flash(`Disconnected ${a.username}`); } } }); },
@@ -2115,7 +2142,7 @@ class Component extends DCLogic {
 
     return {
       userEmail: this.userEmail || 'maya@scheduleforyou.com',
-      nav, accountCount: s.accounts.length, goCompose: () => this.newPost(), goQueue: go('queue'),
+      nav, accountCount: s.accounts.length, goCompose: () => this.newPost(), cancelCompose: () => this.cancelCompose(), goQueue: go('queue'),
       isQueue: screen === 'queue', isCalendar: screen === 'calendar', isCompose: screen === 'compose', isAccounts: screen === 'accounts', isAnalytics: screen === 'analytics', isSettings: screen === 'settings',
       queueTabs, groups, queueEmpty: groups.length === 0, emptyTitle: s.tab === 'upcoming' ? 'Nothing scheduled' : `No ${s.tab} posts`, rowPad, nextUp,
       dows: (typeof window !== 'undefined' && window.innerWidth <= 760) ? ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] : ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], calDays, monthLabel: first.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
@@ -2167,10 +2194,10 @@ class Component extends DCLogic {
           nextBarLabel: d.targets.length ? `${d.targets.length} account${d.targets.length === 1 ? '' : 's'} · ${d.media.length ? d.media.length + ' file' + (d.media.length === 1 ? '' : 's') : 'no media'}` : 'Pick accounts',
           accQ: S0.accQ || '', onAccQ: (e) => this.setState({ accQ: e.target.value }),
           capTabs: [{ id: null, label: 'Main caption', title: 'Main caption', tag: '', logo: 'none', dotBg: 'transparent', pic: 'none', iconDisplay: 'none' }, ...variants.map((v) => ({ id: v.id, label: variants.filter((x) => x.platform === v.platform).length > 1 ? v.username : v.platform, title: `${v.platform} · ${v.username}`, tag: v.hasOverride ? '· custom' : '· main', logo: v.logo, dotBg: v.color, pic: v.pic, iconDisplay: 'block' }))].map((t) => { const on = t.id === ct; return { ...t, line: on ? '#141619' : 'transparent', weight: on ? 600 : 500, color: on ? '#141619' : '#677184', tagColor: t.tag.includes('custom') ? '#15803d' : '#9aa0a8', pick: () => this.setState({ capTab: t.id }) }; }),
-          capValue: cv ? cv.text : d.caption, onCapValue: cv ? cv.onText : (e) => this.upd({ caption: e.target.value, savedAt: Date.now() }),
+          capValue: cv ? cv.text : d.caption, onCapValue: cv ? cv.onText : (e) => this.upd({ caption: e.target.value }),
           capPlaceholder: cv ? `Custom caption for ${cv.platform}. Leave as is to use the main caption.` : "What's happening? Write once, then tailor it per platform with the tabs above.",
           capIsCustom: !!(cv && cv.hasOverride), capReset: cv ? cv.reset : () => {}, capFields: cv ? cv.fields : [],
-          savedLabel: d.caption ? (d.savedAt ? 'Draft saved' : 'Autosaves as you type') : '',
+          savedLabel: d.caption && !d.id ? 'Kept until you post or cancel' : '',
           toggleAdv: () => this.setState((st) => ({ advOpen: !st.advOpen })), advOpen: S0.advOpen ? 'true' : 'false', advDisplay: S0.advOpen ? 'flex' : 'none', advChevron: S0.advOpen ? 'Hide' : 'Show',
           advSummary: advBits.length ? advBits.join(' · ') : 'Labels, reviewer note, repeat, evergreen, approval, reminders',
         };
@@ -2185,7 +2212,7 @@ class Component extends DCLogic {
       showPreview: this.props.showPreview ?? true, pv, previewTabs, pvClassic: true, pvCustom: false, pvNode: null,
       showFormat: metaSel.length > 0 || d.media.includes('VIDEO'), formatChips, formatHint: fmtNow ? FMT_HINT[fmtNow] : 'Different per account. Set it in each account’s tab.',
       formatFor: !sel.length || metaSel.length < sel.length ? 'Applies to Instagram and Facebook' : '',
-      connected, platformCards, acQ: S0.acQ || '', onAcQ: (e) => this.setState({ acQ: e.target.value }), acPlat: S0.acPlat || '', onAcPlat: (e) => this.setState({ acPlat: e.target.value }), acSt: S0.acSt || '', onAcSt: (e) => this.setState({ acSt: e.target.value }),
+      connected, platformCards, acNone: connected.length === 0 && s.accounts.length > 0, acClear: () => this.setState({ acQ: '', acPlat: '', acSt: '' }), acQ: S0.acQ || '', onAcQ: (e) => this.setState({ acQ: e.target.value }), acPlat: S0.acPlat || '', onAcPlat: (e) => this.setState({ acPlat: e.target.value }), acSt: S0.acSt || '', onAcSt: (e) => this.setState({ acSt: e.target.value }),
       stats: [{ label: `Published · last ${aDays} days`, value: aPub, color: '#141619', delta: `${aPub - pPub >= 0 ? '+' : ''}${aPub - pPub} vs previous ${aDays} days` }, { label: 'Failed attempts', value: aFail, color: aFail ? '#dc3545' : '#141619', delta: `${pFail} in previous period` }, { label: 'Success rate', value: `${rate}%`, color: '#141619', delta: pRate === null ? 'No previous data' : `${rate - pRate >= 0 ? '+' : ''}${rate - pRate} pts vs previous` }, { label: 'Scheduled (not counted)', value: upcoming.length, color: '#141619', delta: 'Future posts are never counted as failures' }],
       aRange: String(aDays), onARange: (e) => this.setState({ aRange: +e.target.value }), aPlat: aPl, onAPlat: (e) => this.setState({ aPlat: e.target.value }), bars, byPlatform,
       keys: s.keys.map((k) => ({ ...k, revoke: () => { this.setState((st) => ({ keys: st.keys.filter((x) => x.id !== k.id) })); this.flash('Key revoked'); } })),
@@ -2323,7 +2350,7 @@ class Component extends DCLogic {
         const leadOpts = [[15, '15 minutes'], [30, '30 minutes'], [60, '1 hour'], [180, '3 hours'], [1440, '1 day']];
         const z2 = (n) => String(n).padStart(2, '0');
         return {
-          workspaces: Component.WS.map(([id, name, sub, tone]) => ({ name, sub, tone, mark: id === WS ? '✓' : '', bg: id === WS ? '#22252a' : 'transparent', pick: () => { this.setState({ ws: id, wsOpen: false, labelFilter: null, selected: [], selecting: false, draft: Component.blank() }); this.flash(`Switched to ${name}`); } })),
+          workspaces: Component.WS.map(([id, name, sub, tone]) => ({ name, sub, tone, mark: id === WS ? '✓' : '', bg: id === WS ? '#22252a' : 'transparent', pick: () => { this.setState({ ws: id, wsOpen: false, drawer: false, labelFilter: null, selected: [], selecting: false, draft: Component.blank() }); this.flash(`Switched to ${name}`); } })),
           wsOpen: S0.wsOpen, toggleWs: () => this.setState((st) => ({ wsOpen: !st.wsOpen })), wsName: wsMeta[1], wsSub: wsMeta[2], wsTone: wsMeta[3],
           paused: !!S0.paused, togglePause: () => { this.setState((st) => ({ paused: !st.paused })); this.flash(S0.paused ? 'Queue resumed' : 'Queue paused'); },
           pauseLabel: S0.paused ? 'Resume queue' : 'Pause queue', pauseBg: S0.paused ? '#141619' : '#fff', pauseColor: S0.paused ? '#fff' : '#141619', pauseBorder: S0.paused ? '#141619' : '#e7e5df',
@@ -2359,7 +2386,7 @@ class Component extends DCLogic {
           cooldownOptions: [[0, 'Off'], [7, '1 week'], [14, '2 weeks'], [30, '30 days'], [60, '60 days'], [90, '90 days']].map(([value, label]) => ({ value: String(value), label })),
           libViews: [['grid', 'Grid'], ['list', 'List']].map(([k, label]) => ({ label, bg: (S0.libView || 'grid') === k ? '#141619' : 'transparent', color: (S0.libView || 'grid') === k ? '#fff' : '#677184', pick: () => this.setState({ libView: k }) })),
           libCols: S0.libView === 'list' ? 'minmax(0,1fr)' : 'repeat(auto-fill,minmax(150px,1fr))', libDir: S0.libView === 'list' ? 'row' : 'column', libRatio: S0.libView === 'list' ? '1 / 1' : '4 / 3', libThumbW: S0.libView === 'list' ? '72px' : 'auto', libThumbFlex: S0.libView === 'list' ? 'none' : '0 0 auto',
-          libUsedThumb: S0.libView === 'list' ? 'none' : 'inline', libUsedText: S0.libView === 'list' ? 'block' : 'none', libSelCount: libSel.length, libEmpty: inFolder.length === 0, libClearSel: () => this.setState({ libSel: [] }),
+          libUsedThumb: S0.libView === 'list' ? 'none' : 'inline', libUsedText: S0.libView === 'list' ? 'block' : 'none', libSelCount: libSel.length, libEmpty: inFolder.length === 0, libFiltered: !!(q || S0.libType || S0.libUse), libEmptyTitle: q || S0.libType || S0.libUse ? (q ? `No files match “${S0.libQ.trim()}”` : 'No files match these filters') : 'Nothing here yet', libEmptyHint: q || S0.libType || S0.libUse ? 'Try another name or clear the filters.' : 'Upload images or videos to this folder.', libClearFilters: () => this.setState({ libQ: '', libType: '', libUse: '' }), libClearSel: () => this.setState({ libSel: [] }),
           libBulkMove: (e) => { const v = e.target.value; if (!v) return; const folder = v === '-' ? '' : v; this.setState((st) => ({ library: st.library.map((x) => (libSel.includes(x.id) ? { ...x, folder } : x)), libSel: [] })); this.flash(folder ? `Moved ${libSel.length} files to ${folder}` : `Took ${libSel.length} files out of their folders`); },
           libBulkDelete: () => { if (!confirm(`Delete ${libSel.length} file${libSel.length === 1 ? '' : 's'}? Posts that use them keep publishing only if they have already gone out.`)) return; this.setState((st) => ({ library: st.library.filter((x) => !libSel.includes(x.id)), libSel: [] })); this.flash(`Deleted ${libSel.length} file${libSel.length === 1 ? '' : 's'}`); },
           hasPreviewMedia: !!S0.pvMediaId, closePreview: () => this.setState({ pvMediaId: null }),

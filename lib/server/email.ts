@@ -1,4 +1,5 @@
 import 'server-only';
+import { readEnv } from './env';
 
 /**
  * Transactional email through Resend (https://resend.com/docs/api-reference/emails/send-email).
@@ -7,14 +8,14 @@ import 'server-only';
  */
 const DEFAULT_FROM = 'Schedule For You <notifications@scheduleforyou.com>';
 
-export const emailConfigured = () => !!process.env.RESEND_API_KEY;
+export const emailConfigured = () => !!readEnv('RESEND_API_KEY');
 
 export type Email = { to: string | string[]; subject: string; html: string; text: string; replyTo?: string };
 
 export async function sendEmail(mail: Email): Promise<{ id?: string; skipped?: boolean }> {
   const to = [...new Set([mail.to].flat().filter(Boolean))];
   if (!to.length) return { skipped: true };
-  const key = process.env.RESEND_API_KEY;
+  const key = readEnv('RESEND_API_KEY');
   if (!key) {
     console.log(`[email] RESEND_API_KEY not set, skipped "${mail.subject}" to ${to.join(', ')}`);
     return { skipped: true };

@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pg from 'pg';
+import { explicitSslMode } from '../lib/pg-url.js';
 
 // Local runs: read .env.local like Next.js does (Vercel provides real env vars).
 const envFile = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '.env.local');
@@ -19,7 +20,7 @@ if (!url) {
   process.exit(0);
 }
 // Migrations use the direct (non -pooler) URL: PgBouncer transaction mode breaks session state like advisory locks.
-const pool = new pg.Pool({ connectionString: url });
+const pool = new pg.Pool({ connectionString: explicitSslMode(url) });
 
 const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'db', 'migrations');
 const files = fs.readdirSync(dir).filter((f) => f.endsWith('.sql')).sort();
