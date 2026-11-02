@@ -526,558 +526,257 @@ export function renderDashboard($v) {
                       {$t($v['greetName'])}
                       {' 👋'}
                     </h1>{' '}
-                    <p style={{ margin: '0', fontSize: '15px', color: '#677184' }}>
-                      {'You have '}
-                      <strong style={{ color: '#141619' }}>{$t($v['weekPosts'])}</strong>
-                      {' scheduled this week and '}
-                      <button
-                        onClick={$v['jumpAttn']}
-                        style={{
-                          font: 'inherit',
-                          padding: '0',
-                          border: '0',
-                          background: 'transparent',
-                          cursor: 'pointer',
-                          color: `${$v['needColor'] ?? ''}`,
-                          fontWeight: '600',
-                          textDecoration: 'underline',
-                          textUnderlineOffset: '3px',
-                        }}
-                      >
-                        {$t($v['needText'])}
-                      </button>
-                      {'.'}
-                    </p>{' '}
+                    {$v['notStart'] ? (
+                      <>
+                        <p style={{ margin: '0', fontSize: '15px', color: '#677184' }}>
+                          {'You have '}
+                          <strong style={{ color: '#141619' }}>{$t($v['weekPosts'])}</strong>
+                          {' scheduled this week and '}
+                          <button
+                            onClick={$v['jumpAttn']}
+                            style={{
+                              font: 'inherit',
+                              padding: '0',
+                              border: '0',
+                              background: 'transparent',
+                              cursor: 'pointer',
+                              color: `${$v['needColor'] ?? ''}`,
+                              fontWeight: '600',
+                              textDecoration: 'underline',
+                              textUnderlineOffset: '3px',
+                            }}
+                          >
+                            {$t($v['needText'])}
+                          </button>
+                          {'.'}
+                        </p>
+                      </>
+                    ) : null}{' '}
+                    {$v['showStart'] ? (
+                      <>
+                        <p style={{ margin: '0', fontSize: '15px', color: '#677184' }}>
+                          {'Welcome to Schedule For You. Let’s get your first post out.'}
+                        </p>
+                      </>
+                    ) : null}{' '}
                   </div>{' '}
-                  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }} className="sfy-homeacts">
-                    {' '}
-                    <button
-                      onClick={$v['goCalWeek']}
-                      style={{
-                        padding: '9px 14px',
-                        borderRadius: '10px',
-                        border: '1px solid #e7e5df',
-                        background: '#fff',
-                        cursor: 'pointer',
-                        fontWeight: '500',
-                        fontSize: '14px',
-                      }}
-                      className="dashboard-hover-5"
-                    >
-                      {'View calendar'}
-                    </button>{' '}
-                    <button
-                      onClick={$v['goReview']}
-                      style={{
-                        padding: '9px 14px',
-                        borderRadius: '10px',
-                        border: '1px solid #e7e5df',
-                        background: '#fff',
-                        cursor: 'pointer',
-                        fontWeight: '500',
-                        fontSize: '14px',
-                      }}
-                      className="dashboard-hover-5"
-                    >
-                      {$t($v['reviewLabel'])}
-                    </button>{' '}
-                    <button
-                      onClick={$v['goCompose']}
-                      style={{
-                        padding: '9px 16px',
-                        borderRadius: '10px',
-                        border: '0',
-                        background: '#d9ff35',
-                        color: '#141619',
-                        cursor: 'pointer',
-                        fontWeight: '600',
-                        fontSize: '14px',
-                      }}
-                      className="sfy-mhide dashboard-hover-1"
-                    >
-                      {'+ Create post'}
-                    </button>{' '}
-                  </div>{' '}
-                </div>{' '}
-                <div
-                  style={{ display: 'grid', gridTemplateColumns: 'repeat(4,minmax(0,1fr))', gap: '10px' }}
-                  className="sfy-g2"
-                >
-                  {' '}
-                  {$arr($v['homeStats']).map((h, $index) => (
-                    <Fragment key={$index}>
+                  {$v['notStart'] ? (
+                    <>
                       {' '}
-                      <button
-                        onClick={h?.go}
+                      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }} className="sfy-homeacts">
+                        {' '}
+                        <button
+                          onClick={$v['goCalWeek']}
+                          style={{
+                            padding: '9px 14px',
+                            borderRadius: '10px',
+                            border: '1px solid #e7e5df',
+                            background: '#fff',
+                            cursor: 'pointer',
+                            fontWeight: '500',
+                            fontSize: '14px',
+                          }}
+                          className="dashboard-hover-5"
+                        >
+                          {'View calendar'}
+                        </button>{' '}
+                        <button
+                          onClick={$v['goReview']}
+                          style={{
+                            padding: '9px 14px',
+                            borderRadius: '10px',
+                            border: '1px solid #e7e5df',
+                            background: '#fff',
+                            cursor: 'pointer',
+                            fontWeight: '500',
+                            fontSize: '14px',
+                          }}
+                          className="dashboard-hover-5"
+                        >
+                          {$t($v['reviewLabel'])}
+                        </button>{' '}
+                        <button
+                          onClick={$v['goCompose']}
+                          style={{
+                            padding: '9px 16px',
+                            borderRadius: '10px',
+                            border: '0',
+                            background: '#d9ff35',
+                            color: '#141619',
+                            cursor: 'pointer',
+                            fontWeight: '600',
+                            fontSize: '14px',
+                          }}
+                          className="sfy-mhide dashboard-hover-1"
+                        >
+                          {'+ Create post'}
+                        </button>{' '}
+                      </div>{' '}
+                    </>
+                  ) : null}{' '}
+                </div>{' '}
+                {$v['showStart'] ? (
+                  <>
+                    {' '}
+                    <div
+                      style={{
+                        background: '#141619',
+                        color: '#f8f9f6',
+                        borderRadius: '18px',
+                        padding: '22px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '16px',
+                        boxShadow: '0 24px 50px -30px rgba(20,23,26,.6)',
+                      }}
+                    >
+                      {' '}
+                      <div
                         style={{
                           display: 'flex',
-                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          alignItems: 'baseline',
                           gap: '12px',
-                          padding: '12px 14px',
-                          borderRadius: '12px',
-                          border: '1px solid #e7e5df',
-                          background: '#fff',
-                          cursor: 'pointer',
-                          textAlign: 'left',
-                          transition: 'border-color .15s',
+                          flexWrap: 'wrap',
                         }}
-                        className="sfy-stat dashboard-hover-5"
                       >
                         {' '}
-                        <span
-                          style={{
-                            width: '32px',
-                            height: '32px',
-                            borderRadius: '9px',
-                            background: '#f3f4f0',
-                            display: 'grid',
-                            placeItems: 'center',
-                            flex: 'none',
-                          }}
-                        >
-                          <span
-                            style={{
-                              width: '18px',
-                              height: '18px',
-                              background: `${h?.icon ?? ''} center/contain no-repeat`,
-                            }}
-                          />
-                        </span>{' '}
-                        <span style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2' }}>
-                          <span
-                            style={{
-                              fontSize: '22px',
-                              fontWeight: '700',
-                              letterSpacing: '-0.03em',
-                              color: `${h?.color ?? ''}`,
-                            }}
-                          >
-                            {$t(h?.value)}
+                        <span style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                          <strong style={{ fontSize: '20px', letterSpacing: '-0.02em' }}>{'Get started'}</strong>
+                          <span style={{ fontSize: '14px', color: '#a3a9b4' }}>
+                            {'Two steps and your first post is on its way.'}
                           </span>
-                          <span style={{ fontSize: '12px', color: '#677184' }}>{$t(h?.label)}</span>
                         </span>{' '}
-                      </button>{' '}
-                    </Fragment>
-                  ))}{' '}
-                </div>{' '}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                  {' '}
-                  <div
-                    style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '10px' }}
-                  >
-                    {' '}
-                    <strong style={{ fontSize: '18px', letterSpacing: '-0.02em' }}>{'Up next'}</strong>{' '}
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <button
-                        onClick={$v['goQueueTab']}
+                        <span style={{ font: "600 12px 'Geist Mono',monospace", color: '#d9ff35' }}>
+                          {$t($v['startDone'])}
+                        </span>{' '}
+                      </div>{' '}
+                      <div
                         style={{
-                          border: '0',
-                          background: 'transparent',
-                          cursor: 'pointer',
-                          color: '#677184',
-                          fontSize: '13px',
-                          padding: '0 6px',
+                          display: 'grid',
+                          gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,260px),1fr))',
+                          gap: '10px',
                         }}
                       >
-                        {'See all '}
-                        {$t($v['upcomingCount'])}
-                      </button>
-                      <button
-                        onClick={$v['upPrev']}
-                        aria-label="Scroll left"
-                        style={{
-                          width: '30px',
-                          height: '30px',
-                          borderRadius: '8px',
-                          border: '1px solid #e7e5df',
-                          background: '#fff',
-                          cursor: 'pointer',
-                        }}
-                        className="sfy-mhide"
-                      >
-                        {'‹'}
-                      </button>
-                      <button
-                        onClick={$v['upNextBtn']}
-                        aria-label="Scroll right"
-                        style={{
-                          width: '30px',
-                          height: '30px',
-                          borderRadius: '8px',
-                          border: '1px solid #e7e5df',
-                          background: '#fff',
-                          cursor: 'pointer',
-                        }}
-                        className="sfy-mhide"
-                      >
-                        {'›'}
-                      </button>
-                    </span>{' '}
-                  </div>{' '}
-                  <div
-                    ref={$v['upRef']}
-                    style={{
-                      scrollBehavior: 'smooth',
-                      display: 'grid',
-                      gridAutoFlow: 'column',
-                      gridAutoColumns: 'minmax(280px,300px)',
-                      gap: '14px',
-                      overflowX: 'auto',
-                      padding: '4px 2px 18px',
-                      margin: '0 -2px',
-                      scrollSnapType: 'x mandatory',
-                      scrollbarWidth: 'none',
-                    }}
-                  >
-                    {' '}
-                    {$arr($v['upNext']).map((c, $index) => (
-                      <Fragment key={$index}>
                         {' '}
-                        <button
-                          onClick={c?.open}
-                          style={{
-                            scrollSnapAlign: 'start',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            border: '1px solid #e7e5df',
-                            borderRadius: '18px',
-                            background: '#fff',
-                            padding: '0',
-                            cursor: 'pointer',
-                            textAlign: 'left',
-                            overflow: 'hidden',
-                            minHeight: '300px',
-                            transition: 'transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .25s',
-                          }}
-                          className="dashboard-hover-6"
-                        >
-                          {' '}
-                          <div
-                            style={{
-                              height: '130px',
-                              flex: 'none',
-                              background: `${c?.cover ?? ''}`,
-                              display: 'flex',
-                              flexDirection: 'column',
-                              justifyContent: 'space-between',
-                              padding: '14px',
-                              color: `${c?.coverFg ?? ''}`,
-                            }}
-                          >
+                        {$arr($v['startSteps']).map((st, $index) => (
+                          <Fragment key={$index}>
                             {' '}
-                            <span
+                            <div
                               style={{
                                 display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                gap: '8px',
+                                gap: '12px',
+                                alignItems: 'flex-start',
+                                padding: '16px',
+                                borderRadius: '14px',
+                                background: '#1c1f23',
+                                border: `1px solid ${st?.border ?? ''}`,
                               }}
                             >
                               {' '}
                               <span
                                 style={{
-                                  padding: '3px 9px',
-                                  borderRadius: '999px',
-                                  background: 'rgba(21,23,26,.55)',
-                                  color: '#f6f5f1',
-                                  fontSize: '12px',
-                                  fontWeight: '600',
-                                  backdropFilter: 'blur(6px)',
-                                }}
-                              >
-                                {$t(c?.day)}
-                              </span>{' '}
-                              <span style={{ font: "600 11px 'Geist Mono',monospace", opacity: '.85' }}>
-                                {$t(c?.kind)}
-                              </span>{' '}
-                            </span>{' '}
-                            <span
-                              style={{
-                                fontSize: `${c?.quoteSize ?? ''}`,
-                                fontWeight: '700',
-                                letterSpacing: '-0.03em',
-                                lineHeight: '1.05',
-                                display: '-webkit-box',
-                                WebkitLineClamp: '3',
-                                WebkitBoxOrient: 'vertical',
-                                overflow: 'hidden',
-                              }}
-                            >
-                              {$t(c?.quote)}
-                            </span>{' '}
-                          </div>{' '}
-                          <div
-                            style={{
-                              flex: '1',
-                              display: 'flex',
-                              flexDirection: 'column',
-                              gap: '10px',
-                              padding: '14px 16px 16px',
-                            }}
-                          >
-                            {' '}
-                            <span
-                              style={{
-                                display: 'flex',
-                                alignItems: 'baseline',
-                                justifyContent: 'space-between',
-                                gap: '8px',
-                              }}
-                            >
-                              <span
-                                style={{
-                                  fontSize: '20px',
+                                  width: '28px',
+                                  height: '28px',
+                                  borderRadius: '50%',
+                                  flex: 'none',
+                                  display: 'grid',
+                                  placeItems: 'center',
                                   fontWeight: '700',
-                                  letterSpacing: '-0.03em',
-                                  lineHeight: '1',
+                                  fontSize: '13px',
+                                  background: `${st?.markBg ?? ''}`,
+                                  color: `${st?.markFg ?? ''}`,
+                                  border: `1.5px solid ${st?.markBorder ?? ''}`,
                                 }}
                               >
-                                {$t(c?.time)}
-                              </span>
-                              <span style={{ fontSize: '12px', color: '#677184' }}>{'Edit →'}</span>
-                            </span>{' '}
-                            <span
-                              style={{
-                                fontSize: '13px',
-                                lineHeight: '1.45',
-                                color: '#4a4f57',
-                                display: '-webkit-box',
-                                WebkitLineClamp: '2',
-                                WebkitBoxOrient: 'vertical',
-                                overflow: 'hidden',
-                              }}
-                            >
-                              {$t(c?.caption)}
-                            </span>{' '}
-                            <span style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                              {' '}
-                              <span style={{ display: 'flex' }}>
-                                {' '}
-                                {$arr(c?.icons).map((i, $index) => (
-                                  <Fragment key={$index}>
-                                    <span
-                                      style={{
-                                        width: '24px',
-                                        height: '24px',
-                                        marginRight: '-6px',
-                                        borderRadius: '50%',
-                                        border: '2px solid #fff',
-                                        background: `${i?.color ?? ''}`,
-                                        display: 'grid',
-                                        placeItems: 'center',
-                                      }}
-                                    >
-                                      <span
-                                        style={{
-                                          width: '56%',
-                                          height: '56%',
-                                          background: `${i?.logo ?? ''} center/contain no-repeat`,
-                                        }}
-                                      />
-                                    </span>
-                                  </Fragment>
-                                ))}{' '}
+                                {$t(st?.mark)}
                               </span>{' '}
-                              <span style={{ flex: '1' }} />{' '}
                               <span
                                 style={{
-                                  padding: '2px 9px',
-                                  borderRadius: '999px',
-                                  fontSize: '12px',
-                                  fontWeight: '600',
-                                  background: `${c?.tagBg ?? ''}`,
-                                  color: `${c?.tagFg ?? ''}`,
-                                  whiteSpace: 'nowrap',
+                                  flex: '1',
+                                  minWidth: '0',
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  gap: '4px',
                                 }}
                               >
-                                {$t(c?.tag)}
-                              </span>{' '}
-                            </span>{' '}
-                          </div>{' '}
-                        </button>{' '}
-                      </Fragment>
-                    ))}{' '}
-                  </div>{' '}
-                </div>{' '}
-                <div
-                  id="attn"
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,380px),1fr))',
-                    gap: '16px',
-                    alignItems: 'start',
-                  }}
-                >
-                  {' '}
-                  <div
-                    style={{
-                      background: '#fff',
-                      border: '1px solid #e7e5df',
-                      borderRadius: '12px',
-                      boxShadow: '0 1px 0 rgba(20,23,26,.03),0 16px 40px -28px rgba(20,23,26,.3)',
-                      padding: '20px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '6px',
-                    }}
-                  >
-                    {' '}
-                    <div
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'baseline',
-                        gap: '10px',
-                        paddingBottom: '6px',
-                      }}
-                    >
-                      {' '}
-                      <strong style={{ fontSize: '16px' }}>{'Needs your attention'}</strong>{' '}
-                      <span style={{ fontSize: '13px', color: '#677184' }}>{$t($v['attnCount'])}</span>{' '}
-                    </div>{' '}
-                    {$v['attnEmpty'] ? (
-                      <>
-                        {' '}
-                        <span style={{ padding: '18px 0', color: '#677184', fontSize: '14px' }}>
-                          {'Nothing to fix. Every post and account is healthy.'}
-                        </span>{' '}
-                      </>
-                    ) : null}{' '}
-                    {$arr($v['attentionShown']).map((x, $index) => (
-                      <Fragment key={$index}>
-                        {' '}
-                        <div
-                          style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '8px',
-                            padding: '14px 0',
-                            borderTop: '1px solid #efede7',
-                          }}
-                        >
-                          {' '}
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                            {' '}
-                            <span
-                              style={{
-                                width: '22px',
-                                height: '22px',
-                                borderRadius: '50%',
-                                flex: 'none',
-                                display: 'grid',
-                                placeItems: 'center',
-                                fontSize: '12px',
-                                fontWeight: '800',
-                                background: `${x?.iconBg ?? ''}`,
-                                color: `${x?.iconFg ?? ''}`,
-                              }}
-                            >
-                              {$t(x?.icon)}
-                            </span>{' '}
-                            <strong style={{ fontSize: '14px', flex: '1', minWidth: '0' }}>{$t(x?.title)}</strong>{' '}
-                            <span style={{ fontSize: '12px', color: '#9aa0a8', whiteSpace: 'nowrap' }}>
-                              {$t(x?.when)}
-                            </span>{' '}
-                          </div>{' '}
-                          <span style={{ fontSize: '13px', color: '#4a4f57', paddingLeft: '32px', textWrap: 'pretty' }}>
-                            {$t(x?.body)}
-                          </span>{' '}
-                          <div style={{ display: 'flex', gap: '6px', paddingLeft: '32px', flexWrap: 'wrap' }}>
-                            {' '}
-                            {$arr(x?.actions).map((b, $index) => (
-                              <Fragment key={$index}>
                                 {' '}
-                                <button
-                                  onClick={b?.go}
+                                <span
                                   style={{
-                                    padding: '5px 11px',
-                                    borderRadius: '8px',
-                                    border: `1px solid ${b?.border ?? ''}`,
-                                    background: `${b?.bg ?? ''}`,
-                                    color: `${b?.color ?? ''}`,
-                                    cursor: 'pointer',
-                                    fontSize: '13px',
-                                    fontWeight: '500',
+                                    fontWeight: '600',
+                                    fontSize: '15px',
+                                    color: `${st?.titleColor ?? ''}`,
+                                    textDecoration: `${st?.titleDeco ?? ''}`,
                                   }}
                                 >
-                                  {$t(b?.label)}
-                                </button>{' '}
-                              </Fragment>
-                            ))}{' '}
-                          </div>{' '}
-                        </div>{' '}
-                      </Fragment>
-                    ))}{' '}
-                    {$v['hasMoreIssues'] ? (
-                      <>
-                        <button
-                          onClick={$v['toggleIssues']}
-                          style={{
-                            alignSelf: 'flex-start',
-                            marginTop: '6px',
-                            padding: '6px 12px',
-                            borderRadius: '8px',
-                            border: '1px solid #e7e5df',
-                            background: '#fff',
-                            cursor: 'pointer',
-                            fontSize: '13px',
-                            fontWeight: '500',
-                          }}
-                        >
-                          {$t($v['issuesLabel'])}
-                        </button>
-                      </>
-                    ) : null}{' '}
-                  </div>{' '}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                                  {$t(st?.title)}
+                                </span>{' '}
+                                <span style={{ fontSize: '13px', lineHeight: '1.45', color: '#a3a9b4' }}>
+                                  {$t(st?.hint)}
+                                </span>{' '}
+                                {st?.showCta ? (
+                                  <>
+                                    <button
+                                      onClick={st?.go}
+                                      style={{
+                                        alignSelf: 'flex-start',
+                                        marginTop: '8px',
+                                        padding: '9px 14px',
+                                        borderRadius: '10px',
+                                        border: '0',
+                                        background: `${st?.ctaBg ?? ''}`,
+                                        color: `${st?.ctaFg ?? ''}`,
+                                        fontWeight: '600',
+                                        fontSize: '14px',
+                                        cursor: 'pointer',
+                                      }}
+                                    >
+                                      {$t(st?.cta)}
+                                    </button>
+                                  </>
+                                ) : null}{' '}
+                              </span>{' '}
+                            </div>{' '}
+                          </Fragment>
+                        ))}{' '}
+                      </div>{' '}
+                    </div>{' '}
+                  </>
+                ) : null}{' '}
+                {$v['hasHomeData'] ? (
+                  <>
                     {' '}
                     <div
-                      style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '10px' }}
+                      style={{ display: 'grid', gridTemplateColumns: 'repeat(4,minmax(0,1fr))', gap: '10px' }}
+                      className="sfy-g2"
                     >
                       {' '}
-                      <strong style={{ fontSize: '16px' }}>{'Accounts'}</strong>{' '}
-                      <button
-                        onClick={$v['goAccounts']}
-                        style={{
-                          border: '0',
-                          background: 'transparent',
-                          cursor: 'pointer',
-                          color: '#677184',
-                          fontSize: '13px',
-                          padding: '0',
-                        }}
-                      >
-                        {'Manage'}
-                      </button>{' '}
-                    </div>{' '}
-                    <div
-                      style={{
-                        background: '#fff',
-                        border: '1px solid #e7e5df',
-                        borderRadius: '12px',
-                        overflow: 'hidden',
-                      }}
-                    >
-                      {' '}
-                      {$arr($v['sickTiles']).map((a, $index) => (
+                      {$arr($v['homeStats']).map((h, $index) => (
                         <Fragment key={$index}>
                           {' '}
-                          <div
+                          <button
+                            onClick={h?.go}
                             style={{
                               display: 'flex',
                               alignItems: 'center',
-                              gap: '10px',
-                              padding: '11px 14px',
-                              borderBottom: '1px solid #efefea',
+                              gap: '12px',
+                              padding: '12px 14px',
+                              borderRadius: '12px',
+                              border: '1px solid #e7e5df',
+                              background: '#fff',
+                              cursor: 'pointer',
+                              textAlign: 'left',
+                              transition: 'border-color .15s',
                             }}
+                            className="sfy-stat dashboard-hover-5"
                           >
                             {' '}
                             <span
                               style={{
-                                width: '28px',
-                                height: '28px',
-                                borderRadius: '8px',
-                                background: `${a?.color ?? ''}`,
+                                width: '32px',
+                                height: '32px',
+                                borderRadius: '9px',
+                                background: '#f3f4f0',
                                 display: 'grid',
                                 placeItems: 'center',
                                 flex: 'none',
@@ -1085,107 +784,618 @@ export function renderDashboard($v) {
                             >
                               <span
                                 style={{
-                                  width: '56%',
-                                  height: '56%',
-                                  background: `${a?.logo ?? ''} center/contain no-repeat`,
+                                  width: '18px',
+                                  height: '18px',
+                                  background: `${h?.icon ?? ''} center/contain no-repeat`,
                                 }}
                               />
                             </span>{' '}
-                            <span
-                              style={{
-                                flex: '1',
-                                minWidth: '0',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                lineHeight: '1.3',
-                              }}
-                            >
-                              <span style={{ fontSize: '14px', fontWeight: '500' }}>
-                                {'@'}
-                                {$t(a?.username)}
+                            <span style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2' }}>
+                              <span
+                                style={{
+                                  fontSize: '22px',
+                                  fontWeight: '700',
+                                  letterSpacing: '-0.03em',
+                                  color: `${h?.color ?? ''}`,
+                                }}
+                              >
+                                {$t(h?.value)}
                               </span>
-                              <span style={{ fontSize: '12px', color: `${a?.fg ?? ''}` }}>
-                                {$t(a?.label)}
-                                {' · '}
-                                {$t(a?.detail)}
-                              </span>
+                              <span style={{ fontSize: '12px', color: '#677184' }}>{$t(h?.label)}</span>
+                            </span>{' '}
+                          </button>{' '}
+                        </Fragment>
+                      ))}{' '}
+                    </div>{' '}
+                  </>
+                ) : null}{' '}
+                {$v['showUpNext'] ? (
+                  <>
+                    {' '}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                      {' '}
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'baseline',
+                          justifyContent: 'space-between',
+                          gap: '10px',
+                        }}
+                      >
+                        {' '}
+                        <strong style={{ fontSize: '18px', letterSpacing: '-0.02em' }}>{'Up next'}</strong>{' '}
+                        <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <button
+                            onClick={$v['goQueueTab']}
+                            style={{
+                              border: '0',
+                              background: 'transparent',
+                              cursor: 'pointer',
+                              color: '#677184',
+                              fontSize: '13px',
+                              padding: '0 6px',
+                            }}
+                          >
+                            {'See all '}
+                            {$t($v['upcomingCount'])}
+                          </button>
+                          <button
+                            onClick={$v['upPrev']}
+                            aria-label="Scroll left"
+                            style={{
+                              width: '30px',
+                              height: '30px',
+                              borderRadius: '8px',
+                              border: '1px solid #e7e5df',
+                              background: '#fff',
+                              cursor: 'pointer',
+                            }}
+                            className="sfy-mhide"
+                          >
+                            {'‹'}
+                          </button>
+                          <button
+                            onClick={$v['upNextBtn']}
+                            aria-label="Scroll right"
+                            style={{
+                              width: '30px',
+                              height: '30px',
+                              borderRadius: '8px',
+                              border: '1px solid #e7e5df',
+                              background: '#fff',
+                              cursor: 'pointer',
+                            }}
+                            className="sfy-mhide"
+                          >
+                            {'›'}
+                          </button>
+                        </span>{' '}
+                      </div>{' '}
+                      {$v['upEmpty'] ? (
+                        <>
+                          {' '}
+                          <div
+                            style={{
+                              padding: '28px 20px',
+                              border: '1px dashed #d8d5cc',
+                              borderRadius: '16px',
+                              textAlign: 'center',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              gap: '8px',
+                              alignItems: 'center',
+                              background: '#fcfbf8',
+                            }}
+                          >
+                            {' '}
+                            <strong style={{ fontSize: '15px' }}>{'Nothing scheduled'}</strong>{' '}
+                            <span style={{ fontSize: '13px', color: '#677184' }}>
+                              {'Your next posts show up here, ready to edit or send early.'}
                             </span>{' '}
                             <button
-                              onClick={a?.fix}
+                              onClick={$v['goCompose']}
                               style={{
-                                padding: '6px 11px',
-                                borderRadius: '8px',
+                                marginTop: '4px',
+                                padding: '8px 14px',
+                                borderRadius: '10px',
                                 border: '0',
                                 background: '#141619',
                                 color: '#fff',
                                 cursor: 'pointer',
-                                fontSize: '13px',
-                                fontWeight: '600',
+                                fontWeight: '500',
                               }}
                             >
-                              {$t(a?.fixLabel)}
+                              {'Write a post'}
                             </button>{' '}
                           </div>{' '}
-                        </Fragment>
-                      ))}{' '}
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '12px 14px' }}>
+                        </>
+                      ) : null}{' '}
+                      <div
+                        ref={$v['upRef']}
+                        style={{
+                          scrollBehavior: 'smooth',
+                          display: 'grid',
+                          gridAutoFlow: 'column',
+                          gridAutoColumns: 'minmax(280px,300px)',
+                          gap: '14px',
+                          overflowX: 'auto',
+                          padding: '4px 2px 18px',
+                          margin: '0 -2px',
+                          scrollSnapType: 'x mandatory',
+                          scrollbarWidth: 'none',
+                        }}
+                      >
                         {' '}
-                        <span style={{ display: 'flex', alignItems: 'center', minWidth: '0' }}>
-                          {$arr($v['okTiles']).map((a, $index) => (
-                            <Fragment key={$index}>
-                              <span
-                                title={a?.title}
+                        {$arr($v['upNext']).map((c, $index) => (
+                          <Fragment key={$index}>
+                            {' '}
+                            <button
+                              onClick={c?.open}
+                              style={{
+                                scrollSnapAlign: 'start',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                border: '1px solid #e7e5df',
+                                borderRadius: '18px',
+                                background: '#fff',
+                                padding: '0',
+                                cursor: 'pointer',
+                                textAlign: 'left',
+                                overflow: 'hidden',
+                                minHeight: '300px',
+                                transition: 'transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .25s',
+                              }}
+                              className="dashboard-hover-6"
+                            >
+                              {' '}
+                              <div
                                 style={{
-                                  width: '28px',
-                                  height: '28px',
-                                  marginRight: '-6px',
-                                  borderRadius: '50%',
-                                  border: '2px solid #fff',
-                                  background: `${a?.pic ?? ''}`,
+                                  height: '130px',
                                   flex: 'none',
-                                }}
-                              />
-                            </Fragment>
-                          ))}
-                          {$v['okMore'] ? (
-                            <>
-                              <span
-                                style={{
-                                  height: '28px',
-                                  minWidth: '28px',
-                                  padding: '0 8px',
-                                  marginLeft: '2px',
-                                  borderRadius: '999px',
-                                  border: '2px solid #fff',
-                                  background: '#f1f1ec',
-                                  color: '#4a4f57',
-                                  fontSize: '12px',
-                                  fontWeight: '600',
-                                  display: 'inline-flex',
-                                  alignItems: 'center',
-                                  justifyContent: 'center',
-                                  whiteSpace: 'nowrap',
-                                  flex: 'none',
-                                  position: 'relative',
+                                  background: `${c?.cover ?? ''}`,
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  justifyContent: 'space-between',
+                                  padding: '14px',
+                                  color: `${c?.coverFg ?? ''}`,
                                 }}
                               >
-                                {$t($v['okMoreLabel'])}
-                              </span>
-                            </>
-                          ) : null}
-                        </span>{' '}
-                        <span style={{ fontSize: '13px', color: '#677184', lineHeight: '1.4' }}>
-                          <span style={{ color: '#15803d', fontWeight: '500' }}>
-                            {'✓ '}
-                            {$t($v['okCount'])}
-                            {' connected'}
-                          </span>
-                          {$t($v['okBreakdown'])}
-                        </span>{' '}
+                                {' '}
+                                <span
+                                  style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    gap: '8px',
+                                  }}
+                                >
+                                  {' '}
+                                  <span
+                                    style={{
+                                      padding: '3px 9px',
+                                      borderRadius: '999px',
+                                      background: 'rgba(21,23,26,.55)',
+                                      color: '#f6f5f1',
+                                      fontSize: '12px',
+                                      fontWeight: '600',
+                                      backdropFilter: 'blur(6px)',
+                                    }}
+                                  >
+                                    {$t(c?.day)}
+                                  </span>{' '}
+                                  <span style={{ font: "600 11px 'Geist Mono',monospace", opacity: '.85' }}>
+                                    {$t(c?.kind)}
+                                  </span>{' '}
+                                </span>{' '}
+                                <span
+                                  style={{
+                                    fontSize: `${c?.quoteSize ?? ''}`,
+                                    fontWeight: '700',
+                                    letterSpacing: '-0.03em',
+                                    lineHeight: '1.05',
+                                    display: '-webkit-box',
+                                    WebkitLineClamp: '3',
+                                    WebkitBoxOrient: 'vertical',
+                                    overflow: 'hidden',
+                                  }}
+                                >
+                                  {$t(c?.quote)}
+                                </span>{' '}
+                              </div>{' '}
+                              <div
+                                style={{
+                                  flex: '1',
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  gap: '10px',
+                                  padding: '14px 16px 16px',
+                                }}
+                              >
+                                {' '}
+                                <span
+                                  style={{
+                                    display: 'flex',
+                                    alignItems: 'baseline',
+                                    justifyContent: 'space-between',
+                                    gap: '8px',
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      fontSize: '20px',
+                                      fontWeight: '700',
+                                      letterSpacing: '-0.03em',
+                                      lineHeight: '1',
+                                    }}
+                                  >
+                                    {$t(c?.time)}
+                                  </span>
+                                  <span style={{ fontSize: '12px', color: '#677184' }}>{'Edit →'}</span>
+                                </span>{' '}
+                                <span
+                                  style={{
+                                    fontSize: '13px',
+                                    lineHeight: '1.45',
+                                    color: '#4a4f57',
+                                    display: '-webkit-box',
+                                    WebkitLineClamp: '2',
+                                    WebkitBoxOrient: 'vertical',
+                                    overflow: 'hidden',
+                                  }}
+                                >
+                                  {$t(c?.caption)}
+                                </span>{' '}
+                                <span style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                  {' '}
+                                  <span style={{ display: 'flex' }}>
+                                    {' '}
+                                    {$arr(c?.icons).map((i, $index) => (
+                                      <Fragment key={$index}>
+                                        <span
+                                          style={{
+                                            width: '24px',
+                                            height: '24px',
+                                            marginRight: '-6px',
+                                            borderRadius: '50%',
+                                            border: '2px solid #fff',
+                                            background: `${i?.color ?? ''}`,
+                                            display: 'grid',
+                                            placeItems: 'center',
+                                          }}
+                                        >
+                                          <span
+                                            style={{
+                                              width: '56%',
+                                              height: '56%',
+                                              background: `${i?.logo ?? ''} center/contain no-repeat`,
+                                            }}
+                                          />
+                                        </span>
+                                      </Fragment>
+                                    ))}{' '}
+                                  </span>{' '}
+                                  <span style={{ flex: '1' }} />{' '}
+                                  <span
+                                    style={{
+                                      padding: '2px 9px',
+                                      borderRadius: '999px',
+                                      fontSize: '12px',
+                                      fontWeight: '600',
+                                      background: `${c?.tagBg ?? ''}`,
+                                      color: `${c?.tagFg ?? ''}`,
+                                      whiteSpace: 'nowrap',
+                                    }}
+                                  >
+                                    {$t(c?.tag)}
+                                  </span>{' '}
+                                </span>{' '}
+                              </div>{' '}
+                            </button>{' '}
+                          </Fragment>
+                        ))}{' '}
                       </div>{' '}
                     </div>{' '}
-                  </div>{' '}
-                </div>{' '}
+                  </>
+                ) : null}{' '}
+                {$v['hasAccounts'] ? (
+                  <>
+                    {' '}
+                    <div
+                      id="attn"
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,380px),1fr))',
+                        gap: '16px',
+                        alignItems: 'start',
+                      }}
+                    >
+                      {' '}
+                      <div
+                        style={{
+                          background: '#fff',
+                          border: '1px solid #e7e5df',
+                          borderRadius: '12px',
+                          boxShadow: '0 1px 0 rgba(20,23,26,.03),0 16px 40px -28px rgba(20,23,26,.3)',
+                          padding: '20px',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '6px',
+                        }}
+                      >
+                        {' '}
+                        <div
+                          style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'baseline',
+                            gap: '10px',
+                            paddingBottom: '6px',
+                          }}
+                        >
+                          {' '}
+                          <strong style={{ fontSize: '16px' }}>{'Needs your attention'}</strong>{' '}
+                          <span style={{ fontSize: '13px', color: '#677184' }}>{$t($v['attnCount'])}</span>{' '}
+                        </div>{' '}
+                        {$v['attnEmpty'] ? (
+                          <>
+                            {' '}
+                            <span style={{ padding: '18px 0', color: '#677184', fontSize: '14px' }}>
+                              {'Nothing to fix. Every post and account is healthy.'}
+                            </span>{' '}
+                          </>
+                        ) : null}{' '}
+                        {$arr($v['attentionShown']).map((x, $index) => (
+                          <Fragment key={$index}>
+                            {' '}
+                            <div
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '8px',
+                                padding: '14px 0',
+                                borderTop: '1px solid #efede7',
+                              }}
+                            >
+                              {' '}
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                {' '}
+                                <span
+                                  style={{
+                                    width: '22px',
+                                    height: '22px',
+                                    borderRadius: '50%',
+                                    flex: 'none',
+                                    display: 'grid',
+                                    placeItems: 'center',
+                                    fontSize: '12px',
+                                    fontWeight: '800',
+                                    background: `${x?.iconBg ?? ''}`,
+                                    color: `${x?.iconFg ?? ''}`,
+                                  }}
+                                >
+                                  {$t(x?.icon)}
+                                </span>{' '}
+                                <strong style={{ fontSize: '14px', flex: '1', minWidth: '0' }}>{$t(x?.title)}</strong>{' '}
+                                <span style={{ fontSize: '12px', color: '#9aa0a8', whiteSpace: 'nowrap' }}>
+                                  {$t(x?.when)}
+                                </span>{' '}
+                              </div>{' '}
+                              <span
+                                style={{ fontSize: '13px', color: '#4a4f57', paddingLeft: '32px', textWrap: 'pretty' }}
+                              >
+                                {$t(x?.body)}
+                              </span>{' '}
+                              <div style={{ display: 'flex', gap: '6px', paddingLeft: '32px', flexWrap: 'wrap' }}>
+                                {' '}
+                                {$arr(x?.actions).map((b, $index) => (
+                                  <Fragment key={$index}>
+                                    {' '}
+                                    <button
+                                      onClick={b?.go}
+                                      style={{
+                                        padding: '5px 11px',
+                                        borderRadius: '8px',
+                                        border: `1px solid ${b?.border ?? ''}`,
+                                        background: `${b?.bg ?? ''}`,
+                                        color: `${b?.color ?? ''}`,
+                                        cursor: 'pointer',
+                                        fontSize: '13px',
+                                        fontWeight: '500',
+                                      }}
+                                    >
+                                      {$t(b?.label)}
+                                    </button>{' '}
+                                  </Fragment>
+                                ))}{' '}
+                              </div>{' '}
+                            </div>{' '}
+                          </Fragment>
+                        ))}{' '}
+                        {$v['hasMoreIssues'] ? (
+                          <>
+                            <button
+                              onClick={$v['toggleIssues']}
+                              style={{
+                                alignSelf: 'flex-start',
+                                marginTop: '6px',
+                                padding: '6px 12px',
+                                borderRadius: '8px',
+                                border: '1px solid #e7e5df',
+                                background: '#fff',
+                                cursor: 'pointer',
+                                fontSize: '13px',
+                                fontWeight: '500',
+                              }}
+                            >
+                              {$t($v['issuesLabel'])}
+                            </button>
+                          </>
+                        ) : null}{' '}
+                      </div>{' '}
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                        {' '}
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'baseline',
+                            justifyContent: 'space-between',
+                            gap: '10px',
+                          }}
+                        >
+                          {' '}
+                          <strong style={{ fontSize: '16px' }}>{'Accounts'}</strong>{' '}
+                          <button
+                            onClick={$v['goAccounts']}
+                            style={{
+                              border: '0',
+                              background: 'transparent',
+                              cursor: 'pointer',
+                              color: '#677184',
+                              fontSize: '13px',
+                              padding: '0',
+                            }}
+                          >
+                            {'Manage'}
+                          </button>{' '}
+                        </div>{' '}
+                        <div
+                          style={{
+                            background: '#fff',
+                            border: '1px solid #e7e5df',
+                            borderRadius: '12px',
+                            overflow: 'hidden',
+                          }}
+                        >
+                          {' '}
+                          {$arr($v['sickTiles']).map((a, $index) => (
+                            <Fragment key={$index}>
+                              {' '}
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  gap: '10px',
+                                  padding: '11px 14px',
+                                  borderBottom: '1px solid #efefea',
+                                }}
+                              >
+                                {' '}
+                                <span
+                                  style={{
+                                    width: '28px',
+                                    height: '28px',
+                                    borderRadius: '8px',
+                                    background: `${a?.color ?? ''}`,
+                                    display: 'grid',
+                                    placeItems: 'center',
+                                    flex: 'none',
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      width: '56%',
+                                      height: '56%',
+                                      background: `${a?.logo ?? ''} center/contain no-repeat`,
+                                    }}
+                                  />
+                                </span>{' '}
+                                <span
+                                  style={{
+                                    flex: '1',
+                                    minWidth: '0',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    lineHeight: '1.3',
+                                  }}
+                                >
+                                  <span style={{ fontSize: '14px', fontWeight: '500' }}>
+                                    {'@'}
+                                    {$t(a?.username)}
+                                  </span>
+                                  <span style={{ fontSize: '12px', color: `${a?.fg ?? ''}` }}>
+                                    {$t(a?.label)}
+                                    {' · '}
+                                    {$t(a?.detail)}
+                                  </span>
+                                </span>{' '}
+                                <button
+                                  onClick={a?.fix}
+                                  style={{
+                                    padding: '6px 11px',
+                                    borderRadius: '8px',
+                                    border: '0',
+                                    background: '#141619',
+                                    color: '#fff',
+                                    cursor: 'pointer',
+                                    fontSize: '13px',
+                                    fontWeight: '600',
+                                  }}
+                                >
+                                  {$t(a?.fixLabel)}
+                                </button>{' '}
+                              </div>{' '}
+                            </Fragment>
+                          ))}{' '}
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '12px 14px' }}>
+                            {' '}
+                            <span style={{ display: 'flex', alignItems: 'center', minWidth: '0' }}>
+                              {$arr($v['okTiles']).map((a, $index) => (
+                                <Fragment key={$index}>
+                                  <span
+                                    title={a?.title}
+                                    style={{
+                                      width: '28px',
+                                      height: '28px',
+                                      marginRight: '-6px',
+                                      borderRadius: '50%',
+                                      border: '2px solid #fff',
+                                      background: `${a?.pic ?? ''}`,
+                                      flex: 'none',
+                                    }}
+                                  />
+                                </Fragment>
+                              ))}
+                              {$v['okMore'] ? (
+                                <>
+                                  <span
+                                    style={{
+                                      height: '28px',
+                                      minWidth: '28px',
+                                      padding: '0 8px',
+                                      marginLeft: '2px',
+                                      borderRadius: '999px',
+                                      border: '2px solid #fff',
+                                      background: '#f1f1ec',
+                                      color: '#4a4f57',
+                                      fontSize: '12px',
+                                      fontWeight: '600',
+                                      display: 'inline-flex',
+                                      alignItems: 'center',
+                                      justifyContent: 'center',
+                                      whiteSpace: 'nowrap',
+                                      flex: 'none',
+                                      position: 'relative',
+                                    }}
+                                  >
+                                    {$t($v['okMoreLabel'])}
+                                  </span>
+                                </>
+                              ) : null}
+                            </span>{' '}
+                            <span style={{ fontSize: '13px', color: '#677184', lineHeight: '1.4' }}>
+                              <span style={{ color: '#15803d', fontWeight: '500' }}>
+                                {'✓ '}
+                                {$t($v['okCount'])}
+                                {' connected'}
+                              </span>
+                              {$t($v['okBreakdown'])}
+                            </span>{' '}
+                          </div>{' '}
+                        </div>{' '}
+                      </div>{' '}
+                    </div>{' '}
+                  </>
+                ) : null}{' '}
               </section>{' '}
             </>
           ) : null}{' '}
@@ -3388,6 +3598,45 @@ export function renderDashboard($v) {
                     }}
                   >
                     {' '}
+                    {$v['noAccounts'] ? (
+                      <>
+                        {' '}
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '14px',
+                            flexWrap: 'wrap',
+                            padding: '14px 16px',
+                            borderRadius: '12px',
+                            background: '#141619',
+                            color: '#f8f9f6',
+                          }}
+                        >
+                          {' '}
+                          <span style={{ flex: '1 1 220px', display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                            <strong style={{ fontSize: '15px' }}>{'Connect an account to post'}</strong>
+                            <span style={{ fontSize: '13px', color: '#a3a9b4' }}>
+                              {'Keep writing. Your post waits here while you connect.'}
+                            </span>
+                          </span>{' '}
+                          <button
+                            onClick={$v['goConnect']}
+                            style={{
+                              padding: '9px 14px',
+                              borderRadius: '10px',
+                              border: '0',
+                              background: '#d9ff35',
+                              color: '#141619',
+                              fontWeight: '600',
+                              cursor: 'pointer',
+                            }}
+                          >
+                            {'Connect an account'}
+                          </button>{' '}
+                        </div>{' '}
+                      </>
+                    ) : null}{' '}
                     {$v['inlineAccounts'] ? (
                       <>
                         {' '}
@@ -6363,220 +6612,220 @@ export function renderDashboard($v) {
                   >
                     {'Accounts'}
                   </h1>{' '}
-                  <p style={{ margin: '8px 0 0', color: '#677184', fontSize: '15px' }}>
-                    {$t($v['accountCount'])}
-                    {' of '}
-                    {$t($v['accountLimitLabel'])}
-                    {' connected. Multiple accounts per platform are fine.'}
-                  </p>{' '}
+                  <p style={{ margin: '8px 0 0', color: '#677184', fontSize: '15px' }}>{$t($v['acIntro'])}</p>{' '}
                 </div>{' '}
-                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                  {' '}
-                  <input
-                    value={$dv($v['acQ'])}
-                    onChange={$v['onAcQ']}
-                    placeholder="Search accounts"
-                    aria-label="Search accounts"
-                    style={{
-                      flex: '1 1 200px',
-                      padding: '7px 12px',
-                      border: '1px solid #e7e5df',
-                      borderRadius: '9px',
-                      outline: 'none',
-                      fontSize: '13px',
-                      background: '#fff',
-                    }}
-                  />{' '}
-                  <select
-                    value={$dv($v['acPlat'])}
-                    onChange={$v['onAcPlat']}
-                    aria-label="Platform"
-                    style={{
-                      padding: '7px 10px',
-                      border: '1px solid #e7e5df',
-                      borderRadius: '9px',
-                      background: '#fff',
-                      fontSize: '13px',
-                    }}
-                  >
-                    {$arr($v['calPlatOpts']).map((o, $index) => (
-                      <Fragment key={$index}>
-                        <option value={$dv(o?.v)}>{o?.l}</option>
-                      </Fragment>
-                    ))}
-                  </select>{' '}
-                  <select
-                    value={$dv($v['acSt'])}
-                    onChange={$v['onAcSt']}
-                    aria-label="Connection status"
-                    style={{
-                      padding: '7px 10px',
-                      border: '1px solid #e7e5df',
-                      borderRadius: '9px',
-                      background: '#fff',
-                      fontSize: '13px',
-                    }}
-                  >
-                    <option value="">{'All statuses'}</option>
-                    <option value="issue">{'Needs attention'}</option>
-                    <option value="ok">{'Connected'}</option>
-                  </select>{' '}
-                </div>{' '}
-                <div
-                  style={{
-                    background: '#fff',
-                    border: '1px solid #e7e5df',
-                    borderRadius: '12px',
-                    boxShadow: '0 1px 0 rgba(20,23,26,.03),0 16px 40px -28px rgba(20,23,26,.3)',
-                    overflow: 'hidden',
-                  }}
-                >
-                  {' '}
-                  {$v['acNone'] ? (
-                    <>
+                {$v['hasAccounts'] ? (
+                  <>
+                    {' '}
+                    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                       {' '}
-                      <div
+                      <input
+                        value={$dv($v['acQ'])}
+                        onChange={$v['onAcQ']}
+                        placeholder="Search accounts"
+                        aria-label="Search accounts"
                         style={{
-                          padding: '28px 20px',
-                          textAlign: 'center',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: '6px',
-                          alignItems: 'center',
+                          flex: '1 1 200px',
+                          padding: '7px 12px',
+                          border: '1px solid #e7e5df',
+                          borderRadius: '9px',
+                          outline: 'none',
+                          fontSize: '13px',
+                          background: '#fff',
+                        }}
+                      />{' '}
+                      <select
+                        value={$dv($v['acPlat'])}
+                        onChange={$v['onAcPlat']}
+                        aria-label="Platform"
+                        style={{
+                          padding: '7px 10px',
+                          border: '1px solid #e7e5df',
+                          borderRadius: '9px',
+                          background: '#fff',
+                          fontSize: '13px',
                         }}
                       >
-                        {' '}
-                        <strong style={{ fontSize: '15px' }}>{'No connected accounts match'}</strong>{' '}
-                        <span style={{ fontSize: '13px', color: '#677184' }}>
-                          {'Search by name, handle or platform, or clear the filters.'}
-                        </span>{' '}
-                        <button
-                          onClick={$v['acClear']}
-                          style={{
-                            marginTop: '6px',
-                            padding: '7px 12px',
-                            borderRadius: '9px',
-                            border: '1px solid #e7e5df',
-                            background: '#fff',
-                            cursor: 'pointer',
-                            fontWeight: '500',
-                            fontSize: '13px',
-                          }}
-                          className="dashboard-hover-5"
-                        >
-                          {'Clear search and filters'}
-                        </button>{' '}
-                      </div>{' '}
-                    </>
-                  ) : null}{' '}
-                  {$arr($v['connected']).map((a, $index) => (
-                    <Fragment key={$index}>
-                      {' '}
-                      <div
+                        {$arr($v['calPlatOpts']).map((o, $index) => (
+                          <Fragment key={$index}>
+                            <option value={$dv(o?.v)}>{o?.l}</option>
+                          </Fragment>
+                        ))}
+                      </select>{' '}
+                      <select
+                        value={$dv($v['acSt'])}
+                        onChange={$v['onAcSt']}
+                        aria-label="Connection status"
                         style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '12px',
-                          padding: '14px 18px',
-                          borderTop: `${a?.divider ?? ''}`,
+                          padding: '7px 10px',
+                          border: '1px solid #e7e5df',
+                          borderRadius: '9px',
+                          background: '#fff',
+                          fontSize: '13px',
                         }}
-                        className="sfy-arow"
                       >
-                        {' '}
-                        <span
-                          style={{
-                            position: 'relative',
-                            width: '36px',
-                            height: '36px',
-                            borderRadius: '50%',
-                            background: `${a?.pic ?? ''}`,
-                            flex: 'none',
-                          }}
-                        >
-                          <span
-                            style={{
-                              position: 'absolute',
-                              right: '-3px',
-                              bottom: '-3px',
-                              width: '16px',
-                              height: '16px',
-                              borderRadius: '50%',
-                              border: '2px solid #fff',
-                              background: `${a?.badge ?? ''}`,
-                              display: `${a?.badgeDisplay ?? ''}`,
-                            }}
-                          />
-                        </span>{' '}
-                        <div style={{ flex: '1', minWidth: '0', display: 'flex', flexDirection: 'column' }}>
+                        <option value="">{'All statuses'}</option>
+                        <option value="issue">{'Needs attention'}</option>
+                        <option value="ok">{'Connected'}</option>
+                      </select>{' '}
+                    </div>{' '}
+                    <div
+                      style={{
+                        background: '#fff',
+                        border: '1px solid #e7e5df',
+                        borderRadius: '12px',
+                        boxShadow: '0 1px 0 rgba(20,23,26,.03),0 16px 40px -28px rgba(20,23,26,.3)',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      {' '}
+                      {$v['acNone'] ? (
+                        <>
                           {' '}
-                          <span style={{ fontWeight: '600' }}>{$t(a?.display)}</span>{' '}
-                          <span style={{ fontSize: '13px', color: '#677184' }}>
-                            {'@'}
-                            {$t(a?.username)}
-                            {' · '}
-                            {$t(a?.platform)}
-                            {' · '}
-                            {$t(a?.healthDetail)}
-                          </span>{' '}
-                        </div>{' '}
-                        <span style={{ fontSize: '13px', color: '#677184' }}>{$t(a?.queued)}</span>{' '}
-                        <span
-                          title={a?.healthDetail}
-                          style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '6px',
-                            fontSize: '12px',
-                            fontWeight: '600',
-                            color: `${a?.hFg ?? ''}`,
-                            padding: '2px 9px',
-                            borderRadius: '999px',
-                            background: `${a?.hBg ?? ''}`,
-                            whiteSpace: 'nowrap',
-                          }}
-                        >
-                          {$t(a?.hLabel)}
-                        </span>{' '}
-                        {a?.needsFix ? (
-                          <>
+                          <div
+                            style={{
+                              padding: '28px 20px',
+                              textAlign: 'center',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              gap: '6px',
+                              alignItems: 'center',
+                            }}
+                          >
+                            {' '}
+                            <strong style={{ fontSize: '15px' }}>{'No connected accounts match'}</strong>{' '}
+                            <span style={{ fontSize: '13px', color: '#677184' }}>
+                              {'Search by name, handle or platform, or clear the filters.'}
+                            </span>{' '}
                             <button
-                              onClick={a?.reconnect}
+                              onClick={$v['acClear']}
+                              style={{
+                                marginTop: '6px',
+                                padding: '7px 12px',
+                                borderRadius: '9px',
+                                border: '1px solid #e7e5df',
+                                background: '#fff',
+                                cursor: 'pointer',
+                                fontWeight: '500',
+                                fontSize: '13px',
+                              }}
+                              className="dashboard-hover-5"
+                            >
+                              {'Clear search and filters'}
+                            </button>{' '}
+                          </div>{' '}
+                        </>
+                      ) : null}{' '}
+                      {$arr($v['connected']).map((a, $index) => (
+                        <Fragment key={$index}>
+                          {' '}
+                          <div
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '12px',
+                              padding: '14px 18px',
+                              borderTop: `${a?.divider ?? ''}`,
+                            }}
+                            className="sfy-arow"
+                          >
+                            {' '}
+                            <span
+                              style={{
+                                position: 'relative',
+                                width: '36px',
+                                height: '36px',
+                                borderRadius: '50%',
+                                background: `${a?.pic ?? ''}`,
+                                flex: 'none',
+                              }}
+                            >
+                              <span
+                                style={{
+                                  position: 'absolute',
+                                  right: '-3px',
+                                  bottom: '-3px',
+                                  width: '16px',
+                                  height: '16px',
+                                  borderRadius: '50%',
+                                  border: '2px solid #fff',
+                                  background: `${a?.badge ?? ''}`,
+                                  display: `${a?.badgeDisplay ?? ''}`,
+                                }}
+                              />
+                            </span>{' '}
+                            <div style={{ flex: '1', minWidth: '0', display: 'flex', flexDirection: 'column' }}>
+                              {' '}
+                              <span style={{ fontWeight: '600' }}>{$t(a?.display)}</span>{' '}
+                              <span style={{ fontSize: '13px', color: '#677184' }}>
+                                {'@'}
+                                {$t(a?.username)}
+                                {' · '}
+                                {$t(a?.platform)}
+                                {' · '}
+                                {$t(a?.healthDetail)}
+                              </span>{' '}
+                            </div>{' '}
+                            <span style={{ fontSize: '13px', color: '#677184' }}>{$t(a?.queued)}</span>{' '}
+                            <span
+                              title={a?.healthDetail}
+                              style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '6px',
+                                fontSize: '12px',
+                                fontWeight: '600',
+                                color: `${a?.hFg ?? ''}`,
+                                padding: '2px 9px',
+                                borderRadius: '999px',
+                                background: `${a?.hBg ?? ''}`,
+                                whiteSpace: 'nowrap',
+                              }}
+                            >
+                              {$t(a?.hLabel)}
+                            </span>{' '}
+                            {a?.needsFix ? (
+                              <>
+                                <button
+                                  onClick={a?.reconnect}
+                                  style={{
+                                    padding: '6px 10px',
+                                    fontSize: '13px',
+                                    borderRadius: '8px',
+                                    border: '0',
+                                    background: '#141619',
+                                    color: '#fff',
+                                    cursor: 'pointer',
+                                    fontWeight: '600',
+                                  }}
+                                >
+                                  {$t(a?.fixLabel)}
+                                </button>
+                              </>
+                            ) : null}{' '}
+                            <button
+                              onClick={a?.disconnect}
                               style={{
                                 padding: '6px 10px',
                                 fontSize: '13px',
                                 borderRadius: '8px',
-                                border: '0',
-                                background: '#141619',
-                                color: '#fff',
+                                border: '1px solid #e7e5df',
+                                background: '#fff',
+                                color: '#677184',
                                 cursor: 'pointer',
-                                fontWeight: '600',
+                                fontWeight: '500',
                               }}
+                              className="dashboard-hover-k"
                             >
-                              {$t(a?.fixLabel)}
-                            </button>
-                          </>
-                        ) : null}{' '}
-                        <button
-                          onClick={a?.disconnect}
-                          style={{
-                            padding: '6px 10px',
-                            fontSize: '13px',
-                            borderRadius: '8px',
-                            border: '1px solid #e7e5df',
-                            background: '#fff',
-                            color: '#677184',
-                            cursor: 'pointer',
-                            fontWeight: '500',
-                          }}
-                          className="dashboard-hover-k"
-                        >
-                          {'Disconnect'}
-                        </button>{' '}
-                      </div>{' '}
-                    </Fragment>
-                  ))}{' '}
-                </div>{' '}
-                <h3 style={{ margin: '8px 0 0', fontSize: '16px' }}>{'Connect a platform'}</h3>{' '}
+                              {'Disconnect'}
+                            </button>{' '}
+                          </div>{' '}
+                        </Fragment>
+                      ))}{' '}
+                    </div>{' '}
+                  </>
+                ) : null}{' '}
+                <h3 style={{ margin: '8px 0 0', fontSize: '16px' }}>{$t($v['acConnectTitle'])}</h3>{' '}
                 <div
                   style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(230px,1fr))', gap: '12px' }}
                 >

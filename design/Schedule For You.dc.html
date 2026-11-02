@@ -240,14 +240,38 @@ textarea{resize:vertical}
         <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap">
           <div style="display:flex;flex-direction:column;gap:6px">
             <h1 style="margin:0;font-size:30px;line-height:1.1;letter-spacing:-0.03em;font-weight:700">{{ greetWord }}, {{ greetName }} 👋</h1>
-            <p style="margin:0;font-size:15px;color:#677184">You have <strong style="color:#141619">{{ weekPosts }}</strong> scheduled this week and <button onClick="{{ jumpAttn }}" style="font:inherit;padding:0;border:0;background:transparent;cursor:pointer;color:{{ needColor }};font-weight:600;text-decoration:underline;text-underline-offset:3px">{{ needText }}</button>.</p>
+            <sc-if value="{{ notStart }}" hint-placeholder-val="{{ true }}"><p style="margin:0;font-size:15px;color:#677184">You have <strong style="color:#141619">{{ weekPosts }}</strong> scheduled this week and <button onClick="{{ jumpAttn }}" style="font:inherit;padding:0;border:0;background:transparent;cursor:pointer;color:{{ needColor }};font-weight:600;text-decoration:underline;text-underline-offset:3px">{{ needText }}</button>.</p></sc-if>
+            <sc-if value="{{ showStart }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:15px;color:#677184">Welcome to Schedule For You. Let’s get your first post out.</p></sc-if>
           </div>
+          <sc-if value="{{ notStart }}" hint-placeholder-val="{{ true }}">
           <div class="sfy-homeacts" style="display:flex;gap:8px;flex-wrap:wrap">
             <button onClick="{{ goCalWeek }}" style="padding:9px 14px;border-radius:10px;border:1px solid #e7e5df;background:#fff;cursor:pointer;font-weight:500;font-size:14px" style-hover="border-color:#141619">View calendar</button>
             <button onClick="{{ goReview }}" style="padding:9px 14px;border-radius:10px;border:1px solid #e7e5df;background:#fff;cursor:pointer;font-weight:500;font-size:14px" style-hover="border-color:#141619">{{ reviewLabel }}</button>
             <button class="sfy-mhide" onClick="{{ goCompose }}" style="padding:9px 16px;border-radius:10px;border:0;background:#d9ff35;color:#141619;cursor:pointer;font-weight:600;font-size:14px" style-hover="background:#e6ff6e">+ Create post</button>
           </div>
+          </sc-if>
         </div>
+        <sc-if value="{{ showStart }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#141619;color:#f8f9f6;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:16px;box-shadow:0 24px 50px -30px rgba(20,23,26,.6)">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap">
+              <span style="display:flex;flex-direction:column;gap:4px"><strong style="font-size:20px;letter-spacing:-0.02em">Get started</strong><span style="font-size:14px;color:#a3a9b4">Two steps and your first post is on its way.</span></span>
+              <span style="font:600 12px 'Geist Mono',monospace;color:#d9ff35">{{ startDone }}</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px">
+              <sc-for list="{{ startSteps }}" as="st" hint-placeholder-count="2">
+                <div style="display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:14px;background:#1c1f23;border:1px solid {{ st.border }}">
+                  <span style="width:28px;height:28px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:700;font-size:13px;background:{{ st.markBg }};color:{{ st.markFg }};border:1.5px solid {{ st.markBorder }}">{{ st.mark }}</span>
+                  <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+                    <span style="font-weight:600;font-size:15px;color:{{ st.titleColor }};text-decoration:{{ st.titleDeco }}">{{ st.title }}</span>
+                    <span style="font-size:13px;line-height:1.45;color:#a3a9b4">{{ st.hint }}</span>
+                    <sc-if value="{{ st.showCta }}" hint-placeholder-val="{{ true }}"><button onClick="{{ st.go }}" style="align-self:flex-start;margin-top:8px;padding:9px 14px;border-radius:10px;border:0;background:{{ st.ctaBg }};color:{{ st.ctaFg }};font-weight:600;font-size:14px;cursor:pointer">{{ st.cta }}</button></sc-if>
+                  </span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ hasHomeData }}" hint-placeholder-val="{{ true }}">
         <div class="sfy-g2" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px">
           <sc-for list="{{ homeStats }}" as="h" hint-placeholder-count="4">
             <button class="sfy-stat" onClick="{{ h.go }}" style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;border:1px solid #e7e5df;background:#fff;cursor:pointer;text-align:left;transition:border-color .15s" style-hover="border-color:#141619">
@@ -256,11 +280,21 @@ textarea{resize:vertical}
             </button>
           </sc-for>
         </div>
+        </sc-if>
+
+        <sc-if value="{{ showUpNext }}" hint-placeholder-val="{{ true }}">
         <div style="display:flex;flex-direction:column;gap:14px">
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
             <strong style="font-size:18px;letter-spacing:-0.02em">Up next</strong>
             <span style="display:flex;align-items:center;gap:6px"><button onClick="{{ goQueueTab }}" style="border:0;background:transparent;cursor:pointer;color:#677184;font-size:13px;padding:0 6px">See all {{ upcomingCount }}</button><button class="sfy-mhide" onClick="{{ upPrev }}" aria-label="Scroll left" style="width:30px;height:30px;border-radius:8px;border:1px solid #e7e5df;background:#fff;cursor:pointer">‹</button><button class="sfy-mhide" onClick="{{ upNextBtn }}" aria-label="Scroll right" style="width:30px;height:30px;border-radius:8px;border:1px solid #e7e5df;background:#fff;cursor:pointer">›</button></span>
           </div>
+          <sc-if value="{{ upEmpty }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:28px 20px;border:1px dashed #d8d5cc;border-radius:16px;text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center;background:#fcfbf8">
+              <strong style="font-size:15px">Nothing scheduled</strong>
+              <span style="font-size:13px;color:#677184">Your next posts show up here, ready to edit or send early.</span>
+              <button onClick="{{ goCompose }}" style="margin-top:4px;padding:8px 14px;border-radius:10px;border:0;background:#141619;color:#fff;cursor:pointer;font-weight:500">Write a post</button>
+            </div>
+          </sc-if>
           <div ref="{{ upRef }}" style="scroll-behavior:smooth;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(280px,300px);gap:14px;overflow-x:auto;padding:4px 2px 18px;margin:0 -2px;scroll-snap-type:x mandatory;scrollbar-width:none">
             <sc-for list="{{ upNext }}" as="c" hint-placeholder-count="4">
               <button onClick="{{ c.open }}" style="scroll-snap-align:start;display:flex;flex-direction:column;border:1px solid #e7e5df;border-radius:18px;background:#fff;padding:0;cursor:pointer;text-align:left;overflow:hidden;min-height:300px;transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .25s" style-hover="transform:translateY(-4px);box-shadow:0 24px 40px -24px rgba(20,23,26,.45)">
@@ -286,7 +320,9 @@ textarea{resize:vertical}
             </sc-for>
           </div>
         </div>
+        </sc-if>
 
+        <sc-if value="{{ hasAccounts }}" hint-placeholder-val="{{ true }}">
         <div id="attn" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:16px;align-items:start">
           <div style="background:#fff;border:1px solid #e7e5df;border-radius:12px;box-shadow:0 1px 0 rgba(20,23,26,.03),0 16px 40px -28px rgba(20,23,26,.3);padding:20px;display:flex;flex-direction:column;gap:6px">
             <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding-bottom:6px">
@@ -333,7 +369,9 @@ textarea{resize:vertical}
             </div>
           </div>
         </div>
-      </section>
+        </sc-if>
+
+              </section>
     </sc-if>
 
     <sc-if value="{{ isQueue }}" hint-placeholder-val="{{ true }}">
@@ -639,6 +677,12 @@ textarea{resize:vertical}
           </div>
 
           <div style="display:{{ showEditCol }};flex-direction:column;gap:14px;min-width:0">
+            <sc-if value="{{ noAccounts }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 16px;border-radius:12px;background:#141619;color:#f8f9f6">
+                <span style="flex:1 1 220px;display:flex;flex-direction:column;gap:2px"><strong style="font-size:15px">Connect an account to post</strong><span style="font-size:13px;color:#a3a9b4">Keep writing. Your post waits here while you connect.</span></span>
+                <button onClick="{{ goConnect }}" style="padding:9px 14px;border-radius:10px;border:0;background:#d9ff35;color:#141619;font-weight:600;cursor:pointer">Connect an account</button>
+              </div>
+            </sc-if>
             <sc-if value="{{ inlineAccounts }}" hint-placeholder-val="{{ false }}">
               <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
                 <sc-for list="{{ accountChips }}" as="a" hint-placeholder-count="6">
@@ -1093,8 +1137,9 @@ textarea{resize:vertical}
       <section data-screen-label="Accounts" style="display:flex;flex-direction:column;gap:20px;animation:dashIn .25s cubic-bezier(.2,.8,.2,1)">
         <div>
           <h1 style="margin:0;font-size:30px;line-height:1.1;letter-spacing:-0.03em;font-weight:700">Accounts</h1>
-          <p style="margin:8px 0 0;color:#677184;font-size:15px">{{ accountCount }} of {{ accountLimitLabel }} connected. Multiple accounts per platform are fine.</p>
+          <p style="margin:8px 0 0;color:#677184;font-size:15px">{{ acIntro }}</p>
         </div>
+        <sc-if value="{{ hasAccounts }}" hint-placeholder-val="{{ true }}">
         <div style="display:flex;gap:8px;flex-wrap:wrap">
           <input value="{{ acQ }}" onChange="{{ onAcQ }}" placeholder="Search accounts" aria-label="Search accounts" style="flex:1 1 200px;padding:7px 12px;border:1px solid #e7e5df;border-radius:9px;outline:none;font-size:13px;background:#fff">
           <select value="{{ acPlat }}" onChange="{{ onAcPlat }}" aria-label="Platform" style="padding:7px 10px;border:1px solid #e7e5df;border-radius:9px;background:#fff;font-size:13px"><sc-for list="{{ calPlatOpts }}" as="o" hint-placeholder-count="0"><option value="{{ o.v }}">{{ o.l }}</option></sc-for></select>
@@ -1122,7 +1167,9 @@ textarea{resize:vertical}
             </div>
           </sc-for>
         </div>
-        <h3 style="margin:8px 0 0;font-size:16px">Connect a platform</h3>
+        </sc-if>
+
+        <h3 style="margin:8px 0 0;font-size:16px">{{ acConnectTitle }}</h3>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px">
           <sc-for list="{{ platformCards }}" as="p" hint-placeholder-count="10">
             <div style="background:#fff;border:1px solid #e7e5df;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px">
@@ -1600,8 +1647,15 @@ class Component extends DCLogic {
       this.setState({ screen: 'compose', drawer: false, draft: when ? { ...d, mode: 'schedule', when: Component.toLocal(when) } : d });
       return false;
     }
-    this.setState({ draft: Component.blank(when), screen: 'compose', drawer: false });
+    this.setState({ draft: { ...Component.blank(when), targets: this.defaultTargets() }, screen: 'compose', drawer: false });
     return true;
+  }
+  /** A new post starts with the accounts used last time, or the only account when there is just one. */
+  defaultTargets() {
+    const accs = this.state.accounts || [], ids = new Set(accs.map((a) => a.id));
+    const last = (this._lastTargets || []).filter((id) => ids.has(id));
+    if (last.length) return last;
+    return accs.length === 1 ? [accs[0].id] : [];
   }
   /** Cancel (or Esc) in the composer throws the unsent post away, with Undo. */
   cancelCompose() {
@@ -1651,6 +1705,7 @@ class Component extends DCLogic {
     const post = { id: d.id || 'p' + Date.now(), note: d.note || '', ws: s.ws || 'maya', labels: d.labels || [], repeat: d.repeat, evergreen: d.evergreen, remind: d.remind, approval: d.approval ? 'pending' : d.approvedBefore ? 'approved' : null, status: st, at, caption: d.caption, media: d.media, ov, targets: d.targets.map((id) => ({ acc: id, status: st, error: '' })) };
     const posts = d.id ? s.posts.map((p) => (p.id === d.id ? post : p)) : [...s.posts, post];
     const tab = st === 'published' ? 'published' : st === 'draft' ? 'drafts' : 'upcoming';
+    if (d.targets.length) this._lastTargets = [...d.targets];
     this.setState({ posts, screen: 'queue', tab, draft: Component.blank() });
     const n = d.targets.length;
     this.flash(st === 'published' ? `Published to ${n} account${n === 1 ? '' : 's'}` : st === 'draft' ? 'Draft saved' : `Scheduled for ${this.dayLabel(at)} at ${this.time(at)}`);
@@ -2212,7 +2267,10 @@ class Component extends DCLogic {
       showPreview: this.props.showPreview ?? true, pv, previewTabs, pvClassic: true, pvCustom: false, pvNode: null,
       showFormat: metaSel.length > 0 || d.media.includes('VIDEO'), formatChips, formatHint: fmtNow ? FMT_HINT[fmtNow] : 'Different per account. Set it in each account’s tab.',
       formatFor: !sel.length || metaSel.length < sel.length ? 'Applies to Instagram and Facebook' : '',
-      connected, platformCards, acNone: connected.length === 0 && s.accounts.length > 0, acClear: () => this.setState({ acQ: '', acPlat: '', acSt: '' }), acQ: S0.acQ || '', onAcQ: (e) => this.setState({ acQ: e.target.value }), acPlat: S0.acPlat || '', onAcPlat: (e) => this.setState({ acPlat: e.target.value }), acSt: S0.acSt || '', onAcSt: (e) => this.setState({ acSt: e.target.value }),
+      connected, platformCards, acNone: connected.length === 0 && s.accounts.length > 0,
+      hasAccounts: s.accounts.length > 0, noAccounts: s.accounts.length === 0, goConnect: () => this.setState({ screen: 'accounts' }),
+      acIntro: s.accounts.length ? `${s.accounts.length} of ${s.accountLimit || 15} connected. Multiple accounts per platform are fine.` : 'Pick where you post. You can add more, or several of the same platform, anytime.',
+      acConnectTitle: s.accounts.length ? 'Connect a platform' : 'Connect your first account', acClear: () => this.setState({ acQ: '', acPlat: '', acSt: '' }), acQ: S0.acQ || '', onAcQ: (e) => this.setState({ acQ: e.target.value }), acPlat: S0.acPlat || '', onAcPlat: (e) => this.setState({ acPlat: e.target.value }), acSt: S0.acSt || '', onAcSt: (e) => this.setState({ acSt: e.target.value }),
       stats: [{ label: `Published · last ${aDays} days`, value: aPub, color: '#141619', delta: `${aPub - pPub >= 0 ? '+' : ''}${aPub - pPub} vs previous ${aDays} days` }, { label: 'Failed attempts', value: aFail, color: aFail ? '#dc3545' : '#141619', delta: `${pFail} in previous period` }, { label: 'Success rate', value: `${rate}%`, color: '#141619', delta: pRate === null ? 'No previous data' : `${rate - pRate >= 0 ? '+' : ''}${rate - pRate} pts vs previous` }, { label: 'Scheduled (not counted)', value: upcoming.length, color: '#141619', delta: 'Future posts are never counted as failures' }],
       aRange: String(aDays), onARange: (e) => this.setState({ aRange: +e.target.value }), aPlat: aPl, onAPlat: (e) => this.setState({ aPlat: e.target.value }), bars, byPlatform,
       keys: s.keys.map((k) => ({ ...k, revoke: () => { this.setState((st) => ({ keys: st.keys.filter((x) => x.id !== k.id) })); this.flash('Key revoked'); } })),
@@ -2499,6 +2557,16 @@ class Component extends DCLogic {
           goCalWeek: () => this.setState({ screen: 'calendar', calView: 'week', weekStart: this.wsMonday() }),
           goReview: () => this.setState({ screen: 'queue', tab: 'review' }), reviewLabel: pending.length ? `Review ${pending.length} pending` : 'Approvals',
           upNext, upcomingCount: upcoming.length, healthTiles,
+          // First run: a two-step checklist until an account is connected and a post has been scheduled.
+          ...(() => {
+            const hasAcc = s.accounts.length > 0, hasPost = s.posts.some((p) => p.status !== 'draft');
+            const step = (n, done, active, title, hint, cta, go) => ({ title, hint, cta, go, showCta: !done, mark: done ? '✓' : String(n), markBg: done ? '#d9ff35' : 'transparent', markFg: done ? '#141619' : '#f8f9f6', markBorder: done ? '#d9ff35' : '#4a4f57', titleColor: done ? '#7d828a' : '#f8f9f6', titleDeco: done ? 'line-through' : 'none', border: active ? '#d9ff35' : '#2a2e34', ctaBg: active ? '#d9ff35' : '#2a2e34', ctaFg: active ? '#141619' : '#f8f9f6' });
+            const startSteps = [
+              step(1, hasAcc, !hasAcc, 'Connect an account', 'Pick where you post. Bluesky needs only your handle and an app password; the others sign in with one click.', 'Connect an account', () => this.setState({ screen: 'accounts' })),
+              step(2, hasPost, hasAcc && !hasPost, 'Schedule your first post', 'Write it once, pick a time, and it goes out on its own. You can change it until then.', 'Write a post', () => this.newPost()),
+            ];
+            return { showStart: !(hasAcc && hasPost), notStart: hasAcc && hasPost, startSteps, startDone: `${startSteps.filter((x) => !x.showCta).length} of 2 done`, hasHomeData: hasAcc && s.posts.length > 0, showUpNext: upcoming.length > 0 || (hasAcc && hasPost), upEmpty: upcoming.length === 0, hasAccounts: hasAcc };
+          })(),
           upRef: (this._upRef ||= React.createRef()), upPrev: () => this._upRef.current && this._upRef.current.scrollBy({ left: -320 }), upNextBtn: () => this._upRef.current && this._upRef.current.scrollBy({ left: 320 }),
           sickTiles: healthTiles.filter((t) => t.needsFix), okTiles: healthTiles.filter((t) => !t.needsFix).slice(0, 12), okMore: healthTiles.filter((t) => !t.needsFix).length > 12, okMoreLabel: `+${healthTiles.filter((t) => !t.needsFix).length - 12}`, okCount: healthTiles.filter((t) => !t.needsFix).length,
           okBreakdown: (() => { const by = {}; for (const t of healthTiles) if (!t.needsFix) by[t.platform] = (by[t.platform] || 0) + 1; const parts = Object.entries(by).sort((x, y) => y[1] - x[1]).map(([k, n]) => `${n} ${P[k].label}`); return parts.length > 1 ? ' · ' + parts.join(' · ') : ''; })(),
