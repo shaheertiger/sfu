@@ -372,7 +372,7 @@ class Component extends DCLogic {
     ['Australia/Sydney', 'Sydney', 15],
   ];
   static WS = [
-    ['maya', "Maya's workspace", 'Pro plan · 7 accounts', '#3a3e45'],
+    ['maya', "Maya's workspace", 'Solo plan · 7 accounts', '#3a3e45'],
     ['field', 'Field & Co.', 'Client · outdoor gear', 'linear-gradient(160deg,#9a7a58,#5d4a36)'],
     ['north', 'Northside Coffee', 'Client · café', 'linear-gradient(160deg,#6b4a3a,#2e2019)'],
   ];
@@ -2093,8 +2093,10 @@ class Component extends DCLogic {
     const n = d.targets.length;
     const submitDisabled = n === 0 || (uniq.length > 0 && d.mode !== 'draft');
     const nextSlot = this.nextSlots(1, [], d.id)[0];
-    const submitLabel =
-      d.mode === 'queue'
+    // A disabled button says what it's waiting for instead of just greying out.
+    const submitLabel = !n
+      ? 'Pick an account to continue'
+      : d.mode === 'queue'
         ? n
           ? `Add to queue · ${n} account${n === 1 ? '' : 's'}`
           : 'Add to queue'
@@ -4351,7 +4353,10 @@ class Component extends DCLogic {
               cta: 'Below ↓',
               color: failedPosts.length + sick.length + seen.size ? '#dc3545' : '#141619',
               icon: icon('alert'),
-              go: () => {},
+              go: () => {
+                const el = document.getElementById('attn');
+                if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 24, behavior: 'smooth' });
+              },
             },
             {
               label: 'Awaiting approval',

@@ -3642,6 +3642,9 @@ export function renderDashboard($v) {
                         {' '}
                         <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', alignItems: 'center' }}>
                           {' '}
+                          <span style={{ flexBasis: '100%', fontSize: '13px', fontWeight: '600', color: '#677184' }}>
+                            {'Post to'}
+                          </span>{' '}
                           {$arr($v['accountChips']).map((a, $index) => (
                             <Fragment key={$index}>
                               {' '}
@@ -7953,7 +7956,7 @@ export function renderDashboard($v) {
                         border: '1px solid #e5e3dc',
                       }}
                     >
-                      {'Pro plan'}
+                      {'Studio plan'}
                     </span>{' '}
                   </div>{' '}
                   {$arr($v['members']).map((m, $index) => (

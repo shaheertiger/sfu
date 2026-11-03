@@ -1368,7 +1368,7 @@ textarea{resize:vertical}
         <div style="background:#fff;border:1px solid #e7e5df;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px">
           <div style="display:flex;align-items:center;justify-content:space-between">
             <h3 style="margin:0;font-size:16px">Team</h3>
-            <span style="padding:1px 9px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid #e5e3dc">Pro plan</span>
+            <span style="padding:1px 9px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid #e5e3dc">Studio plan</span>
           </div>
           <sc-for list="{{ members }}" as="m" hint-placeholder-count="2">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
@@ -1543,7 +1543,7 @@ class Component extends DCLogic {
   ].join('\n'); }
   static SAMPLES = [['fieldkit-hero.jpg', 'IMG', '#8a6d4f'], ['canvas-detail.jpg', 'IMG', '#6e5a42'], ['brass-hardware.jpg', 'IMG', '#7a6148'], ['packing-reel.mp4', 'VIDEO', '#4f3f2e'], ['trailhead.jpg', 'IMG', '#5d6b4a'], ['workshop-bts.mp4', 'VIDEO', '#5d4a36']];
   static TZ = [['America/New_York', 'Eastern Time (New York)', 0], ['America/Chicago', 'Central Time (Chicago)', -1], ['America/Los_Angeles', 'Pacific Time (Los Angeles)', -3], ['Europe/London', 'London', 5], ['Europe/Berlin', 'Berlin', 6], ['Asia/Kolkata', 'India (Kolkata)', 9.5], ['Asia/Singapore', 'Singapore', 12], ['Australia/Sydney', 'Sydney', 15]];
-  static WS = [['maya', "Maya's workspace", 'Pro plan · 7 accounts', '#3a3e45'], ['field', 'Field & Co.', 'Client · outdoor gear', 'linear-gradient(160deg,#9a7a58,#5d4a36)'], ['north', 'Northside Coffee', 'Client · café', 'linear-gradient(160deg,#6b4a3a,#2e2019)']];
+  static WS = [['maya', "Maya's workspace", 'Solo plan · 7 accounts', '#3a3e45'], ['field', 'Field & Co.', 'Client · outdoor gear', 'linear-gradient(160deg,#9a7a58,#5d4a36)'], ['north', 'Northside Coffee', 'Client · café', 'linear-gradient(160deg,#6b4a3a,#2e2019)']];
   static enrich(posts) {
     const a = Component.at, T = (ids, st) => ids.map((id) => ({ acc: id, status: st, error: '' }));
     const meta = { p1: { labels: ['Launch'] }, p2: { labels: ['Launch'], remind: true }, p3: { labels: ['Tutorial'], approval: 'pending', note: 'Check the video thumbnail before approving. The first frame is dark.' }, p4: { labels: ['Community'], repeat: 'weekly' }, p16: { labels: ['Community'] }, p5: { approval: 'pending' }, p11: { labels: ['Evergreen'], evergreen: true }, p12: { labels: ['Launch', 'Promo'] }, p14: { labels: ['Promo'], approval: 'approved' } };
