@@ -32,7 +32,10 @@ class Component extends DCLogic {
       max: 2200,
       req: 'any',
       note: 'Business or Creator account linked to a Facebook Page.',
-      fields: [{ key: 'format', label: 'This account posts as', options: ['Post', 'Reel', 'Story'] }],
+      fields: [
+        { key: 'format', label: 'This account posts as', options: ['Post', 'Reel', 'Story'] },
+        { key: 'cover', label: 'Video cover (seconds in)', placeholder: 'Optional, e.g. 2.5' },
+      ],
     },
     linkedin: {
       label: 'LinkedIn',
@@ -61,7 +64,10 @@ class Component extends DCLogic {
       max: 2200,
       req: 'any',
       note: 'Post videos and photo carousels to your TikTok.',
-      fields: [{ key: 'privacy', label: 'Privacy', options: ['Only me', 'Friends', 'Public'] }],
+      fields: [
+        { key: 'privacy', label: 'Privacy', options: ['Only me', 'Friends', 'Public'] },
+        { key: 'cover', label: 'Video cover (seconds in)', placeholder: 'Optional, e.g. 2.5' },
+      ],
     },
     youtube: {
       label: 'YouTube',
@@ -1980,6 +1986,11 @@ class Component extends DCLogic {
         problems.push(
           `A ${p.label} Story needs exactly one image or video. Change "Post as" or the media for @${a.username}.`,
         );
+      const cov = String((d.ov[a.id]?.opts || {}).cover ?? '').trim();
+      if (cov && !(Number(cov) >= 0))
+        problems.push(`Video cover for @${a.username} should be a number of seconds, like 2 or 4.5.`);
+      else if (cov && !hasVid)
+        problems.push(`Video cover for @${a.username} only applies to a video. Add one or clear the field.`);
       for (const f of p.fields || [])
         if (f.options && !this.fieldOptions(a, f).length)
           problems.push(
@@ -2049,6 +2060,7 @@ class Component extends DCLogic {
             label: f.label,
             isSelect: !!f.options,
             isText: !f.options,
+            placeholder: f.placeholder || '',
             options: opts,
             value:
               (o.opts || {})[f.key] ?? (f.key === 'format' ? d.postAs || opts[0] : f.options ? (opts[0] ?? '') : ''),

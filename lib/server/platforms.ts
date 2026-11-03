@@ -23,6 +23,8 @@ export type PlatformMeta = {
 
 /** Posted on the published post right after it goes live: hashtags, a link, a call to action. */
 const FIRST_COMMENT = { key: 'first_comment', label: 'First comment', type: 'text' } as const;
+/** Video cover: the frame this many milliseconds in. */
+const COVER = { key: 'cover_ms', label: 'Video cover (ms in)', type: 'text' } as const;
 
 export const PLATFORMS: Record<PlatformId, PlatformMeta> = {
   bluesky: {
@@ -41,7 +43,7 @@ export const PLATFORMS: Record<PlatformId, PlatformMeta> = {
     id: 'instagram', label: 'Instagram', color: '#e1306c', authMode: 'oauth',
     maxChars: 2200, maxImages: 10, video: true, requiresMedia: 'any', envKeys: ['FACEBOOK_APP_ID', 'FACEBOOK_APP_SECRET'],
     notes: 'Requires an Instagram Business/Creator account linked to a Facebook Page. Media must be reachable at a public URL (APP_URL must be public).',
-    fields: [FIRST_COMMENT],
+    fields: [FIRST_COMMENT, COVER],
   },
   linkedin: {
     id: 'linkedin', label: 'LinkedIn', color: '#0a66c2', authMode: 'oauth',
@@ -59,7 +61,7 @@ export const PLATFORMS: Record<PlatformId, PlatformMeta> = {
     id: 'tiktok', label: 'TikTok', color: '#000000', authMode: 'oauth',
     maxChars: 2200, maxImages: 35, video: true, requiresMedia: 'any', envKeys: ['TIKTOK_CLIENT_KEY', 'TIKTOK_CLIENT_SECRET'],
     notes: 'Apply for the Content Posting API at developers.tiktok.com. Unaudited apps can only post privately.',
-    fields: [{ key: 'privacy', label: 'Privacy', type: 'select', options: ['PUBLIC_TO_EVERYONE', 'MUTUAL_FOLLOW_FRIENDS', 'SELF_ONLY'] }],
+    fields: [{ key: 'privacy', label: 'Privacy', type: 'select', options: ['PUBLIC_TO_EVERYONE', 'MUTUAL_FOLLOW_FRIENDS', 'SELF_ONLY'] }, COVER],
   },
   youtube: {
     id: 'youtube', label: 'YouTube', color: '#ff0000', authMode: 'oauth',

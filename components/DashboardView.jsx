@@ -3856,6 +3856,8 @@ export function renderDashboard($v) {
                                 <input
                                   value={$dv(f?.value)}
                                   onChange={f?.onChange}
+                                  aria-label={f?.label}
+                                  placeholder={f?.placeholder}
                                   style={{
                                     flex: '1',
                                     padding: '6px 10px',
