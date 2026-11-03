@@ -17,6 +17,36 @@ function splitTitle(caption: string, fallback = 'Untitled') {
   return { title: (first || fallback).slice(0, 100), body: rest.join('\n').trim() };
 }
 
+/**
+ * TikTok's upload rules: a file up to 64 MB goes up in one piece; a larger one in chunks of 5–64 MB,
+ * where the last chunk takes the remainder (up to 128 MB) and the count is floor(size / chunk).
+ * Sending a big video as one chunk is what makes TikTok reject it.
+ */
+export const TIKTOK_SINGLE_MAX = 64 * 1024 * 1024;
+const TIKTOK_CHUNK = 10 * 1024 * 1024;
+export function tiktokChunks(size: number): { chunkSize: number; count: number; ranges: [number, number][] } {
+  if (size <= TIKTOK_SINGLE_MAX) return { chunkSize: size, count: 1, ranges: [[0, size - 1]] };
+  const count = Math.floor(size / TIKTOK_CHUNK);
+  const ranges: [number, number][] = [];
+  for (let i = 0; i < count; i++) ranges.push([i * TIKTOK_CHUNK, i === count - 1 ? size - 1 : (i + 1) * TIKTOK_CHUNK - 1]);
+  return { chunkSize: TIKTOK_CHUNK, count, ranges };
+}
+
+/** TikTok photo posts show a title above the description: the first line when it fits, never the same text twice. */
+export function tiktokPhotoText(caption: string): { title: string; description: string } {
+  const text = caption.trim();
+  const nl = text.indexOf('\n');
+  const first = (nl === -1 ? text : text.slice(0, nl)).trim();
+  if (nl !== -1 && first.length <= 90) return { title: first, description: text.slice(nl + 1).trim() };
+  return { title: '', description: text };
+}
+
+/** The video frame (milliseconds in) to use as the cover, or undefined to let the platform pick. */
+export function coverMs(options: Record<string, any> | undefined): number | undefined {
+  const v = Number(options?.cover_ms);
+  return Number.isFinite(v) && v >= 0 ? Math.round(v) : undefined;
+}
+
 /* ───────────────────────── X / Twitter ───────────────────────── */
 export const x: PlatformAdapter = {
   platform: 'x',
@@ -383,16 +413,19 @@ export const instagram: PlatformAdapter = {
     if (!creationId) {
       let at = Date.now();
       const video = media.find((m) => m.mime.startsWith('video/'));
+      // Reel cover: the frame at this many milliseconds in.
+      const cover = coverMs(options);
+      const thumb: Record<string, string> = cover !== undefined ? { thumb_offset: String(cover) } : {};
       if (format === 'story') {
         // Stories have no caption on Instagram.
         creationId = video
           ? await mk({ media_type: 'STORIES', video_url: video.url })
           : await mk({ media_type: 'STORIES', image_url: media[0].url });
       } else if (format === 'reel') {
-        creationId = await mk({ media_type: 'REELS', video_url: video!.url, caption, share_to_feed: 'true' });
+        creationId = await mk({ media_type: 'REELS', video_url: video!.url, caption, share_to_feed: 'true', ...thumb });
       } else if (media.length === 1) {
         creationId = video
-          ? await mk({ media_type: 'REELS', video_url: video.url, caption })
+          ? await mk({ media_type: 'REELS', video_url: video.url, caption, ...thumb })
           : await mk({ image_url: media[0].url, caption });
       } else {
         const items = media.slice(0, 10);
@@ -563,15 +596,22 @@ export const tiktok: PlatformAdapter = {
     const privacy = options.privacy || 'SELF_ONLY';
     if (video) {
       const size = video.size;
+      const { chunkSize, count, ranges } = tiktokChunks(size);
+      const cover = coverMs(options);
       const init = await jsonFetch('https://open.tiktokapis.com/v2/post/publish/video/init/', {
         method: 'POST', headers: auth,
-        body: JSON.stringify({ post_info: { title: caption.slice(0, 2200), privacy_level: privacy }, source_info: { source: 'FILE_UPLOAD', video_size: size, chunk_size: size, total_chunk_count: 1 } }),
+        body: JSON.stringify({
+          post_info: { title: caption.slice(0, 2200), privacy_level: privacy, ...(cover !== undefined ? { video_cover_timestamp_ms: cover } : {}) },
+          source_info: { source: 'FILE_UPLOAD', video_size: size, chunk_size: chunkSize, total_chunk_count: count },
+        }),
       });
       const bytes = new Uint8Array(await video.bytes());
-      // TikTok posts the video once the upload completes.
+      // TikTok posts the video once the last chunk is in.
       await sending?.();
-      const up = await timedFetch(init.data.upload_url, { method: 'PUT', headers: { 'content-type': video.mime, 'content-range': `bytes 0-${size - 1}/${size}` }, body: bytes, timeoutMs: UPLOAD_TIMEOUT_MS });
-      if (!up.ok) throw await errorFromResponse(init.data.upload_url, up);
+      for (const [from, to] of ranges) {
+        const up = await timedFetch(init.data.upload_url, { method: 'PUT', headers: { 'content-type': video.mime, 'content-range': `bytes ${from}-${to}/${size}` }, body: bytes.subarray(from, to + 1), timeoutMs: UPLOAD_TIMEOUT_MS });
+        if (!up.ok) throw await errorFromResponse(init.data.upload_url, up);
+      }
       return { externalId: init.data.publish_id };
     }
     const images = media.filter((m) => m.mime.startsWith('image/'));
@@ -579,7 +619,7 @@ export const tiktok: PlatformAdapter = {
     await sending?.();
     const init = await jsonFetch('https://open.tiktokapis.com/v2/post/publish/content/init/', {
       method: 'POST', headers: auth,
-      body: JSON.stringify({ post_info: { title: caption.slice(0, 90), description: caption, privacy_level: privacy }, source_info: { source: 'PULL_FROM_URL', photo_cover_index: 0, photo_images: images.map((i) => i.url) }, post_mode: 'DIRECT_POST', media_type: 'PHOTO' }),
+      body: JSON.stringify({ post_info: { ...tiktokPhotoText(caption), privacy_level: privacy }, source_info: { source: 'PULL_FROM_URL', photo_cover_index: 0, photo_images: images.map((i) => i.url) }, post_mode: 'DIRECT_POST', media_type: 'PHOTO' }),
     });
     return { externalId: init.data.publish_id };
   },

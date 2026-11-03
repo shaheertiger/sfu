@@ -250,6 +250,11 @@ function adapterOptions(account, ui = {}) {
   const o = { ui };
   if (!account) return o;
   if (typeof ui.first_comment === 'string' && ui.first_comment.trim()) o.first_comment = ui.first_comment.trim();
+  // Video cover: seconds in the composer, milliseconds for TikTok and Instagram.
+  if ((account.platform === 'tiktok' || account.platform === 'instagram') && String(ui.cover ?? '').trim() !== '') {
+    const sec = Number(ui.cover);
+    if (Number.isFinite(sec) && sec >= 0) o.cover_ms = Math.round(sec * 1000);
+  }
   if (account.platform === 'tiktok' && ui.privacy) o.privacy = TIKTOK_PRIVACY[ui.privacy] || ui.privacy;
   if (account.platform === 'youtube') { if (ui.title) o.title = ui.title; if (ui.privacy) o.privacy = ui.privacy; }
   if ((account.platform === 'instagram' || account.platform === 'facebook') && ui.format) o.format = String(ui.format).toLowerCase();
