@@ -107,6 +107,8 @@ function OneHandleTool({ config }) {
               <p className={s.hint}>
                 {platform === 'roblox'
                   ? 'This opens Roblox’s user search: an exact match in the results means the name is taken. Roblox’s sign-up form gives the final answer.'
+                  : platform === 'minecraft'
+                  ? 'This searches NameMC, a third-party lookup site that isn’t run by Minecraft or Microsoft. A profile there usually means the name is taken; the name change screen in your Minecraft account gives the final answer.'
                   : 'If a profile opens, the name is taken. If not, it may still be held by a deactivated or banned account: the only sure test is trying it in the app’s settings or sign-up form.'}
               </p>
             </div>
