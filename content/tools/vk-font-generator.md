@@ -213,6 +213,19 @@ VK runs on phones, desktops and older devices. Bold and italic display almost ev
 
 A styled name that copies a brand, a public figure or VK's own staff misleads people and breaks VK's rules.
 
+## What Works for Russian Text Instead
+
+Since bold Cyrillic isn't possible with Unicode styles, these are the options that do work for Russian-language VK posts:
+
+| Method | Works on Cyrillic | Notes |
+|---|---|---|
+| Strikethrough, slash through, underline (this tool) | Yes | Doubles the character count of the styled text |
+| CAPITAL LETTERS | Yes | Use for one or two words only |
+| Emoji markers (✅, 📌, ➡️) | Yes | Good for lists; screen readers say the emoji's name |
+| Bold or styled Latin and digits (this tool) | Mixed text only | Style the brand name, price or date, keep Russian words plain |
+| VK's article editor | Yes | Real formatting for long reads, where available |
+| An image with text | Yes | Any font you like, but add the key text to the post too for search and accessibility |
+
 ## Popular Use Cases by Creator Type
 
 ### Online shops

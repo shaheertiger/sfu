@@ -189,6 +189,18 @@ Rendering depends on the reader's phone and fonts. Bold, italic and script are w
 
 Styled names can make an account look official or like someone else's. Pretending to be a brand or another person breaks Threads' rules and misleads people.
 
+## Fonts vs. Other Ways to Stand Out on Threads
+
+| Method | Readable for everyone | Searchable | Best for |
+|---|---|---|---|
+| Unicode bold or script (this tool) | Mostly, but poor with screen readers | No | A hook, a label or a bio phrase |
+| ALL CAPS | Yes, but reads as shouting | Yes | One short word |
+| An emoji at the start of a line | Yes; screen readers say its name | Neutral | Marking list items |
+| Line breaks and short paragraphs | Yes | Yes | Every post over a few lines |
+| A strong first sentence in plain text | Yes | Yes | Every post |
+
+Fonts are the garnish. A clear first line and good spacing do most of the work, and they help every reader.
+
 ## Popular Use Cases by Creator Type
 
 ### Creators and personal brands

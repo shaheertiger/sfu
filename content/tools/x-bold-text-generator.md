@@ -112,6 +112,18 @@ Your display name (50 characters) and bio (160 characters) have no formatting at
 
 Your @username can't contain bold characters. Hashtags and cashtags only link when they're plain, and links have to stay plain to work.
 
+## Unicode Bold vs. Other Ways to Emphasize on X
+
+| Method | Cost toward 280 | Screen readers | Search | Best for |
+|---|---|---|---|---|
+| Unicode bold (this tool) | 2 per letter | Poor | Doesn't match plain words | Hooks, labels, names and bios |
+| ALL CAPS | 1 per letter | Good, though some read caps letter by letter | Matches | One short word |
+| Emoji marker (🚨, 👉) | Usually 2 per emoji | Read as the emoji's name | Neutral | Drawing the eye to a line |
+| Line breaks and white space | 1 per break | Good | Matches | Long posts and threads |
+| Native formatting, where your account has it | Doesn't change the count of the words | Good | Matches | Long posts written on the web |
+
+A good rule: structure a post with line breaks first, add one Unicode bold hook if you want, and avoid stacking caps, emoji and bold on the same line.
+
 ## Best Practices for Bold Text on X
 
 ### Bold a few words, not the whole post

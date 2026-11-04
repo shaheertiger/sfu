@@ -43,6 +43,41 @@ A comment can be up to 10,000 characters, about 1,500 words. Most comments are f
 - **Markdown symbols.** `**bold**` costs 4 extra characters; a link written as `[text](https://…)` costs the full URL plus four brackets.
 - **Emoji and styled letters.** This counter counts each Unicode code point as one. Most emoji are one, but some (flags, skin tones, family emoji) are several joined together, and Unicode underline or strikethrough adds a hidden mark to each letter. Reddit may count these a little differently, so leave some headroom if you use a lot of them.
 
+### Markdown costs at a glance
+
+Markdown symbols vanish when the post is displayed, but they're part of the text Reddit stores. Here's what each common element adds on top of the words themselves:
+
+| Markdown | Example | Extra characters |
+|---|---|---|
+| Bold | `**word**` | 4 |
+| Italic | `*word*` | 2 |
+| Strikethrough | `~~word~~` | 4 |
+| Spoiler | `>!word!<` | 4 |
+| Inline code | `` `word` `` | 2 |
+| Heading | `# Heading` | 2 (plus the line break) |
+| Bullet | `- item` | 2 per item |
+| Quote | `> text` | 2 per line |
+| Link | `[text](url)` | 4 plus the full URL |
+| Superscript | `^(words)` | 3 |
+
+A guide with 30 bullet points, 10 bold phrases and 15 links can easily spend 1,000 or more characters on markup and URLs before you count a single word of content.
+
+### Reddit's limits compared with other platforms
+
+If you cross-post the same idea elsewhere, Reddit is the roomiest of the big text platforms, but its titles are only a little longer than a post on X.
+
+| Platform | Main text limit at the time of writing |
+|---|---|
+| Reddit title | 300 |
+| Reddit comment | 10,000 |
+| Reddit text post | 40,000 |
+| X post | 280 (weighted; 25,000 with Premium) |
+| Bluesky post | 300 |
+| Threads post | 500 |
+| Discord message | 2,000 (4,000 with Nitro) |
+
+So a Reddit title will roughly fit an X post, while a Reddit text post usually has to be cut to a summary and a link anywhere else. The [X character counter](/tools/x-character-counter) shows X's weighted count, and our guide to the [Threads character limit](/blog/threads-character-limit) covers Threads.
+
 ### Limits the counter doesn't check
 
 Subreddits can set their own rules on top of Reddit's, such as a minimum post length, a shorter title, or a required tag like "[Question]" at the start. Those vary by community, so check the sidebar or the post form. Other fields, such as flair, your display name and your about text, have their own shorter limits and aren't part of this counter.
@@ -58,6 +93,27 @@ Subreddits can set their own rules on top of Reddit's, such as a minimum post le
 ### Tip: count titles on their own
 
 The counter measures everything in the box. To check a title, paste only the title, then clear it and paste the body.
+
+## What to Do When You're Over the Limit
+
+| Problem | Fix | Why it works |
+|---|---|---|
+| Title over 300 | Cut the backstory and keep the question or result | The body is where context belongs; the title only has to earn the click |
+| Comment over 10,000 | Post the summary, then reply to yourself with the rest | Readers get the answer first, and the detail stays in the thread |
+| Post over 40,000 | Split into Part 1 and Part 2, or move references into the first comment | Each part stays under the limit and readers can follow the series |
+| Long URLs eating space | Remove tracking parameters after the `?` | A 102-character link like `example.com/blog/how-to-start-a-garden?utm_source=…` drops to 46 without them |
+| Heavy markup | Drop decorative bold and extra headings first | Markup costs characters but adds no information |
+| Blank lines everywhere | Use one blank line between paragraphs, not two | Each extra blank line is another character |
+
+### Example titles and their lengths
+
+| Title | Characters |
+|---|---|
+| I tracked every expense for 365 days. Here is what surprised me most. | 69 |
+| Ask Reddit: What is one small habit that genuinely improved your mornings? | 74 |
+| [Update] My landlord kept my deposit: here is what small claims court was like (long, but with a happy ending) | 110 |
+
+All three fit easily. The third shows how a tag and an aside add length without adding much; on a phone, the ending is often cut off in the feed.
 
 ## Common Use Cases
 

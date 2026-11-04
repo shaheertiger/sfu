@@ -56,6 +56,19 @@ Select the words and tap the **B** button in the formatting toolbar, or press Ct
 | Bold doesn't work in flair | Flair doesn't support formatting. Use Unicode bold, if the subreddit allows edits |
 | Asterisks in a math expression turned text bold | Escape them with a backslash: `\*` |
 
+### Markdown bold vs. Unicode bold
+
+| | Markdown bold (`**text**`) | Unicode bold (this tool) |
+|---|---|---|
+| Works in comments and post bodies | Yes | Yes |
+| Works in titles, flair and profile | No | Yes |
+| Searchable | Yes | No |
+| Screen readers | Read normally | Read poorly |
+| Looks the same on every device | Yes | Usually, but some styles can show as boxes |
+| Extra characters | 4 per bold phrase | None extra for most styles, but each letter is a special character |
+
+In short: markdown wherever it works, Unicode only where it doesn't.
+
 ## How to Use the Reddit Bold Text Generator
 
 1. **Type or paste your text**, such as a title prefix, a flair or your display name.
