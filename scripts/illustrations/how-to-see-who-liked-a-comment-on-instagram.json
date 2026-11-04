@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Instagram guide", "title": "Who liked my comment? **Don’t tap the heart**", "sub": "A tap likes the comment. Press and hold it to open the list of everyone who liked it.", "chips": ["Press and hold", "Works on any comment", "No notification sent"] },
+    { "name": "gesture", "type": "versus", "kicker": "Why it’s hidden", "title": "One heart, **two different jobs**", "left": { "label": "Quick tap", "tone": "bad", "items": ["Likes the comment yourself", "Tap again to unlike it", "The commenter may be notified"] }, "right": { "label": "Press and hold (or tap the count)", "tone": "good", "items": ["Opens the list of likers", "Works on comments you can see", "Nobody is notified that you looked"] } },
+    { "name": "steps", "type": "steps", "kicker": "Step by step", "title": "See who liked a comment in **4 steps**", "steps": [ { "title": "Open comments", "text": "Tap the speech bubble or View all comments." }, { "title": "Find the heart", "text": "A number with it means the comment has likes." }, { "title": "Press and hold", "text": "Hold for a second. Don’t tap.", "highlight": true }, { "title": "Browse the list", "text": "Tap any name to open the profile." } ] },
+    { "name": "notified", "type": "versus", "kicker": "Privacy", "title": "Who knows when you **like a comment?**", "left": { "label": "Can find out", "tone": "neutral", "items": ["The commenter, usually by notification", "Anyone who opens the like list"] }, "right": { "label": "Not told", "tone": "good", "items": ["Your followers", "The person whose list you opened"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Press and hold, don’t tap. Then turn your **most-liked comments into your next posts.**", "by": "Every popular comment is a question your audience wants answered." }
+  ]
+}
