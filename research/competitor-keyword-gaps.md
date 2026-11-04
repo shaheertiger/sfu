@@ -150,3 +150,27 @@ Semrush organic positions, dated 2026-11-03. Brand searches are left out, as are
 - **API and MCP**: best social media api tools (350, 28) and threads api pricing (120) can extend `/blog/social-media-api`. Best social media mcp servers (70, 13) can extend `/blog/social-media-mcp`.
 - **Already covered**: buffer alternatives (`/best-buffer-alternatives`), later alternatives (`/later-alternative`), instagram font generator.
 - **Skipped**: Instagram DM automation and comment bots (we don't do DMs, and bots conflict with our own advice), Higgsfield and Submagic (AI video), Amazon suspensions, patent fees.
+
+## 5. More competitors: Timeskip, Nonfollowers, DontFollowBack (US, November 2026)
+
+### New pages to make
+
+| Page | Keywords (volume, KD) | Who ranks | Notes |
+|---|---|---|---|
+| **`/tools/youtube-pfp-downloader`** | download youtuber pfp (1,900, 5), youtube pfp (1,600, 36), youtube pfp downloader (1,300, 1), pfp youtube (1,000, 37). The page totals 11,270 | Timeskip #1–3 | The biggest, easiest win. It needs a small server route to look up a channel's avatar, because the browser can't fetch YouTube directly. Their page has a URL box, then image types and resolutions, features, related YouTube tools and a 7-question FAQ |
+| **`/tools/youtube-monetization-checker`** | youtube monetization checker (4,400, 14) | Timeskip #1 | No public API says whether a channel is monetized. A tool can only check the public signals and the YPP thresholds, and it must say so plainly |
+| **`/tools/youtube-dislike-viewer`** | how to see dislikes on youtube (1,900, 32), like to dislike ratio youtube (320, 14), like dislike ratio (110, 6) | Timeskip #3 | We have the blog post `/blog/how-to-see-dislikes-on-youtube`. A tool could only show third-party estimates, and must label them that way |
+| **`/tools/youtube-video-id-finder`** | youtube video id finder (140, 25) | Timeskip #2 | Easy to build: it just parses the video URL in the browser |
+| **Instagram: who unfollowed me** (blog post, linking the unfollowers checker) | instagram who unfollowed me (1,300, 24), track unfollows (70, 24) | Nonfollowers #2 | Explain how to compare two data exports taken on different dates |
+| **How long does an Instagram data export take?** (blog post) | how long does instagram export take (260, 13), how long does it take to export instagram data (110, 29), plus related questions. The page totals 1,090 | DontFollowBack #2 | Feeds straight into the unfollowers checker |
+| **What does "follow back" mean on Instagram?** (blog post) | follows back (1,000, 27), follow back (1,000, 41), followback instagram (260, 42) | DontFollowBack #2–3 | |
+| **Followers vs following on Instagram** (blog post) | followers vs following on instagram (390, 14) | DontFollowBack #2 | |
+
+### Pages we already have, to strengthen
+
+- **`/tools/instagram-unfollowers-checker` and `/blog/who-doesnt-follow-me-back-on-instagram`**:
+  - Nonfollowers ranks #1 for "who doesn't follow me back on instagram" (2,400) with its homepage tool.
+  - It also ranks #3 for "see who doesn't follow you back on instagram" (1,900) and #1 for "nonfollowers" (880).
+  - Put that wording in the checker's title and H1, and link the checker from the blog post's first paragraph (it already does).
+- **`/tools/youtube-tag-generator`** already covers Timeskip's `youtube-tags-generator`: youtube tag (880, 59), tag list youtube (590, 49).
+- **Small extras:** "get subtitles from youtube" (90, 16) and "find someone's youtube channel without their username" (40, 11). Both are low priority.
