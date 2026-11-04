@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Bluesky guide", "title": "Bluesky blocks are **public**", "sub": "Check a profile for the blocked notice, or look up your handle to see everyone who blocked you.", "chips": ["Profile notice", "Lookup tools", "Blocks vs mutes", "Remove followers"] },
+    { "name": "public", "type": "versus", "kicker": "Blocks vs mutes", "title": "Public vs **private**", "left": { "label": "Block", "tone": "neutral", "items": ["Stored as public data", "Anyone can look it up", "Stops follows, replies, DMs"] }, "right": { "label": "Mute", "tone": "good", "items": ["Private", "Can’t be detected", "You just stop seeing them"] } },
+    { "name": "signs", "type": "steps", "kicker": "3 signs", "title": "How to tell **one person blocked you**", "steps": [ { "title": "Profile", "text": "“You are blocked”, no posts.", "highlight": true }, { "title": "Threads", "text": "Their replies say “Blocked post”." }, { "title": "No contact", "text": "Can’t follow, reply, quote or DM." } ] },
+    { "name": "remove", "type": "checklist", "kicker": "Removing followers", "title": "No button, so **block and keep it**", "good": { "label": "Works", "items": ["Block, and keep the block", "Mute, if you just want quiet", "A moderation list for spam waves"] }, "bad": { "label": "Doesn’t", "items": ["Soft block: the follow returns", "A Remove follower button", "Arguing about the block"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Blocks on Bluesky are public. **Mutes are the private option.**", "by": "Lookup tools read public data, so they never need your password." }
+  ]
+}
