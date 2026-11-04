@@ -50,7 +50,8 @@ export function toFetchUrl(input: string): { url: string; isVideo: boolean } | n
 
 /** Drops YouTube's size suffix ("=s900-c-k-…") so any size can be requested. */
 export function baseImage(url: string) {
-  return url.replace(/=[^/=]*$/, '');
+  // Banner URLs carry two '=' ("=w1060-fcrop64=1,…"), so strip from the first '=' after the last '/'.
+  return url.replace(/=[^/]*$/, '');
 }
 
 export function isYouTubeImage(url: string) {

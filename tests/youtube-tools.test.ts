@@ -27,6 +27,7 @@ test('PFP downloader turns channel input into a page to fetch, and only trusts Y
   assert.equal(toFetchUrl('https://example.com/@mkbhd'), null);
   assert.equal(toFetchUrl(''), null);
   assert.equal(baseImage('https://yt3.googleusercontent.com/abc=s900-c-k-c0x00ffffff-no-rj'), 'https://yt3.googleusercontent.com/abc');
+  assert.equal(baseImage('https://yt3.googleusercontent.com/zi_48H=w1060-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj'), 'https://yt3.googleusercontent.com/zi_48H');
   assert.ok(isYouTubeImage('https://yt3.googleusercontent.com/abc=s800'));
   assert.ok(isYouTubeImage('https://yt3.ggpht.com/abc=s800'));
   assert.ok(!isYouTubeImage('https://evil.example.com/yt3.googleusercontent.com.png'));
