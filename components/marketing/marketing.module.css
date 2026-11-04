@@ -161,3 +161,19 @@
   .ctaBarClose{flex:none;width:32px;height:32px;border:0;background:transparent;color:#15171a;font-size:22px;line-height:1;cursor:pointer}
 }
 @media (prefers-reduced-motion:reduce){.ctaBar{transition:none}}
+
+/* Phones: wide tables scroll instead of squeezing columns into one-word strips; long breadcrumb
+   titles truncate on one line; the sticky sign-up bar never covers the end of the page. */
+@media (max-width:640px){
+  .prose th,.prose td{min-width:8.5em}
+  .prose th:first-child,.prose td:first-child{min-width:7em}
+  .crumbs ol{flex-wrap:nowrap}
+  .crumbs li{flex:none}
+  .crumbs li:last-child{flex:1 1 auto;min-width:0}
+  .crumbs [aria-current]{display:block;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+}
+@media (max-width:1100px){
+  :global(body):has(.ctaBar){padding-bottom:84px}
+}
+
+.prose :global(a.img-zoom){display:block;text-decoration:none;cursor:zoom-in}
