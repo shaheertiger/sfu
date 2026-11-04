@@ -68,6 +68,23 @@ Paste the full description, including timestamps like `0:00 Intro` on their own 
 ### Privacy
 The counter runs in your browser. Nothing you paste is uploaded or stored, so it's safe for unreleased titles and client drafts.
 
+## Worked Examples: Fitting YouTube's Limits
+### Trimming a title that's over 100
+"I Tried Cooking Every Single Dinner From Scratch for 30 Days Straight and Here Is Exactly What Happened to My Budget" is 116 characters, so YouTube won't save it. Cutting filler words ("Every Single", "Straight", "Here Is Exactly") and moving the number up front gives "30 Days of Cooking From Scratch: What It Did to My Budget", which is 57 characters. It's under the limit and fully visible in most places titles get cut.
+
+### Writing a description that works when collapsed
+A description that fits easily under 5,000 characters can still fail if the first lines are wasted on links or hashtags. A simple structure that works for most videos:
+
+1. **One or two sentences** saying what the viewer gets, such as "Cook from scratch for 30 days and see what it does to your grocery budget." (74 characters).
+2. **Chapters**, one timestamp per line, starting at `0:00`.
+3. **Links** mentioned in the video, each on its own line with a short label.
+4. **Your standard footer**: channel links, newsletter, credits and disclosures.
+
+Paste the whole thing into the counter to see the total and the line count, then check that step 1 makes sense on its own.
+
+### Measuring a tag list
+`sourdough, sourdough for beginners, sourdough starter, bread recipe, how to make sourdough bread, no knead bread, baking` is 120 characters in the counter, commas and spaces included. Five of those seven tags contain spaces, so YouTube's own count may come out a little higher. At 120 there's plenty of room; the headroom only matters as you get close to 500.
+
 ## YouTube Character Counter Use Cases
 ### Creators writing titles in batches
 If you plan a month of videos at once, write all the working titles in one list and check each against the 100-character cap and the 60–70 character visible range before you film. Titles that need trimming tell you early that the idea isn't sharp enough yet.

@@ -97,6 +97,30 @@ The finder can only show a channel ID that's written in the link. Video links an
 - **For your own channel:** in YouTube, open **Settings**, then **Advanced settings**, where your channel ID is listed. Menu labels change between versions.
 - **For any channel:** paste the channel or video link into the [YouTube PFP downloader](/tools/youtube-pfp-downloader). The **Open the channel** link it shows usually uses the `/channel/UC…` form, which you can paste back here to copy the ID.
 
+## Using a Video ID: Links and Embeds You Can Build
+Once you have the 11-character ID, you can build every common YouTube link yourself. Replace `VIDEO_ID` with the ID from the finder.
+
+| What you need | Format |
+|---|---|
+| Watch link | `https://www.youtube.com/watch?v=VIDEO_ID` |
+| Short share link | `https://youtu.be/VIDEO_ID` |
+| Link that starts at 1:30 | `https://youtu.be/VIDEO_ID?t=90` |
+| Video inside a playlist | `https://www.youtube.com/watch?v=VIDEO_ID&list=PLAYLIST_ID` |
+| Embed address | `https://www.youtube.com/embed/VIDEO_ID` |
+| Embed that starts at 1:30 | `https://www.youtube.com/embed/VIDEO_ID?start=90` |
+| Privacy-enhanced embed | `https://www.youtube-nocookie.com/embed/VIDEO_ID` |
+| Thumbnail | `https://i.ytimg.com/vi/VIDEO_ID/hqdefault.jpg` |
+
+### Embedding on a website
+Most website builders accept a plain YouTube link and turn it into a player. If yours wants HTML instead, the embed address goes in the `src` of an iframe:
+
+`<iframe src="https://www.youtube.com/embed/VIDEO_ID" width="560" height="315" title="Video title" allowfullscreen></iframe>`
+
+Give the iframe a `title` that describes the video, so screen-reader users know what the player is. Note that embed links use `start=` with a number of seconds, while watch and short links use `t=`.
+
+### Privacy-enhanced mode
+The `youtube-nocookie.com` version of the embed address is YouTube's privacy-enhanced mode, which YouTube says doesn't store information about visitors on your site unless they play the video. The finder reads these links too, so you can paste one from a page's code to find the video ID.
+
 ## Who Needs a YouTube Video ID (and What For)
 ### Bloggers and website owners
 Most website builders and CMS blocks embed a video from its link or its ID. If an embed misbehaves, the embed link from the finder (`youtube.com/embed/<id>`) is the cleanest thing to paste. To start the embed at a set point, add `?start=` followed by a number of seconds.

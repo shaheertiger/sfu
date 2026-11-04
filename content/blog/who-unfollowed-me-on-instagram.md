@@ -105,7 +105,7 @@ Open the [Instagram unfollowers checker](/tools/instagram-unfollowers-checker) a
 | **Open** next to each name | Opens that profile on Instagram so you can check it |
 | **Copy list** | Copies the usernames, one per line, to paste into a note |
 
-The checker accepts both JSON and HTML exports, but it takes one file for each slot. If a large account's export splits followers across several numbered files, compare those in a spreadsheet instead.
+The checker accepts both JSON and HTML exports. If a large account's export splits followers across several numbered files, add them all: files of the same kind are combined. Rename every followers file from the older export (for example `following-october-1.json`, `following-october-2.json`), and use **Start over** before you check a different pair of exports.
 
 Nothing is sent to a server, and the checker doesn't follow, unfollow or message anyone. It only reads the two lists.
 
