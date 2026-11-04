@@ -1,6 +1,6 @@
 ---
 title: Facebook Username Checker – 5–50 Characters, Rules & Profile Link
-description: Free Facebook username checker for profiles and Pages. Test a name against Facebook's 5–50 character rules, check a list at once and open the facebook.com URL to see if it's used.
+description: Free Facebook username checker for profiles and Pages. Test a name against the 5–50 character rules, check a list and open the facebook.com URL to see if it's used.
 h1: Facebook Username Checker
 lead: Type the Facebook username you want for your profile or Page to see whether it follows Facebook's rules, get close valid alternatives, and open its facebook.com URL to see if it's used.
 keyword: facebook username checker

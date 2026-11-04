@@ -15,7 +15,7 @@ The catch is timing. Instagram only shows who follows you now, so you need a "be
 
 This guide shows the two-export method step by step, the five false alarms that make someone look like an unfollower when they aren't, why tracker apps are a bad trade, and what to do once you have your list.
 
-## Why Instagram Won't Tell You Who Unfollowed You
+## Why Instagram Won't Tell You Who Unfollowed You (and Why It Matters)
 
 ![What Instagram shows, like your follower count and who follows you now, next to what it never shows, like who unfollowed you and when](/images/blog/who-unfollowed-me-on-instagram-hidden-1200x675.webp)
 
@@ -41,9 +41,24 @@ A sudden drop of a handful of followers, with nobody you recognize missing, is o
 
 <!-- cta -->
 
-## How to Find Who Unfollowed You by Comparing 2 Exports (Free, No Login)
+## How to Check If Someone Unfollowed You Manually (Free, 10 Seconds an Account)
 
-![Four steps: export your followers now, export again later, rename the older file, then compare both in the checker](/images/blog/who-unfollowed-me-on-instagram-steps-1200x675.webp)
+![Three steps to check one account: open their profile, look for the Follows you label, then search your own Followers list](/images/blog/who-unfollowed-me-on-instagram-manual-1200x675.webp)
+
+If you only suspect one or two people, check them directly in the app. Menu labels change between app versions, so look for the closest match if something is worded differently.
+
+1. Open their profile.
+2. Look near their name and the Follow button. If they follow you, Instagram typically shows a **Follows you** label.
+3. No label? Go to your own profile, tap **Followers** and search for their username. If they don't appear, they don't follow you now.
+
+> **Pro tip:** If you follow them and they've left, their profile still shows **Following** on your side. The missing **Follows you** label is the clue, not the button.
+
+**The upside:** it's entirely inside Instagram, free and instant.
+**The downside:** it only tells you whether someone follows you today. It can't show who left, so for anything beyond a couple of names you need the export method below. Our guide to [followers vs following on Instagram](/blog/followers-vs-following-on-instagram) explains how the two lists relate.
+
+## How to Find Everyone Who Unfollowed You With 2 Data Downloads (Safe and Scalable)
+
+![The older followers list minus the newer followers list leaves the accounts that unfollowed you](/images/blog/who-unfollowed-me-on-instagram-compare-1200x675.webp)
 
 This is the method we recommend. It uses Instagram's official data download, it never asks for your password, and the checker reads your files in your browser without uploading them. Menu labels change between app versions, so look for the closest match if something is worded differently.
 
@@ -80,8 +95,6 @@ So rename the **older** followers file to something like `following-october.json
 
 ### Step 5: Compare the Two Files in the Checker
 
-![The older followers list minus the newer followers list leaves the accounts that unfollowed you](/images/blog/who-unfollowed-me-on-instagram-compare-1200x675.webp)
-
 Open the [Instagram unfollowers checker](/tools/instagram-unfollowers-checker) and choose both files. The checker was built to compare your followers with the accounts you follow, so with this trick its labels mean something slightly different:
 
 | What the checker shows | What it means in this method |
@@ -96,7 +109,16 @@ The checker accepts both JSON and HTML exports, but it takes one file for each s
 
 Nothing is sent to a server, and the checker doesn't follow, unfollow or message anyone. It only reads the two lists.
 
-## Why Someone Looks Like an Unfollower When They Aren't (5 False Alarms)
+### Which Way to Compare the Two Exports?
+
+| Method | Time | Skill needed | Privacy |
+|---|---|---|---|
+| Our [unfollowers checker](/tools/instagram-unfollowers-checker), with the older file renamed | 1–2 minutes | None | High: the files are read in your browser and never uploaded |
+| A spreadsheet with a lookup formula | 10–15 minutes | Medium | High: stays on your computer |
+| An online text-compare site | 5–10 minutes | Low | Medium: you paste your lists into someone else's site |
+| A tracker app | Instant | None | Low: it needs your password (see below) |
+
+### Why Someone Looks Like an Unfollower When They Aren't (5 False Alarms)
 
 Before you take an unfollow personally, check it. The export is a list of usernames on one date, which leads to a few predictable mistakes:
 
@@ -109,16 +131,6 @@ Before you take an unfollow personally, check it. The export is a list of userna
 | Someone you removed is listed | You tapped Remove on your Followers list | That's expected |
 
 The opposite mistake happens too. If someone unfollowed and then followed you again between your two exports, they won't show up at all.
-
-## How to Check One Person Without an Export (10 Seconds)
-
-If you only suspect one or two people, check them directly in the app:
-
-1. Open their profile.
-2. Look near their name and the Follow button. If they follow you, Instagram typically shows a **Follows you** label.
-3. No label? Go to your own profile, tap **Followers** and search for their username. If they don't appear, they don't follow you now.
-
-This tells you whether they follow you today, not whether they ever did. For the bigger picture, the two-export method is the only reliable option. Our guide to [followers vs following on Instagram](/blog/followers-vs-following-on-instagram) explains how the two lists relate.
 
 ## Unfollower Tracker Apps: Instant Lists, Real Risks (Use With Caution)
 
@@ -173,13 +185,17 @@ The free plan covers 3 accounts and up to 10 scheduled posts at a time, which is
 
 ## What to Do After You Find Out Who Unfollowed You
 
-![Checklist of calm responses to unfollows, next to reactions that get Instagram accounts limited](/images/blog/who-unfollowed-me-on-instagram-next-1200x675.webp)
-
 1. **Check the list for false alarms.** Tap Open on each name. Renamed, deactivated and removed spam accounts aren't real unfollows.
 2. **Decide whether to unfollow back.** If it was a follow-for-follow account, unfollowing is fair. If it was a friend or a brand you enjoy, keep following. Our guide to [what follow back means on Instagram](/blog/what-does-follow-back-mean-on-instagram) covers when following back makes sense.
 3. **Look for a pattern, not a person.** Did the drop come after a quiet month, a topic change or a run of ads? That's more useful than any one name.
 4. **Save the newer export as your next "before" list.** Next month, compare against it.
 5. **Check monthly, not daily.** People follow and unfollow constantly for reasons that have nothing to do with you.
+
+## How to Stay Safe and Keep Followers Without Chasing Them
+
+![Checklist of safe ways to track and keep Instagram followers, next to habits that get accounts limited](/images/blog/who-unfollowed-me-on-instagram-safety-1200x675.webp)
+
+Tracking unfollows is harmless. What gets accounts into trouble is the reaction: mass unfollowing, follow-for-follow and apps that act on your behalf. Instagram doesn't publish exact limits, so the safe approach is to act like a person, not a script.
 
 What keeps your account safe:
 
@@ -193,6 +209,8 @@ What gets accounts limited:
 - ✗ Mass unfollowing in one sitting
 - ✗ Follow-for-follow and follow-unfollow schemes
 - ✗ Bought followers, which Instagram often removes later
+
+The followers who stay are the ones who get something from your posts. A steady rhythm of useful posts does more to keep them than any audit, and that habit matters more than the list itself.
 
 ## Frequently Asked Questions
 
