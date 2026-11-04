@@ -5,7 +5,7 @@ import s from './tools.module.css';
 import CopyButton, { Chips, Result } from './CopyButton';
 import { useToolText } from './locale';
 import { convert, stylesFor } from '@/lib/tools/unicode';
-import { DISCORD_LIMITS, X_LIMITS, instagramLineBreaks, plainLength, stats, xLength } from '@/lib/tools/counters';
+import { DISCORD_LIMITS, REDDIT_LIMITS, TELEGRAM_LIMITS, YOUTUBE_LIMITS, X_LIMITS, instagramLineBreaks, plainLength, stats, xLength } from '@/lib/tools/counters';
 import { BIO_PLATFORMS, BIO_TONES, COMMENT_TONES, EXTRA_NAME_STYLES, NAME_RULES, NAME_STYLES, generateBios, generateComments, generateNames } from '@/lib/tools/generators';
 
 const fmt = (n) => n.toLocaleString('en-US');
@@ -79,15 +79,23 @@ function XCounter() {
   );
 }
 
-function DiscordCounter() {
+const LIMIT_SETS = {
+  discord: { limits: DISCORD_LIMITS, label: 'Paste or write your message', placeholder: 'Message #general' },
+  youtube: { limits: YOUTUBE_LIMITS, label: 'Paste your title, description, tags or comment', placeholder: 'My first 30 days of learning to cook' },
+  reddit: { limits: REDDIT_LIMITS, label: 'Paste your post title, body or comment', placeholder: 'What’s the best beginner houseplant?' },
+  telegram: { limits: TELEGRAM_LIMITS, label: 'Paste your message, caption or bio', placeholder: 'Daily market notes, 7 a.m. sharp' },
+};
+
+function LimitCounter({ mode }) {
+  const set = LIMIT_SETS[mode] || LIMIT_SETS.discord;
   const [text, setText] = useState('');
   const len = plainLength(text);
   const st = stats(text);
   return (
     <div className={s.widget}>
       <label className={s.label}>
-        Paste or write your message
-        <textarea className={s.textarea} value={text} onChange={(e) => setText(e.target.value)} rows={6} placeholder="Message #general" />
+        {set.label}
+        <textarea className={s.textarea} value={text} onChange={(e) => setText(e.target.value)} rows={6} placeholder={set.placeholder} />
       </label>
       <div className={s.stats} aria-live="polite">
         <Stat num={fmt(len)} label="Characters" />
@@ -95,7 +103,7 @@ function DiscordCounter() {
         <Stat num={fmt(st.lines)} label="Lines" />
       </div>
       <div className={s.limits}>
-        {DISCORD_LIMITS.map((l) => (
+        {set.limits.map((l) => (
           <div key={l.id} className={s.limit}>
             <span>{l.label} ({fmt(l.limit)})</span>
             <span className={len > l.limit ? s.over : s.good}>{len > l.limit ? `${fmt(len - l.limit)} over` : `${fmt(l.limit - len)} left`}</span>
@@ -107,7 +115,7 @@ function DiscordCounter() {
 }
 
 export function CounterTool({ config }) {
-  return config.mode === 'discord' ? <DiscordCounter /> : <XCounter />;
+  return config.mode === 'x' || !config.mode ? <XCounter /> : <LimitCounter mode={config.mode} />;
 }
 
 export function LineBreakTool({ config = {} }) {
@@ -137,7 +145,7 @@ export function NameTool({ config }) {
   const rule = NAME_RULES[config.rule] || NAME_RULES.generic;
   const styles = [...NAME_STYLES, ...(config.extraStyles || []).map((id) => EXTRA_NAME_STYLES[id]).filter(Boolean)].map((o) => ({ ...o, label: label('nameStyles', o.id, o.label) }));
   const [keyword, setKeyword] = useState(config.sample || '');
-  const [style, setStyle] = useState('cool');
+  const [style, setStyle] = useState(config.style || 'cool');
   const [seed, setSeed] = useState(0);
   const names = useMemo(() => generateNames({ keyword, style, platform: config.rule, seed }), [keyword, style, config.rule, seed]);
   return (

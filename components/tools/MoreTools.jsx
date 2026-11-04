@@ -107,6 +107,8 @@ function OneHandleTool({ config }) {
               <p className={s.hint}>
                 {platform === 'roblox'
                   ? 'This opens Roblox’s user search: an exact match in the results means the name is taken. Roblox’s sign-up form gives the final answer.'
+                  : platform === 'minecraft'
+                  ? 'This searches NameMC, a third-party lookup site that isn’t run by Minecraft or Microsoft. A profile there usually means the name is taken; the name change screen in your Minecraft account gives the final answer.'
                   : 'If a profile opens, the name is taken. If not, it may still be held by a deactivated or banned account: the only sure test is trying it in the app’s settings or sign-up form.'}
               </p>
             </div>
@@ -371,9 +373,21 @@ export function UnfollowersTool() {
         continue;
       }
       const kind = parsed.kind === 'unknown' ? (next.followers ? 'following' : 'followers') : parsed.kind;
-      next[kind] = { name: f.name, users: parsed.usernames };
+      // Big accounts get several numbered followers files (followers_1.json, followers_2.json…):
+      // files of the same kind are merged, and re-adding a file with the same name replaces it.
+      const prev = next[kind];
+      const parts = { ...(prev?.parts || {}), [f.name]: parsed.usernames };
+      const users = new Set();
+      for (const set of Object.values(parts)) for (const u of set) users.add(u);
+      next[kind] = { name: Object.keys(parts).join(', '), parts, users };
     }
     setFiles(next);
+  }
+
+  function clear() {
+    setFiles({ followers: null, following: null });
+    setError('');
+    if (input.current) input.current.value = '';
   }
 
   const ready = files.followers && files.following;
@@ -387,9 +401,15 @@ export function UnfollowersTool() {
         <input ref={input} type="file" accept=".json,.html,application/json,text/html" multiple hidden onChange={(e) => load(e.target.files)} />
       </div>
       <div className={s.limits}>
-        <div className={s.limit}><span>Followers file</span><span className={files.followers ? s.good : ''}>{files.followers ? `${files.followers.name} · ${fmt(files.followers.users.size)}` : 'Not added'}</span></div>
+        <div className={s.limit}><span>Followers file(s)</span><span className={files.followers ? s.good : ''}>{files.followers ? `${files.followers.name} · ${fmt(files.followers.users.size)}` : 'Not added'}</span></div>
         <div className={s.limit}><span>Following file</span><span className={files.following ? s.good : ''}>{files.following ? `${files.following.name} · ${fmt(files.following.users.size)}` : 'Not added'}</span></div>
       </div>
+      {(files.followers || files.following) && (
+        <div className={s.row}>
+          <button type="button" className={s.btn} onClick={clear}>Start over</button>
+          <p className={s.hint}>Several followers files from one export are combined. Start over before checking a newer export.</p>
+        </div>
+      )}
       {error && <p className={`${s.hint} ${s.over}`}>{error}</p>}
       {res && (
         <>

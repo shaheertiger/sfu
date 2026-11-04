@@ -1,0 +1,113 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "kicker": "Instagram guide",
+   "title": "How long does an export take? **Minutes to days**",
+   "sub": "Instagram gives no fixed time. What you ask for decides most of the wait.",
+   "chips": [
+    "Ask for less",
+    "Download fast",
+    "Link expires"
+   ]
+  },
+  {
+   "name": "factors",
+   "type": "versus",
+   "kicker": "Why it varies",
+   "title": "What makes your export **faster or slower**",
+   "left": {
+    "label": "Faster",
+    "tone": "good",
+    "items": [
+     "Some of your information",
+     "Followers and following only",
+     "Lower media quality"
+    ]
+   },
+   "right": {
+    "label": "Slower",
+    "tone": "bad",
+    "items": [
+     "All of your information",
+     "Years of photos and videos",
+     "High media quality"
+    ]
+   }
+  },
+  {
+   "name": "manual",
+   "type": "steps",
+   "kicker": "No export needed",
+   "title": "Check these in the app **right now**",
+   "steps": [
+    {
+     "title": "One follower",
+     "text": "Look for the “Follows you” label."
+    },
+    {
+     "title": "Your lists",
+     "text": "Tap Followers or Following on your profile.",
+     "highlight": true
+    },
+    {
+     "title": "Old posts",
+     "text": "Check your grid, Archive and Saved."
+    }
+   ]
+  },
+  {
+   "name": "size",
+   "type": "bars",
+   "kicker": "Relative speed",
+   "title": "The less you ask for, **the sooner it arrives**",
+   "rows": [
+    {
+     "label": "Followers only",
+     "value": 95,
+     "note": "Usually quickest"
+    },
+    {
+     "label": "Posts, lower quality",
+     "value": 50,
+     "note": "In between"
+    },
+    {
+     "label": "All, high quality",
+     "value": 12,
+     "note": "Usually slowest"
+    }
+   ]
+  },
+  {
+   "name": "safety",
+   "type": "checklist",
+   "kicker": "Keep it safe",
+   "title": "Your export is personal. **Treat it that way.**",
+   "good": {
+    "label": "Safe",
+    "items": [
+     "Request only what you need",
+     "Download it on a trusted device",
+     "Delete old exports"
+    ]
+   },
+   "bad": {
+    "label": "Risky",
+    "items": [
+     "“Instant export” apps",
+     "Sharing the download link",
+     "Uploading it to unknown sites"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "Ask only for what you need, and **your Instagram export arrives sooner.**",
+   "by": "Then download it before the link expires."
+  }
+ ]
+}

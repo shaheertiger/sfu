@@ -1,0 +1,113 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "kicker": "Instagram guide",
+   "title": "What does **follow back** mean?",
+   "sub": "Following someone who already follows you, so you follow each other.",
+   "chips": [
+    "Follow Back button",
+    "Follows you label",
+    "Skip follow-for-follow"
+   ]
+  },
+  {
+   "name": "buttons",
+   "type": "versus",
+   "kicker": "Two buttons",
+   "title": "Follow vs **Follow Back**",
+   "left": {
+    "label": "Follow",
+    "tone": "neutral",
+    "items": [
+     "They don’t follow you",
+     "Tapping starts a one-way follow",
+     "Private? It sends a request"
+    ]
+   },
+   "right": {
+    "label": "Follow Back",
+    "tone": "good",
+    "items": [
+     "They already follow you",
+     "Tapping makes it mutual",
+     "They get the usual follow alert"
+    ]
+   }
+  },
+  {
+   "name": "check",
+   "type": "steps",
+   "kicker": "Quick check",
+   "title": "Does someone follow you? **3 ways to tell**",
+   "steps": [
+    {
+     "title": "The button",
+     "text": "Follow Back means they follow you."
+    },
+    {
+     "title": "The label",
+     "text": "“Follows you” near their name.",
+     "highlight": true
+    },
+    {
+     "title": "Your list",
+     "text": "Search them in your Followers list."
+    }
+   ]
+  },
+  {
+   "name": "risk",
+   "type": "bars",
+   "kicker": "Account risk",
+   "title": "Which follow-back habit is **safest?**",
+   "rows": [
+    {
+     "label": "Following back by hand",
+     "value": 95,
+     "note": "Normal use"
+    },
+    {
+     "label": "Follow-for-follow",
+     "value": 40,
+     "note": "Churn, action blocks"
+    },
+    {
+     "label": "Auto-follow apps",
+     "value": 12,
+     "note": "Needs your password"
+    }
+   ]
+  },
+  {
+   "name": "safety",
+   "type": "checklist",
+   "kicker": "Grow safely",
+   "title": "Earn follow-backs, **don’t trade for them**",
+   "good": {
+    "label": "Safe",
+    "items": [
+     "Following back by hand",
+     "Posting on a steady schedule",
+     "Replying to real followers"
+    ]
+   },
+   "bad": {
+    "label": "Gets accounts limited",
+    "items": [
+     "Mass follow and unfollow",
+     "Auto-follow-back apps",
+     "Buying followers"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "Follow back the people you want to hear from. **Follow-for-follow buys numbers, not an audience.**",
+   "by": "Put the time into posting instead."
+  }
+ ]
+}

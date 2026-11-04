@@ -11,9 +11,10 @@ import { AspectTool } from './AspectTool';
 import { ReadTimeTool } from './ReadTimeTool';
 import { TierListTool } from './TierListTool';
 import { GiveawayTool } from './GiveawayTool';
+import { YouTubeIdTool, YouTubePfpTool } from './YouTubeTools';
 import { ToolLocale } from './locale';
 
-const WIDGETS = { font: FontTool, counter: CounterTool, linebreak: LineBreakTool, name: NameTool, bio: BioTool, comment: CommentTool, resizer: ResizerTool, logo: LogoTool, slice: SliceTool, handle: HandleTool, linkedin: LinkedInTool, yttitle: TitleTool, yttags: TagTool, unfollowers: UnfollowersTool, caption: CaptionTool, shadowban: ShadowbanTool, collage: CollageTool, textimage: TextImageTool, blur: BlurTool, exif: ExifTool, aspect: AspectTool, readtime: ReadTimeTool, tierlist: TierListTool, giveaway: GiveawayTool };
+const WIDGETS = { font: FontTool, counter: CounterTool, linebreak: LineBreakTool, name: NameTool, bio: BioTool, comment: CommentTool, resizer: ResizerTool, logo: LogoTool, slice: SliceTool, handle: HandleTool, linkedin: LinkedInTool, yttitle: TitleTool, yttags: TagTool, unfollowers: UnfollowersTool, caption: CaptionTool, shadowban: ShadowbanTool, collage: CollageTool, textimage: TextImageTool, blur: BlurTool, exif: ExifTool, aspect: AspectTool, readtime: ReadTimeTool, tierlist: TierListTool, giveaway: GiveawayTool, ytpfp: YouTubePfpTool, ytid: YouTubeIdTool };
 
 /**
  * The interactive part of a free tool page. Everything runs in the browser. `locale` switches the

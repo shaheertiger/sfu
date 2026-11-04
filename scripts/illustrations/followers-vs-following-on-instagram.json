@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Instagram guide", "title": "Followers vs following: **2 lists, 1 myth**", "sub": "Followers follow you. Following is who you follow. The ratio isn’t a score.", "chips": ["Followers = audience", "Following = feed", "No magic ratio"] },
+    { "name": "lists", "type": "versus", "kicker": "What each list is", "title": "Your audience vs **your feed**", "left": { "label": "Followers", "tone": "neutral", "items": ["People who follow you", "They see your posts", "You can remove them"] }, "right": { "label": "Following", "tone": "good", "items": ["Accounts you follow", "You see their posts", "You can unfollow them"] } },
+    { "name": "where", "type": "steps", "kicker": "Where to look", "title": "See both lists in **3 taps**", "steps": [ { "title": "Open your profile", "text": "Tap your picture in the bottom corner." }, { "title": "Tap a number", "text": "Followers or Following opens the list.", "highlight": true }, { "title": "Search or sort", "text": "Find one account, or sort by date." } ] },
+    { "name": "risk", "type": "bars", "kicker": "Account safety", "title": "Which way to manage your lists is **safest?**", "rows": [ { "label": "The app’s own lists", "value": 95, "note": "Official, by hand" }, { "label": "Data download", "value": 92, "note": "Official, no login" }, { "label": "Mass-unfollow apps", "value": 15, "note": "Needs your password" } ] },
+    { "name": "safety", "type": "checklist", "kicker": "Stay safe", "title": "Tidy your following, **don’t trip the limits**", "good": { "label": "Safe", "items": ["Unfollowing in small batches", "Sorting by oldest first", "Posting on a steady schedule"] }, "bad": { "label": "Gets accounts limited", "items": ["Mass following for follow-backs", "Unfollowing hundreds at once", "Buying followers"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Followers are your audience, following is your feed. **Grow one with posts, curate the other for yourself.**", "by": "The ratio is a first impression, not a score." }
+  ]
+}
