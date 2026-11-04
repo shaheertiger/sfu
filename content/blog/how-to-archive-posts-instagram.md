@@ -171,7 +171,7 @@ Take Elena, who runs a small clothing boutique. Each season she posts 12 product
 | Archive and unarchive posts | Yes, the only place to do it | No | No, use the Instagram app |
 | Plan posts on a calendar before they go live | No | Many | Yes |
 | Schedule feed posts, Reels and carousels | Yes, in the app | Varies | Yes |
-| Schedule Stories | No | Varies | Yes, one image or video each (no caption, stickers or music) |
+| Schedule Stories | Post them live in the app | Varies | Yes, one image or video each (no caption, stickers or music) |
 | Same post to Facebook, TikTok and more | Limited | Varies | Yes, with a separate caption per platform |
 | Cost | Free | Varies | Free plan for 3 accounts and up to 10 scheduled posts at a time, no card |
 
