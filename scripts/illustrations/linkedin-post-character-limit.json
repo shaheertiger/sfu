@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "LinkedIn limits · 2026", "title": "3,000 characters. **About 210 get seen.**", "sub": "The LinkedIn post limit is generous. The see-more cut on your first line is not.", "chips": ["3,000 per post", "~210 desktop", "~140 mobile"] },
+    { "name": "cutoff", "type": "versus", "kicker": "Above and below the cut", "title": "Your first line **does the work**", "left": { "label": "Before see more", "tone": "good", "items": ["About 210 characters on desktop", "About 140 on mobile", "Fewer with early line breaks"] }, "right": { "label": "After see more", "tone": "neutral", "items": ["Only read if they tap", "Short paragraphs help", "Up to 3,000 in total"] } },
+    { "name": "limits", "type": "bars", "kicker": "Every LinkedIn limit", "title": "LinkedIn character limits, **side by side**", "rows": [ { "label": "Feed post", "value": 100, "note": "3,000" }, { "label": "About section", "value": 87, "note": "2,600" }, { "label": "Comment", "value": 42, "note": "1,250" }, { "label": "Headline", "value": 7, "note": "220" }, { "label": "Poll question", "value": 5, "note": "140" } ] },
+    { "name": "steps", "type": "steps", "kicker": "Write to fit", "title": "A post people **actually read**", "steps": [ { "title": "Hook last", "text": "Rewrite line one under 140." , "highlight": true }, { "title": "Short paragraphs", "text": "One or two sentences each." }, { "title": "One idea", "text": "800–1,500 characters." }, { "title": "A question", "text": "Give readers a reason to reply." } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "The limit is 3,000. **The first line decides whether anyone reads the rest.**", "by": "Write it last. Check it on your phone." }
+  ]
+}

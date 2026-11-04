@@ -1,0 +1,99 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "dark": true,
+   "kicker": "Instagram guide",
+   "title": "**8 fixes** when Instagram won’t post",
+   "sub": "Check the media first, then the connection, then the account. Most fixes take minutes.",
+   "chips": [
+    "Image shape",
+    "Video format",
+    "Session invalid",
+    "Retry"
+   ]
+  },
+  {
+   "name": "causes",
+   "type": "versus",
+   "kicker": "8 causes",
+   "title": "Media problems vs **connection problems**",
+   "left": {
+    "label": "Media",
+    "tone": "neutral",
+    "items": [
+     "Shape outside 4:5 to 1.91:1",
+     "No image or video",
+     "Video processing, over 10 slides"
+    ]
+   },
+   "right": {
+    "label": "Connection",
+    "tone": "bad",
+    "items": [
+     "Session invalid",
+     "No longer Business or Creator",
+     "Unlinked from its Page"
+    ]
+   }
+  },
+  {
+   "name": "connection",
+   "type": "steps",
+   "kicker": "Connection fixes",
+   "title": "Reconnect, then **retry**",
+   "steps": [
+    {
+     "title": "Check the account",
+     "text": "Business or Creator, linked to its Page."
+    },
+    {
+     "title": "Reconnect",
+     "text": "Log in through Meta’s window.",
+     "highlight": true
+    },
+    {
+     "title": "Approve all",
+     "text": "Every permission it asks for."
+    },
+    {
+     "title": "Retry",
+     "text": "Only the failed post needs it."
+    }
+   ]
+  },
+  {
+   "name": "app",
+   "type": "steps",
+   "kicker": "Stuck in the app",
+   "title": "“Couldn’t post”? **Try these in order**",
+   "steps": [
+    {
+     "title": "Connection",
+     "text": "Switch Wi-Fi and mobile data."
+    },
+    {
+     "title": "Retry once",
+     "text": "Then wait. No repeat taps.",
+     "highlight": true
+    },
+    {
+     "title": "Update + restart",
+     "text": "The app, then your phone."
+    },
+    {
+     "title": "Check notices",
+     "text": "Outages or a restriction."
+    }
+   ]
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "Media first, then the connection, **then the account**.",
+   "by": "And reconnect straight after any password change."
+  }
+ ]
+}

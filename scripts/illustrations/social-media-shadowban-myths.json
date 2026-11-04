@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Myths · 2026", "title": "7 shadowban fears **that aren’t true**", "sub": "Hashtags, scheduling, edits and links don’t get you shadowbanned on their own. Spam-like habits do.", "chips": ["Hashtags", "Scheduling", "Edits", "Links"] },
+    { "name": "why", "type": "steps", "kicker": "Why myths spread", "title": "One bad week **becomes a rule**", "steps": [ { "title": "Reach is noisy", "text": "Posts swing for many reasons." }, { "title": "You changed something", "text": "So the change gets blamed." }, { "title": "Screenshots travel", "text": "Faster than the boring answer." }, { "title": "No one says shadowban", "text": "Platforms use other words.", "highlight": true } ] },
+    { "name": "myths", "type": "checklist", "kicker": "What actually matters", "title": "Myths vs **what limits reach**", "good": { "label": "Not a problem", "items": ["A few relevant hashtags", "Scheduling via official APIs", "Fixing a typo"] }, "bad": { "label": "Can limit reach", "items": ["Restricted or pasted tag blocks", "Bots, pods and bought followers", "Spammy links and duplicates"] } },
+    { "name": "caution", "type": "checklist", "kicker": "Use with caution", "title": "Official checks vs **paid “fixes”**", "good": { "label": "Official", "items": ["Account status pages", "Manual search tests", "Free appeals"] }, "bad": { "label": "Risky", "items": ["Paid shadowban removal", "Checkers that want your login", "“Scans” that guess"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Most myths are half-truths. **Check your account status before you change anything.**", "by": "Use a few relevant tags, schedule through official APIs, and test changes over weeks, not posts." }
+  ]
+}

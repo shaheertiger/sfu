@@ -1,0 +1,9 @@
+{
+ "cards": [
+  { "name": "hero", "type": "hero", "dark": true, "kicker": "Bluesky guide", "title": "Is Bluesky down? **Check the status page first**", "sub": "status.bsky.app shows real incidents. If it’s clear, the problem is your app, connection or sign-in.", "chips": ["status.bsky.app", "Feed problems", "Signed out", "App passwords"] },
+  { "name": "signs", "type": "versus", "kicker": "Bluesky or just you?", "title": "Down for everyone vs **a problem on your side**", "left": { "label": "Down for everyone", "tone": "bad", "items": ["Incident on status.bsky.app", "Website fails too", "Spike on outage trackers"] }, "right": { "label": "Probably just you", "tone": "neutral", "items": ["Status page is clear", "Website works, app doesn’t", "Only one custom feed is empty"] } },
+  { "name": "checks", "type": "steps", "kicker": "4 checks", "title": "Find out **in two minutes**", "steps": [ { "title": "Status page", "text": "status.bsky.app", "highlight": true }, { "title": "Website", "text": "Try bsky.app in a browser." }, { "title": "Outage tracker", "text": "Look for a spike." }, { "title": "Following feed", "text": "Works? A custom feed is down." } ] },
+  { "name": "signout", "type": "versus", "kicker": "Why you were signed out", "title": "Something you did, or **something that happened**", "left": { "label": "Your change", "tone": "neutral", "items": ["New password", "Cleared data or reinstalled", "New handle or hosting server"] }, "right": { "label": "Bluesky’s side", "tone": "neutral", "items": ["Outage during session refresh", "Age verification prompt", "Suspension or takedown"] } },
+  { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Check the status page, then **fix only what’s yours to fix.**", "by": "Connected apps break? A new app password fixes most of them." }
+ ]
+}

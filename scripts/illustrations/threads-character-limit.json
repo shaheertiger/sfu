@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Threads guide 2026", "title": "Threads character limit: **500 per post**", "sub": "Up to 20 photos or videos, links at full length, and longer ideas become threads.", "chips": ["500 characters", "20 photos or videos", "1 topic tag"] },
+    { "name": "counts", "type": "bars", "kicker": "Limits compared", "title": "Threads sits **between X and LinkedIn**", "rows": [ { "label": "LinkedIn", "value": 100, "note": "3,000" }, { "label": "Threads", "value": 17, "note": "500" }, { "label": "Bluesky", "value": 10, "note": "300" }, { "label": "X", "value": 9, "note": "280" } ] },
+    { "name": "thread-steps", "type": "steps", "kicker": "Longer than 500?", "title": "Write a thread **people open**", "steps": [ { "title": "Draft it all", "text": "Then decide where to break." }, { "title": "Strong opener", "text": "The first post must stand alone.", "highlight": true }, { "title": "One idea each", "text": "Media can go on any part." }, { "title": "End with a question", "text": "Replies help it travel." } ] },
+    { "name": "timing", "type": "versus", "kicker": "When to post", "title": "Busy times vs **quiet times**", "left": { "label": "Usually busier", "tone": "good", "items": ["Weekday mornings", "Early evenings", "Midweek"] }, "right": { "label": "Usually quieter", "tone": "neutral", "items": ["Weekends", "When you can’t reply", "Off-hours for your followers"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "500 characters, **links at full length.** Lead every thread with its best post.", "by": "Up to 20 photos or videos per post." }
+  ]
+}

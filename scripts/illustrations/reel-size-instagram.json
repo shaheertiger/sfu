@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Instagram sizes 2026", "title": "Reel size: **1080×1920**, cover crops to 3:4", "sub": "Export at 9:16, then keep titles and faces in the center so the grid crop doesn’t cut them.", "chips": ["1080×1920", "9:16", "Grid crop 3:4"] },
+    { "name": "ratios", "type": "bars", "kicker": "Ratios compared", "title": "How much of the screen **each ratio fills**", "rows": [ { "label": "9:16", "value": 100, "note": "Full screen" }, { "label": "4:5", "value": 70, "note": "Bars or zoom" }, { "label": "1:1", "value": 56, "note": "Bars or zoom" }, { "label": "16:9", "value": 32, "note": "Small, big bars" } ] },
+    { "name": "cover", "type": "steps", "kicker": "Reel covers", "title": "A cover that **survives the grid**", "steps": [ { "title": "1080×1920", "text": "Same size as the video." }, { "title": "Mark the center", "text": "The middle 1080×1440 shows on the grid." }, { "title": "Text inside it", "text": "Title, face and subject.", "highlight": true }, { "title": "Preview", "text": "Adjust the grid crop in the app." } ] },
+    { "name": "safe-zones", "type": "checklist", "kicker": "Safe zones", "title": "Where text is safe, and **where it gets covered**", "good": { "label": "Safe", "items": ["The center of the frame", "Captions just above center", "Faces in the middle"] }, "bad": { "label": "Covered", "items": ["Bottom: caption and username", "Right side: buttons", "Top: header and status bar"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Start at **1080×1920** and design for the center.", "by": "One clean 9:16 master works for Reels, TikTok and Shorts." }
+  ]
+}

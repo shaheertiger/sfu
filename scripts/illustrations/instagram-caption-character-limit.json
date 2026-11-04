@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Instagram guide", "title": "Instagram captions: **only ~125 show**", "sub": "The feed cuts your caption at about 125 characters. Make the first line do the work.", "chips": ["2,200 characters", "30 hashtags", "20 mentions"] },
+    { "name": "truncate", "type": "versus", "kicker": "Where captions get cut", "title": "Before “more” vs **after “more”**", "left": { "label": "Everyone sees", "tone": "good", "items": ["About the first 125 characters", "Or up to the first line break", "Less in the Reels player"] }, "right": { "label": "Only if they tap", "tone": "neutral", "items": ["The story and detail", "Your call to action", "Your hashtags"] } },
+    { "name": "limits", "type": "bars", "kicker": "Instagram text limits", "title": "The numbers **worth knowing**", "rows": [ { "label": "Caption", "value": 100, "note": "2,200 characters" }, { "label": "Bio", "value": 7, "note": "150 characters" }, { "label": "Alt text", "value": 5, "note": "100 characters" } ] },
+    { "name": "steps", "type": "steps", "kicker": "Write it in 5 steps", "title": "A caption that **earns the tap**", "steps": [ { "title": "Hook", "text": "Under 125 characters.", "highlight": true }, { "title": "Value", "text": "The detail or story." }, { "title": "Breaks", "text": "Short paragraphs." }, { "title": "One ask", "text": "A single call to action." }, { "title": "Hashtags", "text": "Three to five." } ] },
+    { "name": "hashtags", "type": "versus", "kicker": "Hashtag placement", "title": "Caption vs **first comment**", "left": { "label": "In the caption", "tone": "neutral", "items": ["Same reach, says Instagram", "Uses your 2,200", "Done when you post"] }, "right": { "label": "In the first comment", "tone": "good", "items": ["Same reach, says Instagram", "Keeps the caption clean", "You add it after posting"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "You get 2,200 characters. **The first 125 decide if anyone reads them.**", "by": "Hook first, short paragraphs, one ask, three to five hashtags." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Bluesky guide", "title": "What does blue sky mean? **Open, no limits**", "sub": "Blue-sky thinking ignores current limits. The Bluesky app took its name from that idea.", "chips": ["The phrase", "The app’s name", "The butterfly", "BLOO-sky"] },
+    { "name": "phrase", "type": "steps", "kicker": "The phrase", "title": "Four ways people **use blue sky**", "steps": [ { "title": "Blue-sky thinking", "text": "Ideas without constraints." }, { "title": "Blue-sky research", "text": "Discovery, not a product." }, { "title": "Blue-sky scenario", "text": "The best case." }, { "title": "Out of a clear blue sky", "text": "Suddenly, unexpectedly.", "highlight": true } ] },
+    { "name": "name", "type": "steps", "kicker": "The app’s name", "title": "From research project **to butterfly**", "steps": [ { "title": "2019", "text": "A Twitter-funded project." }, { "title": "The goal", "text": "An open standard for social media." }, { "title": "The protocol", "text": "The AT Protocol." }, { "title": "The logo", "text": "A blue butterfly.", "highlight": true } ] },
+    { "name": "start", "type": "steps", "kicker": "Get started", "title": "Start posting on Bluesky **in 4 steps**", "steps": [ { "title": "Sign up", "text": "App or website." }, { "title": "Pick a handle", "text": "Your domain works too." }, { "title": "Pin feeds", "text": "So day one isn’t quiet.", "highlight": true }, { "title": "Post", "text": "Under 300 characters." } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Blue sky means open and unconstrained. **Bluesky is one word.**", "by": "Hyphenate the phrase before a noun, and say the app’s name like the two words: BLOO-sky." }
+  ]
+}
