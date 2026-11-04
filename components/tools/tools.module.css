@@ -9,6 +9,9 @@
 .chip[aria-pressed="true"]{background:#dcff2e;border-color:#dcff2e;color:#15171a;font-weight:600}
 .btn{font:inherit;font-size:15px;font-weight:600;padding:11px 16px;border-radius:12px;border:1px solid #2a2e34;background:#1d2024;color:#f6f5f1;cursor:pointer;min-height:44px}
 .btnPrimary{background:#dcff2e;border-color:#dcff2e;color:#15171a}
+/* Link-styled buttons: page-level `a{color:inherit}` would otherwise turn their text white. */
+.widget a.btn{color:#f6f5f1;text-decoration:none}
+.widget a.btnPrimary{color:#15171a}
 .btn:disabled{opacity:.5;cursor:default}
 .results{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
 .resultsWide{grid-template-columns:1fr}
