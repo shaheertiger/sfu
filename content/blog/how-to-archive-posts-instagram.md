@@ -177,7 +177,7 @@ Take Elena, who runs a small clothing boutique. Each season she posts 12 product
 
 Where we're not the best fit: Schedule For You doesn't archive, unarchive or edit tags on posts that are already live. Do that in the Instagram app. We help before publishing, not after.
 
-In Schedule For You, Elena lays the season's posts out on the calendar, drags them around until the order works, and only then lets them publish. She can schedule Stories too, one image or video each, which then land in her Stories archive like any other Story:
+In Schedule For You, Elena lays the season's posts out on the calendar, drags them around until the order works, and only then lets them publish. She can schedule Stories too, one image or video each, and if her Stories archive setting is on, they're saved there like any other Story:
 
 ![The Schedule For You calendar with a month of scheduled Instagram and other posts](/images/blog/calendar-month-1440x900.webp)
 
