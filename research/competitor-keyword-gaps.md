@@ -112,3 +112,41 @@ All six reference pages follow the same layout:
 4. **A sticky sidebar CTA card** on desktop ("Do you want to grow your social media faster?", 4 bullets, button, video). Phones get a sticky CTA bar instead.
 
 We now have the sidebar card and the phone bar (`components/marketing/GrowCta.jsx`). The remaining gaps are the use-cases-by-audience sections and the overall depth.
+
+## 4. More competitors: Blotato, Namecheckly, e-cabilly, GreatlySocial (US, November 2026)
+
+Semrush organic positions, dated 2026-11-03. Brand searches are left out, as are off-topic pages (Amazon suspensions, patent fees, AI video tools).
+
+### Biggest opportunities
+
+| Page | Keywords (volume, KD) | Who ranks | What we have |
+|---|---|---|---|
+| **Username generator** (retitle `/tools/name-generator`, or add `/tools/aesthetic-username-generator`) | username generator (60,500, 50), usernames generator (2,400, 44), username generator aesthetic (2,400, 6), username maker (1,600, 44), cute usernames generator (260, 24) | Blotato #3, GreatlySocial #2 | `/tools/name-generator`, titled "Social Media Name Generator". It doesn't target "username generator" |
+| **TikTok username ideas** (new blog listicle linking `/tools/tiktok-name-generator`) | tiktok username ideas (3,600, 27), usernames for tiktok (2,400, 24), good usernames for tiktok (1,600, 22) | Blotato #3 | Only the generator tool |
+| **Best social media automation tools** (new blog) | social media automation (1,900, 36), social media automation tools (1,300, 49), automated social media posting (390, 36) | Blotato #2 | `/blog/how-to-automate-social-media-scheduling` (a how-to, not a tools list) |
+| **X (Twitter) API pricing** (new blog) | x api pay per use pricing (1,300 + 720, 30–49), twitter api pricing (590, 80), twitter api cost (390, 67) | Blotato #2–3 | Nothing. Needs current, sourced prices |
+| **Buffer pricing** (new blog) | buffer pricing (1,300, 25), buffer cost (590, 25), buffer plan (210, 50) | Blotato #2 | `/best-buffer-alternatives` covers costs in passing. Needs current, sourced prices |
+| **How to check if a business name is taken** (new blog) | how to find if a business name is taken (880, 10), how do you check if a business name is taken (390, 3) | Namecheckly #1 | Nothing |
+| **Best Knowem alternatives** (new blog) | knowem (1,300, 26), knowem.com (720, 28), knowem.com alternative (210, 17) | Namecheckly #2–3 | Nothing (our `/tools/username-checker` is the product to recommend) |
+| **Namechk alternative** (new blog) | namech_k (480, 16), nameck (390, 31), namchk (390, 23) | Namecheckly #3 | Nothing |
+| **`/tools/x-username-checker`** (new tool) | x username checker (320, 6), twitter username checker (210, 10), x handle checker (40, 0) | Namecheckly #1–2 | Only the X name generator |
+| **`/tools/minecraft-username-checker`** (new tool) | minecraft name availability checker (140, 9), check if minecraft username is taken (110, 14), mc name availability checker (90, 5) | Namecheckly #2–3 | Nothing |
+| **Instagram post removed: what to do** (new blog) | we removed content you posted instagram (170, 29), instagram taking down posts (170, 33) | e-cabilly #3 | Nothing |
+| **Brandsnag alternative** (new blog) | brandsnag (590, 15), brand snag (110, 11) | Namecheckly #2 | Nothing |
+| **Repurpose.io alternatives** (new blog) | repurpose io free alternative (170, 1), repurpose io alternatives (170, 11) | Blotato #2 | Nothing |
+| **Ayrshare alternatives** (new blog) | ayrshare api alternatives (170, 3) | Blotato #1 | `/blog/social-media-api` (partly) |
+| **Publer alternatives** (new blog) | publer alternatives (140, 15) | Blotato #1 | Nothing |
+
+### Smaller or quick wins
+
+- **New username checkers**, built the same way as our existing checkers: `/tools/snapchat-username-checker` (50, 21), `/tools/pinterest-username-checker` (40, 1), `/tools/facebook-username-checker` (40, 49), `/tools/app-name-checker` (130, KD 2–13).
+- **Deepen pages we already have** that Namecheckly outranks:
+  - `/tools/discord-username-checker`: mass discord username checker (1,300), discord name checker (1,300), discord 4 letter username checker (480, KD 5).
+  - `/tools/username-checker`: username checker (3,600, 28), usernamelookup (320, 9).
+  - `/tools/roblox-username-checker`: roblox username availability checker (590, 8).
+- **Suspension guides** (e-cabilly):
+  - Add a "180 days" section to `/blog/suspended-instagram-account`: how to fix ig 180 days suspended (320, 23), how long does instagram suspension last (110, 26).
+  - New posts: `youtube-channel-suspended` (70, 31) and `x-account-suspended` (40, 36).
+- **API and MCP**: best social media api tools (350, 28) and threads api pricing (120) can extend `/blog/social-media-api`. Best social media mcp servers (70, 13) can extend `/blog/social-media-mcp`.
+- **Already covered**: buffer alternatives (`/best-buffer-alternatives`), later alternatives (`/later-alternative`), instagram font generator.
+- **Skipped**: Instagram DM automation and comment bots (we don't do DMs, and bots conflict with our own advice), Higgsfield and Submagic (AI video), Amazon suspensions, patent fees.
