@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Instagram guide", "title": "Suspended? **Beat the clock**", "sub": "Disagree with the decision on the suspension screen. It’s free, and it’s the only official route.", "chips": ["Disagree in time", "Verify it’s you", "Ignore paid help", "Pause your posts"] },
+    { "name": "which", "type": "versus", "kicker": "Which problem?", "title": "A penalty vs **a security check**", "left": { "label": "Penalties", "tone": "bad", "items": ["Suspended: offline, countdown", "Disabled: off, appeal window", "Restricted: some actions limited"] }, "right": { "label": "Not penalties", "tone": "neutral", "items": ["Locked: confirm it’s you", "Hacked: someone else has control", "Different help pages"] } },
+    { "name": "steps", "type": "steps", "kicker": "6 steps", "title": "Disagree **on the screen itself**", "steps": [ { "title": "Log in", "text": "App or instagram.com." }, { "title": "Read the reason", "text": "And the days left." }, { "title": "Disagree", "text": "Start now. The clock runs.", "highlight": true }, { "title": "Verify + submit", "text": "Code, selfie or ID. Note the date." } ] },
+    { "name": "scams", "type": "checklist", "kicker": "Use with caution", "title": "The free route vs **recovery scams**", "good": { "label": "Official", "items": ["The disagree option", "Instagram’s help center", "Emails listed in your settings"] }, "bad": { "label": "Scam", "items": ["Paid “unban” services", "“I know someone at Meta”", "Requests for your codes"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Act before the countdown ends, **keep it brief**, never pay for help.", "by": "Restricted, locked and hacked accounts each have a different fix." }
+  ]
+}

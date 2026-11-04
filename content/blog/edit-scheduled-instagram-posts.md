@@ -80,7 +80,7 @@ Business Suite is the more flexible of Meta's two tools.
 2. Open **Planner** for a calendar view, or **Content** and filter by **Scheduled**.
 3. Click a post to edit text or media, change the date, publish now or delete.
 
-Business Suite is also the only Meta tool that lists scheduled Stories.
+Business Suite is also the only one of Meta's own tools that lists scheduled Stories.
 
 ### How to Cancel a Scheduled Instagram Post
 
@@ -140,11 +140,12 @@ In Meta's tools she can fix Instagram and Facebook, then has to open Pinterest s
 | Edit caption of a scheduled post | Yes | Yes | Yes |
 | Swap the photo or video | No | Yes | Yes |
 | Reschedule by dragging on a calendar | No | Yes, in Planner | Yes |
+| Schedule Stories | No | Yes | Yes, one image or video, no caption |
 | Pinterest, TikTok, X, LinkedIn and others in the same view | No | No | Yes |
 | Instagram music library | Yes | No | No, upload audio with your video |
 | Cost | Free | Free | Free plan for 3 accounts and 10 scheduled posts, no card. Paid plans from $19 a month |
 
-Where we're not the best fit: if you only post to Instagram and Facebook, Business Suite is free and also handles Stories, which Schedule For You doesn't schedule. And if a Reel needs a trending song from Instagram's library, schedule that one in the app.
+Where we're not the best fit: if you only post to Instagram and Facebook, Business Suite is free and covers both. And if a Reel needs a trending song from Instagram's library, or a Story needs stickers or polls, do that one in the app, since Meta's API doesn't offer them to any scheduler.
 
 In Schedule For You, Lena's week sits in one queue, where she opens any post to edit its caption or media:
 
@@ -200,7 +201,7 @@ Scheduling in the app is for professional accounts. If you're on a personal acco
 
 ### Can I schedule Instagram Stories?
 
-In Meta Business Suite, yes. The Instagram app's Scheduled content list covers posts and Reels, and Schedule For You doesn't schedule Stories.
+Yes, in Meta Business Suite or a scheduler. Schedule For You publishes Instagram and Facebook Stories as one 9:16 image or video with no caption; stickers, polls and music aren't available through Meta's API, so add those in the app. See [how to schedule Instagram and Facebook Stories](/blog/schedule-instagram-and-facebook-stories).
 
 ## The Bottom Line
 

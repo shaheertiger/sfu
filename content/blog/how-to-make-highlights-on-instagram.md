@@ -143,34 +143,34 @@ Once you're making highlights, you'll notice sites that promise to show anyone's
 
 Highlights are the shop window; your posts are what bring people to the profile in the first place. Take Rosa, who runs a hair salon. Her **Prices**, **Reviews** and **Before and after** highlights do the selling, but they only get seen when her feed posts and Reels bring people in. She aims for three feed posts or Reels a week on Instagram plus the same on Facebook, and on busy weeks she posts none.
 
-Scheduling the week's posts on Monday morning takes her about 30 minutes. Stories, and adding them to highlights, she still does in the app.
+Scheduling the week's posts, plus a before-and-after Story on Monday, Wednesday and Friday, takes her about 30 minutes on Monday morning. Once each Story goes live, she adds it to the right highlight in the app.
 
 | | Instagram app | Meta Business Suite | Schedule For You |
 |---|---|---|---|
 | Create and edit highlights | Yes | No | No, do it in Instagram |
-| Schedule Stories | No | Yes | No |
+| Schedule Stories | No | Yes | Yes, one 9:16 image or video, no caption |
 | Schedule feed posts, Reels and carousels | Yes, on professional accounts | Yes | Yes, carousels of up to 10 photos or videos |
 | TikTok, YouTube, Pinterest and others | No | No | Yes |
 | Cost | Free | Free | Free plan for 3 accounts and 10 scheduled posts, no card. Paid plans from $19 a month |
 
-Where we're not the best fit: Schedule For You doesn't schedule Instagram Stories or touch highlights. If Stories are most of your Instagram, Meta Business Suite is free and schedules them.
+Where we're not the best fit: Schedule For You can't add a Story to a highlight, so that step stays in the app. Stories go out without a caption, and stickers, polls and music aren't available through Meta's API, so Stories built around those are better posted live. If you only post to Instagram and Facebook, Meta Business Suite is free.
 
-Rosa writes each post once for Instagram, Facebook and her other accounts:
+Rosa schedules each Story as a single 9:16 image:
 
-![Writing one post for Instagram and other platforms in the Schedule For You composer](/images/blog/composer-four-platforms-1440x900.webp)
+![Scheduling an Instagram Story in the Schedule For You composer, ready to add to a highlight once it goes live](/images/blog/composer-instagram-story-1440x900.webp)
 
 And her month of posts sits on one calendar:
 
 ![A month of scheduled Instagram posts on the Schedule For You calendar](/images/blog/calendar-month-1440x900.webp)
 
-See [how to schedule Instagram posts](/blog/how-to-schedule-instagram-posts) for every method.
+See [how to schedule Instagram and Facebook Stories](/blog/schedule-instagram-and-facebook-stories) and [how to schedule Instagram posts](/blog/how-to-schedule-instagram-posts) for every method.
 
 ## What to Do Next
 
 1. **Turn on Save story to archive** if it's off.
 2. **Pick 4 to 6 highlight names** that answer your visitors' first questions.
 3. **Make a matching set of covers** at 1080 × 1920.
-4. **Add new stories as they go live**, and prune old ones every few months.
+4. **Add new stories as they go live**, including scheduled ones, and prune old ones every few months.
 
 - ✓ Short names, simple covers
 - ✓ Close Friends for stories you only want in a highlight

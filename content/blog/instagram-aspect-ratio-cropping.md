@@ -26,6 +26,7 @@ This guide covers the sizes to use, why each crop happens, how to fix a rejected
 | Square feed post | 1:1 | 1080×1080 | Safe default; fits the grid with little cropping |
 | Landscape feed post | 1.91:1 | 1080×566 | Widest shape allowed; looks small in the feed |
 | Reels | 9:16 | 1080×1920 | Full-screen vertical video |
+| Stories | 9:16 | 1080×1920 | Full-screen; Schedule For You publishes them as one image or video with no caption |
 | Profile grid thumbnail | 3:4 | Displayed crop | The grid shows a 3:4 crop of each post |
 
 All of these values are correct at the time of writing. Instagram adjusts its formats from time to time, so check the [Instagram Help Center](https://help.instagram.com) if something looks different.

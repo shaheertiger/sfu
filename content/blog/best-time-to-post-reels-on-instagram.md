@@ -109,7 +109,7 @@ Because the first viewers matter so much, some people try to fake them: engageme
 
 ## Hit the Best Time Every Time Without an Alarm
 
-![The Schedule For You composer with Instagram, X, Bluesky and LinkedIn selected and a Reel format option for Instagram](/images/blog/composer-four-platforms-1440x900.webp)
+![The Schedule For You composer with Instagram, X, Bluesky and LinkedIn selected and a choice of Post, Reel or Story format](/images/blog/composer-four-platforms-1440x900.webp)
 
 Knowing the window is half the job. Being free at 7 PM on a Wednesday is the other half.
 

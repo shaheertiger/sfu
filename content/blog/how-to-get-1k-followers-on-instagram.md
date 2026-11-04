@@ -160,10 +160,10 @@ The queue then shows the week ahead, so Sam can spend the rest of the week engag
 | Posting slots you set once | No | No | Yes |
 | Post to TikTok and YouTube too | No | No | Yes |
 | Insights and follower counts | Yes | Yes | No, use Instagram Insights |
-| Stories | Yes | Yes | No |
+| Stories | Yes | Yes | Yes, one image or video with no caption or stickers |
 | Cost | Free | Free | Free for 3 accounts and 10 scheduled posts at a time, no card |
 
-Where we're not the best fit: Schedule For You can't grow followers for you, doesn't read your Insights and doesn't publish Instagram Stories. If you only post to Instagram and Facebook, Meta Business Suite is free and covers scheduling. Our tool helps most when you post the same content to several platforms. It needs an Instagram Business or Creator account linked to a Facebook Page.
+Where we're not the best fit: Schedule For You can't grow followers for you and doesn't read your Insights. Stories that need polls, question stickers or music are still best shared live in the app. If you only post to Instagram and Facebook, Meta Business Suite is free and covers scheduling. Our tool helps most when you post the same content to several platforms. It needs an Instagram Business or Creator account linked to a Facebook Page.
 
 ## What to Do Next
 

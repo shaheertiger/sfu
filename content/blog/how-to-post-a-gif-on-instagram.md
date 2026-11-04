@@ -110,7 +110,7 @@ GIPHY stickers in Stories, comments and DMs are built into Instagram. Downloadin
 
 ## Schedule a GIF Post Across Platforms
 
-![The Schedule For You composer with Instagram, X, Bluesky and LinkedIn selected and a Reel format option for Instagram](/images/blog/composer-four-platforms-1440x900.webp)
+![The Schedule For You composer with Instagram, X, Bluesky and LinkedIn selected and a choice of Post, Reel or Story format](/images/blog/composer-four-platforms-1440x900.webp)
 
 Once the GIF is an MP4 it's an ordinary video, so it can be scheduled like any other. Instagram's app schedules Reels for professional accounts.
 
@@ -123,10 +123,11 @@ In Schedule For You, Priya attaches the converted video for Instagram, Facebook,
 | Post a converted GIF as a Reel | Yes | Yes | Yes |
 | Keep a true GIF on X | No | No | Yes, up to 15 MB |
 | X, Threads, TikTok and Bluesky too | Separate apps | No | Yes, from one composer |
-| GIPHY stickers in Stories | Yes | No | No, add them in the app |
+| Post the converted GIF as a Story | Yes | Yes | Yes, as one 9:16 video with no caption |
+| GIPHY stickers in Stories | Yes | No | No, Meta's API doesn't offer stickers |
 | Cost | Free | Free | Free plan for 3 accounts and 10 scheduled posts, no card. Paid plans from $19 a month |
 
-Where we're not the best fit: Stories with GIF stickers are made in Instagram's app, and if you only post to Instagram and Facebook, Meta Business Suite is free. Priya's four accounts are one over the Free plan's three.
+Where we're not the best fit: Stories with GIPHY stickers, polls or music are made in Instagram's app, because Meta's API doesn't offer them, and if you only post to Instagram and Facebook, Meta Business Suite is free. Priya's four accounts are one over the Free plan's three.
 
 ![The Schedule For You calendar with a month of scheduled posts across platforms](/images/blog/calendar-month-1440x900.webp)
 

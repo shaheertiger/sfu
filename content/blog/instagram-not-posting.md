@@ -163,10 +163,10 @@ Once the cause is fixed:
 | Tells you a post failed | In the app, if you're watching | Varies | Email and in the queue, with the reason |
 | Shows which connection expired | Not applicable | Varies | Yes, on the Accounts screen |
 | Crops images for you | Yes | Varies | No, export at Instagram sizes |
-| Instagram Stories | Yes | Yes | No |
+| Instagram Stories | Yes | Yes | Yes, one 9:16 image or video, no caption or stickers |
 | Cost | Free | Free | Free for 3 accounts and 10 scheduled posts at a time, no card |
 
-Where we're not the best fit: Schedule For You can't fix a restricted account, doesn't crop images, and doesn't publish Instagram Stories or first comments on Instagram. If you only post to Instagram and Facebook now and then, posting in the app or Meta Business Suite avoids connection issues altogether. The daily digest email is worth keeping on: checked each morning alongside your alerts, it means a broken connection doesn't quietly cost you several days of posts.
+Where we're not the best fit: Schedule For You can't fix a restricted account, and doesn't crop images. Stories go out as one 9:16 image or video with no caption, so a Story image in the wrong shape needs resizing too. If you only post to Instagram and Facebook now and then, posting in the app or Meta Business Suite avoids connection issues altogether. The daily digest email is worth keeping on: checked each morning alongside your alerts, it means a broken connection doesn't quietly cost you several days of posts.
 
 ## How to Stop Instagram Posts Failing in the Future
 

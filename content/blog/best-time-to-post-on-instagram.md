@@ -130,7 +130,7 @@ Reels and feed posts behave differently, so test them separately.
 
 **Reels** can be recommended to people who don't follow you, so they aren't limited to your followers' peak hours. Early reactions from followers still help a Reel get going. See the [best time to post Reels on Instagram](/blog/best-time-to-post-reels-on-instagram) for a Reels-only test.
 
-**Stories** last 24 hours, so exact timing matters less. Post a few spread through the day so they're near the front of the Stories bar when followers open the app.
+**Stories** last 24 hours, so exact timing matters less. Post a few spread through the day so they're near the front of the Stories bar when followers open the app. You can schedule them too: in Schedule For You a Story goes out as one 9:16 image or video with no caption, so add stickers, polls or music in the app instead.
 
 ## A 4-Week Testing Plan That Finds Your Real Best Time
 
@@ -161,12 +161,13 @@ Scheduling the whole test on Sunday evening takes her about 30 minutes, and ever
 | | Posting live from the app | Meta Business Suite | Schedule For You |
 |---|---|---|---|
 | Schedule Instagram feed posts, Reels and carousels | No, you post at that moment | Yes | Yes, carousels of up to 10 photos or videos |
+| Schedule Stories | No | Yes | Yes, one image or video, no caption or stickers |
 | Reusable posting slots (for example, 7 a.m. weekdays) | No | No | Yes |
 | Other platforms from the same post | No | Facebook only | TikTok, X, LinkedIn, Threads, YouTube and more |
 | Shows when your followers are online | Yes, in Insights | Yes | No, use Instagram Insights |
 | Cost | Free | Free | Free plan for 3 accounts and 10 scheduled posts, no card. Paid plans from $19 a month |
 
-Where we're not the best fit: if you only post to Instagram and Facebook, Meta Business Suite is free and shows your audience data in the same place. Schedule For You doesn't read Insights, so you still find your best time in Instagram, and it doesn't schedule Instagram Stories.
+Where we're not the best fit: if you only post to Instagram and Facebook, Meta Business Suite is free and shows your audience data in the same place. Schedule For You doesn't read Insights, so you still find your best time in Instagram.
 
 In Schedule For You, Priya sets her test windows as posting slots once. New posts drop into the next open slot, so the test runs itself:
 

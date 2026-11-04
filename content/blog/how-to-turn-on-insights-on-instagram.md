@@ -181,7 +181,7 @@ Her Instagram connects as a Business account linked to a Facebook Page, alongsid
 | Other platforms from the same post | No | Facebook | Yes, including TikTok, YouTube and Threads |
 | Cost | Free | Free | Free for 3 accounts and 10 scheduled posts at a time, no card |
 
-Where we're not the best fit: Schedule For You doesn't show Insights, reach or follower stats, so you'll still read those in Instagram. If you only post to Instagram and Facebook, Meta Business Suite schedules for free. It also doesn't publish Instagram Stories. It's most useful when the same post goes to several platforms.
+Where we're not the best fit: Schedule For You doesn't show Insights, reach or follower stats, so you'll still read those in Instagram. If you only post to Instagram and Facebook, Meta Business Suite schedules for free. Stories it publishes go out as one image or video with no caption, so stickers and polls still need the app. It's most useful when the same post goes to several platforms.
 
 ## What to Do Next
 

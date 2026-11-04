@@ -154,20 +154,21 @@ Blurry Stories are often a symptom of a messy media workflow: the same image for
 
 Take Zoe, who runs social for a boutique and posts the same product visual as an Instagram Story, a feed post, a Reel and a TikTok each week. Her designer sends files over WhatsApp, so every version starts compressed. Re-requesting originals and resizing each one takes about an hour a week.
 
-Now Zoe keeps one master file per format, correctly sized, in a shared media library. The Story she posts in the Instagram app starts from the clean 1080×1920 file, and the feed post, Reel and TikTok versions are scheduled from the same library in Schedule For You.
+Now Zoe keeps one master file per format, correctly sized, in a shared media library. In Schedule For You she schedules the Story from the clean 1080×1920 file, alongside the feed post, Reel and TikTok versions from the same library. Stories go out as one image or video, with no caption.
 
 | | Instagram app | Schedule For You |
 | --- | --- | --- |
-| Post Instagram Stories | Yes | No, post Stories in the app |
+| Post Instagram Stories | Yes | Yes, one 9:16 image or video, no caption |
+| Stickers, polls and music on Stories | Yes | No, Meta's API doesn't offer them |
 | Highest-quality upload setting | Yes, in Settings | Uploads the file you provide |
 | Feed posts, Reels and carousels | Yes | Yes |
 | TikTok, X, LinkedIn and others | No | Yes, from one composer |
 | Media library of clean originals | Your camera roll | Yes |
 | Cost | Free | Free plan for 3 accounts and 10 scheduled posts, no card. Paid plans from $19 a month |
 
-Where we're not the best fit: Schedule For You doesn't publish Instagram Stories, so Stories are best posted and checked in the Instagram app. We help with the feed posts, Reels and other platforms that use the same visuals.
+Where we're not the best fit: if your Story needs stickers, a poll, music or text added in Instagram's editor, post it from the app, because Meta's API doesn't offer those. Either way, check the Story on your phone after it goes live.
 
-![The Schedule For You calendar with a month of scheduled feed posts and Reels across platforms](/images/blog/calendar-month-1440x900.webp)
+![The Schedule For You composer set up to post an Instagram Story in the 9:16 format](/images/blog/composer-instagram-story-1440x900.webp)
 
 ## What to Do Next
 

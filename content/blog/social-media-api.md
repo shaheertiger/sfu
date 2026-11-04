@@ -189,7 +189,7 @@ curl -X POST https://scheduleforyou.com/api/v1/posts \
       { "account_id": "acc_c0a85f3e17d94b26", "caption": "Version 4.2 is out.\n\nThree things customers asked for most: bulk editing, search that is twice as fast, and dark mode for reports.\n\nFull notes: https://example.com/4-2" },
       { "account_id": "acc_2e6b0c41d7f93a58" },
       { "account_id": "acc_5a8d3f61b0c27e94" },
-      { "account_id": "acc_91f4a7c2e05b3d16" }
+      { "account_id": "acc_91f4a7c2e05b3d16", "options": { "first_comment": "Release notes: https://example.com/4-2" } }
     ],
     "media": ["med_a41c7e2093bd5f18"],
     "scheduled_at": "2026-11-03T14:00:00Z",
@@ -197,7 +197,7 @@ curl -X POST https://scheduleforyou.com/api/v1/posts \
   }'
 ```
 
-Here the five IDs are the X, LinkedIn, Bluesky, Threads and Instagram accounts from step 1. Bluesky and Threads use the main caption; X gets a shorter one, LinkedIn a longer one, and the link goes in a first comment on X.
+Here the five IDs are the X, LinkedIn, Bluesky, Threads and Instagram accounts from step 1. Bluesky and Threads use the main caption; X gets a shorter one, LinkedIn a longer one, and the link goes in a first comment on X and Instagram.
 
 Before anything is saved, every target is checked against its platform's rules. If the X caption runs long or the Instagram target has no image, you get a `422` with an `errors` list such as `X / Twitter (@yourapp): 312/280 characters`, and nothing is scheduled. That replaces a failure at 9 a.m. with an error in your build log. Use `publish_now: true` instead of `scheduled_at` to post straight away, and `repeat` or `evergreen` for recurring posts.
 

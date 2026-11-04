@@ -158,7 +158,7 @@ Then she checks the week on the calendar and drags a post if a day gets crowded:
 | Inbox for comments and DMs | In each app | Often yes | No |
 | Cost | Free | Usually the highest | Free for 3 accounts and 10 scheduled posts at a time, no card. Solo $19/month, Studio $59/month |
 
-Where we're not the best fit: if you post to one platform, its native scheduler is free and does everything. If you need analytics reports for sponsors or a shared inbox for comments, a suite does that and we don't. Schedule For You doesn't publish Instagram Stories, and it doesn't post to Discord, Telegram, Reddit, Slack or Snapchat.
+Where we're not the best fit: if you post to one platform, its native scheduler is free and does everything. If you need analytics reports for sponsors or a shared inbox for comments, a suite does that and we don't. Instagram and Facebook Stories go out as one image or video with no caption, so stickers, polls and music still need the app. And it doesn't post to Discord, Telegram, Reddit, Slack or Snapchat.
 
 What Schedule For You does: it publishes to X, Bluesky, Instagram, LinkedIn (personal profiles), Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile. A single video can go out as an Instagram Reel, a TikTok (with privacy set per post) and a YouTube upload. The Free plan includes the composer, per-platform captions, the queue with posting slots, the calendar and failed-post alerts, and adds a link back to us on posts. Solo and Studio add unlimited scheduling, bulk scheduling from a CSV, repeating and evergreen posts, and approvals, with a 7-day trial that needs a card. Compare plans on the [pricing page](/pricing).
 
@@ -181,7 +181,7 @@ There's no official statement from Instagram or TikTok that posts published thro
 
 ### Can a scheduler post Instagram Stories?
 
-Some tools can, some only send reminders, and some don't support Stories at all. Schedule For You doesn't publish Instagram Stories, so you'd post those in the app.
+Some tools can, some only send reminders, and some don't support Stories at all. Schedule For You posts Instagram and Facebook Stories directly: one image or video per Story (9:16), with no caption, so stickers, polls and music still need the app.
 
 ### What matters more for creators: analytics or scheduling?
 
