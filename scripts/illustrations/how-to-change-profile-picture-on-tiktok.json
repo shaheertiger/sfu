@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "Change your TikTok picture **in 6 taps**", "sub": "Profile, Edit profile, Change photo, then crop and save. Here’s why it can look like it didn’t work.", "chips": ["iPhone and Android", "Web", "Best size", "Fixes"] },
+    { "name": "what-works", "type": "versus", "kicker": "Fingertip size", "title": "What still reads **at tiny sizes**", "left": { "label": "Works", "tone": "good", "items": ["A close-up of your face", "A simple logo mark", "A bright, plain background"] }, "right": { "label": "Gets lost", "tone": "bad", "items": ["Group photos", "Long wordmarks", "Subjects near the corners"] } },
+    { "name": "steps", "type": "steps", "kicker": "In the app", "title": "Profile → Edit profile → **Change photo**", "steps": [ { "title": "Open Edit profile", "text": "Tap Profile, then Edit profile." }, { "title": "Pick a photo", "text": "Take one or upload one." }, { "title": "Center and save", "text": "Keep it away from the edges.", "highlight": true } ] },
+    { "name": "size", "type": "checklist", "kicker": "Size and format", "title": "Settings that **stay sharp**", "good": { "label": "Use", "items": ["A square image", "400 × 400 px or larger", "JPG or PNG"] }, "bad": { "label": "Avoid", "items": ["Images under 200 × 200 px", "GIFs", "Screenshots of screenshots"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Use a centered square of 400 px or more, then **give TikTok time to update it.**", "by": "Followers aren’t notified, and the old picture can linger for others for a while." }
+  ]
+}

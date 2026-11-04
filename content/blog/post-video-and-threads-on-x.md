@@ -1,17 +1,26 @@
 ---
-title: How Do I Post a Video to Twitter (X)? Videos and Threads
-description: How do I post a video to Twitter? Step-by-step for the X app, web and Schedule For You, plus what to do when you want to schedule a thread on X or Threads.
-h1: How Do I Post a Video to Twitter (X)? Plus How to Handle Threads
+title: "How Do I Post a Video to Twitter (X)? 6 Taps, Plus Scheduled Threads"
+description: How do I post a video to Twitter? Step-by-step for the X app, the web and a scheduler, plus how to schedule a full thread on X, Threads or Bluesky.
+h1: "How Do I Post a Video to Twitter (X)? 6 Taps in the App, Plus How to Schedule a Whole Thread"
 category: Guides
 excerpt: Post a video on X from the app or web in a few taps, or schedule it ahead. Here's how, plus how to schedule a whole thread on X, Threads or Bluesky.
 keyword: how do i post a video to twitter
 date: 2026-10-23
+updated: 2026-11-04
 ---
-If you're asking "how do I post a video to Twitter," the short answer is: open the composer on X (formerly Twitter), tap the media icon, choose your video, add your text and tap Post. On the web it works the same way from the box at the top of your home timeline. If you'd rather publish the video later, a scheduler can send it at a set time, with one video per post.
+You've got a clip ready and want it on X without it getting stuck, cropped or rejected. Open the composer on X (formerly Twitter), tap the media icon, choose your video, add your text and tap **Post**. On the web it works the same way from the box at the top of your home timeline.
 
-This guide covers posting a video on X in the app, on the web and with Schedule For You, then explains what you can and can't schedule when it comes to threads on X and Threads.
+![How to post a video to Twitter (X): compose, tap the media icon, pick the video and post](/images/blog/post-video-and-threads-on-x-hero-1200x675.webp)
 
-## Posting a video on X at a glance
+The parts that trip people up are the limits: one video per post, no mixing with images, and a length cap that depends on your account. And if you want the video out later, or as the start of a thread, you need to plan for that too.
+
+This guide covers posting a video on X in the app, on the web and with a scheduler, then how to schedule a full thread on X, Threads or Bluesky.
+
+## X Video Limits: Why Your Upload Gets Rejected
+
+At the time of writing, most X accounts can upload videos of up to 2 minutes and 20 seconds, and Premium subscribers can upload longer ones. MP4 or MOV files with H.264 video and AAC audio are the safest choice.
+
+![What X accepts in a video post compared with what gets rejected](/images/blog/post-video-and-threads-on-x-limits-1200x675.webp)
 
 | | X app or web | Schedule For You |
 |---|---|---|
@@ -21,56 +30,88 @@ This guide covers posting a video on X in the app, on the web and with Schedule 
 | Schedule for later | Check the composer's options for your account | Yes, at a set time or in your queue |
 | Multi-post threads | Yes, by hand | Yes, scheduled: parts separated by `---`, up to 25 |
 
-At the time of writing, most X accounts can upload videos of up to 2 minutes and 20 seconds, and Premium subscribers can upload longer ones. MP4 or MOV files with H.264 video and AAC audio are the safest choice. Limits change, so check [X's help center](https://help.x.com) if a video is rejected for its length or size.
+### What Most People Don't Know
 
-## How to post a video on X in the app
+Long posts and long videos with Premium only apply inside the X app. Anything posted through X's API, which is what schedulers use, follows the standard limits for text. Limits change, so check [X's help center](https://help.x.com) if a video is rejected for its length or size.
 
-1. **Open the X app** and tap the compose button (the plus or feather icon).
-2. **Tap the media icon** below the text box to open your camera roll.
-3. **Choose your video**, or record one with the camera.
-4. **Trim if needed.** X shows an editor where you can shorten the clip before posting.
-5. **Write your text.** Keep the hook in the first line so it shows above the video in the timeline.
-6. **Tap Post.** The video uploads and processes; on a slow connection, keep the app open until it finishes.
-
-## How to post a video on X from a computer
-
-1. Go to x.com and sign in.
-2. Click in the "What's happening?" box at the top of your home timeline, or use the Post button in the side menu.
-3. Click the media icon and select the video file from your computer.
-4. Write your text, check the preview, and click Post.
-
-The web composer is handy for videos edited on a computer, since you don't have to move the file to your phone first.
-
-## How to schedule a video on X with Schedule For You
-
-A scheduler is useful when the video is ready now but should go out later, or when you want the same clip on several platforms at once.
-
-1. **Create a new post** and select your X account.
-2. **Upload the video** or pick it from your media library. X takes one video per post, so don't add images alongside it.
-3. **Write the X version of the caption.** The composer checks the 280-character limit as you type. Use our [X character counter](/tools/x-character-counter) if you want to test wording first: it counts links as 23 characters and most emoji as 2, the way X does.
-4. **Add other platforms if you like.** The same video can go to TikTok, YouTube, Threads or as an Instagram Reel, each with its own caption version.
-5. **Pick a time or add it to your queue**, then schedule.
-
-If a platform rejects the post, you'll get a failed-post alert so you can fix it and retry. For a broader look at sending one post to several networks, see [how to cross-post to multiple platforms](/blog/how-to-cross-post-to-multiple-platforms).
+> **Key point:** One video, no images, within your account's length limit, as an MP4. Get those four right and almost every upload goes through.
 
 <!-- cta -->
 
-### Tips for videos that work on X
+## How to Post a Video on X in the App (6 Steps)
 
-- **Lead with motion.** Many people scroll with sound off, so the first second should be visual, not a title card.
-- **Add on-screen captions** so the video makes sense on mute.
-- **Pick the frame.** Square or vertical videos take up more space in the mobile timeline than wide ones.
-- **Keep the text short.** One clear line that tells people why to watch is enough.
+Menu labels change between app versions, so yours may differ slightly.
 
-## Can you schedule a thread on X?
+![Six steps to post a video on X from the app](/images/blog/post-video-and-threads-on-x-app-steps-1200x675.webp)
 
-You can write and post a thread on X by hand: write the first post, tap the plus button to add the next one, repeat, then post them all together. Scheduling a full thread is a different question.
+### Step 1: Open the X App and Tap Compose
 
-Schedule For You can schedule a whole thread. Write the parts in one caption and put a line with only `---` between them; each part goes out as a reply to the one before, media goes on the first post, and the composer checks every part against X's limit. Up to 25 parts. The same works for Threads and Bluesky.
+The compose button is the plus or feather icon.
 
-## Threads thread scheduling
+### Step 2: Tap the Media Icon
 
-Threads, Meta's text-first app, works the same way: separate the parts with `---` and each one goes out as a reply to the one before. Here's what a Threads post can include through Schedule For You:
+It's below the text box and opens your camera roll.
+
+### Step 3: Choose Your Video
+
+Or record one with the camera.
+
+### Step 4: Trim If Needed
+
+X shows an editor where you can shorten the clip before posting.
+
+### Step 5: Write a One-Line Hook
+
+Keep the hook in the first line so it shows above the video in the timeline.
+
+### Step 6: Tap Post and Keep the App Open
+
+The video uploads and processes. On a slow connection, closing the app too early is the step that most often kills an upload.
+
+> **Pro tip:** Many people scroll with sound off, so make the first second visual, not a title card, and add on-screen captions so the video makes sense on mute.
+
+## How to Post a Video on X From a Computer
+
+1. Go to x.com and sign in.
+2. Click in the "What's happening?" box at the top of your home timeline, or use the Post button in the side menu.
+3. Click the media icon and select the video file.
+4. Write your text, check the preview, and click **Post**.
+
+The web composer is handy for videos edited on a computer, since you don't have to move the file to your phone first.
+
+### Why Won't X Let Me Upload My Video?
+
+| Problem | Fix | Why it works |
+|---|---|---|
+| "Video too long" | Trim it, or check your account's limit | Most accounts cap at 2:20 at the time of writing |
+| File rejected | Export as MP4 with H.264 video and AAC audio | The safest format for X |
+| Can't add images too | Post the images separately | One video per post, no mixing |
+| Upload stalls | Keep the app open on a stable connection | Processing stops if the app closes |
+
+### 4 Tips for Videos That Work on X
+
+- **Lead with motion.** The first second decides whether people stop.
+- **Add on-screen captions.** Most people watch on mute.
+- **Pick the frame.** Square or vertical videos take up more of the mobile timeline than wide ones.
+- **Keep the text short.** One line that says why to watch is enough.
+
+## Can You Schedule a Thread on X? Yes, With `---`
+
+You can write a thread on X by hand: write the first post, tap the plus button to add the next one, repeat, then post them all together. Scheduling the whole thread for later is where a scheduler helps.
+
+![How a scheduled thread works: write the parts in one caption, separate them with three dashes, and each part posts as a reply](/images/blog/post-video-and-threads-on-x-thread-steps-1200x675.webp)
+
+In Schedule For You, write the parts in one caption and put a line with only `---` between them. Each part goes out as a reply to the one before, media goes on the first post, and the composer checks every part against the platform's limit. Up to 25 parts. The same works on Threads and Bluesky.
+
+```
+A 60-second tour of our new studio. Thread 👇
+---
+1/ The front room is now a shop: everything on the walls is for sale.
+---
+2/ The back room is where we film. Same light every day, finally.
+```
+
+### Threads (Meta) Thread Scheduling
 
 | Threads post type | Supported |
 |---|---|
@@ -81,52 +122,85 @@ Threads, Meta's text-first app, works the same way: separate the parts with `---
 
 The 500-character limit gives you nearly twice the room of a standard X post, which is often enough for an idea you'd otherwise split into two or three posts.
 
-## Alternatives to a thread
+## 5 Alternatives to a Thread
 
-A thread isn't always the best format. A few options, depending on the idea:
+1. **Schedule the thread, then reply in person.** The timing is right, and you're there to answer. Reminder emails before posts help.
+2. **Turn it into slides.** A thread is often a list in disguise: up to 10 items as a carousel on Threads, or four images on X.
+3. **Rewrite it as one longer post.** On Threads, 500 characters fits a tight version of many short threads. On X, Premium subscribers can write long posts in the app itself (up to 25,000 characters at the time of writing), though scheduled X posts stay within 280.
+4. **Spread the points across your queue.** If each point stands alone, post them over several days.
+5. **Post it by hand.** If it reacts to something happening right now, the app is simplest.
 
-### Schedule the thread, then reply in person
+## Scheduling a Video Thread to X, Threads and Bluesky at Once
 
-Schedule the whole thread so the timing is right, then be around when it publishes to answer replies. Reminder emails before posts help you be ready at the right moment.
+Take Omar, who runs a small bike repair shop. Every Wednesday he posts a 60-second repair clip to X with a three-part thread of tips underneath, and the same thread on Threads and Bluesky. Doing it live means being on his phone at noon, mid-repair, three times over.
 
-### Turn the thread into slides
+![Writing one video post with a version for X, Threads and Bluesky in the Schedule For You composer](/images/blog/composer-four-platforms-1440x900.webp)
 
-A thread is often a list in disguise. Design each point as an image and publish them together: up to 10 items as a carousel on Threads, or up to four images on X. One post with slides is easier to share and save than a long chain.
+1. **Create a new post** and select X, Threads and Bluesky.
+2. **Upload the video** or pick it from the media library. Don't add images alongside it on X.
+3. **Write the thread** with `---` between parts. The composer checks each part against 280 characters for X, 500 for Threads and 300 for Bluesky. Our [X character counter](/tools/x-character-counter) counts links as 23 characters and most emoji as 2, the way X does.
+4. **Adjust each platform's version** if the wording should differ.
+5. **Pick a time or add it to your queue**, then schedule.
 
-### Rewrite it as one longer post
+If a platform rejects the post, you'll get a failed-post alert so you can fix it and retry.
 
-On Threads, 500 characters is enough for a tight version of many short threads. On X, Premium subscribers can write long posts in the X app itself (up to 25,000 characters at the time of writing), though scheduled X posts in Schedule For You stay within the standard 280.
+![The Schedule For You queue with weekly video posts lined up](/images/blog/queue-1440x900.webp)
 
-### Spread the points across your queue
+| | X app | Other schedulers | Schedule For You |
+|---|---|---|---|
+| Schedule a video | Check your account's options | Most do | Yes |
+| Schedule a whole thread | No | Varies | Yes, up to 25 parts |
+| Same thread on Threads and Bluesky | No | Varies | Yes, limits checked per platform |
+| Long posts over 280 characters | With Premium | Usually no | No, scheduled X posts stay within 280 |
+| Cost | Free | Varies | Free: 3 accounts, 10 scheduled posts at a time, no card |
 
-If each point can stand alone, turn the thread into a series of separate posts and add them to your queue over several days. You get more chances to reach people, and each post can be reshared on its own.
+Where we're not the best fit: if you write Premium long posts on X, or your thread reacts to breaking news, post it in the app. For more, see [how to schedule tweets](/blog/how-to-schedule-tweets) and [how to cross-post to multiple platforms](/blog/how-to-cross-post-to-multiple-platforms).
 
-### Post the full thread by hand
+## What to Do Next
 
-If the thread reacts to something happening right now, writing it in the app in the moment is still the simplest option.
+- ✓ Export your video as MP4 (H.264 + AAC), within your length limit.
+- ✓ Write a one-line hook and add on-screen captions.
+- ✓ For threads, separate parts with `---` and put the video on the first one.
+- ✗ Don't add images to a video post on X.
+- ✗ Don't close the app while the upload processes.
 
-## Frequently asked questions
+## Frequently Asked Questions
 
 ### How do I post a video to Twitter from my phone?
 
-Open the X app, tap the compose button, tap the media icon and choose your video. Trim it if needed, write your text and tap Post. Keep the app open until the upload finishes.
+Open the X app, tap compose, tap the media icon and choose your video. Trim it if needed, write your text and tap Post, keeping the app open until the upload finishes.
 
 ### Why won't X let me upload my video?
 
-The most common reasons are a video that's too long for your account, a file that's too large, or an unsupported format. Export as MP4 with H.264 video and AAC audio, keep it within your account's length limit, and try again on a stable connection.
+Usually the video is too long for your account, the file is too large, or the format isn't supported. Export as MP4 with H.264 video and AAC audio, keep within your length limit and try again on a stable connection.
 
 ### Can I post more than one video in a single post on X?
 
-No. X allows one video per post, and you can't mix a video with images. If you have several clips, combine them in an editor first or post them separately.
+No. X allows one video per post, and you can't mix a video with images. Combine clips in an editor first, or post them separately.
 
 ### Can I schedule a thread on X with Schedule For You?
 
-Yes. Separate the parts with a line holding only `---` and Schedule For You publishes them as a thread at the scheduled time, each part as a reply to the one before. It works on X, Threads and Bluesky, up to 25 parts.
+Yes, separate the parts with a line holding only `---` and they publish as a thread at the scheduled time, each part replying to the one before. It works on X, Threads and Bluesky, up to 25 parts.
 
 ### Can I post the same video to X and Threads at once?
 
-Yes. In Schedule For You, select both accounts in one post, attach the video and write a caption version for each platform: up to 280 characters for X and 500 for Threads.
+Yes, select both accounts in one post, attach the video and write a version for each platform: up to 280 characters for X and 500 for Threads.
 
 ### How long can a video on X be?
 
-At the time of writing, most accounts can post videos of up to 2 minutes and 20 seconds, and Premium subscribers can post longer videos. X changes these limits from time to time, so check its help center for the current numbers.
+At the time of writing, most accounts can post videos of up to 2 minutes and 20 seconds, and Premium subscribers can post longer ones. X changes these limits, so check its help center.
+
+### Does scheduling a thread hurt its reach?
+
+There's no good evidence that it does when you schedule your own posts through official APIs. See [do scheduled posts get less views](/blog/do-scheduled-posts-get-less-views).
+
+## The Bottom Line
+
+![Post one MP4 video per X post, and schedule threads by separating parts with three dashes](/images/blog/post-video-and-threads-on-x-bottom-line-1200x675.webp)
+
+- **App:** compose, media icon, video, hook, Post.
+- **Web:** the same, from the box on your home timeline.
+- **Limits:** one video, no images, about 2:20 for most accounts.
+- **Threads:** schedule them with `---` between parts, up to 25.
+
+Try our free [X character counter](/tools/x-character-counter), [X bio generator](/tools/x-bio-generator) and [shadowban checker](/tools/shadowban-checker). Next up: [how to schedule tweets](/blog/how-to-schedule-tweets).

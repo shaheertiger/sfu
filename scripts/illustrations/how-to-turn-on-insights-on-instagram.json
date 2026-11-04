@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Instagram guide", "title": "Instagram Insights: **no switch needed**", "sub": "Switch to a Creator or Business account, and Insights turn on from that day.", "chips": ["Professional account", "Creator or Business", "Free", "Data starts now"] },
+    { "name": "why", "type": "versus", "kicker": "Why there’s no toggle", "title": "Personal vs **professional accounts**", "left": { "label": "Personal", "tone": "bad", "items": ["No Insights", "No Professional dashboard", "No stats under posts"] }, "right": { "label": "Creator or Business", "tone": "good", "items": ["Professional dashboard", "View insights on each post", "Free to switch"] } },
+    { "name": "steps", "type": "steps", "kicker": "How to switch", "title": "Turn on Insights **in a few taps**", "steps": [ { "title": "Profile menu", "text": "Settings and activity." }, { "title": "Account type", "text": "Search “professional” if it moved.", "highlight": true }, { "title": "Switch", "text": "Pick a category." }, { "title": "Creator or Business", "text": "Then tap Done." } ] },
+    { "name": "metrics", "type": "checklist", "kicker": "What you get", "title": "5 groups of **Instagram metrics**", "good": { "label": "Content", "items": ["Views and accounts reached", "Likes, saves and shares", "Reels watch time"] }, "bad": { "label": "Audience", "items": ["Follower growth", "Locations and ages", "Most active times"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Insights start the day you switch. **So switch early.**", "by": "Posts from your personal-account days usually won’t show stats." }
+  ]
+}

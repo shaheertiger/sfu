@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Instagram guide", "title": "Schedule Instagram posts: **3 ways**", "sub": "The app’s hidden scheduler, Meta Business Suite, or one scheduler for every platform.", "chips": ["Instagram app", "Meta Business Suite", "Cross-platform scheduler"] },
+    { "name": "methods", "type": "bars", "kicker": "Methods compared", "title": "How many **platforms** each one covers", "rows": [ { "label": "Instagram app", "value": 10, "note": "Instagram only" }, { "label": "Business Suite", "value": 20, "note": "+ Facebook" }, { "label": "Schedule For You", "value": 100, "note": "10 platforms" } ] },
+    { "name": "app-steps", "type": "steps", "kicker": "Method 1 · the app", "title": "Schedule in the app in **4 moves**", "steps": [ { "title": "Create the post", "text": "Tap +, choose Post or Reel." }, { "title": "Write the caption", "text": "Then scroll down." }, { "title": "Advanced settings", "text": "Turn on Schedule this post.", "highlight": true }, { "title": "Tap Schedule", "text": "Where Share used to be." } ] },
+    { "name": "caution", "type": "checklist", "kicker": "Use with caution", "title": "Safe ways to schedule, and **what to avoid**", "good": { "label": "Safe", "items": ["Instagram’s own scheduler", "Meta Business Suite", "Tools that use Meta’s login"] }, "bad": { "label": "Avoid", "items": ["Apps that ask for your password", "Unofficial auto-posters", "Unknown connected apps"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Start with the free tool that covers your platforms. **Add a scheduler when one idea goes everywhere.**", "by": "Never give any app your Instagram password." }
+  ]
+}

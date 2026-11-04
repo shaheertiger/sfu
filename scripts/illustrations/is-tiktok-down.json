@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok guide", "title": "Is TikTok down, **or is it just you?**", "sub": "Check an outage tracker first. No spike in reports? The fix is on your phone.", "chips": ["5 quick checks", "7 fixes", "Clear cache", "Save drafts first"] },
+    { "name": "everyone-vs-you", "type": "versus", "kicker": "5 quick checks", "title": "Down for everyone vs **just your phone**", "left": { "label": "TikTok is down", "tone": "bad", "items": ["Spike on Downdetector", "Lots of “TikTok down” posts", "Website fails too"] }, "right": { "label": "It’s just you", "tone": "neutral", "items": ["Trackers are quiet", "Website works, app doesn’t", "Works on the other network"] } },
+    { "name": "fixes", "type": "steps", "kicker": "Fixes, in order", "title": "Most problems end **by step 3**", "steps": [ { "title": "Restart app", "text": "Swipe it away, reopen." }, { "title": "Connection", "text": "Wi-Fi vs data, VPN off." }, { "title": "Update", "text": "App Store or Google Play.", "highlight": true }, { "title": "Clear cache", "text": "Before any reinstall." } ] },
+    { "name": "caution", "type": "checklist", "kicker": "Use with caution", "title": "Safe fixes vs **risky “fixer” apps**", "good": { "label": "Safe", "items": ["Official app stores only", "TikTok’s own cache button", "Waiting out an outage"] }, "bad": { "label": "Risky", "items": ["Modded or unofficial apps", "“Cleaner” and “fixer” apps", "Logging in via third parties"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Check a tracker first. **Reinstall last, and save drafts before you do.**", "by": "If reports spike, nothing on your phone will fix it." }
+  ]
+}

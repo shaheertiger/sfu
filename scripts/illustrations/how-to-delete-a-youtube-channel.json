@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "YouTube guide", "title": "Delete or **hide** a YouTube channel", "sub": "Settings → Channel → Advanced settings → Remove YouTube content. Hiding can be undone.", "chips": ["Hide or delete", "Desktop steps", "Brand Accounts", "Save first"] },
+    { "name": "hide-vs-delete", "type": "versus", "kicker": "Hide or delete?", "title": "Reversible vs **permanent**", "left": { "label": "Hide", "tone": "good", "items": ["Videos go private", "Subscriber count kept", "Can be restored"] }, "right": { "label": "Delete", "tone": "bad", "items": ["Videos and playlists deleted", "Subscribers lost", "Can’t be undone"] } },
+    { "name": "steps", "type": "steps", "kicker": "On desktop", "title": "Four levels deep **in YouTube Studio**", "steps": [ { "title": "Switch channel", "text": "Check you’re on the right one.", "highlight": true }, { "title": "Settings", "text": "Then Channel, then Advanced settings." }, { "title": "Remove content", "text": "Sign in again to confirm." }, { "title": "Choose", "text": "Hide, or delete permanently." } ] },
+    { "name": "brand", "type": "versus", "kicker": "Brand Account channels", "title": "Only the **primary owner** can delete", "left": { "label": "Primary owner", "tone": "good", "items": ["Can delete the channel", "Can remove the Brand Account", "Can promote managers"] }, "right": { "label": "Manager", "tone": "neutral", "items": ["Can’t delete", "Won’t see the option", "Ask the owner"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Unsure? **Hide it.** You can delete later, but never undelete.", "by": "Download your videos with Google Takeout before any permanent step." }
+  ]
+}

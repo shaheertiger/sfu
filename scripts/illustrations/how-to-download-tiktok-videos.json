@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "Download TikTok videos, **safely**", "sub": "Share, then Save video. Keep your own videos clean with your original file, not a remover site.", "chips": ["iPhone", "Android", "Desktop", "Your own videos"] },
+    { "name": "options", "type": "versus", "kicker": "What you get", "title": "Other people’s videos vs **your own**", "left": { "label": "Someone else’s", "tone": "neutral", "items": ["Saves with the watermark", "Only if downloads are on", "Or bookmark it instead"] }, "right": { "label": "Your own", "tone": "good", "items": ["Keep your original export", "Save to device when posting", "Download your data"] } },
+    { "name": "steps", "type": "steps", "kicker": "On your phone", "title": "Share → **Save video**", "steps": [ { "title": "Open the video", "text": "In the TikTok app." }, { "title": "Tap Share", "text": "The arrow on the right." }, { "title": "Save video", "text": "Wait for the circle to finish.", "highlight": true } ] },
+    { "name": "remover-sites", "type": "checklist", "kicker": "Use with caution", "title": "Clean files **without remover sites**", "good": { "label": "Safe", "items": ["Export before you upload", "Save to device while posting", "Ask the creator for the file"] }, "bad": { "label": "Risky", "items": ["Giving a site your login", "Ad-heavy remover pages", "Stripping someone’s credit"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Save other people’s videos with the button. **Repost your own from the original file.**", "by": "The watermark keeps creators credited. Leave it on theirs." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "Repost on TikTok in **2 taps**", "sub": "Share, then Repost. Your followers see it, and the original creator keeps the views and credit.", "chips": ["Step by step", "Missing button", "Your own videos"] },
+    { "name": "versus", "type": "versus", "kicker": "Repost vs re-upload", "title": "A repost is **a share, not a copy**", "left": { "label": "Repost", "tone": "good", "items": ["Creator keeps the views", "Lives in your Reposts tab", "No copyright risk"] }, "right": { "label": "Re-upload", "tone": "bad", "items": ["Takes the creator’s credit", "Lands on your main grid", "Can be removed"] } },
+    { "name": "steps", "type": "steps", "kicker": "Step by step", "title": "Share → **Repost**", "steps": [ { "title": "Open the video", "text": "From any feed or profile." }, { "title": "Tap Share", "text": "The arrow on the right." }, { "title": "Tap Repost", "text": "Yellow circular arrows.", "highlight": true }, { "title": "Add thoughts", "text": "Optional, one short line." } ] },
+    { "name": "own-video", "type": "checklist", "kicker": "Your own videos", "title": "Can’t repost yourself? **Do this instead**", "good": { "label": "Try", "items": ["Pin it to your profile", "Stitch or duet a follow-up", "Post it to Reels and Shorts"] }, "bad": { "label": "Avoid", "items": ["Identical re-uploads", "Repost apps that want your login", "Cropping out watermarks"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Use Repost for other people’s videos, and **your original file for your own.**", "by": "The button keeps credit where it belongs. Re-upload apps don’t." }
+  ]
+}

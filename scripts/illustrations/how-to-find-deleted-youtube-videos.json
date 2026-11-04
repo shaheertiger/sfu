@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "YouTube guide", "title": "Find deleted YouTube videos: **look for a copy**", "sub": "Check whether it’s only hidden or removed, then search the places a copy survives.", "chips": ["Deleted vs removed", "4 Studio checks", "7 places to look", "Other channels"] },
+    { "name": "deleted-vs-hidden", "type": "versus", "kicker": "Read the message", "title": "Gone for good, or **just hidden?**", "left": { "label": "Often recoverable", "tone": "good", "items": ["Private, unlisted or draft", "Removed by YouTube (appeal)", "Blocked in your country"] }, "right": { "label": "Gone from YouTube", "tone": "bad", "items": ["Deleted by the owner", "Channel terminated", "No recycle bin to check"] } },
+    { "name": "studio", "type": "steps", "kicker": "4 checks in Studio", "title": "Rule out a **hidden video** first", "steps": [ { "title": "Every tab", "text": "Videos, Shorts, Live." }, { "title": "Visibility filter", "text": "Private, unlisted, draft.", "highlight": true }, { "title": "Right channel", "text": "Switch account." }, { "title": "Restrictions", "text": "Copyright or policy labels." } ] },
+    { "name": "copies", "type": "checklist", "kicker": "7 places a copy survives", "title": "Where to look **outside YouTube**", "good": { "label": "On your side", "items": ["Camera roll + Recently deleted", "Cloud backups and old drives", "Editing project files"] }, "bad": { "label": "Elsewhere", "items": ["Editors and collaborators", "An older Takeout export", "Your TikTok or Instagram post"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "There’s no recycle bin on YouTube. **Your backups are the recovery plan.**", "by": "Keep every master file in two places." }
+  ]
+}

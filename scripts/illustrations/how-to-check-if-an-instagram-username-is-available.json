@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Instagram guide", "title": "Is that username free? **Edit profile knows**", "sub": "Search and profile links miss hidden accounts. Instagram’s own Username field gives the real answer.", "chips": ["Edit profile", "Profile URL", "Search"] },
+    { "name": "hidden", "type": "versus", "kicker": "Why names look free", "title": "Looks free from outside, **taken inside**", "left": { "label": "What you see", "tone": "neutral", "items": ["“Page isn’t available”", "No match in search", "No profile photo or posts"] }, "right": { "label": "What may hold the name", "tone": "bad", "items": ["A deactivated account", "A disabled or renamed account", "A name Instagram blocks"] } },
+    { "name": "steps", "type": "steps", "kicker": "The only real test", "title": "Check a username in **Edit profile**", "steps": [ { "title": "Open Edit profile", "text": "From your profile, tap Username." }, { "title": "Type the name", "text": "An error means taken or not allowed." }, { "title": "Back out", "text": "Don’t save if you’re only testing.", "highlight": true } ] },
+    { "name": "safety", "type": "checklist", "kicker": "Getting the name", "title": "Safe ways to get a name, **and risky ones**", "good": { "label": "Safe", "items": ["Testing variations yourself", "Adding a role or place", "Trademark reports, if it’s yours"] }, "bad": { "label": "Risky", "items": ["Buying “OG” usernames", "Grabber apps with your password", "Urgent, exclusive “deals”"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Only Instagram’s Username field can say a name is free. **Everything else is a clue.**", "by": "Shortlist with a checker, test in Edit profile, save once." }
+  ]
+}

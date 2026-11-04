@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "LinkedIn guide", "title": "Schedule LinkedIn posts **free, natively**", "sub": "The clock icon handles one profile or page. A team posting from several profiles needs one shared plan.", "chips": ["Clock icon", "Up to ~3 months", "Profiles and pages"] },
+    { "name": "limits", "type": "versus", "kicker": "Built-in scheduler", "title": "Great for one account, **awkward for a team**", "left": { "label": "Handles well", "tone": "good", "items": ["Profiles and company pages", "Text, images and video", "About three months ahead"] }, "right": { "label": "Can’t do", "tone": "bad", "items": ["Several profiles in one view", "Approval before posting", "X, Bluesky or Threads"] } },
+    { "name": "profile", "type": "steps", "kicker": "Free · 5 steps", "title": "Schedule a **profile post**", "steps": [ { "title": "Start a post", "text": "Write it, add media." }, { "title": "Clock icon", "text": "Next to Post. Don’t click Post.", "highlight": true }, { "title": "Date and time", "text": "Pick both, then Next." }, { "title": "Schedule", "text": "Check the first lines first." } ] },
+    { "name": "launch", "type": "steps", "kicker": "A launch with 3 profiles", "title": "Where the native way **breaks**", "steps": [ { "title": "Three logins", "text": "Nobody sees the full plan." }, { "title": "No review", "text": "Posts are seen once they’re live.", "highlight": true }, { "title": "Edits", "text": "A date change means chasing people." } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "One account? Use the clock icon. **A team? Share the plan, not the password.**", "by": "Company pages stay with LinkedIn’s scheduler." }
+  ]
+}

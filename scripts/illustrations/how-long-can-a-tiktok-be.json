@@ -1,0 +1,98 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "dark": true,
+   "kicker": "TikTok guide · 2026",
+   "title": "How long can a TikTok be? **10 to 60 minutes**",
+   "sub": "Up to 10 minutes recorded in the app, and up to 60 uploaded on many accounts, at the time of writing.",
+   "chips": [
+    "Camera: 10 min",
+    "Upload: up to 60",
+    "Stories",
+    "LIVE"
+   ]
+  },
+  {
+   "name": "limits",
+   "type": "versus",
+   "kicker": "Every format",
+   "title": "Recording vs **uploading a file**",
+   "left": {
+    "label": "Record in the app",
+    "tone": "neutral",
+    "items": [
+     "Up to 10 minutes",
+     "Effects, filters, sounds",
+     "Presets set the timer"
+    ]
+   },
+   "right": {
+    "label": "Upload a file",
+    "tone": "good",
+    "items": [
+     "Up to 60 min on many accounts",
+     "Easiest in TikTok Studio",
+     "Can be scheduled"
+    ]
+   }
+  },
+  {
+   "name": "steps",
+   "type": "steps",
+   "kicker": "Desktop method",
+   "title": "Post a long TikTok in **4 steps**",
+   "steps": [
+    {
+     "title": "Export",
+     "text": "MP4, 1080×1920, 9:16."
+    },
+    {
+     "title": "Check your limit",
+     "text": "TikTok Studio’s upload screen.",
+     "highlight": true
+    },
+    {
+     "title": "Upload + caption",
+     "text": "The first line matters most."
+    },
+    {
+     "title": "Post or schedule",
+     "text": "Set privacy, then publish."
+    }
+   ]
+  },
+  {
+   "name": "length",
+   "type": "versus",
+   "kicker": "How long it should be",
+   "title": "As long as **the idea needs**",
+   "left": {
+    "label": "Under 90 seconds",
+    "tone": "neutral",
+    "items": [
+     "7–30 sec: jokes, quick tips",
+     "30–90 sec: tutorials, demos",
+     "Easy to watch to the end"
+    ]
+   },
+   "right": {
+    "label": "Over a minute",
+    "tone": "neutral",
+    "items": [
+     "Creator Rewards eligibility",
+     "Explainers and commentary",
+     "Needs a strong hook"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "Your upload screen shows your real limit. **The best length is the shortest that works.**",
+   "by": "Record up to 10 minutes, upload longer from a computer, and keep people watching to the end."
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "X (Twitter) guide", "title": "Post a video on X, **then schedule the thread**", "sub": "Compose, media icon, video, Post. Plus how to schedule a whole thread with ---.", "chips": ["6 taps", "One video per post", "MP4 · H.264", "Threads up to 25"] },
+    { "name": "limits", "type": "checklist", "kicker": "Why uploads fail", "title": "What X accepts, and **what it rejects**", "good": { "label": "Accepted", "items": ["One video per post", "MP4 with H.264 + AAC", "Within your length limit"] }, "bad": { "label": "Rejected", "items": ["A video plus images", "Too long for your account", "Closing the app mid-upload"] } },
+    { "name": "app-steps", "type": "steps", "kicker": "In the app", "title": "Post a video in **4 moves**", "steps": [ { "title": "Compose", "text": "The plus or feather." }, { "title": "Media icon", "text": "Pick or record." }, { "title": "Hook + trim", "text": "One line on top." }, { "title": "Post", "text": "Keep the app open.", "highlight": true } ] },
+    { "name": "thread-steps", "type": "steps", "kicker": "Scheduled threads", "title": "One caption, **split with ---**", "steps": [ { "title": "Write it all", "text": "One caption, every part." }, { "title": "Add ---", "text": "On its own line.", "highlight": true }, { "title": "Schedule", "text": "Each part replies to the last." } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "One video, no images, MP4. **Threads go out with --- between parts.**", "by": "Works on X, Threads and Bluesky, up to 25 parts." }
+  ]
+}

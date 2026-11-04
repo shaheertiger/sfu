@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Strategy guide", "title": "Content performance analysis in **4 steps**", "sub": "Score every post against your own baseline, then change one thing on next month’s calendar.", "chips": ["Goals first", "Score every post", "Change the calendar"] },
+    { "name": "goals", "type": "steps", "kicker": "Goals before metrics", "title": "Give every post **one primary goal**", "steps": [ { "title": "Awareness", "text": "Reach, shares and follows from the post." }, { "title": "Engagement", "text": "Comments, saves and shares per reach.", "highlight": true }, { "title": "Traffic or sales", "text": "Clicks, CTR and tracked conversions." } ] },
+    { "name": "scoring", "type": "steps", "kicker": "The scoring framework", "title": "Score a post **against your median**", "steps": [ { "title": "Set a baseline", "text": "Median of your last 20 to 30 posts.", "highlight": true }, { "title": "Index and weight", "text": "Divide by the median, weight by goal." }, { "title": "Read the score", "text": "Above 1.3 repeat, below 0.7 rethink." } ] },
+    { "name": "cadence", "type": "bars", "kicker": "How often to review", "title": "Monthly reviews **drive the plan**", "rows": [ { "label": "Weekly", "value": 20, "note": "15 to 30 min, tweaks" }, { "label": "Monthly", "value": 55, "note": "1 to 2 hours, the mix" }, { "label": "Quarterly", "value": 95, "note": "Half a day, strategy" } ] },
+    { "name": "mistakes", "type": "checklist", "kicker": "Keep it honest", "title": "Analysis that works, **and analysis that misleads**", "good": { "label": "Do", "items": ["Rates against your own median", "One change per test", "Tag boosted posts separately"] }, "bad": { "label": "Avoid", "items": ["Impressions as the only metric", "Raw numbers across platforms", "Conclusions from one post"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Analysis only counts when it **changes what you publish next month.**", "by": "Do more of the winner, fix the loser, test one new idea." }
+  ]
+}

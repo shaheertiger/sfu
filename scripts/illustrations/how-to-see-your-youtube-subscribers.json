@@ -1,0 +1,9 @@
+{
+ "cards": [
+  { "name": "hero", "type": "hero", "dark": true, "kicker": "YouTube guide", "title": "See your YouTube subscribers, **and who’s hidden**", "sub": "Exact count on the Studio Dashboard, names under Recent subscribers, growth in Analytics.", "chips": ["Exact count", "Recent subscribers", "Gained vs lost", "Hide your count"] },
+  { "name": "hidden", "type": "versus", "kicker": "Why the list is shorter", "title": "Who you can see vs **who stays hidden**", "left": { "label": "Listed by name", "tone": "good", "items": ["Public subscriptions", "Inside the time range you pick", "Sortable by their own subscribers"] }, "right": { "label": "Never shown by name", "tone": "neutral", "items": ["Private subscriptions", "People who unsubscribed", "Removed spam accounts"] } },
+  { "name": "count", "type": "steps", "kicker": "Your exact count", "title": "Find it in **YouTube Studio**", "steps": [ { "title": "Open Studio", "text": "studio.youtube.com or the app." }, { "title": "Dashboard", "text": "Exact count, not rounded.", "highlight": true }, { "title": "See all", "text": "Recent subscribers list." }, { "title": "Time range", "text": "Switch beyond 28 days." } ] },
+  { "name": "analytics", "type": "steps", "kicker": "Track growth", "title": "Gained vs lost in **Advanced mode**", "steps": [ { "title": "Analytics", "text": "Pick a date range." }, { "title": "Advanced mode", "text": "Top right of Analytics." }, { "title": "Subscribers", "text": "Add gained and lost.", "highlight": true }, { "title": "Group by content", "text": "See which videos convert." } ] },
+  { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Use the list to say thanks, and **Analytics to decide what to make next.**", "by": "No outside tool can show private subscribers or who unsubscribed." }
+ ]
+}

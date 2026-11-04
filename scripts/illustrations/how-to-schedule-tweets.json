@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "X guide", "title": "Schedule tweets on X: **website only**", "sub": "Click the calendar icon on x.com, pick a time, click Schedule. The mobile app can’t do it.", "chips": ["x.com", "Calendar icon", "Up to 18 months ahead"] },
+    { "name": "web-vs-app", "type": "versus", "kicker": "Where scheduling works", "title": "On the website, **not in the app**", "left": { "label": "Can schedule", "tone": "good", "items": ["x.com on a computer", "x.com in a phone browser", "Scheduler apps"] }, "right": { "label": "Can’t schedule", "tone": "bad", "items": ["The X iPhone app", "The X Android app", "Polls, anywhere"] } },
+    { "name": "steps", "type": "steps", "kicker": "On x.com", "title": "Schedule a post **in 5 steps**", "steps": [ { "title": "Write the post", "text": "Click Post, add text and media." }, { "title": "Calendar icon", "text": "Pick the date, time and time zone.", "highlight": true }, { "title": "Click Schedule", "text": "Not Post. Then it’s queued." } ] },
+    { "name": "safety", "type": "checklist", "kicker": "Automation on X", "title": "Safe scheduling, **and risky automation**", "good": { "label": "Safe", "items": ["Posts you wrote, scheduled", "Tools using X’s own sign-in", "Varied repeat posts"] }, "bad": { "label": "Risky", "items": ["Auto-follow and auto-DM", "Apps wanting your password", "The same text again and again"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "x.com handles the odd post. **A scheduler handles threads, your phone and other platforms.**", "by": "Check the time zone before you click Schedule." }
+  ]
+}

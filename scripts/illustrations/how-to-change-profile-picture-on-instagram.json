@@ -1,0 +1,10 @@
+{
+ "cards": [
+  { "name": "hero", "type": "hero", "dark": true, "kicker": "Instagram guide", "title": "Change your Instagram DP in **6 taps**", "sub": "Edit profile → Edit picture or avatar → New profile picture. Then frame it without over-zooming.", "chips": ["App", "Desktop", "Best size", "4 fixes"] },
+  { "name": "why", "type": "versus", "kicker": "Why it matters", "title": "Tiny circle, **everywhere you show up**", "left": { "label": "Where it appears", "tone": "neutral", "items": ["Next to every post in the feed", "On every comment you leave", "In messages and Story rings"] }, "right": { "label": "What that means", "tone": "good", "items": ["Design for a small circle", "Keep the subject centered", "Skip fine text in logos"] } },
+  { "name": "steps", "type": "steps", "kicker": "In the app", "title": "New profile picture in **4 moves**", "steps": [ { "title": "Edit profile", "text": "From your profile page." }, { "title": "Edit picture", "text": "Then New profile picture." }, { "title": "Frame it", "text": "Center it. Don’t over-zoom.", "highlight": true }, { "title": "Save", "text": "Tap Next or the tick." } ] },
+  { "name": "size", "type": "checklist", "kicker": "Best size", "title": "What keeps it sharp, and **what makes it blurry**", "good": { "label": "Sharp", "items": ["Square, 1080 × 1080 px", "Subject in the middle 70%", "A symbol, not small text"] }, "bad": { "label": "Blurry", "items": ["A small or low-quality file", "Zooming in a lot", "Detail in the corners"] } },
+  { "name": "fixes", "type": "steps", "kicker": "Won’t update?", "title": "Fix it in **4 checks**", "steps": [ { "title": "Wait", "text": "Old photo? Caches clear in hours." }, { "title": "Use a JPG", "text": "HEIC files sometimes fail.", "highlight": true }, { "title": "Update the app", "text": "And check your connection." }, { "title": "Try the web", "text": "Upload at instagram.com." } ] },
+  { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Get the file right before you upload, and the change **takes under a minute.**", "by": "Square, sharp, centered. Then update your other platforms the same day." }
+ ]
+}

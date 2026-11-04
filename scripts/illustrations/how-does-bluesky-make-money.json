@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Bluesky guide", "title": "How Bluesky makes money: **mostly it doesn’t yet**", "sub": "About $123 million in venture funding, a little from custom domains, and no ads.", "chips": ["~$123M raised", "No ads", "Subscription planned", "Not publicly traded"] },
+    { "name": "ownership", "type": "steps", "kicker": "Who owns Bluesky", "title": "From Twitter project to **private PBC**", "steps": [ { "title": "2019", "text": "A project funded by Twitter." }, { "title": "2021", "text": "Becomes independent." }, { "title": "2024", "text": "Jack Dorsey leaves the board." }, { "title": "Today", "text": "Private, investor-funded.", "highlight": true } ] },
+    { "name": "funding", "type": "bars", "kicker": "Funding rounds", "title": "About **$123 million** disclosed", "rows": [ { "label": "Seed 2023", "value": 8, "note": "$8M · Neo" }, { "label": "Series A 2024", "value": 15, "note": "$15M" }, { "label": "Series B", "value": 100, "note": "$100M" } ] },
+    { "name": "compare", "type": "versus", "kicker": "Compared with others", "title": "Bluesky vs **ad-funded networks**", "left": { "label": "Bluesky", "tone": "good", "items": ["Venture funding", "No ads today", "Paid tier planned, optional"] }, "right": { "label": "Ad-funded (e.g. X)", "tone": "neutral", "items": ["Advertising revenue", "Ads in the feed", "Paid reach available"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Investors pay for Bluesky today. **There’s no stock, no coin and no paid reach.**", "by": "For brands, consistency beats budget." }
+  ]
+}

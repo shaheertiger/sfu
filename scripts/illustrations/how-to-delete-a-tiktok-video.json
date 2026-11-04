@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok guide", "title": "Delete a TikTok, or **hide it and keep views**", "sub": "Three dots, then Delete is permanent. Only me hides the video and keeps everything.", "chips": ["Delete", "Only me", "Desktop", "No undo"] },
+    { "name": "delete-vs-hide", "type": "versus", "kicker": "Delete or hide?", "title": "Permanent vs **reversible**", "left": { "label": "Delete", "tone": "bad", "items": ["Gone for everyone", "Views and comments lost", "No undo"] }, "right": { "label": "Only me", "tone": "good", "items": ["Hidden from everyone else", "Keeps views and comments", "Switch back any time"] } },
+    { "name": "steps", "type": "steps", "kicker": "On your phone", "title": "Delete a TikTok in **4 taps**", "steps": [ { "title": "Profile", "text": "Tap the video." }, { "title": "Three dots", "text": "Or the share arrow menu." }, { "title": "Delete", "text": "Not Privacy settings.", "highlight": true }, { "title": "Confirm", "text": "Tap Delete again." } ] },
+    { "name": "caution", "type": "checklist", "kicker": "Bulk-delete apps", "title": "Safe cleanup vs **risky shortcuts**", "good": { "label": "Safe", "items": ["Only me in batches", "Delete one by one", "Delete the account if you mean it"] }, "bad": { "label": "Risky", "items": ["Apps that want your login", "Scripts that delete everything", "No way to undo"] } },
+    { "name": "prevent", "type": "steps", "kicker": "Delete less", "title": "Fix it **before it’s public**", "steps": [ { "title": "Check the caption", "text": "Typos hide in long captions." }, { "title": "Post as Only me", "text": "Check it, then go public." }, { "title": "Schedule", "text": "Edit until it publishes.", "highlight": true } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Delete is forever. **Only me is one tap from undo.**", "by": "Hide what you might want back, delete only what you’re sure about, and fix posts before they go live." }
+  ]
+}

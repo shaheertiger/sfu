@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "More TikTok followers: **7 ways** that work", "sub": "Views come from the For You feed. Follows come from a profile that promises more of the same.", "chips": ["One clear topic", "Series", "3–5 videos a week"] },
+    { "name": "why", "type": "steps", "kicker": "Views without follows", "title": "Why views **don’t become followers**", "steps": [ { "title": "One-off video", "text": "Nothing else like it on your profile." }, { "title": "Unclear profile", "text": "No bio, photo or obvious topic.", "highlight": true }, { "title": "No reason to return", "text": "No part two, no weekly series." } ] },
+    { "name": "profile", "type": "checklist", "kicker": "10-minute fix", "title": "A profile that **turns visitors into followers**", "good": { "label": "Do", "items": ["Clear photo and searchable name", "Bio that says who it’s for", "Three pinned best videos"] }, "bad": { "label": "Avoid", "items": ["Empty or jokey bio", "Random mix of topics", "No playlists for series"] } },
+    { "name": "ways", "type": "steps", "kicker": "7 ways to grow", "title": "The habits that **bring follows**", "steps": [ { "title": "One niche", "text": "One audience, one kind of value." }, { "title": "Series", "text": "Part 1 of 5 earns the follow.", "highlight": true }, { "title": "Video replies", "text": "Answer comments with videos." }, { "title": "Consistency", "text": "Three to five a week." } ] },
+    { "name": "shortcuts", "type": "checklist", "kicker": "Shortcuts that backfire", "title": "What grows an account, and **what weakens it**", "good": { "label": "Works", "items": ["Series and video replies", "Duets, stitches, LIVEs", "Three to five relevant hashtags"] }, "bad": { "label": "Backfires", "items": ["Bought followers", "Follow-for-follow apps", "Deleting and reposting flops"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "A follow is a bet on your next video. **Make your profile promise more of the same.**", "by": "Fix the profile, start a series, post on a steady pace." }
+  ]
+}

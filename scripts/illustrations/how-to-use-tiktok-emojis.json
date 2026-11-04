@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "TikTok’s secret emojis: **type [smile]**", "sub": "Square brackets, lowercase, in a comment. Captions and bios usually show plain text.", "chips": ["[smile]", "[happy]", "[cool]", "Comments only"] },
+    { "name": "where", "type": "versus", "kicker": "Where codes work", "title": "Comments convert. **Captions usually don’t.**", "left": { "label": "Code converts", "tone": "good", "items": ["Comments in the app", "Lowercase, square brackets", "Current app version"] }, "right": { "label": "Stays as text", "tone": "bad", "items": ["Captions and bios", "Display names", "Other apps"] } },
+    { "name": "steps", "type": "steps", "kicker": "5 steps", "title": "Type a **secret emoji code**", "steps": [ { "title": "Comments", "text": "Tap the comment icon." }, { "title": "Open [", "text": "On the symbols keyboard." }, { "title": "Code", "text": "Lowercase, no spaces.", "highlight": true }, { "title": "Close ] and post", "text": "It turns into the emoji." } ] },
+    { "name": "codes", "type": "versus", "kicker": "46 codes, a sample", "title": "A code for **every mood**", "left": { "label": "Happy", "tone": "good", "items": ["[smile] [happy] [laugh]", "[lovely] [cool] [excited]", "[joyful] [proud] [angel]"] }, "right": { "label": "Upset or cheeky", "tone": "neutral", "items": ["[angry] [cry] [rage]", "[wicked] [hehe] [evil]", "[awkward] [speechless] [sulk]"] } },
+    { "name": "fixes", "type": "checklist", "kicker": "Not working?", "title": "What converts, and **what stays as text**", "good": { "label": "Works", "items": ["[smile] in a comment", "Square brackets [ ]", "An updated app"] }, "bad": { "label": "Stays as text", "items": ["[Smile] or [ smile ]", "Round or curly brackets", "Codes in captions or bios"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Secret codes in comments. **Keyboard emojis everywhere else.**", "by": "Lowercase, square brackets, no spaces." }
+  ]
+}

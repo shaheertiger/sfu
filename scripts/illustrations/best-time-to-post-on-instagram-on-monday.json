@@ -1,0 +1,139 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "kicker": "Instagram guide",
+   "title": "Best time to post on Monday? **Test 3 windows**",
+   "sub": "Read your own Most active times, convert to your audience’s time zone, then test for four Mondays.",
+   "chips": [
+    "Early morning",
+    "Lunch",
+    "Early evening"
+   ]
+  },
+  {
+   "name": "rhythm",
+   "type": "versus",
+   "kicker": "Why Monday is different",
+   "title": "A Monday morning is not **a Monday evening**",
+   "left": {
+    "label": "Morning and lunch",
+    "tone": "neutral",
+    "items": [
+     "Short, habitual check-ins",
+     "Quick tips and single images",
+     "Useful-at-work carousels"
+    ]
+   },
+   "right": {
+    "label": "Evening",
+    "tone": "good",
+    "items": [
+     "More time to scroll",
+     "Reels and lighter posts",
+     "More competition in the feed"
+    ]
+   }
+  },
+  {
+   "name": "insights",
+   "type": "steps",
+   "kicker": "Free method · 2 minutes",
+   "title": "Find your **Monday hours** in Insights",
+   "steps": [
+    {
+     "title": "Dashboard",
+     "text": "Profile → Professional dashboard."
+    },
+    {
+     "title": "Followers",
+     "text": "Open your followers section."
+    },
+    {
+     "title": "Most active",
+     "text": "Switch Days, then Hours → M."
+    },
+    {
+     "title": "Hour before",
+     "text": "Test just before the peak.",
+     "highlight": true
+    }
+   ]
+  },
+  {
+   "name": "windows",
+   "type": "steps",
+   "kicker": "Starting points to test",
+   "title": "Three Monday windows, **three kinds of post**",
+   "steps": [
+    {
+     "title": "Early morning",
+     "text": "Quick tips, news, local openings."
+    },
+    {
+     "title": "Lunch",
+     "text": "Useful carousels and launches."
+    },
+    {
+     "title": "Early evening",
+     "text": "Reels, lifestyle, food, fitness.",
+     "highlight": true
+    }
+   ]
+  },
+  {
+   "name": "time-zones",
+   "type": "versus",
+   "kicker": "The time zone trap",
+   "title": "Your chart shows **your phone’s time**",
+   "left": {
+    "label": "What Insights shows",
+    "tone": "bad",
+    "items": [
+     "Hours in your time zone",
+     "Peak at 9 a.m. in New York",
+     "Looks perfect for you"
+    ]
+   },
+   "right": {
+    "label": "What to schedule",
+    "tone": "good",
+    "items": [
+     "Hours in your followers’ zone",
+     "6 a.m. for a Los Angeles crowd",
+     "Check Top locations first"
+    ]
+   }
+  },
+  {
+   "name": "next",
+   "type": "checklist",
+   "kicker": "A fair test",
+   "title": "What makes the test reliable, and **what skews it**",
+   "good": {
+    "label": "Reliable",
+    "items": [
+     "Same format in every window",
+     "Results read at 48 hours",
+     "Times in your audience’s zone"
+    ]
+   },
+   "bad": {
+    "label": "Skews results",
+    "items": [
+     "A Reel against a carousel",
+     "One viral post decides",
+     "Reading your own time zone"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "Your own Most active times chart beats any published chart. **A four-week test confirms it.**",
+   "by": "Test the hour before your peak, then schedule the winner."
+  }
+ ]
+}

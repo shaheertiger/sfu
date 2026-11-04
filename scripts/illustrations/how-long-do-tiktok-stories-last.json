@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok guide", "title": "TikTok Stories last **24 hours**", "sub": "Then they leave your profile, unless you add them to a Highlight or save the video.", "chips": ["24-hour clock", "Highlights", "Viewer list", "Save in time"] },
+    { "name": "timeline", "type": "steps", "kicker": "A Story’s life", "title": "From posting to **the archive**", "steps": [ { "title": "Post", "text": "Its own 24-hour clock starts." }, { "title": "Live", "text": "Check viewers and save the video." }, { "title": "Expires", "text": "Hidden from others, kept for you.", "highlight": true }, { "title": "Highlight", "text": "Back on your profile, where available." } ] },
+    { "name": "length", "type": "versus", "kicker": "Clip length", "title": "Check the Story camera, **not old guides**", "left": { "label": "What guides say", "tone": "neutral", "items": ["15 seconds at launch", "Longer in some 2026 reports", "No single clear number"] }, "right": { "label": "What to do", "tone": "good", "items": ["Open the Story camera", "See your account’s lengths", "Trim or split longer clips"] } },
+    { "name": "audience", "type": "versus", "kicker": "Who can see it", "title": "Public vs **private accounts**", "left": { "label": "Public", "tone": "neutral", "items": ["Followers, and maybe others", "Depends on the audience you pick", "Comments can be public"] }, "right": { "label": "Private", "tone": "good", "items": ["Approved followers only", "Viewing still isn’t anonymous", "Check settings every time"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "24 hours, then gone. **Save it or add a Highlight in time.**", "by": "Expired Stories stay in your archive. Deleted ones may not come back." }
+  ]
+}

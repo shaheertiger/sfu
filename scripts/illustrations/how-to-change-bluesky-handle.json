@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Bluesky guide", "title": "Change your Bluesky handle? **Yes, any time**", "sub": "Free, instant, and your followers stay. Just update the links that use your old handle.", "chips": ["New .bsky.social name", "Your own domain", "Display name"] },
+    { "name": "handle-vs-name", "type": "versus", "kicker": "Know what you’re changing", "title": "Handle or **display name?**", "left": { "label": "Handle", "tone": "good", "items": ["@yourname.bsky.social", "Unique, used in links", "Settings → Account → Handle"] }, "right": { "label": "Display name", "tone": "neutral", "items": ["Your Name, in bold", "Not unique, 64 characters", "Profile → Edit profile"] } },
+    { "name": "steps", "type": "steps", "kicker": "30 seconds", "title": "A new **.bsky.social** handle", "steps": [ { "title": "Open Handle", "text": "Settings → Account → Handle." }, { "title": "Type a name", "text": "Bluesky checks it as you type." }, { "title": "Save", "text": "Instant. The old one is released.", "highlight": true } ] },
+    { "name": "domain", "type": "versus", "kicker": "Your own domain", "title": "Two ways to **verify a domain**", "left": { "label": "DNS record", "tone": "good", "items": ["Host: _atproto", "Type: TXT", "Value: did=did:plc:…"] }, "right": { "label": "Text file", "tone": "neutral", "items": ["/.well-known/atproto-did", "Contains only your DID", "Tap Verify Text File"] } },
+    { "name": "what-changes", "type": "checklist", "kicker": "After the change", "title": "What stays, and **what can break**", "good": { "label": "Stays", "items": ["Followers, posts and likes", "Mentions in old posts", "Your permanent ID (DID)"] }, "bad": { "label": "Can break", "items": ["Old profile and post links", "App sign-ins with the old handle", "Your claim on the old name"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Change your handle once, to one you’ll keep, **and update every old link the same day.**", "by": "Your account stays. Your old address doesn’t." }
+  ]
+}

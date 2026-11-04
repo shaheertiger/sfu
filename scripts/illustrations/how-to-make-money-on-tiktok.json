@@ -1,0 +1,9 @@
+{
+ "cards": [
+  { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok money · 2026", "title": "**6 ways** to make money on TikTok", "sub": "From 0 to 10,000 followers. Brand deals need none; TikTok’s programs unlock as you grow.", "chips": ["Creator Rewards", "LIVE gifts", "TikTok Shop", "Brand deals"] },
+  { "name": "why", "type": "versus", "kicker": "Why earnings vary", "title": "What TikTok decides vs **what you control**", "left": { "label": "TikTok decides", "tone": "neutral", "items": ["Which views qualify", "The RPM on each video", "Who’s eligible, by country"] }, "right": { "label": "You control", "tone": "good", "items": ["Videos over one minute", "Original content, no strikes", "Brand deals and your own products"] } },
+  { "name": "followers", "type": "steps", "kicker": "Follower milestones", "title": "What unlocks **at each stage**", "steps": [ { "title": "0 followers", "text": "Brand deals, your own products." }, { "title": "About 1,000", "text": "LIVE gifts, if you’re 18+." }, { "title": "10,000", "text": "Creator Rewards, plus 100K views in 30 days.", "highlight": true } ] },
+  { "name": "faster", "type": "checklist", "kicker": "Get monetized faster", "title": "What helps, and **what holds you back**", "good": { "label": "Helps", "items": ["Posting on a steady schedule", "Original videos over one minute", "The same video on Reels and Shorts"] }, "bad": { "label": "Holds you back", "items": ["Reposting other people’s clips", "Guidelines or copyright strikes", "Bought followers"] } },
+  { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Start with what needs no followers, and **add TikTok’s programs as you grow.**", "by": "Views alone don’t pay. Original videos over one minute and brand deals do." }
+ ]
+}

@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Instagram guide", "title": "How to go **viral** on Instagram", "sub": "Hooks, shares, saves and originality raise your odds. A follow-up plan keeps the followers.", "chips": ["7 ways", "Format cheat sheet", "After it goes viral"] },
+    { "name": "signals", "type": "versus", "kicker": "What spreads a post", "title": "Signals that matter, and **ones that don’t**", "left": { "label": "Spreads posts", "tone": "good", "items": ["Watching to the end", "Sends to friends", "Saves for later"] }, "right": { "label": "Doesn’t help", "tone": "bad", "items": ["Walls of hashtags", "Bought followers or views", "Reposted videos"] } },
+    { "name": "seven-ways", "type": "steps", "kicker": "Raise your odds", "title": "The three that **matter most**", "steps": [ { "title": "Win 2 seconds", "text": "Open on the result, not an intro.", "highlight": true }, { "title": "Worth sending", "text": "Relatable, useful, surprising." }, { "title": "Worth saving", "text": "Checklists, recipes, guides." } ] },
+    { "name": "playbook", "type": "steps", "kicker": "After it goes viral", "title": "Turn a spike **into followers**", "steps": [ { "title": "First 24 hours", "text": "Pin it, reply, fix your bio." }, { "title": "Next few days", "text": "Post a Part 2 or answer.", "highlight": true }, { "title": "Next few weeks", "text": "Turn it into a series." } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "You can’t force a viral post. **You can make the next one worth sharing.**", "by": "Hooks, shares and saves raise the odds. Follow-ups keep the followers." }
+  ]
+}

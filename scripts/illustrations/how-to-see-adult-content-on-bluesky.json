@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Bluesky guide", "title": "Missing toggle on iPhone? **Use the web**", "sub": "Enable adult content in Settings → Moderation, then choose Show, Warn or Hide per label.", "chips": ["18+ only", "Moderation settings", "Show · Warn · Hide", "Age checks"] },
+    { "name": "default-vs-on", "type": "versus", "kicker": "Off by default", "title": "Default settings vs **adult content on**", "left": { "label": "Default", "tone": "neutral", "items": ["Adult posts hidden", "Same for every account", "No choice per label"] }, "right": { "label": "Enabled (18+)", "tone": "good", "items": ["Show, Warn or Hide", "Set for each label", "Saved to your account"] } },
+    { "name": "steps", "type": "steps", "kicker": "Turn it on", "title": "Enable adult content in **4 moves**", "steps": [ { "title": "Settings", "text": "Then Moderation." }, { "title": "Enable", "text": "Content filters switch." }, { "title": "Pick per label", "text": "Start with Warn." }, { "title": "iPhone?", "text": "Do it at bsky.app.", "highlight": true } ] },
+    { "name": "missing", "type": "checklist", "kicker": "Toggle missing?", "title": "The fix, and **the cause**", "good": { "label": "Fix", "items": ["Change it at bsky.app", "Complete the age check", "Sign out and back in"] }, "bad": { "label": "Cause", "items": ["App Store rules on iPhone", "Local age-check laws", "Settings not synced"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "The setting lives on your account, **not in the app.**", "by": "Change it once on the web and it applies everywhere." }
+  ]
+}

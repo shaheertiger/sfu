@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Pinterest guide", "title": "Schedule pins: **30 days, 100 pins**, then what?", "sub": "Pinterest’s own scheduler is free on business accounts. Here’s how, and when to outgrow it.", "chips": ["Native scheduler", "4 limits", "Best time to pin"] },
+    { "name": "why", "type": "versus", "kicker": "Why schedule", "title": "Pinning live vs **scheduling a batch**", "left": { "label": "Pinning live", "tone": "bad", "items": ["Bursts when you have time", "Minutes every single day", "Gaps in busy weeks"] }, "right": { "label": "Scheduling", "tone": "good", "items": ["A steady daily pace", "One batch session", "Evenings covered while offline"] } },
+    { "name": "steps", "type": "steps", "kicker": "Business account", "title": "Schedule a pin in **5 steps**", "steps": [ { "title": "Create Pin", "text": "Create → Create Pin." }, { "title": "Vertical image", "text": "2:3, like 1000 × 1500." }, { "title": "Title, link, board", "text": "Don’t skip the link." }, { "title": "Later date", "text": "Up to 30 days ahead.", "highlight": true } ] },
+    { "name": "limits", "type": "steps", "kicker": "Native limits", "title": "The **4 walls** you’ll hit", "steps": [ { "title": "30 days", "text": "No planning a season ahead." }, { "title": "100 pins", "text": "About 3 a day for a month.", "highlight": true }, { "title": "One per form", "text": "No bulk upload." }, { "title": "No queue", "text": "Every time set by hand." } ] },
+    { "name": "bots", "type": "checklist", "kicker": "Use with caution", "title": "A steady schedule vs **auto-pinning bots**", "good": { "label": "Safe", "items": ["Your own fresh pins", "Pinterest’s official sign-in", "Pins spread across the day"] }, "bad": { "label": "Risky", "items": ["Same pin to dozens of boards", "Pinning around the clock", "Bots that want your password"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Pinterest’s scheduler is free up to **30 days and 100 pins.** Past that, use a tool at a human pace.", "by": "Test evenings and Saturdays, and keep pinning steadily." }
+  ]
+}

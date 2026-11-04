@@ -1,0 +1,98 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "dark": true,
+   "kicker": "Creator guide",
+   "title": "The best scheduler for creators: **5 checks**",
+   "sub": "Native video, per-platform captions, fair account pricing and alerts when a post fails.",
+   "chips": [
+    "Native video",
+    "Captions per platform",
+    "Accounts, not posts",
+    "Failed-post alerts"
+   ]
+  },
+  {
+   "name": "needs",
+   "type": "versus",
+   "kicker": "Why lists don’t fit",
+   "title": "What creators need vs **what teams buy**",
+   "left": {
+    "label": "Creators need",
+    "tone": "good",
+    "items": [
+     "Reels, TikToks and Shorts that post themselves",
+     "A caption tailored per platform",
+     "Room for several handles"
+    ]
+   },
+   "right": {
+    "label": "Team tools sell",
+    "tone": "neutral",
+    "items": [
+     "Shared social inboxes",
+     "Approval chains",
+     "Client reports"
+    ]
+   }
+  },
+  {
+   "name": "checks",
+   "type": "steps",
+   "kicker": "5 checks",
+   "title": "Test with **your real videos**",
+   "steps": [
+    {
+     "title": "List formats",
+     "text": "Every platform and format you post weekly."
+    },
+    {
+     "title": "Native video",
+     "text": "Does it post, or only remind you?",
+     "highlight": true
+    },
+    {
+     "title": "Captions + accounts",
+     "text": "Edit per platform. Count every handle."
+    },
+    {
+     "title": "Break it",
+     "text": "What happens when a post fails?"
+    }
+   ]
+  },
+  {
+   "name": "types",
+   "type": "versus",
+   "kicker": "Native vs cross-poster",
+   "title": "One video to 3 platforms: **3 uploads or 1**",
+   "left": {
+    "label": "Native schedulers",
+    "tone": "neutral",
+    "items": [
+     "Free and complete",
+     "A separate upload per app",
+     "A calendar per platform"
+    ]
+   },
+   "right": {
+    "label": "Cross-poster",
+    "tone": "good",
+    "items": [
+     "One upload, captions per platform",
+     "One calendar for everything",
+     "Little or no analytics"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "Pick the scheduler that **posts your videos without you**.",
+   "by": "Native tools for one platform, a cross-poster for three or more."
+  }
+ ]
+}

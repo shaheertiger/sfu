@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Bluesky guide", "title": "Bluesky on RSS: **just add /rss**", "sub": "Every public profile has a feed. Paste profile URL + /rss into any reader.", "chips": ["Profile + /rss", "did:plc URLs", "Empty feed fixes", "Auto-post your RSS"] },
+    { "name": "what", "type": "versus", "kicker": "What has a feed", "title": "Where Bluesky RSS works, and **where it doesn’t**", "left": { "label": "Has RSS", "tone": "good", "items": ["Public profile posts", "Newest first", "A link to each post"] }, "right": { "label": "No RSS", "tone": "bad", "items": ["Your home timeline", "Custom feeds", "Hashtags and searches"] } },
+    { "name": "steps", "type": "steps", "kicker": "Free method", "title": "Get a profile’s feed in **4 steps**", "steps": [ { "title": "Open the profile", "text": "On bsky.app in a browser." }, { "title": "Copy the URL", "text": "bsky.app/profile/name" }, { "title": "Add /rss", "text": "No slash after rss.", "highlight": true }, { "title": "Paste in a reader", "text": "Feedly, Inoreader, any." } ] },
+    { "name": "includes", "type": "checklist", "kicker": "Inside the feed", "title": "What you get, and **what’s missing**", "good": { "label": "Included", "items": ["Post text and date", "A link to each post", "The account’s own posts"] }, "bad": { "label": "Left out", "items": ["Likes and most reposts", "Reliable images and video", "Accounts hidden from logged-out users"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Reading Bluesky in RSS is free. **Posting to Bluesky from RSS needs a tool.**", "by": "Use did:plc URLs for feeds you want to keep." }
+  ]
+}

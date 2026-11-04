@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Instagram guide", "title": "Catch a released username: **the 14-day rule**", "sub": "Instagram holds a changed name for about 14 days. After that, check it yourself in Edit profile.", "chips": ["14-day hold", "Edit profile test", "No bots", "Backup names"] },
+    { "name": "when", "type": "versus", "kicker": "When names free up", "title": "Predictable vs **no schedule at all**", "left": { "label": "Predictable", "tone": "good", "items": ["Owner changed their name", "About 14 days later", "Unless they switch back"] }, "right": { "label": "No schedule", "tone": "bad", "items": ["Deleted accounts", "Disabled accounts", "Inactive for years"] } },
+    { "name": "check", "type": "steps", "kicker": "The only real test", "title": "Check it from **your own account**", "steps": [ { "title": "Edit profile", "text": "Tap it on your profile." }, { "title": "Username", "text": "Type the name you want." }, { "title": "Tick? Save", "text": "Save the moment it’s accepted.", "highlight": true } ] },
+    { "name": "risks", "type": "checklist", "kicker": "Use with caution", "title": "Fair ways vs **bots and sellers**", "good": { "label": "Safe", "items": ["Check by hand in Edit profile", "Trademark form for real rights", "A close variation now"] }, "bad": { "label": "Risky", "items": ["Auto-claim bots", "Buying a username", "Sharing your password"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Only a name change frees a handle **on a schedule you can plan for**.", "by": "Check it yourself, by hand, and keep a good variation ready." }
+  ]
+}

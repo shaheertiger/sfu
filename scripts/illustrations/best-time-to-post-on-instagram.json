@@ -1,0 +1,140 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "kicker": "Instagram guide",
+   "title": "Best time to post? **Your Insights beat any chart**",
+   "sub": "Start with test windows, read Most active times, then keep what your own posts prove.",
+   "chips": [
+    "Day-by-day starts",
+    "Most active times",
+    "4-week test"
+   ]
+  },
+  {
+   "name": "why",
+   "type": "versus",
+   "kicker": "Why it varies",
+   "title": "One hour for everyone vs **what decides yours**",
+   "left": {
+    "label": "The myth",
+    "tone": "bad",
+    "items": [
+     "One perfect hour for every account",
+     "Copy a chart and you’re done",
+     "The peak is always best"
+    ]
+   },
+   "right": {
+    "label": "What really decides it",
+    "tone": "good",
+    "items": [
+     "Your audience’s routine and location",
+     "The format: Reels vs feed posts",
+     "Season, holidays, daylight saving"
+    ]
+   }
+  },
+  {
+   "name": "by-day",
+   "type": "steps",
+   "kicker": "Starting points · hypotheses",
+   "title": "Test these first, in **your audience’s time**",
+   "steps": [
+    {
+     "title": "Mon · Tue",
+     "text": "7 AM Monday, 10 AM Tuesday."
+    },
+    {
+     "title": "Wed · Thu",
+     "text": "12 PM Wednesday, 11 AM Thursday."
+    },
+    {
+     "title": "Fri · Sat",
+     "text": "11 AM, then test 1 PM.",
+     "highlight": true
+    },
+    {
+     "title": "Sunday",
+     "text": "11 AM, then test 7 PM."
+    }
+   ]
+  },
+  {
+   "name": "insights",
+   "type": "steps",
+   "kicker": "Free · 2 minutes",
+   "title": "Find your best time in **Instagram Insights**",
+   "steps": [
+    {
+     "title": "Open dashboard",
+     "text": "Professional dashboard or Insights."
+    },
+    {
+     "title": "Audience section",
+     "text": "Not content: followers live here.",
+     "highlight": true
+    },
+    {
+     "title": "Most active times",
+     "text": "Days view, then Hours per day."
+    },
+    {
+     "title": "Pick the shoulder",
+     "text": "The hour before each peak."
+    }
+   ]
+  },
+  {
+   "name": "time-zones",
+   "type": "steps",
+   "kicker": "Time zones",
+   "title": "Post for **their clock**, not yours",
+   "steps": [
+    {
+     "title": "Top locations",
+     "text": "See where most followers live."
+    },
+    {
+     "title": "Convert the peak",
+     "text": "Into that region’s local time.",
+     "highlight": true
+    },
+    {
+     "title": "Schedule for it",
+     "text": "Reels cover the other regions."
+    }
+   ]
+  },
+  {
+   "name": "test-plan",
+   "type": "checklist",
+   "kicker": "4-week test",
+   "title": "What makes a fair test, and **what skews it**",
+   "good": {
+    "label": "Fair test",
+    "items": [
+     "Three windows, several posts each",
+     "One format at a time",
+     "Measure every post at 48 hours"
+    ]
+   },
+   "bad": {
+    "label": "Skews results",
+    "items": [
+     "Comparing a Reel with a photo",
+     "Judging a window on one post",
+     "Missing slots by posting late"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "The best time to post on Instagram is the one **your own followers prove.**",
+   "by": "Start with a guess, check Insights, test for four weeks, then schedule your winners."
+  }
+ ]
+}

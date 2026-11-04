@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Setup guide", "title": "Connect a Facebook Page in **two minutes**", "sub": "Full control on the Page, every Page ticked in Meta’s dialog, then pick what to add.", "chips": ["Choose Facebook", "Approve in Meta", "Pick your Pages"] },
+    { "name": "access", "type": "checklist", "kicker": "Before you start", "title": "What you can connect, and **what you can’t**", "good": { "label": "Works", "items": ["Facebook Pages you manage", "Facebook access with full control", "Full control in Business Suite"] }, "bad": { "label": "Won’t connect", "items": ["Personal profiles", "Facebook Groups", "Partial or task-only access"] } },
+    { "name": "steps", "type": "steps", "kicker": "The setup", "title": "From Accounts to **a connected Page**", "steps": [ { "title": "Open Accounts", "text": "Pick the workspace, choose Facebook." }, { "title": "Log in", "text": "Use the account with full control." }, { "title": "Tick every Page", "text": "Unticked Pages won’t appear later.", "highlight": true }, { "title": "Pick Pages", "text": "Choose which ones to add." } ] },
+    { "name": "first-post", "type": "steps", "kicker": "After connecting", "title": "Your **first scheduled** Facebook post", "steps": [ { "title": "Compose", "text": "Select the Page in the composer." }, { "title": "Tailor", "text": "Edit the Facebook caption on its own." }, { "title": "Schedule", "text": "Pick a time or add it to the queue.", "highlight": true } ] },
+    { "name": "fixes", "type": "versus", "kicker": "Troubleshooting", "title": "Missing Page? **Usually Meta’s dialog**", "left": { "label": "What happened", "tone": "bad", "items": ["Page wasn’t ticked", "Wrong Facebook account", "Password changed"] }, "right": { "label": "The fix", "tone": "good", "items": ["Edit previous settings, tick it", "Private window, right login", "Reconnect from Accounts"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Full control, every Page ticked, **an account you’ll keep.**", "by": "Get those three right and the connection takes two minutes." }
+  ]
+}

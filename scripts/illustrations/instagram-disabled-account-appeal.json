@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Instagram guide", "title": "How long does an Instagram appeal take? **No fixed time**", "sub": "Appeal once, inside the deadline on your screen, and finish any verification Instagram asks for.", "chips": ["Check the deadline", "Appeal in the app", "Video selfie or ID", "Ignore paid help"] },
+    { "name": "meaning", "type": "versus", "kicker": "Disabled or deactivated?", "title": "Instagram’s action vs **your choice**", "left": { "label": "Disabled", "tone": "bad", "items": ["Instagram turned it off", "Profile and posts hidden", "Needs an appeal"] }, "right": { "label": "Deactivated", "tone": "neutral", "items": ["You hid it yourself", "Temporary", "Log back in to restore"] } },
+    { "name": "steps", "type": "steps", "kicker": "The official appeal", "title": "Appeal a disabled account **the right way**", "steps": [ { "title": "Log in", "text": "Your usual details." }, { "title": "Read the deadline", "text": "The days left on the notice.", "highlight": true }, { "title": "Disagree", "text": "Follow the prompts, add context." }, { "title": "Submit once", "text": "Note the date, then wait." } ] },
+    { "name": "caution", "type": "checklist", "kicker": "Recovery scams", "title": "The real appeal vs **paid “help”**", "good": { "label": "Official", "items": ["Free, inside Instagram", "Selfie or ID in the app only", "Codes typed only where asked"] }, "bad": { "label": "Scams", "items": ["Paid recovery or unban", "“I know someone at Meta”", "Asking for passwords or codes"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "You can’t speed up an appeal, **but you can stop it failing.**", "by": "Appeal once inside the deadline, finish verification, and never pay or share your password." }
+  ]
+}

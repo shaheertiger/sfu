@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Automation rules", "title": "Posting bots: allowed **or banned?**", "sub": "Official login and only your own posts? It’s a scheduler. Anything else is a bot.", "chips": ["Official APIs", "X rules", "Instagram rules", "Reddit rules"] },
+    { "name": "types", "type": "versus", "kicker": "4 kinds of “bot”", "title": "What platforms allow, and **what they ban**", "left": { "label": "Generally allowed", "tone": "good", "items": ["Schedulers on official APIs", "Labeled content bots", "RSS auto-posting you review"] }, "right": { "label": "Prohibited", "tone": "bad", "items": ["Engagement bots", "Spam account networks", "Password-based tools"] } },
+    { "name": "rules", "type": "checklist", "kicker": "X, Instagram, Reddit", "title": "Same pattern **on every platform**", "good": { "label": "Allowed", "items": ["Scheduling your own posts", "Approved apps", "Labeled automated accounts"] }, "bad": { "label": "Restricted", "items": ["Auto-likes and follows", "Duplicate posts across accounts", "Unsolicited auto-replies"] } },
+    { "name": "red-flags", "type": "checklist", "kicker": "Use with caution", "title": "A real scheduler vs **a risky bot**", "good": { "label": "Scheduler", "items": ["Official sign-in page", "Only posts you wrote", "Revocable in settings"] }, "bad": { "label": "Red flags", "items": ["Asks for your password", "Promises followers", "Claims to be “undetectable”"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "If a tool needs to hide from the platform, **the platform doesn’t allow it.**", "by": "Automate publishing. Keep engagement human." }
+  ]
+}

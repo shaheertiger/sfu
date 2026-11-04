@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "How to duet on TikTok in **6 steps**", "sub": "Share, Duet, pick a layout, record, edit, post. And why the button sometimes isn’t there.", "chips": ["Share, then Duet", "Pick a layout", "Lower the original"] },
+    { "name": "duet-vs-stitch", "type": "versus", "kicker": "Duet or stitch?", "title": "Side by side, **or one after the other**", "left": { "label": "Duet", "tone": "good", "items": ["Plays next to the original", "Uses the original’s sound", "Great for reactions"] }, "right": { "label": "Stitch", "tone": "neutral", "items": ["A clip of the original first", "Then your video plays", "Great for answers"] } },
+    { "name": "steps", "type": "steps", "kicker": "Step by step", "title": "Duet any video **in three stages**", "steps": [ { "title": "Share, then Duet", "text": "Tap the Share arrow, then Duet." }, { "title": "Layout and record", "text": "Pick a split, record your half." }, { "title": "Edit and post", "text": "Lower the original’s volume first.", "highlight": true } ] },
+    { "name": "missing", "type": "steps", "kicker": "Duet button missing?", "title": "The usual reasons **it’s not there**", "steps": [ { "title": "Duets turned off", "text": "The creator chose who can duet.", "highlight": true }, { "title": "Private video", "text": "Duet only works where allowed." }, { "title": "Age limit", "text": "Under-16 accounts can’t duet." } ] },
+    { "name": "safety", "type": "checklist", "kicker": "Reacting fairly", "title": "React the right way, **not the risky way**", "good": { "label": "Safe", "items": ["TikTok’s own Duet or Stitch", "Asking the creator first", "Reposting only your footage"] }, "bad": { "label": "Risky", "items": ["Reuploading someone’s video", "Fake duets made in other apps", "Ignoring a locked video"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "A duet takes six taps. **A missing button means the creator decided.**", "by": "Use TikTok’s own tools and respect locked videos." }
+  ]
+}

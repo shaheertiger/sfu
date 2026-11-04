@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok money guide", "title": "What 1 million TikTok views **really pay**", "sub": "TikTok pays on qualified views of videos over a minute, at a rate that varies. Here’s the math.", "chips": ["Creator Rewards", "Qualified views", "RPM", "Other income"] },
+    { "name": "qualified", "type": "versus", "kicker": "Why views ≠ pay", "title": "Not every view **counts toward rewards**", "left": { "label": "Can count", "tone": "good", "items": ["Original videos over 1 minute", "Views from the For You feed", "Genuine, watched views"] }, "right": { "label": "Earns nothing", "tone": "bad", "items": ["Videos under 1 minute", "Reposted or copied clips", "Invalid or bought views"] } },
+    { "name": "calculate", "type": "steps", "kicker": "Work out your own", "title": "Qualified views ÷ 1,000 × **your RPM**", "steps": [ { "title": "Open the dashboard", "text": "Creator Rewards, in TikTok Studio." }, { "title": "Note two numbers", "text": "Qualified views and rewards." }, { "title": "Work out RPM", "text": "Rewards ÷ (views ÷ 1,000).", "highlight": true }, { "title": "Repeat", "text": "Five videos give you a range." } ] },
+    { "name": "platforms", "type": "versus", "kicker": "TikTok vs YouTube", "title": "Different rules, so **compare your own RPM**", "left": { "label": "TikTok Creator Rewards", "tone": "neutral", "items": ["Qualified views only", "Videos over one minute", "No fixed rate"] }, "right": { "label": "YouTube Partner Program", "tone": "neutral", "items": ["Share of ad revenue", "Monetized videos only", "No fixed rate"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Your dashboard, **not the view counter**, tells you what a million views is worth.", "by": "Under a minute earns $0 from Creator Rewards. Brand deals and Shop often pay more." }
+  ]
+}

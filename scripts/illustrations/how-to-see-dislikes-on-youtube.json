@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "YouTube guide", "title": "See YouTube dislikes: **creators only**", "sub": "Exact counts live in YouTube Studio. Everyone else gets estimates or nothing.", "chips": ["YouTube Studio", "Advanced mode", "Hidden since 2021", "Extensions guess"] },
+    { "name": "who", "type": "versus", "kicker": "Who can see them", "title": "The real count vs **an estimate**", "left": { "label": "Exact count", "tone": "good", "items": ["The video’s creator", "Managers with analytics access", "In YouTube Studio"] }, "right": { "label": "Estimate or nothing", "tone": "bad", "items": ["Every other viewer", "Dislike extensions", "Other sites and apps"] } },
+    { "name": "steps", "type": "steps", "kicker": "In YouTube Studio", "title": "Find exact dislikes in **4 steps**", "steps": [ { "title": "Analytics", "text": "In YouTube Studio." }, { "title": "Advanced mode", "text": "Top right." }, { "title": "Add Dislikes", "text": "From the metric picker." }, { "title": "Set Lifetime", "text": "Not the default range.", "highlight": true } ] },
+    { "name": "caution", "type": "checklist", "kicker": "Dislike extensions", "title": "What they show vs **what they can’t**", "good": { "label": "What they use", "items": ["Counts archived before 2021", "Votes from their own users", "Scaled-up estimates"] }, "bad": { "label": "What to watch", "items": ["Far off on small videos", "Can read pages you visit", "Never the real count"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "The real dislike count **lives only in YouTube Studio.**", "by": "Creators check Advanced mode. Viewers read comments and chapters instead of trusting an estimate." }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Billing guide", "title": "Cancel your plan, **keep your posts**", "sub": "Open Billing as the workspace owner, cancel in Stripe’s portal, and your work stays on Free.", "chips": ["Owner only", "About 2 minutes", "Trial: cancel by day 7"] },
+    { "name": "what-happens", "type": "versus", "kicker": "When a paid plan ends", "title": "What **stays**, and what stops", "left": { "label": "Stays", "tone": "good", "items": ["Posts, drafts and media", "Scheduled posts keep publishing", "Your 3 oldest accounts"] }, "right": { "label": "Stops until you upgrade", "tone": "bad", "items": ["Accounts past the first 3", "Bulk scheduling and the API", "RSS and webhooks"] } },
+    { "name": "cancel-steps", "type": "steps", "kicker": "Step by step", "title": "The steps that **matter most**", "steps": [ { "title": "Sign in as owner", "text": "Team members can’t see Billing." }, { "title": "Open Billing", "text": "From the workspace menu." }, { "title": "Cancel in Stripe", "text": "Review the details, then confirm.", "highlight": true }, { "title": "Save proof", "text": "Screenshot the cancelled plan." } ] },
+    { "name": "plans", "type": "bars", "kicker": "Plans compared", "title": "Connected accounts **by plan**", "rows": [ { "label": "Studio", "value": 100, "note": "100 · $59/month" }, { "label": "Solo", "value": 15, "note": "15 · $19/month" }, { "label": "Free", "value": 3, "note": "3 · $0, no card" } ] },
+    { "name": "trial", "type": "steps", "kicker": "The 7-day trial", "title": "Cancel **before day 8**, pay nothing", "steps": [ { "title": "Day 1", "text": "Add a card and start the trial." }, { "title": "Days 2–7", "text": "Test the workflows you’ll use." }, { "title": "By day 7", "text": "Cancel in Billing if it’s not for you.", "highlight": true }, { "title": "Day 8", "text": "First charge if you keep the plan." } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Cancelling stops renewal. **Your posts, drafts and media stay.**", "by": "If cost is the reason, try a smaller plan first." }
+  ]
+}
