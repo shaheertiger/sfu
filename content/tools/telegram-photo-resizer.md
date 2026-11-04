@@ -5,7 +5,7 @@ h1: Telegram Profile Photo Resizer
 lead: Upload a picture, pick a Telegram preset such as profile photo, sticker or custom emoji, and download it at the exact pixel size.
 keyword: telegram profile photo
 ---
-## Telegram profile picture size and other image sizes at a glance
+## Telegram Profile Picture Size and Image Sizes at a Glance
 A Telegram profile photo works well as a square 640×640 image, which Telegram crops to a circle. Static stickers are 512×512, custom emoji are 100×100, and a 1280×720 image fills a channel post neatly. This resizer has a preset for each, so you can turn any photo into the right shape in a few seconds.
 
 | Preset | Size | Shape | Where it's used |
@@ -17,26 +17,16 @@ A Telegram profile photo works well as a square 640×640 image, which Telegram c
 
 Telegram doesn't publish one official chart for all of these, and its apps change. Treat the notes below as accurate at the time of writing.
 
-## What the Telegram photo resizer does, and why you'd use it
-Telegram accepts almost any image you send, but it doesn't always show it the way you expect. Profile photos are cropped to a circle, so a tall portrait loses your chin or the top of your head. Sticker sets need square images at a specific size. A busy vertical photo in a channel post takes up the whole phone screen when you may only want a neat banner-shaped image.
-
-The resizer fixes the shape and the size in one step:
-
-1. **Shape:** it crops (fill) or pads (fit) your image to the preset's aspect ratio.
-2. **Size:** it outputs exactly the pixel dimensions of the preset.
-3. **File:** it exports PNG or JPG, named with the preset and size, such as `cat-sticker-512x512.png`.
-
-Everything happens in your browser. The image is drawn on a canvas on your device and downloaded from there. Nothing is uploaded, and there's no sign-up.
-
-It's a resizer, not an editor: it won't remove backgrounds, add outlines or move the crop off-center. For text on an image, use the [add text to image tool](/tools/add-text-to-image) first, then resize the result here.
-
-## Telegram image sizes explained
+## Current Telegram Image Sizes and Specs
 ### Profile photo: 640×640
 Telegram shows profile photos as circles, in chat lists, in the chat header and on your profile page, where it appears much larger. Square images are the safe choice, and 640×640 is a good size: sharp on a phone's profile screen without being a heavy file. The same size works for group and channel avatars.
 
 The resizer's preview shows this preset as a circle, so you can check that your face or logo isn't clipped. Keep the subject in the middle; the corners of the square never show.
 
 Telegram also lets you set different photos for different people through its privacy settings, and to use a short video as a profile picture. This tool makes still images only.
+
+### Group, channel and bot avatars (use the 640×640 preset)
+Groups, channels and bots get a round avatar just like personal accounts, so the profile photo preset covers them too. These avatars matter more than people expect: in a long chat list, the avatar is often how someone spots your channel before they read its name. A single symbol, initials or a simple logo on a solid color is easier to recognize at that size than a detailed photo. Bot avatars are set through @BotFather; group and channel avatars from the group or channel's edit screen.
 
 ### Sticker: 512×512
 At the time of writing, Telegram's official sticker bot (@Stickers) asks for static stickers as images where one side is exactly 512 pixels and the other is 512 or less, in PNG or WEBP. The preset outputs a 512×512 square, which meets that rule.
@@ -49,7 +39,42 @@ Channels show photos at full width, and a 16:9 image at 1280×720 is a clean, la
 ### Custom emoji: 100×100
 Custom emoji are tiny square images, 100×100 at the time of writing, created through the same @Stickers bot. Using custom emoji in messages requires Telegram Premium, though anyone can see them. At this size, simple shapes and bold colors work; photos rarely do.
 
-## How to resize a photo for Telegram
+## What the Telegram Photo Resizer Does
+Telegram accepts almost any image you send, but it doesn't always show it the way you expect. Profile photos are cropped to a circle, so a tall portrait loses your chin or the top of your head. Sticker sets need square images at a specific size. A busy vertical photo in a channel post takes up the whole phone screen when you may only want a neat banner-shaped image.
+
+The resizer fixes the shape and the size in one step:
+
+1. **Shape:** it crops (fill) or pads (fit) your image to the preset's aspect ratio.
+2. **Size:** it outputs exactly the pixel dimensions of the preset.
+3. **File:** it exports PNG or JPG, named with the preset and size, such as `cat-sticker-512x512.png`.
+
+Everything happens in your browser. The image is drawn on a canvas on your device and downloaded from there. Nothing is uploaded, and there's no sign-up.
+
+It's a resizer, not an editor: it won't remove backgrounds, add outlines or move the crop off-center. For text on an image, use the [add text to image tool](/tools/add-text-to-image) first, then resize the result here.
+
+## Supported Formats
+### What you can upload
+The resizer opens any image your browser can read:
+
+| Input format | Works? | Notes |
+|---|---|---|
+| JPG / JPEG | Yes | Phone and camera photos |
+| PNG | Yes | Transparency is kept in fill mode with PNG output, ideal for stickers |
+| WebP | Yes | Including images saved from the web or from sticker packs you made |
+| GIF | Yes, as a still | Only the first frame is used |
+| HEIC (iPhone) | Depends on the browser | Safari usually opens it; other browsers may refuse it |
+
+If a file won't open, export or share it as a JPG from your photo app and try again.
+
+### What you can download
+Every preset downloads as **PNG** or **JPG**. PNG is lossless and keeps transparency, so it's the right choice for stickers, custom emoji and logos. JPG is saved at high quality (92%) and makes smaller files, which suits photos for channel posts.
+
+Telegram's sticker bot asks for PNG or WEBP at the time of writing, so download stickers and custom emoji as PNG. Profile photos and channel images can be either.
+
+### File size
+There's no upload limit in the resizer, because nothing is uploaded: the image stays in your browser. A 512×512 PNG sticker made from simple artwork is small, and a 640×640 profile photo is small in either format. If a large photo is slow to load on an older phone, give it a moment.
+
+## How to Use the Telegram Photo Resizer
 1. **Choose your image.** Click the upload area or drop a JPG, PNG, WebP or GIF on it. Animated GIFs come out as a single still frame.
 2. **Pick a preset.** Choose profile photo, sticker, channel post or custom emoji. The preview updates immediately, and the profile photo preset is shown as a circle.
 3. **Choose fill or fit.** **Fill (crop)** covers the whole frame and trims the edges, keeping the center. **Fit (add background)** keeps the entire image and fills the gap with a color you pick.
@@ -68,7 +93,7 @@ Custom emoji are tiny square images, 100×100 at the time of writing, created th
 
 Fill always crops around the center. If your subject is off to one side, crop it roughly in your photo app first.
 
-## Use cases by audience
+## Who the Telegram Photo Resizer Is For
 ### Everyday users updating a profile photo
 Most people just want their face to sit nicely in the circle. Drop in a selfie, choose the profile photo preset with fill, check the round preview and download.
 
@@ -87,7 +112,7 @@ Group avatars are tiny in chat lists. A single bold symbol or two letters on a s
 ### Bot builders
 Bots also have a profile picture, set through @BotFather. A square 640×640 image with a simple icon makes a bot easy to recognize in a chat list.
 
-## Best practices for Telegram images
+## Best Practices for Telegram Images
 ### Center everything that matters
 Circles cut off the corners of every avatar. Keep faces and logos in the middle two-thirds of the square.
 
@@ -103,7 +128,13 @@ Images that have already been through Telegram or another social app are compres
 ### Keep the username and the photo consistent
 If you're renaming at the same time, check your new name with the [Telegram username checker](/tools/telegram-username-checker) so the photo, display name and @username all match.
 
-## Caveats
+### Check it in light and dark themes
+Telegram has light and dark themes, and many people use the dark one. If you use fit mode, pick a background color that looks deliberate on both, or one that matches your brand. For stickers, a thin light outline around a dark character keeps it visible on dark chat backgrounds; add it in your drawing app before resizing.
+
+### Make a matching set
+If you run a channel, use the same background color for the avatar, post images and any stickers. People recognize a channel by its colors long before they read a word.
+
+### Caveats and limits
 - **Still images only.** Video avatars and animated stickers need other tools.
 - **No background removal.** Transparency is kept only when your source PNG already has it and you use fill mode.
 - **Center crop only.** You can't drag the crop; pre-crop off-center subjects.
@@ -126,13 +157,16 @@ Custom emoji are 100×100 pixels at the time of writing. Use simple, bold artwor
 ### Can I set a group or channel photo with this?
 Yes. The profile photo preset works for groups and channels too. Download the 640×640 file and set it from the group or channel's edit screen.
 
+### Does the resizer keep transparency?
+Yes, when you use fill mode and download a PNG. If your source PNG has a transparent background, it stays transparent, which is what you want for stickers. Fit mode and JPG always produce a solid background.
+
 ### Is my photo uploaded to a server?
 No. The image is resized in your browser and never leaves your device.
 
 ### Can I make an animated profile picture?
 No. The tool exports a single still frame as PNG or JPG. Telegram's video avatars have to be made in Telegram or a video editor.
 
-## Telegram is covered; schedule your other channels with Schedule For You
+## Use Telegram, and Schedule Your Other Channels With Schedule For You
 Schedule For You doesn't post to Telegram. If Telegram is one of several places you share updates, we handle the rest: Instagram (including Stories and first comments), Facebook Pages, X, LinkedIn personal profiles, Threads, Bluesky, TikTok, YouTube, Pinterest and Google Business Profile, all from one calendar. Write the update once, tailor each version, and set a time.
 
 The Free plan includes 3 accounts and up to 10 scheduled posts at a time, with no card. Paid plans, Solo at $19/month and Studio at $59/month, come with a 7-day trial that needs a card. [Start free](/signup).
