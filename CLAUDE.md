@@ -2,6 +2,8 @@
 
 ## Writing blog posts (`content/blog/*.md`)
 
+**Rule for every new page:** match the structure, heading style and depth of the page that ranks #1 in the same category. That means the Post Bridge posts for blog posts, the Postiz tool pages for tools, and Timeskip for the YouTube downloaders. Their outlines are in `research/reference-outlines.md`. Never copy their wording or numbers.
+
 Every guide follows the layout of the top-ranking posts in our niche ("Who Doesn't Follow Me Back on Instagram? 3 Safe Ways", "How to See Who Liked a Comment on Instagram: Don't Tap", "Am I Shadowbanned on Twitter? (Most Tests Are Wrong)"). Reference implementations: `content/blog/who-doesnt-follow-me-back-on-instagram.md`, `how-to-see-who-liked-a-comment-on-instagram.md`, `am-i-shadowbanned-twitter.md`. In this order:
 
 1. **A hook in the H1 and title.** The search question plus a promise or twist: "3 Safe Ways", "Don't Tap", "Most Tests Are Wrong".
