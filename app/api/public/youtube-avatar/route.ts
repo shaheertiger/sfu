@@ -7,14 +7,14 @@ export const dynamic = 'force-dynamic';
 /**
  * GET /api/public/youtube-avatar?q=<channel link | @handle | channel ID | video link>
  * Returns { title, channelUrl, avatar, banner } where avatar and banner are image URLs without a
- * size suffix (append "=s800", "=s0" and so on). Counted against the signed-out daily cap.
+ * size suffix (append "=s800", "=s0" and so on). Counted against a daily per-visitor cap (60 lookups).
  */
 export async function GET(req: Request) {
   const q = new URL(req.url).searchParams.get('q') || '';
   if (!q.trim()) return NextResponse.json({ error: 'Paste a channel link, @handle or video link.' }, { status: 400 });
 
   const cap = await takeAnonUse(req, 'youtube-avatar', 60);
-  if (!cap.allowed) return NextResponse.json({ error: 'Daily limit reached for signed-out use. Try again tomorrow or create a free account.', resetAt: cap.resetAt }, { status: 429, headers: capHeaders(cap) });
+  if (!cap.allowed) return NextResponse.json({ error: 'You’ve reached today’s lookup limit. Try again tomorrow (it resets at midnight UTC).', resetAt: cap.resetAt }, { status: 429, headers: capHeaders(cap) });
 
   try {
     const found = await findChannelImages(q);
