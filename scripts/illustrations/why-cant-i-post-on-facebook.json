@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Facebook guide", "title": "Why can’t I post on **Facebook?**", "sub": "Check Account Status first, then match what you see to one of nine causes.", "chips": ["Glitches", "Restrictions", "Pages and Groups", "Links"] },
+    { "name": "symptoms", "type": "versus", "kicker": "Read the symptom", "title": "Local glitch or **a restriction?**", "left": { "label": "Probably a glitch", "tone": "neutral", "items": ["Post button does nothing", "No message at all", "Works on another device"] }, "right": { "label": "Probably restricted", "tone": "bad", "items": ["“You can’t post right now”", "A temporary block notice", "A Community Standards message"] } },
+    { "name": "glitch", "type": "steps", "kicker": "Fix a glitch", "title": "Rule out the app **in 4 steps**", "steps": [ { "title": "Restart", "text": "Close the app or refresh." }, { "title": "Update", "text": "From your app store." }, { "title": "Clear the cache", "text": "App storage or browser." }, { "title": "Other device", "text": "Works there? It’s local.", "highlight": true } ] },
+    { "name": "caution", "type": "checklist", "kicker": "Use with caution", "title": "Get posting again **the safe way**", "good": { "label": "Safe", "items": ["Account Status and review", "The Help Center’s process", "Spacing out your posts"] }, "bad": { "label": "Risky", "items": ["Paid “recovery services”", "Links threatening deletion", "Mass-posting to Groups"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Check Account Status first, then **match the symptom to the cause.**", "by": "No message usually means a glitch. A notice means a restriction." }
+  ]
+}

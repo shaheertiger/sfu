@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok guide", "title": "Low TikTok views? **Check privacy first**", "sub": "Either TikTok isn’t showing the video, or people swipe away early. They need opposite fixes.", "chips": ["Privacy", "Account status", "Hook", "Originality"] },
+    { "name": "buckets", "type": "versus", "kicker": "Two buckets", "title": "Shown less vs **watched less**", "left": { "label": "Not being shown", "tone": "bad", "items": ["Privacy not set to public", "A restriction in Account status", "Ineligible for For You"] }, "right": { "label": "Not being watched", "tone": "neutral", "items": ["A slow first two seconds", "Too long for the idea", "Unclear topic or audio"] } },
+    { "name": "shown", "type": "steps", "kicker": "Check these first", "title": "Rule out **the boring causes**", "steps": [ { "title": "Public?", "text": "Video and account privacy.", "highlight": true }, { "title": "Account status", "text": "Violations and restrictions." }, { "title": "For You", "text": "Any ineligible videos?" }, { "title": "Processing", "text": "Give it time; don’t re-upload." } ] },
+    { "name": "watched", "type": "checklist", "kicker": "Hold attention", "title": "What keeps people watching, and **what loses them**", "good": { "label": "Keeps them", "items": ["The payoff in the first frame", "Your own footage and voice", "The topic said out loud"] }, "bad": { "label": "Loses them", "items": ["A greeting or logo first", "Another app’s watermark", "Music drowning your voice"] } },
+    { "name": "hacks", "type": "checklist", "kicker": "Growth hacks", "title": "What builds views, and **what backfires**", "good": { "label": "Builds", "items": ["A steady posting pace", "Two or three related topics", "Plain search keywords"] }, "bad": { "label": "Backfires", "items": ["Bought views or followers", "Engagement groups", "Apps that want your password"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Check privacy and Account status first. **Then fix the first two seconds.**", "by": "No hack beats original videos posted at a pace you can keep." }
+  ]
+}

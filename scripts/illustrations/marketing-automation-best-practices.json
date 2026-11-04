@@ -1,0 +1,9 @@
+{
+ "cards": [
+  { "name": "hero", "type": "hero", "dark": true, "kicker": "Strategy guide", "title": "Marketing automation: **7 rules**", "sub": "Automate the busywork between people. Keep the writing, replies and judgment human.", "chips": ["What to automate", "Scheduling", "RSS + webhooks", "Approvals"] },
+  { "name": "what", "type": "versus", "kicker": "The 1-question test", "title": "Same every time? **Automate it.**", "left": { "label": "Automate", "tone": "good", "items": ["Publishing at set times", "Sharing new blog posts", "Approvals and failure alerts"] }, "right": { "label": "Keep human", "tone": "neutral", "items": ["Writing captions", "Replying to comments and DMs", "Reacting to news"] } },
+  { "name": "rules", "type": "steps", "kicker": "The 7 rules, in short", "title": "Write it down, **then automate**", "steps": [ { "title": "Document", "text": "Idea to published, on paper." }, { "title": "Batch + schedule", "text": "Slots, per-platform versions.", "highlight": true }, { "title": "Distribute", "text": "RSS and webhooks to drafts." }, { "title": "Check + measure", "text": "Approvals, alerts, time saved." } ] },
+  { "name": "bots", "type": "checklist", "kicker": "Use with caution", "title": "Safe automation, and **what gets accounts limited**", "good": { "label": "Safe", "items": ["Scheduling your own posts", "RSS to a review step", "Failed-post alerts"] }, "bad": { "label": "Gets limited", "items": ["Auto-likes and auto-follows", "Automated comments and DMs", "Tools that log in as you"] } },
+  { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Automate the busywork, **keep the voice.**", "by": "Start with one workflow, add a human checkpoint, and measure it monthly." }
+ ]
+}

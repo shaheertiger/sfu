@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "Make a TikTok slideshow: **check Photo mode**", "sub": "Pick up to 35 photos, switch to Photo before you post, then add a sound.", "chips": ["Up to 35 photos", "Photo, not video", "9:16 slides"] },
+    { "name": "types", "type": "versus", "kicker": "Two kinds of slideshow", "title": "Photo mode vs **templates**", "left": { "label": "Photo mode", "tone": "good", "items": ["Viewers swipe at their own pace", "Up to 35 photos", "Tips, recipes, tutorials"] }, "right": { "label": "Template", "tone": "neutral", "items": ["Plays as a video", "Photo count set by the template", "Fixed timing and effects"] } },
+    { "name": "steps", "type": "steps", "kicker": "Step by step", "title": "The steps that **decide the format**", "steps": [ { "title": "Tap + then Upload", "text": "Open your gallery." }, { "title": "Select multiple", "text": "Tap photos in slide order." }, { "title": "Switch to Photo", "text": "Not Video. Look for the dots.", "highlight": true }, { "title": "Sound and post", "text": "Add music, caption, then Post." } ] },
+    { "name": "swipe", "type": "checklist", "kicker": "Worth swiping", "title": "What keeps people swiping, and **what loses them**", "good": { "label": "Keeps them", "items": ["A promise on slide one", "One idea per slide", "Vertical 9:16 images"] }, "bad": { "label": "Loses them", "items": ["A plain photo as the cover", "Text in the bottom fifth", "A sound that fights the reading"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Check the Photo toggle **every single time.**", "by": "Then lead with the promise on slide one." }
+  ]
+}

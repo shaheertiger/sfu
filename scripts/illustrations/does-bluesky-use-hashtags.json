@@ -1,0 +1,120 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "dark": true,
+   "kicker": "Bluesky guide",
+   "title": "Does Bluesky use hashtags? **Yes**",
+   "sub": "Tags are clickable and searchable, and custom feeds are what make them matter.",
+   "chips": [
+    "Clickable tags",
+    "Custom feeds",
+    "1–3 per post",
+    "Count toward 300"
+   ]
+  },
+  {
+   "name": "where",
+   "type": "versus",
+   "kicker": "Where tags help",
+   "title": "Feeds and search, **not Following**",
+   "left": {
+    "label": "Tags help",
+    "tone": "good",
+    "items": [
+     "Custom feeds built on tags",
+     "Search and tag pages",
+     "A little in Discover"
+    ]
+   },
+   "right": {
+    "label": "No effect",
+    "tone": "neutral",
+    "items": [
+     "The Following feed",
+     "Followers see you anyway",
+     "Ten generic tags"
+    ]
+   }
+  },
+  {
+   "name": "rules",
+   "type": "steps",
+   "kicker": "5 rules",
+   "title": "How a Bluesky **hashtag works**",
+   "steps": [
+    {
+     "title": "#word",
+     "text": "Letters, numbers and underscores."
+    },
+    {
+     "title": "Searchable",
+     "text": "Top and Latest results."
+    },
+    {
+     "title": "Counts",
+     "text": "The whole tag counts toward 300.",
+     "highlight": true
+    },
+    {
+     "title": "Mutable",
+     "text": "People can mute any tag."
+    }
+   ]
+  },
+  {
+   "name": "how-many",
+   "type": "checklist",
+   "kicker": "How many to use",
+   "title": "1 to 3 tags, **not a block of 10**",
+   "good": {
+    "label": "Do",
+    "items": [
+     "The tag a feed collects",
+     "CamelCase: #BookSky",
+     "Tags at the end"
+    ]
+   },
+   "bad": {
+    "label": "Don’t",
+    "items": [
+     "Pasted Instagram tag blocks",
+     "Unrelated trending tags",
+     "Made-up tags nobody uses"
+    ]
+   }
+  },
+  {
+   "name": "platforms",
+   "type": "versus",
+   "kicker": "Bluesky vs X and Threads",
+   "title": "Same syntax, **different job**",
+   "left": {
+    "label": "Bluesky",
+    "tone": "good",
+    "items": [
+     "Tags feed custom feeds",
+     "1–3 tags recommended",
+     "Community-agreed tags"
+    ]
+   },
+   "right": {
+    "label": "X and Threads",
+    "tone": "neutral",
+    "items": [
+     "X: many users skip tags",
+     "Threads: one topic tag",
+     "Tags lead to search or topics"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "One accurate community tag **beats ten popular ones** on Bluesky.",
+   "by": "Feeds collect tags. Use the ones your niche actually uses."
+  }
+ ]
+}

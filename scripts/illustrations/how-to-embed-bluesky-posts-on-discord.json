@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Bluesky guide", "title": "Embed Bluesky on Discord: **swap one word**", "sub": "Change bsky.app to fxbsky.app in the link for video that plays, every image and quoted posts.", "chips": ["No bot needed", "Video plays inline", "Works on public posts"] },
+    { "name": "why", "type": "versus", "kicker": "Why it looks basic", "title": "Plain link vs **fxbsky.app link**", "left": { "label": "bsky.app", "tone": "neutral", "items": ["Text and author", "One image", "Video as a still or link"] }, "right": { "label": "fxbsky.app", "tone": "good", "items": ["Text and author", "All four images", "Playable video and quotes"] } },
+    { "name": "steps", "type": "steps", "kicker": "Step by step", "title": "Embed a Bluesky post in **4 steps**", "steps": [ { "title": "Copy link", "text": "Share → Copy link to post." }, { "title": "Swap domain", "text": "bsky.app becomes fxbsky.app.", "highlight": true }, { "title": "Paste and send", "text": "Discord builds the embed." }, { "title": "Tidy up", "text": "Wrap extra links in < >." } ] },
+    { "name": "fixes", "type": "checklist", "kicker": "No preview?", "title": "Quick fixes for a **missing embed**", "good": { "label": "Check", "items": ["“Embed links” is allowed", "Link previews are on", "The post still exists"] }, "bad": { "label": "Common causes", "items": ["Embeds off in the channel", "Post deleted or account gone", "fxbsky.app slow or down"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Swap bsky.app for fxbsky.app and **Discord shows the whole post.**", "by": "No bot, no login. The plain link still works as a fallback." }
+  ]
+}

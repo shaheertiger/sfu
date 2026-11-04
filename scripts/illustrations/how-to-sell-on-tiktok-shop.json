@@ -1,0 +1,119 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "kicker": "TikTok Shop guide",
+   "title": "How to sell on **TikTok Shop**",
+   "sub": "Set up in Seller Center, know what each order costs, then sell through videos, LIVE and creators.",
+   "chips": [
+    "7-step setup",
+    "~6% referral fee",
+    "LIVE selling",
+    "GMV"
+   ]
+  },
+  {
+   "name": "why",
+   "type": "versus",
+   "kicker": "Why it’s different",
+   "title": "Website store vs **TikTok Shop**",
+   "left": {
+    "label": "Website store",
+    "tone": "neutral",
+    "items": [
+     "Buyers arrive searching",
+     "Product pages sell",
+     "You do the promoting"
+    ]
+   },
+   "right": {
+    "label": "TikTok Shop",
+    "tone": "good",
+    "items": [
+     "Buyers discover in videos",
+     "Showing it in use sells",
+     "Creators promote for you"
+    ]
+   }
+  },
+  {
+   "name": "setup",
+   "type": "steps",
+   "kicker": "Setup",
+   "title": "From sign-up to **first listing**",
+   "steps": [
+    {
+     "title": "Register",
+     "text": "In Seller Center."
+    },
+    {
+     "title": "Verify",
+     "text": "Clear ID and tax documents.",
+     "highlight": true
+    },
+    {
+     "title": "Ship and get paid",
+     "text": "Shipping setup, bank account."
+    },
+    {
+     "title": "List and link",
+     "text": "Products, then your TikTok."
+    }
+   ]
+  },
+  {
+   "name": "fees",
+   "type": "versus",
+   "kicker": "What each order costs",
+   "title": "What TikTok takes vs **what you set**",
+   "left": {
+    "label": "TikTok sets",
+    "tone": "neutral",
+    "items": [
+     "Referral fee, ~6% in most US categories",
+     "Same fee on LIVE sales",
+     "Shipping by size and weight"
+    ]
+   },
+   "right": {
+    "label": "You choose",
+    "tone": "good",
+    "items": [
+     "Affiliate commission rate",
+     "Ad spend, if any",
+     "Your prices"
+    ]
+   }
+  },
+  {
+   "name": "caution",
+   "type": "checklist",
+   "kicker": "Use with caution",
+   "title": "Build trust **the slow way**",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Test every product first",
+     "Reviews from real buyers",
+     "Honest shipping times"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Paying for reviews",
+     "Untested suppliers",
+     "Restricted items without approval"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "Setup takes an afternoon. **Daily product videos are what make the sales.**",
+   "by": "GMV is sales value, not profit. Subtract fees, commissions and returns."
+  }
+ ]
+}

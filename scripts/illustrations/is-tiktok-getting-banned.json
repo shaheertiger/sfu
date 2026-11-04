@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok news · 2026", "title": "Is TikTok getting banned? **No.**", "sub": "The US ban was never enforced, and the sale the law required closed on 22 January 2026.", "chips": ["No ban date", "Joint venture", "Same app", "One lawsuit pending"] },
+    { "name": "why", "type": "steps", "kicker": "Why it isn’t banned", "title": "The law asked for **a sale, not a ban**", "steps": [ { "title": "The law", "text": "Sell the US business, or face a ban." }, { "title": "The delay", "text": "Enforcement paused for talks." }, { "title": "The sale", "text": "Closed 22 January 2026.", "highlight": true }, { "title": "The result", "text": "No ban date at the time of writing." } ] },
+    { "name": "timeline", "type": "steps", "kicker": "Timeline", "title": "From law to **joint venture**", "steps": [ { "title": "April 2024", "text": "Congress passes the law." }, { "title": "Jan 2025", "text": "Upheld; dark for about a day." }, { "title": "Sept 2025", "text": "Joint venture framework." }, { "title": "Jan 2026", "text": "The deal closes.", "highlight": true } ] },
+    { "name": "countries", "type": "versus", "kicker": "Outside the US", "title": "Blocked vs **government devices only**", "left": { "label": "Blocked for the public", "tone": "bad", "items": ["India, since 2020", "Afghanistan", "China uses Douyin instead"] }, "right": { "label": "Government devices only", "tone": "neutral", "items": ["UK and Canada", "EU’s main institutions", "Australia and New Zealand"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "TikTok isn’t going anywhere in the US. **Your audience still shouldn’t live in one app.**", "by": "Keep your files, post your best videos elsewhere too, and check the date on any ban rumor." }
+  ]
+}

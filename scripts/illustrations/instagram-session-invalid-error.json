@@ -1,0 +1,119 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "dark": true,
+   "kicker": "Instagram fix",
+   "title": "400 session invalid? **It’s not your post**",
+   "sub": "Meta cancelled the app’s access token. Reconnect the account, then retry the posts that failed.",
+   "chips": [
+    "Secure the account",
+    "Reconnect",
+    "Retry failed posts"
+   ]
+  },
+  {
+   "name": "meaning",
+   "type": "versus",
+   "kicker": "What the error means",
+   "title": "A connection problem, **not a post problem**",
+   "left": {
+    "label": "Won’t fix it",
+    "tone": "bad",
+    "items": [
+     "Editing the caption",
+     "Re-uploading the image",
+     "Retrying the same post"
+    ]
+   },
+   "right": {
+    "label": "Fixes it",
+    "tone": "good",
+    "items": [
+     "Reconnecting the account",
+     "Approving every permission",
+     "Then retrying failed posts"
+    ]
+   }
+  },
+  {
+   "name": "causes",
+   "type": "versus",
+   "kicker": "Common causes",
+   "title": "What **invalidates the session**",
+   "left": {
+    "label": "Security changes",
+    "items": [
+     "A password change",
+     "A security checkpoint",
+     "Logging out everywhere"
+    ],
+    "tone": "neutral"
+   },
+   "right": {
+    "label": "Account changes",
+    "items": [
+     "App permissions removed",
+     "Page unlinked",
+     "Switched to personal"
+    ],
+    "tone": "bad"
+   }
+  },
+  {
+   "name": "fix",
+   "type": "steps",
+   "kicker": "The fix",
+   "title": "Reconnect in **four stages**",
+   "steps": [
+    {
+     "title": "Secure",
+     "text": "Clear any security check first."
+    },
+    {
+     "title": "Check",
+     "text": "Business or Creator, linked to a Page."
+    },
+    {
+     "title": "Reconnect",
+     "text": "Tick the Page, keep every permission.",
+     "highlight": true
+    },
+    {
+     "title": "Retry",
+     "text": "Retry or reschedule failed posts."
+    }
+   ]
+  },
+  {
+   "name": "prevent",
+   "type": "checklist",
+   "kicker": "Stop it coming back",
+   "title": "What prevents it, and **what causes it**",
+   "good": {
+    "label": "Prevents it",
+    "items": [
+     "Reconnect after password changes",
+     "One long-term business login",
+     "Two-factor authentication"
+    ]
+   },
+   "bad": {
+    "label": "Causes it",
+    "items": [
+     "Logging out of all sessions",
+     "Several people reconnecting",
+     "Switching account type"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "The old token can’t be revived. **Reconnect first, retry second.**",
+   "by": "Your post was never the problem."
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "X (Twitter) guide", "title": "What is **t.co?**", "sub": "X’s own link shortener. It wraps every link, counts it as 23 characters, screens it and counts clicks.", "chips": ["23 characters", "Is it safe?", "Analytics", "UTM tags"] },
+    { "name": "jobs", "type": "versus", "kicker": "What t.co does", "title": "What it does for X, **what it means for you**", "left": { "label": "For X", "tone": "neutral", "items": ["Screens links for malware", "Counts clicks", "Shows a clean preview"] }, "right": { "label": "For you", "tone": "good", "items": ["Every link is 23 characters", "UTM tags cost nothing", "X traffic shows as t.co"] } },
+    { "name": "characters", "type": "bars", "kicker": "Character count", "title": "Every link counts **as 23 characters**", "rows": [ { "label": "example.com", "value": 100, "note": "11 → 23" }, { "label": "Product page", "value": 100, "note": "~60 → 23" }, { "label": "Tracking URL", "value": 100, "note": "200 → 23" } ] },
+    { "name": "analytics", "type": "steps", "kicker": "Track clicks from X", "title": "Turn “t.co” into **real campaign data**", "steps": [ { "title": "Add UTM tags", "text": "utm_source=x and a campaign.", "highlight": true }, { "title": "Post the full link", "text": "t.co keeps the tags." }, { "title": "Read the campaign", "text": "Not just the t.co referrer." } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "t.co is legitimate. **Check where each link goes**, not the shortener.", "by": "Post the full tagged link and let t.co do the rest." }
+  ]
+}

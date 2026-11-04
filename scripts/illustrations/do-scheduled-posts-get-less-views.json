@@ -1,0 +1,121 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "dark": true,
+   "kicker": "Scheduling myths",
+   "title": "Do scheduled posts get less views? **No.**",
+   "sub": "Timing, format and the first hour decide reach. The upload method doesn’t.",
+   "chips": [
+    "Timing",
+    "Format",
+    "First hour",
+    "Consistency"
+   ]
+  },
+  {
+   "name": "myth",
+   "type": "versus",
+   "kicker": "Why the myth sticks",
+   "title": "What gets blamed vs **what’s really going on**",
+   "left": {
+    "label": "Blamed",
+    "tone": "bad",
+    "items": [
+     "“The scheduler hurt my reach”",
+     "“The algorithm hates tools”",
+     "“Live posts always win”"
+    ]
+   },
+   "right": {
+    "label": "Really going on",
+    "tone": "good",
+    "items": [
+     "Posted at a quiet hour",
+     "A weaker format",
+     "Nobody answered early comments"
+    ]
+   }
+  },
+  {
+   "name": "platforms",
+   "type": "steps",
+   "kicker": "What the platforms say",
+   "title": "They all **offer scheduling themselves**",
+   "steps": [
+    {
+     "title": "Instagram",
+     "text": "In the app and Meta Business Suite."
+    },
+    {
+     "title": "TikTok",
+     "text": "On the TikTok website."
+    },
+    {
+     "title": "Facebook",
+     "text": "Page scheduling for years."
+    },
+    {
+     "title": "LinkedIn",
+     "text": "Native scheduling since 2022.",
+     "highlight": true
+    }
+   ]
+  },
+  {
+   "name": "factors",
+   "type": "steps",
+   "kicker": "What changes views",
+   "title": "The things that **actually matter**",
+   "steps": [
+    {
+     "title": "Timing",
+     "text": "Post when your audience is online.",
+     "highlight": true
+    },
+    {
+     "title": "Format",
+     "text": "Short video usually wins."
+    },
+    {
+     "title": "First hour",
+     "text": "Reply to early comments."
+    },
+    {
+     "title": "Consistency",
+     "text": "A steady rhythm, natively uploaded."
+    }
+   ]
+  },
+  {
+   "name": "caution",
+   "type": "checklist",
+   "kicker": "Use with caution",
+   "title": "Safe scheduling vs **faked engagement**",
+   "good": {
+    "label": "Safe",
+    "items": [
+     "Your own posts, official APIs",
+     "Slots at your active hours",
+     "Real replies in the first hour"
+    ]
+   },
+   "bad": {
+    "label": "Risky",
+    "items": [
+     "Auto-like and auto-comment apps",
+     "Engagement pods",
+     "Apps that want your password"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "Scheduling doesn’t cost you views. **The wrong time, format or first hour does.**",
+   "by": "Schedule at your audience’s active hours and be around for early comments."
+  }
+ ]
+}

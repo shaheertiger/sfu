@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Instagram guide", "title": "Post on Instagram from desktop: **3 ways**", "sub": "The website for posting now, Business Suite for scheduling, a scheduler for every platform.", "chips": ["instagram.com", "Meta Business Suite", "A scheduler", "No phone"] },
+    { "name": "options", "type": "steps", "kicker": "Pick your option", "title": "Which desktop option **fits your post**", "steps": [ { "title": "instagram.com", "text": "Post now, any account." }, { "title": "Business Suite", "text": "Schedule Instagram + Facebook." }, { "title": "A scheduler", "text": "Plan across many platforms.", "highlight": true } ] },
+    { "name": "browser", "type": "steps", "kicker": "In your browser", "title": "Post from instagram.com in **4 steps**", "steps": [ { "title": "Create", "text": "The plus icon in the left menu." }, { "title": "Add media", "text": "Photos or a video (a Reel)." }, { "title": "Choose the crop", "text": "1:1, 4:5, 16:9 or original.", "highlight": true }, { "title": "Caption + share", "text": "Add alt text, then Share." } ] },
+    { "name": "caution", "type": "checklist", "kicker": "Use with caution", "title": "Official ways vs **old workarounds**", "good": { "label": "Safe", "items": ["instagram.com", "Meta Business Suite", "Tools using Meta’s login"] }, "bad": { "label": "Risky", "items": ["Apps that want your password", "Unused browser extensions", "“Mobile view” hacks"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Desktop doesn’t cost you reach. **The right size and crop matter more.**", "by": "Post now from the website, schedule with Business Suite, or plan every platform in a scheduler." }
+  ]
+}

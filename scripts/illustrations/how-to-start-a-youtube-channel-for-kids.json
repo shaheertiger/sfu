@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "YouTube guide", "title": "Start a YouTube channel for kids, **safely**", "sub": "Two setups: a channel made for kids, or a parent-managed channel your child takes part in.", "chips": ["Made for kids", "Parent-managed", "Privacy first"] },
+    { "name": "two-meanings", "type": "versus", "kicker": "Two different things", "title": "Made for kids, **or made with kids?**", "left": { "label": "Made for kids", "tone": "neutral", "items": ["Adult or business owns it", "Videos aimed at children", "Comments and some ads off"] }, "right": { "label": "A kid on the channel", "tone": "neutral", "items": ["Parent owns it under 13", "Any audience, set honestly", "Supervision and privacy"] } },
+    { "name": "steps", "type": "steps", "kicker": "Made-for-kids setup", "title": "The steps that **keep you compliant**", "steps": [ { "title": "Adult account", "text": "Ideally a brand account." }, { "title": "Set the audience", "text": "Studio, Settings, Channel, Advanced." }, { "title": "Check each upload", "text": "Before every video goes public.", "highlight": true } ] },
+    { "name": "privacy", "type": "checklist", "kicker": "Before every upload", "title": "Keep your child’s **details off camera**", "good": { "label": "Do", "items": ["Check every background", "Post after you’ve left a place", "Use a nickname or theme"] }, "bad": { "label": "Don’t show", "items": ["Full names or schools", "Uniforms, house numbers, plates", "Where you are right now"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Under 13, **the channel belongs to a parent.** Label every video honestly.", "by": "Then run the privacy checklist before each upload." }
+  ]
+}

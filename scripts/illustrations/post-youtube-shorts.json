@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "YouTube guide", "title": "Post a YouTube Short: **no button needed**", "sub": "Upload a vertical or square video of up to 3 minutes. YouTube decides it’s a Short.", "chips": ["9:16 export", "Up to 3 minutes", "Title under 100", "#Shorts optional"] },
+    { "name": "rules", "type": "versus", "kicker": "How YouTube decides", "title": "A Short vs **a regular video**", "left": { "label": "Treated as a Short", "tone": "good", "items": ["Vertical or square", "3 minutes or less", "Exported at 9:16"] }, "right": { "label": "Stays a regular video", "tone": "bad", "items": ["Horizontal, any length", "Vertical over 3 minutes", "Vertical inside a 16:9 frame"] } },
+    { "name": "steps", "type": "steps", "kicker": "Post a Short", "title": "From export to **the Shorts feed**", "steps": [ { "title": "Export 9:16", "text": "Not inside a 16:9 frame.", "highlight": true }, { "title": "Upload", "text": "App or YouTube Studio." }, { "title": "Title + privacy", "text": "Under 100 characters." }, { "title": "Publish or schedule", "text": "Then let it process." } ] },
+    { "name": "caution", "type": "checklist", "kicker": "Use with caution", "title": "Clean exports vs **risky shortcuts**", "good": { "label": "Safe", "items": ["Export from your own editor", "Clips you have rights to", "Keep your original files"] }, "bad": { "label": "Risky", "items": ["Watermark remover sites", "Reuploading others’ clips", "Re-encoded downloads"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "The export makes it a Short. **The hashtag doesn’t.**", "by": "Export vertical at 9:16, keep it to 3 minutes, and schedule one clip to every platform at once." }
+  ]
+}

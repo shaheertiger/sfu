@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import JsonLd from '@/components/JsonLd';
 import ToolWidget from '@/components/tools/ToolWidget';
 import { Breadcrumbs, LanguageLinks, MarketingPage, TrialCta } from '@/components/marketing/Chrome';
+import { GrowBar, GrowCard } from '@/components/marketing/GrowCta';
 import m from '@/components/marketing/marketing.module.css';
 import { getPosts, getToolPage, getToolPages, renderMarkdown } from '@/lib/content';
 import { PLATFORM_NAMES, relatedTools, samePlatformTools, toolBySlug } from '@/lib/tools/registry';
@@ -52,11 +53,12 @@ export default async function ToolPage({ params }) {
           <span className={m.eyebrow}>Free tool · No sign-up</span>
           <h1 className={m.h1}>{page.h1}</h1>
           {page.lead && <p className={m.lead}>{page.lead}</p>}
-          <div className={m.toolArea}>
+          <div className={m.toolArea} id="tool">
             <ToolWidget kind={tool.kind} config={tool.config} platform={tool.platform} />
           </div>
         </section>
 
+        <div className={m.toolBody}>
         <article className={`${m.narrow} ${m.prose}`}>
           {page.sections.map((s) => (
             <section key={s.id} className={m.section}>
@@ -116,7 +118,10 @@ export default async function ToolPage({ params }) {
             )}
           </div>
         </article>
+        <GrowCard />
+        </div>
       </div>
+      <GrowBar watch="tool" />
     </MarketingPage>
   );
 }

@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Guide · MCP", "title": "Let Claude **schedule, not just write**", "sub": "Connect Claude to a social media MCP server. Posts land in your queue, where you check them first.", "chips": ["One API key", "One server URL", "Drafts first"] },
+    { "name": "what", "type": "versus", "kicker": "What MCP changes", "title": "Claude alone vs **Claude with MCP**", "left": { "label": "Without MCP", "tone": "neutral", "items": ["Writes and revises text", "You paste every post", "You check every limit"] }, "right": { "label": "With a scheduler’s MCP", "tone": "good", "items": ["Lists your real accounts", "Creates drafts or scheduled posts", "Every post checked as it’s made"] } },
+    { "name": "manual", "type": "steps", "kicker": "The manual way", "title": "Fine for one post, **slow for twenty**", "steps": [ { "title": "Draft", "text": "Ask Claude for posts per network." }, { "title": "Paste", "text": "Into each app, one at a time.", "highlight": true }, { "title": "Check", "text": "Count against every limit." }, { "title": "Schedule", "text": "Pick a date and time, twenty times." } ] },
+    { "name": "options", "type": "bars", "kicker": "Options compared", "title": "How much **Claude can do** for you", "rows": [ { "label": "Scheduler MCP", "value": 90, "note": "many networks, one key" }, { "label": "Automation MCP", "value": 55, "note": "actions you set up" }, { "label": "Per-network MCP", "value": 40, "note": "one network each" }, { "label": "Copy-paste", "value": 15, "note": "writing only" } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Let Claude draft and schedule. **Keep your queue as the checkpoint.**", "by": "Drafts first, one key per client, confirmations on for publish and delete." }
+  ]
+}

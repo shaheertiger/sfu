@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok guide", "title": "A TikTok nudge is **a poke**", "sub": "A one-tap reminder to reply, or a request to go LIVE. It carries no words of its own.", "chips": ["Chat nudges", "LIVE nudges", "Read status", "Mute or block"] },
+    { "name": "kinds", "type": "steps", "kicker": "3 kinds of nudge", "title": "Where nudges show up, **and what they do**", "steps": [ { "title": "In a chat", "text": "“I’m waiting for a reply.”", "highlight": true }, { "title": "On a profile", "text": "“Please go LIVE.”" }, { "title": "On a repost", "text": "“Your video was reposted.” In some versions." } ] },
+    { "name": "steps", "type": "steps", "kicker": "How to nudge", "title": "Three taps, **once**", "steps": [ { "title": "Open the chat", "text": "Inbox, then the conversation." }, { "title": "Find Nudge", "text": "Shows after a while with no reply.", "highlight": true }, { "title": "Tap once", "text": "Then wait." } ] },
+    { "name": "read-status", "type": "versus", "kicker": "Read status", "title": "On vs **off**", "left": { "label": "On", "tone": "neutral", "items": ["Others see when you’ve read", "You see when they’ve read", "Only if both have it on"] }, "right": { "label": "Off", "tone": "good", "items": ["Nobody sees when you’ve read", "You can’t see theirs either", "Privacy → Direct messages"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "A nudge is a reminder, not a message. **Send one, then wait.**", "by": "Mute, restrict or block anyone who won’t stop." }
+  ]
+}

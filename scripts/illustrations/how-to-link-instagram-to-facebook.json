@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Instagram guide", "title": "Link Instagram to Facebook: **2 different links**", "sub": "Accounts Center joins your profiles. A Page link is what business tools need.", "chips": ["Accounts Center", "Facebook Page", "5 fixes", "Unlinking"] },
+    { "name": "which-link", "type": "versus", "kicker": "Which one you need", "title": "Your profile vs **your Page**", "left": { "label": "Accounts Center", "tone": "neutral", "items": ["Shared login", "Auto-share stories", "Personal accounts"] }, "right": { "label": "Facebook Page", "tone": "good", "items": ["Ads and shared inbox", "Scheduling tools", "Professional accounts only"] } },
+    { "name": "accounts-center", "type": "steps", "kicker": "Personal link", "title": "Link your profile in **Accounts Center**", "steps": [ { "title": "Profile menu", "text": "Settings and activity." }, { "title": "Accounts Center", "text": "Add accounts." }, { "title": "Log in", "text": "The right Facebook account.", "highlight": true }, { "title": "Choose sharing", "text": "Stories, posts, login." } ] },
+    { "name": "page-steps", "type": "steps", "kicker": "Business link", "title": "Connect Instagram to **a Page**", "steps": [ { "title": "Go pro", "text": "Business or Creator account." }, { "title": "Open the Page", "text": "Settings → Linked accounts." }, { "title": "Connect", "text": "Instagram → Connect account.", "highlight": true } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Scheduling and ads don’t look at Accounts Center. **They look for a Page link.**", "by": "Most businesses need the Page link, or both." }
+  ]
+}

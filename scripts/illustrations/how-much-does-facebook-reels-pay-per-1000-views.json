@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Facebook money guide · 2026", "title": "Facebook pay per 1,000 views? **No fixed rate**", "sub": "Work out your own rate from monetized views in your Professional Dashboard.", "chips": ["Monetized views", "Audience location", "Original content"] },
+    { "name": "ways", "type": "steps", "kicker": "How creators get paid", "title": "Five ways Facebook **pays creators**", "steps": [ { "title": "Performance", "text": "Paid on views and engagement.", "highlight": true }, { "title": "Ads", "text": "In-stream and on Reels." }, { "title": "Fans", "text": "Stars and subscriptions." }, { "title": "Brands", "text": "Paid partnership deals." } ] },
+    { "name": "calculate", "type": "steps", "kicker": "Find your own rate", "title": "Earnings ÷ (views ÷ 1,000) = **your rate**", "steps": [ { "title": "Dashboard", "text": "Professional Dashboard → Monetization." }, { "title": "Earnings", "text": "Note what one Reel earned." }, { "title": "Views", "text": "Note its views, then divide.", "highlight": true }, { "title": "Repeat", "text": "Ten Reels give you a range." } ] },
+    { "name": "scenarios", "type": "versus", "kicker": "Hypothetical math", "title": "Same views, **different audience**", "left": { "label": "40,000 monetized · $1.50", "tone": "good", "items": ["40 × $1.50", "About $60", "Higher-paying markets"] }, "right": { "label": "40,000 monetized · $0.40", "tone": "neutral", "items": ["40 × $0.40", "About $16", "Lower-paying markets"] } },
+    { "name": "next", "type": "checklist", "kicker": "Grow what pays", "title": "What helps your payouts, and **what hurts them**", "good": { "label": "Helps", "items": ["Original footage", "Full watch-throughs", "A steady schedule"] }, "bad": { "label": "Hurts", "items": ["Reposting others’ clips", "Judging on total views", "Trusting one online rate"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Any single rate online is someone else’s account. **Your dashboard has yours.**", "by": "Monetized views ÷ 1,000 × your rate. Then post more of what pays." }
+  ]
+}

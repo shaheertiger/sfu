@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide 2026", "title": "Is TikTok worth it? **Yes, if you post often**", "sub": "Worth it for most brands and creators who can make 3 to 5 short videos a week.", "chips": ["Reach without followers", "60-day test", "Repost to Reels and Shorts"] },
+    { "name": "reach", "type": "versus", "kicker": "Why it works", "title": "Follower feeds vs **the For You feed**", "left": { "label": "Most platforms", "tone": "neutral", "items": ["Posts go mainly to followers", "New accounts start slow", "Growth follows follower count"] }, "right": { "label": "TikTok", "tone": "good", "items": ["Videos shown to strangers", "Reach from the first post", "Results vary video to video"] } },
+    { "name": "fit", "type": "checklist", "kicker": "Who it suits", "title": "Who TikTok suits, and **who might skip it**", "good": { "label": "Worth it", "items": ["Consumer brands with something to show", "Local businesses with personality", "Educators and creators"] }, "bad": { "label": "Skip for now", "items": ["No time for video", "Niche B2B buyers", "Slow approval processes"] } },
+    { "name": "test", "type": "steps", "kicker": "60-day test", "title": "Find out cheaply in **60 days**", "steps": [ { "title": "3–5 a week", "text": "Post when your audience is active." }, { "title": "Hook fast", "text": "Show the result in 2 seconds." }, { "title": "3 formats", "text": "Tutorial, behind the scenes, slideshow." }, { "title": "Judge by shares", "text": "Saves, shares, profile visits.", "highlight": true } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "TikTok is worth it **as one channel, not your only one.**", "by": "Test for 60 days and judge by saves and shares." }
+  ]
+}

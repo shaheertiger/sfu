@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Facebook guide", "title": "Schedule a Facebook post **in 6 steps**", "sub": "Write it in Meta Business Suite, open the arrow next to Publish, and choose Schedule. Pages only.", "chips": ["Business Suite", "Pages only", "Planner", "Up to ~29 days"] },
+    { "name": "who", "type": "versus", "kicker": "Who can schedule", "title": "Pages can, **profiles can’t**", "left": { "label": "Can schedule", "tone": "good", "items": ["Facebook Pages", "Connected Instagram", "Reels, with their own options"] }, "right": { "label": "Can’t schedule", "tone": "bad", "items": ["Personal profiles", "Most Groups", "Posts you’ve already published"] } },
+    { "name": "steps", "type": "steps", "kicker": "Meta Business Suite", "title": "From draft to **scheduled**", "steps": [ { "title": "Pick the Page", "text": "Top-left selector." }, { "title": "Create post", "text": "Text, media or a link." }, { "title": "Open the arrow", "text": "Next to Publish, then Schedule.", "highlight": true }, { "title": "Set the time", "text": "Confirm Schedule post." } ] },
+    { "name": "caution", "type": "checklist", "kicker": "Use with caution", "title": "Official scheduling vs **profile workarounds**", "good": { "label": "Safe", "items": ["Business Suite for Pages", "Tools using Meta’s login", "Reminders for profile posts"] }, "bad": { "label": "Risky", "items": ["Apps that post to profiles", "Automated Group posting", "Sharing your password"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Schedule from a Page, **then look in Planner, not on your Page.**", "by": "Business Suite covers Facebook and Instagram. A scheduler adds your other platforms." }
+  ]
+}

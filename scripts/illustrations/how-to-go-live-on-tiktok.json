@@ -1,0 +1,10 @@
+{
+ "cards": [
+  { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok guide", "title": "Go live on TikTok: **5 taps, 3 rules**", "sub": "About 1,000 followers, 18 or older, and an account in good standing, at the time of writing.", "chips": ["Phone", "LIVE Studio", "PS5 streaming", "LIVE rules"] },
+  { "name": "requirements", "type": "versus", "kicker": "Why LIVE is missing", "title": "What unlocks LIVE, and **what hides it**", "left": { "label": "Unlocks LIVE", "tone": "good", "items": ["About 1,000 followers", "Account holder 18 or older", "No recent violations"] }, "right": { "label": "Hides LIVE", "tone": "bad", "items": ["Under the follower threshold", "Under 18", "A recent guidelines strike"] } },
+  { "name": "steps", "type": "steps", "kicker": "On your phone", "title": "Go live in **4 moves**", "steps": [ { "title": "Tap +", "text": "The button you post with." }, { "title": "Swipe to LIVE", "text": "Missing? Not eligible yet." }, { "title": "Title and cover", "text": "Say what’s happening.", "highlight": true }, { "title": "Go LIVE", "text": "Start with action, not waiting." } ] },
+  { "name": "desktop", "type": "versus", "kicker": "On a computer", "title": "LIVE Studio or **a stream key**", "left": { "label": "TikTok LIVE Studio", "tone": "neutral", "items": ["TikTok’s Windows app", "Camera, screen or game", "Click End LIVE to stop"] }, "right": { "label": "OBS or Streamlabs", "tone": "neutral", "items": ["Needs a TikTok stream key", "Not offered to every account", "Use a vertical canvas"] } },
+  { "name": "rules", "type": "checklist", "kicker": "LIVE rules", "title": "What’s fine, and **what gets a LIVE restricted**", "good": { "label": "Fine", "items": ["Something happening on screen", "Moderators and comment filters", "Guests in a multi-guest LIVE"] }, "bad": { "label": "Restricted", "items": ["Smoking, vaping or alcohol", "Minors alone on camera", "Static images or reruns"] } },
+  { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Meet the rules, then **give people a reason to tune in.**", "by": "Steady videos between streams bring viewers to your next LIVE." }
+ ]
+}

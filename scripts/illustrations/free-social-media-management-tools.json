@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Strategy guide", "title": "Free social media tools that **cost nothing**", "sub": "Native schedulers, open-source software and browser utilities, and where free stops being enough.", "chips": ["Native schedulers", "Open source", "Browser utilities"] },
+    { "name": "compare", "type": "bars", "kicker": "Free options compared", "title": "How much does **each free option cover?**", "rows": [ { "label": "Free plans", "value": 70, "note": "Several platforms, limits" }, { "label": "Self-hosted", "value": 60, "note": "Several, after setup" }, { "label": "Native tools", "value": 25, "note": "One platform each" }, { "label": "Browser utilities", "value": 10, "note": "Prep only" } ] },
+    { "name": "native", "type": "steps", "kicker": "Native schedulers", "title": "The most reliable **free option**", "steps": [ { "title": "Meta Business Suite", "text": "Facebook Pages and linked Instagram.", "highlight": true }, { "title": "YouTube Studio", "text": "Scheduled uploads and Premieres." }, { "title": "LinkedIn and X", "text": "Schedule from each composer." } ] },
+    { "name": "safety", "type": "checklist", "kicker": "Stay safe", "title": "Free tools that are safe, **and ones that aren’t**", "good": { "label": "Safe", "items": ["Each platform’s own scheduler", "Tools using the official sign-in", "Browser tools with no login"] }, "bad": { "label": "Risky", "items": ["Apps wanting your password", "Promises of followers or likes", "Apps you can’t identify"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Start with each platform’s own tools. **Move on when switching apps costs more time than it saves.**", "by": "No single free tool covers every network well." }
+  ]
+}

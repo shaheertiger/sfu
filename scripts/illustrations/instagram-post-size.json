@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Instagram sizes 2026", "title": "Instagram post size: **1080×1350 wins**", "sub": "4:5 portrait fills the feed. Reels and Stories are 1080×1920, and the grid previews at 3:4.", "chips": ["Feed 1080×1350", "Reels 1080×1920", "Grid 3:4"] },
+    { "name": "ratios", "type": "bars", "kicker": "Feed shapes compared", "title": "How much **screen** each shape fills", "rows": [ { "label": "4:5 portrait", "value": 100, "note": "1080×1350" }, { "label": "1:1 square", "value": 80, "note": "1080×1080" }, { "label": "1.91:1 wide", "value": 42, "note": "1080×566" } ] },
+    { "name": "grid", "type": "versus", "kicker": "The 3:4 grid", "title": "What the grid **crops off**", "left": { "label": "4:5 portrait post", "tone": "good", "items": ["Thin strip off top and bottom", "Subject stays visible", "Full post in the feed"] }, "right": { "label": "Square or landscape post", "tone": "bad", "items": ["Cropped at the sides", "Edge text gets cut", "Leave space at the edges"] } },
+    { "name": "vertical", "type": "checklist", "kicker": "Reels and Stories", "title": "1080×1920: **where text is safe**", "good": { "label": "Safe", "items": ["Center of the screen", "Faces near the middle", "Titles inside the 3:4 crop"] }, "bad": { "label": "Covered", "items": ["Top 250 px on Stories", "Bottom: caption and reply bar", "Right side on Reels: buttons"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Export at **1080×1350** and keep your subject centered.", "by": "You’ll rarely see a bad crop again." }
+  ]
+}

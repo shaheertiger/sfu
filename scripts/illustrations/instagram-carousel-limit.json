@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Instagram guide", "title": "Carousel limit: **20 in the app, 10 scheduled**", "sub": "Every scheduler uses Instagram’s API, and the API caps carousels at 10 items.", "chips": ["2–10 when scheduled", "Photos + videos", "One aspect ratio", "Panoramas"] },
+    { "name": "app-vs-api", "type": "versus", "kicker": "Why the numbers differ", "title": "The Instagram app vs **the publishing API**", "left": { "label": "In the app", "tone": "neutral", "items": ["Up to 20 slides", "Post by hand", "At the time of writing"] }, "right": { "label": "Scheduled (API)", "tone": "good", "items": ["Up to 10 slides", "Any scheduling tool", "Photos and videos mixed"] } },
+    { "name": "platforms", "type": "bars", "kicker": "Multi-image limits", "title": "How many images **each platform takes**", "rows": [ { "label": "Instagram", "value": 29, "note": "10 per carousel" }, { "label": "Threads", "value": 29, "note": "10 per carousel" }, { "label": "LinkedIn", "value": 26, "note": "9 images" }, { "label": "X · Bluesky", "value": 11, "note": "4 images" }, { "label": "TikTok", "value": 100, "note": "35 photos" } ] },
+    { "name": "order", "type": "steps", "kicker": "Slide order", "title": "Hook, one idea each, **payoff**", "steps": [ { "title": "Slide 1", "text": "The hook: a promise or question.", "highlight": true }, { "title": "Slides 2–9", "text": "One point per slide." }, { "title": "Last slide", "text": "Summary or call to action." } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Plan scheduled carousels for **10 slides at one aspect ratio.**", "by": "Need more? Split it in two, or post by hand." }
+  ]
+}

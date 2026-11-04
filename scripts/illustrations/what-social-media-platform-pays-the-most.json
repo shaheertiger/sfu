@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Creator pay · 2026", "title": "Which platform pays most? **It depends on you**", "sub": "YouTube’s published 55% split leads for long-form. Format, audience and niche decide the rest.", "chips": ["YouTube 55%", "TikTok over 1 min", "Brand deals"] },
+    { "name": "models", "type": "bars", "kicker": "Payout models", "title": "How directly **does each platform pay?**", "rows": [ { "label": "YouTube long-form", "value": 90, "note": "55% ad share" }, { "label": "YouTube Shorts", "value": 65, "note": "45% of pool share" }, { "label": "TikTok", "value": 55, "note": "Videos over 1 min" }, { "label": "Instagram", "value": 20, "note": "Mostly brand deals" } ] },
+    { "name": "factors", "type": "steps", "kicker": "What decides it", "title": "Four things **set your pay**", "steps": [ { "title": "Format", "text": "Long, short, live or text." }, { "title": "Audience and niche", "text": "Where viewers live, what they watch.", "highlight": true }, { "title": "Income mix", "text": "Brand deals, affiliates, products." } ] },
+    { "name": "safety", "type": "checklist", "kicker": "Reaching thresholds", "title": "Grow to payouts **the safe way**", "good": { "label": "Works", "items": ["Steady posting for months", "Testing several platforms", "Tracking brand inquiries"] }, "bad": { "label": "Backfires", "items": ["Bought followers", "Bought views or watch hours", "Engagement bots"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "No platform pays most for everyone. **Your own earnings per 1,000 views decide.**", "by": "Start with your format, test for a few months." }
+  ]
+}

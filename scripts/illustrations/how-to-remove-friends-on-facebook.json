@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Facebook guide", "title": "Get rid of Facebook friends, **quietly**", "sub": "Unfriend in three taps, or pick a gentler option that keeps the peace.", "chips": ["Unfriend", "Unfollow", "Restricted", "Block"] },
+    { "name": "options", "type": "versus", "kicker": "Pick by what you want to stop", "title": "Unfriend, or **something gentler?**", "left": { "label": "Ends the friendship", "tone": "bad", "items": ["Unfriend: silent removal", "Block: no contact at all", "Re-adding needs a new request"] }, "right": { "label": "Stays friends", "tone": "good", "items": ["Unfollow: hide their posts", "Restricted: public posts only", "Take a break: for exes"] } },
+    { "name": "steps", "type": "steps", "kicker": "In the app", "title": "Unfriend in **three taps**", "steps": [ { "title": "Profile", "text": "Open their profile." }, { "title": "Friends", "text": "Tap the Friends button." }, { "title": "Unfriend", "text": "Tap Unfriend, then Confirm.", "highlight": true } ] },
+    { "name": "quiet", "type": "steps", "kicker": "4 quieter options", "title": "Keep the peace, **lose the noise**", "steps": [ { "title": "Unfollow", "text": "Or snooze for 30 days." }, { "title": "Restricted", "text": "They see public posts only.", "highlight": true }, { "title": "Take a break", "text": "Choose what you each see." }, { "title": "Block", "text": "No profile, messages or search." } ] },
+    { "name": "page", "type": "versus", "kicker": "Profile or Page?", "title": "Clients aren’t friends. **Give them a Page.**", "left": { "label": "Personal profile", "tone": "neutral", "items": ["Friends, up to 5,000", "Family and clients mixed", "No scheduling tools"] }, "right": { "label": "Facebook Page", "tone": "good", "items": ["Followers, not friends", "Remove or ban in People", "Works with schedulers"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Their posts? Unfollow. Your posts? Restricted. **Any contact? Block.**", "by": "Clear big lists slowly, and skip the mass-unfriend extensions." }
+  ]
+}

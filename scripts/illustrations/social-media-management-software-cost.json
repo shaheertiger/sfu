@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Pricing guide · 2026", "title": "Social media software: **$0 to $400+ a month**", "sub": "What you pay depends on accounts, people and add-ons, not the headline price.", "chips": ["Free tools", "$5–30 solo", "$80+ per user suites"] },
+    { "name": "models", "type": "steps", "kicker": "Three pricing models", "title": "Tools charge for **different things**", "steps": [ { "title": "Per channel", "text": "Cheap for a few, grows with each." }, { "title": "Per bundle", "text": "A set number of accounts, flat fee.", "highlight": true }, { "title": "Per seat", "text": "Pricier per person, adds inbox." } ] },
+    { "name": "scenario", "type": "bars", "kicker": "One owner, six accounts", "title": "Same setup, **different monthly bills**", "rows": [ { "label": "Postiz Team", "value": 100, "note": "$39 a month" }, { "label": "Buffer Essentials", "value": 77, "note": "$30, yearly billing" }, { "label": "Schedule For You Solo", "value": 49, "note": "$19 a month" }, { "label": "Later Starter", "value": 48, "note": "$18.75, yearly billing" } ] },
+    { "name": "safety", "type": "checklist", "kicker": "Before you pay", "title": "Buy software **without regrets**", "good": { "label": "Do", "items": ["Price your exact setup", "Trial with a real week of posts", "Read the refund terms"] }, "bad": { "label": "Avoid", "items": ["Prepaying a year untested", "Comparing headline prices", "Ignoring post caps"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "The cheapest tool is the one **priced for your accounts and people.**", "by": "Count both, compare two or three, trial before paying yearly." }
+  ]
+}

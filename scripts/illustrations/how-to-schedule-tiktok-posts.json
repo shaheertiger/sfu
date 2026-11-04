@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "How to **schedule** TikToks", "sub": "TikTok Studio schedules up to 10 days ahead on desktop. Batches and cross-posting need a scheduler.", "chips": ["TikTok Studio", "10-day cap", "Reels and Shorts", "From your phone"] },
+    { "name": "limits", "type": "versus", "kicker": "Native limits", "title": "TikTok Studio vs **a scheduling tool**", "left": { "label": "TikTok Studio", "tone": "neutral", "items": ["Up to 10 days ahead", "Desktop browser only", "TikTok only"] }, "right": { "label": "Scheduling tool", "tone": "good", "items": ["No 10-day cap", "Any browser, phone included", "Reels and Shorts too"] } },
+    { "name": "studio", "type": "steps", "kicker": "Free method", "title": "Schedule in **TikTok Studio**", "steps": [ { "title": "Creator account", "text": "Personal accounts can’t schedule." }, { "title": "Upload on desktop", "text": "At tiktok.com, in TikTok Studio." }, { "title": "Switch on Schedule", "text": "Check your time zone first.", "highlight": true }, { "title": "Confirm", "text": "Edit or delete it until it’s live." } ] },
+    { "name": "compare", "type": "bars", "kicker": "How far ahead", "title": "How far ahead **each option** schedules", "rows": [ { "label": "Post manually", "value": 4, "note": "No scheduling" }, { "label": "TikTok Studio", "value": 35, "note": "Up to 10 days" }, { "label": "Scheduling tool", "value": 100, "note": "No 10-day cap" } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "TikTok Studio is fine for the odd post. **Batches and cross-posting need a scheduler.**", "by": "Add sounds and effects before you upload, whichever you use." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "Go viral on TikTok: **win the first 2 seconds**", "sub": "Watch time, rewatches and shares push a video further. Hashtags like #fyp don’t.", "chips": ["Hook fast", "Keep it short", "Post often"] },
+    { "name": "fyp", "type": "steps", "kicker": "How the For You feed works", "title": "Every video gets **a test group first**", "steps": [ { "title": "Small test group", "text": "Every eligible video is shown to a few." }, { "title": "They watch it all", "text": "Completion, rewatches, shares, follows.", "highlight": true }, { "title": "Bigger groups", "text": "Strong signals earn the next round." } ] },
+    { "name": "tips", "type": "bars", "kicker": "What moves reach", "title": "Which signals **matter most?**", "rows": [ { "label": "Watch time", "value": 95, "note": "The strongest signal" }, { "label": "Rewatches, shares", "value": 80, "note": "Strong" }, { "label": "Comments", "value": 60, "note": "Helps" }, { "label": "#fyp hashtags", "value": 5, "note": "No evidence" } ] },
+    { "name": "safety", "type": "checklist", "kicker": "Growing safely", "title": "What grows an account, **and what backfires**", "good": { "label": "Works", "items": ["A hook in the first second", "Three to five videos a week", "Video replies to comments"] }, "bad": { "label": "Backfires", "items": ["Bought views", "Follow-for-follow groups", "Bots that need your login"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "TikTok rewards people who watch. **Give it more videos worth finishing.**", "by": "Hook fast, keep it short, post often, let slow videos sit." }
+  ]
+}

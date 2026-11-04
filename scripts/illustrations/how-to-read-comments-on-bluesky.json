@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Bluesky guide", "title": "Read Bluesky comments, **hidden ones too**", "sub": "Tap the post to open its replies, pick a sort, and scroll to the end for hidden replies.", "chips": ["Open the thread", "Sort replies", "Threaded view", "Hidden replies"] },
+    { "name": "why", "type": "versus", "kicker": "Why counts don’t match", "title": "Shown vs **counted but tucked away**", "left": { "label": "Shown", "tone": "good", "items": ["Replies sorted Hot first", "Nested or one by one", "“View more replies”"] }, "right": { "label": "Tucked away", "tone": "neutral", "items": ["Hidden by the author", "Muted or blocked accounts", "Labels and muted words"] } },
+    { "name": "steps", "type": "steps", "kicker": "5 steps", "title": "Open a post’s **replies**", "steps": [ { "title": "Find the post", "text": "Feed, profile or search." }, { "title": "Tap the text", "text": "Not the heart or repost.", "highlight": true }, { "title": "Scroll", "text": "Replies sit under the post." }, { "title": "Tap a reply", "text": "See its full chain." } ] },
+    { "name": "sort", "type": "versus", "kicker": "Sort and view", "title": "Pick an order and **a layout**", "left": { "label": "Sort", "tone": "neutral", "items": ["Hot (the default)", "Newest or Oldest", "Most liked"] }, "right": { "label": "View", "tone": "good", "items": ["Threaded: who answers whom", "Linear: one after another", "Set a default in Settings"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Count doesn’t match? **Scroll to the end of the thread.**", "by": "Hidden and filtered replies wait behind Show more replies and Hidden replies." }
+  ]
+}

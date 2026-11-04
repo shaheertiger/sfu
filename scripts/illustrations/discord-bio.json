@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Discord guide", "title": "A great Discord bio in **190 characters**", "sub": "Who you are, one personal touch, how to reach you. Formatting counts toward the limit.", "chips": ["190-character limit", "Markdown tips", "Copy-ready examples", "What to avoid"] },
+    { "name": "good-vs-vague", "type": "versus", "kicker": "Why it matters", "title": "A vague bio vs **a useful one**", "left": { "label": "Vague", "tone": "bad", "items": ["A random quote", "A wall of emoji", "“Streaming Fridays!” from 2023"] }, "right": { "label": "Useful", "tone": "good", "items": ["Your role or main game", "One personal detail", "Where to message you"] } },
+    { "name": "edit-steps", "type": "steps", "kicker": "Edit your About Me", "title": "Change your bio in **5 steps**", "steps": [ { "title": "User Settings", "text": "The gear by your name." }, { "title": "Profiles", "text": "Find About Me." }, { "title": "Check preview", "text": "Spot stray asterisks.", "highlight": true }, { "title": "Save", "text": "Mobile: avatar → Edit Profile." } ] },
+    { "name": "markdown", "type": "checklist", "kicker": "Formatting", "title": "Markdown that helps, and **what wastes space**", "good": { "label": "Use", "items": ["**Bold** for one key detail", "Line breaks between ideas", "One ||spoiler|| for fun"] }, "bad": { "label": "Avoid", "items": ["Formatting every word", "A whole bio in fancy fonts", "Rows of emoji"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "A useful bio beats a clever one. **Say who you are and how to reach you.**", "by": "190 characters, formatting and emoji included." }
+  ]
+}

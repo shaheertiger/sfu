@@ -1,0 +1,100 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "kicker": "TikTok rankings 2026",
+   "title": "Most followers on TikTok: **Khaby Lame**",
+   "sub": "About 163 million in October 2026, just ahead of Charli D’Amelio and MrBeast.",
+   "chips": [
+    "1 · Khaby Lame",
+    "2 · Charli D’Amelio",
+    "3 · MrBeast"
+   ]
+  },
+  {
+   "name": "top",
+   "type": "bars",
+   "kicker": "Approx. followers, Oct 2026",
+   "title": "The top **4 accounts**",
+   "rows": [
+    {
+     "label": "Khaby Lame",
+     "value": 100,
+     "note": "~163M"
+    },
+    {
+     "label": "Charli D’Amelio",
+     "value": 98,
+     "note": "~160M"
+    },
+    {
+     "label": "MrBeast",
+     "value": 88,
+     "note": "~143M"
+    },
+    {
+     "label": "TikTok",
+     "value": 59,
+     "note": "~96M"
+    }
+   ]
+  },
+  {
+   "name": "timeline",
+   "type": "steps",
+   "kicker": "How it changed",
+   "title": "Who held **number one**",
+   "steps": [
+    {
+     "title": "2020",
+     "text": "Charli D’Amelio leads."
+    },
+    {
+     "title": "Nov 2020",
+     "text": "Charli is first to 100 million."
+    },
+    {
+     "title": "June 22, 2022",
+     "text": "Khaby Lame takes the top spot.",
+     "highlight": true
+    },
+    {
+     "title": "Since then",
+     "text": "Khaby holds it; the gap stays small."
+    }
+   ]
+  },
+  {
+   "name": "habits",
+   "type": "versus",
+   "kicker": "What they share",
+   "title": "What the top accounts do, and **what you can copy**",
+   "left": {
+    "label": "Top accounts",
+    "tone": "neutral",
+    "items": [
+     "A signature format",
+     "No language barrier",
+     "Years of frequent posts"
+    ]
+   },
+   "right": {
+    "label": "Copy at any size",
+    "tone": "good",
+    "items": [
+     "One format, every week",
+     "Clear visuals and on-screen text",
+     "Post to TikTok, Reels and Shorts"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "The top barely moves. **The habits behind it work at any size.**",
+   "by": "A repeatable format, posted consistently, everywhere."
+  }
+ ]
+}

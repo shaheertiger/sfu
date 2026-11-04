@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Instagram guide", "title": "1K real followers, **no bots**", "sub": "A clear niche, Reels that hook, searchable captions and weekly engagement. No bots.", "chips": ["Profile setup", "8-week plan", "6 growth levers", "No bought followers"] },
+    { "name": "offers", "type": "versus", "kicker": "1K in 5 minutes?", "title": "What the offer says vs **what happens**", "left": { "label": "The offer", "tone": "bad", "items": ["“Free 1K followers”", "“Log in with Instagram”", "“Complete this offer”"] }, "right": { "label": "What happens", "tone": "good", "items": ["Fake followers, or none", "Your account at risk", "Your data or money taken"] } },
+    { "name": "profile", "type": "steps", "kicker": "Profile first", "title": "Turn visits into **follows**", "steps": [ { "title": "Go pro", "text": "Creator or Business, for Insights." }, { "title": "Name field", "text": "Add your topic. It’s searchable.", "highlight": true }, { "title": "Bio", "text": "Who it’s for, in 150 characters." }, { "title": "Pin 3 posts", "text": "Your best work first." } ] },
+    { "name": "plan", "type": "steps", "kicker": "The 8-week plan", "title": "Small weekly actions, **reviewed monthly**", "steps": [ { "title": "Week 1", "text": "Niche, profile, 30 ideas." }, { "title": "Weeks 2–3", "text": "3 Reels + 1 carousel. Test hooks." }, { "title": "Week 4", "text": "Check Insights. Do more of it.", "highlight": true }, { "title": "Weeks 5–8", "text": "Series, collabs, batch and schedule." } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "A thousand real followers **beat ten thousand who don’t exist**.", "by": "Pick a niche, follow the plan, and never give anyone your password." }
+  ]
+}

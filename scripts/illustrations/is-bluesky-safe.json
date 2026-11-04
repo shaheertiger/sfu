@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Bluesky guide", "title": "Is Bluesky safe? **Yes, with 2 catches**", "sub": "Strong blocking and moderation. But almost everything is public, and DMs aren’t end-to-end encrypted.", "chips": ["Strong blocking", "Mostly public", "DMs not encrypted"] },
+    { "name": "public", "type": "versus", "kicker": "What’s public", "title": "An open network, **a public stage**", "left": { "label": "Public", "tone": "bad", "items": ["Posts, replies and likes", "Follows and blocks", "Lists you create"] }, "right": { "label": "Private", "tone": "good", "items": ["Your email and password", "Muted accounts", "DMs, though not encrypted"] } },
+    { "name": "tools", "type": "steps", "kicker": "Safety tools", "title": "Your best **Bluesky safety tools**", "steps": [ { "title": "Mute", "text": "Private. They’re never told.", "highlight": true }, { "title": "Block", "text": "Strong, but block records are public." }, { "title": "Reply controls", "text": "Choose who can reply, per post." } ] },
+    { "name": "apps", "type": "checklist", "kicker": "Third-party apps", "title": "Connect apps **without the risk**", "good": { "label": "Safe", "items": ["App passwords you can revoke", "One app password per app", "Two-factor authentication on"] }, "bad": { "label": "Risky", "items": ["Your main password in an app", "“Log in” links off bsky.app", "Passwords sent by DM"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Treat Bluesky as **a public stage, not a private chat.**", "by": "App passwords, two-factor and an encrypted app for secrets." }
+  ]
+}

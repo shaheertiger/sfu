@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Instagram guide", "title": "View a blocked profile: **3 ways that work**", "sub": "Public profiles show logged out. Private ones don’t. Viewer sites are scams.", "chips": ["Log out", "Ask a friend", "Skip viewer sites"] },
+    { "name": "hides", "type": "versus", "kicker": "What a block does", "title": "Hidden from you vs **still public**", "left": { "label": "Hidden from your account", "tone": "bad", "items": ["Their profile and posts", "Stories and Notes", "New messages to them"] }, "right": { "label": "Still visible logged out", "tone": "neutral", "items": ["Public posts, briefly", "Nothing from private accounts", "No Stories without logging in"] } },
+    { "name": "check", "type": "steps", "kicker": "Blocked or gone?", "title": "Tell a block from a **deleted account**", "steps": [ { "title": "Ask a friend", "text": "They see it, you don’t: likely a block.", "highlight": true }, { "title": "Old messages", "text": "Name shows, profile won’t open." }, { "title": "New username", "text": "Search their real name." } ] },
+    { "name": "ways", "type": "steps", "kicker": "Within the rules", "title": "3 legitimate ways to see **a public profile**", "steps": [ { "title": "Log out", "text": "Or open a private window.", "highlight": true }, { "title": "Mutual friend", "text": "A look or a screenshot." }, { "title": "Other platforms", "text": "Threads, Facebook or TikTok." } ] },
+    { "name": "viewers", "type": "versus", "kicker": "Use with caution", "title": "What viewer sites promise vs **what they do**", "left": { "label": "Promise", "tone": "neutral", "items": ["See private profiles", "See accounts that blocked you", "Free and anonymous"] }, "right": { "label": "Actually do", "tone": "bad", "items": ["Push surveys and downloads", "Ask for your Instagram login", "Show fake or recycled photos"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "A public profile shows logged out. **Nothing shows a private one**, whatever a viewer site says.", "by": "Check it’s really a block, respect it, and keep your password to yourself." }
+  ]
+}

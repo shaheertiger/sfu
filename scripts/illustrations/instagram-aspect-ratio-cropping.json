@@ -1,0 +1,90 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "kicker": "Instagram sizes",
+   "title": "Why Instagram crops: **the 4:5 to 1.91:1 rule**",
+   "sub": "Anything taller or wider gets cropped, and the profile grid trims every post to 3:4.",
+   "chips": [
+    "4:5 portrait",
+    "1.91:1 landscape",
+    "3:4 grid"
+   ]
+  },
+  {
+   "name": "crops",
+   "type": "steps",
+   "kicker": "Three different crops",
+   "title": "Where your photo **gets trimmed**",
+   "steps": [
+    {
+     "title": "The feed",
+     "text": "Outside 4:5 to 1.91:1, you crop.",
+     "highlight": true
+    },
+    {
+     "title": "The grid",
+     "text": "Every thumbnail shown at 3:4."
+    },
+    {
+     "title": "Carousels",
+     "text": "The first slide sets the shape."
+    }
+   ]
+  },
+  {
+   "name": "steps",
+   "type": "checklist",
+   "kicker": "Stop the crop",
+   "title": "Sizes that work, **and ones that get cut**",
+   "good": {
+    "label": "Works",
+    "items": [
+     "1080×1350 portrait (4:5)",
+     "1080×1080 square",
+     "Text near the center"
+    ]
+   },
+   "bad": {
+    "label": "Gets cropped",
+    "items": [
+     "3:4 phone photos",
+     "9:16 screenshots",
+     "Logos at the edges"
+    ]
+   }
+  },
+  {
+   "name": "scheduling",
+   "type": "versus",
+   "kicker": "App vs scheduler",
+   "title": "The app crops, **a scheduler can’t**",
+   "left": {
+    "label": "Instagram app",
+    "tone": "neutral",
+    "items": [
+     "Shows a crop frame",
+     "You drag the image",
+     "Then it posts"
+    ]
+   },
+   "right": {
+    "label": "Scheduled post",
+    "tone": "bad",
+    "items": [
+     "No crop step",
+     "Out-of-range images rejected",
+     "You get a failed-post alert"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "Export at **1080×1350** and keep key details near the center.",
+   "by": "Resize before you schedule, and nothing fails."
+  }
+ ]
+}

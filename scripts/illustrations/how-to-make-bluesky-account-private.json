@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Bluesky guide", "title": "Make Bluesky private? **You can’t.** Do this instead", "sub": "Every post is public on the AT Protocol. Six settings limit who sees, replies to and messages you.", "chips": ["Logged-out visibility", "Reply controls", "Blocks and mutes"] },
+    { "name": "control", "type": "checklist", "kicker": "Open protocol", "title": "What you can control, and **what you can’t**", "good": { "label": "You control", "items": ["Who can reply and quote", "Who can message you", "Private bookmarks"] }, "bad": { "label": "Always public", "items": ["Your posts and follows", "Your likes", "Your blocks"] } },
+    { "name": "settings", "type": "steps", "kicker": "6 settings that help", "title": "Lock down what **you can**", "steps": [ { "title": "Logged-out", "text": "Discourage apps from showing you." }, { "title": "Replies", "text": "Set defaults once, for every post.", "highlight": true }, { "title": "Quotes", "text": "Switch off, or detach a quote." }, { "title": "Chat", "text": "Everyone, follows or no one." } ] },
+    { "name": "limits", "type": "versus", "kicker": "Know the limits", "title": "A speed bump, **not a lock**", "left": { "label": "What it stops", "tone": "good", "items": ["Official apps for signed-out visitors", "Unwanted replies and quotes", "DMs from strangers"] }, "right": { "label": "What gets through", "tone": "bad", "items": ["Other apps and the API", "Screenshots", "Anyone reading public data"] } },
+    { "name": "work", "type": "checklist", "kicker": "Work and personal", "title": "Keep a work account **separate**", "good": { "label": "Do", "items": ["Separate personal account", "Connect with an app password", "Post work on a schedule"] }, "bad": { "label": "Avoid", "items": ["Sharing your main password", "Mixing friends and clients", "Posting what must stay private"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Bluesky has no private mode. **Control replies, quotes and DMs, and assume the rest is public.**", "by": "Need a private circle? Use a group chat or another app." }
+  ]
+}

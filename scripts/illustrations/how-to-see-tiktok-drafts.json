@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "Where are my TikTok drafts? **On your phone**", "sub": "Profile, posts tab, Drafts tile. They don’t sync, so back them up before any phone change.", "chips": ["Profile → Drafts", "Stored on your phone", "Back up first"] },
+    { "name": "device", "type": "checklist", "kicker": "Why drafts vanish", "title": "What keeps drafts safe, and **what deletes them**", "good": { "label": "Keeps them", "items": ["Save to device", "Posting with Only me", "Keeping your raw footage"] }, "bad": { "label": "Deletes them", "items": ["Uninstalling the app", "Clearing the app’s data", "A new phone without a backup"] } },
+    { "name": "steps", "type": "steps", "kicker": "Step by step", "title": "Find your drafts in **4 taps**", "steps": [ { "title": "Tap Profile", "text": "Bottom-right corner." }, { "title": "Posts tab", "text": "The grid icon, not Liked." }, { "title": "Drafts tile", "text": "Usually first in the grid.", "highlight": true }, { "title": "Open a draft", "text": "Edit, post or save it." } ] },
+    { "name": "missing", "type": "steps", "kicker": "Drafts missing?", "title": "Check these **before you panic**", "steps": [ { "title": "Right account?", "text": "Check each profile on the phone.", "highlight": true }, { "title": "Update the app", "text": "Bugs can hide the folder." }, { "title": "Free up space", "text": "A full phone can block drafts." }, { "title": "Saved copies?", "text": "Camera roll and Only me posts." } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Drafts live on your phone. **Back them up before you change anything.**", "by": "Treat drafts as a short stop, not storage." }
+  ]
+}

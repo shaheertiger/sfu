@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Bluesky guide", "title": "How to post on Bluesky, **and schedule it**", "sub": "Pencil button, 300 characters, Post. Plus GIFs, threads and the one thing the app can’t do.", "chips": ["7 steps", "GIFs", "Threads", "Scheduling"] },
+    { "name": "vs-x", "type": "versus", "kicker": "Coming from X?", "title": "What carries over, and **what’s different**", "left": { "label": "Same as X", "tone": "neutral", "items": ["Short text posts", "Images, video, GIFs", "Threads and replies"] }, "right": { "label": "Different", "tone": "good", "items": ["300 characters", "No edit button", "No scheduling in the app"] } },
+    { "name": "steps", "type": "steps", "kicker": "Post step by step", "title": "From pencil to post in **4 moves**", "steps": [ { "title": "Pencil", "text": "Or New Post on the web." }, { "title": "Write", "text": "Watch the 300 counter." }, { "title": "Add media", "text": "Images, video or a GIF." }, { "title": "Check, then post", "text": "Language and replies.", "highlight": true } ] },
+    { "name": "gifs", "type": "checklist", "kicker": "GIFs on Bluesky", "title": "What works, and **what doesn’t**", "good": { "label": "Works", "items": ["The GIF picker", "Your own GIF file", "MP4 if it won’t animate"] }, "bad": { "label": "Doesn’t", "items": ["A GIF plus photos", "Two GIFs in one post", "Editing it after posting"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "There’s no edit button. **Reread, then post, or schedule it ahead.**", "by": "Use an app password for any scheduling tool." }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok guide", "title": "How to block someone on TikTok: **3 taps**", "sub": "Profile, share arrow or three dots, then Block. Or block up to 100 commenters at once.", "chips": ["From a profile", "From comments", "From chats", "Unblock"] },
+    { "name": "what-happens", "type": "versus", "kicker": "What blocking does", "title": "What it stops vs **what it doesn’t**", "left": { "label": "Stops", "tone": "good", "items": ["Seeing you from that account", "Messages, comments, duets", "Following in both directions"] }, "right": { "label": "Doesn’t stop", "tone": "bad", "items": ["Logged-out viewing", "A second account", "Screenshots already taken"] } },
+    { "name": "steps", "type": "steps", "kicker": "From their profile", "title": "Block someone in **3 steps**", "steps": [ { "title": "Open their profile", "text": "Search, or tap their name." }, { "title": "Share arrow", "text": "Or the three dots, top right.", "highlight": true }, { "title": "Block", "text": "Confirm. The button reads Unblock." } ] },
+    { "name": "options", "type": "steps", "kicker": "Lighter options", "title": "Try these **before you block**", "steps": [ { "title": "Restrict comments", "text": "Choose who can comment, add filters." }, { "title": "Remove follower", "text": "No block needed." }, { "title": "Not interested", "text": "See less from a creator." }, { "title": "Block", "text": "For harassment and spam.", "highlight": true } ] },
+    { "name": "caution", "type": "checklist", "kicker": "Mass-block apps", "title": "TikTok’s own tools vs **risky shortcuts**", "good": { "label": "Safe", "items": ["Bulk block up to 100 commenters", "Comment filters", "Report to TikTok"] }, "bad": { "label": "Risky", "items": ["Apps that want your password", "Automated mass blocking", "Shared block lists"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Blocking stops one account. **Pair it with a private account for real privacy.**", "by": "Block from a profile, bulk block from comments, and never give an app your password." }
+  ]
+}

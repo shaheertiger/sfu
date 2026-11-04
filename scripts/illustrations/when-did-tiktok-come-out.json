@@ -1,0 +1,8 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok history", "title": "TikTok came out in **September 2017**", "sub": "Douyin came first in 2016. Most of the US caught on after the Musical.ly merger in 2018.", "chips": ["Douyin 2016", "TikTok 2017", "Musical.ly 2018", "US joint venture 2026"] },
+    { "name": "three-dates", "type": "steps", "kicker": "Why dates get mixed up", "title": "Three launches, **one app**", "steps": [ { "title": "Sept 2016", "text": "Douyin launches in China." }, { "title": "Sept 2017", "text": "TikTok launches worldwide.", "highlight": true }, { "title": "Aug 2018", "text": "Musical.ly becomes TikTok." } ] },
+    { "name": "timeline", "type": "steps", "kicker": "Key dates", "title": "From Beijing startup to **US joint venture**", "steps": [ { "title": "2012", "text": "ByteDance founded." }, { "title": "2021", "text": "1 billion monthly users." }, { "title": "2024", "text": "US sale law passes." }, { "title": "Jan 2026", "text": "Joint venture takes over US.", "highlight": true } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "TikTok launched in September 2017. **2018 is when America noticed.**", "by": "Douyin is a separate app, a year older." }
+  ]
+}

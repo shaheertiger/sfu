@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Instagram guide", "title": "Post a GIF on Instagram: **make it a video**", "sub": "Upload a .gif and you get a still frame. Convert it to a looped MP4, then post it as a Reel.", "chips": ["Convert to MP4", "Loop to 3+ seconds", "Post as a Reel"] },
+    { "name": "where", "type": "versus", "kicker": "Where GIFs work", "title": "GIPHY inside the app, **your files as video**", "left": { "label": "GIFs work", "tone": "good", "items": ["Story stickers", "Comments", "Direct messages"] }, "right": { "label": "Convert first", "tone": "bad", "items": ["Feed posts", "Reels", "Your own GIF files"] } },
+    { "name": "steps", "type": "steps", "kicker": "Feed or Reels", "title": "Post an animated GIF **in 4 steps**", "steps": [ { "title": "Convert to MP4", "text": "Loop it to at least 3 seconds.", "highlight": true }, { "title": "Tap +, then Reel", "text": "Or Post for square clips." }, { "title": "Select and share", "text": "Trim, caption, post." } ] },
+    { "name": "safety", "type": "checklist", "kicker": "Posting GIFs safely", "title": "Safe GIFs, **and risky ones**", "good": { "label": "Safe", "items": ["GIFs you made yourself", "GIPHY stickers in the app", "Converters with no login"] }, "bad": { "label": "Risky", "items": ["Film clips posted as your Reel", "Other creators’ GIFs", "Apps wanting your Instagram login"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Instagram shows a GIF file as a still frame. **Convert it to a looped MP4 first.**", "by": "Keep the original GIF for X, which accepts it directly." }
+  ]
+}

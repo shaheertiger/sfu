@@ -1,0 +1,120 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "dark": true,
+   "kicker": "TikTok LIVE gifts · 2026",
+   "title": "A TikTok Galaxy: **1,000 coins**, about $10–$15",
+   "sub": "And the creator receives roughly half after TikTok’s share.",
+   "chips": [
+    "Coin math",
+    "Creator payout",
+    "Universe price",
+    "Avoid coin scams"
+   ]
+  },
+  {
+   "name": "flow",
+   "type": "steps",
+   "kicker": "Where the money goes",
+   "title": "From coins to **Diamonds**",
+   "steps": [
+    {
+     "title": "Buy coins",
+     "text": "App or TikTok’s website."
+    },
+    {
+     "title": "Send a Galaxy",
+     "text": "1,000 coins in a LIVE."
+    },
+    {
+     "title": "Diamonds",
+     "text": "TikTok keeps a share.",
+     "highlight": true
+    },
+    {
+     "title": "Withdraw",
+     "text": "Creators 18+ who are eligible."
+    }
+   ]
+  },
+  {
+   "name": "split",
+   "type": "versus",
+   "kicker": "One Galaxy, two sides",
+   "title": "What it costs vs **what the creator gets**",
+   "left": {
+    "label": "Sender pays",
+    "tone": "neutral",
+    "items": [
+     "1,000 coins",
+     "About $10 to $15",
+     "Less on TikTok’s website"
+    ]
+   },
+   "right": {
+    "label": "Creator receives",
+    "tone": "good",
+    "items": [
+     "Diamonds, not coins",
+     "Roughly half the value",
+     "About $5 to $7.50"
+    ]
+   }
+  },
+  {
+   "name": "gifts",
+   "type": "versus",
+   "kicker": "Gift prices in coins",
+   "title": "From a Rose to **the Universe**",
+   "left": {
+    "label": "Small gifts",
+    "tone": "neutral",
+    "items": [
+     "Rose: 1",
+     "Finger Heart: 5",
+     "Hand Hearts: 100"
+    ]
+   },
+   "right": {
+    "label": "Big gifts",
+    "tone": "good",
+    "items": [
+     "Galaxy: 1,000",
+     "Lion: 29,999",
+     "Universe: 34,999"
+    ]
+   }
+  },
+  {
+   "name": "coins",
+   "type": "checklist",
+   "kicker": "Use with caution",
+   "title": "Where to buy coins, and **where not to**",
+   "good": {
+    "label": "Safe",
+    "items": [
+     "The TikTok app",
+     "TikTok’s own website",
+     "A monthly spending limit"
+    ]
+   },
+   "bad": {
+    "label": "Risky",
+    "items": [
+     "“Free coins” generators",
+     "Cheap reseller sites",
+     "Sharing your login code"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "A Galaxy is 1,000 coins. **The creator gets roughly half.**",
+   "by": "Check the gift panel for today’s price, and buy coins only through TikTok."
+  }
+ ]
+}

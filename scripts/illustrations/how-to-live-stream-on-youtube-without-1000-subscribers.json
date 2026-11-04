@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "YouTube guide", "title": "Go live on YouTube **with 0 subscribers**", "sub": "Desktop streaming has no subscriber minimum. Verify your channel and turn streaming on a day early.", "chips": ["Webcam", "Encoder", "Verified channel", "24-hour wait"] },
+    { "name": "methods", "type": "versus", "kicker": "Requirements by method", "title": "Desktop vs **the mobile app**", "left": { "label": "From a computer", "tone": "good", "items": ["No subscriber minimum", "Webcam in the browser", "Or an encoder like OBS"] }, "right": { "label": "YouTube mobile app", "tone": "neutral", "items": ["Its own subscriber threshold", "Below 1,000 at the time of writing", "App tells you if you’re eligible"] } },
+    { "name": "webcam", "type": "steps", "kicker": "Webcam method", "title": "Go live from a laptop in **4 steps**", "steps": [ { "title": "Create → Go live", "text": "Opens Live Control Room." }, { "title": "Turn on streaming", "text": "Up to 24 hours the first time.", "highlight": true }, { "title": "Choose Webcam", "text": "Allow camera and mic." }, { "title": "Go live", "text": "Title, privacy, audience, then go." } ] },
+    { "name": "caution", "type": "checklist", "kicker": "Mobile encoder apps", "title": "Stream key yes, **password never**", "good": { "label": "Safe", "items": ["Reputable app, stream key only", "Reset the key when you stop", "Test with a private stream"] }, "bad": { "label": "Risky", "items": ["App asks for Google password", "Sharing your stream key", "Assuming YouTube allows it"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "You don’t need 1,000 subscribers. **You need a verified channel and a day’s notice.**", "by": "Go live from a computer with a webcam or encoder, and promote the stream before it starts." }
+  ]
+}

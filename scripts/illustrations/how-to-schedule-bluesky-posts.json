@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Bluesky guide", "title": "**5 steps** to schedule Bluesky posts", "sub": "Bluesky has no built-in scheduler. An app password and a scheduling tool fill the gap.", "chips": ["App password", "Posting slots", "Threads", "X and Threads too"] },
+    { "name": "drafts", "type": "versus", "kicker": "Drafts aren’t timers", "title": "A saved draft vs **a scheduled post**", "left": { "label": "Bluesky drafts", "tone": "neutral", "items": ["Saves your words", "You post it by hand", "A phone reminder does the timing"] }, "right": { "label": "Scheduled post", "tone": "good", "items": ["Publishes at a set time", "Threads go out in order", "No phone needed"] } },
+    { "name": "safety", "type": "checklist", "kicker": "Connect safely", "title": "App password, **never your main one**", "good": { "label": "Do", "items": ["A separate app password per tool", "Name it after the tool", "Delete it when you stop"] }, "bad": { "label": "Don’t", "items": ["Hand over your main password", "Reuse one app password everywhere", "Forget old tools’ access"] } },
+    { "name": "steps", "type": "steps", "kicker": "5 steps", "title": "From app password to **the queue**", "steps": [ { "title": "App password", "text": "Bluesky settings, then copy it." }, { "title": "Connect", "text": "Your handle and the app password." }, { "title": "Slots", "text": "Days, times and time zone.", "highlight": true }, { "title": "Write + schedule", "text": "Per-network captions, then a time." } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "An app password gives a scheduler **exactly what it needs**.", "by": "Post images that need alt text in Bluesky itself." }
+  ]
+}

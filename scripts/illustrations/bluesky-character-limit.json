@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Bluesky guide", "title": "Bluesky limit: **300 characters**", "sub": "Counted the way you’d count by eye, so an emoji is one. Longer posts become a thread.", "chips": ["300 per post", "4 images or 1 video", "2,000-character alt text"] },
+    { "name": "graphemes", "type": "versus", "kicker": "How it’s counted", "title": "Bluesky counts **what you see**", "left": { "label": "Counts as 1 on Bluesky", "tone": "good", "items": ["Most emoji, even combined ones", "Accented letters", "A link’s shortened text, in the app"] }, "right": { "label": "Still uses your 300", "tone": "neutral", "items": ["Line breaks and spaces", "Mentions, as typed", "Hashtags, including the #"] } },
+    { "name": "limits", "type": "bars", "kicker": "Limits at a glance", "title": "The numbers **worth remembering**", "rows": [ { "label": "Post text", "value": 15, "note": "300 characters" }, { "label": "Bio", "value": 13, "note": "256 characters" }, { "label": "Alt text", "value": 100, "note": "2,000 per image" } ] },
+    { "name": "thread", "type": "steps", "kicker": "Over 300 characters", "title": "Turn a long post into a **thread that reads well**", "steps": [ { "title": "Write it all", "text": "Draft first, split later." }, { "title": "Strong first post", "text": "The hook and main point, up front.", "highlight": true }, { "title": "Split at breaks", "text": "End each post on a full sentence." }, { "title": "Place media", "text": "Next to the sentence it explains." } ] },
+    { "name": "compare", "type": "bars", "kicker": "Platforms compared", "title": "Bluesky vs X vs **Threads**", "rows": [ { "label": "Threads", "value": 100, "note": "500 characters" }, { "label": "Bluesky", "value": 60, "note": "300 characters" }, { "label": "X", "value": 56, "note": "280, emoji count 2" } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "300 is the ceiling for one post. **Split it into a thread, don’t cut the meaning.**", "by": "Strong first post, clean short links, alt text on every image." }
+  ]
+}

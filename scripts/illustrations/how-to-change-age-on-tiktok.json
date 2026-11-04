@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "Change your age on TikTok? **Not in settings**", "sub": "Your birthday is locked. Appeal or report a problem, then verify your age.", "chips": ["Age appeal", "Report a problem", "ID, selfie or card"] },
+    { "name": "ages", "type": "steps", "kicker": "Why it’s locked", "title": "Your age **decides your features**", "steps": [ { "title": "Under 13 (US)", "text": "A separate, limited experience." }, { "title": "13 to 15", "text": "Private by default, no DMs." }, { "title": "16 to 17", "text": "DMs, but no LIVE hosting or gifts." }, { "title": "18 and over", "text": "LIVE, gifts and monetization.", "highlight": true } ] },
+    { "name": "appeal", "type": "steps", "kicker": "Route 1 · age appeal", "title": "Fix your age in **4 steps**", "steps": [ { "title": "Open the notice", "text": "In your inbox or on the blocked feature." }, { "title": "Tap Appeal", "text": "Sometimes it says Verify age.", "highlight": true }, { "title": "Verify", "text": "ID, selfie or card, by country." }, { "title": "Wait", "text": "Usually a few days." } ] },
+    { "name": "region", "type": "checklist", "kicker": "Region", "title": "What you can change, and **what puts you at risk**", "good": { "label": "Safe to change", "items": ["App language", "Content language preferences", "A real move, with a local SIM"] }, "bad": { "label": "Risky workarounds", "items": ["VPNs to switch region", "Foreign SIM cards", "Accounts with someone else’s birthday"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "There’s no birthday field. **Appeal with your real date of birth.**", "by": "Have your ID ready, and expect a few days for the check." }
+  ]
+}

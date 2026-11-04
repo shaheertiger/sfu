@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "Unfollow on TikTok: **one tap, no alert**", "sub": "Tap Following on their profile or in your list. There’s no unfollow-all button, so pace it.", "chips": ["No notification", "No mass unfollow", "Reversible"] },
+    { "name": "what-happens", "type": "versus", "kicker": "When you unfollow", "title": "What changes, and **what doesn’t**", "left": { "label": "Changes", "tone": "neutral", "items": ["Their videos leave Following", "Your Friends status ends", "Friends-only DMs may stop"] }, "right": { "label": "Doesn’t happen", "tone": "good", "items": ["No notification to them", "They can still follow you", "Nothing permanent"] } },
+    { "name": "two-ways", "type": "steps", "kicker": "2 ways", "title": "Unfollow from **either place**", "steps": [ { "title": "Their profile", "text": "Tap Following, confirm Unfollow." }, { "title": "Your Following list", "text": "Tap the button by their name.", "highlight": true }, { "title": "Big list?", "text": "Batches of a few dozen, with breaks." } ] },
+    { "name": "softer", "type": "checklist", "kicker": "Clean up safely", "title": "Gentle fixes, and **what gets you limited**", "good": { "label": "Safe", "items": ["Not interested on a video", "Keyword filters", "Turning off their notifications"] }, "bad": { "label": "Gets you limited", "items": ["Hundreds of unfollows in minutes", "Unfollow, re-follow, repeat", "Mass-unfollow apps"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Unfollowing is private and reversible. **Just don’t do it all at once.**", "by": "Batches with breaks beat any mass-unfollow app." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "How many TikTok accounts? **No cap, but limits**", "sub": "One email or phone per account, and only a few accounts in the switcher on each device.", "chips": ["No published cap", "One sign-in each", "A few per device"] },
+    { "name": "limits", "type": "versus", "kicker": "What limits you", "title": "Allowed, and **what gets accounts banned**", "left": { "label": "Fine", "tone": "good", "items": ["Several accounts, one sign-in each", "A brand and a personal account", "Switching a few times a day"] }, "right": { "label": "Breaks the rules", "tone": "bad", "items": ["New accounts to dodge a ban", "Accounts made to spam", "Breaking the Community Guidelines"] } },
+    { "name": "create", "type": "steps", "kicker": "Step by step", "title": "Add a second account in **4 taps**", "steps": [ { "title": "Open Profile", "text": "Tap Profile in the bottom bar." }, { "title": "Tap your username", "text": "The account switcher opens." }, { "title": "Add account", "text": "Then Create new account." }, { "title": "New email or phone", "text": "One not linked to TikTok yet.", "highlight": true } ] },
+    { "name": "log-out", "type": "steps", "kicker": "Lock others out", "title": "Remove a device in **4 moves**", "steps": [ { "title": "Manage devices", "text": "Settings and privacy → Security." }, { "title": "Remove it", "text": "Tap the trash icon or Remove." }, { "title": "New password", "text": "So they can’t sign back in.", "highlight": true }, { "title": "2-step verification", "text": "Turn it on in the same menu." } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Run as many accounts as you have sign-ins. **Never use one to dodge a ban.**", "by": "Past the switcher’s limit, plan posts from one calendar." }
+  ]
+}

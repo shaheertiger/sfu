@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "YouTube guide", "title": "Schedule on YouTube: **pick Schedule, not Public**", "sub": "The video stays private until your chosen time, then goes public on its own. Shorts work the same way.", "chips": ["YouTube Studio", "Mobile app", "Shorts"] },
+    { "name": "why", "type": "versus", "kicker": "Why schedule", "title": "Publishing live vs **scheduling ahead**", "left": { "label": "Publish live", "tone": "neutral", "items": ["You must be online at release", "Processing happens in public", "No time to catch a typo"] }, "right": { "label": "Schedule", "tone": "good", "items": ["Goes public on its own", "Processing done before release", "Time to fix the title"] } },
+    { "name": "steps", "type": "steps", "kicker": "YouTube Studio", "title": "Schedule a video in **4 steps**", "steps": [ { "title": "Upload", "text": "Create → Upload videos." }, { "title": "Details", "text": "Title up to 100 characters." }, { "title": "Checks", "text": "Elements, then copyright checks." }, { "title": "Schedule", "text": "Not Public. Pick a date and time.", "highlight": true } ] },
+    { "name": "pinned", "type": "versus", "kicker": "The pinned comment catch", "title": "No comments until it’s live, **so do this**", "left": { "label": "Workaround 1", "tone": "neutral", "items": ["Set a reminder for release", "Post the comment", "Pin it right away"] }, "right": { "label": "Workaround 2", "tone": "good", "items": ["Put the link in the description", "Use the very first line", "Visible from the first second"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Choose **Schedule, not Public**, and put links in the first line of the description.", "by": "Studio for the weekly video. A scheduler for daily Shorts across platforms." }
+  ]
+}

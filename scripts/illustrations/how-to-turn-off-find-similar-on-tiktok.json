@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok guide", "title": "Turn off Find Similar: **check Playback**", "sub": "There’s no single switch, but turning off object tags hides it on many versions.", "chips": ["Playback settings", "Update the app", "You May Like", "Not Privacy"] },
+    { "name": "useful-vs-annoying", "type": "versus", "kicker": "What it is", "title": "Visual search: **handy or in the way?**", "left": { "label": "Useful", "tone": "good", "items": ["Find a jacket to buy", "More of a dish or place", "Similar creators"] }, "right": { "label": "Annoying", "tone": "bad", "items": ["Pops up on every pause", "Covers the video", "Nothing to shop"] } },
+    { "name": "steps", "type": "steps", "kicker": "4 methods", "title": "Hide Find Similar, **in this order**", "steps": [ { "title": "Playback", "text": "Object tags off.", "highlight": true }, { "title": "Update", "text": "The toggle may appear." }, { "title": "Not interested", "text": "Shapes your feed." }, { "title": "Web", "text": "Fewer prompts." } ] },
+    { "name": "you-may-like", "type": "steps", "kicker": "You May Like", "title": "Reset your **search suggestions**", "steps": [ { "title": "Search history", "text": "Clear all." }, { "title": "Watch history", "text": "Activity center." }, { "title": "Refresh feed", "text": "Content preferences.", "highlight": true } ] },
+    { "name": "mixup", "type": "versus", "kicker": "Don’t mix them up", "title": "Find Similar vs **Suggest your account**", "left": { "label": "Find Similar", "tone": "neutral", "items": ["Prompts on videos you watch", "Lives in Playback", "Off = no bubble"] }, "right": { "label": "Suggest your account", "tone": "bad", "items": ["Recommends your profile", "Lives in Privacy", "Off = fewer new viewers"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Find Similar lives in Playback, **not Privacy.**", "by": "No toggle on your version? Update, then check again." }
+  ]
+}

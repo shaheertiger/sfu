@@ -1,0 +1,118 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "kicker": "YouTube guide",
+   "title": "Best time to post on YouTube: **before the peak**",
+   "sub": "Publish two to three hours before your viewers are online. Your exact time is in YouTube Studio.",
+   "chips": [
+    "Weekday afternoons",
+    "Weekend mornings",
+    "Shorts",
+    "Studio chart"
+   ]
+  },
+  {
+   "name": "why",
+   "type": "versus",
+   "kicker": "Why timing matters less",
+   "title": "Upload time shapes **day one**, not the video’s life",
+   "left": {
+    "label": "Upload time affects",
+    "tone": "neutral",
+    "items": [
+     "Views on the first day",
+     "How fast YouTube tests it",
+     "Shorts more than long videos"
+    ]
+   },
+   "right": {
+    "label": "Matters more long term",
+    "tone": "good",
+    "items": [
+     "Thumbnail and title",
+     "Watch time",
+     "Search and suggestions"
+    ]
+   }
+  },
+  {
+   "name": "days",
+   "type": "steps",
+   "kicker": "General pattern",
+   "title": "Good windows **by day of the week**",
+   "steps": [
+    {
+     "title": "Mon–Thu",
+     "text": "1–4 PM, plus 7–9 PM."
+    },
+    {
+     "title": "Friday",
+     "text": "12–3 PM."
+    },
+    {
+     "title": "Saturday",
+     "text": "9–11 AM and 3–5 PM."
+    },
+    {
+     "title": "Sunday",
+     "text": "9 AM–12 PM.",
+     "highlight": false
+    }
+   ]
+  },
+  {
+   "name": "studio",
+   "type": "steps",
+   "kicker": "Find your own time",
+   "title": "Your real answer is **in YouTube Studio**",
+   "steps": [
+    {
+     "title": "Open Analytics",
+     "text": "studio.youtube.com, left menu."
+    },
+    {
+     "title": "Audience tab",
+     "text": "Find the viewers-online chart."
+    },
+    {
+     "title": "Count back 2–3 hours",
+     "text": "From the darkest block.",
+     "highlight": true
+    }
+   ]
+  },
+  {
+   "name": "shorts",
+   "type": "versus",
+   "kicker": "Shorts vs long videos",
+   "title": "Shorts live or die **in the first hours**",
+   "left": {
+    "label": "Long videos",
+    "tone": "neutral",
+    "items": [
+     "Earn views for months",
+     "A weekly slot works",
+     "Weekday afternoons"
+    ]
+   },
+   "right": {
+    "label": "Shorts",
+    "tone": "good",
+    "items": [
+     "The first hours matter more",
+     "A daily rhythm works",
+     "Mornings, lunch, evenings"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "Post two to three hours before your viewers peak, then **keep the same slot every week.**",
+   "by": "Your Studio chart beats any generic table, including ours."
+  }
+ ]
+}

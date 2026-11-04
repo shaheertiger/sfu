@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok guide", "title": "A TikTok group chat in **5 taps**", "sub": "Inbox, new message, two or more friends, Chat. Up to 32 people, age 16 and up.", "chips": ["Up to 32 people", "Age 16+", "9 photos at once", "No message recovery"] },
+    { "name": "rules", "type": "versus", "kicker": "The rules", "title": "Who can join, and **who can’t**", "left": { "label": "Can join", "tone": "good", "items": ["Friends who follow each other", "People you already message", "Up to 32 members"] }, "right": { "label": "Can’t join", "tone": "bad", "items": ["Anyone under 16", "Non-mutual follows, usually", "Regions without the feature"] } },
+    { "name": "steps", "type": "steps", "kicker": "5 taps", "title": "From Inbox to **a named group**", "steps": [ { "title": "Inbox", "text": "Bottom of the screen." }, { "title": "New message", "text": "Pencil or plus, at the top." }, { "title": "Pick 2+", "text": "One person is a normal chat.", "highlight": true }, { "title": "Chat + name", "text": "Tap Chat, then name the group." } ] },
+    { "name": "photos", "type": "steps", "kicker": "Pictures in DMs", "title": "Up to **9 photos or videos** at once", "steps": [ { "title": "Open the chat", "text": "One-to-one or group." }, { "title": "Image icon", "text": "Next to the message box." }, { "title": "Pick up to 9", "text": "Edit, then tap Send.", "highlight": true } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Can’t add someone? **Follow each other first.**", "by": "And remember: a deleted TikTok message can’t be recovered." }
+  ]
+}

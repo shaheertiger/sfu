@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok sizes · 2026", "title": "TikTok video size: **1080×1920 at 9:16**", "sub": "Fills the whole phone screen. Square and horizontal videos work, but with empty space.", "chips": ["9:16 vertical", "1080×1920", "H.264 MP4"] },
+    { "name": "ratios", "type": "bars", "kicker": "How much screen you fill", "title": "Each ratio **on a TikTok screen**", "rows": [ { "label": "9:16 vertical", "value": 100, "note": "Full screen" }, { "label": "4:5 portrait", "value": 70, "note": "Bars above and below" }, { "label": "1:1 square", "value": 56, "note": "About half the screen" }, { "label": "16:9 horizontal", "value": 32, "note": "A thin strip" } ] },
+    { "name": "safe-zones", "type": "checklist", "kicker": "Safe zones", "title": "Where text is safe, **and where it hides**", "good": { "label": "Safe", "items": ["Slightly above the middle", "Centered, with side margins", "Large, high-contrast text"] }, "bad": { "label": "Gets covered", "items": ["The bottom fifth", "The right-side buttons", "The very top tabs"] } },
+    { "name": "export", "type": "steps", "kicker": "Export settings", "title": "Export a **sharp TikTok video**", "steps": [ { "title": "Start at 1080×1920", "text": "Set the canvas before editing.", "highlight": true }, { "title": "H.264 MP4, 1080p", "text": "AAC audio, matching frame rate." }, { "title": "Upload in HD", "text": "High-quality setting, over Wi-Fi." } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Start vertical at **1080×1920** and keep text out of the margins.", "by": "One 9:16 file also fits Reels and Shorts." }
+  ]
+}

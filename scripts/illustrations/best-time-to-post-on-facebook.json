@@ -1,0 +1,127 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "kicker": "Facebook guide",
+   "title": "Best time to post on Facebook: **7–10 AM weekdays**",
+   "sub": "Start with mid-week mornings in your audience’s time zone, then let your own Insights decide.",
+   "chips": [
+    "Tue–Thu mornings",
+    "Times for all 7 days",
+    "4-week test"
+   ]
+  },
+  {
+   "name": "why",
+   "type": "versus",
+   "kicker": "Why mornings win",
+   "title": "Weekday mornings vs **the quiet slots**",
+   "left": {
+    "label": "Usually strongest",
+    "tone": "good",
+    "items": [
+     "Weekday mornings, 7–10 AM",
+     "Tuesday to Thursday",
+     "Posts that start strong keep going"
+    ]
+   },
+   "right": {
+    "label": "Usually weakest",
+    "tone": "bad",
+    "items": [
+     "Weekday afternoons, 12–5 PM",
+     "Saturdays",
+     "Late night, 11 PM–5 AM"
+    ]
+   }
+  },
+  {
+   "name": "days",
+   "type": "bars",
+   "kicker": "Starting times by day",
+   "title": "How the days **usually rank**",
+   "rows": [
+    {
+     "label": "Wednesday",
+     "value": 95,
+     "note": "8 AM · often best"
+    },
+    {
+     "label": "Thursday",
+     "value": 90,
+     "note": "9 AM"
+    },
+    {
+     "label": "Tuesday",
+     "value": 86,
+     "note": "8 AM"
+    },
+    {
+     "label": "Friday",
+     "value": 72,
+     "note": "8 AM · go early"
+    },
+    {
+     "label": "Saturday",
+     "value": 40,
+     "note": "10 AM · weakest"
+    }
+   ]
+  },
+  {
+   "name": "test",
+   "type": "steps",
+   "kicker": "Find your own time",
+   "title": "Test your slots in **4 weeks**",
+   "steps": [
+    {
+     "title": "Pick 2–3 slots",
+     "text": "Start with the times in the table."
+    },
+    {
+     "title": "Rotate them",
+     "text": "Similar posts in each, for 3–4 weeks."
+    },
+    {
+     "title": "Compare at 48 hours",
+     "text": "Reach, reactions, comments, shares.",
+     "highlight": true
+    },
+    {
+     "title": "Keep the winners",
+     "text": "Drop the rest. Retest in a few months."
+    }
+   ]
+  },
+  {
+   "name": "next",
+   "type": "checklist",
+   "kicker": "What to do next",
+   "title": "What helps a post, and **what wastes a good slot**",
+   "good": {
+    "label": "Helps",
+    "items": [
+     "Posting in your audience’s time zone",
+     "Real questions people want to answer",
+     "Replying in the first hour"
+    ]
+   },
+   "bad": {
+    "label": "Wastes the slot",
+    "items": [
+     "“Like if you agree” bait",
+     "Changing times before you have results",
+     "Comparing Reels with photo posts"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "Start with weekday mornings, then **let your own Insights decide.**",
+   "by": "Tuesday to Thursday, 7–10 AM, in your audience’s time zone."
+  }
+ ]
+}

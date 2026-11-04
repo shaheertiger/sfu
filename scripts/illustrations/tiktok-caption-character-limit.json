@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok limits · 2026", "title": "4,000 in the app. **2,200 via schedulers.**", "sub": "Viewers see about one line before “more”, so the first few words do the work.", "chips": ["4,000 in app", "2,200 via API", "~60–80 visible"] },
+    { "name": "search", "type": "versus", "kicker": "Captions are for search", "title": "Describe the video, **don’t stack tags**", "left": { "label": "Gets found", "tone": "good", "items": ["Plain words about the video", "Keyword in the first line", "Three to five relevant tags"] }, "right": { "label": "Gets skipped", "tone": "bad", "items": ["Hashtags only", "#fyp #viral #foryou", "The point below “more”"] } },
+    { "name": "limits", "type": "bars", "kicker": "Every TikTok limit", "title": "TikTok character limits, **side by side**", "rows": [ { "label": "Caption (app)", "value": 100, "note": "4,000" }, { "label": "Caption (API)", "value": 55, "note": "2,200" }, { "label": "Comment", "value": 4, "note": "150" }, { "label": "Bio", "value": 2, "note": "80" }, { "label": "Username", "value": 1, "note": "24" } ] },
+    { "name": "steps", "type": "steps", "kicker": "Write to fit", "title": "A caption that **earns the tap**", "steps": [ { "title": "Hook first", "text": "60–80 characters that stand alone.", "highlight": true }, { "title": "Describe", "text": "Say what the video shows." }, { "title": "Short lines", "text": "Line breaks are kept." }, { "title": "3–5 tags", "text": "Relevant, not generic." } ] },
+    { "name": "habits", "type": "checklist", "kicker": "Caption habits", "title": "What helps captions, and **what hurts them**", "good": { "label": "Helps", "items": ["Plain-language description", "Under 2,200 if scheduling", "Hook in the first line"] }, "bad": { "label": "Hurts", "items": ["Walls of hashtags", "3,000 characters via a scheduler", "Burying the point"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Write for 2,200. **Lead with the hook, describe the video in plain words.**", "by": "It fits the app, schedulers and Instagram alike." }
+  ]
+}

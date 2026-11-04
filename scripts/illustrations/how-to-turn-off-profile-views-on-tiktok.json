@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok privacy", "title": "Turn off TikTok profile views **in 4 taps**", "sub": "Settings and privacy, Privacy, Profile views, then switch off Profile view history.", "chips": ["Profile views", "Post views", "Liked videos", "Following list"] },
+    { "name": "how", "type": "versus", "kicker": "How it works", "title": "It’s a **two-way switch**", "left": { "label": "Setting on", "tone": "neutral", "items": ["See who visited (past 30 days)", "Others with it on see your visits", "Only if you both have it on"] }, "right": { "label": "Setting off", "tone": "good", "items": ["Your new visits stay hidden", "You can’t see your visitors", "Post views is a separate switch"] } },
+    { "name": "steps", "type": "steps", "kicker": "Turn it off", "title": "Hide your visits in **4 taps**", "steps": [ { "title": "Profile menu", "text": "The three lines, top right." }, { "title": "Privacy", "text": "Inside Settings and privacy." }, { "title": "Profile views", "text": "Switch off view history." }, { "title": "Post views too", "text": "The step people miss.", "highlight": true } ] },
+    { "name": "caution", "type": "checklist", "kicker": "Use with caution", "title": "TikTok’s settings vs **“viewer reveal” apps**", "good": { "label": "Works", "items": ["Profile views switch", "Post views switch", "Only me for likes and following"] }, "bad": { "label": "Doesn’t work", "items": ["“Who viewed me” apps", "Hidden following list revealers", "Sites that want your login"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "One switch hides your visits, **and hides your visitors too.**", "by": "Turn off profile views, check post views, and ignore any app that claims to reveal more." }
+  ]
+}

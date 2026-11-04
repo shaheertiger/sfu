@@ -1,0 +1,118 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "kicker": "TikTok guide",
+   "title": "Does TikTok notify screenshots? **No.**",
+   "sub": "Videos, profiles, comments, LIVEs and DMs: nobody is told. Here’s what TikTok does show.",
+   "chips": [
+    "No screenshot alerts",
+    "No recording alerts",
+    "View history is opt-in"
+   ]
+  },
+  {
+   "name": "myths",
+   "type": "versus",
+   "kicker": "Myth vs reality",
+   "title": "Why people think **TikTok tells on you**",
+   "left": {
+    "label": "What people believe",
+    "tone": "bad",
+    "items": [
+     "It works like Snapchat",
+     "The Share prompt alerts the creator",
+     "Apps can detect screenshots"
+    ]
+   },
+   "right": {
+    "label": "What actually happens",
+    "tone": "good",
+    "items": [
+     "No screenshot alerts at all",
+     "The prompt is only shown to you",
+     "No app can see other phones"
+    ]
+   }
+  },
+  {
+   "name": "visible",
+   "type": "checklist",
+   "kicker": "What others can see",
+   "title": "Invisible to others, and **what they can see**",
+   "good": {
+    "label": "Never reported",
+    "items": [
+     "Screenshots",
+     "Screen recordings",
+     "Saving a video to Favorites"
+    ]
+   },
+   "bad": {
+    "label": "Can be seen",
+    "items": [
+     "Profile visits, if both opt in",
+     "Video views, if both opt in",
+     "Likes, comments and reposts"
+    ]
+   }
+  },
+  {
+   "name": "detector-apps",
+   "type": "versus",
+   "kicker": "Use with caution",
+   "title": "Screenshot-detector apps: **promise vs reality**",
+   "left": {
+    "label": "What they promise",
+    "tone": "neutral",
+    "items": [
+     "Who screenshotted your video",
+     "Who saved or viewed it",
+     "Alerts in real time"
+    ]
+   },
+   "right": {
+    "label": "What they really do",
+    "tone": "bad",
+    "items": [
+     "Guess from public likes",
+     "Ask for your TikTok login",
+     "Charge for made-up results"
+    ]
+   }
+  },
+  {
+   "name": "control",
+   "type": "steps",
+   "kicker": "For creators",
+   "title": "Control who sees **before you post**",
+   "steps": [
+    {
+     "title": "Private account",
+     "text": "Only approved followers see your videos."
+    },
+    {
+     "title": "Per-video privacy",
+     "text": "Friends or Only me for each post.",
+     "highlight": true
+    },
+    {
+     "title": "Limit messages",
+     "text": "Choose who can comment or DM you."
+    },
+    {
+     "title": "Turn off downloads",
+     "text": "Stops direct saving, not screen recording."
+    }
+   ]
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "TikTok never reports screenshots. **Control the audience before a post goes public.**",
+   "by": "Profile and post views only show if both people turn them on."
+  }
+ ]
+}

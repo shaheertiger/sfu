@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "TikTok stickers on PC? **Open the app**", "sub": "Video stickers always show. Comment stickers often show as [Sticker] on the website.", "chips": ["Sign in", "Hard refresh", "Phone app", "Emulator"] },
+    { "name": "which", "type": "versus", "kicker": "Two kinds of sticker", "title": "In the video vs **in the comments**", "left": { "label": "Shows on PC", "tone": "good", "items": ["Text stickers in the video", "GIF and emoji stickers in the video", "Anything baked into the file"] }, "right": { "label": "Often missing on PC", "tone": "bad", "items": ["Stickers in comments", "GIFs in comments", "Stickers in messages"] } },
+    { "name": "fixes", "type": "steps", "kicker": "Easiest first", "title": "See the stickers **you’re missing**", "steps": [ { "title": "Sign in", "text": "Logged out hides comments." }, { "title": "Refresh", "text": "Hard refresh, extensions off." }, { "title": "Phone app", "text": "Copy the link, open it there.", "highlight": true }, { "title": "Emulator", "text": "The full app on your computer." } ] },
+    { "name": "add", "type": "steps", "kicker": "Adding stickers", "title": "Working from a laptop? **Bake them in**", "steps": [ { "title": "Edit", "text": "Add stickers in the app or your editor." }, { "title": "Export", "text": "Stickers are now part of the file.", "highlight": true }, { "title": "Upload", "text": "They show everywhere it plays." } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "It’s not your computer. **The website can’t draw every comment sticker yet.**", "by": "Your phone already shows them all." }
+  ]
+}

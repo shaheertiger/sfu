@@ -1,0 +1,9 @@
+{
+ "cards": [
+  { "name": "hero", "type": "hero", "dark": true, "kicker": "Bluesky guide", "title": "Download Bluesky videos? **There’s no button**", "sub": "Keep your originals, bookmark other people’s videos, and ask the creator before reusing one.", "chips": ["Your own videos", "Export my data", "Bookmarks", "Downloader risks"] },
+  { "name": "why", "type": "versus", "kicker": "Why quality drops", "title": "Your original vs **a downloaded copy**", "left": { "label": "Original file", "tone": "good", "items": ["Full quality", "Already on your device", "No extra tools needed"] }, "right": { "label": "Downloaded copy", "tone": "bad", "items": ["Compressed by Bluesky", "Stitched from HLS segments", "Compressed again when reposted"] } },
+  { "name": "ways", "type": "steps", "kicker": "5 ways that work", "title": "Keep it, save it, or **ask for it**", "steps": [ { "title": "Keep originals", "text": "Your best copy, always.", "highlight": true }, { "title": "Export data", "text": "Posts backup, not videos." }, { "title": "Bookmark", "text": "Or copy the link." }, { "title": "Ask the creator", "text": "File plus permission." } ] },
+  { "name": "downloaders", "type": "checklist", "kicker": "Use with caution", "title": "Using a downloader? **Stay safe**", "good": { "label": "Safer", "items": ["No login for public videos", "Only the real download link", "Ask before you reuse"] }, "bad": { "label": "Risky", "items": ["Typing your main password", "Extensions that read every page", "Reposting without permission"] } },
+  { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Keep your originals and **you’ll rarely need a downloader.**", "by": "For anyone else’s video, their permission matters more than the file." }
+ ]
+}

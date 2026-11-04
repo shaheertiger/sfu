@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Cross-posting guide", "title": "Cross-post everywhere, **without copy-paste**", "sub": "One idea, three caption lengths, media sized once, a version for every platform.", "chips": ["Limits cheat sheet", "3 caption lengths", "5 media sizes", "7-step workflow"] },
+    { "name": "native-vs-copied", "type": "versus", "kicker": "Is cross-posting bad?", "title": "Copy-pasted vs **adapted**", "left": { "label": "Copy-pasted", "tone": "bad", "items": ["One caption everywhere", "Broken @mentions", "Another app’s watermark"] }, "right": { "label": "Adapted", "tone": "good", "items": ["Short, medium, long", "Handles checked per app", "Original file each time"] } },
+    { "name": "caption-lengths", "type": "steps", "kicker": "Plan three lengths", "title": "Write the **short version first**", "steps": [ { "title": "Short", "text": "X, Bluesky, Threads.", "highlight": true }, { "title": "Medium", "text": "Instagram, TikTok, Facebook." }, { "title": "Long", "text": "LinkedIn and YouTube." } ] },
+    { "name": "caution", "type": "checklist", "kicker": "Use with caution", "title": "Repost shortcuts, and **what they cost**", "good": { "label": "Do", "items": ["Upload original files", "Use official sign-in", "Adapt each caption"] }, "bad": { "label": "Avoid", "items": ["Watermarked re-uploads", "Apps that want your password", "Same text on many X accounts"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "One idea, **written for each place it lands.**", "by": "Short version first, original files always." }
+  ]
+}

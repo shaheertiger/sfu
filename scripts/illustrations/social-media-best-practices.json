@@ -1,0 +1,10 @@
+{
+ "cards": [
+  { "name": "hero", "type": "hero", "dark": true, "kicker": "Strategy guide", "title": "Social media best practices: **the 8-area checklist**", "sub": "Profiles, content, captions, cadence, community, accessibility, security and measurement.", "chips": ["Captions per platform", "Accessibility", "2FA", "30-minute audit"] },
+  { "name": "why", "type": "versus", "kicker": "Basics vs tactics", "title": "What lasts, and **what changes every month**", "left": { "label": "Lasts", "tone": "good", "items": ["Clear, consistent profiles", "Posts made for each platform", "Steady posting and real replies"] }, "right": { "label": "Changes", "tone": "neutral", "items": ["This month’s format", "Trend-of-the-week audio", "Algorithm rumours"] } },
+  { "name": "captions", "type": "steps", "kicker": "Captions per platform", "title": "One message, **adapted for each**", "steps": [ { "title": "X · Bluesky", "text": "280 and 300 characters. One idea." }, { "title": "Threads", "text": "500 characters. Casual." }, { "title": "Instagram", "text": "2,200. Strong first line.", "highlight": true }, { "title": "LinkedIn", "text": "3,000. A clear takeaway." } ] },
+  { "name": "accessibility", "type": "checklist", "kicker": "The one most skip", "title": "Accessible posts, and **habits that shut people out**", "good": { "label": "Do", "items": ["Alt text on every image", "Captions on every video", "#CapitalizedHashtags"] }, "bad": { "label": "Avoid", "items": ["Fancy Unicode “fonts”", "Key info only in an image", "Strings of emoji"] } },
+  { "name": "security", "type": "steps", "kicker": "Security", "title": "Lock it down in **4 habits**", "steps": [ { "title": "2FA", "text": "Authenticator app, not texts.", "highlight": true }, { "title": "Roles", "text": "Never share passwords." }, { "title": "Connected apps", "text": "Remove ones you don’t use." }, { "title": "Phishing", "text": "Go to the help center directly." } ] },
+  { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Get the eight basics right, **then keep them right.**", "by": "Start with a 30-minute audit, and protect your cadence on busy weeks." }
+ ]
+}

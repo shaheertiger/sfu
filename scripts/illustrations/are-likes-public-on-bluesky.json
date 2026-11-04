@@ -1,0 +1,118 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "kicker": "Bluesky guide",
+   "title": "Are likes public on Bluesky? **Yes, always**",
+   "sub": "Anyone can see who liked a post, and there’s no setting to hide your likes. Bookmarks stay private.",
+   "chips": [
+    "Likes are public",
+    "No hide setting",
+    "Bookmarks are private"
+   ]
+  },
+  {
+   "name": "visibility",
+   "type": "versus",
+   "kicker": "Who can see your likes",
+   "title": "Hidden in the app, **public on the network**",
+   "left": {
+    "label": "Can see your like",
+    "tone": "bad",
+    "items": [
+     "Anyone viewing the post’s likes",
+     "The post’s author",
+     "Third-party tools and clients"
+    ]
+   },
+   "right": {
+    "label": "Can’t see it",
+    "tone": "good",
+    "items": [
+     "Other people, on your Likes tab",
+     "Anyone, for your bookmarks",
+     "The author, for posts you only saved"
+    ]
+   }
+  },
+  {
+   "name": "steps",
+   "type": "steps",
+   "kicker": "How to check",
+   "title": "See who liked a post in **3 steps**",
+   "steps": [
+    {
+     "title": "Open the post",
+     "text": "Tap it in the feed to open it on its own."
+    },
+    {
+     "title": "Tap the like count",
+     "text": "The number, not the heart icon.",
+     "highlight": true
+    },
+    {
+     "title": "Scroll the list",
+     "text": "Every account that liked it, newest first."
+    }
+   ]
+  },
+  {
+   "name": "options",
+   "type": "bars",
+   "kicker": "Keeping things private",
+   "title": "How private is **each option?**",
+   "rows": [
+    {
+     "label": "Bookmark",
+     "value": 95,
+     "note": "Only you see it"
+    },
+    {
+     "label": "Second account",
+     "value": 55,
+     "note": "Public, not your name"
+    },
+    {
+     "label": "Unlike",
+     "value": 35,
+     "note": "Copies may remain"
+    },
+    {
+     "label": "Like",
+     "value": 5,
+     "note": "Public record"
+    }
+   ]
+  },
+  {
+   "name": "safety",
+   "type": "checklist",
+   "kicker": "Third-party tools",
+   "title": "Safe ways to use **Bluesky tools**",
+   "good": {
+    "label": "Safe",
+    "items": [
+     "Tools that read public data, no login",
+     "App passwords you can revoke",
+     "Deleting unused app passwords"
+    ]
+   },
+   "bad": {
+    "label": "Risky",
+    "items": [
+     "Typing in your main password",
+     "“Who viewed your profile” claims",
+     "Tools you can’t identify"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "Treat every Bluesky like as public. **Use bookmarks for anything you want to keep to yourself.**",
+   "by": "There’s no setting to hide likes at the time of writing."
+  }
+ ]
+}

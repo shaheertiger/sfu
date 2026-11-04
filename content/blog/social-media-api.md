@@ -1,19 +1,26 @@
 ---
-title: "Social Media API: What You Can Automate on Each Platform (and How to Use One API for All)"
+title: "Social Media API: What 10 Platforms Let You Automate (and One API for All)"
 description: What each social media API lets you automate, from X and Instagram to TikTok and Bluesky, what approval and limits apply, and how one scheduling API covers ten networks.
-h1: "Social Media API: What You Can Automate Across Platforms"
+h1: "Social Media API: What 10 Platforms Let You Automate, and When One API Beats Ten"
 category: Guides
 excerpt: Every network has its own API, with its own app review, sign-in and limits. Here's what each one lets you automate, where building on all of them gets painful, and how one scheduling API with real requests replaces ten integrations.
 keyword: social media api
 date: 2026-10-28
+updated: 2026-11-04
 ---
-A social media API is a programming interface that lets your code do what you'd otherwise do in an app: publish posts, upload images and video, read comments and pull stats. Every major network has one (X, Instagram, Facebook, LinkedIn, TikTok, YouTube, Pinterest, Threads and Bluesky), but each has its own sign-in flow, app review, media upload process and rate limits. If you only need to publish to one network, use its API directly. If you need to publish to several, a unified scheduling API that has already been through each platform's review lets you send one request instead of building and maintaining ten integrations.
+You've been asked to make release notes post themselves to every social account, and you're staring at ten developer portals. A social media API is a programming interface that lets your code do what you'd otherwise do in an app: publish posts, upload images and video, read comments and pull stats. Every major network has one, but each has its own sign-in flow, app review, media upload process and rate limits.
 
-Below: what each platform's API allows, what it takes to get access, a concrete case where going direct becomes a burden, a fair comparison of the options, and working requests against the Schedule For You API.
+![Social media APIs compared: each platform's own API, app reviews and limits, versus one scheduling API for ten networks](/images/blog/social-media-api-hero-1200x675.webp)
 
-## What you can automate on each platform's own API
+If you only need to publish to one network, use its API directly. If you need to publish to several, a unified scheduling API that has already been through each platform's review lets you send one request instead of building and maintaining ten integrations.
 
-Each network decides what outside apps may do. Publishing is widely available; reading other people's data and analytics is much more restricted. The table covers publishing, which is what most teams automate first.
+This guide covers what each platform's API allows, what it takes to get access, a concrete case where going direct becomes a burden, a fair comparison of the options, the unofficial APIs to avoid, and working requests against the Schedule For You API.
+
+## Why Social Media APIs Are Harder Than They Look
+
+![Why social media APIs are slow to build on: app reviews take weeks while the code takes days, and every network uploads media differently](/images/blog/social-media-api-why-1200x675.webp)
+
+Each network decides what outside apps may do. Publishing is widely available; reading other people's data and analytics is much more restricted. Here's what publishing takes on each platform, which is what most teams automate first.
 
 | Platform | API | What it takes to publish publicly | Limits worth knowing (at the time of writing) |
 | --- | --- | --- | --- |
@@ -28,38 +35,65 @@ Each network decides what outside apps may do. Publishing is widely available; r
 | Bluesky | AT Protocol | No review. An account and an app password or OAuth | 5,000 points per hour and 35,000 per day per account; creating a post costs 3 points |
 | Google Business Profile | Business Profile APIs | Google's access request form | Posts attach to a location |
 
-Two patterns stand out. First, the review is the slow part, not the code: TikTok, Meta, LinkedIn pages and Pinterest all gate public posting behind a review that can take weeks. Second, every network uploads media differently. Instagram wants a public URL it fetches itself, TikTok and YouTube want chunked or resumable uploads, Bluesky wants a blob uploaded first, and X has its own media endpoint.
+### What Most People Don't Know
 
-### Building against one platform directly
+The review is the slow part, not the code. TikTok, Meta, LinkedIn pages and Pinterest all gate public posting behind a review that can take weeks. And every network uploads media differently: Instagram wants a public URL it fetches itself, TikTok and YouTube want chunked or resumable uploads, Bluesky wants a blob uploaded first, and X has its own media endpoint.
 
-If you're automating a single network, going direct is reasonable:
-
-1. Register a developer app with the platform and request the publishing permissions.
-2. Pass app review if the platform requires it (and record the demo video Pinterest and TikTok ask for).
-3. Build the OAuth sign-in flow, store tokens encrypted, and refresh them before they expire.
-4. Implement that platform's media upload flow, including waiting for video processing.
-5. Handle its error codes and rate limits, and retry temporary failures without posting twice.
-6. Keep up with version changes. LinkedIn, for example, versions its API monthly with a required `LinkedIn-Version` header.
-
-That's a few days of work for a developer who knows the platform, plus the review wait.
+> **Key point:** Budget for the reviews and the media uploads, not the "post" request. Sending text is the easy 10%.
 
 <!-- cta -->
 
-## Where going direct gets painful: one changelog, five networks
+## How to Build Against One Platform's API Directly (6 Steps)
+
+![Six steps to publish through one social media platform's API, with app review highlighted as the longest wait](/images/blog/social-media-api-direct-steps-1200x675.webp)
+
+If you're automating a single network, going direct is reasonable. It's a few days of work for a developer who knows the platform, plus the review wait.
+
+### Step 1: Register a Developer App
+
+Create an app with the platform and request the publishing permissions.
+
+### Step 2: Pass App Review (the Step That Takes Weeks)
+
+If the platform requires it, submit for review, and record the demo video Pinterest and TikTok ask for. Until TikTok's audit passes, everything you post is private.
+
+### Step 3: Build the OAuth Sign-In Flow
+
+Store tokens encrypted, and refresh them before they expire.
+
+### Step 4: Implement the Media Upload Flow
+
+Each platform has its own, including waiting for video processing.
+
+### Step 5: Handle Errors and Rate Limits
+
+Retry temporary failures without posting twice. This is where most homegrown integrations go wrong: a request that times out may still have published.
+
+### Step 6: Keep Up With Version Changes
+
+LinkedIn, for example, versions its API monthly with a required `LinkedIn-Version` header.
+
+> **Pro tip:** Before you write any posting code, store an idempotency record for each scheduled post. If a request times out, check whether the post exists before sending it again.
+
+## Where Going Direct Gets Painful: One Changelog, Five Networks
 
 Take a software company that ships a release every week. Each release note should go out as a short post on X, a longer one on LinkedIn, a version on Bluesky and Threads, and an image post on Instagram, all at 9 a.m. on release day, with someone notified if any of them fails.
 
 Built directly, that is five integrations:
 
-- **Five app registrations and reviews**, one of which (Meta's) covers both Instagram and Threads permissions, and one of which (X) bills per post.
-- **Five token lifecycles.** LinkedIn tokens lapse after about 60 days and need the person to sign in again; Bluesky sessions are short and re-created; Meta tokens need refreshing.
-- **Five caption rules.** 280 characters on X, 300 on Bluesky, 500 on Threads, 3,000 on LinkedIn, and Instagram refuses a post without an image (and refuses PNGs).
-- **A scheduler.** None of these APIs schedule for you except a few native options, so you need a job runner that fires at 9 a.m., retries safely and never double-posts when a request times out.
-- **A failure channel.** When the LinkedIn token has expired, someone has to find out before release day, not after.
+| What you'd build | Why it's work |
+|---|---|
+| Five app registrations and reviews | Meta's covers Instagram and Threads; X bills per post |
+| Five token lifecycles | LinkedIn tokens lapse after about 60 days and need the person to sign in again; Bluesky sessions are short and re-created; Meta tokens need refreshing |
+| Five caption rules | 280 characters on X, 300 on Bluesky, 500 on Threads, 3,000 on LinkedIn; Instagram refuses a post without an image, and refuses PNGs |
+| A scheduler | Most of these APIs don't schedule for you, so you need a job runner that fires at 9 a.m., retries safely and never double-posts |
+| A failure channel | When the LinkedIn token has expired, someone has to find out before release day, not after |
 
 None of this is hard on its own. Together it's a small product to build and maintain, for a job that isn't the company's product.
 
-## Your options compared
+## Social Media API Options Compared (Direct vs No-Code vs Unified)
+
+![Comparing social media API options: each platform's own API, no-code automation tools and a unified scheduling API](/images/blog/social-media-api-options-1200x675.webp)
 
 | Option | Best for | Setup | Ongoing work | Cost |
 | --- | --- | --- | --- | --- |
@@ -69,13 +103,46 @@ None of this is hard on its own. Together it's a small product to build and main
 
 Be honest about the trade-off: a scheduling API publishes and reports what happened, but it doesn't replace a platform's API for reading comments, running ads or pulling analytics. Schedule For You, for example, reports publishing results and link clicks but not impressions or engagement from the platforms.
 
-## The same scenario with the Schedule For You API
+## Unofficial and "Private" Social Media APIs (Use With Caution)
 
-Schedule For You's REST API comes with Solo and Studio. You connect accounts once in the dashboard (each platform's sign-in, or a Bluesky app password), then create a key under **Settings → API keys**. Base URL: `https://scheduleforyou.com/api/v1`. Every request sends `Authorization: Bearer sfy_…`.
+![Official social media APIs compared with unofficial private APIs and scrapers that log in with a password](/images/blog/social-media-api-unofficial-1200x675.webp)
+
+When app review takes weeks, unofficial libraries look like a shortcut. They reverse-engineer a platform's mobile app or log in with a username and password, skipping review entirely.
+
+### The Real Risks
+
+- **They break platform terms.** Automated access outside the official API is generally prohibited, and accounts using it can be restricted or disabled.
+- **They break without warning.** One app update on the platform's side and your release posts stop.
+- **They need real passwords.** Storing customers' or colleagues' passwords is a security liability you don't want.
+- **Two-factor prompts and logins from servers look like takeovers**, which triggers checkpoints at the worst moment.
+
+### A Safer Checklist
+
+- Use OAuth or app passwords (Bluesky), never stored account passwords.
+- Prefer official APIs or a tool that has passed each platform's review.
+- Keep tokens encrypted and scoped to publishing only.
+- Alert on failures, so a broken connection is found before release day.
+
+> **Bottom line:** Unofficial APIs save weeks of review and cost you the account when they're spotted. Go official, directly or through a tool that already is.
+
+## The Same Scenario With the Schedule For You API
+
+Schedule For You's REST API comes with the paid plans, Solo and Studio. You connect accounts once in the dashboard (each platform's sign-in, or a Bluesky app password), then create a key under **Settings → API keys**. Base URL: `https://scheduleforyou.com/api/v1`. Every request sends `Authorization: Bearer sfy_…`.
+
+| | Each platform's API | Zapier, Make or n8n | Schedule For You API |
+|---|---|---|---|
+| Platforms you can publish to | One per integration | Each step separately | X, Instagram, Facebook Pages, LinkedIn (personal profiles), Threads, Bluesky, TikTok, YouTube, Pinterest, Google Business Profile |
+| App reviews to pass | Yours | Done by the tool | Done by us |
+| Caption checks before scheduling | Build them | Limited | Yes, a `422` with every problem listed |
+| Webhooks for published and failed posts | Build them | Yes | Yes, signed |
+| Analytics, replies, ads | Yes | Varies | No |
+| Cost | Developer time; X charges per request | Per-task pricing | Solo $19 or Studio $59 a month, 7-day trial with a card; the Free plan doesn't include the API |
+
+Where we're not the best fit: if you need analytics, comment replies, ads or LinkedIn company pages, use the platforms' own APIs. And if you publish to a single network, going direct may be simpler.
 
 ![Settings page in the Schedule For You dashboard with posting slots and an API keys section listing keys named Claude Desktop and Zapier](/images/blog/settings-posting-slots-api-keys-1440x900.webp)
 
-### 1. List the connected accounts
+### Step 1: List the Connected Accounts
 
 ```bash
 curl https://scheduleforyou.com/api/v1/accounts \
@@ -84,7 +151,7 @@ curl https://scheduleforyou.com/api/v1/accounts \
 
 The response lists each account's `id`, `platform`, `username` and `status`. An account whose `status` is `error` needs reconnecting in the dashboard, and `last_error` says why, so your code can warn someone days before release day.
 
-### 2. Upload the release screenshot
+### Step 2: Upload the Release Screenshot
 
 Files go straight to storage in three steps: register the file, `PUT` the bytes to the presigned URL, then confirm.
 
@@ -107,7 +174,7 @@ curl -X PATCH https://scheduleforyou.com/api/v1/media/med_a41c7e2093bd5f18 \
 
 JPG, PNG and WebP images up to 20 MB and MP4, MOV or WebM video up to 1 GB are accepted. Upload a JPEG if the post includes Instagram.
 
-### 3. Create one post with a version per network
+### Step 3: Create One Post With a Version per Network
 
 Send one post with a `targets` list. Each target can have its own caption and platform options, such as a first comment that holds the link.
 
@@ -136,7 +203,7 @@ Before anything is saved, every target is checked against its platform's rules. 
 
 On TikTok, a target takes `options.privacy` (`PUBLIC_TO_EVERYONE`, `MUTUAL_FOLLOW_FRIENDS` or `SELF_ONLY`); on YouTube, a `title`; on Pinterest, a `board_id`. On X, Bluesky and Threads, a caption with a line holding only `---` is published as a thread.
 
-### 4. Find out what happened
+### Step 4: Find Out What Happened
 
 `GET /api/v1/posts/{id}` returns each target's `status` (`pending`, `publishing`, `published` or `failed`), its `external_url` on the platform and any `error`. A post where LinkedIn published and X failed reads `partial`, and `POST /api/v1/posts/{id}/publish` retries only the failed targets.
 
@@ -163,21 +230,63 @@ The same posts appear in the dashboard's queue and calendar, so the people who d
 
 If your release notes already live on a blog with an RSS feed, you may not need code at all: RSS auto-post turns each new item into a draft or a queued post for the accounts you choose.
 
+
 The [API overview](/api) has a shorter tour, and the [API reference](/docs) lists every endpoint, field and error. Plans start at $19 a month for 15 connected accounts, and the API is included on both paid plans.
 
-## Frequently asked questions
+## What to Do Next: Pick Your Route
+
+1. **One network, and you need its analytics or replies:** build against that platform's API.
+2. **A few low-volume automations, no developer:** a no-code tool with per-platform steps.
+3. **The same content to several networks on a schedule:** a unified scheduling API.
+4. **Release notes already on a blog with RSS:** try RSS auto-post before writing any code.
+
+- ✓ OAuth and app passwords only
+- ✓ Validate captions before scheduling
+- ✓ Webhooks for failures
+- ✗ Unofficial APIs that log in with passwords
+- ✗ Retrying a timed-out request without checking
+
+## Frequently Asked Questions
 
 ### Is there one API for all social media platforms?
+
 No platform offers that; each network has its own. Unified APIs, including scheduling tools with a public API like Schedule For You, connect to each network for you and expose one set of endpoints. You trade direct access to every platform feature for not having to pass each review and maintain each integration.
 
 ### Are social media APIs free?
+
 Most platform APIs don't charge for publishing, but X does: new developers pay per request. Others cost time instead of money, through app reviews, quota limits and maintenance. Unified APIs charge a subscription.
 
 ### Can I post to Instagram with an API?
+
 Yes, with the Instagram Graph API and a Business or Creator account, after Meta's app review. Images must be JPEG and Meta caps API-published posts per account per day. See [how to schedule Instagram posts](/blog/how-to-schedule-instagram-posts) for the options without code.
 
 ### Can a social media API post to LinkedIn company pages?
+
 LinkedIn's API can, but only for apps approved for its Community Management API. Schedule For You publishes to personal LinkedIn profiles only; for company pages, use LinkedIn's own scheduler. Our guide on [how to schedule LinkedIn posts](/blog/how-to-schedule-linkedin-posts) covers both.
 
 ### Can I use the API from an AI agent?
+
 Yes. Schedule For You also runs a hosted MCP server that exposes the same actions as tools, so an assistant like Claude can list accounts, draft and schedule posts with your API key. The next guide, [social media MCP](/blog/social-media-mcp), walks through it.
+
+### Which social media API is easiest to start with?
+
+Bluesky's. The AT Protocol needs no app review; an account and an app password or OAuth are enough.
+
+### Does the Schedule For You API work on the Free plan?
+
+No. The API, MCP server and webhooks are part of Solo and Studio, which start with a 7-day free trial that needs a card.
+
+### How do I avoid posting twice when a request times out?
+
+Check whether the post exists before retrying. In Schedule For You, a target the platform never answered fails instead of being sent again, and retrying a post only resends its failed targets.
+
+## The Bottom Line
+
+![One network, use its own API; several networks on a schedule, use one scheduling API that has passed each review](/images/blog/social-media-api-bottom-line-1200x675.webp)
+
+- **Each platform's own API:** best for one network or for analytics, replies and ads; budget weeks for review.
+- **No-code tools:** fine for light flows without a developer.
+- **A unified scheduling API:** one request, ten networks, reviews already done.
+- **Unofficial APIs:** fast to start, risky to keep.
+
+Pick by how many networks you publish to and what you need back from them. For more free tools, try the [X character counter](/tools/x-character-counter), the [aspect ratio calculator](/tools/aspect-ratio-calculator) and the [remove EXIF data tool](/tools/remove-exif-data). Next up: [social media MCP](/blog/social-media-mcp).

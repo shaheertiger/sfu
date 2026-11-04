@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Bluesky guide", "title": "Is Bluesky good **for artists?**", "sub": "Yes, for many: a chronological feed, art feeds and a no-AI-training policy. The audience is smaller.", "chips": ["What works", "5 trade-offs", "AI policy", "Labels"] },
+    { "name": "pros-cons", "type": "versus", "kicker": "The trade-offs", "title": "What works, and **what’s missing**", "left": { "label": "Works for artists", "tone": "good", "items": ["Chronological Following feed", "Art feeds and starter packs", "Links aren’t buried"] }, "right": { "label": "Missing", "tone": "bad", "items": ["A shop or commissions", "Built-in analytics", "Instagram-sized reach"] } },
+    { "name": "ai", "type": "versus", "kicker": "AI and your art", "title": "Bluesky’s policy vs **the open network**", "left": { "label": "Bluesky says", "tone": "good", "items": ["No generative AI training", "AI for moderation", "AI to rank the Discover feed"] }, "right": { "label": "Still possible", "tone": "neutral", "items": ["Outside crawlers", "robots.txt isn’t a guarantee", "So watermark or downsize"] } },
+    { "name": "steps", "type": "steps", "kicker": "How to post art", "title": "Get your work **into the art feeds**", "steps": [ { "title": "Image first", "text": "Title, medium, one line." }, { "title": "Alt text", "text": "Describe the piece." }, { "title": "The feed’s tag", "text": "Read the feed description.", "highlight": true }, { "title": "Keep a rhythm", "text": "Finished work and WIPs." } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Bluesky is a good **second home** for artists, not a replacement for your first.", "by": "Calmer, image-friendly and link-friendly, with a smaller audience." }
+  ]
+}

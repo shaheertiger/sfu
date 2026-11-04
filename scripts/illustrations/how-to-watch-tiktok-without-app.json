@@ -1,0 +1,9 @@
+{
+ "cards": [
+  { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok guide", "title": "Watch TikTok without the app: **open tiktok.com**", "sub": "Works in any browser, signed out or signed in. Only duets, stitches and effects need the app.", "chips": ["Signed out", "Computer", "Phone browser", "Avoid viewer sites"] },
+  { "name": "why", "type": "versus", "kicker": "Website vs app", "title": "What the website does, and **what needs the app**", "left": { "label": "Works in a browser", "tone": "good", "items": ["Shared links and public profiles", "Feeds, likes and comments (signed in)", "Uploads through TikTok Studio"] }, "right": { "label": "App only", "tone": "neutral", "items": ["Duets and Stitches", "Filters and effects", "The in-app editor"] } },
+  { "name": "computer", "type": "steps", "kicker": "On a computer", "title": "Watch TikTok in **4 moves**", "steps": [ { "title": "tiktok.com", "text": "Any modern browser." }, { "title": "Close the pop-up", "text": "You can often keep browsing.", "highlight": true }, { "title": "Scroll or search", "text": "Arrow keys move between videos." }, { "title": "Open a profile", "text": "tiktok.com/@username" } ] },
+  { "name": "viewers", "type": "checklist", "kicker": "Use with caution", "title": "Safe ways to watch, and **sites to skip**", "good": { "label": "Safe", "items": ["tiktok.com, signed out", "Shared and embedded links", "Signing in on TikTok itself"] }, "bad": { "label": "Skip", "items": ["“View private accounts” sites", "Fake download buttons", "Typing your login elsewhere"] } },
+  { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "For watching, **tiktok.com is all you need.**", "by": "You only need the app for duets, stitches and effects." }
+ ]
+}

@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "YouTube guide", "title": "Recover YouTube? **Start with Google**", "sub": "Recover the Google account, secure it, then restore the channel through YouTube Help.", "chips": ["Google recovery", "Security Checkup", "Hacked-channel help"] },
+    { "name": "situations", "type": "versus", "kicker": "Where to start", "title": "Google fixes access, **YouTube fixes the channel**", "left": { "label": "Google account recovery", "tone": "good", "items": ["Forgot your password", "Lost your 2-Step phone", "Locked out after a hack"] }, "right": { "label": "YouTube Help", "tone": "neutral", "items": ["Channel renamed or videos deleted", "Hacked-channel troubleshooter", "Appeals for terminations"] } },
+    { "name": "recover", "type": "steps", "kicker": "Step by step", "title": "Back in, then **lock it down**", "steps": [ { "title": "Recover", "text": "Google’s account recovery page." }, { "title": "Familiar device", "text": "Your usual laptop and Wi-Fi.", "highlight": true }, { "title": "Secure", "text": "New password, Security Checkup." }, { "title": "Restore", "text": "YouTube’s hacked-channel help." } ] },
+    { "name": "scams", "type": "checklist", "kicker": "Use with caution", "title": "Safe recovery, and **what scammers offer**", "good": { "label": "Safe", "items": ["Google account recovery", "YouTube Help’s troubleshooter", "Official appeals"] }, "bad": { "label": "Scams", "items": ["Paid “recovery services”", "DMs from “YouTube support”", "Anyone asking for your codes"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Recover, secure, restore. **Never pay anyone to recover your channel.**", "by": "Then reconnect the apps that publish for you." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Automation guide", "title": "Automate the calendar, **not the conversation**", "sub": "Six ways to automate publishing, and the five things that should stay human.", "chips": ["Time slots", "Bulk CSV", "Evergreen + RSS", "Webhooks + API"] },
+    { "name": "what-to-automate", "type": "checklist", "kicker": "Where to draw the line", "title": "What to automate, and **what to keep human**", "good": { "label": "Automate", "items": ["Picking post times", "Loading a month of posts", "Sharing new blog posts"] }, "bad": { "label": "Keep human", "items": ["Replies and DMs", "Likes and follows", "Timing during bad news"] } },
+    { "name": "steps", "type": "steps", "kicker": "The setup", "title": "From connected accounts to **a full queue**", "steps": [ { "title": "Connect", "text": "Accounts + a test post." }, { "title": "Time slots", "text": "Set your weekly times once.", "highlight": true }, { "title": "Fill it", "text": "CSV, evergreen, RSS." }, { "title": "Monitor", "text": "Failed-post alerts." } ] },
+    { "name": "engagement", "type": "versus", "kicker": "Use with caution", "title": "Scheduling posts vs **engagement bots**", "left": { "label": "Safe", "tone": "good", "items": ["Your own posts", "Official sign-in", "Times you chose"] }, "right": { "label": "Breaks rules", "tone": "bad", "items": ["Auto-likes and follows", "Auto-comments and DMs", "Same post on many accounts"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Start with time slots. **Add one method at a time.**", "by": "Publishing can run itself. Replies can’t." }
+  ]
+}

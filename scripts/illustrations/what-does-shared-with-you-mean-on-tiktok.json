@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "“Shared with you” on TikTok: **a reason, not an alert**", "sub": "Someone sent you the video, or you’ve swapped videos with that account in messages.", "chips": ["Only shown to you", "Not tracking", "Can be reduced"] },
+    { "name": "meaning", "type": "versus", "kicker": "What it means", "title": "What the label means, and **what it doesn’t**", "left": { "label": "It means", "tone": "good", "items": ["A friend sent you this video", "You’ve swapped videos in DMs", "TikTok linked you through shares"] }, "right": { "label": "It doesn’t mean", "tone": "bad", "items": ["Your profile was shared publicly", "They can see your watch history", "They know TikTok suggested them"] } },
+    { "name": "unknown", "type": "steps", "kicker": "Don’t know them?", "title": "Why a **stranger** shows the label", "steps": [ { "title": "Old shares", "text": "A video sent months ago." }, { "title": "Renamed account", "text": "Someone you messaged changed names." }, { "title": "Synced contacts", "text": "A number in your address book.", "highlight": true }, { "title": "Shared links", "text": "A link opened outside the app." } ] },
+    { "name": "shares", "type": "checklist", "kicker": "For creators", "title": "What gets sent to friends, and **what gets scrolled past**", "good": { "label": "Gets shared", "items": ["A tip worth passing on", "A relatable moment", "“Send this to someone who…”"] }, "bad": { "label": "Gets scrolled past", "items": ["No clear point", "Posted when your audience sleeps", "Nothing to react to"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "“Shared with you” is TikTok **explaining a suggestion.** Nothing more.", "by": "Turn off contact and link suggestions if strangers keep appearing." }
+  ]
+}

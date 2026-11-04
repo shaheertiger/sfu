@@ -1,0 +1,10 @@
+{
+ "cards": [
+  { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok guide", "title": "Can’t follow people on TikTok? **8 causes**", "sub": "Usually a temporary follow limit that lifts within a day. Then grow by posting, not following.", "chips": ["Follow limits", "10,000 cap", "New accounts", "Quick fixes"] },
+  { "name": "why", "type": "checklist", "kicker": "Why it happens", "title": "Normal following, and **what triggers a limit**", "good": { "label": "Normal", "items": ["A few follows at a time", "Watching and liking in between", "A complete profile"] }, "bad": { "label": "Triggers a limit", "items": ["Hundreds of follows in a day", "Follow then unfollow quickly", "Follow apps that act for you"] } },
+  { "name": "check", "type": "steps", "kicker": "Find the cause", "title": "Work it out in **4 checks**", "steps": [ { "title": "Another account", "text": "Works? It’s about that person." }, { "title": "Your count", "text": "Near 10,000? That’s the cap." }, { "title": "Last 24 hours", "text": "Lots of follows? It’s a limit.", "highlight": true }, { "title": "Account status", "text": "Any restriction listed?" } ] },
+  { "name": "glitch", "type": "steps", "kicker": "App glitch?", "title": "Fix the button in **4 moves**", "steps": [ { "title": "Update", "text": "App Store or Google Play." }, { "title": "Clear cache", "text": "Free up space → Cache.", "highlight": true }, { "title": "Switch network", "text": "Wi-Fi, data, VPN off." }, { "title": "Log in again", "text": "Then check if TikTok is down." } ] },
+  { "name": "apps", "type": "checklist", "kicker": "Use with caution", "title": "Ways to grow, and **apps that get you blocked**", "good": { "label": "Grows", "items": ["Regular videos on one topic", "Following by hand", "Replying to comments"] }, "bad": { "label": "Gets blocked", "items": ["Follow-for-follow apps", "Apps that need your password", "Mass follow and unfollow"] } },
+  { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Wait out the limit, then **grow by posting, not following.**", "by": "Tapping Follow again and again during a block can make it last longer." }
+ ]
+}

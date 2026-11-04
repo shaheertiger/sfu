@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "Delete TikTok comments: **press and hold**", "sub": "Your own comments anywhere, any comment on your videos, and up to 100 at once.", "chips": ["Press and hold", "Up to 100 at once", "Nobody is notified"] },
+    { "name": "who", "type": "versus", "kicker": "Who can delete what", "title": "Delete it, or **only report it**", "left": { "label": "You can delete", "tone": "good", "items": ["Your comment, on any video", "Anyone’s comment on your video"] }, "right": { "label": "You can only report", "tone": "neutral", "items": ["Others’ comments on others’ videos"] } },
+    { "name": "steps", "type": "steps", "kicker": "Step by step", "title": "Delete a comment in **3 steps**", "steps": [ { "title": "Open comments", "text": "Tap the comment icon on the video." }, { "title": "Press and hold", "text": "A quick tap opens a reply instead.", "highlight": true }, { "title": "Tap Delete", "text": "Confirm if asked. There’s no undo." } ] },
+    { "name": "folded", "type": "versus", "kicker": "Folded vs deleted", "title": "Folded comments are **hidden, not gone**", "left": { "label": "Folded", "tone": "neutral", "items": ["Collapsed behind a link", "Likely spam or off-topic", "Tap to read them"] }, "right": { "label": "Deleted", "tone": "bad", "items": ["Removed for everyone", "Can’t be restored", "The writer isn’t told"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Press and hold to delete. **Let filters catch the rest.**", "by": "Post when you can reply, and fewer comments need deleting." }
+  ]
+}

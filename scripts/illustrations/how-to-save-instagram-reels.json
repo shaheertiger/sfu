@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Instagram guide", "title": "Saving Reels? **A bookmark isn’t a backup**", "sub": "Bookmark any Reel to rewatch it. Download your own Reels to keep the file.", "chips": ["Bookmark", "Collections", "Download your own"] },
+    { "name": "two-jobs", "type": "versus", "kicker": "Two different jobs", "title": "Bookmark vs **download**", "left": { "label": "Bookmark", "tone": "neutral", "items": ["Works on any Reel you can see", "Private to you", "Gone if the original goes"] }, "right": { "label": "Download", "tone": "good", "items": ["Your own Reels", "A real copy of the file", "Licensed music may be stripped"] } },
+    { "name": "bookmark", "type": "steps", "kicker": "Bookmark a Reel", "title": "Save it in **3 taps**", "steps": [ { "title": "Open the Reel", "text": "Reels tab, feed or profile." }, { "title": "Tap the menu", "text": "Or the bookmark icon." }, { "title": "Tap Save", "text": "Sort it into a Collection.", "highlight": true } ] },
+    { "name": "download", "type": "steps", "kicker": "Your own Reels", "title": "3 official ways to **keep the file**", "steps": [ { "title": "Reel menu", "text": "Download one Reel." }, { "title": "Before posting", "text": "Tap the download arrow in the editor.", "highlight": true }, { "title": "Your information", "text": "Everything, as a zip file." } ] },
+    { "name": "others", "type": "checklist", "kicker": "Other people’s Reels", "title": "Within the rules, and **over the line**", "good": { "label": "Fine", "items": ["Bookmark, share or remix", "Download where the creator allows", "Ask, then credit clearly"] }, "bad": { "label": "Over the line", "items": ["Downloader sites", "Reposting without permission", "Logging in on third-party sites"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "A bookmark is a pointer, not a copy. **Download your own Reels to keep them.**", "by": "Save, share or remix other people’s. Skip the downloader sites." }
+  ]
+}

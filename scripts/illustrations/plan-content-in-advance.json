@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Planning guide", "title": "Plan a week of posts **in 1–2 hours**", "sub": "Themes, a monthly calendar, one batch a week and a queue with time slots that publishes for you.", "chips": ["Themes", "Calendar", "Queue with slots"] },
+    { "name": "why", "type": "versus", "kicker": "Why plan ahead", "title": "One session a week, **not a daily scramble**", "left": { "label": "Posting daily on the day", "tone": "bad", "items": ["A blank caption every evening", "Switching tasks for every post", "Easy to skip a platform"] }, "right": { "label": "Planning in advance", "tone": "good", "items": ["One focused batch a week", "Similar tasks done together", "Slots keep the rhythm"] } },
+    { "name": "steps", "type": "steps", "kicker": "The system", "title": "Plan content **in 6 steps**", "steps": [ { "title": "Themes and calendar", "text": "Pillars, rhythm and fixed dates." }, { "title": "Batch and queue", "text": "Write in one sitting, fill slots.", "highlight": true }, { "title": "Review and upkeep", "text": "Approvals, alerts and a weekly check." } ] },
+    { "name": "safety", "type": "checklist", "kicker": "Keep a hand on the wheel", "title": "Plan ahead **without autopilot mistakes**", "good": { "label": "Do", "items": ["Review evergreen posts regularly", "Leave open slots for news", "Know how to pause the queue"] }, "bad": { "label": "Avoid", "items": ["Expired prices on repeat", "Cheerful posts during a crisis", "The same post too often"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Plan the month, **batch the week**, let the queue publish it.", "by": "Consistency beats volume." }
+  ]
+}

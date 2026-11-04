@@ -1,0 +1,120 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "dark": true,
+   "kicker": "TikTok guide · 2026",
+   "title": "Best time to post on TikTok: **6–9 PM**",
+   "sub": "In your audience’s time zone. Then check your followers’ most active times in TikTok Studio.",
+   "chips": [
+    "Day-by-day times",
+    "EST · CST · PST",
+    "TikTok Studio",
+    "4-week test"
+   ]
+  },
+  {
+   "name": "why",
+   "type": "versus",
+   "kicker": "Why timing matters",
+   "title": "Timing starts the video. **The video does the rest.**",
+   "left": {
+    "label": "What timing affects",
+    "tone": "neutral",
+    "items": [
+     "Who sees it in the first hour",
+     "How fast early reactions arrive",
+     "Whether followers catch it fresh"
+    ]
+   },
+   "right": {
+    "label": "What it can’t fix",
+    "tone": "bad",
+    "items": [
+     "A slow first few seconds",
+     "A video people swipe past",
+     "Content your audience doesn’t want"
+    ]
+   }
+  },
+  {
+   "name": "by-day",
+   "type": "versus",
+   "kicker": "Starting times by day",
+   "title": "Evenings first, **then test a second slot**",
+   "left": {
+    "label": "Weekdays",
+    "tone": "neutral",
+    "items": [
+     "Mon–Thu: 7 PM",
+     "Friday: 5 PM",
+     "Second slot: 8 AM or 12 PM"
+    ]
+   },
+   "right": {
+    "label": "Weekends",
+    "tone": "good",
+    "items": [
+     "Saturday: 11 AM",
+     "Sunday: 7 PM",
+     "Second slot: 8 PM or 12 PM"
+    ]
+   }
+  },
+  {
+   "name": "studio",
+   "type": "steps",
+   "kicker": "Find your own time",
+   "title": "Your best time in **4 steps**",
+   "steps": [
+    {
+     "title": "TikTok Studio",
+     "text": "Profile → menu → TikTok Studio."
+    },
+    {
+     "title": "Analytics",
+     "text": "Open your analytics."
+    },
+    {
+     "title": "Followers tab",
+     "text": "Not Overview: Followers.",
+     "highlight": true
+    },
+    {
+     "title": "Most active times",
+     "text": "Post 1–2 hours before the peak."
+    }
+   ]
+  },
+  {
+   "name": "repost",
+   "type": "checklist",
+   "kicker": "Use with caution",
+   "title": "Video stalled? **Re-edit, don’t re-upload**",
+   "good": {
+    "label": "Safer",
+    "items": [
+     "Leave the stalled video up",
+     "Post a new version with a new hook",
+     "Get timing data from TikTok Studio"
+    ]
+   },
+   "bad": {
+    "label": "Risky",
+    "items": [
+     "Re-uploading the same clip",
+     "Deleting videos that have comments",
+     "Giving apps your TikTok password"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "Start at 6–9 PM, then **let your own data decide.**",
+   "by": "Four weeks of testing beats any general list, including this one."
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok guide", "title": "Save a TikTok draft: **the Only me trick**", "sub": "Post it privately with Save to device on. It lands in your camera roll, and no one sees it.", "chips": ["Only me", "Save to device", "No watermark", "Delete after"] },
+    { "name": "why", "type": "versus", "kicker": "Why drafts get lost", "title": "A draft vs **your camera roll**", "left": { "label": "TikTok draft", "tone": "bad", "items": ["Lives on one phone", "Gone after a reinstall", "Not in Download your data"] }, "right": { "label": "Camera roll", "tone": "good", "items": ["In your photo library", "Covered by phone backups", "Moves to a new phone"] } },
+    { "name": "steps", "type": "steps", "kicker": "Method 1", "title": "Draft to camera roll in **4 moves**", "steps": [ { "title": "Open draft", "text": "Profile → Drafts → Next." }, { "title": "Only me", "text": "Who can watch this video.", "highlight": true }, { "title": "Save to device", "text": "Under More options." }, { "title": "Post + check", "text": "Play it with sound." } ] },
+    { "name": "fixes", "type": "checklist", "kicker": "Won’t save?", "title": "What fixes it, and **what causes it**", "good": { "label": "Fix", "items": ["Use a library or original sound", "Allow TikTok photo access", "Free up storage"] }, "bad": { "label": "Cause", "items": ["Licensed music", "Missing permission", "A full phone"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Drafts live on one phone. **Your camera roll is the backup.**", "by": "Save it with Only me, then delete the private post if you like." }
+  ]
+}

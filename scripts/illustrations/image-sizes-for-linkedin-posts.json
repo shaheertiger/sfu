@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "LinkedIn guide", "title": "LinkedIn post **image sizes**", "sub": "Portrait or square for most posts, landscape for wide content and link previews. Every size in one table.", "chips": ["1080 × 1350", "1080 × 1080", "1200 × 627", "Carousels"] },
+    { "name": "mobile", "type": "bars", "kicker": "Mobile feed", "title": "Screen space by **post shape**", "rows": [ { "label": "Portrait 4:5", "value": 100, "note": "1080 × 1350" }, { "label": "Square 1:1", "value": 80, "note": "1080 × 1080" }, { "label": "Landscape", "value": 42, "note": "1200 × 627" } ] },
+    { "name": "steps", "type": "steps", "kicker": "Keep it sharp", "title": "Export it right **the first time**", "steps": [ { "title": "Pick the shape", "text": "Portrait, square or wide." }, { "title": "Exact size", "text": "Design and export at it." }, { "title": "Check on a phone", "text": "Zooming in means too small.", "highlight": true }, { "title": "PNG or JPG", "text": "PNG for text, JPG for photos." } ] },
+    { "name": "carousel", "type": "checklist", "kicker": "Document carousels", "title": "PDF carousels **that read on a phone**", "good": { "label": "Do", "items": ["Same size on every page", "Large text", "A reason to swipe on page one"] }, "bad": { "label": "Avoid", "items": ["Mixed page sizes", "Small print", "Dozens of pages"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Portrait or square for most posts, **landscape for wide content.**", "by": "Export at the exact size and check it on your phone before you post." }
+  ]
+}

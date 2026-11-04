@@ -1,129 +1,245 @@
 ---
-title: How to Connect Google Business Profile to Schedule For You
-description: Connect your Google Business Profile to Schedule For You: who can connect, step-by-step setup, what you can post, and fixes for common connection problems.
-h1: How to Connect Google Business Profile to Schedule For You
+title: "How to Connect Google Business Profile in 5 Minutes (Plus Fixes)"
+description: Connect your Google Business Profile to Schedule For You in about 5 minutes. Who can connect, the exact steps, what you can post and fixes for common errors.
+h1: "How to Connect Google Business Profile in 5 Minutes (Plus Fixes)"
 category: Guides
-excerpt: If you're an owner or manager of a verified Business Profile, you can connect it in a few minutes and schedule updates, offers and events alongside your social posts.
+excerpt: If you're an owner or manager of a verified Business Profile, you can connect it in a few minutes and schedule Google updates alongside your social posts.
 keyword: connect google business profile
 date: 2026-10-23
+updated: 2026-11-04
 ---
-To connect Google Business Profile, sign in to Schedule For You, open the Accounts screen in your workspace, choose Google Business Profile, sign in with the Google account that manages your business, grant permission, and pick the locations you want to post to. You need to be an owner or manager of a verified Business Profile for the connection to work.
+You want your weekly specials to show up on Google Search and Maps without logging in to another dashboard every Monday. To connect Google Business Profile to Schedule For You, open **Social accounts** in your workspace, choose Google Business Profile, sign in with the Google account that manages your business, allow access, and tick the locations you want to post to. It takes about five minutes.
 
-Once connected, you can schedule Google posts, such as updates, offers and events where supported, from the same calendar as your social media posts. This guide covers requirements, the steps, what you can publish and how to fix common problems.
+![How to connect Google Business Profile in five minutes: be an owner or manager, sign in with the right Google account, pick your locations](/images/blog/connect-google-business-profile-hero-1200x675.webp)
 
-## Requirements at a glance
+The one thing that trips people up isn't in our app at all: Google only lets **owners and managers of a verified profile** publish posts. If either part is missing, the connection fails or no locations appear.
+
+This guide covers the requirements, every step, what you can publish once you're connected, fixes for the common errors, and how to revoke access later.
+
+## Why Google Business Profile Connections Fail (Before You Click Anything)
+
+![What a Google Business Profile connection needs compared with what makes it fail](/images/blog/connect-google-business-profile-requirements-1200x675.webp)
+
+Most failed connections come from the Google side, not from the scheduler. Google checks two things before any tool can post for you: whether the profile is verified, and whether the Google account you sign in with has the right role on it.
 
 | Requirement | Details |
 |---|---|
-| A verified Business Profile | Unverified profiles can't publish posts |
+| A verified Business Profile | Unverified or pending profiles can't publish posts |
 | Owner or manager role | Set in Google Business Profile's people and access settings |
-| The right Google account | The account that holds the owner or manager role |
+| The right Google account | The account that holds the owner or manager role, not your personal Gmail by default |
 | A Schedule For You workspace | Each connected location counts as one connected account |
 
-### Why verification matters
+### What Most People Don't Know
 
-Google only lets verified businesses publish posts, whether you post directly or through a tool. If your profile shows as unverified or pending verification, finish that process first. Google's help center at [support.google.com/business](https://support.google.com/business) explains the verification options for your type of business.
+Business Profiles have three roles: primary owner, owner and manager. Owners and managers can both create posts, so you don't need to be the primary owner to connect. But an invitation you haven't accepted doesn't count. If someone added you as a manager, accept the invitation with the same Google account you'll use to connect.
 
-### Owner or manager access
+Google's help center at [support.google.com/business](https://support.google.com/business) explains the verification options for each type of business.
 
-Business Profiles have roles: primary owner, owner and manager. Owners and managers can create posts. If someone else set up the profile, ask them to add your Google account as a manager or owner. They can do this from the profile's settings under the section for people and access. Accept the invitation before you try to connect.
-
-## How to connect Google Business Profile
-
-1. **Sign in to Schedule For You.** Go to the [sign-in page](/login). New here? [Start your 7-day free trial](/signup) first.
-2. **Open the right workspace.** If you manage several brands or clients, open the workspace this business belongs to.
-3. **Go to the Accounts screen.** This is where you add and manage connected social accounts.
-4. **Choose Google Business Profile.** Select it from the list of platforms.
-5. **Choose your Google account.** Google's sign-in window opens. Pick the account that is an owner or manager of the Business Profile. If it isn't listed, choose "Use another account" and sign in.
-6. **Grant permission.** Google shows what access Schedule For You is requesting, which is the ability to manage your Business Profile so it can publish posts. Review it and allow access.
-7. **Pick your locations.** Back in Schedule For You, choose which business locations to connect. If your account manages several locations, select only the ones you want to post to.
-8. **Confirm.** Each selected location appears as a connected account, ready to use in the composer and calendar.
-
-Every connected location counts toward your plan's connected-account limit: 15 on the Solo plan and 100 on Studio. Posts are unlimited on both. See [pricing](/#pricing) for details.
+> **Key point:** If you're an owner or manager of a verified profile and you sign in with that exact Google account, the connection almost always works first time.
 
 <!-- cta -->
 
-## What you can post to Google Business Profile
+## How to Connect Google Business Profile: 7 Steps
 
-Google posts appear on your Business Profile in Google Search and Maps. They're a useful way to share news, promotions and events with people already searching for you.
+![Seven steps to connect Google Business Profile, with choosing the right Google account highlighted](/images/blog/connect-google-business-profile-steps-1200x675.webp)
 
-| Post type | Good for | What to include |
+Labels in Google's sign-in screens change from time to time, so look for the closest match if something is worded differently.
+
+### Step 1: Sign In and Open the Right Workspace
+
+Go to the [sign-in page](/login), or [create a free account](/signup) if you're new. If you manage several brands or clients, open the workspace this business belongs to, so its posts, calendar and queue stay separate.
+
+### Step 2: Open Social Accounts
+
+Open **Social accounts** from the dashboard menu. This is where you add, check and reconnect every connected profile.
+
+### Step 3: Choose Google Business Profile
+
+Select Google Business Profile from the list of platforms. Google's sign-in window opens.
+
+### Step 4: Pick the Google Account That Manages the Business (the Step People Get Wrong)
+
+Google often preselects whichever account you're already signed in to in your browser. If that's your personal account and not the one with the owner or manager role, choose **Use another account** and sign in with the right one.
+
+> **Pro tip:** Not sure which account has access? Open Google Business Profile, go to the people and access settings, and note the email listed next to your name before you start.
+
+### Step 5: Allow Access
+
+Google shows what Schedule For You is asking for: permission to manage your Business Profile so it can publish posts. Review it and allow access.
+
+### Step 6: Tick the Locations You'll Post To
+
+Back in Schedule For You, you'll see every location that Google account manages. Tick only the ones you'll actually post to, since each one counts as a connected account.
+
+### Step 7: Confirm
+
+Each selected location appears in Social accounts, ready to use in the composer, queue and calendar.
+
+| Plan | Connected accounts | Scheduled posts waiting at a time |
 |---|---|---|
-| Update | News, tips, new products, opening-hour changes | Short text and an image |
-| Offer | Discounts and promotions | A clear title, the offer details and dates |
-| Event | Workshops, sales, launches, open days | A title, start and end dates, and a description |
+| Free | 3 | Up to 10, no card needed |
+| Solo ($19 a month) | 15 | Unlimited |
+| Studio ($59 a month) | 100 | Unlimited |
 
-Schedule For You supports these post types as Google and the integration allow; check the composer for the options available when you select a Google Business Profile location. Google's post text limit is 1,500 characters at the time of writing, and the composer's live character-limit check helps you stay within it.
+Solo and Studio both start with a 7-day free trial, which needs a card. See [pricing](/pricing) for the full comparison.
 
-### Tips for Google posts
+## What You Can Post to Google Business Profile From Schedule For You
+
+![What a Google Business Profile post from Schedule For You can include: update text up to 1,500 characters, one image and an optional button link](/images/blog/connect-google-business-profile-what-to-post-1200x675.webp)
+
+Google posts appear on your Business Profile in Google Search and Maps, which makes them a useful way to reach people already searching for you.
+
+| What you can add | Limit | Tip |
+|---|---|---|
+| Update text | Up to 1,500 characters | Put the useful part first, since previews cut it short |
+| Image | One image (no video) | A clear photo of your product, team or space |
+| Button | Optional "Learn more" link | Point it at the page that matches the post |
+
+Schedule For You publishes these as standard Google updates. Offer and event posts, with their own dates and coupon fields, are created in Google Business Profile itself. The composer's live character check keeps your text inside Google's limit, and our [Google Business Profile post character limit](/blog/google-business-profile-post-character-limit) guide explains how to use the space.
+
+### 4 Tips for Google Updates That Get Read
 
 - **Lead with the useful part.** Only the beginning of your post shows in the preview on Search and Maps.
-- **Use a clear photo.** A well-lit image of your product, team or space tends to work better than a text-heavy graphic.
-- **Keep it current.** Offers and events have dates, and old updates make a profile look neglected. A steady schedule helps, and repeating posts are handy for recurring events like weekly specials.
-- **Follow Google's content policies.** Google reviews posts and can reject ones that break its rules, for example posts with misleading content or restricted products. If a post is rejected, edit it in line with the policy and post again.
+- **Use a real photo.** A well-lit image of your product, team or space tends to work better than a text-heavy graphic.
+- **Keep it current.** Old updates make a profile look neglected. A steady schedule helps.
+- **Follow Google's content policies.** Google reviews posts and can reject ones that break its rules, such as misleading content or restricted products. Edit a rejected post in line with the policy and post again.
 
-If you're also posting to Instagram, Facebook and other networks, you can write one post and tailor the Google version alongside them. Our guide to the [best days to post on social media](/blog/best-days-to-post-on-social-media) has tips on picking a schedule.
+## Google Business Profile Connection Problems: 6 Fixes
 
-## Troubleshooting
+![Common Google Business Profile connection problems and their fixes, from the wrong Google account to an expired connection](/images/blog/connect-google-business-profile-fixes-1200x675.webp)
 
-### My profile doesn't appear after connecting
+| Problem | Fix | Why it works |
+|---|---|---|
+| No locations appear after connecting | Reconnect and choose the account that holds the owner or manager role | The account you used doesn't manage any profile |
+| Locations listed, but posts fail | Check the profile is still verified | Unverified profiles can't publish |
+| Google signed in with the wrong account | Choose "Use another account", or use a private browser window | Google preselects your browser's current account |
+| Too many locations to choose from | Tick only the ones you'll post to | Each location counts toward your plan |
+| Your role was removed or ownership changed | Ask the owner to restore access, accept, then reconnect | Posting rights follow the role |
+| The connection expired | Reconnect from Social accounts and allow access again | Google can ask you to sign in again after password changes |
 
-The most likely cause is that you signed in with a Google account that doesn't manage the profile. Check which account holds the owner or manager role in Google Business Profile, then run the connection again and choose that account in the Google sign-in window.
+### My Profile Lost Verification
 
-### The profile is listed but posts fail
+Profiles can lose verification, for example after major edits to the business name or address, or if Google asks for reverification. Posts can't publish until it's verified again. Schedule For You sends a failed-post alert when a post doesn't publish, so you'll know to look.
 
-Check whether the profile is still verified. Profiles can lose verification, for example after major edits to the business name or address, or if Google asks for reverification. Posts can't publish until the profile is verified again. Schedule For You sends a failed-post alert when a post doesn't publish, so you'll know to look.
+### I Manage Many Locations for Clients
 
-### I signed in with the wrong Google account
+If your Google account manages several locations, possibly in business groups, each one is listed separately. For agencies, put each client's locations in that client's own workspace, so queues stay separate. Approvals and client preview links are available on the paid plans.
 
-Google's sign-in window may pick the account you're already signed in to in your browser. Run the connection again and choose "Use another account," or use a private browser window so you're prompted to pick an account.
+### The Connection Stopped After a Password Change
 
-### I manage many locations
+Google connections can stop working if you change your Google password, revoke access, or Google asks you to sign in again. Reconnect from Social accounts and allow access again. Schedule For You also emails a reminder before a connection needs renewing, so posts don't fail over it. Reschedule anything that failed in the meantime.
 
-If your Google account manages multiple locations, possibly organized into business groups, each one is listed separately. Connect only the locations you'll actively post to, since each counts as a connected account. For agencies, put each client's locations in that client's own workspace to keep queues, approvals and client preview links separate.
+## Sharing Your Google Login With an Agency (Use With Caution)
 
-### My access was removed or changed
+![Safe ways to give someone access to a Google Business Profile compared with sharing your password](/images/blog/connect-google-business-profile-access-1200x675.webp)
 
-If your owner or manager role was removed, or someone changed the profile's ownership, the connection stops working. Ask the profile's owner to restore your access, accept the invitation, then reconnect from the Accounts screen.
+When a marketer or agency offers to "just log in as you" to connect your profile, it's tempting. It's faster than setting up roles. It's also the riskiest way to do it.
 
-### The connection expired
+### The Real Risks
 
-Google connections can stop working if you change your Google password, revoke access, or Google requires you to sign in again. Reconnect from the Accounts screen and grant permission again. Reschedule any posts that failed in the meantime.
+- **Your whole Google account is exposed.** The same login usually opens your email, files and payment details, not just the Business Profile.
+- **You can lose the profile.** Someone with your login can change ownership or remove you.
+- **Two-step prompts break.** Their sign-ins trigger security checks on your phone, and the connection fails at awkward times.
+- **Offboarding is messy.** When you stop working together, you have to change passwords everywhere instead of removing one role.
 
-## How to revoke access
+### A Safer Checklist
 
-To remove a location from Schedule For You, disconnect it in the Accounts screen.
+- Add the agency's own Google account as a **manager**, not an owner, from the people and access settings.
+- Keep the primary owner role yourself.
+- Have them connect with their account, inside a workspace for your business.
+- When the work ends, remove their role and check [myaccount.google.com/permissions](https://myaccount.google.com/permissions) for apps you no longer use.
+
+> **Bottom line:** Give people a role, not your password. A manager can post for you, and you can remove them in seconds.
+
+## One Calendar for Google and Social Posts: A Café Example
+
+Take Tom, who runs two café locations. Every Monday he posts the week's specials to Instagram, a Facebook Page and both Google Business Profiles. Doing it by hand means four logins and retyping the same text, about 25 minutes a week, and the Google updates are the ones he forgets.
+
+With all four accounts connected (which needs a paid plan, since Free covers 3), he writes the specials once on Sunday night, shortens the Google version, adds a photo and a "Learn more" link to the menu, and schedules everything for 8 a.m. Monday.
+
+| | Google Business Profile directly | Each app by hand | Schedule For You |
+|---|---|---|---|
+| Post Google updates | Yes | Yes, one profile at a time | Yes, with one image and an optional button |
+| Offer and event posts | Yes | Yes | No, create those in Google |
+| Same post to Instagram, Facebook and others | No | Separate apps | Yes, with a different caption per platform |
+| Several locations on one calendar | Per profile | No | Yes |
+| Cost | Free | Free | Free plan for 3 accounts and 10 scheduled posts, no card. Paid plans from $19 a month |
+
+Where we're not the best fit: if you only post to Google and rely on offer or event posts, Google Business Profile's own posting tools are free and support those types. Schedule For You also doesn't show your profile's views or reviews.
+
+Tom's connected profiles and locations all sit in one list:
+
+![Connected Google Business Profile locations and social accounts in Schedule For You](/images/blog/social-accounts-1440x900.webp)
+
+And the week's posts sit on one calendar, where he can drag a special to another day if stock runs out:
+
+![A month of Google Business Profile and social posts on the Schedule For You calendar](/images/blog/calendar-month-1440x900.webp)
+
+## How to Revoke Google Business Profile Access
+
+To remove a location from Schedule For You, disconnect it in Social accounts.
 
 To fully revoke access on Google's side:
 
 1. Go to [myaccount.google.com/permissions](https://myaccount.google.com/permissions) while signed in to the Google account you used.
-2. Find Schedule For You in the list of third-party apps and services with access.
+2. Find Schedule For You in the list of third-party apps with access.
 3. Open it and remove access.
 
-After revoking, Schedule For You can't publish to any Business Profile locations connected through that Google account until you connect again.
+After revoking, Schedule For You can't publish to any locations connected through that Google account until you connect again.
 
-## Frequently asked questions
+## What to Do Next
+
+1. **Check your role** in Google Business Profile's people and access settings.
+2. **Confirm verification** for every location you want to post to.
+3. **Connect** from Social accounts, choosing the right Google account.
+4. **Schedule your first update** with a photo and a "Learn more" link.
+
+- ✓ Owners and managers can connect
+- ✓ One image and up to 1,500 characters per update
+- ✗ Unverified profiles can't publish
+- ✗ Offer and event posts are made in Google, not in Schedule For You
+
+## Frequently Asked Questions
 
 ### Do I need a verified Business Profile?
 
-Yes. Google only allows verified Business Profiles to publish posts. Complete verification in Google Business Profile before connecting.
+Yes. Google only lets verified Business Profiles publish posts. Complete verification in Google Business Profile before connecting.
 
 ### Can a manager connect the profile, or only the owner?
 
-Both owners and managers can create posts, so either role can connect the profile. Make sure you've accepted the invitation to the profile with the Google account you use when connecting.
+Both owners and managers can create posts, so either role can connect. Make sure you've accepted the invitation with the Google account you use when connecting.
 
 ### Can I connect multiple locations?
 
-Yes. After you grant permission, choose each location you want. Each connected location counts as one connected account on your plan.
+Yes. After you allow access, tick each location you want. Each connected location counts as one connected account on your plan.
 
-### What kinds of posts can I schedule?
+### What kinds of Google posts can I schedule?
 
-You can schedule Google posts such as updates, offers and events, as supported by Google and the integration. The composer shows the options available for your connected location.
+You can schedule standard Google updates with text, one image and an optional "Learn more" button. Offer and event posts are created in Google Business Profile itself.
+
+### Can I post videos to Google Business Profile?
+
+Not from Schedule For You. Google updates published through Schedule For You take one image and no video.
 
 ### Will my posts appear on Google Maps?
 
-Google posts can appear on your Business Profile in both Search and Maps. Exactly where and how they're shown is controlled by Google.
+Google posts can appear on your Business Profile in both Search and Maps. Exactly where and how they're shown is up to Google.
+
+### Why don't any locations show up after I connect?
+
+The Google account you signed in with probably doesn't hold an owner or manager role on the profile. Reconnect and choose the account that does.
 
 ### How do I stop Schedule For You from accessing my profile?
 
-Disconnect the location in the Accounts screen, and remove Schedule For You's access at myaccount.google.com/permissions to fully revoke it.
+Disconnect the location in Social accounts, then remove Schedule For You's access at myaccount.google.com/permissions to fully revoke it.
+
+## The Bottom Line
+
+![To connect Google Business Profile you need a verified profile, an owner or manager role, and the right Google account](/images/blog/connect-google-business-profile-bottom-line-1200x675.webp)
+
+- **Requirements:** a verified profile and an owner or manager role on the account you sign in with.
+- **Connecting:** Social accounts, Google Business Profile, the right Google account, allow access, tick your locations.
+- **Posting:** standard updates with up to 1,500 characters, one image and an optional button.
+- **Access for others:** give them a manager role, never your password.
+
+Check your role first and the rest takes five minutes. For more free tools, try the [photo collage maker](/tools/photo-collage-maker), the [aspect ratio calculator](/tools/aspect-ratio-calculator) and the [add text to image tool](/tools/add-text-to-image). Next up: [how to connect a Facebook Page](/blog/connect-facebook-page).

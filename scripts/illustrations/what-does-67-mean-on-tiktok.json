@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok slang", "title": "What does 67 mean? **Nothing, on purpose**", "sub": "Say “six seven”, palms up like a scale. Saying it shows you’re in on the joke.", "chips": ["Six seven", "The hand gesture", "2025 Word of the Year", "Brands: careful"] },
+    { "name": "myth-vs-reality", "type": "versus", "kicker": "No hidden meaning", "title": "What people fear vs **what it is**", "left": { "label": "The worry", "tone": "bad", "items": ["A secret code", "Something explicit", "“Sixty-seven” of something"] }, "right": { "label": "The reality", "tone": "good", "items": ["A line from a song", "Nonsense on purpose", "Two numbers: six, seven"] } },
+    { "name": "origin", "type": "steps", "kicker": "Where it came from", "title": "From a song to **every classroom**", "steps": [ { "title": "2024 song", "text": "Skrilla, “Doot Doot (6 7)”." }, { "title": "Edits", "text": "LaMelo Ball is 6′7″." }, { "title": "Gesture", "text": "Taylen Kinney’s see-saw.", "highlight": true }, { "title": "Schools", "text": "Page 67 chaos, late 2025." } ] },
+    { "name": "brands", "type": "checklist", "kicker": "For brands", "title": "When 67 works, and **when it’s cringe**", "good": { "label": "Works", "items": ["A quick reply in comments", "A young audience", "Keeping it light"] }, "bad": { "label": "Backfires", "items": ["A planned ad campaign", "Explaining the joke", "Arriving after it’s over"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "“Six seven” means nothing. **Getting the joke is the whole point.**", "by": "It peaked in late 2025 and is mostly ironic now." }
+  ]
+}

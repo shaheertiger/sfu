@@ -1,0 +1,91 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "dark": true,
+   "kicker": "LinkedIn guide",
+   "title": "Find scheduled LinkedIn posts: **click the clock**",
+   "sub": "Start a post, click the clock icon, then View all scheduled posts. Pages keep their own list.",
+   "chips": [
+    "Clock icon",
+    "Profile vs page",
+    "Edit or cancel",
+    "One shared queue"
+   ]
+  },
+  {
+   "name": "where",
+   "type": "versus",
+   "kicker": "Where they are",
+   "title": "Inside the composer, **not on your profile**",
+   "left": {
+    "label": "Look here",
+    "tone": "good",
+    "items": [
+     "Start a post → clock icon",
+     "View all scheduled posts",
+     "The page’s admin view"
+    ]
+   },
+   "right": {
+    "label": "Not here",
+    "tone": "bad",
+    "items": [
+     "Your profile or page",
+     "Your activity",
+     "Your notifications"
+    ]
+   }
+  },
+  {
+   "name": "page",
+   "type": "steps",
+   "kicker": "Company pages",
+   "title": "Open the composer **as the page**",
+   "steps": [
+    {
+     "title": "Admin view",
+     "text": "Super or content admin role."
+    },
+    {
+     "title": "Check the logo",
+     "text": "The page’s, not your photo.",
+     "highlight": true
+    },
+    {
+     "title": "Clock icon",
+     "text": "Then View all scheduled posts."
+    }
+   ]
+  },
+  {
+   "name": "edit",
+   "type": "steps",
+   "kicker": "Edit, reschedule, cancel",
+   "title": "The **three dots** on each post",
+   "steps": [
+    {
+     "title": "Edit post",
+     "text": "Change the text and save."
+    },
+    {
+     "title": "Modify schedule",
+     "text": "Up to about 3 months ahead.",
+     "highlight": true
+    },
+    {
+     "title": "Delete",
+     "text": "Nothing is published."
+    }
+   ]
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "Post missing? **Check whose name is on the composer.**",
+   "by": "Profiles and company pages keep separate scheduled lists."
+  }
+ ]
+}

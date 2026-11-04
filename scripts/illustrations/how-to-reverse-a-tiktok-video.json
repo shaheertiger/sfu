@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "Play a TikTok in reverse **in 6 taps**", "sub": "Effects, Time, Reverse. The picture flips, the sound doesn’t, so add music afterwards.", "chips": ["Effects", "Time tab", "Reverse"] },
+    { "name": "sound", "type": "versus", "kicker": "Picture vs sound", "title": "The picture flips, **the sound doesn’t**", "left": { "label": "Reversed by TikTok", "tone": "good", "items": ["The video track", "Your recorded clip", "Uploaded videos"] }, "right": { "label": "Stays forwards", "tone": "neutral", "items": ["Licensed music", "Original sounds", "Voice audio, unless edited first"] } },
+    { "name": "steps", "type": "steps", "kicker": "Your own video", "title": "Reverse a clip **before you post**", "steps": [ { "title": "Record or upload", "text": "Then tap Next to edit." }, { "title": "Effects, then Time", "text": "Or Edit on some versions." }, { "title": "Tap Reverse", "text": "Then save, add a sound, post.", "highlight": true } ] },
+    { "name": "safety", "type": "checklist", "kicker": "Other people’s videos", "title": "Reverse safely, **and fairly**", "good": { "label": "Safe", "items": ["Reversing your own clips", "Remixing via Duet or Stitch", "Saved copies for personal viewing"] }, "bad": { "label": "Risky", "items": ["Reposting someone’s reversed video", "Download sites that bypass settings", "Posting with no credit"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "You can reverse what you post, **not what you watch.**", "by": "Effects, Time, Reverse, then add music." }
+  ]
+}

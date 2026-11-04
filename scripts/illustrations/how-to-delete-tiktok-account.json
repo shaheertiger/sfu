@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "Delete your TikTok account in **7 steps**", "sub": "Save your videos, drafts and earnings first. Then you have 30 days to change your mind.", "chips": ["Save first", "Delete permanently", "30-day window"] },
+    { "name": "delete-vs-deactivate", "type": "versus", "kicker": "Two options, one menu", "title": "Deactivate or **delete for good?**", "left": { "label": "Deactivate", "tone": "good", "items": ["Hidden until you log in", "Username kept", "Coins and earnings kept"] }, "right": { "label": "Delete permanently", "tone": "bad", "items": ["Erased after 30 days", "Username released", "No refund for coins"] } },
+    { "name": "steps", "type": "steps", "kicker": "In the app", "title": "From Profile to **deleted**", "steps": [ { "title": "Settings", "text": "Profile → menu → Settings and privacy." }, { "title": "Account", "text": "Deactivate or delete account." }, { "title": "Delete", "text": "Choose Delete account permanently.", "highlight": true }, { "title": "Verify", "text": "Code, password or linked login." } ] },
+    { "name": "save-first", "type": "checklist", "kicker": "Before you delete", "title": "Save these first, **or lose them**", "good": { "label": "Save", "items": ["Your data download", "Videos and drafts", "Earnings and gift balance"] }, "bad": { "label": "Gone after deletion", "items": ["Unsaved drafts", "Unspent coins", "Your username"] } },
+    { "name": "after", "type": "steps", "kicker": "After you delete", "title": "What happens over **the next 30 days**", "steps": [ { "title": "Day 0", "text": "Account hidden from everyone." }, { "title": "Days 1–30", "text": "Logging in cancels deletion.", "highlight": true }, { "title": "After 30 days", "text": "Deleted. No recovery." } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Save first, delete second, **and log out everywhere for 30 days.**", "by": "Only need a break? Deactivate instead." }
+  ]
+}

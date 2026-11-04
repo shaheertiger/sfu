@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "X (Twitter) guide", "title": "Make your X account **public**", "sub": "One setting: Protect your posts, off. But every old protected post becomes public too.", "chips": ["Web", "iPhone and Android", "Checklist first", "Switch back"] },
+    { "name": "versus", "type": "versus", "kicker": "What changes", "title": "Protected vs **public**", "left": { "label": "Protected", "tone": "neutral", "items": ["Approved followers only", "No reposts or quotes", "Hidden from wider search"] }, "right": { "label": "Public", "tone": "good", "items": ["Anyone on X can see posts", "Reposts and quotes allowed", "Old posts become public"] } },
+    { "name": "steps", "type": "steps", "kicker": "Step by step", "title": "Four menus, **one checkbox**", "steps": [ { "title": "Settings and privacy", "text": "From More, or your profile picture." }, { "title": "Privacy and safety", "text": "Then Audience and tagging." }, { "title": "Protect your posts", "text": "Uncheck it and confirm.", "highlight": true } ] },
+    { "name": "checklist", "type": "checklist", "kicker": "Before you switch", "title": "Tidy up **before you go public**", "good": { "label": "Do first", "items": ["Delete posts you’d regret", "Approve follow requests", "Rewrite your bio"] }, "bad": { "label": "Don’t assume", "items": ["Old posts stay private", "Switching back removes copies", "Strangers can’t reply"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "The switch takes seconds. **Reviewing your old posts is the part that matters.**", "by": "You can switch back any time, but screenshots and quotes stay out there." }
+  ]
+}

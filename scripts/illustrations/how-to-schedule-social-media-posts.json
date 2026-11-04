@@ -1,0 +1,9 @@
+{
+ "cards": [
+  { "name": "hero", "type": "hero", "dark": true, "kicker": "Scheduling guide", "title": "Schedule social media posts: **10 platforms, 1 queue**", "sub": "Each platform’s free scheduler first. Then one queue once you post to three or more.", "chips": ["Native schedulers", "How far ahead", "Bluesky + GBP", "One queue"] },
+  { "name": "process", "type": "steps", "kicker": "From plan to published", "title": "Scheduling is **the last step**", "steps": [ { "title": "Plan", "text": "What goes out, and where." }, { "title": "Write and adapt", "text": "One post, a version per platform." }, { "title": "Schedule", "text": "Exact time or a posting slot.", "highlight": true }, { "title": "Monitor", "text": "Check it published. Retry failures." } ] },
+  { "name": "native", "type": "versus", "kicker": "Native schedulers", "title": "Built in on 8 platforms, **missing on 2**", "left": { "label": "Built in", "tone": "good", "items": ["Instagram, Facebook, Threads", "X, LinkedIn, Pinterest", "TikTok and YouTube"] }, "right": { "label": "No native scheduler", "tone": "bad", "items": ["Bluesky", "Google Business Profile", "Both need a third-party tool"] } },
+  { "name": "problem", "type": "versus", "kicker": "Where it breaks down", "title": "One platform is easy. **Six is a chore.**", "left": { "label": "Fine natively", "tone": "good", "items": ["One or two networks", "Occasional posts", "Facebook + Instagram together"] }, "right": { "label": "Breaks down", "tone": "bad", "items": ["Six uploads of one image", "TikTok’s 10-day window", "Six lists to check for failures"] } },
+  { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Native tools for one or two platforms. **A shared queue once you’re past that.**", "by": "Check the timezone, write per platform, and look at the queue once a day." }
+ ]
+}

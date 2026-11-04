@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Bluesky guide", "title": "Get followers on Bluesky **without an algorithm**", "sub": "Get found through starter packs, custom feeds and good replies, then post on a steady rhythm.", "chips": ["Starter packs", "Custom feeds", "Replies"] },
+    { "name": "sources", "type": "versus", "kicker": "Why it’s different", "title": "One algorithm vs **many small doors**", "left": { "label": "Most platforms", "tone": "neutral", "items": ["One feed decides who sees you", "Growth means pleasing it", "Hashtags do the heavy lifting"] }, "right": { "label": "Bluesky", "tone": "good", "items": ["Chronological Following feed", "Packs and feeds bring discovery", "Replies send people to you"] } },
+    { "name": "five-ways", "type": "steps", "kicker": "5 ways that work", "title": "Where to spend **your first month**", "steps": [ { "title": "Starter packs", "text": "Join one, or make your own.", "highlight": true }, { "title": "Custom feeds", "text": "Post on-topic with the right words." }, { "title": "Replies", "text": "Add something under big posts." }, { "title": "Rhythm", "text": "A few posts a day, every day." } ] },
+    { "name": "shortcuts", "type": "checklist", "kicker": "Use with caution", "title": "What grows an account, and **what backfires**", "good": { "label": "Grows it", "items": ["Being in a niche starter pack", "Useful replies every day", "A clear, searchable bio"] }, "bad": { "label": "Backfires", "items": ["Bought followers", "Mass-following for follow-backs", "Tags stuffed on unrelated posts"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Be findable in one niche. **Packs, feeds and replies do the rest.**", "by": "Skip the shortcuts and give it two months of daily posting." }
+  ]
+}

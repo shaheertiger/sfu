@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "YouTube guide", "title": "Clip, trim or Short? **Pick the right one**", "sub": "Share a 5–60 second moment, fix your own upload, or cut a highlight into a new video.", "chips": ["Clip button", "Studio Editor", "Shorts"] },
+    { "name": "which", "type": "steps", "kicker": "Three different jobs", "title": "What do you **actually want to do?**", "steps": [ { "title": "Clip", "text": "Share 5–60 seconds of any eligible video.", "highlight": true }, { "title": "Trim", "text": "Cut your own upload. Same URL and views." }, { "title": "Short", "text": "A new vertical video from your footage." } ] },
+    { "name": "steps", "type": "steps", "kicker": "The Clip button", "title": "Clip a moment in **4 steps**", "steps": [ { "title": "Find Clip", "text": "The scissors icon under the player." }, { "title": "5–60 seconds", "text": "Drag the selector over the moment.", "highlight": true }, { "title": "Add a title", "text": "Say what the moment is." }, { "title": "Share clip", "text": "Copy the link or pick an app." } ] },
+    { "name": "missing", "type": "checklist", "kicker": "No Clip button?", "title": "Why it’s missing, and **what to do instead**", "good": { "label": "Try this", "items": ["Share with “Start at” ticked", "Sign in on YouTube itself", "Update the YouTube app"] }, "bad": { "label": "Common causes", "items": ["The creator turned clipping off", "Video set as made for kids", "Some live streams"] } },
+    { "name": "trim", "type": "versus", "kicker": "Your own videos", "title": "Trim in Studio vs **re-upload**", "left": { "label": "Trim & cut in Studio", "tone": "good", "items": ["Same URL", "Views and comments kept", "Original stays live until ready"] }, "right": { "label": "Delete and re-upload", "tone": "bad", "items": ["New URL", "Views and comments lost", "Old links stop working"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Clip other people’s moments. **Cut highlights only from your own footage.**", "by": "Trim in Studio to keep your views; upload a Short as a new video." }
+  ]
+}

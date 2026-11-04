@@ -1,0 +1,121 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "dark": true,
+   "kicker": "Small business guide",
+   "title": "Best social media tools: **4 tests before you pay**",
+   "sub": "Cover every channel, pay a fair price per account, and pick something you’ll open every week.",
+   "chips": [
+    "Cost per account",
+    "Google Business Profile",
+    "Approvals",
+    "Ease of use"
+   ]
+  },
+  {
+   "name": "criteria",
+   "type": "steps",
+   "kicker": "The 4 tests",
+   "title": "What decides **most purchases**",
+   "steps": [
+    {
+     "title": "Cost per account",
+     "text": "Count accounts and users first.",
+     "highlight": true
+    },
+    {
+     "title": "Platforms",
+     "text": "Including Google Business Profile."
+    },
+    {
+     "title": "Approvals",
+     "text": "Can someone sign off without a seat?"
+    },
+    {
+     "title": "Ease of use",
+     "text": "First post in under ten minutes?"
+    }
+   ]
+  },
+  {
+   "name": "steps",
+   "type": "steps",
+   "kicker": "How to choose",
+   "title": "Pick a tool in **half an hour**",
+   "steps": [
+    {
+     "title": "List channels",
+     "text": "Every profile, now and next year."
+    },
+    {
+     "title": "Must-haves",
+     "text": "Split them from nice-to-haves."
+    },
+    {
+     "title": "Real cost",
+     "text": "Your accounts, your users.",
+     "highlight": true
+    },
+    {
+     "title": "Real trial",
+     "text": "A week of real posts."
+    }
+   ]
+  },
+  {
+   "name": "types",
+   "type": "versus",
+   "kicker": "6 tool types",
+   "title": "Which kind of tool **fits your business**",
+   "left": {
+    "label": "Mostly publishing",
+    "tone": "neutral",
+    "items": [
+     "Free native tools",
+     "Simple or low-cost schedulers",
+     "Design-first tools"
+    ]
+   },
+   "right": {
+    "label": "Teams and clients",
+    "tone": "neutral",
+    "items": [
+     "All-in-one suites",
+     "Agency tools",
+     "Shared inbox and reports"
+    ]
+   }
+  },
+  {
+   "name": "caution",
+   "type": "checklist",
+   "kicker": "Use with caution",
+   "title": "Safe tools vs **risky bargains**",
+   "good": {
+    "label": "Safe",
+    "items": [
+     "Connects through official sign-in",
+     "Posts only what you wrote",
+     "Lets you disconnect and delete"
+    ]
+   },
+   "bad": {
+    "label": "Risky",
+    "items": [
+     "Asks for your password",
+     "Auto-likes, follows or comments",
+     "No updates or support"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "Count your accounts first. **The cheapest headline price is rarely the cheapest plan.**",
+   "by": "Pick the tool type that matches how you work, then decide on real cost and a one-week trial."
+  }
+ ]
+}

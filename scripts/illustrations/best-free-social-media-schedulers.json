@@ -1,0 +1,120 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "dark": true,
+   "kicker": "Scheduling guide",
+   "title": "The best free schedulers are **already built in**",
+   "sub": "Each platform schedules its own posts for free. The catch: one platform at a time.",
+   "chips": [
+    "Meta Business Suite",
+    "YouTube Studio",
+    "LinkedIn + X",
+    "TikTok web"
+   ]
+  },
+  {
+   "name": "native-vs-multi",
+   "type": "versus",
+   "kicker": "Why free means single-platform",
+   "title": "Native tools vs **one shared scheduler**",
+   "left": {
+    "label": "Native schedulers",
+    "tone": "neutral",
+    "items": [
+     "Free and official",
+     "One platform per tool",
+     "No shared calendar"
+    ]
+   },
+   "right": {
+    "label": "Multi-platform",
+    "tone": "good",
+    "items": [
+     "One post, many networks",
+     "One calendar for all",
+     "A free plan or a subscription"
+    ]
+   }
+  },
+  {
+   "name": "by-platform",
+   "type": "versus",
+   "kicker": "Platform by platform",
+   "title": "Built-in scheduling, and **where there’s none**",
+   "left": {
+    "label": "Has a free scheduler",
+    "tone": "good",
+    "items": [
+     "Meta Business Suite",
+     "YouTube Studio",
+     "LinkedIn, X and TikTok web"
+    ]
+   },
+   "right": {
+    "label": "No native option",
+    "tone": "bad",
+    "items": [
+     "Bluesky",
+     "Google Business Profile",
+     "Needs a third-party tool"
+    ]
+   }
+  },
+  {
+   "name": "gaps",
+   "type": "checklist",
+   "kicker": "6 shared gaps",
+   "title": "What native tools do, and **what they can’t**",
+   "good": {
+    "label": "They can",
+    "items": [
+     "Schedule on their own platform",
+     "Cost nothing",
+     "Run officially"
+    ]
+   },
+   "bad": {
+    "label": "They can’t",
+    "items": [
+     "Post to other networks",
+     "Show one shared calendar",
+     "Bulk upload or repeat posts"
+    ]
+   }
+  },
+  {
+   "name": "routine",
+   "type": "steps",
+   "kicker": "Free weekly routine",
+   "title": "Make the free route **actually work**",
+   "steps": [
+    {
+     "title": "One sheet",
+     "text": "A row per post, every network."
+    },
+    {
+     "title": "Two captions",
+     "text": "Short for X, long for LinkedIn."
+    },
+    {
+     "title": "Tool by tool",
+     "text": "All Meta posts, then the next app.",
+     "highlight": true
+    },
+    {
+     "title": "Check it",
+     "text": "Confirm the first posts went out."
+    }
+   ]
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "Native schedulers are free. **The cost is doing every post again.**",
+   "by": "Start free, and switch when repetition eats your week."
+  }
+ ]
+}

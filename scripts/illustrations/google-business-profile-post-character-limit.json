@@ -1,0 +1,113 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "dark": true,
+   "kicker": "Google Business Profile guide",
+   "title": "1,500 characters, but **only ~100 show**",
+   "sub": "Write the first line as if it’s the whole post. Most customers never tap to read more.",
+   "chips": [
+    "1,500 characters",
+    "1 image, 1200×900",
+    "Optional button"
+   ]
+  },
+  {
+   "name": "preview",
+   "type": "versus",
+   "kicker": "What customers see",
+   "title": "The first line does **the real work**",
+   "left": {
+    "label": "Seen at a glance",
+    "tone": "good",
+    "items": [
+     "About the first 100 characters",
+     "Your photo",
+     "The button"
+    ]
+   },
+   "right": {
+    "label": "Hidden until they tap",
+    "tone": "neutral",
+    "items": [
+     "The other ~1,400 characters",
+     "Extra details and terms",
+     "Anything after the first line"
+    ]
+   }
+  },
+  {
+   "name": "limits",
+   "type": "bars",
+   "kicker": "Post limits",
+   "title": "1,500 allowed, **about 100 seen**",
+   "rows": [
+    {
+     "label": "Shown first",
+     "value": 7,
+     "note": "~100 characters"
+    },
+    {
+     "label": "Post text",
+     "value": 100,
+     "note": "1,500 characters"
+    }
+   ]
+  },
+  {
+   "name": "steps",
+   "type": "steps",
+   "kicker": "Step by step",
+   "title": "Write a post that gets **clicks**",
+   "steps": [
+    {
+     "title": "Add update",
+     "text": "Search your business name in Google."
+    },
+    {
+     "title": "First 100",
+     "text": "Lead with the specific thing.",
+     "highlight": true
+    },
+    {
+     "title": "Real photo",
+     "text": "1200×900, no text overlay."
+    },
+    {
+     "title": "Match the button",
+     "text": "Book, Call or Order online."
+    }
+   ]
+  },
+  {
+   "name": "rejected",
+   "type": "checklist",
+   "kicker": "Avoid rejections",
+   "title": "What gets approved, and **what gets rejected**",
+   "good": {
+    "label": "Approved",
+    "items": [
+     "The Call button for your number",
+     "A real photo, no text on it",
+     "A link to the final page"
+    ]
+   },
+   "bad": {
+    "label": "Rejected",
+    "items": [
+     "Phone numbers in the text",
+     "Stock photos with text overlays",
+     "Links that redirect"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "Write the first 100 characters **as if they’re the whole post.**",
+   "by": "One real photo, a matching button, and a new update every week."
+  }
+ ]
+}

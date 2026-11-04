@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Strategy guide", "title": "A content calendar that **publishes**", "sub": "A free template, a worked example week, and how to connect the plan to what actually goes out.", "chips": ["Free template", "7 steps", "Example week", "Tools compared"] },
+    { "name": "stale", "type": "versus", "kicker": "Why calendars go stale", "title": "Useful calendar vs **stale calendar**", "left": { "label": "Stays useful", "tone": "good", "items": ["A pillar on every post", "An honest Status column", "Connected to publishing"] }, "right": { "label": "Goes stale", "tone": "bad", "items": ["Ten promos in a row", "“Scheduled” that isn’t", "Copies in four apps"] } },
+    { "name": "steps", "type": "steps", "kicker": "Build it by hand", "title": "Plan the month **in 4 moves**", "steps": [ { "title": "Pick pillars", "text": "Three to five themes." }, { "title": "Set a rhythm", "text": "Per platform, sustainable." }, { "title": "Fixed dates first", "text": "Launches, sales, events." }, { "title": "Batch and schedule", "text": "One to two weeks ahead.", "highlight": true } ] },
+    { "name": "compare", "type": "bars", "kicker": "Tools compared", "title": "How many platforms **each option publishes to**", "rows": [ { "label": "Spreadsheet", "value": 3, "note": "None" }, { "label": "Native scheduler", "value": 20, "note": "Its own only" }, { "label": "Scheduler", "value": 100, "note": "Many, one calendar" } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "A calendar works when **the plan and the publishing are the same thing.**", "by": "Start with the template. Connect it once a post goes to three or more accounts." }
+  ]
+}
