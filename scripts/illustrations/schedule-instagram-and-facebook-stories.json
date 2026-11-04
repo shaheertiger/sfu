@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Instagram and Facebook guide", "title": "Schedule Stories: **2 ways, 1 catch**", "sub": "Meta Business Suite or a scheduler. Either way, interactive stickers and music stay in the app.", "chips": ["Meta Business Suite", "A scheduler", "Professional accounts"] },
+    { "name": "stickers", "type": "checklist", "kicker": "The sticker catch", "title": "What to schedule, and **what to post live**", "good": { "label": "Schedule it", "items": ["Product shots and specials", "Announcements, text baked in", "One 9:16 image or video"] }, "bad": { "label": "Post live", "items": ["Polls, quizzes, questions", "Link stickers", "Instagram’s music"] } },
+    { "name": "mbs", "type": "steps", "kicker": "Free · Meta Business Suite", "title": "Schedule a Story **in four moves**", "steps": [ { "title": "Create story", "text": "Home screen or Planner." }, { "title": "Pick accounts", "text": "Instagram, your Page or both." }, { "title": "Add 9:16 media", "text": "Each file is one frame." }, { "title": "Schedule", "text": "Not Share now. Check the Planner.", "highlight": true } ] },
+    { "name": "cafe", "type": "versus", "kicker": "A café’s Friday", "title": "Stories at 7:30, **everything else at noon**", "left": { "label": "7:30 a.m.", "tone": "neutral", "items": ["Instagram Story", "Facebook Page Story", "One 9:16 video, no caption"] }, "right": { "label": "Noon", "tone": "good", "items": ["Reel and TikTok", "YouTube Short", "Google Business Profile photo"] } },
+    { "name": "tips", "type": "checklist", "kicker": "Stories people watch", "title": "What looks sharp, and **what gets skipped**", "good": { "label": "Works", "items": ["9:16 at 1080×1920", "Text in the middle", "One idea per frame"] }, "bad": { "label": "Gets skipped", "items": ["Small, compressed files", "Text under the reply bar", "The point in frame three"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Schedule the Stories that are just a picture or a clip. **Post the interactive ones live.**", "by": "Stickers, polls, links and music stay in the app." }
+  ]
+}
