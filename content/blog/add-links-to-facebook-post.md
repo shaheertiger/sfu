@@ -166,14 +166,14 @@ In Schedule For You she writes each post once, adjusts the caption per platform,
 | | Facebook or Meta Business Suite | Other schedulers | Schedule For You |
 | --- | --- | --- | --- |
 | Clickable links in Page posts | Yes | Yes | Yes, previews come from your site's sharing tags |
-| Link in the first comment, scheduled | Manual comment after posting | Some tools | Yes, on Facebook Pages, X, LinkedIn, Threads and Bluesky |
+| Link in the first comment, scheduled | Manual comment after posting | Some tools | Yes, on Facebook Pages, Instagram, X, LinkedIn, Threads and Bluesky |
 | Post to profiles and groups | Yes | Varies | No, Facebook Pages only |
-| Story link stickers | Yes, in the app | Varies | No |
+| Stories | Yes, with link stickers | Varies | Yes, one image or video, but no link stickers |
 | Other platforms from one composer | Instagram only | Varies | Instagram, X, LinkedIn, TikTok, YouTube and more |
 | Link click counts | Page insights | Varies | Paid plans only (link tracking) |
 | Cost | Free | Usually paid | Free plan for 3 accounts and 10 scheduled posts, no card. Paid from $19 a month |
 
-Where we're not the best fit: if you post links to a personal profile or a group, or you rely on Story link stickers, do that in Facebook itself. And if you only post to Facebook and Instagram, Meta Business Suite is free and covers both.
+Where we're not the best fit: if you post links to a personal profile or a group, or you rely on Story link stickers, do that in Facebook itself; stickers aren't available through Meta's publishing API. And if you only post to Facebook and Instagram, Meta Business Suite is free and covers both.
 
 ![A month of scheduled link posts in the Schedule For You calendar](/images/blog/calendar-month-1440x900.webp)
 

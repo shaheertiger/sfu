@@ -171,11 +171,11 @@ In Schedule For You she connects both Instagram accounts and the florist's Page 
 | Several Instagram accounts | Yes, switch one at a time | Yes, Page by Page | Yes, select many in one post |
 | A caption per account | Retyped | Yes | Yes |
 | TikTok, LinkedIn, Google Business Profile and others | No | No | Yes |
-| Instagram Stories | Yes | Yes | No, post those in the app |
+| Instagram Stories | Yes | Yes | Yes, one image or video; no stickers, polls or music |
 | Separate spaces per client | No | Business portfolios | Workspaces |
 | Cost | Free | Free | Free for 3 accounts and 10 scheduled posts, no card. Paid from $19 a month |
 
-Where we're not the best fit: if every account is Instagram or Facebook, Meta Business Suite is free and covers both, including Stories, which we don't post. Six accounts is also past the Free plan's three, so Sofia's setup needs a paid plan.
+Where we're not the best fit: if every account is Instagram or Facebook, Meta Business Suite is free and covers both. If your Stories rely on stickers, polls or music, post those in the app, since they aren't available through Meta's publishing API. Six accounts is also past the Free plan's three, so Sofia's setup needs a paid plan.
 
 ![A post being prepared for several Instagram accounts and other platforms in the Schedule For You composer](/images/blog/composer-four-platforms-1440x900.webp)
 

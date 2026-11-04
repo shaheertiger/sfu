@@ -158,20 +158,21 @@ If a viral Reel brought few followers, make it obvious what your account offers 
 
 Hooks and shareable ideas take thought. Remembering to post shouldn't. Take Nadia, a dog trainer who wants to post three Reels and two carousels a week to Instagram, plus the same Reels to TikTok and YouTube Shorts. That's 11 uploads a week. When a client session runs late, Tuesday's Reel slips to Thursday, and the rhythm breaks right when a post is gaining traction.
 
-In Schedule For You, Nadia films on Sunday, writes each caption once, adjusts it for each platform, and puts the week on the calendar. The posts publish at the times she chose, even on her busiest days. It doesn't make posts go viral. It takes "I forgot to post" off the table, so she can put her energy into the follow-up when one takes off.
+In Schedule For You, Nadia films on Sunday, writes each caption once, adjusts it for each platform, and puts the week on the calendar. The posts publish at the times she chose, even on her busiest days. She can schedule a Story for each new Reel too, as one image or video. It doesn't make posts go viral. It takes "I forgot to post" off the table, so she can put her energy into the follow-up when one takes off.
 
 ![The Schedule For You calendar with a month of Reels and carousels planned](/images/blog/calendar-month-1440x900.webp)
 
 | | Instagram's own scheduling | Meta Business Suite | Schedule For You |
 | --- | --- | --- | --- |
 | Schedule Reels, carousels and photo posts | Yes | Yes | Yes, carousels of up to 10 photos or videos |
-| Stories, music and stickers | Yes | Stories, yes | No, add those in the app |
+| Stories | Yes | Yes | Yes, one image or video, no caption |
+| Music, stickers and polls | Yes | Varies | No, add those in the app |
 | Trial Reels | Yes, where available | Varies | No |
 | Same video to TikTok and YouTube Shorts | No | No | Yes, with a caption per platform |
 | Shows shares, saves and reach | Yes, in Insights | Yes | No, use Instagram Insights |
 | Cost | Free | Free | Free for 3 accounts and 10 scheduled posts, no card. Paid from $19 a month |
 
-Where we're not the best fit: if Instagram is your only platform, its own scheduling or Meta Business Suite is free and also handles Stories, music and trial Reels, which we don't. We also don't show any analytics, so you'll read your shares and saves in Instagram.
+Where we're not the best fit: if Instagram is your only platform, its own scheduling or Meta Business Suite is free and also handles music, stickers and trial Reels, which we don't. We also don't show any analytics, so you'll read your shares and saves in Instagram.
 
 ![A week of Reels and carousels lined up in the Schedule For You queue](/images/blog/queue-1440x900.webp)
 
