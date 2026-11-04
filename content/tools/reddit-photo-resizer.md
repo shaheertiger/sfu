@@ -87,4 +87,4 @@ No. Only moderators with the right permissions can change a community's banner a
 No. Everything runs in your browser and your files stay on your device.
 
 ## Manage your other social channels with Schedule For You
-Schedule For You doesn't post to Reddit. If you also run accounts on X, Instagram, LinkedIn, Threads, Bluesky or YouTube, it lets you draft once, tailor each platform's version, and schedule from one queue and calendar. [Start your 7-day free trial](/signup). A card is required and you won't be charged until day 8.
+Schedule For You doesn't post to Reddit. If you also run accounts on X, Instagram, LinkedIn, Threads, Bluesky or YouTube, it lets you draft once, tailor each platform's version, and schedule from one queue and calendar. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

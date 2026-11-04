@@ -83,4 +83,4 @@ Somewhere around 6 to 12 characters is easy to type from memory and fits even X'
 You can, but run a trademark search in the countries where you sell first, and make sure no one else trades under that name in your market.
 
 ## Grow every account from one calendar with Schedule For You
-Once you've claimed your handle everywhere, Schedule For You lets you write a post once, tailor it for each platform and publish to Instagram, TikTok, X, YouTube, LinkedIn and five more networks from one queue. Plans start at $19/month with unlimited posts. [Start your 7-day free trial](/signup). A card is required, cancel anytime, and you aren't charged until day 8.
+Once you've claimed your handle everywhere, Schedule For You lets you write a post once, tailor it for each platform and publish to Instagram, TikTok, X, YouTube, LinkedIn and five more networks from one queue. Plans start at $19/month with unlimited posts. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

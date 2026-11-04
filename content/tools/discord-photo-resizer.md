@@ -84,4 +84,4 @@ Choose fill when the image is a photo and trimming the edges is fine. Choose fit
 No. Resizing happens in your browser and the image stays on your device.
 
 ## Plan the rest of your social posts with Schedule For You
-Schedule For You doesn't post to Discord. It handles the channels around your community, such as Instagram, X, TikTok, YouTube and Threads, so you can write once, tailor each version and schedule it on a shared calendar with a media library for your artwork. [Start your 7-day free trial](/signup). A card is required, and billing starts on day 8 unless you cancel.
+Schedule For You doesn't post to Discord. It handles the channels around your community, such as Instagram, X, TikTok, YouTube and Threads, so you can write once, tailor each version and schedule it on a shared calendar with a media library for your artwork. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

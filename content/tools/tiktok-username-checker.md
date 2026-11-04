@@ -86,4 +86,4 @@ Yes. Use **Check a list** to paste up to 200 names, see which follow TikTok's ru
 No. The checker runs in your browser and nothing is uploaded or saved.
 
 ## Schedule TikTok posts once your username is set
-Schedule For You publishes to TikTok from the same queue as Instagram, YouTube, LinkedIn and six other networks. Schedule a video or a multi-image photo post, set privacy to public, friends or only me for each post, and see it all on one calendar. [Start your 7-day free trial](/signup). A card is required and you aren't charged until day 8.
+Schedule For You publishes to TikTok from the same queue as Instagram, YouTube, LinkedIn and six other networks. Schedule a video or a multi-image photo post, set privacy to public, friends or only me for each post, and see it all on one calendar. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

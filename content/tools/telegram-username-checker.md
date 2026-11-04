@@ -85,4 +85,4 @@ The same as for any username, plus it must end in "bot," for example weather_bot
 No. Everything runs in your browser and nothing is uploaded or stored.
 
 ## Schedule the posts that send people to your Telegram
-Schedule For You doesn't post to Telegram. If you promote your channel on Instagram, X, YouTube or LinkedIn, it can schedule those posts, plus six other networks, from one queue with a separate caption for each. [Start your 7-day free trial](/signup). A card is required and you aren't charged until day 8.
+Schedule For You doesn't post to Telegram. If you promote your channel on Instagram, X, YouTube or LinkedIn, it can schedule those posts, plus six other networks, from one queue with a separate caption for each. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

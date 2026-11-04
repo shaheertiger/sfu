@@ -79,4 +79,4 @@ No. The resizer exports still PNG or JPG files only.
 No. Resizing runs in your browser, and nothing is uploaded to a server.
 
 ## Keep your public channels on schedule with Schedule For You
-Schedule For You doesn't post to Slack, but it can run the public side of your team's social presence: LinkedIn, X, Instagram, Facebook Pages and more. Draft posts in one place, send them for approval, and schedule them on a shared calendar. Team members are included on the Studio plan. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Schedule For You doesn't post to Slack, but it can run the public side of your team's social presence: LinkedIn, X, Instagram, Facebook Pages and more. Draft posts in one place, send them for approval, and schedule them on a shared calendar. Team members are included on the Studio plan. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

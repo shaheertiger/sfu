@@ -69,4 +69,4 @@ Yes. Select the accounts when you write the post and tailor each version. Facebo
 No. Posts are updates on your listing. Change hours, contact details and address in your Business Profile settings.
 
 ## Keep your listing as active as your social accounts
-Schedule Google updates alongside your Facebook and Instagram posts, with client approval when you need it. Unlimited posts on Solo and Studio. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Schedule Google updates alongside your Facebook and Instagram posts, with client approval when you need it. Unlimited posts on Solo and Studio. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

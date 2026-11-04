@@ -85,4 +85,4 @@ Yes. It runs in your browser, there's nothing to sign up for, and your text isn'
 
 ## Schedule YouTube uploads with Schedule For You
 
-Schedule For You publishes to YouTube along with Instagram, TikTok, X and six other platforms. Write your title and description once, adjust them per platform with live character-limit checks, and schedule from one calendar. Plans include unlimited posts, and the 7-day trial requires a card, with no charge until day 8 and cancellation anytime. [Start your 7-day free trial](/signup).
+Schedule For You publishes to YouTube along with Instagram, TikTok, X and six other platforms. Write your title and description once, adjust them per platform with live character-limit checks, and schedule from one calendar. Plans include unlimited posts, and the 7-day trial requires a card, with no charge until day 8 and cancellation anytime. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

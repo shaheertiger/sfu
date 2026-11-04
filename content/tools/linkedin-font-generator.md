@@ -107,4 +107,4 @@ You can, but it's usually better not to style the job title or skills there, sin
 
 ## Schedule LinkedIn posts with Schedule For You
 
-Schedule For You lets you draft a LinkedIn post, check it against the 3,000-character limit, and schedule it alongside tailored versions for X, Threads and your other channels. Teams can use approvals and client preview links before anything goes live. Plans include unlimited posts, and the 7-day trial needs a card, with no charge until day 8 and cancellation anytime. [Start your 7-day free trial](/signup).
+Schedule For You lets you draft a LinkedIn post, check it against the 3,000-character limit, and schedule it alongside tailored versions for X, Threads and your other channels. Teams can use approvals and client preview links before anything goes live. Plans include unlimited posts, and the 7-day trial needs a card, with no charge until day 8 and cancellation anytime. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

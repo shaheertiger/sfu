@@ -107,4 +107,4 @@ Script and small caps fit the aesthetic boards Pinterest is known for, while san
 
 ## Schedule pins with Schedule For You
 
-Schedule For You publishes to Pinterest along with Instagram, TikTok, Facebook Pages and six other platforms. Write once, tailor descriptions per platform, and fill your calendar with bulk scheduling from a CSV. Solo and Studio include unlimited posts. The 7-day trial requires a card, and you can cancel anytime before you're charged on day 8. [Start your 7-day free trial](/signup).
+Schedule For You publishes to Pinterest along with Instagram, TikTok, Facebook Pages and six other platforms. Write once, tailor descriptions per platform, and fill your calendar with bulk scheduling from a CSV. Solo and Studio include unlimited posts. The 7-day trial requires a card, and you can cancel anytime before you're charged on day 8. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

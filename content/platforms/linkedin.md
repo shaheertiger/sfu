@@ -69,4 +69,4 @@ If LinkedIn revokes access, a scheduled post can fail. You get a failed-post ale
 Not at the moment. Schedule For You publishes to the personal LinkedIn profile you connect. To post as a company page, publish from the page itself in LinkedIn.
 
 ## Post on LinkedIn consistently, in your own words
-Write your LinkedIn posts when you have time to think, and let Schedule For You publish them on schedule alongside your other channels. Plans start at $19 a month with unlimited posts. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Write your LinkedIn posts when you have time to think, and let Schedule For You publish them on schedule alongside your other channels. Paid plans start at $19 a month with unlimited posts. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

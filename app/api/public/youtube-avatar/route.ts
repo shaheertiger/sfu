@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { capHeaders, takeAnonUse } from '@/lib/server/anon-cap';
-import { findChannelImages } from '@/lib/server/youtube-avatar';
+import { findChannelImages, toFetchUrl } from '@/lib/server/youtube-avatar';
 
 export const dynamic = 'force-dynamic';
 
@@ -12,6 +12,8 @@ export const dynamic = 'force-dynamic';
 export async function GET(req: Request) {
   const q = new URL(req.url).searchParams.get('q') || '';
   if (!q.trim()) return NextResponse.json({ error: 'Paste a channel link, @handle or video link.' }, { status: 400 });
+  // Reject text that isn't a YouTube link, handle or ID before it uses up one of the visitor's lookups.
+  if (!toFetchUrl(q)) return NextResponse.json({ error: 'That doesn’t look like a YouTube channel. Paste a channel link (youtube.com/@name), an @handle, a channel ID (UC…) or a video link.' }, { status: 400 });
 
   const cap = await takeAnonUse(req, 'youtube-avatar', 60);
   if (!cap.allowed) return NextResponse.json({ error: 'You’ve reached today’s lookup limit. Try again tomorrow (it resets at midnight UTC).', resetAt: cap.resetAt }, { status: 429, headers: capHeaders(cap) });

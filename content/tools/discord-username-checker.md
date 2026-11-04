@@ -83,4 +83,4 @@ You can't browse Discord accounts by username, so a name can be held by an accou
 No. Everything runs in your browser and nothing is uploaded or saved.
 
 ## Grow your community beyond Discord
-Schedule For You doesn't post to Discord, but if your server grows from a YouTube channel, TikTok account or Instagram profile, it can schedule those posts from one queue, with a separate caption for each network and everything on one calendar. Plans start at $19/month for 15 accounts. [Start your 7-day free trial](/signup). A card is required and you aren't charged until day 8.
+Schedule For You doesn't post to Discord, but if your server grows from a YouTube channel, TikTok account or Instagram profile, it can schedule those posts from one queue, with a separate caption for each network and everything on one calendar. Plans start at $19/month for 15 accounts. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

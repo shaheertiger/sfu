@@ -82,4 +82,4 @@ No. It suggests names; it can't check trademarks, business registries or Faceboo
 Facebook's standards discourage decorative characters in Page names. Save emoji and styled text from the [Facebook font generator](/tools/facebook-font-generator) for posts.
 
 ## Run your new Page on a schedule with Schedule For You
-Once your Page is live, [connect it to Schedule For You](/blog/connect-facebook-page) and plan posts in a drag-and-drop calendar, alongside Instagram, Google Business Profile and seven other platforms. Unlimited posts on Solo and Studio, from $19/month. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Once your Page is live, [connect it to Schedule For You](/blog/connect-facebook-page) and plan posts in a drag-and-drop calendar, alongside Instagram, Google Business Profile and seven other platforms. Unlimited posts on Solo and Studio, from $19/month. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

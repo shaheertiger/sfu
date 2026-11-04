@@ -81,4 +81,4 @@ The name may belong to an account that's banned or hidden from search, or Roblox
 Yes. It never asks you to sign in, never asks for a password and doesn't send the names you type anywhere. Be wary of any site that does ask for your Roblox login.
 
 ## For Roblox creators who also post videos
-Schedule For You doesn't post to Roblox. If you make Roblox videos for YouTube or TikTok, it can schedule those uploads, plus Instagram and seven other networks, from one queue with a separate caption for each. [Start your 7-day free trial](/signup). A card is required and you aren't charged until day 8.
+Schedule For You doesn't post to Roblox. If you make Roblox videos for YouTube or TikTok, it can schedule those uploads, plus Instagram and seven other networks, from one queue with a separate caption for each. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

@@ -83,4 +83,4 @@ Yes. You can change or remove it in settings at any time. The old link stops wor
 No. Telegram checks availability when you type a username in settings. Use the generator for ideas, then confirm in the app.
 
 ## Manage your other channels with Schedule For You
-Schedule For You doesn't post to Telegram. If you also promote your channel on Instagram, X, LinkedIn, TikTok or Facebook Pages, it lets you plan those posts in one calendar, with repeating and evergreen posts to keep your invite link circulating. [Start your 7-day free trial](/signup); a card is required, and you're not charged until day 8.
+Schedule For You doesn't post to Telegram. If you also promote your channel on Instagram, X, LinkedIn, TikTok or Facebook Pages, it lets you plan those posts in one calendar, with repeating and evergreen posts to keep your invite link circulating. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

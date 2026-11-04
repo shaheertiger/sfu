@@ -64,4 +64,4 @@ Yes. Select several accounts when you write the post, then tailor each platform'
 You're alerted straight away. The most common cause is an expired connection, which you fix by reconnecting the account from the Accounts screen and retrying the post.
 
 ## Start scheduling Instagram posts
-Fill your Instagram queue for the week in one sitting, with a caption tailored for each platform you post to. Plans start at $19 a month with unlimited posts. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Fill your Instagram queue for the week in one sitting, with a caption tailored for each platform you post to. Paid plans start at $19 a month with unlimited posts. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

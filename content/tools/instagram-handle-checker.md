@@ -98,4 +98,4 @@ No. Instagram stores usernames in lowercase, so capital letters you type are con
 No. Everything runs in your browser and nothing is uploaded or stored.
 
 ## Schedule posts to your new Instagram handle
-Once your handle is set, Schedule For You can publish to it from one queue: single photos to the feed, videos as Reels, and carousels of up to 10 slides, with a live 2,200-character caption check. Your account needs to be a Business or Creator account linked to a Facebook Page. [Start your 7-day free trial](/signup). A card is required and you aren't charged until day 8.
+Once your handle is set, Schedule For You can publish to it from one queue: single photos to the feed, videos as Reels, and carousels of up to 10 slides, with a live 2,200-character caption check. Your account needs to be a Business or Creator account linked to a Facebook Page. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

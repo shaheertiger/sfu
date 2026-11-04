@@ -115,4 +115,4 @@ Bots receive the actual Unicode characters, so commands or keyword filters writt
 
 ## Run your other social channels with Schedule For You
 
-Schedule For You doesn't post to Discord, but if your community also lives on Instagram, X, TikTok, YouTube or LinkedIn, you can plan those announcements in one queue and calendar instead of posting each one by hand. Solo and Studio include unlimited posts, and the 7-day trial requires a card, with no charge until day 8 and cancellation anytime. [Start your 7-day free trial](/signup).
+Schedule For You doesn't post to Discord, but if your community also lives on Instagram, X, TikTok, YouTube or LinkedIn, you can plan those announcements in one queue and calendar instead of posting each one by hand. Solo and Studio include unlimited posts, and the 7-day trial requires a card, with no charge until day 8 and cancellation anytime. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

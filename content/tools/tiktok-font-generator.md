@@ -107,4 +107,4 @@ TikTok uses the fonts on your device to display these characters. Each phone dra
 
 ## Schedule TikTok videos with Schedule For You
 
-Schedule For You lets you write a caption once, tailor it for TikTok, Instagram, YouTube and your other channels, and publish from one queue and calendar with live character-limit checks. All plans come with unlimited posts. The 7-day free trial needs a card; cancel anytime and you won't be charged until day 8. [Start your 7-day free trial](/signup).
+Schedule For You lets you write a caption once, tailor it for TikTok, Instagram, YouTube and your other channels, and publish from one queue and calendar with live character-limit checks. All plans come with unlimited posts. The 7-day free trial needs a card; cancel anytime and you won't be charged until day 8. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.
