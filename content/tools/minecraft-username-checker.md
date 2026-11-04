@@ -37,6 +37,20 @@ There's no limit on where underscores go or how many there are, so xX_Miner_Xx-s
 ### Java Edition vs. Bedrock Edition
 These rules are for Java Edition profile names, the name that shows in chat, on a server's player list and in commands such as /whitelist add. Bedrock Edition (consoles, phones and Windows) shows your Xbox gamertag from your Microsoft account. Gamertags have their own rules and their own availability check in your Microsoft account settings, so this checker and NameMC don't apply to them.
 
+### How the rules compare with other platforms
+If you want the same name on your channels, it helps to know how Minecraft's rules line up with the platforms you post clips on. A Minecraft name with an underscore carries over to X, Instagram, TikTok, YouTube and Pinterest, but not to Facebook. All values are at the time of writing.
+
+| Platform | Length | Allowed characters | Check it |
+|---|---|---|---|
+| Instagram | 1–30 | Letters, numbers, periods, underscores | [Instagram handle checker](/tools/instagram-handle-checker) |
+| TikTok | 2–24 | Letters, numbers, underscores, periods | [TikTok username checker](/tools/tiktok-username-checker) |
+| X | 4–15 | Letters, numbers, underscores | [X username checker](/tools/x-username-checker) |
+| YouTube | 3–30 | Letters, numbers, underscores, hyphens, periods, middle dots | [YouTube handle checker](/tools/youtube-handle-checker) |
+| Facebook | 5–50 | Letters, numbers, periods | [Facebook username checker](/tools/facebook-username-checker) |
+| Pinterest | 3–30 | Letters, numbers, underscores | [Pinterest username checker](/tools/pinterest-username-checker) |
+| Snapchat | 3–15 | Letters, numbers, hyphens, underscores, one period | [Snapchat username checker](/tools/snapchat-username-checker) |
+| Minecraft (Java) | 3–16 | Letters, numbers, underscores | This page |
+
 ### Examples: what passes and what to fix
 | Name | Result | Why, and a fix |
 |---|---|---|

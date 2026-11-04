@@ -1,6 +1,6 @@
 ---
 title: Pinterest Username Checker – 3–30 Characters, Rules & Profile Link
-description: Free Pinterest username checker. Test a name against Pinterest's 3–30 character rules, check a list of names at once and open the pinterest.com profile to see if it's used.
+description: Free Pinterest username checker. Test a name against Pinterest's 3–30 character rules, check a list of names and open the pinterest.com profile to see if it's used.
 h1: Pinterest Username Checker
 lead: Type the Pinterest username you want to see whether it follows Pinterest's rules, get close valid alternatives, and open its pinterest.com profile to see if someone already uses it.
 keyword: pinterest username checker
@@ -35,6 +35,20 @@ The checker keeps your capitals so you can see how a name reads, like CozyHomeId
 
 ### Username vs. profile name
 Your username is the unique part of your profile URL, pinterest.com/yourname, and it's what this checker tests. Your profile name is the bigger name on your profile. It can have spaces and doesn't have to be unique, so a business can use "Cozy Home Ideas · Small Space Decor" as the profile name and cozyhomeideas as the username.
+
+### How the rules compare with other platforms
+Pinterest's 30 characters are generous, but its no-periods rule is stricter than Instagram's or TikTok's. A name without periods or hyphens, within 15 characters, works on almost every platform below. All values are at the time of writing.
+
+| Platform | Length | Allowed characters | Check it |
+|---|---|---|---|
+| Instagram | 1–30 | Letters, numbers, periods, underscores | [Instagram handle checker](/tools/instagram-handle-checker) |
+| TikTok | 2–24 | Letters, numbers, underscores, periods | [TikTok username checker](/tools/tiktok-username-checker) |
+| X | 4–15 | Letters, numbers, underscores | [X username checker](/tools/x-username-checker) |
+| YouTube | 3–30 | Letters, numbers, underscores, hyphens, periods, middle dots | [YouTube handle checker](/tools/youtube-handle-checker) |
+| Facebook | 5–50 | Letters, numbers, periods | [Facebook username checker](/tools/facebook-username-checker) |
+| Pinterest | 3–30 | Letters, numbers, underscores | This page |
+| Snapchat | 3–15 | Letters, numbers, hyphens, underscores, one period | [Snapchat username checker](/tools/snapchat-username-checker) |
+| Minecraft (Java) | 3–16 | Letters, numbers, underscores | [Minecraft name checker](/tools/minecraft-username-checker) |
 
 ### Examples: what passes and what to fix
 | Username | Result | Why, and a fix |

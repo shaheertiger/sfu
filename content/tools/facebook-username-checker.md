@@ -41,6 +41,20 @@ Facebook also refuses usernames with generic terms or web endings such as .com a
 ### Profiles and Pages
 Both personal profiles and Facebook Pages can have a username, and both use the same facebook.com/yourname address. A Page can't take a username a profile already uses, or the other way round, so check the name against both. The rules above apply to both.
 
+### How the rules compare with other platforms
+Facebook is the only platform here that allows periods but not underscores, and it has the highest minimum length. A name of 5 to 15 letters and numbers with no separators fits almost everywhere. All values are at the time of writing.
+
+| Platform | Length | Allowed characters | Check it |
+|---|---|---|---|
+| Instagram | 1–30 | Letters, numbers, periods, underscores | [Instagram handle checker](/tools/instagram-handle-checker) |
+| TikTok | 2–24 | Letters, numbers, underscores, periods | [TikTok username checker](/tools/tiktok-username-checker) |
+| X | 4–15 | Letters, numbers, underscores | [X username checker](/tools/x-username-checker) |
+| YouTube | 3–30 | Letters, numbers, underscores, hyphens, periods, middle dots | [YouTube handle checker](/tools/youtube-handle-checker) |
+| Facebook | 5–50 | Letters, numbers, periods | This page |
+| Pinterest | 3–30 | Letters, numbers, underscores | [Pinterest username checker](/tools/pinterest-username-checker) |
+| Snapchat | 3–15 | Letters, numbers, hyphens, underscores, one period | [Snapchat username checker](/tools/snapchat-username-checker) |
+| Minecraft (Java) | 3–16 | Letters, numbers, underscores | [Minecraft name checker](/tools/minecraft-username-checker) |
+
 ### Examples: what passes and what to fix
 | Username | Result | Why, and a fix |
 |---|---|---|

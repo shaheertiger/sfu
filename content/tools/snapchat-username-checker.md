@@ -41,6 +41,20 @@ Snapchat shows usernames in lowercase, so capitals don't make a name different. 
 ### Username vs. display name
 Your username is unique, follows all the rules above, and is how people add you by search or by link. Your display name is what friends see in chats and stories. It can have spaces, capitals and emoji, and it doesn't have to be unique, so there's nothing to check for availability. If the username you want is taken, you can still show the full name in your display name and pick a close variation for the username.
 
+### How the rules compare with other platforms
+Snapchat and YouTube are the only platforms here that allow hyphens, and Snapchat and X are the only ones that cap names at 15 characters. If you want one name everywhere, avoid the hyphen and keep it within 15. All values are at the time of writing.
+
+| Platform | Length | Allowed characters | Check it |
+|---|---|---|---|
+| Instagram | 1–30 | Letters, numbers, periods, underscores | [Instagram handle checker](/tools/instagram-handle-checker) |
+| TikTok | 2–24 | Letters, numbers, underscores, periods | [TikTok username checker](/tools/tiktok-username-checker) |
+| X | 4–15 | Letters, numbers, underscores | [X username checker](/tools/x-username-checker) |
+| YouTube | 3–30 | Letters, numbers, underscores, hyphens, periods, middle dots | [YouTube handle checker](/tools/youtube-handle-checker) |
+| Facebook | 5–50 | Letters, numbers, periods | [Facebook username checker](/tools/facebook-username-checker) |
+| Pinterest | 3–30 | Letters, numbers, underscores | [Pinterest username checker](/tools/pinterest-username-checker) |
+| Snapchat | 3–15 | Letters, numbers, hyphens, underscores, one period | This page |
+| Minecraft (Java) | 3–16 | Letters, numbers, underscores | [Minecraft name checker](/tools/minecraft-username-checker) |
+
 ### Examples: what passes and what to fix
 | Username | Result | Why, and a fix |
 |---|---|---|

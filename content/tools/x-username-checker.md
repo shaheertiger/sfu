@@ -37,6 +37,20 @@ You can register @PixelStudio with capitals and X will show it that way, but X t
 ### Words X blocks
 X also refuses handles that contain certain words, such as "Twitter" and "Admin", and names that impersonate other people or brands. Those rules aren't in this checker, because X can change them without notice and its sign-up form is the authority on them.
 
+### How the rules compare with other platforms
+X is one of the strictest platforms on length. If a handle passes here, it usually fits Instagram, TikTok and Pinterest too, but not always Facebook, which needs 5 characters and doesn't allow underscores. All values are at the time of writing.
+
+| Platform | Length | Allowed characters | Check it |
+|---|---|---|---|
+| Instagram | 1–30 | Letters, numbers, periods, underscores | [Instagram handle checker](/tools/instagram-handle-checker) |
+| TikTok | 2–24 | Letters, numbers, underscores, periods | [TikTok username checker](/tools/tiktok-username-checker) |
+| X | 4–15 | Letters, numbers, underscores | This page |
+| YouTube | 3–30 | Letters, numbers, underscores, hyphens, periods, middle dots | [YouTube handle checker](/tools/youtube-handle-checker) |
+| Facebook | 5–50 | Letters, numbers, periods | [Facebook username checker](/tools/facebook-username-checker) |
+| Pinterest | 3–30 | Letters, numbers, underscores | [Pinterest username checker](/tools/pinterest-username-checker) |
+| Snapchat | 3–15 | Letters, numbers, hyphens, underscores, one period | [Snapchat username checker](/tools/snapchat-username-checker) |
+| Minecraft (Java) | 3–16 | Letters, numbers, underscores | [Minecraft name checker](/tools/minecraft-username-checker) |
+
 ### Examples: what passes and what to fix
 | Handle | Result | Why, and a fix |
 |---|---|---|
