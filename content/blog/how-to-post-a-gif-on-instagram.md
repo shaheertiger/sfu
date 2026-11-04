@@ -1,6 +1,6 @@
 ---
 title: "How to Post a GIF on Instagram (Upload the File and You Get a Still Frame)"
-description: Instagram doesn't accept GIF files in the feed. How to post an animated GIF as a Reel or video, add GIF stickers to Stories, send GIFs in comments and DMs, and schedule it.
+description: Instagram doesn't accept GIF files in the feed. How to post an animated GIF as a Reel, use GIF stickers in Stories, send GIFs in comments and DMs, and schedule it.
 h1: "How to Post a GIF on Instagram (Upload the File and You Get a Still Frame)"
 category: Instagram
 excerpt: Instagram won't upload a GIF file as a moving post, but you can convert it to a short video for the feed or Reels, use GIF stickers in Stories, and send GIFs in comments and DMs.

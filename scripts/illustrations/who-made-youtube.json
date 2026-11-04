@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "YouTube history", "title": "Who made YouTube? **3 PayPal alumni**", "sub": "Chad Hurley, Steve Chen and Jawed Karim built it in 2005. Google bought it in 2006.", "chips": ["2005", "Me at the zoo", "$1.65B to Google"] },
+    { "name": "founders", "type": "steps", "kicker": "The founders", "title": "Three founders, **three roles**", "steps": [ { "title": "Chad Hurley", "text": "CEO until 2010. Designed the look and logo.", "highlight": true }, { "title": "Steve Chen", "text": "CTO. Built the infrastructure." }, { "title": "Jawed Karim", "text": "Adviser. Uploaded the first video." } ] },
+    { "name": "timeline", "type": "steps", "kicker": "Timeline", "title": "From a domain to **Google in under two years**", "steps": [ { "title": "Feb 14, 2005", "text": "youtube.com registered." }, { "title": "Apr 23, 2005", "text": "First video uploaded." }, { "title": "Late 2006", "text": "Google buys it for $1.65B.", "highlight": true }, { "title": "Feb 2023", "text": "Neal Mohan becomes CEO." } ] },
+    { "name": "first-video", "type": "versus", "kicker": "The first video", "title": "“Me at the zoo”, **19 seconds**", "left": { "label": "The clip", "tone": "good", "items": ["Jawed Karim at the San Diego Zoo", "The elephants’ long trunks", "Uploaded April 23, 2005"] }, "right": { "label": "Today", "tone": "neutral", "items": ["Still on his channel, jawed", "Hundreds of millions of views", "Uploaded by a co-founder"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Three PayPal alumni built it to share a clip. **Google bought it less than two years later.**", "by": "Hurley, Chen and Karim · 2005 · $1.65 billion · Neal Mohan today" }
+  ]
+}

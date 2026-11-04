@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "YouTube money · 2026", "title": "When does YouTube pay you? **1–2 months in**", "sub": "After YPP, a linked AdSense account and a balance over $100 (US, at the time of writing).", "chips": ["YPP", "AdSense", "$100 threshold", "21st–26th"] },
+    { "name": "path", "type": "steps", "kicker": "The path", "title": "From eligible to **paid**", "steps": [ { "title": "Eligible + apply", "text": "Link AdSense in Studio." }, { "title": "Review", "text": "Often about a month." }, { "title": "Earn + finalize", "text": "Finalized early next month." }, { "title": "Get paid", "text": "Around the 21st–26th.", "highlight": true } ] },
+    { "name": "tiers", "type": "versus", "kicker": "YPP in 2026", "title": "Fan funding vs **ad revenue**", "left": { "label": "500 subscribers", "tone": "neutral", "items": ["3,000 hours or 3M Shorts views", "Memberships, Super Thanks", "Not in every country"] }, "right": { "label": "1,000 subscribers", "tone": "good", "items": ["4,000 hours or 10M Shorts views", "Ad revenue on videos and Shorts", "Plus fan funding"] } },
+    { "name": "scenarios", "type": "bars", "kicker": "Invented examples", "title": "How the **$100 threshold** sets timing", "rows": [ { "label": "$150 first month", "value": 100, "note": "Paid next month" }, { "label": "$68 then $60", "value": 68, "note": "Paid in month 3" }, { "label": "$15 a month", "value": 15, "note": "About 7 months" } ] },
+    { "name": "caution", "type": "checklist", "kicker": "Use with caution", "title": "Real growth vs **bought numbers**", "good": { "label": "Safe", "items": ["A steady upload rhythm", "Shorts that point to long videos", "Clear, honest titles"] }, "bad": { "label": "Risky", "items": ["Bought views", "Bought subscribers", "Bought watch hours"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Acceptance starts the clock. **Clear your AdSense checks on day one.**", "by": "Expect your first payout one to two months after ads start, or later on a small channel." }
+  ]
+}

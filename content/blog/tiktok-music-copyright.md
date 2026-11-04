@@ -1,6 +1,6 @@
 ---
 title: "How Long Can a Song Be Before Copyright on TikTok? (No Safe Seconds)"
-description: There's no safe number of seconds for copyrighted music on TikTok. What personal and business accounts can use, the Commercial Music Library, and the rules in Germany and the EU.
+description: There's no safe number of seconds for copyrighted music on TikTok. What personal and business accounts can use, the Commercial Music Library and EU rules.
 h1: "How Long Can a Song Be Before Copyright on TikTok? There Are No Safe Seconds"
 category: TikTok
 excerpt: No length of a copyrighted song is automatically safe. Personal accounts are covered when they pick sounds inside TikTok; business accounts should stick to the Commercial Music Library or music they've licensed.

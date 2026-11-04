@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok guide", "title": "TikTok Shop is safe **in the app**", "sub": "Checkout and refunds are protected. Sellers and products vary, so check them first.", "chips": ["Buyer protection", "Refund routes", "5 red flags", "Slash & Free"] },
+    { "name": "protected", "type": "versus", "kicker": "What’s protected", "title": "The checkout vs **the seller**", "left": { "label": "Protected", "tone": "good", "items": ["Payment through TikTok", "Seller never sees your card", "Refunds within the window"] }, "right": { "label": "Depends on the seller", "tone": "neutral", "items": ["Product quality", "Shipping speed", "Whether it’s genuine"] } },
+    { "name": "refund", "type": "steps", "kicker": "3 routes to a refund", "title": "Start from **the order page**", "steps": [ { "title": "Return/Refund", "text": "Pick a reason, add photos." }, { "title": "Not received", "text": "Past the estimated date." }, { "title": "Escalate", "text": "To TikTok Shop support.", "highlight": true } ] },
+    { "name": "slash", "type": "checklist", "kicker": "Use with caution", "title": "Slash & Free, **read the terms**", "good": { "label": "Safer", "items": ["Join inside the TikTok app", "Read what happens at the end", "Check your saved payment"] }, "bad": { "label": "Risky", "items": ["“Free item” links from strangers", "Payment outside the app", "Ignoring the countdown"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Pay in the app, **check the seller**, keep the delivery date.", "by": "Leaving the app is the one move that removes your protection." }
+  ]
+}

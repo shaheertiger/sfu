@@ -1,0 +1,9 @@
+{
+ "cards": [
+  { "name": "hero", "type": "hero", "dark": true, "kicker": "TikTok trends", "title": "Group 7 on TikTok: **a test turned joke**", "sub": "Seven near-identical videos. The seventh went viral, and its viewers became “Group 7”.", "chips": ["Origin", "The lore", "Is it safe?", "Hook testing"] },
+  { "name": "origin", "type": "steps", "kicker": "How it started", "title": "Seven videos, **one winner**", "steps": [ { "title": "Seven versions", "text": "Sophia James, October 2025." }, { "title": "For You picks", "text": "Each shown to different people." }, { "title": "Group 7 wins", "text": "The seventh takes off.", "highlight": true }, { "title": "The joke spreads", "text": "Lore, rivals, “orientation”." } ] },
+  { "name": "phrases", "type": "versus", "kicker": "The lore", "title": "What people say, and **what it means**", "left": { "label": "You’ll see", "tone": "neutral", "items": ["“I’m in Group 7”", "“Group 7 orientation”", "“Group 6” feuds"] }, "right": { "label": "It means", "tone": "good", "items": ["The algorithm sent me here", "Made-up onboarding for fun", "A pretend rivalry"] } },
+  { "name": "test", "type": "steps", "kicker": "Borrow the test", "title": "Run a hook test in **4 steps**", "steps": [ { "title": "Change the hook", "text": "Keep the rest the same." }, { "title": "Space them out", "text": "Days apart, not an hour.", "highlight": true }, { "title": "Post on time", "text": "When your audience is on." }, { "title": "Write it down", "text": "Compare after 48 hours." } ] },
+  { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Enjoy the joke, borrow the test, **skip the copies.**", "by": "There’s no Group 7 to join. Ignore DMs that say otherwise." }
+ ]
+}

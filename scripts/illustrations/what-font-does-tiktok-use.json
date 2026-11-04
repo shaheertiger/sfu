@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "TikTok guide", "title": "TikTok uses **TikTok Sans**, and it’s free", "sub": "Introduced in May 2023, open source since July 2025 under the SIL Open Font License.", "chips": ["Where it appears", "How to download", "Bio fonts"] },
+    { "name": "where", "type": "versus", "kicker": "Then and now", "title": "Proxima Nova vs **TikTok Sans**", "left": { "label": "Before 2023", "tone": "neutral", "items": ["Proxima Nova", "Plain zero", "Commercial license"] }, "right": { "label": "Since May 2023", "tone": "good", "items": ["TikTok Sans", "Slashed zero", "Free, SIL Open Font License"] } },
+    { "name": "download", "type": "steps", "kicker": "Free download", "title": "Get TikTok Sans in **4 steps**", "steps": [ { "title": "Official source", "text": "TikTok’s GitHub or Google Fonts.", "highlight": true }, { "title": "Install it", "text": "Or check your app’s font list." }, { "title": "Pick it", "text": "In Canva, CapCut or Figma." }, { "title": "Set the weight", "text": "Heavier for headlines." } ] },
+    { "name": "bio-fonts", "type": "versus", "kicker": "Bio and captions", "title": "Styled Unicode vs **plain text**", "left": { "label": "Styled text for", "tone": "neutral", "items": ["A word or two of emphasis", "A short bio tagline", "A caption hook"] }, "right": { "label": "Plain text for", "tone": "good", "items": ["Your name and key words", "Anything screen readers read", "Your @username"] } },
+    { "name": "download-risks", "type": "checklist", "kicker": "Use with caution", "title": "Official downloads vs **free font sites**", "good": { "label": "Safe", "items": ["TikTok’s GitHub", "Google Fonts", "Licensed Proxima Nova"] }, "bad": { "label": "Risky", "items": ["Fake download buttons", "Bundled installers", "Unlicensed “TikTok font” files"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "TikTok’s font is **TikTok Sans**, and you can download it free from official sources.", "by": "Bio “fonts” are Unicode characters, so use them sparingly." }
+  ]
+}

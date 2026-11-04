@@ -1,0 +1,95 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "hero",
+   "kicker": "TikTok guide",
+   "title": "TikTok slang, **decoded**",
+   "sub": "PMO, ASL, IB, TS, moots, LMR, FYP and more, with how context changes the meaning.",
+   "chips": [
+    "17 terms",
+    "How to decode",
+    "Pink font",
+    "For brands"
+   ]
+  },
+  {
+   "name": "why",
+   "type": "versus",
+   "kicker": "Why it’s cryptic",
+   "title": "What makes it hard, and **what helps**",
+   "left": {
+    "label": "Makes it hard",
+    "tone": "bad",
+    "items": [
+     "Short comments and captions",
+     "Words dodging filters",
+     "Same letters, different niches"
+    ]
+   },
+   "right": {
+    "label": "Helps decode it",
+    "tone": "good",
+    "items": [
+     "Reading the replies",
+     "Checking the niche",
+     "Looking for a second meaning"
+    ]
+   }
+  },
+  {
+   "name": "decode",
+   "type": "steps",
+   "kicker": "How to decode",
+   "title": "Work out any term **in 4 steps**",
+   "steps": [
+    {
+     "title": "Quick reference",
+     "text": "The most common meaning."
+    },
+    {
+     "title": "Read the replies",
+     "text": "They settle most cases.",
+     "highlight": true
+    },
+    {
+     "title": "Check the niche",
+     "text": "Music, gaming, students…"
+    },
+    {
+     "title": "Second meaning?",
+     "text": "Check before reusing it."
+    }
+   ]
+  },
+  {
+   "name": "brands",
+   "type": "checklist",
+   "kicker": "Use with caution",
+   "title": "Slang in brand posts: **do and don’t**",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Use words your audience uses",
+     "Keep the hook plain",
+     "Check meanings on the day"
+    ]
+   },
+   "bad": {
+    "label": "Don’t",
+    "items": [
+     "Crude or filter-dodging terms",
+     "Slang you had to look up",
+     "Terms half your audience won’t know"
+    ]
+   }
+  },
+  {
+   "name": "bottom-line",
+   "type": "callout",
+   "kicker": "The bottom line",
+   "quote": "TikTok slang depends on context. **Read the replies before you reuse a term.**",
+   "by": "Brands: use your audience’s words and skip the crude ones."
+  }
+ ]
+}

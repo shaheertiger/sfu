@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Facebook guide", "title": "The Meta Ad Library, **explained**", "sub": "See any brand’s active Facebook and Instagram ads for free, with no login. Here’s what it hides.", "chips": ["How to search", "Filters", "Political ads", "Fair research"] },
+    { "name": "shows", "type": "versus", "kicker": "For most ads", "title": "What it shows, and **what it hides**", "left": { "label": "Shows", "tone": "good", "items": ["Every version of the creative", "Platforms it runs on", "When it started running"] }, "right": { "label": "Hides", "tone": "bad", "items": ["Budget and spend", "Results", "Targeting (outside the EU)"] } },
+    { "name": "steps", "type": "steps", "kicker": "How to search", "title": "Find a brand’s ads **in a minute**", "steps": [ { "title": "Open the library", "text": "Free, no login needed." }, { "title": "Country and category", "text": "Or All, for everywhere." }, { "title": "Pick the right Page", "text": "Check name and photo.", "highlight": true }, { "title": "See ad details", "text": "Versions, platforms, dates." } ] },
+    { "name": "research", "type": "checklist", "kicker": "Competitor research", "title": "Research fairly, **not by copying**", "good": { "label": "Do", "items": ["Look for repeated angles", "Check monthly, take notes", "Test your own message"] }, "bad": { "label": "Don’t", "items": ["Copy another brand’s creative", "Scrape with unofficial tools", "Trust spend estimates"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "The Ad Library is a window into **messaging, not performance.**", "by": "Spend is only public for political and issue ads. Everything else is a guess." }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "Bluesky guide", "title": "Is Bluesky worth it? **For 5 kinds of accounts**", "sub": "Worth it if your audience is already there. A 60-day test costs almost nothing.", "chips": ["Writers and news", "Developers", "Academics and artists"] },
+    { "name": "how", "type": "versus", "kicker": "How reach works", "title": "Bluesky vs **algorithm-led feeds**", "left": { "label": "Bluesky", "tone": "good", "items": ["Chronological Following feed", "Community-made custom feeds", "Growth through reposts"] }, "right": { "label": "X and Threads", "tone": "neutral", "items": ["Algorithmic default feed", "One platform-run ranking", "Ads in the feed"] } },
+    { "name": "who", "type": "checklist", "kicker": "Who it suits", "title": "Worth it vs **skip it for now**", "good": { "label": "Worth it", "items": ["Writers, journalists, newsletters", "Developers and academics", "Artists and news accounts"] }, "bad": { "label": "Skip for now", "items": ["Local businesses", "Consumer brands", "Anyone who needs ads"] } },
+    { "name": "gaps", "type": "versus", "kicker": "What’s missing", "title": "Strengths vs **gaps**", "left": { "label": "Strengths", "tone": "good", "items": ["Engaged readers", "Link posts aren’t suppressed", "Your domain as your handle"] }, "right": { "label": "Gaps", "tone": "neutral", "items": ["No scheduling or ads", "No built-in analytics", "A smaller audience"] } },
+    { "name": "test", "type": "steps", "kicker": "The 60-day test", "title": "Find out **for yourself**", "steps": [ { "title": "Set up", "text": "Clear handle, photo, bio." }, { "title": "Follow 200", "text": "Plus 2 or 3 feeds in your field." }, { "title": "Post 60 days", "text": "Reuse your X posts.", "highlight": true }, { "title": "Judge", "text": "Replies and clicks, not followers." } ] },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Bluesky is worth it **if your audience is already there.**", "by": "Run a 60-day test from the same draft as your X posts, then decide." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "Instagram Stories", "title": "Blurry Story? **Size and one setting**", "sub": "Upload a 1080×1920 file with Upload at highest quality turned on, and most Stories come out sharp.", "chips": ["1080×1920", "Highest quality on", "Original files"] },
+    { "name": "diagnosis", "type": "versus", "kicker": "Quick diagnosis", "title": "Match the symptom **to the cause**", "left": { "label": "What you see", "tone": "neutral", "items": ["Soft every single time", "Cropped and zoomed", "Washed-out video"] }, "right": { "label": "Likely cause", "tone": "bad", "items": ["Data saver or low quality", "Wrong aspect ratio", "HDR being converted"] } },
+    { "name": "steps", "type": "steps", "kicker": "The fix", "title": "Most Stories are sharp **by step 3**", "steps": [ { "title": "Highest quality on", "text": "Settings, data and media quality.", "highlight": true }, { "title": "Update the app", "text": "Upload bugs get fixed." }, { "title": "Resize to 1080×1920", "text": "Fill to crop, fit to keep it all." } ] },
+    { "name": "safety", "type": "checklist", "kicker": "Free fixes first", "title": "Sharp Stories **without risky apps**", "good": { "label": "Safe", "items": ["Highest-quality upload setting", "Correctly sized originals", "Reshooting in good light"] }, "bad": { "label": "Risky", "items": ["“HD” apps wanting your password", "Upscaling soft photos", "Re-processing again and again"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "A **1080×1920 original** plus highest-quality uploads fixes most blurry Stories.", "by": "Then add light and skip digital zoom." }
+  ]
+}

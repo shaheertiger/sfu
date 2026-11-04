@@ -1,6 +1,6 @@
 ---
 title: "Is TikTok Getting Banned? No, Here's What Changed in January 2026"
-description: Is TikTok getting banned again? The US ban was never enforced, and TikTok's US business was sold to a joint venture in January 2026. What that means, and where it is banned.
+description: Is TikTok getting banned again? The US ban was never enforced, and TikTok's US business was sold to a joint venture in January 2026. What it means, and where it's banned.
 h1: "Is TikTok Getting Banned? No, Here's What Changed in January 2026"
 category: TikTok
 excerpt: No. The US law that could have banned TikTok was never enforced, and in January 2026 TikTok's US business moved to a new joint venture, which is what the law required.

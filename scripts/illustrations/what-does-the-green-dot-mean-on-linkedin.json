@@ -1,0 +1,10 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "kicker": "LinkedIn guide", "title": "LinkedIn’s green dot: **online now, not read**", "sub": "A solid dot means active on LinkedIn right now. It doesn’t mean they’ve seen your message.", "chips": ["Solid dot", "Hollow circle", "No dot"] },
+    { "name": "indicators", "type": "steps", "kicker": "Active Status", "title": "Three indicators, **three meanings**", "steps": [ { "title": "Solid dot", "text": "Active on LinkedIn right now.", "highlight": true }, { "title": "Hollow circle", "text": "Away, likely reachable on mobile." }, { "title": "No dot", "text": "Offline, or status hidden." } ] },
+    { "name": "tells", "type": "versus", "kicker": "Read it right", "title": "What the dot tells you, **and what it doesn’t**", "left": { "label": "Tells you", "tone": "good", "items": ["They’re on LinkedIn now", "A message may be seen soon", "On desktop or the app"] }, "right": { "label": "Doesn’t tell you", "tone": "bad", "items": ["That they read your message", "That they’re free to talk", "That they viewed your profile"] } },
+    { "name": "turn-off", "type": "steps", "kicker": "Hide your dot", "title": "Turn off **Active Status**", "steps": [ { "title": "Settings", "text": "Me → Settings & Privacy." }, { "title": "Visibility", "text": "Manage active status." }, { "title": "Read the note", "text": "Hiding yours may hide others’.", "highlight": true }, { "title": "Choose", "text": "Connections, everyone or no one." } ] },
+    { "name": "visible", "type": "checklist", "kicker": "Stay visible", "title": "Visible on LinkedIn **without being online**", "good": { "label": "Works", "items": ["Posting on a steady schedule", "Replying when you have time", "Dot hidden during deep work"] }, "bad": { "label": "Doesn’t", "items": ["Logging in to post live", "Follow-ups because the dot is green", "Reading the dot as attention"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "The green dot means online. **Not read, not free, not watching your profile.**", "by": "Treat it as a hint about timing." }
+  ]
+}
