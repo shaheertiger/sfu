@@ -151,7 +151,7 @@ If your Following list is in the thousands, apps that promise to "fix your ratio
 
 The healthiest way to change your ratio isn't to unfollow people. It's to give more people a reason to follow you, and that comes down to posting regularly.
 
-Take Sam, who opened an Instagram account for a new plant shop and followed 600 local accounts in the first month to get noticed. With 150 followers, the profile looked lopsided. Instead of unfollowing, Sam set a plan of three posts a week plus a Story on delivery days, about 12 posts and Stories a month. Planning them in one Sunday session took an hour instead of the 15 minutes per post it used to take, live, on busy shop days.
+Take Sam, who opened an Instagram account for a new plant shop and followed 600 local accounts in the first month to get noticed. With 150 followers, the profile looked lopsided. Instead of unfollowing, Sam set a plan of three posts a week plus a Story on delivery days, about 12 posts and Stories a month. Planning them in one Sunday session takes about an hour, instead of 15 minutes a post, live, on busy shop days: roughly three hours a month.
 
 | | Each app by hand | Meta Business Suite | Schedule For You |
 |---|---|---|---|

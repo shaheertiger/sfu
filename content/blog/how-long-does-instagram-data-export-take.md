@@ -78,7 +78,7 @@ Choose to download to your device and submit the request. Make a note of the dat
 
 ### How Long Each Type of Export Usually Takes (Estimates, Not Promises)
 
-![Bar chart of relative export sizes, from followers and following only, the smallest, to all information in high quality, the largest](/images/blog/how-long-does-instagram-data-export-take-size-1200x675.webp)
+![Bar chart of how quickly an Instagram export is usually ready: followers only quickest, posts in lower quality in between, all information in high quality slowest](/images/blog/how-long-does-instagram-data-export-take-size-1200x675.webp)
 
 Instagram doesn't publish times. These are rough ranges based on how the request is built, and yours may be faster or slower:
 

@@ -100,7 +100,7 @@ Each name has an Open link to the profile, so you can decide one by one. The che
 
 ## Follow-for-Follow and Follow-Back Schemes (Use With Caution)
 
-![Bar chart of account risk: following back people you know is lowest, follow-for-follow hashtags higher, follow-back apps that need your password highest](/images/blog/what-does-follow-back-mean-on-instagram-risk-1200x675.webp)
+![Bar chart rating account safety: following back by hand highest, follow-for-follow lower, auto-follow apps that need your password lowest](/images/blog/what-does-follow-back-mean-on-instagram-risk-1200x675.webp)
 
 Follow-for-follow, often written F4F or "followback", is a trade: I follow you, you follow me. You'll see it in hashtags, comment threads, group chats and apps that promise automatic follow-backs. The appeal is fast numbers. The cost comes later.
 
