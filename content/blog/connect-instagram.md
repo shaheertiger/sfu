@@ -93,12 +93,13 @@ Knowing what's supported saves you from failed posts later.
 | One video | A Reel |
 | 2 to 10 images or videos (mixed is fine) | A carousel |
 | No media | Not possible: Instagram needs an image or video |
+| One image or video, with "Post as" set to Story | A Story (9:16, no caption) |
 
-Captions can be up to 2,200 characters, and the composer checks the limit live. You can write an Instagram-specific version of a caption while the same post goes to other platforms with their own versions.
+Captions can be up to 2,200 characters, and the composer checks the limit live. You can write an Instagram-specific version of a caption while the same post goes to other platforms with their own versions, and add a first comment to feed posts and Reels, posted by your account right after the post goes live.
 
 ### What Isn't Supported
 
-- **Stories and first comments.** Schedule For You publishes Instagram feed posts, Reels and carousels.
+- **Story stickers and music.** Stories go out as the one image or video you upload, with no caption, so polls, link stickers and Instagram's music library aren't available through Meta's API.
 - **Automatic cropping.** Images aren't cropped or resized, so they must already sit between 4:5 portrait and 1.91:1 landscape (Instagram's feed range at the time of writing). The [Instagram photo resizer](/tools/instagram-photo-resizer) has presets for each shape.
 - **Personal accounts.** Only Business and Creator accounts linked to a Page can be connected.
 
@@ -165,12 +166,12 @@ She connects all three in Schedule For You, which fits the Free plan's 3 account
 | | Meta Business Suite | Other schedulers | Schedule For You |
 |---|---|---|---|
 | Schedule Instagram posts | Yes | Usually | Yes, through Meta's official API |
-| Instagram Stories | Yes | Some | No |
+| Instagram Stories | Yes | Some | Yes, one image or video with no caption (no stickers or music) |
 | Facebook Pages | Yes | Usually | Yes |
 | X, LinkedIn, TikTok, Bluesky and others | No | Varies | Yes |
 | Cost | Free | Varies | Free for 3 accounts and up to 10 scheduled posts at a time, no card. Paid from $19 a month |
 
-Where we're not the best fit: if you only post to Instagram and Facebook and want Stories, Meta Business Suite covers that for free. Schedule For You makes sense when the same post also goes to Google Business Profile, LinkedIn, TikTok or other platforms.
+Where we're not the best fit: if you only post to Instagram and Facebook, Meta Business Suite covers both for free, and if you need Story stickers, polls or music, post that Story in the Instagram app. Schedule For You makes sense when the same post also goes to Google Business Profile, LinkedIn, TikTok or other platforms.
 
 Maya writes once and adjusts each version in the composer:
 
@@ -221,15 +222,20 @@ Both work the same for scheduling. Pick Business for a company or shop and Creat
 
 Yes. Each one counts as a connected account: 3 on Free, 15 on Solo and 100 on Studio. See [how to connect multiple Instagram accounts](/blog/connect-multiple-instagram-accounts).
 
+### Can I schedule Instagram Stories after connecting?
+
+Yes. Set "Post as" to Story in the composer and attach one image or video (9:16, no caption). Stickers, polls and music aren't available through Meta's API. Our guide to [scheduling Instagram Stories](/blog/schedule-instagram-and-facebook-stories) covers the details.
+
 ### What can I schedule to Instagram once it's connected?
 
-Feed photo posts, Reels and carousels of up to 10 images or videos, with captions up to 2,200 characters.
+Feed photo posts, Reels, carousels of up to 10 images or videos and Stories, with captions up to 2,200 characters and an optional first comment on feed posts and Reels.
 
 ## The Bottom Line
 
 ![Connect Instagram through Meta's own window: professional account, linked Page, full control](/images/blog/connect-instagram-bottom-line-1200x675.webp)
 
 - **Professional account:** free to switch, keeps your posts.
+- **What you can schedule:** feed posts, Reels, carousels and Stories.
 - **Facebook Page:** must be linked, and you need full control of it.
 - **Meta's login window:** approve every permission, never share your password.
 - **Errors:** almost always the account type, the Page link or your Page role.

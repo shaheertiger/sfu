@@ -151,10 +151,10 @@ Take Kofi, who posts 3 Shorts a week to YouTube and the same clips as Reels on I
 | Schedule YouTube and Instagram | Two apps, two uploads | Many support both | Yes, from one upload |
 | YouTube title and description, separate Instagram caption | Yes, written twice | Varies | Yes, a version for each |
 | Reformat 16:9 to 9:16 | No | Some include editors | No, edit before you upload |
-| Add a Story link sticker | Instagram app only | Varies | No, add it in the Instagram app |
+| Story with a link sticker | Instagram app only | Varies | Stories yes (one image or video, no caption), but stickers aren't available through Meta's API, so add the link sticker in the app |
 | Cost | Free | Varies | Free plan for 3 accounts and up to 10 scheduled posts at a time, no card |
 
-Where we're not the best fit: Schedule For You doesn't reformat video, and the Story link sticker step stays in the Instagram app. It handles the Reel and the YouTube upload.
+Where we're not the best fit: Schedule For You doesn't reformat video, and it can't add link stickers, because stickers aren't available through Meta's API. A Story that needs a tappable YouTube link still goes out from the Instagram app. It handles the Reel and the YouTube upload.
 
 In Schedule For You, Kofi uploads each clip once, writes a YouTube title and description and a separate Instagram caption, and places both on the calendar a day apart:
 

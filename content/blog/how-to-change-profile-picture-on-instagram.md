@@ -160,7 +160,7 @@ On the calendar, the whole rebrand week sits in one view:
 
 ![The Schedule For You calendar with a week of rebrand posts across Instagram, Facebook and Google Business Profile](/images/blog/calendar-month-1440x900.webp)
 
-See the [Instagram scheduler](/instagram) for what you can schedule, and our guide on [how to schedule Instagram posts](/blog/how-to-schedule-instagram-posts) for the full walkthrough.
+Schedule For You publishes Instagram feed posts, Reels, carousels and Stories, so the announcement can go out as a post and a Story together. See the [Instagram scheduler](/instagram) for what you can schedule, and our guide on [how to schedule Instagram posts](/blog/how-to-schedule-instagram-posts) for the full walkthrough.
 
 ## What to Do Next
 

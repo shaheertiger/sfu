@@ -141,16 +141,16 @@ Take Sofia, who runs a small ceramics studio. Her Instagram captions run to abou
 | Separate caption per platform | No | Varies | Yes, one tab per platform from one draft |
 | Keeps line breaks | Yes, typed in the app | Varies | Yes |
 | Saved hashtag sets | No | Some | Yes |
-| Posts the first comment on Instagram | You do it by hand | Some | No, add it in the Instagram app |
+| Posts the first comment on Instagram | You do it by hand | Some | Yes, right after the post publishes |
 | Cost | Free | Varies | Free plan for 3 accounts and up to 10 scheduled posts at a time, no card |
 
-Where we're not the best fit: if you want hashtags posted automatically as Instagram's first comment, Schedule For You doesn't do that for Instagram. Put them in the caption, or add the comment yourself after the post goes live.
+Where we're not the best fit: Schedule For You doesn't write captions or suggest hashtags for you, and it doesn't read your reach or likes, so use Instagram Insights to see which captions work. If you only post to Instagram, the app's own scheduling may be enough.
 
 In Schedule For You, Sofia writes the full caption once, then opens the Threads, Bluesky and LinkedIn tabs to trim each version, while the counters show every platform's length against its limit:
 
 ![The Schedule For You composer with one caption tailored for Bluesky, X, LinkedIn and Instagram, with a counter for each](/images/blog/composer-four-platforms-1440x900.webp)
 
-Anything over a platform's limit is flagged before she can schedule it. See the [Instagram scheduler page](/instagram) for what's supported, and [how to customize captions for each platform](/blog/customize-captions-for-each-platform) for the full workflow.
+Anything over a platform's limit is flagged before she can schedule it. If she'd rather keep the caption clean, she puts her hashtags in a first comment instead, which Schedule For You adds right after the post publishes. See the [Instagram scheduler page](/instagram) for what's supported, and [how to customize captions for each platform](/blog/customize-captions-for-each-platform) for the full workflow.
 
 ## What to Do Next
 
