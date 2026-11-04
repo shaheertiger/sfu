@@ -143,16 +143,17 @@ The queue shows the week's posts for every account in one list:
 | --- | --- | --- | --- |
 | Photos, carousels (up to 10) and Reels | Yes | Yes | Yes |
 | Schedule for later | No | Yes | Yes, with a queue and calendar |
+| Stories | No, at the time of writing | Yes | Yes, one 9:16 image or video, no caption or stickers |
 | Pinterest, Google Business Profile, X, LinkedIn and more | No | No (Facebook only) | Yes |
 | Account type | Any | Professional | Business or Creator linked to a Page |
 | Cost | Free | Free | Free for 3 accounts and up to 10 scheduled posts; paid plans from $19 a month |
 
-Where we're not the best fit: if you only post to Instagram and Facebook, Meta Business Suite is free and does the job, and it's the tool to use for Stories from desktop. If you have a personal account and post now and then, instagram.com is all you need.
+Where we're not the best fit: if you only post to Instagram and Facebook, Meta Business Suite is free and does the job, and it's the tool to use for Stories that need stickers or polls. If you have a personal account and post now and then, instagram.com is all you need.
 
 ## Which Desktop Option Should You Use?
 
 1. **One post, right now:** instagram.com.
-2. **Instagram plus Facebook, scheduled, or Stories:** Meta Business Suite.
+2. **Instagram plus Facebook only, or Stories with stickers:** Meta Business Suite.
 3. **Instagram plus other platforms, planned ahead:** a scheduler.
 
 ## Frequently Asked Questions
@@ -163,7 +164,7 @@ Yes. The website handles photos, carousels and Reels in any modern browser, and 
 
 ### Can you post an Instagram Story from desktop?
 
-Not from instagram.com at the time of writing. Meta Business Suite can post and schedule Stories for professional accounts.
+Not from instagram.com at the time of writing. Meta Business Suite can post and schedule Stories for professional accounts, and Schedule For You can schedule them too (one 9:16 image or video, without a caption or stickers).
 
 ### Does posting from desktop affect reach?
 

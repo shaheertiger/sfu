@@ -86,14 +86,14 @@ Take Lena, who runs a bakery and launches a pumpkin loaf every October. Her Frid
 | --- | --- | --- | --- |
 | Feed photos and carousels | Yes | Yes | Yes, carousels of 2–10 images or videos |
 | Reels | Yes | Yes | Yes |
-| Stories | No (most accounts) | Yes, with limited stickers | No, post Stories in the app or Business Suite |
+| Stories | No (most accounts) | Yes, with limited stickers | Yes, one 9:16 image or video, no caption or stickers |
 | Music, collabs, product and location tags | Yes | Partly | No |
 | Other platforms | No | Facebook | Facebook Pages, X, Bluesky, LinkedIn, Threads, TikTok, YouTube, Pinterest, Google Business Profile |
 | Calendar | Scheduled content list | Planner | Queue and drag-and-drop calendar |
 | Failed-post alerts | App notifications | Notifications | Email with the reason, dashboard alert, one-click retry |
 | Cost | Free | Free | Free plan for 3 accounts and 10 scheduled posts, no card. Paid plans from $19 a month |
 
-Where we're not the best fit: if you only post to Instagram and Facebook, Business Suite is free and covers both, including Stories. Music, collaborators, product tags and Stories only work in Meta's own tools. Where a scheduler wins: one draft for many networks, one calendar, and alerts when something fails.
+Where we're not the best fit: if you only post to Instagram and Facebook, Business Suite is free and covers both, including Stories. Music, collaborators, product tags and Story stickers or polls only work in Meta's own tools. Where a scheduler wins: one draft for many networks, one calendar, and alerts when something fails.
 
 ## How to Schedule Instagram Posts With Schedule For You (Lena's Launch)
 
@@ -158,7 +158,7 @@ Some apps promise to schedule Stories with every sticker, or to post from a pers
 ## What to Do Next
 
 - ✓ **Only Instagram?** Use the app's own scheduler.
-- ✓ **Instagram and Facebook, or Stories?** Use Meta Business Suite.
+- ✓ **Instagram and Facebook only, or Stories with stickers?** Use Meta Business Suite.
 - ✓ **Instagram plus TikTok, LinkedIn, X or others?** Use a cross-platform scheduler.
 - ✗ **Don't give any app your Instagram password.**
 - ✗ **Don't schedule a carousel with images outside 4:5 to 1.91:1** without resizing.
@@ -183,7 +183,7 @@ Most guides report up to 25 scheduled posts a day per account in the Instagram a
 
 ### Can I schedule Instagram Stories?
 
-Yes, in Meta Business Suite, though some interactive features are limited. Schedule For You doesn't post Instagram Stories, so use Business Suite or post them live in the app.
+Yes. Meta Business Suite schedules them, though some interactive features are limited. Schedule For You also schedules Stories: set the post type to Story and attach one 9:16 image or video. Stories go out without a caption, and stickers, polls and music aren't available through Meta's API, so add those live in the app. See our guide to [scheduling Instagram and Facebook Stories](/blog/schedule-instagram-and-facebook-stories).
 
 ### Do scheduled Instagram posts get less reach?
 
