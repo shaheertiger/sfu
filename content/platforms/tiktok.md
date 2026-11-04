@@ -65,4 +65,4 @@ Vertical 1080×1920 works well for full-screen viewing. If your photos are a dif
 You get a failed-post alert. If TikTok revoked access, reconnect from the Accounts screen and retry.
 
 ## Batch your TikToks and publish on schedule
-Film when you have the energy, schedule the week in one sitting and let the queue handle the rest. Schedule For You publishes to TikTok and nine other platforms. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Film when you have the energy, schedule the week in one sitting and let the queue handle the rest. Schedule For You publishes to TikTok and nine other platforms. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

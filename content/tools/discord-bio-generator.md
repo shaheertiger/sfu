@@ -96,4 +96,4 @@ You can paste a link, and it's usually clickable. Many servers have rules about 
 Yes. It's free, works in your browser and doesn't need a Discord login or any other account.
 
 ## Growing a community beyond Discord?
-Schedule For You doesn't post to Discord, so your server announcements stay in Discord itself. If your community also follows you on YouTube, TikTok, X or Instagram, it can plan those posts in one calendar with per-platform captions and live character checks. The 7-day free trial needs a card, can be canceled anytime, and isn't charged until day 8. [Start your 7-day free trial](/signup).
+Schedule For You doesn't post to Discord, so your server announcements stay in Discord itself. If your community also follows you on YouTube, TikTok, X or Instagram, it can plan those posts in one calendar with per-platform captions and live character checks. The 7-day free trial needs a card, can be canceled anytime, and isn't charged until day 8. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

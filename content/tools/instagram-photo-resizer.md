@@ -81,4 +81,4 @@ JPG is fine for photographs and keeps file sizes small. PNG is better for graphi
 No. Everything is processed in your browser, so your photos stay on your device.
 
 ## Schedule your resized photos with Schedule For You
-Schedule For You publishes to Instagram along with X, TikTok, Facebook Pages, Pinterest and five other networks. Upload your resized images to the media library, write captions with a live 2,200-character check, and place posts on a drag-and-drop calendar. [Start your 7-day free trial](/signup). A card is required and you aren't charged until day 8.
+Schedule For You publishes to Instagram along with X, TikTok, Facebook Pages, Pinterest and five other networks. Upload your resized images to the media library, write captions with a live 2,200-character check, and place posts on a drag-and-drop calendar. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

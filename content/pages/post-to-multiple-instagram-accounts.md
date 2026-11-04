@@ -77,4 +77,4 @@ Yes. One video publishes as a Reel and 2–10 items publish as a carousel on eve
 Yes. Add Facebook Pages, Threads, TikTok or any other connected account as targets alongside your Instagram accounts. See our [cross-posting tool](/cross-posting) for how per-platform versions work.
 
 ## Manage all your Instagram accounts from one queue
-Schedule For You lets you plan every Instagram account on one calendar, with each caption tailored and each post published on time. It also covers the rest of your [Instagram scheduling](/instagram) needs, from Reels to carousels. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Schedule For You lets you plan every Instagram account on one calendar, with each caption tailored and each post published on time. It also covers the rest of your [Instagram scheduling](/instagram) needs, from Reels to carousels. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

@@ -94,4 +94,4 @@ Team members are available on the Studio plan. Clients don't need an account at 
 Yes. Select every account when you write the post and Schedule For You sends it to all of them, with a version for each platform you can tailor. Read more about our [cross-posting tool](/cross-posting).
 
 ## Bring all your accounts into one queue
-Schedule For You keeps every brand in its own workspace and every post on one calendar, so juggling accounts becomes a weekly planning session instead of a daily scramble. Plans start at $19 a month with unlimited posts. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Schedule For You keeps every brand in its own workspace and every post on one calendar, so juggling accounts becomes a weekly planning session instead of a daily scramble. Paid plans start at $19 a month with unlimited posts. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

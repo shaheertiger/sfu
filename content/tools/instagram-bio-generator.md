@@ -82,4 +82,4 @@ Yes. Bio generator and IG bio maker are two names for the same kind of tool: you
 Yes. It's free, needs no account and works in your browser. Generate as many sets of bios as you like.
 
 ## Plan your Instagram posts with Schedule For You
-Your bio makes a promise about what you post, and a steady schedule keeps it. Schedule For You lets you write a post once, tailor the Instagram caption with live character-limit checks, and line it up in a drag-and-drop calendar alongside your other channels. The 7-day free trial requires a card, you can cancel anytime, and you aren't charged until day 8. [Start your 7-day free trial](/signup).
+Your bio makes a promise about what you post, and a steady schedule keeps it. Schedule For You lets you write a post once, tailor the Instagram caption with live character-limit checks, and line it up in a drag-and-drop calendar alongside your other channels. The 7-day free trial requires a card, you can cancel anytime, and you aren't charged until day 8. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

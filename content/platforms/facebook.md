@@ -70,4 +70,4 @@ Yes, if your Instagram Business or Creator account is connected too. Select both
 That's usually an account or Page restriction rather than a scheduling problem. Our guide on [why you can't post on Facebook](/blog/why-cant-i-post-on-facebook) covers the official ways to check and fix it.
 
 ## Keep your Facebook Page active without logging in daily
-Plan a week of Page updates in one sitting, get client sign-off with a preview link, and let the queue do the rest. Unlimited posts on Solo and Studio. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Plan a week of Page updates in one sitting, get client sign-off with a preview link, and let the queue do the rest. Unlimited posts on Solo and Studio. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

@@ -80,4 +80,4 @@ No. It builds tags from fixed templates around the topic and keywords you enter.
 In the video's Details page, select Show more and use the Tags field. Paste the comma-separated list and YouTube turns each item into a tag.
 
 ## Schedule YouTube videos with Schedule For You
-Schedule For You uploads your videos to YouTube at the time you pick, with a title of up to 100 characters, a description of up to 5,000, and a choice of public, unlisted or private. Plan YouTube on the same calendar as Instagram, TikTok and LinkedIn, and tailor the caption for each. [Start your 7-day free trial](/signup). A card is required and you aren't charged until day 8.
+Schedule For You uploads your videos to YouTube at the time you pick, with a title of up to 100 characters, a description of up to 5,000, and a choice of public, unlisted or private. Plan YouTube on the same calendar as Instagram, TikTok and LinkedIn, and tailor the caption for each. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

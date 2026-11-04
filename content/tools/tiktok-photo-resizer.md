@@ -82,4 +82,4 @@ JPG keeps photos small and looks fine for most images. PNG is better when your i
 No. The resizer runs entirely in your browser.
 
 ## Schedule TikTok posts with Schedule For You
-Schedule For You publishes to TikTok and nine other networks, including Instagram, YouTube and Pinterest. Store your resized images in the media library, write a caption with a live check against TikTok's limit, and slot it into your queue or calendar. [Start your 7-day free trial](/signup). A card is required, you can cancel anytime, and billing starts on day 8.
+Schedule For You publishes to TikTok and nine other networks, including Instagram, YouTube and Pinterest. Store your resized images in the media library, write a caption with a live check against TikTok's limit, and slot it into your queue or calendar. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

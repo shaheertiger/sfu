@@ -84,4 +84,4 @@ No. It's free, needs no sign-up and runs in your browser.
 You get a PNG at 512×512, which keeps letters and edges crisp.
 
 ## Schedule your pins with Schedule For You
-Schedule For You publishes to Pinterest along with Instagram, TikTok, Facebook Pages and six other networks. Upload pins to the media library, write a description for each, and schedule them in a queue or on a drag-and-drop calendar, including evergreen pins that repeat. [Start your 7-day free trial](/signup). A card is required, you can cancel anytime, and you won't be charged until day 8.
+Schedule For You publishes to Pinterest along with Instagram, TikTok, Facebook Pages and six other networks. Upload pins to the media library, write a description for each, and schedule them in a queue or on a drag-and-drop calendar, including evergreen pins that repeat. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

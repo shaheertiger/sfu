@@ -83,4 +83,4 @@ A custom status can be up to 128 characters.
 No. The count happens in your browser and the text never leaves your device.
 
 ## Keep your other channels on schedule with Schedule For You
-Schedule For You doesn't post to Discord, but if your community also follows you on Instagram, X, TikTok, YouTube or LinkedIn, it lets you write one post, adjust it per platform with live character checks, and schedule it from a single calendar. Use it to plan the announcements your Discord members will see elsewhere. [Start your 7-day free trial](/signup). A card is required and you won't be charged until day 8.
+Schedule For You doesn't post to Discord, but if your community also follows you on Instagram, X, TikTok, YouTube or LinkedIn, it lets you write one post, adjust it per platform with live character checks, and schedule it from a single calendar. Use it to plan the announcements your Discord members will see elsewhere. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

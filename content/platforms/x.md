@@ -64,4 +64,4 @@ If access is revoked, for example after a password change, your scheduled post c
 Yes. Select all three when you write the post. Bluesky allows 300 characters and Threads 500, so you can keep a little more context in those versions than on X.
 
 ## Keep your X account active without living in the app
-Fill the queue once, let your time slots space posts out, and get alerted if anything fails. Schedule For You publishes to X and nine other platforms from one calendar. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Fill the queue once, let your time slots space posts out, and get alerted if anything fails. Schedule For You publishes to X and nine other platforms from one calendar. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

@@ -126,4 +126,4 @@ The queue shows the failed account and the reason, and you get an email. Fix the
 X, Bluesky, Instagram, LinkedIn (personal profiles), Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile.
 
 ## Cross-post smarter with Schedule For You
-One post, tailored for each platform, checked against every limit and published on time, with a retry for any account that fails. Plans start at $19 a month with unlimited posts. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+One post, tailored for each platform, checked against every limit and published on time, with a retry for any account that fails. Paid plans start at $19 a month with unlimited posts. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

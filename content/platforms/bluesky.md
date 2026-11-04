@@ -68,4 +68,4 @@ Yes. Select all three when writing, then tailor each version: 300 characters on 
 The most common cause is a deleted or changed app password. You'll get a failed-post alert; create a new app password, reconnect from the Accounts screen and retry.
 
 ## Grow on Bluesky without another tab to manage
-Add Bluesky to the same queue as your other channels and tailor each post in seconds. Plans start at $19 a month for 15 connected accounts. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Add Bluesky to the same queue as your other channels and tailor each post in seconds. Paid plans start at $19 a month for 15 connected accounts. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

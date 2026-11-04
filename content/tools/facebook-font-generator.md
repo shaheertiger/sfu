@@ -103,4 +103,4 @@ No. The generator runs entirely in your browser, needs no sign-up, and doesn't u
 
 ## Schedule styled Facebook posts with Schedule For You
 
-Once your post looks right, Schedule For You lets you queue it for your Facebook Page alongside versions tailored for Instagram, LinkedIn and your other channels, all from one calendar with live character-limit checks. Plans include unlimited posts, and the 7-day trial requires a card but you can cancel anytime and you're not charged until day 8. [Start your 7-day free trial](/signup).
+Once your post looks right, Schedule For You lets you queue it for your Facebook Page alongside versions tailored for Instagram, LinkedIn and your other channels, all from one calendar with live character-limit checks. Plans include unlimited posts, and the 7-day trial requires a card but you can cancel anytime and you're not charged until day 8. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

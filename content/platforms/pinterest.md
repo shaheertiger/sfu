@@ -69,4 +69,4 @@ Yes. Select both accounts and tailor each version. Bear in mind the ideal shapes
 You get a failed-post alert. If Pinterest revoked access, reconnect from the Accounts screen and retry.
 
 ## Keep your boards growing on a schedule
-Plan weeks of Pins in one sitting, choose a board for each and let the queue publish them steadily. Plans start at $19 a month with unlimited posts. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Plan weeks of Pins in one sitting, choose a board for each and let the queue publish them steadily. Paid plans start at $19 a month with unlimited posts. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

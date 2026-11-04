@@ -68,4 +68,4 @@ Schedule For You publishes to 10 platforms:
 
 We don't publish to other networks, such as Discord, Telegram, Reddit, Slack or Snapchat.
 
-Ready to try it? [Start your 7-day free trial](/signup).
+Ready to try it? [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

@@ -77,4 +77,4 @@ Yes. Use the **Check a list** mode to paste up to 200 names, see which follow Tw
 No. Everything runs in your browser, and nothing is uploaded or saved.
 
 ## Promote your streams on the platforms we support
-Schedule For You doesn't post to Twitch, but it can help you fill your stream: schedule "going live" posts, clips and highlights to X, TikTok, Instagram, YouTube, Bluesky and Threads from one queue, with a separate caption for each platform. Plans start at $19/month for 15 accounts. [Start your 7-day free trial](/signup). A card is required and you aren't charged until day 8.
+Schedule For You doesn't post to Twitch, but it can help you fill your stream: schedule "going live" posts, clips and highlights to X, TikTok, Instagram, YouTube, Bluesky and Threads from one queue, with a separate caption for each platform. Plans start at $19/month for 15 accounts. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

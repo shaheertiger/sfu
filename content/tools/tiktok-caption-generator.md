@@ -85,4 +85,4 @@ Start with a hook, say what the video is about, add one call to action and a few
 Yes. The captions work for videos and photo posts alike. Point viewers to the slide or detail you most want them to see.
 
 ## Schedule TikTok posts with captions ready to go
-Schedule For You publishes TikTok videos and photo posts directly with the privacy setting you choose for each post, and it checks your caption against TikTok's limit as you type. Tailor the same idea for Instagram, YouTube and seven more platforms in one post. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Schedule For You publishes TikTok videos and photo posts directly with the privacy setting you choose for each post, and it checks your caption against TikTok's limit as you type. Tailor the same idea for Instagram, YouTube and seven more platforms in one post. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

@@ -83,4 +83,4 @@ Emoji and Unicode styles work in display names but not in handles. Use them spar
 No. It suggests ideas only. X's sign-up and settings screens check availability instantly, so keep a few backups ready.
 
 ## Post to X on a schedule with Schedule For You
-Schedule For You lets you write X posts with a live character count that follows X's own rules, queue them in time slots, and publish them alongside Threads, Bluesky and LinkedIn from one calendar. Plans start at $19/month with unlimited posts. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Schedule For You lets you write X posts with a live character count that follows X's own rules, queue them in time slots, and publish them alongside Threads, Bluesky and LinkedIn from one calendar. Plans start at $19/month with unlimited posts. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

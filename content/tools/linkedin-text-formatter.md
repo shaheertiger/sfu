@@ -78,4 +78,4 @@ Yes. Lists are plain text, so they paste into comments, posts and your About sec
 No. The formatter runs in your browser and nothing is sent to a server.
 
 ## Schedule formatted LinkedIn posts with Schedule For You
-Paste your formatted post into Schedule For You and it publishes to LinkedIn on your schedule, with a live 3,000-character check and up to 9 images or a video per post. You can also tailor a shorter version of the same post for X, Threads or Bluesky without touching the LinkedIn copy. [Start your 7-day free trial](/signup). A card is required and you aren't charged until day 8.
+Paste your formatted post into Schedule For You and it publishes to LinkedIn on your schedule, with a live 3,000-character check and up to 9 images or a video per post. You can also tailor a shorter version of the same post for X, Threads or Bluesky without touching the LinkedIn copy. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

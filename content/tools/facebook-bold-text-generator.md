@@ -93,4 +93,4 @@ Yes. It's free, works without an account and runs in your browser. Your text isn
 
 ## Schedule bold Facebook posts with Schedule For You
 
-Schedule For You lets you queue Facebook Page posts next to tailored versions for Instagram, LinkedIn and your other platforms, with repeating and evergreen posts for recurring announcements. Solo and Studio come with unlimited posts. Try it with a 7-day trial: a card is required, you can cancel anytime, and you won't be charged until day 8. [Start your 7-day free trial](/signup).
+Schedule For You lets you queue Facebook Page posts next to tailored versions for Instagram, LinkedIn and your other platforms, with repeating and evergreen posts for recurring announcements. Solo and Studio come with unlimited posts. Try it with a 7-day trial: a card is required, you can cancel anytime, and you won't be charged until day 8. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

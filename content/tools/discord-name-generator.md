@@ -82,4 +82,4 @@ No. Discord checks usernames when you try to change yours. Server names don't ha
 Not in usernames. Display names and server names accept many Unicode characters, but they can be hard to search for and screen readers may read them letter by letter. Try the [Discord font generator](/tools/discord-font-generator) for styled text in messages and About Me instead.
 
 ## Share your server everywhere else with Schedule For You
-Schedule For You doesn't post to Discord. If you promote your server or stream on X, TikTok, YouTube, Instagram or Bluesky, it lets you schedule those posts from one calendar, with repeating posts to keep your invite in front of new people. [Start your 7-day free trial](/signup); a card is required and you won't be charged until day 8.
+Schedule For You doesn't post to Discord. If you promote your server or stream on X, TikTok, YouTube, Instagram or Bluesky, it lets you schedule those posts from one calendar, with repeating posts to keep your invite in front of new people. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

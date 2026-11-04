@@ -81,4 +81,4 @@ Yes. The tool is free, needs no sign-up and runs in your browser. If you use an 
 No. The generator exports a still PNG. Animated server icons are a Server Boost perk on Discord at the time of writing and need a different tool.
 
 ## Grow beyond Discord with Schedule For You
-Schedule For You doesn't post to Discord, but it can help you bring people into your server from Instagram, X, TikTok, YouTube, Bluesky and Threads. Write an invite post once, tailor it for each network and schedule it on a shared calendar. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Schedule For You doesn't post to Discord, but it can help you bring people into your server from Instagram, X, TikTok, YouTube, Bluesky and Threads. Write an invite post once, tailor it for each network and schedule it on a shared calendar. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

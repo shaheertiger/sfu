@@ -68,4 +68,4 @@ Yes. Attach it once, select the accounts and tailor each version. On Instagram, 
 You get a failed-post alert. If Google revoked access, for example after a password change, reconnect YouTube from the Accounts screen and retry.
 
 ## Put your YouTube uploads on the same calendar as everything else
-Schedule each video with its title, description and privacy set, and plan the posts that promote it in the same place. Plans start at $19 a month with unlimited posts. [Start your 7-day free trial](/signup). A card is required, and you aren't charged until day 8.
+Schedule each video with its title, description and privacy set, and plan the posts that promote it in the same place. Paid plans start at $19 a month with unlimited posts. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

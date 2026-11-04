@@ -85,4 +85,4 @@ Most people don't, and for good reason. Reddit's culture is pseudonymous, and a 
 Only if it's your brand. Using another company's name can confuse people and may break Reddit's rules on impersonation. For your own business, check trademarks and be open about your affiliation when you post.
 
 ## Keep your other channels on schedule with Schedule For You
-Schedule For You doesn't post to Reddit, but if you also share your work on X, Instagram, TikTok, YouTube, LinkedIn or Bluesky, it lets you plan those posts in one queue and calendar so they go out while you're busy in the comments. [Start your 7-day free trial](/signup); a card is required and you're not charged until day 8.
+Schedule For You doesn't post to Reddit, but if you also share your work on X, Instagram, TikTok, YouTube, LinkedIn or Bluesky, it lets you plan those posts in one queue and calendar so they go out while you're busy in the comments. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

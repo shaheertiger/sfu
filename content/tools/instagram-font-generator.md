@@ -103,4 +103,4 @@ The Reels editor uses its own fonts for text overlays. Pasted Unicode often work
 
 ## Plan styled Instagram posts with Schedule For You
 
-Write a caption once, adjust it for Instagram and your other channels, and schedule everything from one queue and calendar. Schedule For You checks each caption against the 2,200-character limit as you type. Solo and Studio include unlimited posts. The 7-day trial needs a card, but you can cancel anytime and won't be charged until day 8. [Start your 7-day free trial](/signup).
+Write a caption once, adjust it for Instagram and your other channels, and schedule everything from one queue and calendar. Schedule For You checks each caption against the 2,200-character limit as you type. Solo and Studio include unlimited posts. The 7-day trial needs a card, but you can cancel anytime and won't be charged until day 8. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

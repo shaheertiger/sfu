@@ -87,4 +87,4 @@ If you want one handle everywhere, use underscores sparingly and skip periods. X
 You can, but check trademarks first, and make sure no one else is already trading under that name in your market. A clash can force a rename after you have built an audience.
 
 ## Grow every account from one calendar with Schedule For You
-After you have claimed your handle, Schedule For You lets you write a post once, tailor it for each platform and publish to X, Instagram, TikTok, YouTube, LinkedIn and five more networks from a single queue. Plans start at $19/month with unlimited posts. [Start your 7-day free trial](/signup). A card is required, cancel anytime, and you are not charged until day 8.
+After you have claimed your handle, Schedule For You lets you write a post once, tailor it for each platform and publish to X, Instagram, TikTok, YouTube, LinkedIn and five more networks from a single queue. Plans start at $19/month with unlimited posts. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.
