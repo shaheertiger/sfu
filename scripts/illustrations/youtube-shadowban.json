@@ -1,0 +1,9 @@
+{
+  "cards": [
+    { "name": "hero", "type": "hero", "dark": true, "kicker": "YouTube guide", "title": "YouTube shadowban, **or one channel?**", "sub": "Check YouTube Studio first. Most “shadowbans” are one channel’s moderation or ordinary reach.", "chips": ["YouTube Studio", "Private-window test", "Live chat", "Appeals"] },
+    { "name": "who-decides", "type": "versus", "kicker": "Who decided?", "title": "YouTube’s actions vs **a channel’s choice**", "left": { "label": "YouTube", "tone": "neutral", "items": ["Strikes and warnings", "Lost features", "Shown in Studio"] }, "right": { "label": "One channel", "tone": "bad", "items": ["Held comments", "Hidden users", "Chat timeouts"] } },
+    { "name": "tests", "type": "steps", "kicker": "5 tests", "title": "Start with **the official answer**", "steps": [ { "title": "Studio", "text": "Strikes, feature eligibility.", "highlight": true }, { "title": "Private window", "text": "Newest first, 3 channels." }, { "title": "Live chat", "text": "Ask a friend in the stream." }, { "title": "Search + reach", "text": "Logged-out search, impressions." } ] },
+    { "name": "comments", "type": "checklist", "kicker": "Missing comments", "title": "What you can fix, and **what you can’t**", "good": { "label": "You can fix", "items": ["Fewer links", "No repeated text", "Slower commenting"] }, "bad": { "label": "Only a channel can fix", "items": ["Held for review", "Hidden users list", "Chat timeouts"] } },
+    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "If YouTube restricts you, **Studio says so.**", "by": "Nothing there? It’s one channel, spam filtering or reach." }
+  ]
+}

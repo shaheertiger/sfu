@@ -32,7 +32,7 @@ At the time of writing, most X accounts can upload videos of up to 2 minutes and
 
 ### What Most People Don't Know
 
-Long posts and long videos with Premium only apply inside the X app. Anything posted through X's API, which is what schedulers use, follows the standard limits for text. Limits change, so check [X's help center](https://help.x.com) if a video is rejected for its length or size.
+Premium's long posts are written in the X app itself. Scheduled posts from Schedule For You stay within the standard 280 characters. Limits change, so check [X's help center](https://help.x.com) if a video is rejected for its length or size.
 
 > **Key point:** One video, no images, within your account's length limit, as an MP4. Get those four right and almost every upload goes through.
 
