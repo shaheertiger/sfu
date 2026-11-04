@@ -24,6 +24,8 @@ Readers skim the headings first, so every heading has to make them want the sect
 - **H1/title:** the exact search question, then a hook. For example "Who Doesn't Follow Me Back on Instagram? 3 Safe Ways", "Am I Shadowbanned on X? (Most Tests Are Wrong)", "How to See Who Liked a Comment on Instagram: Don't Tap the Heart".
 - **H2s in Title Case, phrased the way people search**, each with something specific: a number ("5 Tests That Actually Work"), a qualifier in brackets ("(Free Method)", "(Use With Caution)", "(Safe and Scalable)"), a contrast ("Shadowbanned or Just Lower Reach?") or a promise ("Step-by-Step Recovery Plan").
 - **H3 steps name the action**: "Step 3: Long-Press, Don't Tap". Not "Step 3".
+- **Data and money topics put the number in the H1**, along with the year: "YouTube Pays $0.04–$29 Per 1K Views (By Niche, 2026)". Back every number with a table, and add a "realistic scenarios" table (situation | inputs | result) plus a comparison with other platforms.
+- **Most H2s and H3s are the reader's own question**: "How Does YouTube Pay Creators?", "What Is CPM vs RPM on YouTube?", "1. Which Niches Pay the Most?". Numbered question H3s work well for "what affects X" sections.
 - Avoid flat labels such as "Overview", "Method 2", "Tips" or "Conclusion". Use "The Bottom Line" and "Frequently Asked Questions" (the FAQ heading match ignores case).
 
 ### Images: one under every main section
@@ -42,6 +44,15 @@ House rules (enforced by `tests/content.test.ts`):
 - Internal links must point at pages that exist.
 - Plans: Free (3 accounts, up to 10 scheduled posts at a time, no card, a link back to us on posts; limits in `lib/plan-limits.js`), Solo and Studio (paid, with a 7-day trial that needs a card). Never say we have no free plan, never claim a no-card paid trial or "AI-powered" features, never say Free includes paid-only features (bulk, API/MCP, webhooks, RSS, approvals, preview links, shared calendar, repeat/evergreen, link tracking), and never say we post to Discord, Telegram, Reddit, Slack, Twitch or Roblox.
 - Only describe product features that exist in the code. LinkedIn publishes to personal profiles only, not company pages.
+
+## Writing tool pages (`content/tools/*.md`)
+
+Tool pages copy the layout of the top-ranking free-tool pages (see `research/competitor-keyword-gaps.md`, section 3). The page template already renders the tool, a sticky sign-up card on desktop and a CTA bar on phones (`components/marketing/GrowCta.jsx`). The markdown supplies the rest:
+
+1. **Title:** the tool name, a hook and the key specs, in 70 characters or fewer: "Discord Character Counter – 2,000 Limit (4,000 with Nitro)".
+2. **Lead:** one line telling people what to do: "Paste your text below…".
+3. **Sections, in this order:** what the tool does and why you need it; the specs or variants, one `###` each (each font style, size or limit); how to use the tool; **use cases by audience** (4–7 `###`, such as creators, ecommerce, local business or bot builders); best practices and caveats (where it doesn't work, accessibility); then the FAQ (6–8 questions) and the Schedule For You call to action.
+4. **Aim for depth**, around 2,500–4,000 words, with real specs and examples, not filler.
 
 ## Screenshots
 
