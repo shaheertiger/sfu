@@ -117,6 +117,8 @@ The Most active times chart uses your phone's time zone. If your audience lives 
 
 For followers across the US, post by Eastern time, then check how it lands elsewhere: an 11 AM Eastern post goes out at 8 AM Pacific, and a 7 PM Eastern post at 4 PM Pacific. If most of your followers are on the West Coast, schedule by Pacific time instead.
 
+If most of your followers are in one country, start from that country's own data: we publish the [best time to post on Instagram](/best-time-to-post/instagram) as an hour-by-hour heatmap, plus country pages such as [Instagram in the UK](/best-time-to-post/instagram/in-uk), [Instagram in India](/best-time-to-post/instagram/in-india) and [Instagram in Pakistan](/best-time-to-post/instagram/in-pakistan), each in local time with conversions to other zones.
+
 ## Best Time to Post Reels vs Feed Posts vs Stories
 
 Reels and feed posts behave differently, so test them separately.

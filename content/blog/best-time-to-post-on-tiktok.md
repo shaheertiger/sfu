@@ -95,6 +95,8 @@ If most of your followers are in one US time zone, post in that zone's local tim
 
 A post at **9 PM Eastern (6 PM Pacific)** lands in the evening for almost the whole US, which makes it a good default for a nationwide audience. If most of your followers are on one coast, post for that coast.
 
+Outside the US? Our [TikTok best-time heatmap](/best-time-to-post/tiktok) has a page for 25 countries in their own clock, from [TikTok in the UK](/best-time-to-post/tiktok/in-uk) to [TikTok in Ireland](/best-time-to-post/tiktok/in-ireland) and [TikTok in Italy](/best-time-to-post/tiktok/in-italy).
+
 ## How to Find Your Own Best Time in TikTok Studio (4 Steps)
 
 TikTok shows when your followers are online. Menu names change between app versions, so if a label doesn't match, look for the closest one.

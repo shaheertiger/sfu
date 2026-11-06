@@ -133,6 +133,8 @@ A 9 AM post for a Chicago audience is 9 AM Central. If your followers are spread
 | Spread across the US | Eastern time | 10 AM ET reaches 7 AM PT |
 | Mostly in another country | Their clock, not yours | 8 AM in London while you sleep in New York |
 
+For a country-by-country starting point, see our [Facebook best-time heatmap](/best-time-to-post/facebook) and its country pages, for example [Facebook in the Philippines](/best-time-to-post/facebook/in-philippines), [Facebook in Pakistan](/best-time-to-post/facebook/in-pakistan) and [Facebook in the UK](/best-time-to-post/facebook/in-uk). Each shows the times in local time with conversions to other zones.
+
 ## Best Time to Post Reels and Marketplace Listings on Facebook
 
 Reels can be recommended to people who don't follow your Page, so they depend less on your followers' active hours than regular posts. Start Reels in the same morning slots, then test evenings, when people have more time to watch video. Compare Reels with other Reels, not with photo posts.

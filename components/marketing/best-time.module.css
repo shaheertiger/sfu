@@ -21,3 +21,8 @@
 .chip{display:inline-block;padding:7px 12px;border-radius:999px;border:1px solid #22252a;background:#131417;color:#f6f5f1 !important;font-size:13px;font-weight:600;text-decoration:none !important}
 .chipOn{background:#dcff2e;color:#0f1012 !important;border-color:#dcff2e}
 @media (max-width:720px){.answer{grid-template-columns:1fr}}
+.banner{margin:22px 0 6px;padding:18px 20px;border-radius:14px;background:#dcff2e;color:#0f1012;font-size:clamp(18px,2.4vw,22px);font-weight:800;letter-spacing:-0.02em;line-height:1.3}
+.now{margin:14px 0 4px;padding:14px 16px;border:1px solid #22252a;border-radius:14px;background:#131417;color:#c4c7cc;font-size:15px;line-height:1.55}
+.now strong{color:#f6f5f1}
+.now b{color:#dcff2e}
+.regionTitle{margin:18px 0 6px;font-size:15px;color:#a7abb2;font-weight:600;letter-spacing:.02em}

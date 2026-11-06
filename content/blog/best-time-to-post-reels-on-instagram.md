@@ -87,6 +87,8 @@ If you manage several accounts, check each one. Our general guide to the [best t
 
 Recheck Insights every few months. The pattern by day has been stable for a few years, but your own audience shifts as you grow.
 
+No Insights data yet? Use the [Instagram best-time heatmap](/best-time-to-post/instagram) as a starting point, or pick your audience's country, such as [Instagram in South Africa](/best-time-to-post/instagram/in-south-africa) or [Instagram in Malaysia](/best-time-to-post/instagram/in-malaysia).
+
 ## Engagement Pods and Growth Apps for a Faster First Hour (Use With Caution)
 
 ![Safe ways to boost a Reel's first hour, like posting before your peak, next to risky shortcuts like engagement pods and password-sharing apps](/images/blog/best-time-to-post-reels-on-instagram-safety-1200x675.webp)
