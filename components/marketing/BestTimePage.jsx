@@ -82,7 +82,7 @@ export default function BestTimePage({ page, segment }) {
       <div className={m.container}>
         <Breadcrumbs items={crumbs} />
         <section className={m.hero}>
-          <span className={m.eyebrow}>{data.source === 'baseline' ? 'Baseline · switches to live data automatically' : data.source === 'trends' ? `Google Trends data${local ? ` for ${local.short}` : ''} · refreshed ${TRENDS_META.fetchedAt}` : `Live data · ${data.posts.toLocaleString('en-US')} scheduled posts · last 90 days`}</span>
+          <span className={m.eyebrow}>{data.source === 'baseline' ? 'Baseline · switches to live data automatically' : data.source === 'trends' ? `${data.trendsKind === 'activity' ? 'Wikipedia + Google Trends data' : 'Google Trends data'}${local ? ` for ${local.short}` : ''} · refreshed ${TRENDS_META.fetchedAt}` : `Live data · ${data.posts.toLocaleString('en-US')} scheduled posts · last 90 days`}</span>
           <h1 className={m.h1}>{copy.h1}</h1>
           <AnswerBanner>{copy.answer}</AnswerBanner>
           <p className={m.lead}>{copy.intro}</p>
@@ -100,7 +100,9 @@ export default function BestTimePage({ page, segment }) {
             <BestTimeNow scores={scores} tz={local ? local.tz : null} place={local ? local.name : null} platform={platform.name} />
             <BestTimeHeatmap scores={scores} highlightDay={seg.kind === 'weekday' ? seg.weekday : null} caption={`${platform.name}${where}: how strong each hour is, 0–100, in ${local ? `${local.adj} time (${abbr})` : 'your local time'}. ${updated ? `Updated ${updated}.` : ''}`} />
             {data.source === 'trends' ? (
-              <p className={s.source}>Source: Google Trends hourly search interest in {platform.name}{local ? ` from ${local.name}` : `, averaged across the ${TRENDS_META.countryCount} countries we have Trends data for so far`}{data.trendsKind === 'country' ? ' (country average: too few searches for this platform alone)' : ''}, weighted by hourly Wikipedia traffic (Wikimedia, CC0) so the hours reflect how many people are online. Local time. Refreshed {TRENDS_META.fetchedAt}; our own scheduling data replaces it automatically once there is enough of it.</p>
+              data.trendsKind === 'activity' ? (
+                <p className={s.source}>Source: hourly Wikipedia traffic from {local.name}'s local-language Wikipedia (Wikimedia, CC0, past 28 days), showing when people there are online, combined with {platform.name}'s hourly search pattern from Google Trends in the {TRENDS_META.countryCount} countries we measure directly. Local time. Refreshed {TRENDS_META.fetchedAt}; direct Google Trends data, then our own scheduling data, replace it automatically.</p>
+              ) : <p className={s.source}>Source: Google Trends hourly search interest in {platform.name}{local ? ` from ${local.name}` : `, averaged across the ${TRENDS_META.countryCount} countries we have Trends data for so far`}{data.trendsKind === 'country' ? ' (country average: too few searches for this platform alone)' : ''}, weighted by hourly Wikipedia traffic (Wikimedia, CC0) so the hours reflect how many people are online. Local time. Refreshed {TRENDS_META.fetchedAt}; our own scheduling data replaces it automatically once there is enough of it.</p>
             ) : data.source === 'baseline' ? (
               <p className={s.source}>Source: our published baseline (weekday mornings and lunch strongest, evenings next, weekends later and flatter), shown until Google Trends data or enough posts scheduled through Schedule For You are available{local ? ` for ${local.name}` : ''}. It switches automatically.</p>
             ) : (

@@ -58,16 +58,17 @@ const UA = 'ScheduleForYou-best-time/1.0 (https://scheduleforyou.com)';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 class NotCached extends Error {}
+class RateLimited extends Error {}
+let blocked = false; // set once Google refuses us; the rest of the run uses the cache only
 
 /** Hourly pageviews (all devices, to match Google Trends' all-device baseline) for a Wikipedia edition over the past 28 days: [{ time (unix s), value }]. */
-async function wikiHourly(project) {
-  const file = path.join(CACHE, `wiki-${project}.json`);
+async function wikiHourly(project, access = 'all-access') {
+  const file = path.join(CACHE, `wiki-${project}${access === 'all-access' ? '' : `-${access}`}.json`);
   if (fs.existsSync(file)) return JSON.parse(fs.readFileSync(file, 'utf8'));
-  if (OFFLINE) throw new NotCached();
   const end = new Date(Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate() - 1, 23));
   const start = new Date(end.getTime() - 28 * 86400_000 + 3600_000);
   const stamp = (d) => d.toISOString().slice(0, 13).replace(/[-T]/g, '');
-  const url = `https://wikimedia.org/api/rest_v1/metrics/pageviews/aggregate/${project}.wikipedia/all-access/user/hourly/${stamp(start)}/${stamp(end)}`;
+  const url = `https://wikimedia.org/api/rest_v1/metrics/pageviews/aggregate/${project}.wikipedia/${access}/user/hourly/${stamp(start)}/${stamp(end)}`;
   for (let i = 0; ; i++) {
     const r = await fetch(url, { headers: { 'user-agent': UA } });
     if (r.ok) {
@@ -82,18 +83,48 @@ async function wikiHourly(project) {
   }
 }
 
-/** 7×24 online-activity grid (flattened, max 1) in a zone from one or more editions' hourly views. */
-async function activityGrid(projects, tz) {
+/** Mean views per local weekday × hour (flattened 7×24) for one or more editions. */
+async function rawGrid(projects, tz, access = 'all-access') {
   const cells = Array.from({ length: 168 }, () => []);
   const byTime = new Map();
-  for (const proj of projects) for (const p of await wikiHourly(proj)) byTime.set(p.time, (byTime.get(p.time) || 0) + p.value);
+  for (const proj of projects) for (const p of await wikiHourly(proj, access)) byTime.set(p.time, (byTime.get(p.time) || 0) + p.value);
   for (const [time, value] of byTime) {
     const l = local(tz, time);
     cells[l.weekday * 24 + l.hour].push(value);
   }
-  const g = cells.map(mean);
-  const max = Math.max(...g) || 1;
-  return g.map((v) => v / max);
+  return cells.map(mean);
+}
+/** Quietest 3–5 AM hour over the busiest hour (weekly average). Real people: well under 0.35. */
+function nightRatio(g) {
+  const hours = Array.from({ length: 24 }, (_, h) => mean([0, 1, 2, 3, 4, 5, 6].map((d) => g[d * 24 + h])));
+  return Math.min(hours[3], hours[4], hours[5]) / (Math.max(...hours) || 1);
+}
+const toMax1 = (g) => { const m = Math.max(...g) || 1; return g.map((v) => v / m); };
+let phoneToAll = null; // per-slot ratio of all-device to phone traffic, learned from the big editions
+
+/**
+ * 7×24 online-activity grid (flattened, max 1) in a zone. Small editions get a lot of automated
+ * desktop traffic that flattens the night; when the night looks too busy for real people, use
+ * phone traffic instead, scaled back up to all devices with the big editions' phone-vs-desktop split.
+ */
+async function activityGrid(projects, tz) {
+  const all = await rawGrid(projects, tz);
+  if (nightRatio(all) <= 0.35 || !phoneToAll) return { grid: toMax1(all), note: projects.join('+') };
+  const phone = await rawGrid(projects, tz, 'mobile-web');
+  return { grid: toMax1(phone.map((v, i) => v * phoneToAll[i])), note: `${projects.join('+')} (phone traffic, adjusted)` };
+}
+
+async function learnPhoneToAll() {
+  const ratios = [];
+  for (const code of UNIVERSAL) {
+    const tz = COUNTRIES.find((x) => x.code === code).tz;
+    const all = await rawGrid(WIKIS[code], tz);
+    const phone = await rawGrid(WIKIS[code], tz, 'mobile-web');
+    const ma = mean(all);
+    const mp = mean(phone);
+    ratios.push(all.map((v, i) => (v / ma) / ((phone[i] || 1) / mp)));
+  }
+  phoneToAll = ratios[0].map((_, i) => mean(ratios.map((r) => r[i])));
 }
 let cookie = '';
 async function refreshCookie() {
@@ -104,7 +135,7 @@ async function refreshCookie() {
 async function get(url, tries = 0) {
   const r = await fetch(url, { headers: { cookie, 'user-agent': 'Mozilla/5.0', 'accept-language': 'en-US' } });
   if (r.status === 429 || r.status >= 500) {
-    if (tries >= 6) throw new Error(`HTTP ${r.status} after retries: ${url.slice(0, 120)}`);
+    if (tries >= 2) throw new RateLimited(`HTTP ${r.status} after retries`);
     const wait = 15000 * 2 ** tries;
     console.warn(`  ${r.status}, waiting ${wait / 1000}s`);
     await sleep(wait);
@@ -120,7 +151,7 @@ async function get(url, tries = 0) {
 async function timeline(topic, geo, time, tz) {
   const file = path.join(CACHE, `${geo}-${topic.replace(/\//g, '_')}-${time.replace(/\s/g, '')}.json`);
   if (fs.existsSync(file)) return JSON.parse(fs.readFileSync(file, 'utf8'));
-  if (OFFLINE) throw new NotCached();
+  if (OFFLINE || blocked) throw new NotCached();
   const req = { comparisonItem: [{ keyword: topic, geo, time }], category: 0, property: '' };
   const explore = await get(`https://trends.google.com/trends/api/explore?hl=en-US&tz=${tz}&req=${encodeURIComponent(JSON.stringify(req))}`);
   const w = explore.widgets.find((x) => x.id === 'TIMESERIES');
@@ -178,54 +209,77 @@ export function buildGrid(hourly, daily, tz, activity) {
   return raw.map((v) => Math.round((v / max) * 100));
 }
 
+const ONES = Array(168).fill(1);
+const scale = (g) => { const max = Math.max(...g) || 1; return g.map((v) => Math.round((v / max) * 100)); };
+const average = (list) => list[0].map((_, i) => mean(list.map((g) => g[i])));
+
 async function main() {
-  await refreshCookie();
+  if (!OFFLINE) await refreshCookie();
   const out = { source: 'Google Trends and Wikimedia pageviews', fetchedAt: new Date().toISOString().slice(0, 10), hourly: 'past 7 days', daily: 'past 90 days', activity: 'past 28 days', countries: {} };
   // The fallback activity curve: the average local-time curve of big single-country editions.
   const uni = [];
-  for (const code of UNIVERSAL) {
-    const c = COUNTRIES.find((x) => x.code === code);
-    uni.push(await activityGrid(WIKIS[code], c.tz));
-  }
-  const universal = uni[0].map((_, i) => mean(uni.map((g) => g[i])));
-  const countries = COUNTRIES.filter((c) => !ONLY || ONLY.includes(c.code));
-  for (const c of countries) {
+  for (const code of UNIVERSAL) uni.push((await activityGrid(WIKIS[code], COUNTRIES.find((x) => x.code === code).tz)).grid);
+  const universal = { grid: average(uni), note: 'average' };
+  await learnPhoneToAll();
+  const activityOf = async (c) => (WIKIS[c.code] ? activityGrid(WIKIS[c.code], c.tz) : universal);
+  // --only sets the order too, so the countries that matter most are fetched first.
+  const countries = ONLY ? ONLY.map((code) => COUNTRIES.find((c) => c.code === code)).filter(Boolean) : COUNTRIES;
+  const rest = COUNTRIES.filter((c) => !countries.includes(c));
+
+  // Pass 1: Google Trends, for every country with all 20 series (fetched now or cached).
+  const shares = {}; // platform id → [share grids], to learn each platform's hourly pattern
+  const measured = new Set();
+  for (const c of [...countries, ...rest]) {
     const tz = -offsetMinutes(c.tz);
-    let activity;
-    try {
-      activity = WIKIS[c.code] ? await activityGrid(WIKIS[c.code], c.tz) : universal;
-    } catch (e) {
-      if (!(e instanceof NotCached)) throw e;
-      console.log(`${c.code}: not fully cached, skipped`);
-      continue;
-    }
+    const act = await activityOf(c);
+    const activity = act.grid;
     const grids = {};
     let complete = true;
     for (const p of BEST_TIME_PLATFORMS) {
-      const topic = TOPICS[p.id];
       try {
-        const hourly = await timeline(topic, c.code, 'now 7-d', 0);
-        const daily = await timeline(topic, c.code, 'today 3-m', tz);
+        const hourly = await timeline(TOPICS[p.id], c.code, 'now 7-d', 0);
+        const daily = await timeline(TOPICS[p.id], c.code, 'today 3-m', tz);
         grids[p.id] = buildGrid(hourly, daily, c.tz, activity);
+        const share = buildGrid(hourly, daily, c.tz, ONES);
+        if (share) (shares[p.id] ||= []).push(share);
       } catch (e) {
-        // A missing or refused series is not "too few searches": leave the whole country out.
-        if (!(e instanceof NotCached)) throw e;
+        // A missing or refused series is not "too few searches": the country goes to pass 2.
+        if (e instanceof RateLimited) { blocked = true; console.warn('Google Trends is rate-limiting; using the cache for the rest of this run.'); }
+        else if (!(e instanceof NotCached)) throw e;
         complete = false;
         break;
       }
-      console.log(`${c.code} ${p.id}: ${grids[p.id] ? 'ok' : 'too few searches'}`);
     }
-    if (!complete) { console.log(`${c.code}: not fully cached, skipped`); continue; }
+    if (!complete) continue;
     const readable = Object.values(grids).filter(Boolean);
-    if (readable.length) {
-      const avg = readable[0].map((_, i) => mean(readable.map((g) => g[i])));
-      const max = Math.max(...avg) || 1;
-      grids._all = avg.map((v) => Math.round((v / max) * 100));
-    }
-    grids._activity = WIKIS[c.code] ? WIKIS[c.code].join('+') : 'average';
+    if (readable.length) grids._all = scale(average(readable));
+    grids._activity = act.note;
+    grids._method = 'trends';
     out.countries[c.code] = grids;
+    measured.add(c.code);
+    console.log(`${c.code}: Google Trends (${readable.length} of ${BEST_TIME_PLATFORMS.length} platforms readable)`);
   }
-  const body = `/**\n * Generated by scripts/fetch-best-time-trends.mjs on ${out.fetchedAt}. Do not edit by hand.\n * Hour-by-hour activity (0–100, local time, weekday-major 7×24) per country and platform,\n * from Google Trends search interest. null = too few searches to read; _all = country average.\n */\nexport default ${JSON.stringify(out)};\n`;
+
+  // Pass 2: every other country with its own Wikipedia edition: when people there are online,
+  // times each platform's hourly search pattern learned from the measured countries.
+  const pattern = Object.fromEntries(Object.entries(shares).map(([id, list]) => [id, average(list)]));
+  for (const c of COUNTRIES) {
+    if (measured.has(c.code)) continue;
+    if (!WIKIS[c.code]) { console.log(`${c.code}: no Trends data and no own Wikipedia edition yet, skipped`); continue; }
+    if (!Object.keys(pattern).length) break;
+    const act = await activityOf(c);
+    const activity = act.grid;
+    const grids = {};
+    for (const p of BEST_TIME_PLATFORMS) grids[p.id] = pattern[p.id] ? scale(pattern[p.id].map((v, i) => v * activity[i])) : null;
+    grids._all = scale(average(Object.values(grids).filter(Boolean)));
+    grids._activity = act.note;
+    grids._method = 'activity';
+    out.countries[c.code] = grids;
+    console.log(`${c.code}: Wikipedia activity × platform pattern from ${measured.size} countries`);
+  }
+  out.measuredCountries = [...measured];
+
+  const body = `/**\n * Generated by scripts/fetch-best-time-trends.mjs on ${out.fetchedAt}. Do not edit by hand.\n * Hour-by-hour activity (0–100, local time, weekday-major 7×24) per country and platform.\n * _method 'trends': Google Trends for the country, weighted by its Wikipedia traffic.\n * _method 'activity': the country's Wikipedia traffic × each platform's pattern from the measured countries.\n * null = too few searches to read; _all = country average.\n */\nexport default ${JSON.stringify(out)};\n`;
   fs.writeFileSync(OUT, body);
   console.log(`wrote ${OUT} (${(body.length / 1024).toFixed(0)} KB)`);
 }

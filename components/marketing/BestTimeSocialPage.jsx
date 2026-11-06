@@ -23,7 +23,7 @@ export async function loadSocialPage(countrySlug) {
   const perPlatform = BEST_TIME_PLATFORMS.map((p) => {
     const scores = scoreGrid(all[p.id].grid);
     const top = topSlots(scores, 2);
-    return { platform: p, scores, best: top[0], second: top[1], bestDay: bestWeekday(scores), source: all[p.id].source };
+    return { platform: p, scores, best: top[0], second: top[1], bestDay: bestWeekday(scores), source: all[p.id].source, trendsKind: all[p.id].trendsKind };
   });
   const scores = combineScores(perPlatform.map((x) => x.scores));
   const best = topSlots(scores, 5);
@@ -71,7 +71,7 @@ export default function BestTimeSocialPage({ page }) {
       <div className={m.container}>
         <Breadcrumbs items={crumbs} />
         <section className={m.hero}>
-          <span className={m.eyebrow}>{live ? `Live data for ${live} of ${perPlatform.length} platforms · last 90 days` : fromTrends ? `Google Trends data for ${local.short} · refreshed ${TRENDS_META.fetchedAt}` : 'Baseline · switches to live data automatically'}</span>
+          <span className={m.eyebrow}>{live ? `Live data for ${live} of ${perPlatform.length} platforms · last 90 days` : fromTrends ? `${perPlatform.some((x) => x.trendsKind === 'activity') ? 'Wikipedia + Google Trends data' : 'Google Trends data'} for ${local.short} · refreshed ${TRENDS_META.fetchedAt}` : 'Baseline · switches to live data automatically'}</span>
           <h1 className={m.h1}>{copy.h1}</h1>
           <AnswerBanner>{copy.answer}</AnswerBanner>
           <p className={m.lead}>{copy.intro}</p>
@@ -89,7 +89,7 @@ export default function BestTimeSocialPage({ page }) {
             <BestTimeNow scores={scores} tz={local.tz} place={local.name} platform="social media" />
             <BestTimeHeatmap scores={scores} caption={`All ${perPlatform.length} platforms combined in ${local.name}: how strong each hour is, 0–100, in ${local.adj} time (${abbr}).`} />
             <p className={s.source}>
-              {fromTrends ? <>Source: Google Trends hourly search interest in each platform from {local.name}, weighted by hourly Wikipedia traffic (Wikimedia, CC0) so the hours reflect how many people are online, then averaged across platforms. Platforms with too few searches use the country average. Refreshed {TRENDS_META.fetchedAt}; our own scheduling data replaces it automatically once there is enough of it.</> : live ? <>Source: posts scheduled through Schedule For You, counted per local weekday and hour for each platform, then averaged. No individual account data is shown. <Link href="/privacy">How we handle data</Link>.</> : <>Source: our published baseline for each platform, averaged, shown until Google Trends data or enough posts scheduled through Schedule For You are available for {local.name}. It switches automatically.</>}
+              {fromTrends && perPlatform.some((x) => x.trendsKind === 'activity') ? <>Source: hourly Wikipedia traffic from {local.name}'s local-language Wikipedia (Wikimedia, CC0, past 28 days), showing when people there are online, combined with each platform's hourly search pattern from Google Trends in the {TRENDS_META.countryCount} countries we measure directly, then averaged across platforms. Refreshed {TRENDS_META.fetchedAt}; direct Google Trends data, then our own scheduling data, replace it automatically.</> : fromTrends ? <>Source: Google Trends hourly search interest in each platform from {local.name}, weighted by hourly Wikipedia traffic (Wikimedia, CC0) so the hours reflect how many people are online, then averaged across platforms. Platforms with too few searches use the country average. Refreshed {TRENDS_META.fetchedAt}; our own scheduling data replaces it automatically once there is enough of it.</> : live ? <>Source: posts scheduled through Schedule For You, counted per local weekday and hour for each platform, then averaged. No individual account data is shown. <Link href="/privacy">How we handle data</Link>.</> : <>Source: our published baseline for each platform, averaged, shown until Google Trends data or enough posts scheduled through Schedule For You are available for {local.name}. It switches automatically.</>}
             </p>
           </div>
         </section>

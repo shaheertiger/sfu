@@ -176,3 +176,12 @@ test('Trends data: every country that has it gets readable 7×24 grids in local 
   const missing = COUNTRIES.find((c) => !covered.includes(c.code));
   if (missing) assert.equal(trendsGrid('instagram', missing.code), null, 'countries without Trends data fall back to our data or the baseline');
 });
+
+test('countries without direct Trends data use their own Wikipedia traffic, labelled as such', () => {
+  const de = trendsGrid('instagram', 'DE');
+  if (!de) return; // data file not rebuilt yet
+  assert.equal(de.kind, 'activity');
+  const copy = pageCopy({ platform: 'instagram', segment: 'in-germany', best: topSlots(scoreGrid(de.grid), 5), bestDay: 0, source: 'trends', posts: 0, trendsKind: 'activity', fetchedAt: '2026-11-06', countryCount: 6 });
+  assert.match(copy!.intro, /when people in Germany are online \(hourly traffic on Germany's local-language Wikipedia/);
+  assert.equal(trendsGrid('instagram', 'US')!.kind, 'platform', 'directly measured countries keep their own Trends data');
+});
