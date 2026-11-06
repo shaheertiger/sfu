@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { baselineGrid, bestWeekday, countryOfTimezone, formatHour, gridFromRows, gridTotal, pickGrid, scoreGrid, topHoursOfDay, topSlots, MIN_POSTS_GLOBAL, MIN_POSTS_REGION } from '../lib/best-time.js';
 import { allBestTimePages, pageCopy, pageFaq, parseSegment, siblingLinks, socialCopy, socialFaq } from '../lib/best-time-pages.js';
 import { COUNTRIES, combineScores, quietSlots } from '../lib/best-time.js';
+import { TRENDS_META, staticGrid, trendsCountries, trendsGlobalGrid, trendsGrid } from '../lib/best-time-trends.js';
 import { REGIONS, convertSlot, countryLocal, dstInfo, formatOffset, nearbyCountries, offsetMinutes } from '../lib/best-time-countries.js';
 import { SPEC_PLATFORMS, allSpecPages, specBySlug } from '../lib/specs.js';
 import { INDUSTRIES, TEMPLATES, allPostIdeaPages, fill, ideasFor, ideasForDay } from '../lib/post-ideas.js';
@@ -141,4 +142,34 @@ test('social media country pages combine every platform and answer in local time
   assert.ok(faq.length >= 6);
   assert.ok(faq.every((f) => f.a && !/undefined|NaN/.test(f.a)), 'no holes in the answers');
   assert.equal(socialCopy({ country: 'atlantis', best, bestDay: 0 }), null);
+});
+
+test('Google Trends grids slot in after our own country data and before our worldwide data', () => {
+  const rows = (n: number) => [{ weekday: 1, hour: 9, posts: n, clicks: 0 }];
+  const trends = { grid: baselineGrid('tiktok'), kind: 'platform' };
+  assert.equal(pickGrid({ regionRows: rows(MIN_POSTS_REGION), globalRows: rows(MIN_POSTS_GLOBAL), platformId: 'tiktok', trends }).source, 'region');
+  const t = pickGrid({ regionRows: rows(10), globalRows: rows(MIN_POSTS_GLOBAL), platformId: 'tiktok', trends });
+  assert.equal(t.source, 'trends');
+  assert.equal(t.trendsKind, 'platform');
+  assert.equal(pickGrid({ regionRows: rows(10), globalRows: rows(MIN_POSTS_GLOBAL), platformId: 'tiktok', trends: null }).source, 'global');
+});
+
+test('Trends data covers every country page with readable 7×24 grids in local time', () => {
+  assert.match(TRENDS_META.fetchedAt, /^\d{4}-\d{2}-\d{2}$/);
+  assert.deepEqual(trendsCountries().sort(), COUNTRIES.map((c) => c.code).sort(), 'rerun scripts/fetch-best-time-trends.mjs after adding a country');
+  for (const c of COUNTRIES) {
+    for (const p of ['instagram', 'tiktok', 'facebook', 'linkedin', 'x', 'threads', 'youtube', 'pinterest', 'bluesky', 'google']) {
+      const t = trendsGrid(p, c.code);
+      assert.ok(t, `${c.code} ${p}: no grid and no country average`);
+      const flat = t!.grid.flat().map((x: { posts: number }) => x.posts / 10);
+      assert.equal(flat.length, 168);
+      assert.equal(Math.max(...flat), 100, `${c.code} ${p}: not scaled to 100`);
+      // People sleep: 3–5 AM local should never be the best slot of the week.
+      const best = topSlots(scoreGrid(t!.grid), 1)[0];
+      assert.ok(best.hour < 3 || best.hour > 5, `${c.code} ${p}: best slot at ${best.hour}:00`);
+    }
+  }
+  assert.ok(trendsGlobalGrid('instagram'));
+  const md = staticGrid('instagram', 'JP');
+  assert.equal(md.source, 'trends');
 });

@@ -7,6 +7,7 @@ import { Breadcrumbs, MarketingPage, TrialCta } from '@/components/marketing/Chr
 import m from '@/components/marketing/marketing.module.css';
 import s from '@/components/marketing/best-time.module.css';
 import { getBestTimeAllPlatforms } from '@/lib/server/best-time';
+import { TRENDS_META } from '@/lib/best-time-trends';
 import { BEST_TIME_PLATFORMS, COUNTRIES, WEEKDAY_NAMES, bestWeekday, combineScores, formatHour, quietSlots, scoreGrid, topHoursOfDay, topSlots } from '@/lib/best-time';
 import { countryLocal, currentAbbr, formatHour24 } from '@/lib/best-time-countries';
 import { BEST_TIME_ROOT, DAYS_GUIDE, both, pagePath, socialCopy, socialFaq, socialPath } from '@/lib/best-time-pages';
@@ -28,14 +29,15 @@ export async function loadSocialPage(countrySlug) {
   const best = topSlots(scores, 5);
   const bestDay = bestWeekday(scores);
   const quiet = quietSlots(scores, 3);
-  const live = perPlatform.filter((x) => x.source !== 'baseline').length;
+  const live = perPlatform.filter((x) => x.source === 'region' || x.source === 'global').length;
+  const fromTrends = perPlatform.filter((x) => x.source === 'trends').length;
   const copy = socialCopy({ country: countrySlug, best, bestDay, at });
-  const faq = socialFaq({ country: countrySlug, best, bestDay, perPlatform, scores, at });
-  return { local, at, perPlatform, scores, best, bestDay, quiet, live, copy, faq };
+  const faq = socialFaq({ country: countrySlug, best, bestDay, perPlatform, scores, fetchedAt: TRENDS_META.fetchedAt, at });
+  return { local, at, perPlatform, scores, best, bestDay, quiet, live, fromTrends, copy, faq };
 }
 
 export default function BestTimeSocialPage({ page }) {
-  const { local, at, perPlatform, scores, best, bestDay, quiet, live, copy, faq } = page;
+  const { local, at, perPlatform, scores, best, bestDay, quiet, live, fromTrends, copy, faq } = page;
   const path = socialPath(local.slug);
   const abbr = currentAbbr(local, at);
   const crumbs = [
@@ -48,7 +50,7 @@ export default function BestTimeSocialPage({ page }) {
     '@graph': [
       organizationLd(),
       { '@type': 'WebPage', '@id': `${abs(path)}#webpage`, url: abs(path), name: copy.title, description: copy.description, isPartOf: { '@id': `${abs('/')}#website` }, inLanguage: 'en' },
-      { '@type': 'Dataset', name: `Social media posting times by weekday and hour in ${local.name.replace(/^the /, '')}`, description: copy.description, url: abs(path), creator: { '@type': 'Organization', name: 'Schedule For You' }, temporalCoverage: 'P90D', spatialCoverage: { '@type': 'Place', name: local.name.replace(/^the /, '') }, variableMeasured: ['posts per hour', 'link clicks per post'] },
+      { '@type': 'Dataset', name: `Social media posting times by weekday and hour in ${local.name.replace(/^the /, '')}`, description: copy.description, url: abs(path), creator: { '@type': 'Organization', name: 'Schedule For You' }, temporalCoverage: 'P90D', ...(fromTrends ? { isBasedOn: ['https://trends.google.com/', 'https://wikimedia.org/api/rest_v1/'] } : {}), spatialCoverage: { '@type': 'Place', name: local.name.replace(/^the /, '') }, variableMeasured: ['posts per hour', 'link clicks per post'] },
       breadcrumbLd(crumbs),
       faqPageLd(faq),
     ],
@@ -69,7 +71,7 @@ export default function BestTimeSocialPage({ page }) {
       <div className={m.container}>
         <Breadcrumbs items={crumbs} />
         <section className={m.hero}>
-          <span className={m.eyebrow}>{live ? `Live data for ${live} of ${perPlatform.length} platforms · last 90 days` : 'Baseline · switches to live data automatically'}</span>
+          <span className={m.eyebrow}>{live ? `Live data for ${live} of ${perPlatform.length} platforms · last 90 days` : fromTrends ? `Google Trends data for ${local.short} · refreshed ${TRENDS_META.fetchedAt}` : 'Baseline · switches to live data automatically'}</span>
           <h1 className={m.h1}>{copy.h1}</h1>
           <AnswerBanner>{copy.answer}</AnswerBanner>
           <p className={m.lead}>{copy.intro}</p>
@@ -86,7 +88,9 @@ export default function BestTimeSocialPage({ page }) {
             </div>
             <BestTimeNow scores={scores} tz={local.tz} place={local.name} platform="social media" />
             <BestTimeHeatmap scores={scores} caption={`All ${perPlatform.length} platforms combined in ${local.name}: how strong each hour is, 0–100, in ${local.adj} time (${abbr}).`} />
-            <p className={s.source}>Source: posts scheduled through Schedule For You, counted per local weekday and hour for each platform, then averaged. No individual account data is shown. <Link href="/privacy">How we handle data</Link>.</p>
+            <p className={s.source}>
+              {fromTrends ? <>Source: Google Trends hourly search interest in each platform from {local.name}, weighted by hourly Wikipedia traffic (Wikimedia, CC0) so the hours reflect how many people are online, then averaged across platforms. Platforms with too few searches use the country average. Refreshed {TRENDS_META.fetchedAt}; our own scheduling data replaces it automatically once there is enough of it.</> : <>Source: posts scheduled through Schedule For You, counted per local weekday and hour for each platform, then averaged. No individual account data is shown. <Link href="/privacy">How we handle data</Link>.</>}
+            </p>
           </div>
         </section>
 

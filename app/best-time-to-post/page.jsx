@@ -6,6 +6,7 @@ import { Breadcrumbs, MarketingPage, TrialCta } from '@/components/marketing/Chr
 import m from '@/components/marketing/marketing.module.css';
 import s from '@/components/marketing/best-time.module.css';
 import { getBestTimeAllPlatforms } from '@/lib/server/best-time';
+import { TRENDS_META } from '@/lib/best-time-trends';
 import { BEST_TIME_PLATFORMS, WEEKDAY_NAMES, bestWeekday, combineScores, countryBySlug, formatHour, scoreGrid, topSlots } from '@/lib/best-time';
 import { REGIONS, formatHour24, formatOffset, offsetMinutes } from '@/lib/best-time-countries';
 import { BEST_TIME_ROOT, BLOG_GUIDES, DAYS_GUIDE, both, pagePath, socialPath } from '@/lib/best-time-pages';
@@ -16,7 +17,7 @@ export const revalidate = 86400;
 
 const year = () => new Date().getUTCFullYear();
 const TITLE = () => `Best Time to Post on Social Media in ${year()} (By Platform & Country)`;
-const DESCRIPTION = 'The best times to post on Instagram, TikTok, Facebook, LinkedIn, X and 5 more, hour by hour for every weekday and 25 countries, from real scheduling data, updated daily.';
+const DESCRIPTION = 'The best times to post on Instagram, TikTok, Facebook, LinkedIn, X and 5 more, hour by hour for every weekday and 25 countries, from Google Trends and real scheduling data.';
 
 export function generateMetadata() {
   return pageMetadata({ title: TITLE(), description: DESCRIPTION, path: BEST_TIME_ROOT, absolute: true, keyword: 'best time to post on social media' });
@@ -37,7 +38,7 @@ export default async function BestTimeIndex() {
     { q: 'What is the best day to post on social media?', a: `${WEEKDAY_NAMES[bestDay]}, when all platforms are combined. Work networks such as LinkedIn favour weekdays, while TikTok, Instagram and YouTube stay strong into the evening and the weekend.` },
     { q: 'Are these times in my time zone?', a: 'Yes. Every slot is local time: 9 AM means 9 AM wherever your audience is. If your followers are in another country, open that country\'s page, which lists the times in its own clock and converts them to other zones.' },
     { q: 'Which country pages are there?', a: `${REGIONS.reduce((n, r) => n + r.countries.length, 0)} countries, grouped by region below. Each has a page for social media overall and one for each of the ${rows.length} platforms.` },
-    { q: 'How is the data collected?', a: 'Every post scheduled through Schedule For You is counted in the hour and weekday it went out, in the account\'s own time zone, and lifted by the link clicks it earned. Only counts are kept: no captions, accounts or names. Until a platform has enough posts, its page shows a published baseline and says so.' },
+    { q: 'How is the data collected?', a: `Two sources. Where enough posts are scheduled through Schedule For You, each post is counted in the hour and weekday it went out, in the account's own time zone, lifted by the link clicks it earned; only counts are kept. Everywhere else the pages use Google Trends: hourly search interest in each platform from each country, weighted by hourly Wikipedia traffic (Wikimedia) so the hours reflect how many people are online. The Trends data was refreshed ${TRENDS_META.fetchedAt}. Each page says which source it shows.` },
     { q: 'How often should I check my best time?', a: 'Every few months, or after a big change in your audience. The pages here are rebuilt daily from the last 90 days, and your own insights will tell you when your followers shift.' },
   ];
   const crumbs = [{ name: 'Home', href: '/' }, { name: 'Best time to post', href: BEST_TIME_ROOT }];
@@ -48,10 +49,10 @@ export default async function BestTimeIndex() {
       <div className={m.container}>
         <Breadcrumbs items={crumbs} />
         <section className={m.hero}>
-          <span className={m.eyebrow}>Updated daily · local time</span>
+          <span className={m.eyebrow}>{`Google Trends + scheduling data · refreshed ${TRENDS_META.fetchedAt} · local time`}</span>
           <h1 className={m.h1}>Best Time to Post on Social Media in {year()}</h1>
           <AnswerBanner>The best time to post on social media is {WEEKDAY_NAMES[best[0].weekday]} at {both(best[0].hour)}, local time.</AnswerBanner>
-          <p className={m.lead}>That's the strongest slot with all {rows.length} platforms combined, but each network peaks at its own hour. Pick a platform for a full-week heatmap, or pick the country your audience is in for times in its own time zone. Built from posts scheduled through Schedule For You, not a survey.</p>
+          <p className={m.lead}>That's the strongest slot with all {rows.length} platforms combined, but each network peaks at its own hour. Pick a platform for a full-week heatmap, or pick the country your audience is in for times in its own time zone. Built from Google Trends search data for each country and posts scheduled through Schedule For You, not a survey.</p>
           <div className={m.toolArea}>
             <BestTimeHeatmap scores={scores} caption={`All ${rows.length} platforms combined: how strong each hour is, 0–100, in your local time.`} />
           </div>
