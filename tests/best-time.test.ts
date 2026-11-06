@@ -154,10 +154,12 @@ test('Google Trends grids slot in after our own country data and before our worl
   assert.equal(pickGrid({ regionRows: rows(10), globalRows: rows(MIN_POSTS_GLOBAL), platformId: 'tiktok', trends: null }).source, 'global');
 });
 
-test('Trends data covers every country page with readable 7×24 grids in local time', () => {
+test('Trends data: every country that has it gets readable 7×24 grids in local time', () => {
   assert.match(TRENDS_META.fetchedAt, /^\d{4}-\d{2}-\d{2}$/);
-  assert.deepEqual(trendsCountries().sort(), COUNTRIES.map((c) => c.code).sort(), 'rerun scripts/fetch-best-time-trends.mjs after adding a country');
-  for (const c of COUNTRIES) {
+  const covered = trendsCountries();
+  assert.ok(covered.length >= 6, 'Trends data missing: run scripts/fetch-best-time-trends.mjs');
+  for (const code of covered) assert.ok(COUNTRIES.some((c) => c.code === code), `${code} is not a country page`);
+  for (const c of COUNTRIES.filter((x) => covered.includes(x.code))) {
     for (const p of ['instagram', 'tiktok', 'facebook', 'linkedin', 'x', 'threads', 'youtube', 'pinterest', 'bluesky', 'google']) {
       const t = trendsGrid(p, c.code);
       assert.ok(t, `${c.code} ${p}: no grid and no country average`);
@@ -170,6 +172,7 @@ test('Trends data covers every country page with readable 7×24 grids in local t
     }
   }
   assert.ok(trendsGlobalGrid('instagram'));
-  const md = staticGrid('instagram', 'JP');
-  assert.equal(md.source, 'trends');
+  assert.equal(staticGrid('instagram', covered[0]).source, 'trends');
+  const missing = COUNTRIES.find((c) => !covered.includes(c.code));
+  if (missing) assert.equal(trendsGrid('instagram', missing.code), null, 'countries without Trends data fall back to our data or the baseline');
 });

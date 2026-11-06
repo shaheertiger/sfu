@@ -17,7 +17,9 @@
  *   NODE_USE_ENV_PROXY=1 node scripts/fetch-best-time-trends.mjs [--cache DIR] [--only SG,JP]
  *
  * Raw responses are cached in DIR (default node_modules/.cache/best-time-trends), so a run
- * that hits Google's rate limit can simply be restarted. Delete the cache to refresh.
+ * that hits Google's rate limit stops and can simply be restarted. Delete the cache to refresh.
+ * --offline builds the file from the cache alone, keeping only countries with every series cached
+ * (the others keep falling back to our own data or the baseline until a later run).
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -27,6 +29,7 @@ const args = process.argv.slice(2);
 const opt = (name, dflt) => { const i = args.indexOf(name); return i >= 0 ? args[i + 1] : dflt; };
 const CACHE = opt('--cache', path.join('node_modules', '.cache', 'best-time-trends'));
 const ONLY = opt('--only', '') ? opt('--only', '').split(',') : null;
+const OFFLINE = args.includes('--offline');
 const OUT = path.join('lib', 'best-time-trends-data.js');
 fs.mkdirSync(CACHE, { recursive: true });
 
@@ -54,11 +57,13 @@ const UNIVERSAL = ['JP', 'DE', 'IT', 'NL', 'FR', 'ID', 'BR'];
 const UA = 'ScheduleForYou-best-time/1.0 (https://scheduleforyou.com)';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+class NotCached extends Error {}
 
 /** Hourly pageviews (all devices, to match Google Trends' all-device baseline) for a Wikipedia edition over the past 28 days: [{ time (unix s), value }]. */
 async function wikiHourly(project) {
   const file = path.join(CACHE, `wiki-${project}.json`);
   if (fs.existsSync(file)) return JSON.parse(fs.readFileSync(file, 'utf8'));
+  if (OFFLINE) throw new NotCached();
   const end = new Date(Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate() - 1, 23));
   const start = new Date(end.getTime() - 28 * 86400_000 + 3600_000);
   const stamp = (d) => d.toISOString().slice(0, 13).replace(/[-T]/g, '');
@@ -115,6 +120,7 @@ async function get(url, tries = 0) {
 async function timeline(topic, geo, time, tz) {
   const file = path.join(CACHE, `${geo}-${topic.replace(/\//g, '_')}-${time.replace(/\s/g, '')}.json`);
   if (fs.existsSync(file)) return JSON.parse(fs.readFileSync(file, 'utf8'));
+  if (OFFLINE) throw new NotCached();
   const req = { comparisonItem: [{ keyword: topic, geo, time }], category: 0, property: '' };
   const explore = await get(`https://trends.google.com/trends/api/explore?hl=en-US&tz=${tz}&req=${encodeURIComponent(JSON.stringify(req))}`);
   const w = explore.widgets.find((x) => x.id === 'TIMESERIES');
@@ -122,7 +128,7 @@ async function timeline(topic, geo, time, tz) {
   const data = await get(`https://trends.google.com/trends/api/widgetdata/multiline?hl=en-US&tz=${tz}&req=${encodeURIComponent(JSON.stringify(w.request))}&token=${w.token}`);
   const points = data.default.timelineData.map((p) => ({ time: Number(p.time), value: p.value[0] }));
   fs.writeFileSync(file, JSON.stringify(points));
-  await sleep(1500);
+  await sleep(4000);
   return points;
 }
 
@@ -185,8 +191,16 @@ async function main() {
   const countries = COUNTRIES.filter((c) => !ONLY || ONLY.includes(c.code));
   for (const c of countries) {
     const tz = -offsetMinutes(c.tz);
-    const activity = WIKIS[c.code] ? await activityGrid(WIKIS[c.code], c.tz) : universal;
+    let activity;
+    try {
+      activity = WIKIS[c.code] ? await activityGrid(WIKIS[c.code], c.tz) : universal;
+    } catch (e) {
+      if (!(e instanceof NotCached)) throw e;
+      console.log(`${c.code}: not fully cached, skipped`);
+      continue;
+    }
     const grids = {};
+    let complete = true;
     for (const p of BEST_TIME_PLATFORMS) {
       const topic = TOPICS[p.id];
       try {
@@ -194,11 +208,14 @@ async function main() {
         const daily = await timeline(topic, c.code, 'today 3-m', tz);
         grids[p.id] = buildGrid(hourly, daily, c.tz, activity);
       } catch (e) {
-        console.warn(`  ${c.code} ${p.id}: ${e.message}`);
-        grids[p.id] = null;
+        // A missing or refused series is not "too few searches": leave the whole country out.
+        if (!(e instanceof NotCached)) throw e;
+        complete = false;
+        break;
       }
       console.log(`${c.code} ${p.id}: ${grids[p.id] ? 'ok' : 'too few searches'}`);
     }
+    if (!complete) { console.log(`${c.code}: not fully cached, skipped`); continue; }
     const readable = Object.values(grids).filter(Boolean);
     if (readable.length) {
       const avg = readable[0].map((_, i) => mean(readable.map((g) => g[i])));

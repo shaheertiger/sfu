@@ -42,7 +42,7 @@ export async function loadBestTimePage(platformSlug, segment = '') {
   const bestDay = bestWeekday(scores);
   const best = seg.kind === 'weekday' ? topHoursOfDay(scores, seg.weekday, 5).map((h) => ({ ...h, weekday: seg.weekday })) : topSlots(scores, 5);
   const quiet = quietSlots(scores, 3);
-  const trendsMeta = { trendsKind: data.source === 'trends' ? data.trendsKind : null, fetchedAt: TRENDS_META.fetchedAt };
+  const trendsMeta = { trendsKind: data.source === 'trends' ? data.trendsKind : null, fetchedAt: TRENDS_META.fetchedAt, countryCount: TRENDS_META.countryCount };
   const copy = pageCopy({ platform: platformSlug, segment, best, bestDay, source: data.source, posts: data.posts, ...trendsMeta, at });
   const faq = pageFaq({ platform: platformSlug, segment, best, bestDay, quiet, source: data.source, ...trendsMeta, at });
   return { platform, seg, data, scores, bestDay, best, quiet, copy, faq, others, countries, at };
@@ -100,7 +100,9 @@ export default function BestTimePage({ page, segment }) {
             <BestTimeNow scores={scores} tz={local ? local.tz : null} place={local ? local.name : null} platform={platform.name} />
             <BestTimeHeatmap scores={scores} highlightDay={seg.kind === 'weekday' ? seg.weekday : null} caption={`${platform.name}${where}: how strong each hour is, 0–100, in ${local ? `${local.adj} time (${abbr})` : 'your local time'}. ${updated ? `Updated ${updated}.` : ''}`} />
             {data.source === 'trends' ? (
-              <p className={s.source}>Source: Google Trends hourly search interest in {platform.name}{local ? ` from ${local.name}` : `, averaged across ${COUNTRIES.length} countries`}{data.trendsKind === 'country' ? ' (country average: too few searches for this platform alone)' : ''}, weighted by hourly Wikipedia traffic (Wikimedia, CC0) so the hours reflect how many people are online. Local time. Refreshed {TRENDS_META.fetchedAt}; our own scheduling data replaces it automatically once there is enough of it.</p>
+              <p className={s.source}>Source: Google Trends hourly search interest in {platform.name}{local ? ` from ${local.name}` : `, averaged across the ${TRENDS_META.countryCount} countries we have Trends data for so far`}{data.trendsKind === 'country' ? ' (country average: too few searches for this platform alone)' : ''}, weighted by hourly Wikipedia traffic (Wikimedia, CC0) so the hours reflect how many people are online. Local time. Refreshed {TRENDS_META.fetchedAt}; our own scheduling data replaces it automatically once there is enough of it.</p>
+            ) : data.source === 'baseline' ? (
+              <p className={s.source}>Source: our published baseline (weekday mornings and lunch strongest, evenings next, weekends later and flatter), shown until Google Trends data or enough posts scheduled through Schedule For You are available{local ? ` for ${local.name}` : ''}. It switches automatically.</p>
             ) : (
               <p className={s.source}>Source: posts scheduled through Schedule For You, counted per local weekday and hour; the busiest slots with the best link clicks per post score highest. No individual account data is shown. <Link href="/privacy">How we handle data</Link>.</p>
             )}
