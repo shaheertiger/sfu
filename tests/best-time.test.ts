@@ -4,6 +4,7 @@ import { baselineGrid, bestWeekday, countryOfTimezone, formatHour, gridFromRows,
 import { allBestTimePages, pageCopy, pageFaq, parseSegment, siblingLinks, socialCopy, socialFaq } from '../lib/best-time-pages.js';
 import { COUNTRIES, combineScores, quietSlots } from '../lib/best-time.js';
 import { TRENDS_META, staticGrid, trendsCountries, trendsGlobalGrid, trendsGrid } from '../lib/best-time-trends.js';
+import { STUDIES, studiesFor } from '../lib/best-time-countries.js';
 import { REGIONS, convertSlot, countryLocal, dstInfo, formatOffset, nearbyCountries, offsetMinutes } from '../lib/best-time-countries.js';
 import { SPEC_PLATFORMS, allSpecPages, specBySlug } from '../lib/specs.js';
 import { INDUSTRIES, TEMPLATES, allPostIdeaPages, fill, ideasFor, ideasForDay } from '../lib/post-ideas.js';
@@ -184,4 +185,20 @@ test('countries without direct Trends data use their own Wikipedia traffic, labe
   const copy = pageCopy({ platform: 'instagram', segment: 'in-germany', best: topSlots(scoreGrid(de.grid), 5), bestDay: 0, source: 'trends', posts: 0, trendsKind: 'activity', fetchedAt: '2026-11-06', countryCount: 6 });
   assert.match(copy!.intro, /when people in Germany are online \(hourly traffic on Germany's local-language Wikipedia/);
   assert.equal(trendsGrid('instagram', 'US')!.kind, 'platform', 'directly measured countries keep their own Trends data');
+});
+
+test('independent studies: real country pages, https sources, a finding and a window for every one', () => {
+  for (const [slug, list] of Object.entries(STUDIES)) {
+    assert.ok(countryLocal(slug), `${slug} is not a country page`);
+    for (const st of list) {
+      assert.match(st.url, /^https:\/\//);
+      assert.ok(st.findings.all && st.windows.all.length, `${slug}: needs an overall finding and window`);
+      for (const k of Object.keys(st.findings)) assert.ok(st.windows[k as keyof typeof st.windows], `${slug} ${k}: finding without a window`);
+    }
+  }
+  const br = studiesFor('brazil', 'instagram')[0];
+  assert.equal(br.platformSpecific, true);
+  assert.deepEqual(br.window, [[18, 22]]);
+  assert.equal(studiesFor('brazil', 'pinterest')[0].platformSpecific, false, 'platforms the study does not cover use its overall finding');
+  assert.deepEqual(studiesFor('kenya'), []);
 });

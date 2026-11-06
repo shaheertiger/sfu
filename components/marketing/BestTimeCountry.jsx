@@ -2,7 +2,7 @@ import Link from 'next/link';
 import m from '@/components/marketing/marketing.module.css';
 import s from '@/components/marketing/best-time.module.css';
 import { WEEKDAY_NAMES, formatHour } from '@/lib/best-time';
-import { abbrLabel, convertSlot, convertedLabel, currentAbbr, formatClock, formatHour24, formatOffset, nearbyCountries, offsetMinutes, referenceZones } from '@/lib/best-time-countries';
+import { abbrLabel, studiesFor, convertSlot, convertedLabel, currentAbbr, formatClock, formatHour24, formatOffset, nearbyCountries, offsetMinutes, referenceZones } from '@/lib/best-time-countries';
 import { zoneSentence } from '@/lib/best-time-pages';
 
 /**
@@ -97,3 +97,35 @@ export function NearbySection({ local, heading, intro, href, label, at }) {
 export const AnswerBanner = ({ children }) => <p className={s.banner}>{children}</p>;
 
 export { cap };
+
+/**
+ * "What other studies found": independent research for the country next to our own result.
+ * Says plainly whether our best slot falls inside the study's strongest window.
+ */
+export function StudiesSection({ local, platformId = null, subject, best, source }) {
+  const studies = studiesFor(local.slug, platformId);
+  if (!studies.length) return null;
+  const top = best[0];
+  const inside = (w) => w.some(([a, b]) => top.hour >= a && top.hour < b);
+  const edge = (w) => w.some(([a, b]) => top.hour === b || top.hour === a - 1);
+  return (
+    <section className={m.section}>
+      <h2 id="other-studies">What Other Studies Found in {local.name}</h2>
+      <p>An independent check on the times above, from research that measured people in {local.name} directly:</p>
+      {studies.map((st) => (
+        <div key={st.url}>
+          <p><strong>{st.publisher}</strong>, <a href={st.url} target="_blank" rel="noopener noreferrer">{st.title}</a>{String(st.title).includes(String(st.year)) ? '' : ` (${st.year})`}: {st.method}. It found that {st.finding}.</p>
+          <blockquote><p>
+            {source === 'baseline'
+              ? <>This page still shows our general baseline for {local.name}, so treat this study as the better guide until our own data for {local.name} arrives.</>
+              : inside(st.window)
+                ? <><strong>How we compare:</strong> our strongest {subject} slot, {WEEKDAY_NAMES[top.weekday]} at {formatHour(top.hour)}, falls inside the window this study names, so the two sources agree.</>
+                : edge(st.window)
+                  ? <><strong>How we compare:</strong> our strongest {subject} slot, {WEEKDAY_NAMES[top.weekday]} at {formatHour(top.hour)}, sits right at the edge of the window this study names, an hour apart at most, so the two sources broadly agree.</>
+                  : <><strong>How we compare:</strong> our strongest {subject} slot, {WEEKDAY_NAMES[top.weekday]} at {formatHour(top.hour)}, falls outside the window this study names. Test both for a few weeks and keep whichever works for your followers.</>}
+          </p></blockquote>
+        </div>
+      ))}
+    </section>
+  );
+}

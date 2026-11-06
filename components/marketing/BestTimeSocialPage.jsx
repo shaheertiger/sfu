@@ -2,7 +2,7 @@ import Link from 'next/link';
 import JsonLd from '@/components/JsonLd';
 import BestTimeHeatmap from '@/components/marketing/BestTimeHeatmap';
 import BestTimeNow from '@/components/marketing/BestTimeNow';
-import { AnswerBanner, NearbySection, PlaceSection, Table, TimezoneSection } from '@/components/marketing/BestTimeCountry';
+import { AnswerBanner, NearbySection, PlaceSection, StudiesSection, Table, TimezoneSection } from '@/components/marketing/BestTimeCountry';
 import { Breadcrumbs, MarketingPage, TrialCta } from '@/components/marketing/Chrome';
 import m from '@/components/marketing/marketing.module.css';
 import s from '@/components/marketing/best-time.module.css';
@@ -136,6 +136,7 @@ export default function BestTimeSocialPage({ page }) {
 
           <TimezoneSection local={local} best={best} at={at} />
           <PlaceSection local={local} subject="Social Media" quiet={quiet} />
+          <StudiesSection local={local} subject="social media" best={best} source={fromTrends || live ? 'data' : 'baseline'} />
 
           <section className={m.section}>
             <h2 id="how-to-schedule">How to Schedule Posts for {local.adj} Time (4 Steps)</h2>

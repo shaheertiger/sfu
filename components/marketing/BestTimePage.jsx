@@ -2,7 +2,7 @@ import Link from 'next/link';
 import JsonLd from '@/components/JsonLd';
 import BestTimeHeatmap from '@/components/marketing/BestTimeHeatmap';
 import BestTimeNow from '@/components/marketing/BestTimeNow';
-import { AnswerBanner, NearbySection, PlaceSection, Table, TimezoneSection } from '@/components/marketing/BestTimeCountry';
+import { AnswerBanner, NearbySection, PlaceSection, StudiesSection, Table, TimezoneSection } from '@/components/marketing/BestTimeCountry';
 import { Breadcrumbs, MarketingPage, TrialCta } from '@/components/marketing/Chrome';
 import m from '@/components/marketing/marketing.module.css';
 import s from '@/components/marketing/best-time.module.css';
@@ -156,6 +156,7 @@ export default function BestTimePage({ page, segment }) {
 
           {local && <TimezoneSection local={local} best={best} at={at} />}
           {local && <PlaceSection local={local} subject={platform.name} quiet={quiet} />}
+          {local && <StudiesSection local={local} platformId={platform.id} subject={platform.name} best={best} source={data.source} />}
 
           {local && others && (
             <section className={m.section}>
