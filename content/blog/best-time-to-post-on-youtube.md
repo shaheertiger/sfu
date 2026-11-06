@@ -176,6 +176,8 @@ No. Long videos keep earning views through search and suggestions for months. Ti
 
 You can only pick one upload time, so choose the block on your Studio chart that covers the most viewers. The chart already accounts for where they are.
 
+If your channel is new and the chart is empty, start with our [YouTube best-time heatmap](/best-time-to-post/youtube) or a country page such as [YouTube in the USA](/best-time-to-post/youtube/in-usa) or [YouTube in Germany](/best-time-to-post/youtube/in-germany).
+
 ### Can I schedule YouTube videos in advance?
 
 Yes. In YouTube Studio, set Visibility to Schedule and choose a date and time. Schedulers like Schedule For You can also publish to YouTube alongside other platforms.

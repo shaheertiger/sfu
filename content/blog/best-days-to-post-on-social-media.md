@@ -152,6 +152,8 @@ If your followers are spread across continents, there may be no single day and t
 3. **Lean on long-life formats.** Pinterest pins, YouTube videos and TikTok videos keep finding viewers for days, so the exact day matters less than it does on X or Threads.
 4. **Separate the platforms.** Your best LinkedIn day may be a weak Pinterest day. Plan a separate schedule for each platform based on its own data.
 
+To see every platform side by side for one country, use our country pages, such as the [best time to post on social media in Singapore](/best-time-to-post/social-media/in-singapore), [South Africa](/best-time-to-post/social-media/in-south-africa) or [the UK](/best-time-to-post/social-media/in-uk). The [best time to post hub](/best-time-to-post) lists all 25 countries.
+
 ## Post on Your Best Days Without Being Online (Schedule For You)
 
 Finding your best days is half the job. Actually posting on them, every week, is where most plans fall apart.

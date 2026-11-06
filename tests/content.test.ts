@@ -6,6 +6,7 @@ import { getComparisons, getContentPage, getPlatformPages, getPosts, getStaticPa
 import { TOOLS, toolBySlug } from '../lib/tools/registry.js';
 import { PLATFORM_PAGES } from '../lib/platform-pages.js';
 import { LANDING_PAGES } from '../lib/landing-pages.js';
+import { BEST_TIME_ROOT, allBestTimePages, pagePath as bestTimePath } from '../lib/best-time-pages.js';
 
 const ROOT = path.join(process.cwd(), 'content');
 const files = (dir: string) => fs.readdirSync(path.join(ROOT, dir)).filter((f) => f.endsWith('.md')).map((f) => [f.slice(0, -3), fs.readFileSync(path.join(ROOT, dir, f), 'utf8')] as const);
@@ -41,12 +42,14 @@ test('articles have metadata, one mid-article CTA and an FAQ', () => {
 test('internal links point at pages that exist', () => {
   const tools = new Set(TOOLS.map((t) => t.slug));
   const posts = new Set(files('blog').map(([s]) => s));
+  const bestTime = new Set([BEST_TIME_ROOT, ...allBestTimePages().map((p) => bestTimePath(p.platform, p.segment))]);
   const ok = (href: string) => {
     const [p] = href.split('#');
     if (['', '/', '/signup', '/login', '/tools', '/blog', '/compare', '/about', '/later-alternative', '/docs', '/demo'].includes(p)) return true;
     if (p.startsWith('/images/')) return fs.existsSync(path.join(process.cwd(), 'public', p));
     if (PLATFORM_PAGES.some((x) => p === `/${x.slug}`)) return true;
     if (LANDING_PAGES.some((x) => p === `/${x.slug}`)) return true;
+    if (p.startsWith(BEST_TIME_ROOT)) return bestTime.has(p);
     let m = /^\/tools\/([a-z0-9-]+)$/.exec(p);
     if (m) return tools.has(m[1]);
     m = /^\/blog\/([a-z0-9-]+)$/.exec(p);

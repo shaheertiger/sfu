@@ -97,6 +97,8 @@ Check **Top locations** in your audience Insights. If most of your followers are
 
 For example, if you're in New York and most of your followers are in Los Angeles, a 9 a.m. peak on your chart may really mean 6 a.m. for them. That might be fine or might be too early, depending on the account.
 
+Our [Instagram on Monday heatmap](/best-time-to-post/instagram/monday) ranks every Monday hour, and the country pages, like [Instagram in Indonesia](/best-time-to-post/instagram/in-indonesia), convert each slot into other time zones for you.
+
 ### If Your Audience Is Spread Out
 
 For a global audience, you won't find one perfect hour. Two practical options:
