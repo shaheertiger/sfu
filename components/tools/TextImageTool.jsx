@@ -366,8 +366,8 @@ export function TextImageTool({ config = {} }) {
             {BG_SWATCHES.map((c) => (
               <button key={c} type="button" className={s.swatch} aria-pressed={bg === c} aria-label={c} style={{ background: c, borderColor: bg === c ? undefined : '#2a2e34' }} onClick={() => setBg(c)} />
             ))}
+            <input className={`${s.color} ${s.swatchColor}`} type="color" aria-label={tx.bg} value={bg} onChange={(e) => setBg(e.target.value)} />
           </div>
-          <input className={s.color} type="color" aria-label={tx.bg} value={bg} onChange={(e) => setBg(e.target.value)} />
         </div>
       )}
 

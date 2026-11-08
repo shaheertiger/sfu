@@ -4481,6 +4481,7 @@ class Component extends DCLogic {
           this.setState({ screen: id, selecting: false, selected: [], drawer: false, calPost: null });
         return {
           sideCols: col ? '64px minmax(0,1fr)' : '236px minmax(0,1fr)',
+          sideAttr: col ? 'col' : 'full',
           sideTxt: col ? 'none' : 'inline',
           sideBlock: col ? 'none' : 'flex',
           sideArrow: col ? '»' : '«',
