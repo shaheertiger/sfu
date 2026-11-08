@@ -146,8 +146,13 @@ textarea{resize:vertical}
   .sfy-trow > span[data-l]{text-align:left!important;display:flex;flex-direction:column;gap:1px}
   .sfy-trow > span[data-l]::before{content:attr(data-l);font:500 11px Geist,system-ui,sans-serif;color:#9aa0a8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .sfy-trow{column-gap:10px!important}
+  /* Up next cards run to the screen edge instead of being cut at the page padding. */
+  .sfy-upnext{margin:0 -16px!important;padding:4px 16px 18px!important;scroll-padding-inline:16px;grid-auto-columns:min(80vw,300px)!important}
 }
 @media (max-width:400px){.sfy-trow{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+/* Collapsed sidebar: the failed-posts count sits on the icon's corner instead of being cut off. */
+.sfy-shell[data-side="col"] .sfy-side button{position:relative}
+.sfy-shell[data-side="col"] .sfy-navalert{position:absolute;top:1px;left:20px;min-width:16px!important;height:16px!important;padding:0 4px!important;border-radius:8px!important;background:#dc3545!important;color:#fff!important;font-size:10px!important;font-weight:700!important;box-shadow:0 0 0 2px #0f1012}
 /* Focus rings are for the keyboard: a mouse click doesn't leave one behind. */
 .sfy-shell :focus:not(:focus-visible){outline:none!important}
 /* Very wide screens: keep the page centred next to the sidebar. */
@@ -161,7 +166,7 @@ textarea{resize:vertical}
 @keyframes toastIn{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}
 </style>
 </helmet>
-<div class="sfy-shell" data-drawer="{{ drawerAttr }}" style="display:grid;grid-template-columns:{{ sideCols }};min-height:100vh;transition:grid-template-columns .2s">
+<div class="sfy-shell" data-drawer="{{ drawerAttr }}" data-side="{{ sideAttr }}" style="display:grid;grid-template-columns:{{ sideCols }};min-height:100vh;transition:grid-template-columns .2s">
   <aside class="sfy-side" data-screen-label="Sidebar" aria-label="Main navigation" style="background:#0f1012;color:#f8f9f6;padding:14px 10px;position:sticky;top:0;height:100vh;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;display:flex;flex-direction:column;gap:2px;border-right:1px solid #1c1f23">
     <div style="display:flex;align-items:center;gap:8px;padding:4px 4px 12px">
       <button onClick="{{ toggleWs }}" style="flex:1;min-width:0;display:flex;align-items:center;gap:9px;padding:5px;border-radius:8px;border:0;background:transparent;color:#f8f9f6;cursor:pointer;text-align:left" style-hover="background:#1c1f23">
@@ -181,7 +186,7 @@ textarea{resize:vertical}
           <span style="width:18px;height:18px;flex:none;background:{{ n.icon }} center/contain no-repeat"></span>
           <span style="flex:1;display:{{ sideTxt }};white-space:nowrap">{{ n.label }}</span>
           <span style="display:{{ sideTxt }};font-size:12px;color:#7d828a">{{ n.count }}</span>
-          <sc-if value="{{ n.hasAlert }}" hint-placeholder-val="{{ false }}"><span title="Failed posts" style="min-width:18px;height:18px;padding:0 5px;border-radius:6px;background:#3a1d1f;color:#ff8a8f;font-size:11px;font-weight:600;display:grid;place-items:center">{{ n.alert }}</span></sc-if>
+          <sc-if value="{{ n.hasAlert }}" hint-placeholder-val="{{ false }}"><span title="Failed posts" class="sfy-navalert" style="min-width:18px;height:18px;padding:0 5px;border-radius:6px;background:#3a1d1f;color:#ff8a8f;font-size:11px;font-weight:600;display:grid;place-items:center">{{ n.alert }}</span></sc-if>
         </button>
       </sc-for>
     </sc-for>
@@ -191,7 +196,7 @@ textarea{resize:vertical}
           <span style="width:18px;height:18px;flex:none;background:{{ n.icon }} center/contain no-repeat"></span>
           <span style="flex:1;display:{{ sideTxt }};white-space:nowrap">{{ n.label }}</span>
           <span style="display:{{ sideTxt }};font-size:12px;color:#7d828a">{{ n.count }}</span>
-          <sc-if value="{{ n.hasAlert }}" hint-placeholder-val="{{ false }}"><span title="Failed posts" style="min-width:18px;height:18px;padding:0 5px;border-radius:6px;background:#3a1d1f;color:#ff8a8f;font-size:11px;font-weight:600;display:grid;place-items:center">{{ n.alert }}</span></sc-if>
+          <sc-if value="{{ n.hasAlert }}" hint-placeholder-val="{{ false }}"><span title="Failed posts" class="sfy-navalert" style="min-width:18px;height:18px;padding:0 5px;border-radius:6px;background:#3a1d1f;color:#ff8a8f;font-size:11px;font-weight:600;display:grid;place-items:center">{{ n.alert }}</span></sc-if>
         </button>
     </sc-for>
     <button class="sfy-collapse" onClick="{{ toggleSide }}" aria-label="{{ sideToggleLabel }}" title="{{ sideToggleLabel }}" style="display:flex;align-items:center;gap:11px;padding:7px 9px;border-radius:8px;border:0;cursor:pointer;text-align:left;font-weight:500;font-size:14px;background:transparent;color:#a3a9b4" style-hover="background:#1c1f23;color:#f8f9f6">
@@ -295,7 +300,7 @@ textarea{resize:vertical}
               <button onClick="{{ goCompose }}" style="margin-top:4px;padding:8px 14px;border-radius:10px;border:0;background:#141619;color:#fff;cursor:pointer;font-weight:500">Write a post</button>
             </div>
           </sc-if>
-          <div ref="{{ upRef }}" style="scroll-behavior:smooth;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(280px,300px);gap:14px;overflow-x:auto;padding:4px 2px 18px;margin:0 -2px;scroll-snap-type:x mandatory;scrollbar-width:none">
+          <div ref="{{ upRef }}" class="sfy-upnext" style="scroll-behavior:smooth;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(280px,300px);gap:14px;overflow-x:auto;padding:4px 2px 18px;margin:0 -2px;scroll-snap-type:x mandatory;scrollbar-width:none">
             <sc-for list="{{ upNext }}" as="c" hint-placeholder-count="4">
               <button onClick="{{ c.open }}" style="scroll-snap-align:start;display:flex;flex-direction:column;border:1px solid #e7e5df;border-radius:18px;background:#fff;padding:0;cursor:pointer;text-align:left;overflow:hidden;min-height:300px;transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .25s" style-hover="transform:translateY(-4px);box-shadow:0 24px 40px -24px rgba(20,23,26,.45)">
                 <div style="height:130px;flex:none;background:{{ c.cover }};display:flex;flex-direction:column;justify-content:space-between;padding:14px;color:{{ c.coverFg }}">

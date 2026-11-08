@@ -1,7 +1,7 @@
 export const metadata = { title: 'Page not found' };
 
-const page = { minHeight: '100vh', display: 'grid', placeItems: 'center', padding: 24, background: '#f6f6f3', color: '#15171a', fontFamily: 'Geist, -apple-system, Segoe UI, Helvetica, Arial, sans-serif' };
-const card = { width: '100%', maxWidth: 440, background: '#fff', border: '1px solid #e7e7e2', borderRadius: 16, padding: 28, display: 'grid', gap: 12 };
+const page = { boxSizing: 'border-box', minHeight: '100dvh', display: 'grid', placeItems: 'center', padding: 24, background: '#f6f6f3', color: '#15171a', fontFamily: 'Geist, -apple-system, Segoe UI, Helvetica, Arial, sans-serif' };
+const card = { boxSizing: 'border-box', width: '100%', maxWidth: 440, background: '#fff', border: '1px solid #e7e7e2', borderRadius: 16, padding: 28, display: 'grid', gap: 12 };
 const link = { padding: '11px 16px', borderRadius: 10, color: '#15171a', textDecoration: 'none', fontWeight: 600 };
 
 export default function NotFound() {
