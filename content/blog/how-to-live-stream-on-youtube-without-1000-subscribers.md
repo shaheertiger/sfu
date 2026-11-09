@@ -1,7 +1,7 @@
 ---
-title: "How to Live Stream on YouTube Without 1,000 Subscribers (0 Works on Desktop)"
+title: "Live Stream on YouTube Under 1,000 Subs: 0 Needed on Desktop"
 description: You can live stream on YouTube without 1,000 subscribers from a computer. The requirements, how to go live by webcam or encoder, and the separate rules for mobile.
-h1: "How to Live Stream on YouTube Without 1,000 Subscribers (0 Works on Desktop)"
+h1: "Live Stream on YouTube Under 1,000 Subs: 0 Needed on Desktop"
 category: YouTube
 excerpt: The 1,000-subscriber rule only ever applied to mobile streaming. From a computer, you can go live with a webcam or streaming software once your channel is verified, even with zero subscribers.
 keyword: live stream youtube without 1000 subscribers

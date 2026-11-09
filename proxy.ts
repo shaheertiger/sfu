@@ -11,7 +11,13 @@ const DESCRIBED_BY = '</llms.txt>; rel="describedby"; type="text/plain", </llms-
 // Neon Auth's middleware also refreshes the session cookie. Real checks happen in the API.
 let gate: ((req: NextRequest) => Promise<Response>) | null = null;
 
+/** Pages retired for good (off-product topics). 410 tells crawlers to drop them; no redirect target exists. */
+const GONE = new Set(['/blog/discord-bio', '/blog/how-to-fix-discord-stuck-on-starting', '/blog/how-to-report-a-subreddit', '/blog/reddit-shadowban']);
+
 export async function proxy(req: NextRequest) {
+  if (GONE.has(req.nextUrl.pathname.replace(/\.md$/, '').replace(/\/$/, ''))) {
+    return new NextResponse('410 Gone: this page has been retired.\n', { status: 410, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+  }
   // Markdown versions of public pages: /<path>.md, Accept: text/markdown, or an AI agent's User-Agent.
   const path = req.nextUrl.pathname;
   const accept = req.headers.get('accept');

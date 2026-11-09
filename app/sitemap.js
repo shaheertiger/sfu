@@ -6,6 +6,7 @@ import { toolBySlug } from '@/lib/tools/registry';
 import { allLocalizedPages, hreflangMap } from '@/lib/i18n-pages';
 import { BEST_TIME_ROOT, allBestTimePages, pagePath as bestTimePath } from '@/lib/best-time-pages';
 import { SPECS_ROOT, SPEC_PLATFORMS, allSpecPages, specPath } from '@/lib/specs';
+import { NOTIFY_PLATFORMS, NOTIFY_ROOT, allNotifyPages, notifyPath } from '@/lib/notify';
 import { INDUSTRIES, POST_IDEAS_ROOT, allPostIdeaPages, postIdeasPath } from '@/lib/post-ideas';
 
 /** Public pages worth indexing. Signed-in pages, previews and utility pages are left out on purpose. */
@@ -37,6 +38,9 @@ export default function sitemap() {
     { url: `${base}${SPECS_ROOT}`, changeFrequency: 'monthly', priority: 0.7 },
     ...SPEC_PLATFORMS.map((p) => ({ url: `${base}${specPath(p.slug)}`, changeFrequency: 'monthly', priority: 0.7 })),
     ...allSpecPages().map((p) => ({ url: `${base}${specPath(p.platform, p.spec)}`, changeFrequency: 'monthly', priority: 0.6 })),
+    { url: `${base}${NOTIFY_ROOT}`, changeFrequency: 'monthly', priority: 0.7 },
+    ...NOTIFY_PLATFORMS.map((p) => ({ url: `${base}${notifyPath(p.slug)}`, changeFrequency: 'monthly', priority: 0.7 })),
+    ...allNotifyPages().map((p) => ({ url: `${base}${notifyPath(p.platform, p.action)}`, changeFrequency: 'monthly', priority: 0.6 })),
     { url: `${base}${POST_IDEAS_ROOT}`, changeFrequency: 'monthly', priority: 0.7 },
     ...allPostIdeaPages().map((p) => ({ url: `${base}${postIdeasPath(p.industry, p.weekday)}`, changeFrequency: 'monthly', priority: p.weekday ? 0.5 : 0.6 })),
     { url: `${base}/compare`, changeFrequency: 'monthly', priority: 0.5 },

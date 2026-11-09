@@ -165,7 +165,7 @@ Styled letters from a [Reddit font generator](/tools/reddit-font-generator) look
 
 ### Respect subreddit rules
 
-Some subreddits remove posts under a minimum length or titles in a certain format. If a post vanishes, it may be an automatic removal; our guide to the [Reddit shadowban](/blog/reddit-shadowban) explains how to tell. To flag a community that breaks Reddit's rules, see [how to report a subreddit](/blog/how-to-report-a-subreddit).
+Some subreddits remove posts under a minimum length or titles in a certain format. If a post vanishes, it is usually an automatic removal by AutoModerator rather than a site-wide shadowban: check the subreddit's rules and message its moderators.
 
 ## Frequently Asked Questions
 

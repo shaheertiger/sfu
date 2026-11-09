@@ -1,7 +1,7 @@
 ---
-title: "How to Make Your Twitter (X) Account Public: 1 Setting, but Check Old Posts First"
+title: "Make Your X Account Public: 1 Setting (Check Old Posts First)"
 description: Make your Twitter account public on X by turning off "Protect your posts" on the web, iPhone or Android, and see what changes, including your old protected posts.
-h1: "How to Make Your Twitter (X) Account Public: 1 Setting, but Check Old Posts First"
+h1: "Make Your X Account Public: 1 Setting (Check Old Posts First)"
 category: X
 excerpt: Turn off "Protect your posts" under Settings and privacy → Privacy and safety → Audience and tagging. Here are the steps for web and app, and what changes the moment your account goes public.
 keyword: how to make twitter account public

@@ -1,7 +1,7 @@
 ---
-title: "How to Check if an Instagram Username Is Available (Search Can't Tell You)"
+title: "Is an Instagram Username Available? Search Can't Tell You"
 description: How to check if an Instagram username is available: test it in Edit profile, visit the profile URL, search, and learn why some free-looking names are taken.
-h1: "How to Check if an Instagram Username Is Available (Search Can't Tell You)"
+h1: "Is an Instagram Username Available? Search Can't Tell You"
 category: Instagram
 excerpt: The only reliable check is typing the name into Edit profile. Here's how to test a username, why some free-looking names are taken, and what Instagram's rules allow.
 keyword: how to check if an instagram username is available

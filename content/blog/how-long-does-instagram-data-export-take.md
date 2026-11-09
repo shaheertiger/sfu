@@ -1,7 +1,7 @@
 ---
-title: How Long Does an Instagram Data Export Take? Minutes to Days (2026)
+title: "Instagram Data Export Takes Minutes to Days: Why (2026)"
 description: How long an Instagram data export takes, why Instagram gives no fixed time, how to make yours faster, what to do if it seems stuck, and why the download link expires.
-h1: How Long Does an Instagram Data Export Take? Minutes to Days (2026)
+h1: "Instagram Data Export Takes Minutes to Days: Why (2026)"
 category: Instagram
 excerpt: Instagram gives no fixed time for a data export. A small followers-only request is often ready fast, a full archive can take days. Here's how to speed it up and what to do if it stalls.
 keyword: how long does instagram export take

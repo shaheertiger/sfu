@@ -1,7 +1,7 @@
 ---
-title: "How to Connect Google Business Profile in 5 Minutes (Plus Fixes)"
+title: "Connect Google Business Profile: 5 Minutes (Plus the Fixes)"
 description: Connect your Google Business Profile to Schedule For You in about 5 minutes. Who can connect, the exact steps, what you can post and fixes for common errors.
-h1: "How to Connect Google Business Profile in 5 Minutes (Plus Fixes)"
+h1: "Connect Google Business Profile: 5 Minutes (Plus the Fixes)"
 category: Guides
 excerpt: If you're an owner or manager of a verified Business Profile, you can connect it in a few minutes and schedule Google updates alongside your social posts.
 keyword: connect google business profile

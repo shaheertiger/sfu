@@ -171,7 +171,7 @@ Reddit search treats 𝗴𝘂𝗶𝗱𝗲 and "guide" as different words. Bold a
 
 ### Follow subreddit rules
 
-Many communities remove decorative or clickbait titles, often through AutoModerator. Check the rules first. If posts disappear without explanation, read our guide to the [Reddit shadowban](/blog/reddit-shadowban).
+Many communities remove decorative or clickbait titles, often through AutoModerator. Check the rules first. If posts disappear without explanation, the [shadowban checker](/tools/shadowban-checker) tells a removal from a site-wide ban.
 
 ### Keep an eye on length
 

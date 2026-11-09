@@ -1,7 +1,7 @@
 ---
-title: "How to See Who Liked a Comment on Instagram: Don't Tap the Heart"
+title: "Who Liked a Comment on Instagram? Long-Press, Don't Tap"
 description: See who liked a comment on Instagram by pressing and holding the heart or opening the like count, not tapping it. Plus fixes for when the list won't open.
-h1: "How to See Who Liked a Comment on Instagram: Don't Tap the Heart"
+h1: "Who Liked a Comment on Instagram? Long-Press, Don't Tap"
 category: Instagram
 excerpt: A quick tap on the heart just likes the comment. Press and hold it, or open the like count, to see everyone who liked it, plus fixes for when it won't work.
 keyword: how to see who liked a comment on instagram

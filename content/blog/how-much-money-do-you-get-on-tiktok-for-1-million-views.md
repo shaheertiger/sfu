@@ -1,7 +1,7 @@
 ---
-title: "How Much Money Do You Get on TikTok for 1 Million Views? ($0 Unless They Qualify, 2026)"
+title: "TikTok Pay for 1 Million Views: $0 Unless Qualified (2026)"
 description: How TikTok payout per view really works in 2026, with Creator Rewards rules, qualified views, RPM, worked examples for 1 million views and other ways creators earn.
-h1: "How Much Money Do You Get on TikTok for 1 Million Views? ($0 Unless They Qualify, 2026)"
+h1: "TikTok Pay for 1 Million Views: $0 Unless Qualified (2026)"
 category: TikTok
 excerpt: There's no fixed TikTok payout per view. A million views can earn $0 or a meaningful amount, depending on video length, qualified views and RPM. Here's the math, with clearly hypothetical examples.
 keyword: tiktok payout per view

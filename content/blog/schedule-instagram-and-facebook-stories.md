@@ -1,7 +1,7 @@
 ---
-title: "How to Schedule Instagram Stories (and Facebook Stories): 2 Ways, 1 Catch"
+title: "Schedule Instagram Stories: 2 Ways, 1 Catch (Facebook Too)"
 description: How to schedule Instagram Stories and Facebook Page Stories with Meta Business Suite or a scheduler, the sticker catch with each method, and a fair comparison.
-h1: "How to Schedule Instagram Stories and Facebook Stories: 2 Ways, and the Sticker Catch"
+h1: "Schedule Instagram Stories: 2 Ways, 1 Catch (Facebook Too)"
 category: Guides
 excerpt: Schedule Instagram Stories and Facebook Page Stories in Meta Business Suite or with a scheduler such as Schedule For You. How each works, what you lose when scheduling, and which fits your week.
 keyword: how to schedule instagram stories

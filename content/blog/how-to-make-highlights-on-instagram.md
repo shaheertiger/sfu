@@ -1,7 +1,7 @@
 ---
-title: "How to Make Highlights on Instagram (Even Without Posting a Story)"
+title: "Make Instagram Highlights in 4 Taps (No Story Needed)"
 description: How to make Instagram highlights from your story or archive, add highlight covers, edit or reorder them, and make highlights without posting a new public story.
-h1: "How to Make Highlights on Instagram: 2 Ways, Plus the No-Story Trick"
+h1: "Make Instagram Highlights in 4 Taps (No Story Needed)"
 category: Instagram
 excerpt: Highlights keep stories on your profile after 24 hours. Here's how to create one from a story or your archive, add a cover, and edit, reorder or delete highlights.
 keyword: how to make highlights on instagram
