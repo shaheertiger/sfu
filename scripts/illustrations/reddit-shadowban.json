@@ -1,9 +1,0 @@
-{
-  "cards": [
-    { "name": "hero", "type": "hero", "dark": true, "kicker": "Reddit guide", "title": "The **1-minute** Reddit shadowban test", "sub": "Open your profile in a private window. If it loads, you’re not shadowbanned site-wide.", "chips": ["Logged-out profile", "Subreddit or site-wide?", "Appeal", "Modmail"] },
-    { "name": "types", "type": "versus", "kicker": "Which restriction?", "title": "Site-wide vs **one subreddit**", "left": { "label": "Reddit-wide", "tone": "bad", "items": ["Shadowban: profile “not found”", "Suspension: you get a notice", "Appeal through Reddit"] }, "right": { "label": "One subreddit", "tone": "neutral", "items": ["Subreddit ban: a message", "AutoMod: silent removal", "Ask the mods via modmail"] } },
-    { "name": "tests", "type": "steps", "kicker": "4 tests", "title": "Start with **your logged-out profile**", "steps": [ { "title": "Profile", "text": "Private window. Does it load?", "highlight": true }, { "title": "A comment", "text": "Missing in one subreddit only?" }, { "title": "r/ShadowBan", "text": "A volunteer bot’s second opinion." }, { "title": "Inbox", "text": "Ban or suspension messages." } ] },
-    { "name": "unban", "type": "steps", "kicker": "Subreddit bans", "title": "Modmail, **not DMs**", "steps": [ { "title": "Read the rules", "text": "Find the one you broke." }, { "title": "Modmail", "text": "Message the mods, not one mod.", "highlight": true }, { "title": "Be brief", "text": "Name the post. Acknowledge it." }, { "title": "Accept it", "text": "No new accounts to evade." } ] },
-    { "name": "bottom-line", "type": "callout", "kicker": "The bottom line", "quote": "Most missing posts are **one subreddit’s filter**, not a site-wide ban.", "by": "Test logged out first, then appeal once, for free." }
-  ]
-}

@@ -59,7 +59,7 @@ Display names allow up to 32 characters, and styled characters count toward that
 
 ### Custom status and About Me
 
-A custom status can be 128 characters and your About Me 190. A short styled tagline in either one stands out on your profile card. Want ideas for what to write? See [how to write a Discord bio](/blog/discord-bio) or try the [Discord bio generator](/tools/discord-bio-generator).
+A custom status can be 128 characters and your About Me 190. A short styled tagline in either one stands out on your profile card. Want ideas for what to write? Try the [Discord bio generator](/tools/discord-bio-generator).
 
 ### Server, category, role and channel names
 

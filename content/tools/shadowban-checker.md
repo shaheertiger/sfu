@@ -65,7 +65,7 @@ YouTube uses strikes and warnings rather than shadowbans, shown in YouTube Studi
 Facebook's Page status (or Account status for a profile) lists content that can't be recommended and other restrictions. Borderline, misleading or fact-checked posts are shown to fewer people. See the [Facebook shadowban guide](/blog/facebook-shadowban).
 
 ### Reddit
-Reddit is the one platform with a true site-wide shadowban: your profile looks missing to everyone else while you can still post. Removals in one subreddit are moderator or AutoModerator actions instead. See the [Reddit shadowban guide](/blog/reddit-shadowban).
+Reddit is the one platform with a true site-wide shadowban: your profile looks missing to everyone else while you can still post. Removals in one subreddit are moderator or AutoModerator actions instead.
 
 ## How to get unshadowbanned
 There's no button that lifts a shadowban, but the same steps work on every platform.

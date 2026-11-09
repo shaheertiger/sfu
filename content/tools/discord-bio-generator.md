@@ -50,7 +50,7 @@ Nitro members can customize their profile for individual servers at the time of 
 A matching banner and avatar make the bio feel complete. The [Discord banner resizer](/tools/discord-banner-resizer) crops images to 680×240, and the [Discord name generator](/tools/discord-name-generator) helps if you're also changing your display name.
 
 ### Discord's rules still apply
-Your About Me must follow Discord's Community Guidelines, and individual servers may have stricter rules about self-promotion. For more profile ideas, read our guide to the [Discord bio](/blog/discord-bio).
+Your About Me must follow Discord's Community Guidelines, and individual servers may have stricter rules about self-promotion.
 
 ## Discord About Me ideas
 Swap in your own games, tools and time zone.

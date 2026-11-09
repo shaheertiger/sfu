@@ -1,7 +1,7 @@
 ---
-title: "How to See TikTok Drafts (They're on Your Phone, Not Your Account)"
+title: "See TikTok Drafts: Profile Tab, Stored on Your Phone Only"
 description: See your TikTok drafts on your profile, learn why drafts disappear when you switch phones or reinstall, and back them up to your device before you lose them.
-h1: "How to See TikTok Drafts (They're on Your Phone, Not Your Account)"
+h1: "See TikTok Drafts: Profile Tab, Stored on Your Phone Only"
 category: TikTok
 excerpt: TikTok drafts sit in a folder on your profile but are stored on your phone, not your account. Here's how to find them, back them up and fix missing drafts.
 keyword: how to see tiktok drafts

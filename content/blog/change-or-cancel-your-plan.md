@@ -1,7 +1,7 @@
 ---
-title: How to Cancel a Social Media Scheduler Subscription (Keep Your Posts)
+title: "Cancel a Scheduler Subscription: 3 Steps, Your Posts Stay"
 description: Cancel, change or downgrade your Schedule For You plan from Billing in about two minutes, cancel a trial before day 8, and keep your posts, drafts and media.
-h1: How to Cancel a Social Media Scheduler Subscription (and Keep Your Posts)
+h1: "Cancel a Scheduler Subscription: 3 Steps, Your Posts Stay"
 category: Guides
 excerpt: In Schedule For You, the workspace owner opens Billing to switch plans, update the card, see invoices or cancel. Here's each step, what happens to your posts, and what to check before you downgrade.
 keyword: how to cancel social media scheduler subscription

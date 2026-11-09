@@ -21,7 +21,7 @@ A regular Discord message can be up to 2,000 characters, or 4,000 if you have Ni
 The 2,000-character cap applies to each message you send in a channel or DM. Nitro raises it to 4,000. If you're writing announcements or rules for a server, the lower limit is the one to plan around, because whoever posts the next update may not have Nitro.
 
 ### About Me and custom status
-About Me is the short section on your profile card, capped at 190 characters. A custom status is the line under your name in the member list, capped at 128. For help wording a profile, see our guide to writing a [Discord bio](/blog/discord-bio).
+About Me is the short section on your profile card, capped at 190 characters. A custom status is the line under your name in the member list, capped at 128. For help wording a profile, try the [Discord bio generator](/tools/discord-bio-generator).
 
 ### Display name vs. username
 Your username is your unique account name and has strict character rules. Your display name is what people see in chat. It allows spaces, capitals and emoji, up to 32 characters.

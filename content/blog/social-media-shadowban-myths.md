@@ -129,7 +129,7 @@ Something a user does, not the platform. Instagram's **Restrict** is the best-kn
 3. **Compare the last two weeks with the month before**, not one post with the last.
 4. **Use our free [shadowban checker](/tools/shadowban-checker)**, which walks you through the checks for X, Instagram, TikTok, YouTube, Facebook and Reddit. It can't see inside any platform, and neither can any other site.
 
-For platform specifics, see [Instagram](/blog/instagram-shadowban), [TikTok](/blog/tiktok-shadowban), [Facebook](/blog/facebook-shadowban) and [Reddit](/blog/reddit-shadowban).
+For platform specifics, see [Instagram](/blog/instagram-shadowban), [TikTok](/blog/tiktok-shadowban), [Facebook](/blog/facebook-shadowban) and Reddit.
 
 ## Shadowban "Removal" Services and Checker Sites (Use With Caution)
 

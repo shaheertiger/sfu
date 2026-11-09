@@ -1,7 +1,7 @@
 ---
-title: "How to Plan Social Media Content in Advance: A 1–2 Hour Weekly Routine"
+title: "Plan Social Media Content in Advance: 1–2 Hours a Week Is Enough"
 description: How to plan social media content in advance with themes, a content calendar, batching, a queue with time slots and approvals, plus a weekly routine you can copy.
-h1: "How to Plan Social Media Content in Advance: A 1–2 Hour Weekly Routine"
+h1: "Plan Social Media Content in Advance: 1–2 Hours a Week Is Enough"
 category: Guides
 excerpt: Planning ahead turns daily posting stress into one focused session a week. Here's the system: themes, a calendar, batching, a queue with time slots and a weekly routine.
 keyword: how to plan social media content in advance

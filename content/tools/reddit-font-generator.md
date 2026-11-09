@@ -192,7 +192,7 @@ Reddit search treats 𝗴𝘂𝗶𝗱𝗲 and "guide" as different text. If you 
 
 ### Follow each subreddit's rules
 
-Many subreddits ban clickbait formatting, all-caps or decorative titles, and AutoModerator can remove a post automatically. Read the sidebar first. If your posts keep disappearing, our guide to the [Reddit shadowban](/blog/reddit-shadowban) explains how to tell a removal from a ban.
+Many subreddits ban clickbait formatting, all-caps or decorative titles, and AutoModerator can remove a post automatically. Read the sidebar first. If your posts keep disappearing, the [shadowban checker](/tools/shadowban-checker) tells a removal from a site-wide ban.
 
 ### Watch the length
 

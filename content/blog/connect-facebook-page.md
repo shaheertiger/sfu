@@ -1,7 +1,7 @@
 ---
-title: How to Connect a Facebook Page to Schedule For You (2-Minute Setup)
+title: "Connect a Facebook Page: 2-Minute Setup (Why Pages Don't Show)"
 description: Connect a Facebook Page to Schedule For You in about two minutes: the Page access you need, the 9-step setup, and fixes for Pages that don't show up or disconnect.
-h1: How to Connect a Facebook Page to Schedule For You (and Fix Missing Pages)
+h1: "Connect a Facebook Page: 2-Minute Setup (Why Pages Don't Show)"
 category: Guides
 excerpt: Sign in, open Accounts, choose Facebook, approve access in Meta's dialog and pick your Pages. The full walkthrough, plus fixes for missing Pages and broken connections.
 keyword: connect facebook page

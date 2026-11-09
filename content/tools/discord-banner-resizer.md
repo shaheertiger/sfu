@@ -60,7 +60,7 @@ Create a server banner and invite background together so new members see the sam
 Swap the banner for a tournament, a game launch or a holiday event, then switch back afterward. Keeping the original file means you can restore it in seconds.
 
 ### Personal profile polish
-Give your profile a banner that matches your interests or your stream overlay. If you also want a refreshed About Me, read our [Discord bio guide](/blog/discord-bio).
+Give your profile a banner that matches your interests or your stream overlay. If you also want a refreshed About Me, try the [Discord bio generator](/tools/discord-bio-generator).
 
 ## Frequently asked questions
 ### What size is a Discord banner?

@@ -1,7 +1,7 @@
 ---
-title: "Best Social Media Management Tools for Small Business: 4 Tests Before You Pay"
+title: "Best Social Media Tools for Small Business: 6 Types, 5 Checks"
 description: Choose the best social media management tools for small business with 4 tests (cost per account, Google Business Profile, approvals, ease of use) and 6 tool types.
-h1: "Best Social Media Management Tools for Small Business: 4 Tests Before You Pay"
+h1: "Best Social Media Tools for Small Business: 6 Types, 5 Checks"
 category: Strategy
 excerpt: The best tool is the one that covers your channels at a fair price per account and that you'll open every week. Here are the 4 tests, the 6 tool types and how to choose.
 keyword: best social media management tools for small business
