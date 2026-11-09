@@ -139,3 +139,18 @@ test('the llms-full guide lists every public URL and the facts assistants must g
   assert.match(guide, /\| `create_post` \|/);
   assert.match(guide, /\| POST \| `\/posts` \| Create a post \|/);
 });
+
+test('robots.txt keeps search engines off the markdown twins and lets AI crawlers read them', async () => {
+  process.env.APP_URL = 'https://scheduleforyou.com';
+  const { GET } = await import('../app/robots.txt/route.js');
+  const groups = Object.fromEntries((await GET().text()).split(/\n\s*\n/).map((block) => {
+    const lines = block.split('\n').filter((l) => !l.startsWith('#'));
+    const agent = lines.find((l) => l.startsWith('User-Agent: '))?.slice(12);
+    return [agent, lines.filter((l) => l.startsWith('Disallow: ')).map((l) => l.slice(10))];
+  }).filter(([a]) => a));
+  for (const bot of ['Googlebot', 'Bingbot']) {
+    assert.ok(groups[bot]?.includes('/*.md$'), `${bot} may crawl .md twins`);
+    for (const p of ROBOTS_DISALLOW) assert.ok(groups[bot].includes(p), `${bot} group is missing ${p}`);
+  }
+  for (const bot of ['*', 'OAI-SearchBot', 'Claude-SearchBot', 'PerplexityBot']) assert.ok(!groups[bot]?.includes('/*.md$'), `${bot} is blocked from .md twins`);
+});

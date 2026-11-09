@@ -2722,7 +2722,7 @@ export function renderLanding($v) {
               <a href="#features" style={{ color: '#6b7079' }}>
                 {'Features'}
               </a>
-              <a href="#pricing" style={{ color: '#6b7079' }}>
+              <a href="/pricing" style={{ color: '#6b7079' }}>
                 {'Pricing'}
               </a>
               <a href="/tools" style={{ color: '#6b7079' }}>
@@ -2744,6 +2744,75 @@ export function renderLanding($v) {
                 {'Sign in'}
               </a>
             </span>{' '}
+          </div>{' '}
+          <div
+            style={{
+              maxWidth: '1120px',
+              margin: '16px auto 0',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '8px',
+              fontSize: '13px',
+            }}
+          >
+            {' '}
+            <nav
+              aria-label="Guides"
+              style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 18px' }}
+              className="sfy-foot-links"
+            >
+              <a href="/best-time-to-post" style={{ color: '#6b7079' }}>
+                {'Best time to post'}
+              </a>
+              <a href="/post-ideas" style={{ color: '#6b7079' }}>
+                {'Post ideas'}
+              </a>
+              <a href="/specs" style={{ color: '#6b7079' }}>
+                {'Image sizes and specs'}
+              </a>
+              <a href="/does-it-notify" style={{ color: '#6b7079' }}>
+                {'Does it notify?'}
+              </a>
+              <a href="/docs" style={{ color: '#6b7079' }}>
+                {'API'}
+              </a>
+            </nav>{' '}
+            <nav
+              aria-label="Platforms"
+              style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 18px' }}
+              className="sfy-foot-links"
+            >
+              <a href="/instagram" style={{ color: '#6b7079' }}>
+                {'Instagram'}
+              </a>
+              <a href="/tiktok" style={{ color: '#6b7079' }}>
+                {'TikTok'}
+              </a>
+              <a href="/facebook" style={{ color: '#6b7079' }}>
+                {'Facebook'}
+              </a>
+              <a href="/x" style={{ color: '#6b7079' }}>
+                {'X'}
+              </a>
+              <a href="/linkedin" style={{ color: '#6b7079' }}>
+                {'LinkedIn'}
+              </a>
+              <a href="/threads" style={{ color: '#6b7079' }}>
+                {'Threads'}
+              </a>
+              <a href="/bluesky" style={{ color: '#6b7079' }}>
+                {'Bluesky'}
+              </a>
+              <a href="/youtube" style={{ color: '#6b7079' }}>
+                {'YouTube'}
+              </a>
+              <a href="/pinterest" style={{ color: '#6b7079' }}>
+                {'Pinterest'}
+              </a>
+              <a href="/google-business-profile" style={{ color: '#6b7079' }}>
+                {'Google Business Profile'}
+              </a>
+            </nav>{' '}
           </div>{' '}
         </footer>
       </div>
