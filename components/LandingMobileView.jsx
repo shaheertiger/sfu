@@ -990,6 +990,21 @@ export function renderLandingMobile($v) {
               <a href="/compare" style={{ color: '#a7abb2', padding: '10px 0' }}>
                 {'Compare'}
               </a>
+              <a href="/best-time-to-post" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'Best time to post'}
+              </a>
+              <a href="/post-ideas" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'Post ideas'}
+              </a>
+              <a href="/specs" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'Image sizes'}
+              </a>
+              <a href="/does-it-notify" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'Does it notify?'}
+              </a>
+              <a href="/pricing" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'Pricing'}
+              </a>
               <a href="/about" style={{ color: '#a7abb2', padding: '10px 0' }}>
                 {'About'}
               </a>
@@ -998,6 +1013,38 @@ export function renderLandingMobile($v) {
               </a>
               <a href="/login" style={{ color: '#a7abb2', padding: '10px 0' }}>
                 {'Sign in'}
+              </a>
+            </nav>{' '}
+            <nav aria-label="Platforms" style={{ display: 'flex', flexWrap: 'wrap', gap: '4px 20px' }}>
+              <a href="/instagram" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'Instagram'}
+              </a>
+              <a href="/tiktok" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'TikTok'}
+              </a>
+              <a href="/facebook" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'Facebook'}
+              </a>
+              <a href="/x" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'X'}
+              </a>
+              <a href="/linkedin" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'LinkedIn'}
+              </a>
+              <a href="/threads" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'Threads'}
+              </a>
+              <a href="/bluesky" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'Bluesky'}
+              </a>
+              <a href="/youtube" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'YouTube'}
+              </a>
+              <a href="/pinterest" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'Pinterest'}
+              </a>
+              <a href="/google-business-profile" style={{ color: '#a7abb2', padding: '10px 0' }}>
+                {'Google Business'}
               </a>
             </nav>{' '}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>

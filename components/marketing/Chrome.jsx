@@ -41,6 +41,10 @@ const FOOTER = [
   {
     title: 'Guides',
     links: [
+      ['/best-time-to-post', 'Best time to post'],
+      ['/post-ideas', 'Post ideas'],
+      ['/specs', 'Image sizes and specs'],
+      ['/does-it-notify', 'Does it notify?'],
       ['/blog/best-days-to-post-on-social-media', 'Best days to post'],
       ['/blog/reel-size-instagram', 'Instagram Reel size'],
       ['/blog/tiktok-video-size-ratio', 'TikTok video size'],
