@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     const { data, error } = await neonAuth().signIn.email({ email: key, password: String(password) });
     if (error || !data?.user) {
       // Neon Auth emails a fresh code on this sign-in attempt ("send verification email on sign-in").
-      if (/EMAIL_NOT_VERIFIED|not verified/i.test(`${error?.code} ${error?.message}`)) {
+      if (/EMAIL_NOT_VERIFIED|not verified|verification required/i.test(`${error?.code} ${error?.message}`)) {
         return json({ error: 'Confirm your email first.', verify: true, email: key, message: `Confirm your email first. We sent a 6-digit code to ${key}.` }, 403);
       }
       if (error && error.status !== 401) return json({ error: error.message || 'Sign-in failed' }, error.status && error.status < 500 ? error.status : 502);
