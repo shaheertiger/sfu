@@ -113,6 +113,12 @@ Set `SFY_DRY_RUN=1` to "publish" without calling any platform. To run the publis
 curl -H "Authorization: Bearer $CRON_SECRET" http://localhost:3000/api/cron/publish
 ```
 
+To see sign-up, plan and usage counts (no personal data), call the admin stats endpoint. It takes `ADMIN_SECRET`, or `CRON_SECRET` if that isn't set; `?days=` (1–90, default 14) sets the length of the daily sign-up series:
+
+```bash
+curl -H "Authorization: Bearer $ADMIN_SECRET" "https://scheduleforyou.com/api/admin/stats?days=30"
+```
+
 ## Checks
 
 ```bash
