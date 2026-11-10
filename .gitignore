@@ -7,8 +7,3 @@ out
 tsconfig.tsbuildinfo
 .neon
 docs/.specimen/
-# Illustration cards are rendered by scripts/ and stored in Vercel Blob (lib/figure-url.js).
-public/images/tools/
-public/images/figures/
-public/images/blog/*-1200x675.webp
-public/images/blog/*-720x405.webp
