@@ -19,7 +19,18 @@ pg.types.setTypeParser(20, (v: string) => Number(v));
 function makePool(): pg.Pool {
   const url = process.env.DATABASE_URL;
   if (!url) throw new Error('DATABASE_URL is not set');
-  const p = new pg.Pool({ connectionString: explicitSslMode(url), max: 5, idleTimeoutMillis: 5_000 });
+  const p = new pg.Pool({
+    connectionString: explicitSslMode(url),
+    max: 5,
+    idleTimeoutMillis: 5_000,
+    // A database that is waking up or unreachable fails the request instead of holding it open forever.
+    connectionTimeoutMillis: 10_000,
+    // A runaway query can't hold a function (and a pooled connection) for its whole run.
+    query_timeout: 60_000,
+  });
+  // Neon closes idle connections (scale to zero, restarts). Without a listener, that error on an idle
+  // client is unhandled and takes the whole process down; the pool drops the client and opens a new one.
+  p.on('error', (e) => console.error('[db] idle client error:', e.message));
   attachDatabasePool(p);
   return p;
 }
@@ -29,9 +40,27 @@ export function pool(): pg.Pool {
   return global.__sfyPool;
 }
 
+/** Connection-level failures (dropped or refused connection, server restarting), not errors in the query itself. */
+export function isConnectionError(e: any): boolean {
+  const code = String(e?.code || '');
+  return (
+    ['ECONNRESET', 'ECONNREFUSED', 'ETIMEDOUT', 'EPIPE', '57P01', '57P02', '57P03', '08000', '08003', '08006'].includes(code) ||
+    /Connection terminated|connection timeout|Client has encountered a connection error/i.test(String(e?.message || ''))
+  );
+}
+const isRead = (text: string) => /^\s*(SELECT|WITH)\b/i.test(text) && !/\b(INSERT|UPDATE|DELETE|FOR UPDATE)\b/i.test(text);
+
 export async function query<T = any>(text: string, params: any[] = []): Promise<T[]> {
-  const r = await pool().query(text, params);
-  return r.rows.map(fixInts) as T[];
+  try {
+    return (await pool().query(text, params)).rows.map(fixInts) as T[];
+  } catch (e) {
+    // A read that lost its connection is safe to run again once, on a fresh connection. Writes are never
+    // repeated here: the first try may have been applied.
+    if (!isRead(text) || !isConnectionError(e)) throw e;
+    console.error('[db] connection error on a read, retrying once:', (e as any)?.message);
+    await new Promise((r) => setTimeout(r, 250));
+    return (await pool().query(text, params)).rows.map(fixInts) as T[];
+  }
 }
 export async function one<T = any>(text: string, params: any[] = []): Promise<T | null> {
   const rows = await query<T>(text, params);

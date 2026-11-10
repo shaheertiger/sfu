@@ -19,6 +19,7 @@ import { captionFromFilename } from '@/lib/bulk-caption';
 import { isShare, shareCaption } from '@/lib/share-caption';
 import { DEFAULT_COOLDOWN_DAYS, matchesUsage, mediaState } from '@/lib/media-usage';
 import { FREE_PLAN, PAID_FEATURES, paidOnlyMessage } from '@/lib/plan-limits';
+import { api, refreshSession } from '@/lib/api-client';
 
 const P = Base.P;
 const PLATFORM_IDS = Object.keys(P);
@@ -125,19 +126,6 @@ let tokSeq = 0;
 /** A local identity for one composer session, so uploads land only in the draft they were started from. */
 const newTok = () => `d${Date.now().toString(36)}${(tokSeq++).toString(36)}`;
 
-/**
- * Refreshes the session cache cookie through the Neon Auth proxy. True when the session is still
- * valid. Shared so several requests failing at once only check once.
- */
-let refreshing = null;
-function refreshSession() {
-  refreshing ||= fetch('/api/auth/get-session', { credentials: 'same-origin', cache: 'no-store' })
-    .then(async (r) => (r.ok ? !!(await r.json().catch(() => null))?.session : null))
-    .catch(() => null)
-    .finally(() => setTimeout(() => { refreshing = null; }, 1000));
-  return refreshing;
-}
-
 /** PUT a file to a presigned URL, reporting progress (0–100). fetch can't report upload progress, XHR can. */
 function putWithProgress(url, file, onProgress) {
   return new Promise((resolve, reject) => {
@@ -149,35 +137,6 @@ function putWithProgress(url, file, onProgress) {
     xhr.onerror = () => reject(new Error(`Upload of ${file.name} failed. Check your connection and try again.`));
     xhr.send(file);
   });
-}
-
-async function api(path, { method = 'GET', body } = {}, retried = false) {
-  const res = await fetch(path, {
-    method,
-    headers: body ? { 'content-type': 'application/json' } : undefined,
-    body: body ? JSON.stringify(body) : undefined,
-    credentials: 'same-origin',
-  });
-  const data = await res.json().catch(() => ({}));
-  if (res.status === 401) {
-    // Only leave for the login page when the session is really gone; a stale cache cookie is
-    // refreshed and the request tried again.
-    const ok = retried ? false : await refreshSession();
-    if (ok) return api(path, { method, body }, true);
-    if (ok === false) {
-      window.location.href = '/login?next=/app';
-      throw new Error('Signed out');
-    }
-    throw new Error("Couldn't reach the server. Check your connection and try again.");
-  }
-  if (!res.ok) {
-    const err = new Error(data.error || `Request failed (${res.status})`);
-    err.status = res.status;
-    // 402: the Free plan's limit or a paid feature. The dashboard opens the plan picker with the reason.
-    if (res.status === 402 && typeof window !== 'undefined') window.dispatchEvent(new CustomEvent('sfy:upgrade', { detail: { message: err.message } }));
-    throw err;
-  }
-  return data;
 }
 
 /* ---------- server ⇄ design data shapes ---------- */
@@ -278,6 +237,7 @@ export default class LiveDashboard extends Base {
     this._srv = new Map(); // post id → JSON of what the server has
     this._srvStatus = new Map(); // post id → server status
     this._queue = new Map(); // post id → promise chain (keeps saves for one post in order)
+    this._unsent = new Set(); // post ids whose save couldn't reach the server; re-sent when the connection is back
     this._uploads = new Map(); // bulk file id → Promise<media id>
     this._jpegBusy = new Set(); // media ids being converted to JPG for Instagram
     this._jpegFailed = new Set(); // media ids whose conversion failed this page load
@@ -310,7 +270,10 @@ export default class LiveDashboard extends Base {
       else if ((e.key === 'n' || e.key === 'N') && this.state.screen !== 'compose' && !this.state.loading) { e.preventDefault(); this.newPost(); }
     };
     window.addEventListener('keydown', this._keys);
-    this._poll = setInterval(() => { if (document.visibilityState === 'visible') this.load(false); }, 30_000);
+    this._poll = setInterval(() => { if (document.visibilityState === 'visible') { this.resendUnsent(); this.load(false); } }, 30_000);
+    // Back online: send what couldn't be saved, then catch up with the server.
+    this._online = () => { this.resendUnsent(); this.load(false); };
+    window.addEventListener('online', this._online);
     // Coming back to the tab: refresh the session cache first, then reload.
     this._vis = () => { if (document.visibilityState === 'visible') refreshSession().finally(() => this.load(false)); };
     document.addEventListener('visibilitychange', this._vis);
@@ -343,6 +306,7 @@ export default class LiveDashboard extends Base {
     super.componentWillUnmount();
     window.removeEventListener('keydown', this._keys);
     clearInterval(this._poll);
+    window.removeEventListener('online', this._online);
     clearTimeout(this._prefsT);
     document.removeEventListener('visibilitychange', this._vis);
     window.removeEventListener('pagehide', this._onHide);
@@ -365,7 +329,8 @@ export default class LiveDashboard extends Base {
 
   async load(first) {
     // Don't overwrite unsaved work, or bring back a post whose delete is waiting out its Undo window.
-    const busy = () => this._busy > 0 || this._queue.size > 0 || this._pendingDel.size > 0;
+    // Unsent edits count as busy: reloading now would replace them with the server's older copy.
+    const busy = () => this._busy > 0 || this._queue.size > 0 || this._pendingDel.size > 0 || this._unsent.size > 0;
     if (!first && busy()) return;
     try {
       const d = await api('/api/app/state');
@@ -484,6 +449,13 @@ export default class LiveDashboard extends Base {
   enqueue(id, job) {
     const prev = this._queue.get(id) || Promise.resolve();
     const next = prev.then(job).catch((e) => {
+      // The save never reached the server (offline, timeout, server briefly down after retries): keep the edit
+      // on screen and send it again when the connection is back, instead of reloading the older server copy.
+      if (e.post && !e.status) {
+        this._unsent.add(id);
+        this.flash("Couldn't save just now. Your edit is kept and saves automatically once the connection is back.", true);
+        return;
+      }
       // A post the server never accepted would vanish on the next reload: give it back instead.
       if (e.firstSave && e.post && this.rescue(e.post, e.message || 'The server refused this post')) return;
       this.flash(e.message || 'Could not save', true);
@@ -495,6 +467,19 @@ export default class LiveDashboard extends Base {
       if (!this._queue.size && this._reloadAfter && !this._pendingDel.size) { this._reloadAfter = false; this.load(false); }
     });
     this._queue.set(id, next);
+  }
+
+  /** Sends again the saves that couldn't reach the server. Each goes through the normal save queue. */
+  resendUnsent() {
+    if (!this._unsent.size) return;
+    const ids = [...this._unsent];
+    this._unsent.clear();
+    for (const id of ids) {
+      const p = this.state.posts.find((x) => x.id === id);
+      // Gone (deleted here) or already sent another way: nothing to resend.
+      if (!p || p.virtual || ['published', 'partial'].includes(p.status) || p.publishing) continue;
+      this.enqueue(id, () => this.save(p));
+    }
   }
 
   _sync() {
