@@ -17,4 +17,7 @@
 .button{display:block;margin-top:6px;text-align:center;font-size:16px;font-weight:600;padding:13px;border-radius:12px;background:#dcff2e;color:#15171a;text-decoration:none}
 .forgot{margin:-6px 0 0;text-align:right;font-size:13px}
 .forgot a{color:#a7abb2}
+.card input.code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:24px;letter-spacing:.35em;text-align:center}
+.card button.link{display:inline;margin:0;padding:0;background:none;border:0;border-radius:0;color:#f6f5f1;font-size:inherit;font-weight:inherit;text-decoration:underline;cursor:pointer}
+.card button.link:hover{transform:none}
 @media (max-width:480px){.page{justify-content:flex-start;gap:22px;padding:calc(28px + env(safe-area-inset-top)) 16px 32px}.card{padding:22px 20px}}
