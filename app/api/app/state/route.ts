@@ -1,3 +1,4 @@
+import { waitUntil } from '@vercel/functions';
 import { handler } from '@/lib/server/api';
 import { workspacesForUser } from '@/lib/server/auth';
 import { query } from '@/lib/server/db';
@@ -15,10 +16,11 @@ export const dynamic = 'force-dynamic';
 
 /** Everything the dashboard needs on first load, in one request. */
 export const GET = handler(async ({ user, workspace }) => {
-  // Meta picture URLs expire; refresh old ones before listing accounts (bounded wait).
-  await refreshStaleAvatars(workspace.id, freshMetaAvatar).catch((e) => console.error('[avatars]', e));
-  await setSignedInHint(true); // keeps "Open dashboard" on the marketing pages for people already signed in
-  const [accounts, posts, mediaRows, keys, members, workspaces, invites] = await Promise.all([
+  // Meta picture URLs expire. Refreshing them takes up to a few seconds of calls to Meta, so it runs after
+  // the response instead of holding up the page; the dashboard's next poll picks up the new pictures
+  // (until then the account shows its coloured placeholder).
+  waitUntil(refreshStaleAvatars(workspace.id, freshMetaAvatar).catch((e) => console.error('[avatars]', e)));
+  const [accounts, posts, mediaRows, keys, members, workspaces, invites, usage] = await Promise.all([
     listAccounts(workspace.id),
     listPosts(workspace.id, { limit: 2000 }),
     storageConfigured() ? query('SELECT * FROM media WHERE workspace_id=$1 AND uploaded ORDER BY created_at DESC LIMIT 500', [workspace.id]) : Promise.resolve([]),
@@ -27,9 +29,10 @@ export const GET = handler(async ({ user, workspace }) => {
     workspacesForUser(user!.id),
     // Invitations not accepted yet (revoke with DELETE /api/v1/team/invites/{id}).
     query('SELECT id,email,role,created_at FROM invites WHERE workspace_id=$1 AND accepted_at IS NULL ORDER BY created_at DESC', [workspace.id]),
+    // Per file: how many posts use it, where it has been published and when it last went out.
+    mediaUsage(workspace.id),
+    setSignedInHint(true), // keeps "Open dashboard" on the marketing pages for people already signed in
   ]);
-  // Per file: how many posts use it, where it has been published and when it last went out.
-  const usage = await mediaUsage(workspace.id);
   return {
     user,
     workspace: { id: workspace.id, name: workspace.name, plan: workspace.plan, account_limit: workspace.account_limit, role: workspace.role, prefs: workspace.prefs || {} },
