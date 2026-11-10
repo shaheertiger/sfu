@@ -1,0 +1,65 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "YouTube Title Checker",
+   "question": "Free Length & Keyword Title Score",
+   "answer": "YouTube Title Checker",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "video",
+    "calendar"
+   ],
+   "qualifier": "Paste a video title and an optional keyword to get a score out of 100, with every rule shown as a pass or a tip so you know exactly what to change."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "YouTube Title Checker",
+   "title": "How to use the title checker",
+   "steps": [
+    {
+     "title": "Paste your working title",
+     "text": "Start with the title you'd publish today."
+    },
+    {
+     "title": "Add a target keyword (optional)",
+     "text": ""
+    },
+    {
+     "title": "Rewrite and compare",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "writing-youtube-titles-people",
+   "type": "lists",
+   "kicker": "YouTube Title Checker",
+   "title": "Writing YouTube titles people click and understand",
+   "groups": [
+    {
+     "label": "Front-load the topic",
+     "text": "YouTube truncates long titles in search results."
+    },
+    {
+     "label": "Be specific about the payoff",
+     "text": "\"I Tried Meal Prep\" is vague."
+    },
+    {
+     "label": "Match the title to the video",
+     "text": "A title that promises something the video doesn't deliver may get a click."
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "How the title score works",
+   "quote": "The checker runs your title through a short list of rules and adds up the points into a score out of 100.",
+   "by": "YouTube Title Checker"
+  }
+ ]
+}

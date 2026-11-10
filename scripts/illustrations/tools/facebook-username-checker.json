@@ -1,0 +1,79 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "Facebook Username Checker",
+   "what": "Facebook Username Checker",
+   "value": "5–50",
+   "unit": "characters",
+   "others": []
+  },
+  {
+   "name": "what-this-facebook-name",
+   "type": "lists",
+   "kicker": "Facebook Username Checker",
+   "title": "What This Facebook Name Checker Does",
+   "groups": [
+    {
+     "label": "It opens the facebook.com URL",
+     "text": "When a name passes, the checker shows an Open facebook.com/… button."
+    },
+    {
+     "label": "It can't promise a name is free",
+     "text": "Facebook doesn't offer a public availability check."
+    },
+    {
+     "label": "It suggests close valid variations",
+     "text": "Whenever you type a name."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Facebook Username Checker",
+   "title": "How to Check if a Facebook Username Is Available",
+   "steps": [
+    {
+     "title": "Type the username you want",
+     "text": ""
+    },
+    {
+     "title": "Read the result",
+     "text": ""
+    },
+    {
+     "title": "Open the URL",
+     "text": "Tap the Open facebook.com/… button."
+    },
+    {
+     "title": "Check the version without periods",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Facebook Username Checker",
+   "title": "Best Practices for Picking a Facebook Username",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Match the name people already know",
+     "Use periods only where they help",
+     "Shorter is easier",
+     "Think about the Page name too"
+    ]
+   }
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Facebook Username Rules at a Glance",
+   "quote": "A Facebook username has to be 5 to 50 characters long and can only use letters, numbers and periods.",
+   "by": "Facebook Username Checker"
+  }
+ ]
+}

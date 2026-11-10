@@ -1,0 +1,68 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "TikTok Font Generator",
+   "question": "TikTok Font Generator",
+   "answer": "30+ Free Styles",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "type",
+    "calendar"
+   ],
+   "qualifier": "Make your TikTok bio, display name, captions and comments stand out with 30+ copy-and-paste Unicode styles, from bold and cursive to bubble letters."
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "TikTok Font Generator",
+   "title": "Where styled text works on TikTok",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Bio",
+     "Display name",
+     "Captions",
+     "Comments and replies",
+     "On-screen text"
+    ]
+   }
+  },
+  {
+   "name": "best-practices-2",
+   "type": "checklist",
+   "kicker": "TikTok Font Generator",
+   "title": "Best practices for TikTok",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Keep search terms plain",
+     "Leave hashtags alone",
+     "Preview on a second phone"
+    ]
+   }
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "TikTok Font Generator",
+   "title": "TikTok font generator **use cases**",
+   "groups": [
+    {
+     "label": "Series and multi-part videos",
+     "text": "A bold “Part 3” shows where the video sits in a series."
+    },
+    {
+     "label": "Creator bios",
+     "text": "Combine one styled word with plain details."
+    },
+    {
+     "label": "Shop and product posts",
+     "text": "Strike a former price, and keep the product name plain."
+    }
+   ]
+  }
+ ]
+}

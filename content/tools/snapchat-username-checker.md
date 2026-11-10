@@ -6,6 +6,9 @@ lead: Type the Snapchat username you want to see whether it follows Snapchat's r
 keyword: snapchat username checker
 ---
 ## Snapchat Username Rules at a Glance
+
+![Illustration for the free Snapchat Username Checker: Snapchat Username Checker, shown as 3–15 characters.](/images/tools/snapchat-username-checker-hero-1200x675.webp)
+
 A Snapchat username has to be 3 to 15 characters long, start with a letter, end with a letter or number, and use only letters, numbers, hyphens, underscores and at most one period. This Snapchat username checker tests a name against all of those rules as you type. When it passes, a button opens snapchat.com/add/yourname so you can see whether a profile already uses it.
 
 | Rule | What Snapchat allows (at the time of writing) | Checked here |
@@ -20,6 +23,9 @@ A Snapchat username has to be 3 to 15 characters long, start with a letter, end 
 | Already taken | Can't be claimed | Profile link only |
 
 ## Snapchat Username Rules in Detail (3–15 Characters)
+
+![Snapchat Username Rules in Detail, in 3 groups: Length: 3 to 15 characters, Only one period and Must start with a letter.](/images/tools/snapchat-username-checker-snapchat-username-rules-in-1200x675.webp)
+
 ### Length: 3 to 15 characters
 Snapchat usernames are short: 15 characters at most and 3 at least. The checker shows a count out of 15 and tells you how far over you are: "Too long: 18 characters, the limit is 15." A 20-character Instagram handle won't carry over as it is.
 
@@ -90,6 +96,9 @@ If a name has no letters at all, the checker suggests adding one. On Snapchat, s
 Nothing you type is sent to a server or saved, and the profile button is an ordinary link to snapchat.com. You don't sign in to anything.
 
 ## How to Check if a Snapchat Username Is Available
+
+![How to Check if a Snapchat Username Is Available, in 4 steps: type the username you want, read the result, open the profile link and try a variation if needed.](/images/tools/snapchat-username-checker-how-to-1200x675.webp)
+
 1. **Type the username you want.** Leave out the @, or paste it with one; the checker removes it.
 2. **Read the result.** "Follows Snapchat's rules" means the format is valid. "Not allowed" comes with each reason, so you can fix them all at once.
 3. **Open the profile link.** Tap the **Open snapchat.com/add/…** button. If a profile appears, the name is taken.
@@ -98,6 +107,9 @@ Nothing you type is sent to a server or saved, and the profile button is an ordi
 6. **Share the new link.** Your add link changes with your username, so update it wherever you've posted it.
 
 ## Snapchat Username Checker Use Cases by Audience
+
+![Key point from the Snapchat Username Checker page: Picking a username is one of the first steps of sign-up, and the start-with-a-letter and end-with-a-letter-or-number rules catch a lot of people out.](/images/tools/snapchat-username-checker-key-point-1200x675.webp)
+
 ### People making a first account
 Picking a username is one of the first steps of sign-up, and the start-with-a-letter and end-with-a-letter-or-number rules catch a lot of people out. Test your ideas here first so sign-up goes smoothly.
 
@@ -117,6 +129,9 @@ When you're settling on a handle for a client across platforms, Snapchat is ofte
 A festival, team or student club may only need a Snapchat name for a season. Short and clear beats clever: people will type it from a poster. Check a few options with the event name and year at the end, like springfest26, since a number at the end is allowed.
 
 ## Best Practices for Picking a Snapchat Username
+
+![Best Practices for Picking a Snapchat Username: do put the number at the end, think before you change it, leave out personal details, watch for lookalikes and need ideas?](/images/tools/snapchat-username-checker-best-practices-1200x675.webp)
+
 ### Keep it easy to type from a sign or a story
 People often add a Snapchat account by typing the name they saw somewhere else. Use one separator at most; mixing a hyphen, an underscore and a period in one name is hard to remember.
 

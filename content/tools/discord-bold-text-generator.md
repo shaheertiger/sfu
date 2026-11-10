@@ -7,7 +7,11 @@ keyword: discord bold text generator
 ---
 ## Bold styles you can generate
 
+![Discord Bold Text Generator: Discord Bold Text Generator. Bold your Discord display name, custom status, role or channel names with 9 Unicode bold styles, and learn when markdown is the better way to bold.](/images/tools/discord-bold-text-generator-hero-1200x675.webp)
+
 If you want bold words in a Discord message, you don't need this tool: wrap them in double asterisks. This generator is for everywhere else, such as names, statuses and server labels, where Discord shows asterisks literally. Type your text and tap one of 9 bold styles to copy it.
+
+![Discord Bold Text Generator: bold styles you can generate, in 2 groups: The bold styles and Why it pastes as bold.](/images/tools/discord-bold-text-generator-bold-styles-you-can-1200x675.webp)
 
 ### The bold styles
 
@@ -28,6 +32,8 @@ For script, bubble, small caps and 20-plus other styles, use the [Discord font g
 Each style is a different set of Unicode characters that happen to look heavy. They're plain text as far as Discord is concerned, which is why they show up bold in fields that ignore formatting.
 
 ## Markdown bold vs. Unicode bold
+
+![Discord Bold Text Generator: markdown bold vs. Unicode bold, in 3 groups: Discord's markdown, quickly, When markdown is the right choice and When you need Unicode bold.](/images/tools/discord-bold-text-generator-markdown-bold-vs-unicode-1200x675.webp)
 
 ### Discord's markdown, quickly
 
@@ -68,6 +74,8 @@ Categories group your channels in the sidebar. A bold category name such as "�
 Display names can be 32 characters and statuses 128. A bold word in your status, like "𝗦𝘁𝗿𝗲𝗮𝗺𝗶𝗻𝗴 𝗮𝘁 𝟴," is easy to notice when someone opens your profile. Check lengths with the [Discord character counter](/tools/discord-character-counter).
 
 ## Best practices
+
+![Discord Bold Text Generator: best practices: do keep names mentionable and respect bots and filters. Don't bold whole channel names.](/images/tools/discord-bold-text-generator-best-practices-1200x675.webp)
 
 ### Keep names mentionable
 

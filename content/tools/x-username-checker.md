@@ -6,6 +6,9 @@ lead: Type the @handle you want to see whether it follows X's rules, get close v
 keyword: x username checker
 ---
 ## X Username Rules at a Glance
+
+![X Username Checker (Twitter Handle Checker), shown as 4–15 characters.](/images/tools/x-username-checker-hero-1200x675.webp)
+
 An X username, still called a Twitter handle by most people, has to be 4 to 15 characters long and can only use letters, numbers and underscores. This X username checker tests a handle against those rules as you type. When it passes, a button opens x.com/yourhandle so you can see whether an account already has it.
 
 | Rule | What X allows (at the time of writing) | Checked here |
@@ -64,6 +67,9 @@ X is one of the strictest platforms on length. If a handle passes here, it usual
 | 12345678 | Follows X's rules | Valid, with a tip to add a letter |
 
 ## What This Twitter Username Checker Does (and What It Can't)
+
+![X Username Checker (Twitter Handle Checker): what This Twitter Username Checker Does, in 3 groups: It checks the format X accepts, It can't promise a handle is free and It suggests close valid variations.](/images/tools/x-username-checker-what-this-twitter-username-1200x675.webp)
+
 ### It checks the format X accepts
 The checker answers the question you can answer without X's help: does this handle follow the rules? It removes a leading @ and any spaces around the name, counts the characters, and lists every rule the name breaks in plain words, so you can fix them all in one go. A handle that passes shows "Follows X's rules"; one that fails shows "Not allowed" with each reason underneath.
 
@@ -86,6 +92,9 @@ A handle made only of numbers and underscores, like 12345678, is allowed but har
 Everything runs on your device. The names you type aren't sent to a server or saved, and the profile button is an ordinary link to x.com. You don't sign in to anything.
 
 ## How to Check if an X Username Is Available
+
+![How to Check if an X Username Is Available, in 4 steps: type the handle you want, read the format result, open the profile and try a variation if needed.](/images/tools/x-username-checker-how-to-1200x675.webp)
+
 1. **Type the handle you want.** Leave out the @, or paste it with one; the checker removes it either way.
 2. **Read the format result.** "Follows X's rules" means it can be registered if nobody holds it. "Not allowed" comes with the reason, such as a period or a 16th character.
 3. **Open the profile.** Tap the **Open x.com/…** button. A profile means the name is taken; an "account doesn't exist" message means it may be free.
@@ -94,6 +103,9 @@ Everything runs on your device. The names you type aren't sent to a server or sa
 6. **Update your links.** After a rename, your old handle stops pointing to you. Update the link in your other bios, your website and your email signature.
 
 ## X Username Checker Use Cases by Audience
+
+![X Username Checker Use Cases by Audience, in 2 groups: Small businesses and local shops and Agencies and social media managers.](/images/tools/x-username-checker-use-cases-1200x675.webp)
+
 ### Creators moving to X or starting fresh
 If you already have an audience on Instagram or TikTok, a matching @handle on X helps people find you. The 15-character limit is the usual problem: a 20-character Instagram handle has to be trimmed. Test a few shortened versions here, then compare them across platforms with the [username availability checker](/tools/username-checker), which tests one name against X, Instagram, TikTok, YouTube and five other platforms at once.
 
@@ -116,6 +128,9 @@ Open-source projects and apps often want a handle that matches the project name.
 If your handle dates from years ago, test new ones here before you change it. Your old handle is released when you rename, so links and mentions using it stop leading to you, and someone else may be able to claim it.
 
 ## Best Practices for Picking an X Handle
+
+![Best Practices for Picking an X Handle: do keep it short enough to type, use the display name for the details and match across platforms where you can. Avoid lookalike characters and don't trust tools that promise more.](/images/tools/x-username-checker-best-practices-1200x675.webp)
+
 ### Keep it short enough to type
 Fifteen characters is the ceiling, not the target. Shorter handles are easier to type on a phone and take less room in replies, where your @handle appears in front of what people write.
 

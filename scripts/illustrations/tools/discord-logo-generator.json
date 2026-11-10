@@ -1,0 +1,67 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "Discord Logo Generator",
+   "what": "Discord Logo Generator",
+   "value": "512 × 512",
+   "unit": "px",
+   "others": []
+  },
+  {
+   "name": "what-the-discord-logo",
+   "type": "lists",
+   "kicker": "Discord Logo Generator",
+   "title": "What the Discord logo generator makes",
+   "groups": [
+    {
+     "label": "Built for a small circle",
+     "text": "Server icons appear as small circles in the left-hand server list."
+    },
+    {
+     "label": "Your icon, not Discord's branding",
+     "text": "Keep Discord's branding, mascot and brand colors out of your icon."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Discord Logo Generator",
+   "title": "How to make a Discord server icon",
+   "steps": [
+    {
+     "title": "Enter letters or choose an emoji",
+     "text": ""
+    },
+    {
+     "title": "Pick a shape",
+     "text": "Choose circle, rounded square or square."
+    },
+    {
+     "title": "Set the colors",
+     "text": ""
+    },
+    {
+     "title": "Download and upload",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Discord Logo Generator",
+   "title": "Design tips for server icons",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Two letters beat three",
+     "Test against dark and light themes",
+     "Match the rest of your server"
+    ]
+   }
+  }
+ ]
+}

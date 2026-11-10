@@ -6,7 +6,12 @@ lead: Type what you do and what you post about, choose a tone, and copy one of 1
 keyword: facebook bio generator
 ---
 ## What the Facebook Bio Generator Does
+
+![Illustration for the free Facebook Bio Generator: Facebook Bio Generator, shown as 101 characters.](/images/tools/facebook-bio-generator-hero-1200x675.webp)
+
 This free Facebook bio generator writes 12 short bios for the Intro section of your Facebook profile, each one under the 101-character limit Facebook uses for that field at the time of writing. You type what you do and what you're into, pick a tone, and copy the bio you like. Every result shows its character count, so you know it fits before you paste it.
+
+![What the Facebook Bio Generator Does, in 2 groups: How it works and Why a short bio is hard to write.](/images/tools/facebook-bio-generator-what-the-facebook-bio-1200x675.webp)
 
 The bio is the short line under your profile picture and name, at the top of the Intro box. It's the first thing people read when they open your profile from a comment, a group post or a friend request. Most people either leave it empty or write something in a hurry. The generator gives you a dozen well-formed starting points, so you choose and adjust instead of facing a blank line.
 
@@ -58,6 +63,9 @@ Lowercase, soft and a little dreamy, for artists, photographers and lifestyle ac
 - watercolor, coffee and quiet places 🕊️
 
 ## Facebook Bio Best Practices the Generator Bakes In
+
+![Facebook Bio Best Practices the Generator Bakes In: do the 101-character limit, one line, no line breaks, emoji used with restraint, plain, searchable words and your words, not filler.](/images/tools/facebook-bio-generator-best-practices-1200x675.webp)
+
 ### The 101-character limit
 Every bio the tool shows fits within 101 characters, counted the way most text tools count them: letters, spaces, punctuation and each emoji. Facebook's own counter can treat some emoji, such as flags or skin-tone variants, as more than one character, so if a bio is right at the edge, paste it into Facebook and let Facebook decide.
 
@@ -82,6 +90,9 @@ The bios use ordinary text, not styled Unicode letters. That keeps them readable
 Every template uses your role or your topic, usually both. Generic lines such as "living my best life" aren't in the pool, because they could belong to anyone.
 
 ## How to Use the Facebook Bio Generator
+
+![How to Use the Facebook Bio Generator, in 4 steps: fill in "What you do", fill in "What you post about", pick a tone and turn emoji on or off.](/images/tools/facebook-bio-generator-how-to-1200x675.webp)
+
 1. **Fill in "What you do".** A short noun works best: "nurse", "baker", "dad of three", "student". The field takes up to 40 characters.
 2. **Fill in "What you post about".** Short and specific: "hiking and dogs", "sourdough", "homes in Denver". The field takes up to 60 characters, but shorter inputs leave room for more templates to fit under 101.
 3. **Pick a tone.** Friendly, professional, funny, minimal or aesthetic.
@@ -100,6 +111,9 @@ Every template uses your role or your topic, usually both. Generic lines such as
 If you see fewer than 12 bios, your inputs are long enough that some templates go over 101 characters and are skipped. Shorten either field and more appear.
 
 ## Who the Facebook Bio Generator Is For
+
+![Who the Facebook Bio Generator Is For, in 2 groups: Everyday Facebook users and Freelancers and job seekers.](/images/tools/facebook-bio-generator-use-cases-1200x675.webp)
+
 ### Everyday Facebook users
 Most people just want something better than an empty Intro. The friendly or minimal tones give you a tidy line in seconds, and you can change it whenever your life does.
 
@@ -122,6 +136,9 @@ If you post publicly from a profile, the funny and aesthetic tones suit creators
 Keep it simple and current: what you study and what you're into. Minimal bios such as "Biology student · Trail running" age well and are easy to update.
 
 ## How to Get the Most Out of Your New Bio
+
+![Facebook Bio Generator: how to Get the Most Out of Your New Bio, in 4 steps: make one word specific, put the most important words first, don't repeat your details and check who can see it.](/images/tools/facebook-bio-generator-how-to-2-1200x675.webp)
+
 ### Make one word specific
 Swap one generic word for a precise one. "Nurse who loves hiking and dogs" becomes "ICU nurse, two beagles, every trail in Ohio". The template gives you the shape; the detail makes it yours.
 

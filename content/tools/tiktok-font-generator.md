@@ -7,6 +7,8 @@ keyword: tiktok font generator
 ---
 ## Styles you can generate for TikTok
 
+![TikTok Font Generator: 30+ Free Styles. Make your TikTok bio, display name, captions and comments stand out with 30+ copy-and-paste Unicode styles, from bold and cursive to bubble letters.](/images/tools/tiktok-font-generator-hero-1200x675.webp)
+
 TikTok's profile and caption fields only use the app's default typeface, but they'll display Unicode characters that look like other fonts. Type your text, scroll through 30+ styles and tap one to copy it.
 
 ### Bold styles for hooks
@@ -26,6 +28,8 @@ Bubble (Ⓡⓔⓐⓓ), black bubble, squared, fullwidth vaporwave, superscript, 
 Each style is built from Unicode characters that resemble letters. They're not font files, so TikTok, search and assistive tech treat them as different characters from the plain alphabet.
 
 ## Where styled text works on TikTok
+
+![Where styled text works on TikTok: do bio, display name, captions, comments and replies and on-screen text.](/images/tools/tiktok-font-generator-best-practices-1200x675.webp)
 
 ### Bio
 
@@ -49,6 +53,8 @@ TikTok's video editor has its own text tool with built-in fonts. Those are real 
 
 ## Best practices for TikTok
 
+![Best practices for TikTok: do keep search terms plain, leave hashtags alone and preview on a second phone.](/images/tools/tiktok-font-generator-best-practices-2-1200x675.webp)
+
 ### Keep search terms plain
 
 Many people use TikTok like a search engine, and the app matches words in your caption. If your caption says "𝗲𝗮𝘀𝘆 𝗽𝗮𝘀𝘁𝗮 𝗿𝗲𝗰𝗶𝗽𝗲," TikTok search may not connect it to "easy pasta recipe." Style a separate hook and write the searchable phrase in normal letters.
@@ -66,6 +72,8 @@ Screen readers may read styled characters as individual symbols, which makes a f
 Rare characters can appear as blank boxes on some Android devices. Check your bio from a friend's phone, or log in on another device, before you settle on a style.
 
 ## Use cases
+
+![TikTok font generator use cases, in 3 groups: Series and multi-part videos, Creator bios and Shop and product posts.](/images/tools/tiktok-font-generator-use-cases-1200x675.webp)
 
 ### Series and multi-part videos
 

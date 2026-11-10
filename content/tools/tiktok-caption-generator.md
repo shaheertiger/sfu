@@ -6,6 +6,9 @@ lead: Describe your video, choose a style and get 10 caption ideas that open wit
 keyword: tiktok caption generator
 ---
 ## What makes a good TikTok caption
+
+![TikTok Caption Generator: TikTok Caption Generator. Describe your video, choose a style and get 10 caption ideas that open with a strong first line, each with a character count.](/images/tools/tiktok-caption-generator-hero-1200x675.webp)
+
 A TikTok caption generator gives you a head start on the words under your video, which decide whether viewers understand what they're watching and what to do next. This one builds ideas around the habits below.
 
 ### A first line that earns the next second
@@ -21,6 +24,9 @@ Ask for one thing: a follow, a comment, a save or a visit to the link in your bi
 Two to five hashtags that describe the topic are easier to read than a wall of tags, and they keep the focus on your first line.
 
 ## How to use the TikTok caption generator
+
+![How to use the TikTok caption generator, in 4 steps: describe the video, pick a style, add a call to action and hashtags and copy and edit.](/images/tools/tiktok-caption-generator-how-to-1200x675.webp)
+
 Everything runs in your browser. It's free, there's no sign-up and nothing you type is uploaded.
 
 ### Describe the video
@@ -41,6 +47,9 @@ Toggle a call to action (follow, comment, save or link in bio) and add up to fiv
 You get 10 caption ideas, each with a character count. Tap one to copy it, then tweak the wording so it sounds like you. Need a profile to match? Try the [TikTok bio generator](/tools/tiktok-bio-generator).
 
 ## TikTok caption limits and rules
+
+![TikTok caption limits and rules, in 3 groups: How long can a TikTok caption be?, What the generator doesn't do and Captions for photo posts.](/images/tools/tiktok-caption-generator-tiktok-caption-limits-and-1200x675.webp)
+
 ### How long can a TikTok caption be?
 TikTok captions can be up to 4,000 characters at the time of writing. Each idea shows its count against that limit, but shorter captions usually read better because most viewers only see the start.
 
@@ -51,6 +60,9 @@ It's template-based, not AI. It doesn't suggest trending hashtags or sounds, and
 The same ideas work for TikTok photo posts. Lead with what the swipe reveals, such as "Slide 4 is the one everyone asks about".
 
 ## Caption ideas by style
+
+![Key point from the TikTok Caption Generator page: These examples show the kind of first lines each style produces for a video about a budget meal-prep routine.](/images/tools/tiktok-caption-generator-key-point-1200x675.webp)
+
 These examples show the kind of first lines each style produces for a video about a budget meal-prep routine.
 
 ### Hook-first

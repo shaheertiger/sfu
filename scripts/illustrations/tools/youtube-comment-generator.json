@@ -1,0 +1,65 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "YouTube Comment Generator",
+   "question": "Free Comment Ideas for Videos",
+   "answer": "YouTube Comment Generator",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "eye",
+    "send"
+   ],
+   "qualifier": "Describe a YouTube video, choose a tone, and get 12 comment ideas to rewrite and post yourself, from viewer questions to creator replies."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "YouTube Comment Generator",
+   "title": "How to use the YouTube comment generator",
+   "steps": [
+    {
+     "title": "Describe the video",
+     "text": ""
+    },
+    {
+     "title": "Choose a tone",
+     "text": "Pick supportive, curious question, funny, professional or hype."
+    },
+    {
+     "title": "Add your own detail and post",
+     "text": "Each of the 12 ideas is a draft."
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "YouTube Comment Generator",
+   "title": "YouTube comment ideas by video type",
+   "groups": [
+    {
+     "label": "Tutorial",
+     "text": "\"Paused at 2:35 to try this and it worked first time."
+    },
+    {
+     "label": "Vlog",
+     "text": "\"The part where the movers showed up two hours early was painfully relatable."
+    },
+    {
+     "label": "Music",
+     "text": "\"The harmony that comes in at the second chorus gave me chills."
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "YouTube comment tools for creators",
+   "quote": "If you run a channel, the comment section is part of your community.",
+   "by": "YouTube Comment Generator"
+  }
+ ]
+}

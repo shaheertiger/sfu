@@ -1,0 +1,96 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "YouTube Name Generator",
+   "question": "YouTube Name Generator",
+   "answer": "30 Free Channel Name Ideas",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "video",
+    "calendar"
+   ],
+   "qualifier": "Type what your videos are about, choose a style, and get 30 unique channel name ideas you can copy, tweak and turn into your @username."
+  },
+  {
+   "name": "what-makes-a-good",
+   "type": "lists",
+   "kicker": "YouTube Name Generator",
+   "title": "What makes a good YouTube channel name",
+   "groups": [
+    {
+     "label": "It survives being said out loud",
+     "text": "Viewers recommend channels in conversation."
+    },
+    {
+     "label": "It leaves room to grow",
+     "text": "\"BeginnerSourdoughDaily\" boxes you in if you later film pasta or travel."
+    },
+    {
+     "label": "It works as a handle",
+     "text": "Every channel also gets an @handle."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "YouTube Name Generator",
+   "title": "How to use the YouTube name generator",
+   "steps": [
+    {
+     "title": "Enter a keyword",
+     "text": ""
+    },
+    {
+     "title": "Pick a style",
+     "text": ""
+    },
+    {
+     "title": "Scan the 30 ideas",
+     "text": "Each one follows YouTube's character rules."
+    },
+    {
+     "title": "Get more ideas",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "YouTube Name Generator",
+   "what": "YouTube name rules and limits: Channel name",
+   "value": "50",
+   "unit": "characters",
+   "others": [
+    {
+     "value": "3–30",
+     "label": "Handle"
+    },
+    {
+     "value": "1,000",
+     "label": "Channel description"
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "YouTube Name Generator",
+   "title": "Channel name ideas by niche",
+   "groups": [
+    {
+     "label": "Sample names",
+     "text": "Invented for this page; check availability before using any."
+    },
+    {
+     "label": "Mix and match halves",
+     "text": "Combine the strong halves of two ideas."
+    }
+   ]
+  }
+ ]
+}

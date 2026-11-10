@@ -6,6 +6,9 @@ lead: Find out who doesn't follow you back on Instagram using the followers and 
 keyword: instagram unfollowers checker
 ---
 ## See who doesn't follow you back, without handing over your login
+
+![Instagram Unfollowers Checker: See Who Doesn't Follow You Back: Instagram Unfollowers Checker: See Who Doesn't Follow You Back. Find out who doesn't follow you back on Instagram using the followers and following files from your own data download.](/images/tools/instagram-unfollowers-checker-hero-1200x675.webp)
+
 This checker compares the followers and following lists from Instagram's own "Download your information" export and shows the accounts you follow that don't follow you back. It never asks for your Instagram username or password, and the files are read in your browser, not uploaded. The trade-off: you need to request the export from Instagram first, and the results reflect the date of that export rather than live data.
 
 ### What you get
@@ -17,6 +20,9 @@ This checker compares the followers and following lists from Instagram's own "Do
 Apps that ask for your Instagram password to track unfollowers put your account at risk: your login is shared with a third party, and automated activity can lead Instagram to restrict or lock the account. Your data export is an official feature, and this tool only reads the files you choose.
 
 ## How to download your followers and following data
+
+![Instagram Unfollowers Checker: See Who Doesn't Follow You Back: how to download your followers and following data, in 4 steps: open Accounts Center, find Download your information, choose only Followers and following and set the format to JSON.](/images/tools/instagram-unfollowers-checker-how-to-1200x675.webp)
+
 Meta moves and renames these menus from time to time, so the labels below may differ slightly in your app. Instagram's [help center](https://help.instagram.com) has the current steps.
 
 ### 1. Open Accounts Center
@@ -35,6 +41,9 @@ Choose JSON as the format and "All time" as the date range, then submit the requ
 Instagram notifies you when the export is ready, which can take anywhere from minutes to a few days. Download the ZIP file, unzip it and look for the followers and following files, usually inside a folder about connections or followers and following.
 
 ## How to use the unfollowers checker
+
+![Instagram Unfollowers Checker: See Who Doesn't Follow You Back: how to use the unfollowers checker, in 3 steps: select both files, review the lists and decide what to do yourself.](/images/tools/instagram-unfollowers-checker-how-to-2-1200x675.webp)
+
 ### Select both files
 Choose the followers file and the following file from your unzipped export. You need both: the checker compares one list against the other.
 
@@ -45,6 +54,9 @@ Results appear in two groups: accounts not following you back and fans you don't
 The checker doesn't unfollow anyone. If you choose to unfollow accounts, do it by hand in the app, and take your time. Instagram may temporarily limit actions that happen very quickly in a row.
 
 ## Reading the results sensibly
+
+![Instagram Unfollowers Checker: See Who Doesn't Follow You Back: reading the results sensibly, in 3 groups: The data is a snapshot, Not following back isn't always personal and Keep your export private.](/images/tools/instagram-unfollowers-checker-reading-results-1200x675.webp)
+
 ### The data is a snapshot
 Everything reflects the moment Instagram created your export. Someone who followed you back yesterday won't show up until you request a new download.
 

@@ -6,7 +6,12 @@ lead: Describe a TikTok video, pick a tone, and get 12 comment ideas to rewrite 
 keyword: tiktok comment generator
 ---
 ## What makes a good TikTok comment
+
+![TikTok Comment Generator: TikTok Comment Generator. Describe a TikTok video, pick a tone, and get 12 comment ideas to rewrite in your own words, whether you're replying to your audience or cheering on a creator.](/images/tools/tiktok-comment-generator-hero-1200x675.webp)
+
 TikTok comments move fast, and the ones that get noticed are short, specific and in on the joke. This free TikTok comment generator turns a quick description of a video into 12 template-based ideas. You pick one, make it yours, and post it from your own account.
+
+![What makes a good TikTok comment, in 3 groups: It reacts to a specific moment, It's quick to read and It asks for what comes next.](/images/tools/tiktok-comment-generator-what-makes-a-good-1200x675.webp)
 
 ### It reacts to a specific moment
 Mentioning the exact beat that made you laugh, such as "the cat walking in at the end," shows you watched to the end. Vague praise blends into hundreds of other comments.
@@ -21,6 +26,9 @@ On TikTok, "part 2?" style requests and questions about a recipe, outfit or tool
 Comment culture on TikTok is playful, but a joke at someone's expense can sink a thread. If you're unsure how it will read, choose the supportive or curious tone instead.
 
 ## How to use the TikTok comment generator
+
+![How to use the TikTok comment generator, in 3 steps: describe the video, pick a tone and personalize before posting.](/images/tools/tiktok-comment-generator-how-to-1200x675.webp)
+
 The tool works in your browser with no sign-up, and the text you type stays on your device.
 
 ### Describe the video
@@ -33,6 +41,9 @@ Choose supportive, curious question, funny, professional or hype. Funny and hype
 You'll see 12 ideas. Copy one, change it to reflect what you actually noticed, and post it in the TikTok app yourself. If none fit, regenerate or write your own.
 
 ## TikTok comment features and rules
+
+![Key point from the TikTok Comment Generator page: TikTok gives creators several tools for managing the comment section.](/images/tools/tiktok-comment-generator-key-point-1200x675.webp)
+
 TikTok gives creators several tools for managing the comment section. They're worth knowing whether you're commenting or being commented on.
 
 ### Reply to a comment with a video
@@ -48,6 +59,9 @@ TikTok lets creators filter comments containing chosen keywords and hold comment
 TikTok's Community Guidelines prohibit spam and inauthentic engagement. Posting the same comment across many videos, using multiple accounts, or trading comments to game the algorithm can get your account restricted. Use these ideas one thoughtful comment at a time.
 
 ## TikTok comment ideas by situation
+
+![TikTok comment ideas by situation, in 4 groups: Replying to your own audience, Supporting a creator you follow, Engaging with peers in your niche and Brand accounts.](/images/tools/tiktok-comment-generator-use-cases-1200x675.webp)
+
 ### Replying to your own audience
 - "Recipe's in the next video, you're the third person to ask so I'm filming it tonight."
 - "Thank you! The trick is cold butter, I'll show it slower in part 2."

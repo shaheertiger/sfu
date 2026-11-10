@@ -6,7 +6,12 @@ lead: See exactly what your photos reveal (location, camera, date taken) and rem
 keyword: exif remover
 ---
 ## What this EXIF remover does
+
+![EXIF Remover: Remove EXIF Data & Location From Photos. See exactly what your photos reveal (location, camera, date taken) and remove it in one tap.](/images/tools/remove-exif-data-hero-1200x675.webp)
+
 This EXIF remover shows the hidden data stored inside your photos and removes it before you share them. Add one photo or a whole batch, check the **Location (GPS)** row for each, then press **Remove location & metadata** and download clean copies. It's built for the moment just before you post, sell or send a picture: one quick check that the file isn't telling strangers where you live.
+
+![What this EXIF remover does, in 2 groups: What it reads and Your photos stay on your device.](/images/tools/remove-exif-data-what-this-exif-remover-1200x675.webp)
 
 ### What it reads
 For every photo, a table lists what the file contains:
@@ -23,6 +28,9 @@ If a photo has none of this, the tool says **None found**.
 Photos are read and cleaned on your device. Nothing is uploaded, there's no account, and the tool keeps no copy.
 
 ## How to remove EXIF data from a photo
+
+![How to remove EXIF data from a photo, in 4 steps: add your photos, check what's inside, remove location & metadata and download one or all.](/images/tools/remove-exif-data-how-to-1200x675.webp)
+
 ### 1. Add your photos
 Tap **Choose photos or drop them here**, or drag files onto the box. You can add up to 50 at a time and use **Add more photos** for the next batch. Remove one with its ✕ button or start over with **Clear list**.
 
@@ -36,6 +44,9 @@ Press **Remove location & metadata**. Each photo gets a note saying how it was c
 With more than one cleaned photo, **Download all as ZIP** saves everything in one file, photos-clean.zip, which is easier than tapping through dozens of downloads on a phone.
 
 ## Lossless cleaning and when a photo is re-saved
+
+![EXIF Remover: lossless cleaning and when a photo is re-saved, in 3 groups: JPEG and PNG: cleaned losslessly, WebP and HEIC are re-saved as JPEG and Extras after the image are removed.](/images/tools/remove-exif-data-lossless-cleaning-and-when-1200x675.webp)
+
 ### JPEG and PNG: cleaned losslessly
 JPEG and PNG files are cleaned without re-compressing. Only the metadata blocks are removed (EXIF with GPS, XMP, IPTC and comments in a JPEG; EXIF, text and time chunks in a PNG), and the compressed image data is copied byte for byte. The colour profile is kept, so colors look the same as before. The note reads **Cleaned losslessly: the image data is untouched.**
 
@@ -57,6 +68,9 @@ At the time of writing, major platforms such as Instagram, Facebook, X and TikTo
 - **The picture itself can give you away.** A street sign, a house number, a car plate or a screenshot of a map reveals as much as GPS does. Cover those with the [blur image tool](/tools/blur-image), which also saves without EXIF.
 
 ## How to stop your camera adding location
+
+![Key point from the EXIF Remover page: Cleaning photos one by one works, but it's easier if new photos never get a location in the first place.](/images/tools/remove-exif-data-key-point-1200x675.webp)
+
 Cleaning photos one by one works, but it's easier if new photos never get a location in the first place. Menu names change between versions and manufacturers, so treat these as general steps at the time of writing.
 
 ### iPhone

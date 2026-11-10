@@ -6,7 +6,12 @@ lead: Describe who you are and what you post, pick a tone, and copy one of 12 In
 keyword: instagram bio generator
 ---
 ## What makes a good Instagram bio
+
+![Illustration for the free Instagram Bio Generator: Instagram Bio Generator, shown as 150 characters.](/images/tools/instagram-bio-generator-hero-1200x675.webp)
+
 An Instagram bio has 150 characters to tell a visitor who you are, what they'll see if they follow, and what to do next. This free bio maker gives you 12 drafts inside that limit, so you can pick the closest one and adjust it instead of staring at an empty field.
+
+![What makes a good Instagram bio, in 2 groups: It gives one clear next step and It sounds like your captions.](/images/tools/instagram-bio-generator-what-makes-a-good-1200x675.webp)
 
 ### It says what you post, not only who you are
 "Designer and dog person" describes you. "Small-batch ceramics, studio process and kiln fails" tells a visitor what will show up in their feed. The second version gives people a reason to tap Follow.
@@ -18,6 +23,9 @@ Point visitors to a single action: shop the latest drop, book a session or watch
 If your posts are playful, a stiff corporate bio feels off. If you sell professional services, a string of jokes can undercut trust. Pick the tone you actually write in.
 
 ## How to use the Instagram bio generator
+
+![How to use the Instagram bio generator, in 3 steps: describe yourself in a few words, pick a tone and decide on emoji and copy the one that fits.](/images/tools/instagram-bio-generator-how-to-1200x675.webp)
+
 The tool runs entirely in your browser. There's no sign-up, and nothing you type is uploaded to a server.
 
 ### 1. Describe yourself in a few words
@@ -30,6 +38,9 @@ Choose friendly, professional, funny, minimal or aesthetic. Turn emoji on if the
 You get 12 bios, each with a character count. Tap one to copy it, paste it into **Edit profile > Bio** in the Instagram app, and change any word that doesn't sound like you. If you want blank lines between sections, run your text through the [Instagram line break generator](/tools/instagram-line-break-generator) first so the spacing survives pasting.
 
 ## Instagram bio rules and limits
+
+![Instagram bio rules and limits, in 3 groups: The bio field holds 150 characters, Your name field is separate and Links, mentions and hashtags.](/images/tools/instagram-bio-generator-instagram-bio-rules-and-1200x675.webp)
+
 A few profile fields work together, and knowing which is which saves you characters.
 
 ### The bio field holds 150 characters
@@ -42,6 +53,9 @@ The bold name above your bio is its own field, and Instagram search looks at nam
 Website addresses typed into the bio text aren't clickable. Use the links section in Edit profile instead, which allows up to five links at the time of writing. @mentions and hashtags in the bio do become tappable, so use them for a second account or a branded hashtag, not as filler.
 
 ## Instagram bio ideas by niche
+
+![Instagram bio ideas by niche, in 4 groups: Photographer, Local bakery, Fitness coach and Skincare brand.](/images/tools/instagram-bio-generator-use-cases-1200x675.webp)
+
 Use these as starting points, then swap in your own details.
 
 ### Photographer

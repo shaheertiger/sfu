@@ -6,7 +6,12 @@ lead: Type what your videos are about, choose a style, and get 30 unique channel
 keyword: youtube name generator
 ---
 ## What makes a good YouTube channel name
+
+![YouTube Name Generator: 30 Free Channel Name Ideas. Type what your videos are about, choose a style, and get 30 unique channel name ideas you can copy, tweak and turn into your @username.](/images/tools/youtube-name-generator-hero-1200x675.webp)
+
 A good YouTube name tells a new viewer what kind of videos to expect, is easy to say out loud, and still works as a handle. Enter a topic in the channel name generator above to get 30 starting points, then use the checks below to pick the one worth keeping.
+
+![What makes a good YouTube channel name, in 3 groups: It survives being said out loud, It leaves room to grow and It works as a handle.](/images/tools/youtube-name-generator-what-makes-a-good-1200x675.webp)
 
 ### It survives being said out loud
 Viewers recommend channels in conversation, in comments and in other creators' videos. If you have to spell your name for someone, you lose some of those mentions.
@@ -18,6 +23,9 @@ Viewers recommend channels in conversation, in comments and in other creators' v
 Every channel also gets an @handle. If your name can become your handle with little or no change, people searching for you find you faster. Keep a backup spelling ready in case the exact handle is taken.
 
 ## How to use the YouTube name generator
+
+![How to use the YouTube name generator, in 4 steps: enter a keyword, pick a style, scan the 30 ideas and get more ideas.](/images/tools/youtube-name-generator-how-to-1200x675.webp)
+
 It takes under a minute, and you can repeat it as often as you like.
 
 ### Step by step
@@ -31,6 +39,9 @@ It takes under a minute, and you can repeat it as often as you like.
 Copy your favorite five into a note, wait a day, and read them again. Say each one as if you were closing a video: "Thanks for watching ___." The one that sounds natural is usually the winner.
 
 ## YouTube name rules and limits
+
+![YouTube name rules and limits: Channel name, shown as 50 characters, with Handle 3–30 and Channel description 1,000 for comparison.](/images/tools/youtube-name-generator-specs-1200x675.webp)
+
 YouTube separates your channel name (the display name people see) from your handle (the unique @name in your URL). Values below are at the time of writing.
 
 | Field | Limit | Allowed characters |
@@ -46,6 +57,9 @@ Two channels can have the same name, but only one can hold a given handle. That 
 You can edit both in YouTube Studio, but YouTube limits how often, and links using an old handle may stop pointing to you. See [YouTube Help](https://support.google.com/youtube) for the current rules.
 
 ## Channel name ideas by niche
+
+![YouTube Name Generator: channel name ideas by niche, in 2 groups: Sample names and Mix and match halves.](/images/tools/youtube-name-generator-use-cases-1200x675.webp)
+
 Each keyword and style combination gives a different feel.
 
 ### Sample names

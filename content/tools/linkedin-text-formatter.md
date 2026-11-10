@@ -6,7 +6,12 @@ lead: Write your LinkedIn post, style selected words, add bullet or numbered lis
 keyword: linkedin text formatter
 ---
 ## What the formatter does
+
+![LinkedIn Text Formatter: Bold, Italic, Lists & "…more" Preview. Write your LinkedIn post, style selected words, add bullet or numbered lists, and see roughly where the feed will cut it off with "…more" before you copy it over.](/images/tools/linkedin-text-formatter-hero-1200x675.webp)
+
 LinkedIn's composer doesn't offer bold, italic or list buttons for regular posts at the time of writing. This LinkedIn formatter fills that gap: write your post, select a word or phrase, apply a style, and copy the finished text into LinkedIn. It also counts characters against the 3,000 limit and previews where the "…more" link is likely to fall.
+
+![Key point from the LinkedIn Text Formatter page: LinkedIn's composer doesn't offer bold, italic or list buttons for regular posts at the time of writing.](/images/tools/linkedin-text-formatter-key-point-1200x675.webp)
 
 ### Text styles
 - **Bold** and *italic*, plus bold italic
@@ -22,6 +27,9 @@ Add bullet points or a numbered list to break a dense paragraph into steps or ta
 The counter shows how many of LinkedIn's 3,000 characters you've used. The preview marks roughly where the feed truncates a post, about the first 200 characters or three lines. LinkedIn varies this by device and screen width, so treat the marker as a guide, not an exact cut.
 
 ## How to format a LinkedIn post
+
+![How to format a LinkedIn post, in 4 steps: write or paste your draft, select and style, add structure and check the preview, then copy.](/images/tools/linkedin-text-formatter-how-to-1200x675.webp)
+
 ### 1. Write or paste your draft
 Start in the editor with plain text. Get the wording right first; styling is easier to judge once the post reads well without it.
 
@@ -45,6 +53,9 @@ The limit leaves room for a detailed story, but a long post still needs short pa
 On a phone, a paragraph of five sentences becomes a tall wall of text. A three-item list with a bold label on each item can be scanned in seconds.
 
 ## Accessibility and search
+
+![LinkedIn Text Formatter: accessibility and search: do screen readers and styled text, keep key terms plain and images and links still matter.](/images/tools/linkedin-text-formatter-best-practices-1200x675.webp)
+
 ### Screen readers and styled text
 Unicode bold and italic are separate characters from the regular alphabet. Some screen readers read them letter by letter or skip them, so a fully styled sentence can become unreadable. Style a few words, never the whole post.
 

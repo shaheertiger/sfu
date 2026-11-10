@@ -1,0 +1,71 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "X Name Generator",
+   "question": "X Name Generator",
+   "answer": "30 Free Username & Display Name Ideas",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "calendar",
+    "clock"
+   ],
+   "qualifier": "Find a personal handle and display name for X. Enter a keyword, choose a style and copy from 30 ideas that fit X's username rules."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "X Name Generator",
+   "title": "How to use the X name generator",
+   "steps": [
+    {
+     "title": "Start with a word that's really you",
+     "text": ""
+    },
+    {
+     "title": "Pick a style for your voice",
+     "text": ""
+    },
+    {
+     "title": "Copy handles and display names",
+     "text": ""
+    },
+    {
+     "title": "Check it on X",
+     "text": "The generator can't see X's accounts."
+    }
+   ]
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "X Name Generator",
+   "what": "X name rules and limits: Handle (@username)",
+   "value": "4–15",
+   "unit": "characters",
+   "others": [
+    {
+     "value": "50",
+     "label": "Display name"
+    },
+    {
+     "value": "160",
+     "label": "Bio"
+    },
+    {
+     "value": "280",
+     "label": "Post"
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "What makes a good X username",
+   "quote": "On X (formerly Twitter), your identity is split in two: an @handle people use to mention you, and a bold display name above every post.",
+   "by": "X Name Generator"
+  }
+ ]
+}

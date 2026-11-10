@@ -1,0 +1,87 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "TikTok Name Generator",
+   "question": "TikTok Name Generator",
+   "answer": "30 Free TikTok Username Ideas",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "type",
+    "video"
+   ],
+   "qualifier": "Type your niche or nickname, pick a style, and get 30 TikTok username ideas that fit the app's character rules and are easy to say in a video."
+  },
+  {
+   "name": "what-makes-a-good",
+   "type": "lists",
+   "kicker": "TikTok Name Generator",
+   "title": "What makes a good TikTok username",
+   "groups": [
+    {
+     "label": "It's readable in a split second",
+     "text": "Your username shows on the For You feed."
+    },
+    {
+     "label": "It sounds right when you say it",
+     "text": "Many creators sign off with \"follow @...\" in their videos."
+    },
+    {
+     "label": "It looks good as a watermark",
+     "text": "When people save a TikTok, the downloaded video carries your @username."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "TikTok Name Generator",
+   "title": "How to use the TikTok name generator",
+   "steps": [
+    {
+     "title": "Choose a style",
+     "text": "Cool: confident, punchy names for lifestyle and fashion."
+    },
+    {
+     "title": "Copy and check",
+     "text": "Tap any of the 30 ideas to copy it."
+    },
+    {
+     "title": "Write your display name too",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "TikTok Name Generator",
+   "what": "TikTok name rules and limits: Username",
+   "value": "24",
+   "unit": "characters",
+   "others": [
+    {
+     "value": "30",
+     "label": "Name (display name)"
+    },
+    {
+     "value": "80",
+     "label": "Bio"
+    },
+    {
+     "value": "4,000",
+     "label": "Caption"
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "TikTok username ideas by niche",
+   "quote": "Most strong TikTok names pair a personal touch with the topic.",
+   "by": "TikTok Name Generator"
+  }
+ ]
+}

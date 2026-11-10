@@ -1,0 +1,72 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "YouTube Name Checker",
+   "question": "YouTube Name Checker",
+   "answer": "Test Your @Handle & Open the Channel",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "eye",
+    "calendar"
+   ],
+   "qualifier": "Check a YouTube handle against the platform's rules, get close valid alternatives, and open youtube.com/@name to see whether a channel already uses it."
+  },
+  {
+   "name": "what-this-youtube-name",
+   "type": "lists",
+   "kicker": "YouTube Name Checker",
+   "title": "What this YouTube name checker does",
+   "groups": [
+    {
+     "label": "The rules it tests",
+     "items": [
+      "3 to 30 characters",
+      "No spaces"
+     ]
+    },
+    {
+     "label": "Check a list of handles",
+     "text": "Switch to Check a list to paste up to 200 handles."
+    },
+    {
+     "label": "Reading the channel link",
+     "text": "The button opens youtube.com/@ followed by your handle in a new tab."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "YouTube Name Checker",
+   "title": "How to check YouTube channel name availability",
+   "steps": [
+    {
+     "title": "Type the handle you want",
+     "text": "Enter it without the @."
+    },
+    {
+     "title": "Fix anything that's flagged",
+     "text": ""
+    },
+    {
+     "title": "Open the channel link",
+     "text": ""
+    },
+    {
+     "title": "Claim it in YouTube Studio",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "YouTube handle vs. channel name",
+   "quote": "YouTube gives every channel two names, and people looking for a YouTube channel name checker usually mean the handle.",
+   "by": "YouTube Name Checker"
+  }
+ ]
+}

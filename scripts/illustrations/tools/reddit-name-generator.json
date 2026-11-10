@@ -1,0 +1,83 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Reddit Name Generator",
+   "question": "Reddit Name Generator",
+   "answer": "30 Free Reddit Username Ideas",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "type",
+    "calendar"
+   ],
+   "qualifier": "Get 30 Reddit username ideas that fit the 20-character limit, so you can pick one you'll be happy with for good. Reddit usernames can't be changed."
+  },
+  {
+   "name": "what-makes-a-good",
+   "type": "lists",
+   "kicker": "Reddit Name Generator",
+   "title": "What makes a good Reddit username",
+   "groups": [
+    {
+     "label": "It protects your privacy",
+     "text": "Reddit runs on pseudonyms, and people often talk more openly there than elsewhere."
+    },
+    {
+     "label": "It doesn't look like a throwaway",
+     "text": "Reddit hands out auto-generated names in an adjective-noun-number format."
+    },
+    {
+     "label": "It reads well in small type",
+     "text": "Usernames appear above every comment in a thread."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Reddit Name Generator",
+   "title": "How to use the Reddit name generator",
+   "steps": [
+    {
+     "title": "Generate and filter",
+     "text": ""
+    },
+    {
+     "title": "Try it on the sign-up screen",
+     "text": "The generator can't see Reddit's user list."
+    },
+    {
+     "title": "Do a quick search first",
+     "text": "Search the name on Reddit and the web."
+    }
+   ]
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "Reddit Name Generator",
+   "what": "Reddit name rules and limits: Username length",
+   "value": "3–20",
+   "unit": "characters",
+   "others": []
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Reddit Name Generator",
+   "title": "Reddit username ideas by vibe",
+   "groups": [
+    {
+     "label": "Sample usernames",
+     "text": "Invented for this page; check each one on Reddit before you get attached."
+    },
+    {
+     "label": "Leave yourself a buffer",
+     "text": "Several of these sit near the 20-character cap."
+    }
+   ]
+  }
+ ]
+}

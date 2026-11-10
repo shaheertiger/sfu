@@ -1,0 +1,99 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Telegram Username Availability Checker",
+   "question": "Telegram Username Availability Checker",
+   "answer": "Rules & t.me Test",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "eye",
+    "calendar"
+   ],
+   "qualifier": "Check a Telegram username against Telegram's format rules, get close valid alternatives, and open t.me/name to see whether a profile, channel, group or bot already uses it."
+  },
+  {
+   "name": "what-this-telegram-username",
+   "type": "lists",
+   "kicker": "Telegram Username Availability Checker",
+   "title": "What this Telegram username availability checker can tell you",
+   "groups": [
+    {
+     "label": "The rules it tests",
+     "items": [
+      "Starts with a letter",
+      "Doesn't end with an underscore"
+     ]
+    },
+    {
+     "label": "What the t.me link shows",
+     "text": "Every Telegram username has a public link at t.me/ followed by the name."
+    },
+    {
+     "label": "It runs in your browser",
+     "text": "Nothing you type is sent to Telegram or to us, and nothing is stored."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Telegram Username Availability Checker",
+   "title": "How to check a Telegram username",
+   "steps": [
+    {
+     "title": "Type the name you want",
+     "text": "Enter it without the @."
+    },
+    {
+     "title": "Fix what's flagged",
+     "text": ""
+    },
+    {
+     "title": "Open the t.me link",
+     "text": "If a profile, channel or bot preview appears, the name is taken."
+    },
+    {
+     "title": "Confirm in Telegram",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "usernames-for-accounts-channels",
+   "type": "lists",
+   "kicker": "Telegram Username Availability Checker",
+   "title": "Usernames for accounts, channels, groups and bots",
+   "groups": [
+    {
+     "label": "One shared pool of names",
+     "text": "Personal accounts, public channels."
+    },
+    {
+     "label": "Personal accounts",
+     "text": "A username is optional on a personal account."
+    },
+    {
+     "label": "Public channels and groups",
+     "text": "A channel or group becomes public when you give it a username."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Telegram Username Availability Checker",
+   "title": "Tips for a Telegram username that's likely to be open",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Go a little longer",
+     "Match your other profiles",
+     "Brainstorm, then write the bio"
+    ]
+   }
+  }
+ ]
+}

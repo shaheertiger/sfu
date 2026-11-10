@@ -6,7 +6,12 @@ lead: Type your niche or nickname, pick a style, and get 30 TikTok username idea
 keyword: tiktok name generator
 ---
 ## What makes a good TikTok username
+
+![TikTok Name Generator: 30 Free TikTok Username Ideas. Type your niche or nickname, pick a style, and get 30 TikTok username ideas that fit the app's character rules and are easy to say in a video.](/images/tools/tiktok-name-generator-hero-1200x675.webp)
+
 A good TikTok username is one viewers can catch from a quick glance or a voiceover and type into search without pausing the next video. It should hint at your niche, fit TikTok's 24-character limit, and look good stamped on your clips. Enter a keyword above to get 30 ideas, then check your favorites against the points below.
+
+![What makes a good TikTok username, in 3 groups: It's readable in a split second, It sounds right when you say it and It looks good as a watermark.](/images/tools/tiktok-name-generator-what-makes-a-good-1200x675.webp)
 
 ### It's readable in a split second
 Your username shows on the For You feed, in comments and on duets and stitches, and viewers scroll fast. Familiar words beat clever spellings: "@plantsbyrae" reads quicker than "@plnts.x.r4e".
@@ -21,6 +26,9 @@ When people save a TikTok, the downloaded video carries your @username. That mea
 "@tinyapartmentcook" tells viewers exactly what you do, which helps early on. If you suspect you'll branch out, keep the niche word at the end so a future rename only swaps one part.
 
 ## How to use the TikTok name generator
+
+![How to use the TikTok name generator, in 3 steps: choose a style, copy and check and write your display name too.](/images/tools/tiktok-name-generator-how-to-1200x675.webp)
+
 Think of the keyword as the seed. A topic ("skincare"), a nickname ("rae") or a vibe ("cozy") all work.
 
 ### Choose a style
@@ -38,6 +46,9 @@ Tap any of the 30 ideas to copy it. Every idea uses letters, numbers, underscore
 Your TikTok "name" is separate from your username and can include spaces and emoji. Use it for your real name or brand, then add a one-line pitch with the [TikTok bio generator](/tools/tiktok-bio-generator).
 
 ## TikTok name rules and limits
+
+![TikTok name rules and limits: Username, shown as 24 characters, with Name (display name) 30, Bio 80 and Caption 4,000 for comparison.](/images/tools/tiktok-name-generator-specs-1200x675.webp)
+
 Values below are at the time of writing and can change.
 
 | Field | Limit | Allowed characters |
@@ -54,6 +65,9 @@ TikTok allows periods inside a username but not at the very end. "@rae.cooks" wo
 TikTok limits username changes (at the time of writing, once every 30 days). Changing it also changes your profile link, so old links in other bios or videos may stop working. Settle on a name before you start promoting it.
 
 ## TikTok username ideas by niche
+
+![Key point from the TikTok Name Generator page: Most strong TikTok names pair a personal touch with the topic.](/images/tools/tiktok-name-generator-key-point-1200x675.webp)
+
 Most strong TikTok names pair a personal touch with the topic.
 
 ### Sample usernames

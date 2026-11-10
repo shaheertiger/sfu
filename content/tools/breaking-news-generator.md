@@ -6,6 +6,9 @@ lead: Type a headline, add a photo if you like, and get a TV-style breaking news
 keyword: breaking news generator
 ---
 ## What this breaking news generator makes
+
+![Breaking News Generator: Make a Funny Breaking News Meme. Type a headline, add a photo if you like, and get a TV-style breaking news image with a LIVE badge and a time stamp, ready to share as a meme.](/images/tools/breaking-news-generator-hero-1200x675.webp)
+
 This breaking news generator turns your headline into a TV-style news graphic: a white headline bar near the bottom of the frame with a thin red rule, a red **BREAKING NEWS** tab on its top-left corner, and a red **LIVE** badge and a time stamp in the top-right corner. Put it over your own photo or a plain background, then download it as a PNG or JPG for a group chat, a meme account or a playful brand post.
 
 The design is generic on purpose. It doesn't copy any real channel's graphics, logo or colors, and the **BREAKING NEWS** label can't be changed. The tool itself shows a reminder whenever this style is on: "For jokes and memes only. Don't make fake news that could mislead people or pass for a real broadcast."
@@ -14,6 +17,9 @@ The design is generic on purpose. It doesn't copy any real channel's graphics, l
 The image is drawn in your browser. Your photo never leaves your device, there's no sign-up and no watermark.
 
 ## How to make a breaking news meme
+
+![How to make a breaking news meme, in 4 steps: add a photo, or use a plain background, type the headline, adjust the look and pick a size and download.](/images/tools/breaking-news-generator-how-to-1200x675.webp)
+
 ### 1. Add a photo, or use a plain background
 Tap **Add a photo or drop it here (optional)**. A reaction photo, your pet looking guilty or a picture of the office kitchen all work. Without a photo, pick a **Background color**; the default dark slate looks like a studio backdrop.
 
@@ -33,6 +39,9 @@ Choose an **Output size** and **PNG** or **JPG**, then press the download button
 The breaking news generator is a mode of the [add text to image](/tools/add-text-to-image) tool, so under **Style** you can also switch to **Plain**, **Band** or **Outline** without losing your text and photo.
 
 ## Fake breaking news generator ideas that stay funny
+
+![Key point from the Breaking News Generator page: The best fake breaking news is obviously a joke the moment someone reads it.](/images/tools/breaking-news-generator-key-point-1200x675.webp)
+
 The best fake breaking news is obviously a joke the moment someone reads it. Some ideas:
 
 - **Everyday drama**: "BREAKING: Local man finally replies to email from March." "Office coffee machine fixed; productivity expected to rise."
@@ -42,6 +51,9 @@ The best fake breaking news is obviously a joke the moment someone reads it. Som
 - **Brand humor**: a bakery's "BREAKING: Cinnamon rolls back in stock at 8am," or a creator's "New video drops tonight." Your own news, told in a playful format.
 
 ## Use the breaking news generator responsibly
+
+![Use the breaking news generator responsibly: do make the joke obvious, leave real people out of it and label parody when you post. Don't imitate real broadcasters and never fake real news.](/images/tools/breaking-news-generator-best-practices-1200x675.webp)
+
 A breaking news graphic borrows the authority of real journalism, which is exactly why it's funny and exactly why it can go wrong. Follow these rules:
 
 ### Make the joke obvious
@@ -60,6 +72,9 @@ Don't put invented events or quotes on real people, and don't target someone who
 Say it's a joke in the caption, for example with "parody" or "#parody". Platforms have rules on misleading and manipulated media, and a clear label helps your post stay on the right side of them. Before posting a photo of other people, you can hide faces with the [blur image](/tools/blur-image) tool, and the [remove EXIF data](/tools/remove-exif-data) tool strips location details from a photo before you share it.
 
 ## Sizes for X, Instagram, Stories and TikTok
+
+![Breaking News Generator: sizes for X, Instagram, Stories and TikTok: 1:1, shown as 1080 × 1080 px, with 4:5 1080 × 1350, 9:16 · Stories/Reels 1080 × 1920 and 16:9 1920 × 1080 for comparison.](/images/tools/breaking-news-generator-specs-1200x675.webp)
+
 | Output size | Pixels | Good for |
 |---|---|---|
 | Original | Your photo's own shape | Keeping your photo uncropped |

@@ -6,7 +6,12 @@ lead: Get 30 ideas for a Discord username, display name or server name. Username
 keyword: discord name generator
 ---
 ## What makes a good Discord name
+
+![Discord Name Generator: 30 Free Username & Server Name Ideas. Get 30 ideas for a Discord username, display name or server name.](/images/tools/discord-name-generator-hero-1200x675.webp)
+
 Discord gives you three names to think about: a unique lowercase **username**, a **display name** friends see in chats, and, if you run a community, a **server name**. A good username is easy to share in a friend request; a good server name tells people what they're joining. Type a keyword above to get 30 ideas.
+
+![What makes a good Discord name, in 3 groups: Usernames are unique now, Display names do the talking and Server names set expectations.](/images/tools/discord-name-generator-what-makes-a-good-1200x675.webp)
 
 ### Usernames are unique now
 Discord retired the old "name#1234" tags, so each username can belong to only one person. Short, common words were claimed early. Expect to add a twist: a second word, a number with meaning, or an underscore or period in the middle.
@@ -18,6 +23,9 @@ In servers, most people see your display name rather than your username. It can 
 A server name appears in invites, in the server list and in Discord's server discovery for eligible communities. "Cozy Builders Club" signals a relaxed building community; "MINECRAFT HARDCORE PVP" signals something else entirely. Pick words that attract the members you want.
 
 ## How to use the Discord name generator
+
+![How to use the Discord name generator, in 4 steps: type a keyword, pick a style, copy usernames and use the rest as display or server names.](/images/tools/discord-name-generator-how-to-1200x675.webp)
+
 One keyword can give you a username, a display name and a server name.
 
 ### Step by step
@@ -31,6 +39,9 @@ One keyword can give you a username, a display name and a server name.
 Running a clan? Generate with a shared keyword ("ember") and give each member a related name: "ember.scout", "ember_tank", "emberwitch".
 
 ## Discord name rules and limits
+
+![Discord name rules and limits: Username, shown as 2–32 characters, with Display name 32, Server name 2–100 and About Me 190 for comparison.](/images/tools/discord-name-generator-specs-1200x675.webp)
+
 Values at the time of writing; see [Discord's support site](https://support.discord.com) for the latest.
 
 | Field | Limit | Allowed characters |
@@ -48,6 +59,9 @@ Discord allows periods in usernames but not two in a row, so "ember..scout" won'
 Any number of servers can share a name, so a distinctive one helps yours stand out in invites.
 
 ## Discord name ideas
+
+![Discord name ideas, in 3 groups: Usernames and display names, Server names by theme and Give your server a matching look.](/images/tools/discord-name-generator-use-cases-1200x675.webp)
+
 Made up for this page; check them in Discord before using.
 
 ### Usernames and display names

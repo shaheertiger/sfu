@@ -1,0 +1,97 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Pinterest Font Generator",
+   "question": "Free Styles",
+   "answer": "Pinterest Font Generator",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "type",
+    "calendar"
+   ],
+   "qualifier": "Copy aesthetic Unicode text styles for Pinterest board names, your profile, pin descriptions and comments, with tips to keep your pins findable in search."
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Pinterest Font Generator",
+   "title": "Best practices for Pinterest",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Treat titles as search queries",
+     "Check the grid on mobile"
+    ]
+   }
+  },
+  {
+   "name": "where-it-works",
+   "type": "matrix",
+   "kicker": "Pinterest Font Generator",
+   "title": "Where styled text works **on Pinterest**",
+   "cols": [
+    "Styled text"
+   ],
+   "rows": [
+    {
+     "label": "Board names, as an accent word",
+     "cells": [
+      "yes"
+     ]
+    },
+    {
+     "label": "About section tagline",
+     "cells": [
+      "yes"
+     ]
+    },
+    {
+     "label": "Pin descriptions, one short line",
+     "cells": [
+      "partly"
+     ]
+    },
+    {
+     "label": "Comments",
+     "cells": [
+      "yes"
+     ]
+    },
+    {
+     "label": "Text on the pin image",
+     "cells": [
+      "no"
+     ]
+    }
+   ],
+   "legend": {
+    "yes": "Works",
+    "partly": "Keep keywords plain",
+    "no": "Use real fonts in an editor"
+   }
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Pinterest Font Generator",
+   "title": "Pinterest font generator **use cases**",
+   "groups": [
+    {
+     "label": "Seasonal boards",
+     "text": "A styled season tag on boards you rotate."
+    },
+    {
+     "label": "Creator and shop profiles",
+     "text": "A styled tagline in your About section."
+    },
+    {
+     "label": "Collaborative boards",
+     "text": "A styled label in a group board's description."
+    }
+   ]
+  }
+ ]
+}

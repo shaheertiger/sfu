@@ -7,7 +7,11 @@ keyword: instagram bold text generator
 ---
 ## Bold styles you can generate
 
+![Instagram Bold Text Generator: Instagram Bold Text Generator. Instagram has no bold button.](/images/tools/instagram-bold-text-generator-hero-1200x675.webp)
+
 There's no way to bold text in an Instagram caption or bio with formatting. The workaround is Unicode characters that look bold. Type your text above and you'll see it in 9 bold styles; tap one to copy it and paste it into Instagram.
+
+![Instagram Bold Text Generator: bold styles you can generate, in 2 groups: The 9 bold styles at a glance and Which bold looks most natural.](/images/tools/instagram-bold-text-generator-bold-styles-you-can-1200x675.webp)
 
 ### The 9 bold styles at a glance
 
@@ -31,6 +35,8 @@ Sans bold is the closest match to Instagram's own interface font, so it reads li
 
 ## Where bold text helps on Instagram
 
+![Where bold text helps on Instagram, in 4 groups: The first line of a caption, Headings in long captions, Your bio and Pinned comments.](/images/tools/instagram-bold-text-generator-where-it-helps-1200x675.webp)
+
 ### The first line of a caption
 
 Captions can run to 2,200 characters, but the feed shows only the opening line or two before "more." A bold hook such as "𝗦𝗮𝘃𝗲 𝘁𝗵𝗶𝘀 𝗳𝗼𝗿 𝘆𝗼𝘂𝗿 𝗻𝗲𝘅𝘁 𝘁𝗿𝗶𝗽" gives people a reason to tap.
@@ -48,6 +54,8 @@ Bold works well for one line of a 150-character bio, typically your role or a ca
 A bold line in a pinned comment can answer the question everyone keeps asking, like a product link or the song name.
 
 ## Best practices for bold text on Instagram
+
+![Best practices for bold text on Instagram: do bold less, not more and watch your character count.](/images/tools/instagram-bold-text-generator-best-practices-1200x675.webp)
 
 ### Bold less, not more
 

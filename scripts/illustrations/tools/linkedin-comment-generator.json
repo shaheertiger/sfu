@@ -1,0 +1,117 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "LinkedIn Comment Generator",
+   "question": "LinkedIn Comment Generator",
+   "answer": "12 Free Ideas in 5 Tones, Edit & Post",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "send",
+    "link"
+   ],
+   "qualifier": "Type what the post is about, pick a tone, and copy a comment idea to edit in your own words before you post it on LinkedIn."
+  },
+  {
+   "name": "what-the-linkedin-comment",
+   "type": "lists",
+   "kicker": "LinkedIn Comment Generator",
+   "title": "What the LinkedIn Comment Generator Does",
+   "groups": [
+    {
+     "label": "How it works",
+     "text": "The ideas come from hand-written templates for each tone."
+    },
+    {
+     "label": "What it never does",
+     "text": "The tool never posts, likes or comments on your behalf."
+    }
+   ]
+  },
+  {
+   "name": "linkedin-comment-types-you",
+   "type": "lists",
+   "kicker": "LinkedIn Comment Generator",
+   "title": "LinkedIn Comment Types You Can Generate",
+   "groups": [
+    {
+     "label": "Supportive comments",
+     "text": "Thank the author and say what helped."
+    },
+    {
+     "label": "Curious question comments",
+     "text": "Questions keep a conversation going and give the author a reason to reply."
+    },
+    {
+     "label": "Professional comments",
+     "text": "Measured and specific, for industry posts and thought leadership."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "LinkedIn Comment Generator",
+   "title": "LinkedIn Comment Best Practices the Generator Bakes In",
+   "good": {
+    "label": "Do",
+    "items": [
+     "One clear intent per comment",
+     "Short enough to read in the feed",
+     "Questions that invite a reply",
+     "Professional language by default"
+    ]
+   }
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "LinkedIn Comment Generator",
+   "title": "How to Use the LinkedIn Comment Generator",
+   "steps": [
+    {
+     "title": "Describe the post in a few words",
+     "text": ""
+    },
+    {
+     "title": "Pick a tone",
+     "text": ""
+    },
+    {
+     "title": "Read the 12 ideas",
+     "text": "Each one has a copy button."
+    },
+    {
+     "title": "Copy the closest one",
+     "text": "Tap the copy button."
+    }
+   ]
+  },
+  {
+   "name": "how-to-2",
+   "type": "steps",
+   "kicker": "LinkedIn Comment Generator",
+   "title": "How to Get the Most Out of Your Comments",
+   "steps": [
+    {
+     "title": "Add one specific detail",
+     "text": ""
+    },
+    {
+     "title": "Never paste the same comment twice",
+     "text": ""
+    },
+    {
+     "title": "Match the post's mood",
+     "text": "Read the post properly first."
+    },
+    {
+     "title": "Comment where you have something to add",
+     "text": ""
+    }
+   ]
+  }
+ ]
+}

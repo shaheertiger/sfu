@@ -6,7 +6,12 @@ lead: TikTok gives you just 80 characters for a bio. Describe your content, pick
 keyword: tiktok bio generator
 ---
 ## What makes a good TikTok bio
+
+![TikTok Bio Generator, shown as 80 characters, with Username 24 and Video caption 4,000 for comparison.](/images/tools/tiktok-bio-generator-hero-1200x675.webp)
+
 A TikTok bio is limited to 80 characters, which is about a dozen words. Most visitors arrive from a single video on the For You feed, so the bio's job is to confirm "yes, there's more of this here." This free TikTok bio generator writes 12 options in that space and shows each one's length.
+
+![Key point from the TikTok Bio Generator page: A TikTok bio is limited to 80 characters, which is about a dozen words.](/images/tools/tiktok-bio-generator-key-point-1200x675.webp)
 
 ### The niche comes first
 Someone who liked your sourdough video wants to know if the account is all baking or just one lucky clip. Starting with "Sourdough for beginners" settles it in three words.
@@ -21,6 +26,9 @@ At 80 characters, emoji can replace words: a 📍 before a city or a 👇 pointi
 If your videos are deadpan, a bubbly bio feels like a different person. Choose a tone that matches how you talk on camera.
 
 ## How to use the TikTok bio generator
+
+![How to use the TikTok bio generator, in 3 steps: say what you make, choose a tone and copy and paste.](/images/tools/tiktok-bio-generator-how-to-1200x675.webp)
+
 It runs in your browser, free and without an account. Nothing you enter is uploaded.
 
 ### Say what you make
@@ -55,6 +63,9 @@ Your bio has to follow TikTok's Community Guidelines like your videos do. Avoid 
 A clear photo and a matching username help the bio land. The [TikTok photo resizer](/tools/tiktok-photo-resizer) prepares a profile picture, and the [TikTok name generator](/tools/tiktok-name-generator) suggests usernames within the 24-character rule.
 
 ## TikTok bio ideas by niche
+
+![TikTok bio ideas by niche, in 4 groups: Food, Education, Fitness and Small business.](/images/tools/tiktok-bio-generator-use-cases-1200x675.webp)
+
 All of these fit within 80 characters.
 
 ### Food

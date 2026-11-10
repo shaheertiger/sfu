@@ -6,7 +6,12 @@ lead: Add 2 to 9 photos, pick a layout and a size for Instagram posts or Stories
 keyword: photo collage maker
 ---
 ## What this photo collage maker does
+
+![Photo Collage Maker: Photo Collage Maker. Add 2 to 9 photos, pick a layout and a size for Instagram posts or Stories, drag each photo into place, and download one finished collage.](/images/tools/photo-collage-maker-hero-1200x675.webp)
+
 This photo collage maker puts 2 to 9 photos into a single image. Add your photos, choose one of 11 layouts, pick the output size (square, portrait feed, Stories/Reels or landscape), set the gap, outer padding, corner radius and background color, then download the collage as a JPG or PNG. Every size is 1080 pixels on its short side, the width Instagram, TikTok and most feeds display images at, so the file is ready to post without resizing.
+
+![What this photo collage maker does, in 2 groups: Your photos stay on your device and Files it accepts.](/images/tools/photo-collage-maker-what-this-photo-collage-1200x675.webp)
 
 ### Your photos stay on your device
 The collage is drawn in your browser. Nothing is uploaded, there's no account to create and no watermark is added. Large phone photos are scaled down as they load, but stay larger than any cell they fill, so the result stays sharp.
@@ -29,6 +34,9 @@ JPG, PNG, WebP and GIF images, up to 9 at a time. iPhone photos saved as HEIC ma
 When you add photos, the tool jumps to the first layout that holds exactly that many and only lists the layouts for that count. Tick **Show all layouts** to choose any of them. If a layout has more cells than you have photos, a note tells you how many to add, and empty cells are saved in the background color. If it has fewer cells, it uses the first photos in your order.
 
 ## How to make a photo collage
+
+![How to make a photo collage, in 4 steps: add your photos, put them in order, choose a layout and output size and frame each photo.](/images/tools/photo-collage-maker-how-to-1200x675.webp)
+
 ### 1. Add your photos
 Tap **Choose photos or drop them here (2–9)**, or drag image files onto the box. To add more later, use **Add more photos**, which shows how many of the 9 slots you've used.
 
@@ -48,6 +56,9 @@ Photos fill their cells completely, and whatever doesn't fit is cropped. Drag a 
 Choose **JPG** (smaller files, best for photos) or **PNG**, then press the download button. It names the exact size, for example **Download 1080×1350 JPG**.
 
 ## Instagram collage sizes for posts, Stories and Reels
+
+![Photo Collage Maker: Instagram collage sizes for posts, Stories and Reels: 1:1, shown as 1080 × 1080 px, with 4:5 1080 × 1350, 3:4 1080 × 1440 and 9:16 · Stories/Reels 1080 × 1920 for comparison.](/images/tools/photo-collage-maker-specs-1200x675.webp)
+
 | Output size | Pixels | Good for |
 |---|---|---|
 | 1:1 | 1080×1080 | Square feed posts on almost any network |
@@ -66,6 +77,9 @@ Choose **9:16 · Stories/Reels** for a full-screen story collage. Keep faces and
 A collage shows every photo at once, each one smaller; a carousel shows one at a time at full size. Use a collage for before-and-after shots, event recaps or a carousel's cover slide. To spread one wide picture across several swipeable slides, use the [Instagram carousel splitter](/tools/instagram-carousel-splitter); to turn one image into a puzzle across your profile, use the [Instagram grid maker](/tools/instagram-grid-maker).
 
 ## Tips for a photo grid collage that reads on a phone
+
+![Tips for a photo grid collage that reads on a phone: do use fewer, bigger photos, match photo shape to cell shape, make the gap part of the design and add a headline afterwards.](/images/tools/photo-collage-maker-best-practices-1200x675.webp)
+
 ### Use fewer, bigger photos
 On a 1080-pixel square with the default spacing, each photo in a 3×3 grid is only about 344 pixels wide. Nine photos work for a mood board or a "my year" recap; for detail, four to six reads better on a small screen.
 

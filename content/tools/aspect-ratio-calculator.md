@@ -6,7 +6,12 @@ lead: Type a width and height to get the aspect ratio, or pick a ratio and one s
 keyword: aspect ratio calculator
 ---
 ## How to use this aspect ratio calculator
+
+![Aspect Ratio Calculator: 16:9, 4:5, 9:16 & Social Media Sizes. Type a width and height to get the aspect ratio, or pick a ratio and one side to get the other.](/images/tools/aspect-ratio-calculator-hero-1200x675.webp)
+
 This aspect ratio calculator works both ways. **Find the ratio** turns a width and height into an aspect ratio, such as 1920 × 1080 into 16:9. **Calculate a size** does the reverse: pick a ratio, type the side you know, and it fills in the other in whole pixels. Below both modes sits a table of recommended sizes for Instagram, TikTok, YouTube, X, LinkedIn, Facebook, Pinterest and Threads.
+
+![How to use this aspect ratio calculator, in 3 steps: find the ratio, calculate a size and rounding to whole pixels.](/images/tools/aspect-ratio-calculator-how-to-1200x675.webp)
 
 ### Find the ratio
 Choose **Find the ratio** and enter a **Width (px)** and **Height (px)**. You get four answers:
@@ -44,6 +49,9 @@ Images can't have half pixels, so results are rounded. When rounding was needed,
 Some sizes don't reduce to small numbers. 1366 × 768, a common laptop resolution, simplifies to 683:384. The calculator still shows it as **≈ 16:9 · matches**, because it's within 1% of 16:9. The same happens with 1080 × 566 (540:283), which is 1.91:1 for practical purposes.
 
 ## 16:9 calculator: common 16:9 sizes
+
+![Aspect Ratio Calculator: 16:9 calculator: common 16:9 sizes, a table of 1280, 1600, 1920, 2560 and 3840 by Height.](/images/tools/aspect-ratio-calculator-table-1200x675.webp)
+
 To get the height of a 16:9 image, multiply the width by 9 and divide by 16. To get the width, multiply the height by 16 and divide by 9. In **Calculate a size**, pick 16:9 and type either side.
 
 | Width | Height |
@@ -58,6 +66,9 @@ To get the height of a 16:9 image, multiply the width by 9 and divide by 16. To 
 For a ratio W:H, the new height is your width × H ÷ W, and the new width is your height × W ÷ H. That's all the calculator does, plus the rounding. Resizing to a different ratio always means cropping or adding borders; keeping the same ratio means the picture scales without distortion.
 
 ## 4:5 and 9:16 sizes for social media
+
+![Aspect Ratio Calculator: 4:5 and 9:16 sizes for social media, in 2 groups: 4:5: the tallest feed post and 9:16: full-screen vertical.](/images/tools/aspect-ratio-calculator-4-5-and-9-1200x675.webp)
+
 ### 4:5: the tallest feed post
 4:5 is the portrait shape for Instagram, Facebook and Threads feed posts. At 1080 pixels wide it's 1080 × 1350. At the time of writing, Instagram's publishing API, which scheduling tools use, accepts feed images between 4:5 and 1.91:1, so 4:5 is the tallest shape that's safe everywhere, and it takes up the most screen space. Our guide to [Instagram aspect ratios and cropping](/blog/instagram-aspect-ratio-cropping) explains the range in detail.
 
@@ -68,6 +79,9 @@ For a ratio W:H, the new height is your width × H ÷ W, and the new width is yo
 1.91:1 is the wide shape used for link previews and landscape posts on Facebook, LinkedIn and Instagram. Because 1.91 is itself a rounded number, sizes such as 1080 × 566, 1200 × 627 and 1200 × 630 all count as 1.91:1. In **Calculate a size**, 1.91:1 at 1080 wide gives 1080 × 565; either height works.
 
 ## Social media image sizes
+
+![Aspect Ratio Calculator: social media image sizes: Instagram, shown as 1080 × 1350 px, with Instagram 1080 × 1080, Instagram 1080 × 566 and Instagram 1080 × 1920 for comparison.](/images/tools/aspect-ratio-calculator-specs-1200x675.webp)
+
 The calculator's table lists these recommended sizes at the time of writing. Tap a size there to load it into **Find the ratio**.
 
 | Platform | Use | Size (px) | Ratio |

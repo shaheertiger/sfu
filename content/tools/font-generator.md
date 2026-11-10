@@ -7,7 +7,11 @@ keyword: font generator
 ---
 ## Styles you can generate
 
+![Font Generator: 30+ Free Text Styles. Type any text and copy it in 30+ Unicode styles that paste into almost any social app, bio, caption or chat.](/images/tools/font-generator-hero-1200x675.webp)
+
 This font generator turns plain text into more than 30 copy-and-paste styles. Type above, tap a result, and paste it anywhere that accepts text: social bios, captions, comments, chat apps and more.
+
+![Why it isn't really a font, comparing A font (Changes how the same letters are drawn and Lost when text is copied) with this generator (Changes which characters you send, Survives copy and paste and Read as different characters by search).](/images/tools/font-generator-not-a-font-1200x675.webp)
 
 ### The full style list
 
@@ -38,6 +42,8 @@ A font changes how the same letters are drawn. This tool changes which character
 
 ## Where styled text works
 
+![Font Generator: where styled text works: do platform guides, places styled text usually fails and places with better options.](/images/tools/font-generator-best-practices-1200x675.webp)
+
 ### Platform guides
 
 Most apps that accept emoji will display these characters. Each platform has its own rules, though, so we've written specific guides:
@@ -58,6 +64,8 @@ Usernames and handles on most networks only allow plain letters, numbers and a f
 Discord and Telegram support real bold and italic in messages. Story and video editors on Instagram and TikTok have their own fonts. Word processors, design tools and websites can use actual font files. Reach for Unicode only where those aren't available.
 
 ## Best practices
+
+![Font Generator: best practices: do style a few words, not everything, keep keywords and names searchable, consider accessibility and test on more than one device.](/images/tools/font-generator-best-practices-2-1200x675.webp)
 
 ### Style a few words, not everything
 

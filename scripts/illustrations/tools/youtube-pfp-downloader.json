@@ -1,0 +1,85 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "YouTube PFP Downloader",
+   "question": "YouTube PFP Downloader",
+   "answer": "Profile Picture & YT DP in HD, Free",
+   "tone": "neutral",
+   "mark": "image",
+   "icons": [
+    "block",
+    "image"
+   ],
+   "qualifier": "Paste a channel link, @handle, channel ID or video link to get the channel's profile picture in every size, plus its banner."
+  },
+  {
+   "name": "profile-picture-downloader-features",
+   "type": "lists",
+   "kicker": "YouTube PFP Downloader",
+   "title": "Profile Picture Downloader Features",
+   "groups": [
+    {
+     "label": "Paste almost any YouTube link",
+     "text": "The input box accepts most of the ways people share a channel."
+    },
+    {
+     "label": "Type just the @handle",
+     "text": "Enter the handle with or without the @: @channelname or channelname."
+    },
+    {
+     "label": "Paste a channel ID",
+     "text": "A channel ID starts with UC and is 24 characters long."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "YouTube PFP Downloader",
+   "title": "Best Practices and Caveats",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Use the pictures fairly",
+     "Download fresh before you present",
+     "Check the corners and the safe area"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Never impersonate a channel"
+    ]
+   }
+  },
+  {
+   "name": "related-free-youtube-tools",
+   "type": "lists",
+   "kicker": "YouTube PFP Downloader",
+   "title": "Related Free YouTube Tools",
+   "groups": [
+    {
+     "label": "YouTube video ID finder",
+     "text": "Paste any watch, youtu.be."
+    },
+    {
+     "label": "YouTube handle checker",
+     "text": "Test an @handle against YouTube's 3–30 character rules."
+    },
+    {
+     "label": "YouTube name generator",
+     "text": "Starting a channel and need a name to go with your new profile picture?"
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Available Image Types",
+   "quote": "Each lookup returns two kinds of image from the same channel.",
+   "by": "YouTube PFP Downloader"
+  }
+ ]
+}

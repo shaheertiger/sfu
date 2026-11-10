@@ -6,7 +6,12 @@ lead: Get 30 name and handle ideas for a brand or business account on X, all sho
 keyword: x page name generator
 ---
 ## What makes a good brand name on X
+
+![X Page Name Generator: 30 Free Brand Account Name Ideas. Get 30 name and handle ideas for a brand or business account on X, all short enough for X's 15-character handle limit.](/images/tools/x-page-name-generator-hero-1200x675.webp)
+
 On X (formerly Twitter), a business account has two names to get right: a display name of up to 50 characters and an @handle of only 4 to 15. The best brand accounts use the display name for the full, recognizable company name and squeeze a clear, unmistakable version into the handle. This generator helps with the squeezing.
+
+![Key point from the X Page Name Generator page: On X (formerly Twitter), a business account has two names to get right: a display name of up to 50 characters and an @handle of only 4 to 15.](/images/tools/x-page-name-generator-key-point-1200x675.webp)
 
 ### The handle is the hard part
 Long company names rarely fit in 15 characters; "Brightwater Analytics" has 20 letters. Your handle needs a shortened form people still connect to the brand.
@@ -18,6 +23,9 @@ If your Instagram, TikTok and YouTube handles already exist, aim for the same ha
 Avoid handles that include a competitor's or partner's name, or that suggest an official connection you don't have. X's rules on impersonation and misleading accounts apply to businesses as well as people.
 
 ## How to use the X page name generator
+
+![How to use the X page name generator, in 4 steps: enter your brand or product word, choose a style, copy from 30 ideas and regenerate or rephrase.](/images/tools/x-page-name-generator-how-to-1200x675.webp)
+
 Start from your brand, not from what's trendy.
 
 ### Step by step
@@ -34,6 +42,9 @@ Start from your brand, not from what's trendy.
 - Avoid vowel-stripping ("@brtwtr") unless your logo already does it.
 
 ## X name rules and limits for brand accounts
+
+![X name rules and limits for brand accounts: Display name, shown as 50 characters, with Handle (@username) 4–15, Bio 160 and Standard post 280 for comparison.](/images/tools/x-page-name-generator-specs-1200x675.webp)
+
 Values at the time of writing; check [X's help center](https://help.x.com) if a name is rejected.
 
 | Field | Limit | Notes |
@@ -50,6 +61,9 @@ Your display name can carry the full company name plus a short descriptor, such 
 Larger brands often add separate accounts for support, careers or regions (for example **@brightwaterhelp** or **@brightwater_uk**). Keep the shared root short enough that these extensions still fit inside 15 characters.
 
 ## Brand account name examples
+
+![Brand account name examples, in 2 groups: Sample brand accounts and Test it in a sentence.](/images/tools/x-page-name-generator-use-cases-1200x675.webp)
+
 A full display name paired with a short handle covers most brands.
 
 ### Sample brand accounts

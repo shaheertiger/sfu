@@ -6,6 +6,9 @@ lead: Check a Discord username against Discord's format rules, get close valid a
 keyword: discord username checker
 ---
 ## How the Discord username checker works
+
+![Discord Username Checker: Test Names Against Discord's Rules. Check a Discord username against Discord's format rules, get close valid alternatives, or paste a list of up to 200 names to see which ones Discord would accept.](/images/tools/discord-username-checker-hero-1200x675.webp)
+
 This Discord username checker tells you whether a name follows Discord's username rules: 2 to 32 characters, lowercase letters, numbers, underscores and periods, and no two periods in a row. It **can't** tell you whether the name is free. Discord has no public profile page you can open by username and no public availability lookup, so the only real test is typing the name into Discord under User Settings → My Account → Username.
 
 ### What it checks
@@ -26,6 +29,9 @@ Most username checkers can link to a profile URL so you can see whether an accou
 The check runs on your device. The names you type aren't sent to Discord, to us or anywhere else, and nothing is saved.
 
 ## Check many Discord usernames at once
+
+![Key point from the Discord Username Checker page: Switch to Check a list to test a batch of ideas in one go.](/images/tools/discord-username-checker-key-point-1200x675.webp)
+
 Switch to **Check a list** to test a batch of ideas in one go. Paste up to 200 names, one per line or separated by commas, and the checker marks each one "Follows the rules" or shows the first rule it breaks. Duplicates are dropped, and a count at the top tells you how many of your names pass. One click copies only the valid names, ready to paste into a note while you test them.
 
 ### It's a mass rule check, not a mass availability check
@@ -35,6 +41,9 @@ List mode checks the rules for each name. It doesn't check whether any of them a
 Some tools and scripts claim to check hundreds of Discord usernames against Discord's servers. They usually need your account token or password to do it. Never paste either one into a third-party site or script: anyone holding your token can sign in as you. Discord's own settings screen is the only availability check you need.
 
 ## Discord username rules in detail
+
+![Discord username rules in detail, in 2 groups: What happened to the #1234 tags and Periods and underscores.](/images/tools/discord-username-checker-discord-username-rules-in-1200x675.webp)
+
 ### Username vs. display name vs. server nickname
 Discord gives you three names, and only one of them has strict rules.
 
@@ -51,6 +60,9 @@ Discord used to let many people share the same name by adding a four-digit tag, 
 Both are allowed anywhere in the name, and underscores can repeat. The one restriction the checker enforces is no two periods in a row. Hyphens aren't allowed, so "night-owl" needs to become "night_owl" or "night.owl."
 
 ## How to check and claim a Discord username
+
+![How to check and claim a Discord username, in 3 steps: shortlist names that pass, do the Discord username check in the app and keep your other profiles in line.](/images/tools/discord-username-checker-how-to-1200x675.webp)
+
 ### 1. Shortlist names that pass
 Run your ideas through the checker, or paste the whole list into Check a list mode. If you're short on ideas, the [Discord name generator](/tools/discord-name-generator) gives you 30 that already follow the lowercase rules.
 

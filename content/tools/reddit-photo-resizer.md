@@ -6,7 +6,12 @@ lead: Resize images for a subreddit banner, profile banner, community icon, avat
 keyword: reddit photo resizer
 ---
 ## Reddit image sizes at a glance
+
+![Reddit Photo Resizer: Banner, Community Icon & Avatar Sizes. Resize images for a subreddit banner, profile banner, community icon, avatar or post.](/images/tools/reddit-photo-resizer-hero-1200x675.webp)
+
 A Reddit community banner should be 1920×384, community icons and avatars 256×256, and a landscape post image around 1200×628. The resizer covers all of these plus a 1000×300 profile banner, so moderators and regular users can prepare images in one place.
+
+![Reddit image sizes at a glance: Community banner, shown as 1920 × 384 px, with Community icon 256 × 256, Avatar 256 × 256 and Profile banner 1000 × 300 for comparison.](/images/tools/reddit-photo-resizer-specs-1200x675.webp)
 
 | Preset | Size | Ratio | Who uses it |
 |---|---|---|---|
@@ -29,6 +34,9 @@ Reddit accepts many image shapes for posts. The 1200×628 preset gives you a cle
 Your own profile has a banner too, separate from any community's. Reddit doesn't publish an official spec for it, but 1000×300 (10:3) is the most commonly cited Reddit profile banner size. Your avatar overlaps part of it, so keep faces and text away from where it sits, and check the preview on desktop and mobile after uploading.
 
 ## How to resize an image for Reddit
+
+![How to resize an image for Reddit, in 4 steps: upload your image, select a preset, fill or fit and download and upload.](/images/tools/reddit-photo-resizer-how-to-1200x675.webp)
+
 ### 1. Upload your image
 Pick a PNG or JPG. Processing happens in your browser, so nothing is uploaded.
 
@@ -42,6 +50,9 @@ Choose community banner, community icon, avatar, profile banner or post image to
 Export as PNG for logos and text, or JPG for photos. Moderators upload banners and icons from the community's appearance settings; your avatar is set from your profile settings.
 
 ## Tips for Reddit images
+
+![Tips for Reddit images: do make icons readable at small sizes and leave room for Reddit's interface.](/images/tools/reddit-photo-resizer-best-practices-1200x675.webp)
+
 ### Treat the banner as a strip, not a picture
 Because the banner is 5:1 and gets cropped on some screens, it works best as a pattern, a texture, a panorama or a centered wordmark. Avoid placing important text near the left and right ends.
 

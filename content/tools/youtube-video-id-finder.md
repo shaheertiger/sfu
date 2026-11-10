@@ -6,7 +6,12 @@ lead: Paste a YouTube link to get its video ID, plus any channel ID, @handle, pl
 keyword: youtube video id finder
 ---
 ## YouTube Link IDs at a Glance
+
+![YouTube Video ID Finder: Get Video, Channel & Playlist IDs. Paste a YouTube link to get its video ID, plus any channel ID, @handle, playlist ID and start time, with short and embed links and thumbnails.](/images/tools/youtube-video-id-finder-hero-1200x675.webp)
+
 A YouTube video ID is the 11-character code, such as `dQw4w9WgXcQ`, that identifies one video however the link is written. Paste a link above and the finder shows each of these that the link contains, with a copy button next to each one.
+
+![YouTube Link IDs at a Glance: Channel ID, shown as 24 characters (24 characters).](/images/tools/youtube-video-id-finder-specs-1200x675.webp)
 
 | Result | Example | When you get it |
 |---|---|---|
@@ -45,6 +50,9 @@ YouTube serves thumbnails for every public video at fixed addresses built from t
 Select **Open** to view a thumbnail in a new tab, then save it from there.
 
 ## What the Video ID Finder Does
+
+![Key point from the YouTube Video ID Finder page: The video ID finder pulls the video ID out of any YouTube link you paste, along with the other IDs a link can carry, and gives each one a copy button.](/images/tools/youtube-video-id-finder-key-point-1200x675.webp)
+
 The video ID finder pulls the video ID out of any YouTube link you paste, along with the other IDs a link can carry, and gives each one a copy button.
 
 You need a video ID more often than you'd think: to embed a video on a website, to use a WordPress or Notion block, to fill in a field in an analytics or ads tool, to call the YouTube Data API, or just to share a clean link without tracking parameters. Picking it out by hand is fiddly because YouTube links come in at least half a dozen shapes, and the ID sits in a different place in each.
@@ -76,6 +84,9 @@ YouTube has accumulated a lot of link styles. The finder recognises all the comm
 Paste an 11-character video ID on its own and the finder recognises it, then builds the short link, embed link and thumbnail links for you.
 
 ## How to Find a YouTube Video ID
+
+![How to Find a YouTube Video ID, in 3 steps: with the finder, by hand and finding a channel ID.](/images/tools/youtube-video-id-finder-how-to-1200x675.webp)
+
 ### With the finder
 1. Open the video on YouTube and copy its link. On the app or mobile site, tap **Share**, then **Copy link**. On a computer, copy the address bar.
 2. Paste the link into the box above. Results appear as you paste; there's no button to press.
@@ -141,6 +152,9 @@ Learning platforms and slide tools often embed YouTube from an ID or an embed li
 When you're reviewing reported content or citing a video in research, the video ID is the stable reference. Titles change and links get shortened, but the ID points to the same video for as long as it exists.
 
 ## Tips and Limits
+
+![YouTube Video ID Finder: tips and Limits: do IDs outlive titles, not deletions, the finder reads links, not YouTube, custom and legacy channel links and clean links before you share.](/images/tools/youtube-video-id-finder-best-practices-1200x675.webp)
+
 ### IDs outlive titles, not deletions
 A video ID stays the same through title, description and thumbnail changes. If the video is deleted or made private, the ID still exists in your notes but no longer plays. Our guide on [finding deleted YouTube videos](/blog/how-to-find-deleted-youtube-videos) covers what you can still recover.
 

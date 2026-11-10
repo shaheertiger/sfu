@@ -1,0 +1,92 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "Telegram Profile Photo Resizer",
+   "what": "Telegram Profile Photo Resizer",
+   "value": "640 × 640",
+   "unit": "px",
+   "others": [
+    {
+     "value": "512 × 512",
+     "label": "Sticker"
+    },
+    {
+     "value": "1280 × 720",
+     "label": "Channel post"
+    },
+    {
+     "value": "100 × 100",
+     "label": "Custom emoji"
+    }
+   ]
+  },
+  {
+   "name": "supported-formats",
+   "type": "lists",
+   "kicker": "Telegram Profile Photo Resizer",
+   "title": "Supported Formats",
+   "groups": [
+    {
+     "label": "What you can upload",
+     "text": "The resizer opens any image your browser can read:"
+    },
+    {
+     "label": "What you can download",
+     "text": "Every preset downloads as PNG or JPG."
+    },
+    {
+     "label": "File size",
+     "text": "There's no upload limit in the resizer."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Telegram Profile Photo Resizer",
+   "title": "How to Use the Telegram Photo Resizer",
+   "steps": [
+    {
+     "title": "Choose your image",
+     "text": "Click the upload area or drop a JPG, PNG, WebP or GIF on it."
+    },
+    {
+     "title": "Pick a preset",
+     "text": "Choose profile photo, sticker, channel post or custom emoji."
+    },
+    {
+     "title": "Choose fill or fit",
+     "text": ""
+    },
+    {
+     "title": "Pick a format",
+     "text": "PNG keeps edges crisp and keeps transparency in fill mode."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Telegram Profile Photo Resizer",
+   "title": "Best Practices for Telegram Images",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Center everything that matters",
+     "Design for small sizes",
+     "Use PNG for stickers, logos and text",
+     "Start from the original file"
+    ]
+   }
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Telegram Profile Picture Size and Image Sizes at a Glance",
+   "quote": "A Telegram profile photo works well as a square 640×640 image, which Telegram crops to a circle.",
+   "by": "Telegram Profile Photo Resizer"
+  }
+ ]
+}

@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import JsonLd from '@/components/JsonLd';
+import Figure, { figuresLd } from '@/components/marketing/Figure';
+import { bestTimeIndexFigures } from '@/lib/figures';
 import BestTimeHeatmap from '@/components/marketing/BestTimeHeatmap';
 import { AnswerBanner, Table } from '@/components/marketing/BestTimeCountry';
 import { Breadcrumbs, MarketingPage, TrialCta } from '@/components/marketing/Chrome';
@@ -42,7 +44,10 @@ export default async function BestTimeIndex() {
     { q: 'How often should I check my best time?', a: 'Every few months, or after a big change in your audience. The pages here are rebuilt daily from the last 90 days, and your own insights will tell you when your followers shift.' },
   ];
   const crumbs = [{ name: 'Home', href: '/' }, { name: 'Best time to post', href: BEST_TIME_ROOT }];
-  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'CollectionPage', '@id': `${abs(BEST_TIME_ROOT)}#webpage`, url: abs(BEST_TIME_ROOT), name: TITLE(), description: DESCRIPTION, inLanguage: 'en' }, breadcrumbLd(crumbs), faqPageLd(faq)] };
+  // Drawn from the committed Trends data: shown only while no platform has measured data worldwide.
+  const figs = Object.values(all).every((d) => d.source === 'trends' || d.source === 'baseline') ? bestTimeIndexFigures() : [];
+  const img = figuresLd(figs);
+  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'CollectionPage', '@id': `${abs(BEST_TIME_ROOT)}#webpage`, url: abs(BEST_TIME_ROOT), name: TITLE(), description: DESCRIPTION, inLanguage: 'en', ...img.primary }, ...img.nodes, breadcrumbLd(crumbs), faqPageLd(faq)] };
   return (
     <MarketingPage>
       <JsonLd data={ld} />
@@ -58,6 +63,7 @@ export default async function BestTimeIndex() {
           </div>
         </section>
         <article className={`${m.narrow} ${m.prose}`}>
+          <Figure fig={figs[0]} priority />
           <section className={m.section}>
             <h2 id="by-platform">Best Time to Post on Each Social Media Platform</h2>
             <p>Each platform's single best slot and strongest day, in local time. Click through for the full heatmap, every weekday and every country.</p>

@@ -6,6 +6,9 @@ lead: Describe a YouTube video, choose a tone, and get 12 comment ideas to rewri
 keyword: youtube comment generator
 ---
 ## What makes a good YouTube comment
+
+![YouTube Comment Generator: YouTube Comment Generator. Describe a YouTube video, choose a tone, and get 12 comment ideas to rewrite and post yourself, from viewer questions to creator replies.](/images/tools/youtube-comment-generator-hero-1200x675.webp)
+
 YouTube comments can be longer and more thoughtful than on most platforms, and the ones that rise to the top usually add to the video: a timestamp, a tip, a question or a kind correction. This free YouTube comment generator gives you 12 template-based ideas to adapt. You write and post the final comment yourself.
 
 ### It points to a timestamp
@@ -21,6 +24,9 @@ Questions such as "Would this work on a smaller budget?" give creators ideas for
 Dropping a link to your own channel under someone else's video is widely seen as spam and can fall foul of YouTube's spam policies. Comment as a viewer, not an advertiser.
 
 ## How to use the YouTube comment generator
+
+![How to use the YouTube comment generator, in 3 steps: describe the video, choose a tone and add your own detail and post.](/images/tools/youtube-comment-generator-how-to-1200x675.webp)
+
 It runs in your browser. No account is needed, and what you type isn't uploaded.
 
 ### Describe the video
@@ -33,6 +39,9 @@ Pick supportive, curious question, funny, professional or hype. Curious question
 Each of the 12 ideas is a draft. Add a timestamp or a specific observation, adjust the wording, and post it under the video yourself.
 
 ## YouTube comment tools for creators
+
+![Key point from the YouTube Comment Generator page: If you run a channel, the comment section is part of your community.](/images/tools/youtube-comment-generator-key-point-1200x675.webp)
+
 If you run a channel, the comment section is part of your community. YouTube gives you tools to shape it.
 
 ### Reply from YouTube Studio
@@ -48,6 +57,9 @@ YouTube Studio lets you hold potentially inappropriate comments for review and a
 YouTube's Community Guidelines and spam policies cover comments as well as videos. Repetitive comments, misleading links and fake engagement can be removed and may lead to restrictions on your account.
 
 ## YouTube comment ideas by video type
+
+![YouTube comment ideas by video type, in 3 groups: Tutorial, Vlog and Music.](/images/tools/youtube-comment-generator-use-cases-1200x675.webp)
+
 ### Tutorial
 - "Paused at 2:35 to try this and it worked first time. Would the same method work on an older model?"
 

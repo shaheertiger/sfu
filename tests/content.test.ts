@@ -7,9 +7,17 @@ import { TOOLS, toolBySlug } from '../lib/tools/registry.js';
 import { PLATFORM_PAGES } from '../lib/platform-pages.js';
 import { LANDING_PAGES } from '../lib/landing-pages.js';
 import { BEST_TIME_ROOT, allBestTimePages, pagePath as bestTimePath } from '../lib/best-time-pages.js';
+import { isGeneratedFigure, smallVariant } from '../lib/figure-url.js';
+import { allProgrammaticFigures } from '../lib/figures.js';
 
 const ROOT = path.join(process.cwd(), 'content');
 const files = (dir: string) => fs.readdirSync(path.join(ROOT, dir)).filter((f) => f.endsWith('.md')).map((f) => [f.slice(0, -3), fs.readFileSync(path.join(ROOT, dir, f), 'utf8')] as const);
+// Illustration cards live in Vercel Blob (lib/figure-url.js): a card exists if it is in public/
+// (rendered locally) or in the upload log; everything else under /images must be in public/.
+const UPLOADS = path.join(process.cwd(), 'scripts', 'illustrations', 'blob-uploads.json');
+const uploaded: Record<string, string> = fs.existsSync(UPLOADS) ? JSON.parse(fs.readFileSync(UPLOADS, 'utf8')) : {};
+const imageExists = (p: string) => fs.existsSync(path.join(process.cwd(), 'public', p)) || (isGeneratedFigure(p) && p in uploaded);
+const words = (s: string) => s.trim().split(/\s+/).filter(Boolean).length;
 const all = [...files('tools'), ...files('blog'), ...files('compare'), ...files('platforms'), ...files('pages')];
 
 test('every tool in the registry has a page, and every tool page has a tool', () => {
@@ -46,7 +54,7 @@ test('internal links point at pages that exist', () => {
   const ok = (href: string) => {
     const [p] = href.split('#');
     if (['', '/', '/signup', '/login', '/tools', '/blog', '/compare', '/about', '/later-alternative', '/docs', '/demo'].includes(p)) return true;
-    if (p.startsWith('/images/')) return fs.existsSync(path.join(process.cwd(), 'public', p));
+    if (p.startsWith('/images/')) return imageExists(p);
     if (PLATFORM_PAGES.some((x) => p === `/${x.slug}`)) return true;
     if (LANDING_PAGES.some((x) => p === `/${x.slug}`)) return true;
     if (p.startsWith(BEST_TIME_ROOT)) return bestTime.has(p);
@@ -198,4 +206,58 @@ test('hreflang maps list English, every translation and x-default', () => {
   assert.equal(map['x-default'], '/tools/instagram-font-generator');
   for (const l of ['de', 'fr', 'ja', 'nl']) assert.equal(map[l], `/${l}/tools/instagram-font-generator`);
   assert.equal(hreflangMap('tools', 'x-character-counter'), undefined);
+});
+
+test('every tool page has at least 4 images, each with a full-sentence alt text', () => {
+  for (const [slug, raw] of files('tools')) {
+    const imgs = [...raw.matchAll(/!\[([^\]]*)\]\((\/images\/[^)\s]+)\)/g)];
+    assert.ok(imgs.length >= 4, `${slug}: ${imgs.length} images`);
+    for (const [, alt, src] of imgs) assert.ok(words(alt) >= 8, `${slug}: alt for ${src} is ${words(alt)} words`);
+  }
+});
+
+test('every image referenced in content, components or the figure inventory exists, with its 720-px variant', () => {
+  const refs = new Set<string>();
+  for (const [, raw] of [...all, ...files('platforms')]) for (const m of raw.matchAll(/\]\((\/images\/[^)\s]+)\)/g)) refs.add(m[1]);
+  const walk = (d: string): string[] => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]));
+  for (const dir of ['components', 'app', 'lib']) {
+    for (const f of walk(path.join(process.cwd(), dir)).filter((x) => /\.(jsx?|tsx?)$/.test(x))) for (const m of fs.readFileSync(f, 'utf8').matchAll(/['"`](\/images\/[\w./-]+\.\w+)['"`]/g)) refs.add(m[1]);
+  }
+  for (const { figures } of allProgrammaticFigures()) for (const f of figures) refs.add(f.src);
+  for (const p of refs) {
+    assert.ok(imageExists(p), `missing image ${p}`);
+    const small = smallVariant(p);
+    if (small) assert.ok(imageExists(small), `missing 720-px variant ${small}`);
+  }
+});
+
+test('every programmatic page has its figures, with full-sentence alt text and sizes in the file name', () => {
+  const pages = allProgrammaticFigures();
+  assert.ok(pages.length > 500);
+  for (const { page, figures } of pages) {
+    assert.ok(figures.length >= 1, `${page}: no figure`);
+    for (const f of figures) {
+      assert.ok(words(f.alt) >= 8, `${page}: alt is ${words(f.alt)} words`);
+      assert.match(f.src, new RegExp(`-${f.width}x${f.height}\\.webp$`), page);
+    }
+  }
+});
+
+test('no card draws a platform logo or a screenshot of another app', () => {
+  const PLATFORMS = 'instagram|tiktok|facebook|snapchat|whatsapp|x|twitter|linkedin|threads|youtube|pinterest|bluesky|discord|reddit|telegram|slack|twitch|roblox|minecraft|google';
+  const banned = [new RegExp(`\\b(?:${PLATFORMS})(?:['’]s)?\\s+(?:logo|icon|app icon|wordmark)s?\\b(?!\\s+(?:generator|maker))`, 'i'), /screenshot of/i, /\b(?:mock(?:ed)?[- ]?up|replica) of\b/i];
+  const dir = path.join(process.cwd(), 'scripts', 'illustrations');
+  const specs = [...fs.readdirSync(dir).filter((f) => f.endsWith('.json') && f !== 'figure-hashes.json' && f !== 'blob-uploads.json').map((f) => path.join(dir, f)), ...fs.readdirSync(path.join(dir, 'tools')).map((f) => path.join(dir, 'tools', f))];
+  const cards = [
+    ...specs.flatMap((f) => JSON.parse(fs.readFileSync(f, 'utf8')).cards.map((c: unknown) => [path.basename(f), c] as const)),
+    ...allProgrammaticFigures().flatMap(({ page, figures }) => figures.map((fig) => [page, fig.card] as const)),
+  ];
+  assert.ok(cards.length > 2000);
+  for (const [where, card] of cards) {
+    // The folio label (kicker) names the page, and a tool can be called "logo generator"; the drawn content can't show one.
+    const { kicker: _k, icons, mark, ...rest } = card as Record<string, unknown>;
+    const text = JSON.stringify(rest);
+    for (const re of banned) assert.ok(!re.test(text), `${where}: card "${(card as { name: string }).name}" matches ${re}`);
+    for (const name of [...((icons as string[]) || []), ...(mark ? [mark as string] : [])]) assert.ok(!new RegExp(`^(?:${PLATFORMS})$`, 'i').test(name), `${where}: platform icon ${name}`);
+  }
 });

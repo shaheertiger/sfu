@@ -1,0 +1,94 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "X Username Checker (Twitter Handle Checker)",
+   "what": "X Username Checker (Twitter Handle Checker)",
+   "value": "4–15",
+   "unit": "characters",
+   "others": []
+  },
+  {
+   "name": "what-this-twitter-username",
+   "type": "lists",
+   "kicker": "X Username Checker (Twitter Handle Checker)",
+   "title": "What This Twitter Username Checker Does",
+   "groups": [
+    {
+     "label": "It checks the format X accepts",
+     "text": "The checker answers the question you can answer without X's help."
+    },
+    {
+     "label": "It can't promise a handle is free",
+     "text": "X doesn't offer a public availability check."
+    },
+    {
+     "label": "It suggests close valid variations",
+     "text": "Whenever you type a name."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "X Username Checker (Twitter Handle Checker)",
+   "title": "How to Check if an X Username Is Available",
+   "steps": [
+    {
+     "title": "Type the handle you want",
+     "text": ""
+    },
+    {
+     "title": "Read the format result",
+     "text": ""
+    },
+    {
+     "title": "Open the profile",
+     "text": "Tap the Open x.com/… button."
+    },
+    {
+     "title": "Try a variation if needed",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "X Username Checker (Twitter Handle Checker)",
+   "title": "X Username Checker Use Cases by Audience",
+   "groups": [
+    {
+     "label": "Small businesses and local shops",
+     "text": "A shop called Riverside Bakery & Café can't be @riversidebakerycafe on X."
+    },
+    {
+     "label": "Agencies and social media managers",
+     "text": "When a client is choosing between names."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "X Username Checker (Twitter Handle Checker)",
+   "title": "Best Practices for Picking an X Handle",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Keep it short enough to type",
+     "Use the display name for the details",
+     "Match across platforms where you can"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Avoid lookalike characters",
+     "Don't trust tools that promise more"
+    ]
+   }
+  }
+ ]
+}

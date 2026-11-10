@@ -1,0 +1,86 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "YouTube Bold Text Generator",
+   "question": "Free Tool",
+   "answer": "YouTube Bold Text Generator",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "eye",
+    "calendar"
+   ],
+   "qualifier": "Copy Unicode bold text for YouTube descriptions, channel descriptions and comments, and see where YouTube's own formatting or plain text works better."
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "YouTube Bold Text Generator",
+   "title": "Best practices for bold text on YouTube",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Protect your searchable words",
+     "Keep links and timestamps plain",
+     "Mind accessibility",
+     "Count characters before you paste"
+    ]
+   }
+  },
+  {
+   "name": "where-it-works",
+   "type": "matrix",
+   "kicker": "YouTube Bold Text Generator",
+   "title": "Where bold text works **on YouTube**",
+   "cols": [
+    "Unicode bold"
+   ],
+   "rows": [
+    {
+     "label": "Comments: try *bold* first",
+     "cells": [
+      "partly"
+     ]
+    },
+    {
+     "label": "Video descriptions, 5,000 characters",
+     "cells": [
+      "yes"
+     ]
+    },
+    {
+     "label": "Channel description",
+     "cells": [
+      "yes"
+     ]
+    },
+    {
+     "label": "Video titles",
+     "cells": [
+      "partly"
+     ]
+    },
+    {
+     "label": "Handle, 3–30 plain characters",
+     "cells": [
+      "no"
+     ]
+    }
+   ],
+   "legend": {
+    "yes": "Works",
+    "partly": "Use with care",
+    "no": "Not allowed"
+   }
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Bold styles you can generate",
+   "quote": "Unicode bold isn't formatting: it swaps your letters for **bold-looking characters** that paste anywhere.",
+   "by": "YouTube Bold Text Generator"
+  }
+ ]
+}

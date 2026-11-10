@@ -1,0 +1,109 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "Facebook Bio Generator",
+   "what": "Facebook Bio Generator",
+   "value": "101",
+   "unit": "characters",
+   "others": []
+  },
+  {
+   "name": "what-the-facebook-bio",
+   "type": "lists",
+   "kicker": "Facebook Bio Generator",
+   "title": "What the Facebook Bio Generator Does",
+   "groups": [
+    {
+     "label": "How it works",
+     "text": "The bios are built from hand-written templates for each tone."
+    },
+    {
+     "label": "Why a short bio is hard to write",
+     "text": "A good Facebook bio does three jobs in roughly 15 words."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Facebook Bio Generator",
+   "title": "Facebook Bio Best Practices the Generator Bakes In",
+   "good": {
+    "label": "Do",
+    "items": [
+     "The 101-character limit",
+     "One line, no line breaks",
+     "Emoji used with restraint",
+     "Plain, searchable words",
+     "Your words, not filler"
+    ]
+   }
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Facebook Bio Generator",
+   "title": "How to Use the Facebook Bio Generator",
+   "steps": [
+    {
+     "title": "Fill in \"What you do\"",
+     "text": ""
+    },
+    {
+     "title": "Fill in \"What you post about\"",
+     "text": ""
+    },
+    {
+     "title": "Pick a tone",
+     "text": "Friendly, professional, funny, minimal or aesthetic."
+    },
+    {
+     "title": "Turn emoji on or off",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Facebook Bio Generator",
+   "title": "Who the Facebook Bio Generator Is For",
+   "groups": [
+    {
+     "label": "Everyday Facebook users",
+     "text": "Most people just want something better than an empty Intro."
+    },
+    {
+     "label": "Freelancers and job seekers",
+     "text": "Clients and recruiters do look people up on Facebook."
+    }
+   ]
+  },
+  {
+   "name": "how-to-2",
+   "type": "steps",
+   "kicker": "Facebook Bio Generator",
+   "title": "How to Get the Most Out of Your New Bio",
+   "steps": [
+    {
+     "title": "Make one word specific",
+     "text": "Swap one generic word for a precise one."
+    },
+    {
+     "title": "Put the most important words first",
+     "text": ""
+    },
+    {
+     "title": "Don't repeat your details",
+     "text": ""
+    },
+    {
+     "title": "Check who can see it",
+     "text": ""
+    }
+   ]
+  }
+ ]
+}

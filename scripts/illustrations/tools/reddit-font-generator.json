@@ -1,0 +1,97 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "Reddit Font Generator",
+   "what": "Reddit Font Generator",
+   "value": "24",
+   "unit": "styles",
+   "others": []
+  },
+  {
+   "name": "what-the-reddit-font",
+   "type": "lists",
+   "kicker": "Reddit Font Generator",
+   "title": "What the Reddit Font Generator Actually Does",
+   "groups": [
+    {
+     "label": "What happens to your text",
+     "text": "Latin letters (A–Z, a–z) become the styled version."
+    },
+    {
+     "label": "Reddit's built-in formatting",
+     "text": "Inside posts and comments."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Reddit Font Generator",
+   "title": "How to Use the Reddit Font Generator",
+   "steps": [
+    {
+     "title": "Type or paste your text",
+     "text": "into the box."
+    },
+    {
+     "title": "Compare the 24 styles",
+     "text": ", which all update as you type."
+    },
+    {
+     "title": "Tap Copy",
+     "text": "next to the style you want."
+    },
+    {
+     "title": "Paste it into Reddit",
+     "text": ""
+    },
+    {
+     "title": "Preview before you post",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "where-reddit-font-generator",
+   "type": "lists",
+   "kicker": "Reddit Font Generator",
+   "title": "Where Reddit Font Generator Text Works",
+   "groups": [
+    {
+     "label": "Post titles",
+     "text": "Titles accept Unicode, so styled text displays."
+    },
+    {
+     "label": "Comments and text posts",
+     "text": "Unicode works, but markdown is better here."
+    },
+    {
+     "label": "Flair and profile",
+     "text": "User flair is where styled text is most accepted."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Reddit Font Generator",
+   "title": "Best Practices for Styled Reddit Text",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Keep keywords plain",
+     "Follow each subreddit's rules",
+     "Watch the length"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Don't impersonate"
+    ]
+   }
+  }
+ ]
+}

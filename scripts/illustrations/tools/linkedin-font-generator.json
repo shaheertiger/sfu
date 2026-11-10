@@ -1,0 +1,104 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "LinkedIn Font Generator",
+   "question": "Free Text Styles",
+   "answer": "LinkedIn Font Generator",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "send",
+    "link"
+   ],
+   "qualifier": "LinkedIn posts have no bold or italic button. Copy Unicode bold, italic and other styles for posts, comments and your profile, and learn where to keep text plain."
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "LinkedIn Font Generator",
+   "title": "Best practices for LinkedIn",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Keep searchable words plain",
+     "Write for screen reader users"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Don't style your name",
+     "Don't style hashtags or mentions"
+    ]
+   }
+  },
+  {
+   "name": "where-it-works",
+   "type": "matrix",
+   "kicker": "LinkedIn Font Generator",
+   "title": "Where styled text works **on LinkedIn**",
+   "cols": [
+    "Styled text"
+   ],
+   "rows": [
+    {
+     "label": "Posts, up to 3,000 characters",
+     "cells": [
+      "yes"
+     ]
+    },
+    {
+     "label": "Comments",
+     "cells": [
+      "yes"
+     ]
+    },
+    {
+     "label": "About section and experience",
+     "cells": [
+      "yes"
+     ]
+    },
+    {
+     "label": "Headline, with care",
+     "cells": [
+      "partly"
+     ]
+    },
+    {
+     "label": "Articles and newsletters: real formatting",
+     "cells": [
+      "no"
+     ]
+    }
+   ],
+   "legend": {
+    "yes": "Use Unicode styles",
+    "partly": "Works, but hurts search",
+    "no": "Use the built-in editor"
+   }
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "LinkedIn Font Generator",
+   "title": "LinkedIn font generator **use cases**",
+   "groups": [
+    {
+     "label": "Thought-leadership posts",
+     "text": "A bold hook line, then short plain paragraphs."
+    },
+    {
+     "label": "Job announcements",
+     "text": "“We're hiring” in bold on the first line, details plain."
+    },
+    {
+     "label": "Event recaps",
+     "text": "Bold labels give a recap a clear structure."
+    }
+   ]
+  }
+ ]
+}

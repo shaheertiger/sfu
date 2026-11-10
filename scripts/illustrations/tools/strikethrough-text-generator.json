@@ -1,0 +1,79 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Strikethrough Text Generator",
+   "question": "Strikethrough Text Generator",
+   "answer": "Free Copy & Paste",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "link",
+    "calendar"
+   ],
+   "qualifier": "Cross out or underline text with five Unicode styles and paste it into Instagram, X, Facebook, LinkedIn, TikTok and other apps that have no strikethrough button."
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Strikethrough Text Generator",
+   "title": "Best practices",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Mind the character count",
+     "Expect small rendering differences"
+    ]
+   }
+  },
+  {
+   "name": "where-it-works",
+   "type": "versus",
+   "kicker": "Strikethrough Text Generator",
+   "title": "Where strikethrough text **works**",
+   "left": {
+    "label": "Needs the Unicode version",
+    "tone": "neutral",
+    "items": [
+     "Instagram, Facebook and X",
+     "LinkedIn, TikTok and Threads",
+     "Bluesky and Pinterest"
+    ]
+   },
+   "right": {
+    "label": "Has built-in strikethrough",
+    "tone": "good",
+    "items": [
+     "Discord and Reddit: ~~text~~",
+     "YouTube comments: -text-",
+     "Slack and WhatsApp: ~text~"
+    ]
+   }
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Strikethrough Text Generator",
+   "title": "Strikethrough text **use cases**",
+   "groups": [
+    {
+     "label": "Price drops and sales",
+     "text": "Show the discount at a glance, with a plain-text description too."
+    },
+    {
+     "label": "Jokes and self-corrections",
+     "text": "Cross out the honest word, then add the polite one."
+    },
+    {
+     "label": "Checklists and updates",
+     "text": "Strike finished items in a pinned post or a bio list."
+    },
+    {
+     "label": "Underlined emphasis",
+     "text": "Make a single word, such as a deadline, stand out."
+    }
+   ]
+  }
+ ]
+}

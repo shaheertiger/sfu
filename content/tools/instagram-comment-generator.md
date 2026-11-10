@@ -6,7 +6,12 @@ lead: Describe an Instagram post or Reel, pick a tone, and get 12 comment ideas 
 keyword: instagram comment generator
 ---
 ## What makes a good Instagram comment
+
+![Instagram Comment Generator: Instagram Comment Generator. Describe an Instagram post or Reel, pick a tone, and get 12 comment ideas to make your own, for your audience, your peers or your brand's community.](/images/tools/instagram-comment-generator-hero-1200x675.webp)
+
 A good Instagram comment goes beyond a heart emoji: it names something in the photo, slide or Reel and says something the author will want to answer. This free Instagram comment generator gives you 12 template-based ideas from a short description. You edit the one you like and post it yourself.
+
+![Key point from the Instagram Comment Generator page: A good Instagram comment goes beyond a heart emoji: it names something in the photo, slide or Reel and says something the author will want to answer.](/images/tools/instagram-comment-generator-key-point-1200x675.webp)
 
 ### It mentions a detail
 "That light through the window in the third slide" tells the author you swiped through the carousel. Specific details are what make a comment feel personal rather than automatic.
@@ -21,6 +26,9 @@ Tagging a friend who would love the post is a good use of an @mention; tagging u
 Hashtags belong in the author's caption, not in your comment on someone else's post. A comment full of hashtags reads as an attempt to borrow their reach.
 
 ## How to use the Instagram comment generator
+
+![How to use the Instagram comment generator, in 3 steps: describe the post, pick a tone and edit and post from the app.](/images/tools/instagram-comment-generator-how-to-1200x675.webp)
+
 Everything runs in your browser. There's no sign-up, and nothing you type is uploaded.
 
 ### Describe the post
@@ -48,6 +56,9 @@ In your account settings, Hidden Words can filter offensive comments and phrases
 Instagram's Community Guidelines, linked from the [Instagram Help Center](https://help.instagram.com), prohibit spam and inauthentic activity. Instagram may limit accounts whose activity looks automated, such as posting the same comment many times in a short period. Comment one post at a time, in your own words.
 
 ## Instagram comment ideas by post type
+
+![Instagram comment ideas by post type, in 3 groups: Carousel, Reel and Product launch from a peer.](/images/tools/instagram-comment-generator-use-cases-1200x675.webp)
+
 ### Carousel
 - "Slide five is my favorite, the way the frosting matches the flowers is so clever."
 

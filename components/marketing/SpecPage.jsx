@@ -8,6 +8,8 @@ import { TOOLS } from '@/lib/tools/registry';
 import { abs, breadcrumbLd, faqPageLd } from '@/lib/seo-pages';
 import { organizationLd } from '@/lib/seo';
 import { pagePath as bestTimePath } from '@/lib/best-time-pages';
+import Figure, { figuresLd } from '@/components/marketing/Figure';
+import { specFigures } from '@/lib/figures';
 
 const KIND_LABEL = { image: 'Image sizes', video: 'Video specs', text: 'Character limits', media: 'Media limits' };
 
@@ -40,7 +42,9 @@ export default function SpecPage({ platform, spec }) {
   const counter = TOOLS.find((t) => t.kind === 'counter' && t.platform === platform.id);
   const siblings = platform.specs.filter((x) => x.slug !== spec.slug);
   const others = SPEC_PLATFORMS.filter((p) => p.slug !== platform.slug).map((p) => ({ p, s: p.specs.find((x) => x.kind === spec.kind) })).filter((x) => x.s);
-  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'WebPage', '@id': `${abs(path)}#webpage`, url: abs(path), name: copy.title, description: copy.description, inLanguage: 'en', dateModified: SPECS_VERIFIED }, breadcrumbLd(crumbs), faqPageLd(faq)] };
+  const figs = specFigures(platform.slug, spec.slug);
+  const img = figuresLd(figs);
+  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'WebPage', '@id': `${abs(path)}#webpage`, url: abs(path), name: copy.title, description: copy.description, inLanguage: 'en', dateModified: SPECS_VERIFIED, ...img.primary }, ...img.nodes, breadcrumbLd(crumbs), faqPageLd(faq)] };
   return (
     <MarketingPage>
       <JsonLd data={ld} />
@@ -50,6 +54,7 @@ export default function SpecPage({ platform, spec }) {
           <span className={m.eyebrow}>{KIND_LABEL[spec.kind]} · verified {SPECS_VERIFIED}</span>
           <h1 className={m.h1}>{spec.h1}</h1>
           <p className={m.lead}>{spec.h1.replace(/^\w/, (c) => c.toUpperCase())} is <strong>{spec.answer}</strong>. {spec.detail}</p>
+          <Figure fig={figs[0]} priority />
           <div className={m.toolArea}>
             <div className={s.answer} style={{ gridTemplateColumns: '1fr' }}>
               <div className={s.slot}>

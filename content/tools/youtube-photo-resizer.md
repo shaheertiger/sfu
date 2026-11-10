@@ -6,6 +6,9 @@ lead: Upload a picture, pick a YouTube size such as profile picture, banner or t
 keyword: youtube image resizer
 ---
 ## YouTube Image Sizes at a Glance
+
+![YouTube Image Resizer, shown as 800 × 800 px, with Channel banner 2560 × 1440, Video thumbnail 1280 × 720 and Shorts / vertical 1080 × 1920 for comparison.](/images/tools/youtube-photo-resizer-hero-1200x675.webp)
+
 A YouTube profile picture should be 800×800 pixels, a channel banner 2560×1440, a video thumbnail 1280×720 and a vertical Shorts frame 1080×1920. This YouTube image resizer has a preset for each one: upload any photo or graphic, choose the size, and download a file YouTube will accept without squashing or stretching it.
 
 | Preset | Size | Shape | Where it appears |
@@ -18,6 +21,9 @@ A YouTube profile picture should be 800×800 pixels, a channel banner 2560×1440
 YouTube changes its layouts every so often, so treat the display notes below as accurate at the time of writing and check YouTube Studio if an upload is refused.
 
 ## Current YouTube Image Sizes and Specs
+
+![Current YouTube Image Sizes and Specs, in 3 groups: Profile picture: 800×800, Channel banner: 2560×1440 and Video thumbnail: 1280×720.](/images/tools/youtube-photo-resizer-current-youtube-image-sizes-1200x675.webp)
+
 ### Profile picture: 800×800
 YouTube recommends uploading a square profile picture at 800×800 pixels, and at the time of writing it displays it as a circle at about 98×98 on the channel page and smaller still beside comments and in search. That means two things. First, the corners of your square never show, so anything you put there is wasted. Second, the image is tiny most of the time, so a busy group photo or a logo with small words turns into a smudge.
 
@@ -54,6 +60,9 @@ It runs entirely in your browser. The picture is drawn on a canvas on your devic
 What it doesn't do: it doesn't move the crop off-center, add text, remove backgrounds or upload anything to YouTube for you. It's a quick, exact resize. For text on an image, use the [add text to image tool](/tools/add-text-to-image) first, then bring the result back here.
 
 ## Supported Formats
+
+![YouTube Image Resizer: supported Formats, in 3 groups: What you can upload, What you can download and File size.](/images/tools/youtube-photo-resizer-supported-formats-1200x675.webp)
+
 ### What you can upload
 The resizer opens any image your browser can read. In practice that means:
 
@@ -74,6 +83,9 @@ Every preset downloads as **PNG** or **JPG**, your choice. PNG is lossless, so t
 The resizer has no upload limit of its own, because nothing is uploaded. Very large source photos may take a second to load on an older phone. The limits that matter are YouTube's: 2 MB for a thumbnail and 6 MB for a banner, at the time of writing. A 1280×720 JPG is normally a small fraction of 2 MB; a 2560×1440 PNG of a detailed photo can get large, so choose JPG for photographic banners.
 
 ## How to Use the YouTube Image Resizer
+
+![How to Use the YouTube Image Resizer, in 4 steps: choose your image, pick a preset, choose fill or fit and pick a format.](/images/tools/youtube-photo-resizer-how-to-1200x675.webp)
+
 1. **Choose your image.** Click the upload area or drop a JPG, PNG, WebP or GIF onto it. Animated GIFs come out as a single still frame. Use the largest version of the image you have: shrinking a big image always looks better than enlarging a small one.
 2. **Pick a preset.** Choose profile picture, channel banner, video thumbnail or Shorts / vertical. The preview updates straight away, and the profile picture preview is shown as a circle.
 3. **Choose fill or fit.** **Fill (crop)** scales the image until it covers the whole frame and trims whatever spills over, keeping the center. **Fit (add background)** keeps the entire image visible and fills the leftover space with a color you pick.
@@ -94,6 +106,9 @@ The resizer has no upload limit of its own, because nothing is uploaded. Very la
 Fill always crops from the center. If your subject sits near an edge, crop it roughly in your phone's photo editor first, then run it through the resizer for exact pixels.
 
 ## Who the YouTube Image Resizer Is For
+
+![Who the YouTube Image Resizer Is For, in 3 groups: New YouTubers setting up a channel, Creators who upload every week and Small businesses and local shops.](/images/tools/youtube-photo-resizer-use-cases-1200x675.webp)
+
 ### New YouTubers setting up a channel
 Starting a channel means making a profile picture, a banner and your first thumbnail all at once, usually from photos that weren't made for YouTube. Run the same source photo through the profile picture and banner presets so the channel looks consistent. If you're still choosing a name, the [YouTube name generator](/tools/youtube-name-generator) and [YouTube handle checker](/tools/youtube-handle-checker) help before you commit, and the [YouTube bio generator](/tools/youtube-bio-generator) drafts the channel description.
 
@@ -113,6 +128,9 @@ When a client sends a logo and a handful of photos, you can produce every YouTub
 Slides exported from presentation software are usually 16:9 already but at odd sizes. Resize a title slide to 1280×720 for the thumbnail and keep the same look across a whole lesson playlist.
 
 ## Best Practices for YouTube Images
+
+![Best Practices for YouTube Images: do use the banner's safe area, keep thumbnails honest and readable, pick the right format and start from a big source image.](/images/tools/youtube-photo-resizer-best-practices-1200x675.webp)
+
 ### Design for the smallest size it appears at
 Your profile picture is mostly seen at thumbnail size beside a video title or a comment. Thumbnails are often seen at a couple of centimeters wide on a phone. Before you download, step back from the screen: if you can't tell what the image is, simplify it.
 

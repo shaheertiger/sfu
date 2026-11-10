@@ -1,0 +1,94 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Pinterest Photo Resizer",
+   "question": "Pinterest Photo Resizer",
+   "answer": "Pin, Long Pin, Video & Profile Sizes",
+   "tone": "neutral",
+   "mark": "image",
+   "icons": [
+    "calendar",
+    "clock"
+   ],
+   "qualifier": "Resize any image to the right Pinterest pic size for Pins, profile photos and covers. Pick a preset, crop or fit, and download a PNG or JPG."
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "Pinterest Photo Resizer",
+   "what": "Pinterest image sizes at a glance: Standard Pin",
+   "value": "1000 × 1500",
+   "unit": "px",
+   "others": [
+    {
+     "value": "1000 × 1000",
+     "label": "Square Pin"
+    },
+    {
+     "value": "1000 × 2100",
+     "label": "Long Pin"
+    },
+    {
+     "value": "1080 × 1920",
+     "label": "Video / Idea Pin"
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Pinterest Photo Resizer",
+   "title": "How to resize an image for Pinterest",
+   "steps": [
+    {
+     "title": "Upload the image",
+     "text": "Choose a PNG or JPG from your phone or computer."
+    },
+    {
+     "title": "Pick the preset",
+     "text": ""
+    },
+    {
+     "title": "Choose fill or fit",
+     "text": ""
+    },
+    {
+     "title": "Download and pin",
+     "text": "Save as JPG for photos or PNG for graphics with text."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Pinterest Photo Resizer",
+   "title": "Tips for Pinterest images that get saved",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Make text readable on a phone",
+     "Lead with the subject",
+     "Use one style across your Pins"
+    ]
+   }
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Pinterest Photo Resizer",
+   "title": "Use cases",
+   "groups": [
+    {
+     "label": "Turning blog photos into Pins",
+     "text": "Resize a landscape blog photo to 1000×1500 with fit."
+    },
+    {
+     "label": "Updating your profile",
+     "text": "Crop a headshot or logo to 280×280 for your profile photo."
+    }
+   ]
+  }
+ ]
+}

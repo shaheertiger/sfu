@@ -6,7 +6,12 @@ lead: Naming a YouTube channel for a company, shop or nonprofit? Get 30 brand ch
 keyword: youtube page name generator
 ---
 ## What makes a good YouTube brand channel name
+
+![YouTube Page Name Generator: 30 Free Brand Channel Ideas. Naming a YouTube channel for a company, shop or nonprofit?](/images/tools/youtube-page-name-generator-hero-1200x675.webp)
+
 For a business, the safest YouTube channel name is usually your company name, with a short descriptor only when it adds something people search for. The harder choices are the handle and whether you need more than one channel. Generate 30 ideas above, then use the guidance below.
+
+![Key point from the YouTube Page Name Generator page: For a business, the safest YouTube channel name is usually your company name, with a short descriptor only when it adds something people search for.](/images/tools/youtube-page-name-generator-key-point-1200x675.webp)
 
 ### Recognition first, creativity second
 Customers type the name on your invoice or storefront. A clever channel name that differs from it makes them wonder if they've found the real you.
@@ -18,6 +23,9 @@ Customers type the name on your invoice or storefront. A clever channel name tha
 If your website is fernwaytools.com, @fernwaytools is the natural handle. Matching domains, handles and other social accounts reassures viewers and makes it easier for partners to tag you correctly.
 
 ## How to use the YouTube page name generator
+
+![How to use the YouTube page name generator, in 4 steps: enter your brand or what you sell, pick a style that matches your voice, shortlist channel names and handles and run the business checks.](/images/tools/youtube-page-name-generator-how-to-1200x675.webp)
+
 Treat the results as a shortlist for your marketing and legal checks.
 
 ### Enter your brand or what you sell
@@ -33,6 +41,9 @@ Tap to copy any of the 30 ideas. Each fits YouTube's channel name limit, and man
 The generator can't check YouTube, domain registrars or trademark databases. Before launch, search YouTube for the name, try the handle in YouTube Studio, and confirm with a trademark search that no one else holds rights to the name in your market.
 
 ## YouTube name rules and limits for brands
+
+![YouTube name rules and limits for brands: Channel name, shown as 50 characters, with Handle 3–30 and Channel description 1,000 for comparison.](/images/tools/youtube-page-name-generator-specs-1200x675.webp)
+
 Values at the time of writing; check [YouTube Help](https://support.google.com/youtube) for the latest.
 
 | Field | Limit | Allowed characters |

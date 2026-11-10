@@ -1,0 +1,69 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "TikTok Caption Generator",
+   "question": "Free Hook-First Caption Ideas",
+   "answer": "TikTok Caption Generator",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "video",
+    "calendar"
+   ],
+   "qualifier": "Describe your video, choose a style and get 10 caption ideas that open with a strong first line, each with a character count. Tap one to copy it."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "TikTok Caption Generator",
+   "title": "How to use the TikTok caption generator",
+   "steps": [
+    {
+     "title": "Describe the video",
+     "text": ""
+    },
+    {
+     "title": "Pick a style",
+     "text": ""
+    },
+    {
+     "title": "Add a call to action and hashtags",
+     "text": ""
+    },
+    {
+     "title": "Copy and edit",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "tiktok-caption-limits-and",
+   "type": "lists",
+   "kicker": "TikTok Caption Generator",
+   "title": "TikTok caption limits and rules",
+   "groups": [
+    {
+     "label": "How long can a TikTok caption be?",
+     "text": "TikTok captions can be up to 4,000 characters at the time of writing."
+    },
+    {
+     "label": "What the generator doesn't do",
+     "text": "It's template-based, not AI."
+    },
+    {
+     "label": "Captions for photo posts",
+     "text": "The same ideas work for TikTok photo posts."
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Caption ideas by style",
+   "quote": "These examples show the kind of first lines each style produces for a video about a budget meal-prep routine.",
+   "by": "TikTok Caption Generator"
+  }
+ ]
+}

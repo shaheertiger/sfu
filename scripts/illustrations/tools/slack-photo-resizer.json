@@ -1,0 +1,74 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Slack Photo Resizer",
+   "question": "Slack Photo Resizer",
+   "answer": "Custom Emoji, Profile & Workspace Icon",
+   "tone": "neutral",
+   "mark": "image",
+   "icons": [
+    "calendar",
+    "clock"
+   ],
+   "qualifier": "Make Slack custom emoji, profile photos and workspace icons at the right size. Upload, choose a preset, crop or pad, and download."
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "Slack Photo Resizer",
+   "what": "Slack image sizes at a glance: Custom emoji",
+   "value": "128 × 128",
+   "unit": "px",
+   "others": [
+    {
+     "value": "512 × 512",
+     "label": "Profile photo"
+    },
+    {
+     "value": "512 × 512",
+     "label": "Workspace icon"
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Slack Photo Resizer",
+   "title": "How to resize an image for Slack",
+   "steps": [
+    {
+     "title": "Upload your image",
+     "text": "Choose a PNG or JPG."
+    },
+    {
+     "title": "Choose emoji, profile photo or workspace icon",
+     "text": ""
+    },
+    {
+     "title": "Crop or pad",
+     "text": ""
+    },
+    {
+     "title": "Download",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Slack Photo Resizer",
+   "title": "Tips for crisp Slack images",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Stay under 128 KB for emoji",
+     "Zoom in on the important part",
+     "Use a real photo for your profile"
+    ]
+   }
+  }
+ ]
+}

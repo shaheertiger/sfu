@@ -6,7 +6,12 @@ lead: Get 30 Reddit username ideas that fit the 20-character limit, so you can p
 keyword: reddit name generator
 ---
 ## What makes a good Reddit username
+
+![Reddit Name Generator: 30 Free Reddit Username Ideas. Get 30 Reddit username ideas that fit the 20-character limit, so you can pick one you'll be happy with for good.](/images/tools/reddit-name-generator-hero-1200x675.webp)
+
 On Reddit, your username is permanent, so choose it like a tattoo, not a T-shirt. A good one is easy to recognize in a comment thread, says a little about you, and gives away nothing you'd rather keep private. Enter a keyword above and pick from 30 ideas that already fit Reddit's rules.
+
+![What makes a good Reddit username, in 3 groups: It protects your privacy, It doesn't look like a throwaway and It reads well in small type.](/images/tools/reddit-name-generator-what-makes-a-good-1200x675.webp)
 
 ### It protects your privacy
 Reddit runs on pseudonyms, and people often talk more openly there than elsewhere. Leave out your full name, employer, city and birth year, and avoid reusing a handle that links to your other accounts.
@@ -21,6 +26,9 @@ Reddit hands out auto-generated names in an adjective-noun-number format. They w
 Usernames appear above every comment in a thread. Mixed capitals, a hyphen or an underscore can make a run-together name easier to read: "Quiet-Lantern" scans faster than "quietlantern".
 
 ## How to use the Reddit name generator
+
+![How to use the Reddit name generator, in 3 steps: generate and filter, try it on the sign-up screen and do a quick search first.](/images/tools/reddit-name-generator-how-to-1200x675.webp)
+
 Start with whatever you want the name to hint at: a hobby, a favorite object, an in-joke, or just a sound you like.
 
 ### Generate and filter
@@ -33,6 +41,9 @@ The generator can't see Reddit's user list. Paste your favorite into the usernam
 Search the name on Reddit and the web. You don't want to share it with an account that has a reputation, or a brand that might object.
 
 ## Reddit name rules and limits
+
+![Reddit name rules and limits: Username length, shown as 3–20 characters.](/images/tools/reddit-name-generator-specs-1200x675.webp)
+
 Values below are at the time of writing.
 
 | Item | Rule |
@@ -50,6 +61,9 @@ Your profile can show a display name that you're free to edit later, but comment
 If you outgrow your username, the only option is a new account, which starts from zero karma and history. Some communities limit new or low-karma accounts, so it's worth getting the name right the first time.
 
 ## Reddit username ideas by vibe
+
+![Reddit username ideas by vibe, in 2 groups: Sample usernames and Leave yourself a buffer.](/images/tools/reddit-name-generator-use-cases-1200x675.webp)
+
 Pick the vibe that matches how you'll spend time on Reddit.
 
 ### Sample usernames

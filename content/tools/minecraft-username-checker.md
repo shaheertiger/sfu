@@ -6,7 +6,12 @@ lead: Type the Minecraft username you want to see whether it follows the rules, 
 keyword: minecraft name availability checker
 ---
 ## Minecraft Username Rules at a Glance
+
+![Minecraft Name Availability Checker, shown as 3–16 characters.](/images/tools/minecraft-username-checker-hero-1200x675.webp)
+
 A Minecraft Java Edition username has to be 3 to 16 characters long and can only use letters, numbers and underscores. This Minecraft name availability checker tests a name against those rules as you type. When it passes, a button searches NameMC, a third-party lookup site, so you can see whether a player already has it.
+
+![Key point from the Minecraft Name Availability Checker page: A Minecraft Java Edition username has to be 3 to 16 characters long and can only use letters, numbers and underscores.](/images/tools/minecraft-username-checker-key-point-1200x675.webp)
 
 | Rule | What Minecraft allows (at the time of writing) | Checked here |
 |---|---|---|
@@ -86,6 +91,9 @@ A name made only of numbers and underscores, such as 2012_2012, is valid but har
 Nothing you type is sent to us or stored. The NameMC button is an ordinary link that opens their search in a new tab, and you don't sign in to anything.
 
 ## How to Check if a Minecraft Username Is Taken
+
+![How to Check if a Minecraft Username Is Taken, in 4 steps: type the name you want, read the result, search NameMC and try a variation if needed.](/images/tools/minecraft-username-checker-how-to-1200x675.webp)
+
 1. **Type the name you want.** Capitals are fine; the checker shows the name exactly as you typed it.
 2. **Read the result.** "Follows Minecraft's rules" means the format is valid. "Not allowed" comes with the reason, such as a hyphen or a 17th character.
 3. **Search NameMC.** Tap the **Open namemc.com/search…** button. Look for a profile with exactly your name, ignoring capitals.
@@ -116,6 +124,9 @@ If your current name dates from when you were younger, test replacements here be
 Many Minecraft groups organize on Discord. If you want the same name there, the [Discord username checker](/tools/discord-username-checker) tests Discord's rules, which allow periods but no capitals.
 
 ## Best Practices for Picking a Minecraft Username
+
+![Best Practices for Picking a Minecraft Username: do keep it readable in chat, watch for lookalike letters and plan for the long term. Avoid personal details and never give your login to a "checker".](/images/tools/minecraft-username-checker-best-practices-1200x675.webp)
+
 ### Keep it readable in chat
 Names show up in small text in chat and above players' heads. Short, pronounceable names are easier for friends to type into /msg or a whitelist. Long runs of underscores and numbers make that harder.
 

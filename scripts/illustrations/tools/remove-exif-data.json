@@ -1,0 +1,85 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "EXIF Remover",
+   "question": "EXIF Remover",
+   "answer": "Remove EXIF Data & Location From Photos",
+   "tone": "neutral",
+   "mark": "user-minus",
+   "icons": [
+    "user-minus",
+    "calendar"
+   ],
+   "qualifier": "See exactly what your photos reveal (location, camera, date taken) and remove it in one tap. JPEG and PNG files are cleaned without touching the image, and nothing leaves your device."
+  },
+  {
+   "name": "what-this-exif-remover",
+   "type": "lists",
+   "kicker": "EXIF Remover",
+   "title": "What this EXIF remover does",
+   "groups": [
+    {
+     "label": "What it reads",
+     "text": "For every photo, a table lists what the file contains:"
+    },
+    {
+     "label": "Your photos stay on your device",
+     "text": "Photos are read and cleaned on your device."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "EXIF Remover",
+   "title": "How to remove EXIF data from a photo",
+   "steps": [
+    {
+     "title": "Add your photos",
+     "text": "Tap Choose photos or drop them here, or drag files onto the box."
+    },
+    {
+     "title": "Check what's inside",
+     "text": "Look at the summary line and the red location warnings first."
+    },
+    {
+     "title": "Remove location & metadata",
+     "text": "Press Remove location & metadata."
+    },
+    {
+     "title": "Download one or all",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "lossless-cleaning-and-when",
+   "type": "lists",
+   "kicker": "EXIF Remover",
+   "title": "Lossless cleaning and when a photo is re-saved",
+   "groups": [
+    {
+     "label": "JPEG and PNG: cleaned losslessly",
+     "text": "JPEG and PNG files are cleaned without re-compressing."
+    },
+    {
+     "label": "WebP and HEIC are re-saved as JPEG",
+     "text": "The tool lists metadata for JPEG, PNG and WebP files."
+    },
+    {
+     "label": "Extras after the image are removed",
+     "text": "Some phone JPEGs carry extra data after the main picture."
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "How to stop your camera adding location",
+   "quote": "Cleaning photos one by one works, but it's easier if new photos never get a location in the first place.",
+   "by": "EXIF Remover"
+  }
+ ]
+}

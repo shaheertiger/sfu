@@ -1,0 +1,95 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Discord Character Counter",
+   "question": "Free Message & About Me Checker",
+   "answer": "Discord Character Counter",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "type",
+    "send"
+   ],
+   "qualifier": "Check a Discord message, About Me, display name or custom status against its limit before you hit enter, with characters left, words and lines."
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "Discord Character Counter",
+   "what": "Discord character limits at a glance: Message",
+   "value": "2,000",
+   "unit": "characters",
+   "unitNote": "4,000 with Nitro",
+   "others": [
+    {
+     "value": "190",
+     "label": "About Me"
+    },
+    {
+     "value": "32",
+     "label": "Display name"
+    },
+    {
+     "value": "128",
+     "label": "Custom status"
+    }
+   ]
+  },
+  {
+   "name": "how-discord-counts-characters",
+   "type": "lists",
+   "kicker": "Discord Character Counter",
+   "title": "How Discord counts characters",
+   "groups": [
+    {
+     "label": "Markdown symbols count",
+     "text": "Formatting like bold, italic."
+    },
+    {
+     "label": "Line breaks and spaces count",
+     "text": "Every space and every new line is a character."
+    },
+    {
+     "label": "What happens when you go over",
+     "text": "Discord won't send a message that's over the limit."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Discord Character Counter",
+   "title": "How to use the counter",
+   "steps": [
+    {
+     "title": "Pick the field you're writing for",
+     "text": ""
+    },
+    {
+     "title": "Paste and edit",
+     "text": ""
+    },
+    {
+     "title": "Copy it back into Discord",
+     "text": "When it fits, copy the text into Discord."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Discord Character Counter",
+   "title": "Best practices for Discord text",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Split long announcements on purpose",
+     "Write rules and FAQs in short blocks",
+     "Keep profile text readable"
+    ]
+   }
+  }
+ ]
+}

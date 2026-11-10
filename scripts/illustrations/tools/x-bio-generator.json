@@ -1,0 +1,77 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "X Bio Generator",
+   "what": "X Bio Generator",
+   "value": "160",
+   "unit": "characters",
+   "others": [
+    {
+     "value": "50",
+     "label": "Display name"
+    },
+    {
+     "value": "4–15",
+     "label": "@handle"
+    },
+    {
+     "value": "280",
+     "label": "Standard post"
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "X Bio Generator",
+   "title": "How to use the X bio generator",
+   "steps": [
+    {
+     "title": "Describe what you post about",
+     "text": ""
+    },
+    {
+     "title": "Pick a tone and emoji setting",
+     "text": ""
+    },
+    {
+     "title": "Copy it into your profile",
+     "text": "Tap a bio to copy it."
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "X Bio Generator",
+   "title": "X bio ideas by niche",
+   "groups": [
+    {
+     "label": "Developer",
+     "text": "Frontend dev at @acmeapp."
+    },
+    {
+     "label": "Journalist",
+     "text": "Covering city transport and housing."
+    },
+    {
+     "label": "Founder",
+     "text": "Founder of a two-person bakery software company."
+    },
+    {
+     "label": "Sports fan account",
+     "text": "Fan account, not affiliated with the club."
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "What makes a good X bio",
+   "quote": "Your X (formerly Twitter) bio has 160 characters to convince someone who just read one of your replies that your other posts are worth following.",
+   "by": "X Bio Generator"
+  }
+ ]
+}

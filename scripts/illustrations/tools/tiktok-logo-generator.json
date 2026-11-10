@@ -1,0 +1,75 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "TikTok Logo Generator",
+   "what": "TikTok Logo Generator",
+   "value": "512 × 512",
+   "unit": "px",
+   "others": []
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "TikTok Logo Generator",
+   "title": "How to make your TikTok profile icon",
+   "steps": [
+    {
+     "title": "Choose letters or an emoji",
+     "text": ""
+    },
+    {
+     "title": "Pick a shape",
+     "text": "Circle matches how TikTok shows the picture."
+    },
+    {
+     "title": "Style the background and text",
+     "text": ""
+    },
+    {
+     "title": "Download and set it on TikTok",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "TikTok Logo Generator",
+   "title": "Design tips for TikTok profile icons",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Choose a signature color",
+     "Keep the emoji or letters centered",
+     "Match your username"
+    ]
+   }
+  },
+  {
+   "name": "ideas",
+   "type": "lists",
+   "kicker": "TikTok Logo Generator",
+   "title": "TikTok profile icon **ideas by content type**",
+   "groups": [
+    {
+     "label": "Educational and how-to",
+     "text": "Two initials in white on a calm solid background."
+    },
+    {
+     "label": "Comedy and entertainment",
+     "text": "One expressive emoji on a bright gradient."
+    },
+    {
+     "label": "Small businesses",
+     "text": "Your shop's initials in your brand colors."
+    },
+    {
+     "label": "Fan and niche pages",
+     "text": "An emoji that represents your niche."
+    }
+   ]
+  }
+ ]
+}

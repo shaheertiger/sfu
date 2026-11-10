@@ -1,0 +1,85 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "X Bold Text Generator",
+   "what": "X Bold Text Generator",
+   "value": "9",
+   "unit": "styles",
+   "others": []
+  },
+  {
+   "name": "what-the-x-bold",
+   "type": "lists",
+   "kicker": "X Bold Text Generator",
+   "title": "What the X Bold Text Generator Actually Does",
+   "groups": [
+    {
+     "label": "X bold vs. X's own formatting",
+     "text": "X has offered bold and italic formatting to some Premium subscribers."
+    },
+    {
+     "label": "What happens to your text",
+     "text": "Latin letters (A–Z, a–z) become bold."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "X Bold Text Generator",
+   "title": "How to Use the X Bold Text Generator",
+   "steps": [
+    {
+     "title": "Type or paste your text",
+     "text": "into the box."
+    },
+    {
+     "title": "Compare the 9 bold styles",
+     "text": ", which all update as you type."
+    },
+    {
+     "title": "Tap Copy",
+     "text": "next to the one you want."
+    },
+    {
+     "title": "Paste into X",
+     "text": ""
+    },
+    {
+     "title": "Mix bold and plain text",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "X Bold Text Generator",
+   "title": "Best Practices for Bold Text on X",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Bold a few words, not the whole post",
+     "Keep searchable words plain",
+     "Budget for the double count"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Never bold hashtags or cashtags",
+     "Don't impersonate"
+    ]
+   }
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Bold Styles Supported by the X Bold Text Generator",
+   "quote": "Each style shows the sample \"Big news\" and a typical use on X.",
+   "by": "X Bold Text Generator"
+  }
+ ]
+}

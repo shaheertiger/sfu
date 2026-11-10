@@ -1,0 +1,98 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Blur Image Online",
+   "question": "Blur Image Online",
+   "answer": "Pixelate or Hide Faces, Plates & Text",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "image",
+    "calendar"
+   ],
+   "qualifier": "Drag over a face, a license plate or a name to blur, pixelate or cover it with a solid bar, then download the photo at full size. Your photo never leaves your device."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Blur Image Online",
+   "title": "Blur an image in three steps",
+   "steps": [
+    {
+     "title": "Choose a photo",
+     "text": ""
+    },
+    {
+     "title": "Draw the areas to hide",
+     "text": "Drag on the photo to cover an area."
+    },
+    {
+     "title": "Pick an effect and download",
+     "text": ""
+    },
+    {
+     "title": "Blur the whole image",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "pixelate-image-areas-blur",
+   "type": "lists",
+   "kicker": "Blur Image Online",
+   "title": "Pixelate image areas, blur them or use a solid bar",
+   "groups": [
+    {
+     "label": "How to pixelate an image",
+     "text": "Choose Pixelate and set Block size between 5 and 60."
+    },
+    {
+     "label": "Blur strength",
+     "text": "Choose Blur and set Blur strength between 2 and 50."
+    },
+    {
+     "label": "Why a solid bar is safest for text",
+     "text": "For names, number plates and other text."
+    },
+    {
+     "label": "Overlapping areas stay hidden",
+     "text": "Each area is applied on top of the photo as it already is."
+    }
+   ]
+  },
+  {
+   "name": "blur-faces-in-a",
+   "type": "lists",
+   "kicker": "Blur Image Online",
+   "title": "Blur faces in a photo before you post",
+   "groups": [
+    {
+     "label": "How to blur a face in a photo",
+     "text": "Choose Ellipse under Shape."
+    },
+    {
+     "label": "How to censor a license plate",
+     "text": "Choose Rectangle and Solid bar, then drag over the plate with a small margin."
+    }
+   ]
+  },
+  {
+   "name": "full-size-download-and",
+   "type": "lists",
+   "kicker": "Blur Image Online",
+   "title": "Full-size download, and no hidden location data",
+   "groups": [
+    {
+     "label": "EXIF and GPS data are removed",
+     "text": "The download is a newly drawn image."
+    },
+    {
+     "label": "JPG or PNG",
+     "text": "JPG gives smaller files and suits photos."
+    }
+   ]
+  }
+ ]
+}

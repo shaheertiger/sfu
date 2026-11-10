@@ -1,0 +1,105 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Telegram Character Counter",
+   "question": "Telegram Character Counter",
+   "answer": "4,096 Message & 1,024 Caption Limit",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "eye",
+    "send"
+   ],
+   "qualifier": "Paste a Telegram message, caption, channel description or bio to see how many characters you've used and how many are left for each limit."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Telegram Character Counter",
+   "title": "How to Use the Telegram Character Counter",
+   "steps": [
+    {
+     "title": "Paste or write your text",
+     "text": "in the box."
+    },
+    {
+     "title": "Read the limit rows",
+     "text": ""
+    },
+    {
+     "title": "Check the stats",
+     "text": ": characters, words and lines update as you type."
+    },
+    {
+     "title": "Trim or split",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Telegram Character Counter",
+   "title": "Best Practices for Writing Within Telegram's Limits",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Write for the caption, then expand",
+     "Use formatting instead of decoration",
+     "Split on purpose",
+     "Keep links short"
+    ]
+   }
+  },
+  {
+   "name": "table",
+   "type": "matrix",
+   "kicker": "Telegram Character Counter",
+   "title": "Why You Need a Telegram Character Counter",
+   "corner": "Where on Telegram",
+   "cols": [
+    "Limit at the time of writing",
+    "In the counter"
+   ],
+   "rows": [
+    {
+     "label": "Message",
+     "cells": [
+      "4,096 characters",
+      "yes"
+     ]
+    },
+    {
+     "label": "Media caption",
+     "cells": [
+      "1,024 characters",
+      "yes"
+     ]
+    },
+    {
+     "label": "Channel description",
+     "cells": [
+      "255 characters",
+      "yes"
+     ]
+    },
+    {
+     "label": "Bio",
+     "cells": [
+      "70 characters",
+      "yes"
+     ]
+    },
+    {
+     "label": "Bio with Telegram Premium",
+     "cells": [
+      "140 characters",
+      "yes"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -6,6 +6,9 @@ lead: Get 30 ideas for a Telegram username, channel or group name. Every usernam
 keyword: telegram name generator
 ---
 ## What makes a good Telegram name
+
+![Telegram Name Generator: 30 Free Username & Channel Ideas. Get 30 ideas for a Telegram username, channel or group name.](/images/tools/telegram-name-generator-hero-1200x675.webp)
+
 Telegram has two names worth getting right: the **username**, which becomes your public t.me link, and the **channel or group name**, the title subscribers see in their chat list. A good username is short and easy to type; a good channel name says in a few words why to join. Enter a keyword above to get 30 ideas for either.
 
 ### Your username is your link
@@ -18,6 +21,9 @@ Subscribers see your channel squeezed between friends and family chats. The firs
 A personal username is optional on Telegram. If you set one, people can find and message you without your phone number; if you'd rather not be discoverable, you can skip it or remove it later. For public projects, give the channel a username and keep your personal account separate.
 
 ## How to use the Telegram name generator
+
+![How to use the Telegram name generator, in 4 steps: for a personal username, for a channel or group, copy and claim and check names for business use.](/images/tools/telegram-name-generator-how-to-1200x675.webp)
+
 The same keyword can feed both a username and a channel title.
 
 ### For a personal username
@@ -33,6 +39,9 @@ Tap an idea to copy it, then paste it into Telegram under **Settings > Username*
 For a business or product channel, search trademarks and look for channels with similar names, which make it easier for copycats to confuse subscribers.
 
 ## Telegram name rules and limits
+
+![Telegram name rules and limits: Channel or group name, shown as 128 characters, with Bio 70 for comparison.](/images/tools/telegram-name-generator-specs-1200x675.webp)
+
 Values at the time of writing.
 
 | Field | Limit | Allowed characters |
@@ -48,6 +57,9 @@ Values at the time of writing.
 Each username belongs to one account, channel or group at a time. Rename a public channel's username and the old t.me link stops working, so update bios and pinned posts too.
 
 ## Telegram name examples
+
+![Key point from the Telegram Name Generator page: Readable titles and short usernames work best together.](/images/tools/telegram-name-generator-key-point-1200x675.webp)
+
 Readable titles and short usernames work best together.
 
 ### Sample names

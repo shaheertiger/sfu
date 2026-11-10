@@ -1,0 +1,87 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Instagram Name Generator",
+   "question": "Instagram Name Generator",
+   "answer": "30 Free IG Username Ideas",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "type",
+    "calendar"
+   ],
+   "qualifier": "Type a nickname, niche or vibe, pick a style, and get 30 Instagram username ideas that fit Instagram's 30-character handle rules. Tap any idea to copy it."
+  },
+  {
+   "name": "what-makes-a-good",
+   "type": "lists",
+   "kicker": "Instagram Name Generator",
+   "title": "What makes a good Instagram username",
+   "groups": [
+    {
+     "label": "People can type it from memory",
+     "text": "Followers find you by typing your handle into search or tagging you in a Story."
+    },
+    {
+     "label": "It works with your display name",
+     "text": "Instagram shows two names."
+    },
+    {
+     "label": "It still fits in a year",
+     "text": "\"@rae.bakes2026\" dates itself."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Instagram Name Generator",
+   "title": "How to use the Instagram name generator",
+   "steps": [
+    {
+     "title": "Choose a style",
+     "text": ""
+    },
+    {
+     "title": "Copy, then check availability",
+     "text": ""
+    },
+    {
+     "title": "When your favorite is taken",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "Instagram Name Generator",
+   "what": "Instagram username rules and limits: Username (@handle)",
+   "value": "30",
+   "unit": "characters",
+   "others": [
+    {
+     "value": "30",
+     "label": "Name (display name)"
+    },
+    {
+     "value": "150",
+     "label": "Bio"
+    },
+    {
+     "value": "2,200",
+     "label": "Caption"
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Finsta name ideas",
+   "quote": "A finsta (\"fake Instagram\") is a second, usually private account for close friends, unpolished photos and inside jokes.",
+   "by": "Instagram Name Generator"
+  }
+ ]
+}

@@ -6,7 +6,12 @@ lead: Paste a video title and an optional keyword to get a score out of 100, wit
 keyword: youtube title checker
 ---
 ## How the title score works
+
+![YouTube Title Checker: YouTube Title Checker. Paste a video title and an optional keyword to get a score out of 100, with every rule shown as a pass or a tip so you know exactly what to change.](/images/tools/youtube-title-checker-hero-1200x675.webp)
+
 The checker runs your title through a short list of rules and adds up the points into a score out of 100. Every rule is shown, so you can see why a title scored the way it did. It's a checklist for clarity and readability, not a prediction of views: no tool can tell you how a title will perform, and YouTube doesn't publish a title formula.
+
+![Key point from the YouTube Title Checker page: The checker runs your title through a short list of rules and adds up the points into a score out of 100.](/images/tools/youtube-title-checker-key-point-1200x675.webp)
 
 ### The checks
 | Check | What passes |
@@ -24,6 +29,9 @@ The checker runs your title through a short list of rules and adds up the points
 A pass means the title meets that rule. A tip explains what to try instead. A tip isn't an error: a title without a number can be excellent, so use the tips as prompts to consider, not orders.
 
 ## How to use the title checker
+
+![YouTube Title Checker: how to use the title checker, in 3 steps: paste your working title, add a target keyword (optional) and rewrite and compare.](/images/tools/youtube-title-checker-how-to-1200x675.webp)
+
 ### Paste your working title
 Start with the title you'd publish today. The checker reads it as-is, including emoji and punctuation, and shows the character count against the 100 limit.
 
@@ -34,6 +42,9 @@ Enter the phrase you expect people to search for, such as "sourdough starter" or
 Change one thing at a time and see which checks flip. Keep the version that's clearest to someone who has never heard of your channel.
 
 ## Writing YouTube titles people click and understand
+
+![Writing YouTube titles people click and understand, in 3 groups: Front-load the topic, Be specific about the payoff and Match the title to the video.](/images/tools/youtube-title-checker-writing-youtube-titles-people-1200x675.webp)
+
 ### Front-load the topic
 YouTube truncates long titles in search results, on mobile and in suggested videos, and the cut-off point differs by surface. If the subject is in the first few words, the title still makes sense when it's shortened. That's the reason behind the roughly 70-character aim and the first-half keyword check.
 

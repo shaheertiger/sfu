@@ -7,7 +7,11 @@ keyword: reddit character counter
 ---
 ## Why You Need a Reddit Character Counter
 
+![Reddit Character Counter: 300 Title, 40,000 Post, 10,000 Comment. Paste your Reddit title, post or comment to see how many characters you've used and how many are left for each limit.](/images/tools/reddit-character-counter-hero-1200x675.webp)
+
 Reddit tells you when you've gone over a limit, but often only after you've written the whole thing and pressed Post. Titles are the worst case: you have one field, a hard cap, and no way to edit the title after posting. A long guide, a story for a writing subreddit or a detailed reply can also hit the limit in the middle of a thought.
+
+![Why You Need a Reddit Character Counter, a table of Post title, Comment and Text post body by Limit at the time of writing and In the counter.](/images/tools/reddit-character-counter-table-1200x675.webp)
 
 This Reddit character counter checks your text against the three limits people run into on Reddit, all at once, as you type:
 
@@ -22,6 +26,8 @@ Next to each limit, the counter shows how many characters you have left or how f
 It runs in your browser. Nothing you paste is uploaded or stored, which matters if you're drafting something personal for a support subreddit.
 
 ## Reddit Character Limits by Surface
+
+![Reddit Character Limits by Surface, in 4 groups: Post title limit, Text post body limit, Comment limit and What counts toward each limit.](/images/tools/reddit-character-counter-reddit-character-limits-by-1200x675.webp)
 
 ### Post title limit (300 characters)
 
@@ -84,6 +90,8 @@ Subreddits can set their own rules on top of Reddit's, such as a minimum post le
 
 ## How to Use the Reddit Character Counter
 
+![How to Use the Reddit Character Counter, in 4 steps: write or paste your text, read the three limit rows, check the stats and trim if you're over.](/images/tools/reddit-character-counter-how-to-1200x675.webp)
+
 1. **Write or paste your text** into the box. Draft in the counter if you like; it doesn't save anything.
 2. **Read the three limit rows.** Post title, Comment and Text post body each show how many characters are left or over. Look at the one that matches what you're writing.
 3. **Check the stats.** Characters, words and lines update as you type.
@@ -142,6 +150,8 @@ Pinned rules and weekly threads are re-used and edited often. Count them while d
 Hosts often prepare a long intro with background, links and proof. Counting ahead avoids a scramble to cut text while people are waiting for the thread to go live.
 
 ## Best Practices for Writing Within Reddit's Limits
+
+![Best Practices for Writing Within Reddit's Limits: do front-load your titles, use markdown, but count it, keep links short and readable and split long content on purpose.](/images/tools/reddit-character-counter-best-practices-1200x675.webp)
 
 ### Front-load your titles
 

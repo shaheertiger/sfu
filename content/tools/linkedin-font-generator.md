@@ -7,6 +7,8 @@ keyword: linkedin font generator
 ---
 ## Styles you can generate for LinkedIn
 
+![LinkedIn Font Generator: LinkedIn Font Generator. LinkedIn posts have no bold or italic button.](/images/tools/linkedin-font-generator-hero-1200x675.webp)
+
 LinkedIn's post composer doesn't offer bold or italic, so many people paste Unicode styles instead. Type your text, browse 30+ styles and tap to copy. On LinkedIn, the restrained styles do the most good.
 
 ### Professional styles
@@ -26,6 +28,8 @@ Script, gothic, double-struck, bubble, squared, small caps, fullwidth, upside-do
 These are mathematical and symbol characters that look like styled letters. LinkedIn doesn't know that 𝗞 means "K," which affects search and screen readers.
 
 ## Where styled text works on LinkedIn
+
+![Where styled text works on LinkedIn, a table of Posts, up to 3,000 characters, Comments, About section and experience, Headline, with care and Articles and newsletters: real formatting by Styled text.](/images/tools/linkedin-font-generator-where-it-works-1200x675.webp)
 
 ### Posts
 
@@ -49,6 +53,8 @@ LinkedIn articles and newsletters have their own editor with genuine bold, itali
 
 ## Best practices for LinkedIn
 
+![Best practices for LinkedIn: do keep searchable words plain and write for screen reader users. Don't style your name and don't style hashtags or mentions.](/images/tools/linkedin-font-generator-best-practices-1200x675.webp)
+
 ### Keep searchable words plain
 
 Recruiters and clients search LinkedIn for job titles, skills and company names. LinkedIn search may not match "𝗣𝗿𝗼𝗱𝘂𝗰𝘁 𝗺𝗮𝗻𝗮𝗴𝗲𝗿" to "product manager." Style labels and short phrases, never the keywords you want to be found for.
@@ -66,6 +72,8 @@ LinkedIn asks members to use their real name, and its name field isn't the place
 Hashtags and @mentions only work in plain characters. Style the sentence around them if you want emphasis.
 
 ## Use cases
+
+![LinkedIn font generator use cases, in 3 groups: Thought-leadership posts, Job announcements and Event recaps.](/images/tools/linkedin-font-generator-use-cases-1200x675.webp)
 
 ### Thought-leadership posts
 

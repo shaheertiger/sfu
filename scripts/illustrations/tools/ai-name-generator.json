@@ -1,0 +1,69 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "AI Name Generator Alternative",
+   "question": "Free Username Ideas, Instant",
+   "answer": "AI Name Generator Alternative",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "eye",
+    "calendar"
+   ],
+   "qualifier": "Looking for an AI username generator? Type a word, pick a style and get 30 handle ideas in an instant, each one checked against the rules of every major social network."
+  },
+  {
+   "name": "a-faster-alternative-to",
+   "type": "lists",
+   "kicker": "AI Name Generator Alternative",
+   "title": "A faster alternative to AI name generators",
+   "groups": [
+    {
+     "label": "Every idea is a valid handle",
+     "text": "Chatbots and AI name tools write freely."
+    },
+    {
+     "label": "Instant, with no prompt to write",
+     "text": "There's nothing to phrase just right and no waiting for a reply."
+    },
+    {
+     "label": "Free, private and no sign-up",
+     "text": "The generator runs in your browser."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "AI Name Generator Alternative",
+   "title": "How to use a chatbot and this tool together",
+   "steps": [
+    {
+     "title": "Brainstorm keywords with a chatbot",
+     "text": ""
+    },
+    {
+     "title": "Run your favorite words here",
+     "text": "Paste one word at a time into the box above."
+    },
+    {
+     "title": "Shortlist and say each one out loud",
+     "text": "Pick three to five ideas."
+    },
+    {
+     "title": "Check the format and availability",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Sample names for \"nova\"",
+   "quote": "These came from the generator with the keyword \"nova\".",
+   "by": "AI Name Generator Alternative"
+  }
+ ]
+}

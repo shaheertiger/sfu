@@ -6,6 +6,9 @@ lead: Type a word you like, pick a style, and copy any of the 30 usernames that 
 keyword: username generator
 ---
 ## Username generator at a glance
+
+![Illustration for the free Username Generator: Username Generator, shown as 6 styles.](/images/tools/username-generator-hero-1200x675.webp)
+
 | What you get | Details |
 |---|---|
 | Ideas per batch | 30, with a **More ideas** button for a fresh set |
@@ -18,6 +21,9 @@ keyword: username generator
 Every username it suggests follows one strict rule set, 3–15 characters of `a–z`, `0–9` and `_`, because that's the overlap that the major platforms all accept. Pick one and you can claim the same name everywhere, as long as nobody has it yet.
 
 ## Username Styles You Can Generate
+
+![Username Styles You Can Generate, in 4 groups: Cool, Aesthetic, Funny and Professional.](/images/tools/username-generator-username-styles-you-can-1200x675.webp)
+
 The six chips above the results change the words the generator mixes with yours. Here's what each style produces, with real results from the generator for a few different starting words. They're examples only; check availability before you set your heart on one.
 
 ### Cool
@@ -99,6 +105,9 @@ Each idea is 3–15 characters long and uses only lowercase letters, numbers and
 It doesn't check whether a username is taken. No generator can do that reliably for every platform. Once you have a shortlist, run it through the [username checker](/tools/username-checker), which tests each name against each platform's format rules and opens the profile link so you can see whether an account already uses it.
 
 ## Username Rules by Platform
+
+![Username Rules by Platform, in 3 groups: X: the strictest length, Telegram: the 5-character minimum and Roblox: one underscore.](/images/tools/username-generator-username-rules-by-platform-1200x675.webp)
+
 Every platform has its own rules. These are the rules our platform-specific generators use, at the time of writing. A name that fits the 3–15 lowercase rule above fits almost every handle rule in this table. The two exceptions are Telegram's 5-character minimum and Roblox's one-underscore limit, both covered below.
 
 | Platform | Length | Allowed characters | Notes |
@@ -129,6 +138,9 @@ Roblox allows only one underscore, and not at the start or end. Most results hav
 YouTube has both a channel name, which can contain spaces, and an @handle, which follows the rules in the table. Any username from this generator works as a handle. For a channel name with spaces, try the [YouTube name generator](/tools/youtube-name-generator).
 
 ## How to Use the Username Generator
+
+![How to Use the Username Generator, in 4 steps: type a word you'd be happy to see every day, pick a style chip, read the 30 ideas and tap More ideas.](/images/tools/username-generator-how-to-1200x675.webp)
+
 1. **Type a word you'd be happy to see every day.** A nickname, a hobby, a pet's name, an object you love, a place, or your niche: "maya", "chef", "night owl", "trail".
 2. **Pick a style chip:** Cool, Aesthetic, Funny, Professional, Gaming or Minimal.
 3. **Read the 30 ideas** and copy any you like with the copy button next to it. Keep a note open and paste candidates into it.
@@ -140,6 +152,9 @@ YouTube has both a channel name, which can contain spaces, and an @handle, which
 The patterns are simple enough to extend by hand. If `jake_journal` is taken, try `jakejournal`, `journal_jake` or `jakesjournal`. Swapping where the underscore goes, or dropping it, often finds a free version without adding random numbers.
 
 ## Who the Username Generator Is For
+
+![Who the Username Generator Is For, in 3 groups: New creators, Gamers and streamers and Small businesses and freelancers.](/images/tools/username-generator-use-cases-1200x675.webp)
+
 ### New creators
 Starting on TikTok, YouTube or Instagram, you want one name across all of them before your first post gets shared. Generate in the style that matches what you'll post, shortlist names that work in the cross-platform rule set, and claim the winner on every platform the same day so nobody takes it in between.
 
@@ -159,6 +174,9 @@ Pen names and project names work just like personal names. Type the project's ke
 When a client needs a new handle, or an existing one is taken on a new platform, generate a long list in the Professional style, filter it with the client, and check the shortlist in one go with the username checker. The same tool also helps when you're naming test or backup accounts.
 
 ## Username Best Practices
+
+![Username Best Practices: do say it out loud once, choose numbers on purpose and one name, everywhere. Avoid personal details and don't copy someone else's name.](/images/tools/username-generator-best-practices-1200x675.webp)
+
 ### Say it out loud once
 If you have to spell it, it's too complicated. A name you can say once and have someone type correctly is worth more than a clever one with three underscores.
 

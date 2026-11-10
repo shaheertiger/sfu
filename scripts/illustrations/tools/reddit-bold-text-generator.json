@@ -1,0 +1,97 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Reddit Bold Text Generator",
+   "question": "Reddit Bold Text Generator",
+   "answer": "9 Bold Styles + Markdown Bold",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "send",
+    "calendar"
+   ],
+   "qualifier": "Type your text and copy one of 9 bold styles for a Reddit title, flair or profile. In posts and comments, use Reddit's own bold instead (explained below)."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Reddit Bold Text Generator",
+   "title": "How to Bold Text on Reddit With Markdown",
+   "steps": [
+    {
+     "title": "In the markdown editor",
+     "text": ""
+    },
+    {
+     "title": "In the rich text editor",
+     "text": ""
+    },
+    {
+     "title": "Combine bold with other formatting",
+     "text": ""
+    },
+    {
+     "title": "Why your Reddit bold isn't working",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "how-to-2",
+   "type": "steps",
+   "kicker": "Reddit Bold Text Generator",
+   "title": "How to Use the Reddit Bold Text Generator",
+   "steps": [
+    {
+     "title": "Type or paste your text",
+     "text": ", such as a title prefix, a flair or your display name."
+    },
+    {
+     "title": "Compare the 9 bold styles",
+     "text": "below the box."
+    },
+    {
+     "title": "Tap Copy",
+     "text": "next to the style you want."
+    },
+    {
+     "title": "Paste it into Reddit",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "where-bold-text-works",
+   "type": "lists",
+   "kicker": "Reddit Bold Text Generator",
+   "title": "Where Bold Text Works on Reddit",
+   "groups": [
+    {
+     "label": "Titles",
+     "text": "Titles are the main reason people look for a Reddit bold text generator."
+    },
+    {
+     "label": "Flair and profile",
+     "text": "Flair and your display name are the other big uses."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Reddit Bold Text Generator",
+   "title": "Best Practices for Bold Text on Reddit",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Keep keywords plain",
+     "Follow subreddit rules",
+     "Keep an eye on length",
+     "Check another device"
+    ]
+   }
+  }
+ ]
+}

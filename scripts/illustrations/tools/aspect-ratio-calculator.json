@@ -1,0 +1,118 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Aspect Ratio Calculator",
+   "question": "Aspect Ratio Calculator",
+   "answer": "16:9, 4:5, 9:16 & Social Media Sizes",
+   "tone": "neutral",
+   "mark": "image",
+   "icons": [
+    "calendar",
+    "clock"
+   ],
+   "qualifier": "Type a width and height to get the aspect ratio, or pick a ratio and one side to get the other. A table of recommended social media image sizes is built in."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Aspect Ratio Calculator",
+   "title": "How to use this aspect ratio calculator",
+   "steps": [
+    {
+     "title": "Find the ratio",
+     "text": "Choose Find the ratio and enter a Width (px) and Height (px)."
+    },
+    {
+     "title": "Calculate a size",
+     "text": ""
+    },
+    {
+     "title": "Rounding to whole pixels",
+     "text": "Images can't have half pixels, so results are rounded."
+    }
+   ]
+  },
+  {
+   "name": "4-5-and-9",
+   "type": "lists",
+   "kicker": "Aspect Ratio Calculator",
+   "title": "4:5 and 9:16 sizes for social media",
+   "groups": [
+    {
+     "label": "4:5: the tallest feed post",
+     "text": "4:5 is the portrait shape for Instagram, Facebook and Threads feed posts."
+    },
+    {
+     "label": "9:16: full-screen vertical",
+     "text": "9:16 is the full-screen phone shape for TikTok videos."
+    }
+   ]
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "Aspect Ratio Calculator",
+   "what": "Social media image sizes: Instagram",
+   "value": "1080 × 1350",
+   "unit": "px",
+   "others": [
+    {
+     "value": "1080 × 1080",
+     "label": "Instagram"
+    },
+    {
+     "value": "1080 × 566",
+     "label": "Instagram"
+    },
+    {
+     "value": "1080 × 1920",
+     "label": "Instagram"
+    }
+   ]
+  },
+  {
+   "name": "table",
+   "type": "matrix",
+   "kicker": "Aspect Ratio Calculator",
+   "title": "16:9 calculator: common 16:9 sizes",
+   "corner": "Width",
+   "cols": [
+    "Height"
+   ],
+   "rows": [
+    {
+     "label": "1280",
+     "cells": [
+      "720"
+     ]
+    },
+    {
+     "label": "1600",
+     "cells": [
+      "900"
+     ]
+    },
+    {
+     "label": "1920",
+     "cells": [
+      "1080"
+     ]
+    },
+    {
+     "label": "2560",
+     "cells": [
+      "1440"
+     ]
+    },
+    {
+     "label": "3840",
+     "cells": [
+      "2160"
+     ]
+    }
+   ]
+  }
+ ]
+}

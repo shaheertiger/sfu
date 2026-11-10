@@ -1,0 +1,63 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "LinkedIn Text Formatter",
+   "question": "LinkedIn Text Formatter",
+   "answer": "Bold, Italic, Lists & \"…more\" Preview",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "eye",
+    "send"
+   ],
+   "qualifier": "Write your LinkedIn post, style selected words, add bullet or numbered lists, and see roughly where the feed will cut it off with \"…more\" before you copy it over."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "LinkedIn Text Formatter",
+   "title": "How to format a LinkedIn post",
+   "steps": [
+    {
+     "title": "Write or paste your draft",
+     "text": "Start in the editor with plain text."
+    },
+    {
+     "title": "Select and style",
+     "text": "Highlight a word or short phrase and choose a style."
+    },
+    {
+     "title": "Add structure",
+     "text": ""
+    },
+    {
+     "title": "Check the preview, then copy",
+     "text": "Look at what sits above the \"…more\" marker."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "LinkedIn Text Formatter",
+   "title": "Accessibility and search",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Screen readers and styled text",
+     "Keep key terms plain",
+     "Images and links still matter"
+    ]
+   }
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "What the formatter does",
+   "quote": "LinkedIn's composer doesn't offer bold, italic or list buttons for regular posts at the time of writing.",
+   "by": "LinkedIn Text Formatter"
+  }
+ ]
+}

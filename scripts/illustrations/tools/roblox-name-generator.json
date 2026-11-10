@@ -1,0 +1,80 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Roblox Username Generator",
+   "question": "Roblox Username Generator",
+   "answer": "30 Free Roblox Name Ideas",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "type",
+    "user-plus"
+   ],
+   "qualifier": "Type a word you like, pick a style, and get 30 Roblox username ideas that follow Roblox's rules: 3 to 20 characters, letters and numbers, and at most one underscore. Tap any idea to copy it."
+  },
+  {
+   "name": "how-the-roblox-username",
+   "type": "lists",
+   "kicker": "Roblox Username Generator",
+   "title": "How the Roblox username generator works",
+   "groups": [
+    {
+     "label": "1. Type a word",
+     "text": "Use something you like rather than something about you."
+    },
+    {
+     "label": "2. Pick a style",
+     "text": "Cool: confident names like NorthPixel or Astro_Pixel."
+    },
+    {
+     "label": "3. Copy and check",
+     "text": "Tap any of the 30 ideas to copy it, or press More ideas for a new batch."
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Roblox Username Generator",
+   "title": "Roblox name ideas by style",
+   "groups": [
+    {
+     "label": "Cool Roblox usernames",
+     "text": "NovaDrift, Echo_Forge, SwiftComet."
+    },
+    {
+     "label": "Aesthetic Roblox names",
+     "text": "Aesthetic names pair a soft word with something from nature, the sky or a color."
+    },
+    {
+     "label": "Funny Roblox usernames",
+     "text": "CaptainNoodle, Sleepy_Potato."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Roblox Username Generator",
+   "title": "Tips for picking a Roblox username",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Make it easy to read and type",
+     "Use the underscore wisely",
+     "Your display name can be friendlier",
+     "Check that it passes the rules"
+    ]
+   }
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Keep your Roblox name safe",
+   "quote": "Roblox is popular with kids, and a username is public.",
+   "by": "Roblox Username Generator"
+  }
+ ]
+}

@@ -6,7 +6,12 @@ lead: Get 12 short Telegram bios with a character count on each, so you can see 
 keyword: telegram bio generator
 ---
 ## What makes a good Telegram bio
+
+![Telegram Bio Generator, shown as 140 characters, with Bio (standard account) 70, Username 5–32 and Channel or group name 128 for comparison.](/images/tools/telegram-bio-generator-hero-1200x675.webp)
+
 A Telegram bio is tiny: 70 characters for most accounts and 140 with Telegram Premium. That's about one sentence, so the best bios say one useful thing, like what you do or why someone might message you. This free generator writes 12 options and counts every character for you.
+
+![What makes a good Telegram bio, in 2 groups: One idea, not three and A signal about how to reach you.](/images/tools/telegram-bio-generator-what-makes-a-good-1200x675.webp)
 
 ### One idea, not three
 With 70 characters, trying to fit your job, hobbies and a quote leaves you with a cramped line nobody reads. Pick the single fact that matters most to the people who contact you.
@@ -18,6 +23,9 @@ Many people open your profile after seeing your name in a large group chat. A bi
 If you prefer email for work requests or only reply in the evenings, the bio is a polite place to say so.
 
 ## How to use the Telegram bio generator
+
+![How to use the Telegram bio generator, in 3 steps: describe yourself briefly, choose a tone and emoji preference and check the count, then copy.](/images/tools/telegram-bio-generator-how-to-1200x675.webp)
+
 Everything happens in your browser. You don't need an account, and your text never leaves your device.
 
 ### Describe yourself briefly
@@ -30,6 +38,9 @@ Pick friendly, professional, funny, minimal or aesthetic. Emoji are optional, an
 Each of the 12 bios shows its character count. Anything at 70 or under works on a standard account. Longer ones need Premium, or a quick trim. Tap to copy, then paste it into the Bio field when you edit your profile. In most Telegram apps you'll find it by opening Settings and tapping your name or Edit.
 
 ## Telegram bio rules and limits
+
+![Telegram bio rules and limits: Bio (standard account), shown as 70 characters, with Bio (Telegram Premium) 140, Username 5–32 and Channel or group name 128 for comparison.](/images/tools/telegram-bio-generator-specs-1200x675.webp)
+
 Telegram keeps profile fields separate, and each has its own rules.
 
 | Field | Limit |
@@ -49,6 +60,9 @@ This tool is for your personal profile bio. Channels and groups have their own d
 Telegram's privacy settings let you control who can see several parts of your profile. Check **Settings > Privacy and Security** if you'd rather show your bio only to contacts.
 
 ## Telegram bio ideas by use
+
+![Telegram bio ideas by use, in 4 groups: Freelancer, Community admin, Local seller and Student.](/images/tools/telegram-bio-generator-use-cases-1200x675.webp)
+
 These all fit the standard 70-character limit.
 
 ### Freelancer

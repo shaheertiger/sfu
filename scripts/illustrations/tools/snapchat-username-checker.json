@@ -1,0 +1,80 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "Snapchat Username Checker",
+   "what": "Snapchat Username Checker",
+   "value": "3–15",
+   "unit": "characters",
+   "others": []
+  },
+  {
+   "name": "snapchat-username-rules-in",
+   "type": "lists",
+   "kicker": "Snapchat Username Checker",
+   "title": "Snapchat Username Rules in Detail",
+   "groups": [
+    {
+     "label": "Length: 3 to 15 characters",
+     "text": "Snapchat usernames are short: 15 characters at most and 3 at least."
+    },
+    {
+     "label": "Only one period",
+     "text": "Snapchat allows a single period."
+    },
+    {
+     "label": "Must start with a letter",
+     "text": "A username can't start with a number or a symbol."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Snapchat Username Checker",
+   "title": "How to Check if a Snapchat Username Is Available",
+   "steps": [
+    {
+     "title": "Type the username you want",
+     "text": "Leave out the @, or paste it with one; the checker removes it."
+    },
+    {
+     "title": "Read the result",
+     "text": "\"Follows Snapchat's rules\" means the format is valid."
+    },
+    {
+     "title": "Open the profile link",
+     "text": "Tap the Open snapchat.com/add/… button."
+    },
+    {
+     "title": "Try a variation if needed",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Snapchat Username Checker",
+   "title": "Best Practices for Picking a Snapchat Username",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Put the number at the end",
+     "Think before you change it",
+     "Leave out personal details",
+     "Watch for lookalikes",
+     "Need ideas?"
+    ]
+   }
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Snapchat Username Checker Use Cases by Audience",
+   "quote": "Picking a username is one of the first steps of sign-up, and the start-with-a-letter and end-with-a-letter-or-number rules catch a lot of people out.",
+   "by": "Snapchat Username Checker"
+  }
+ ]
+}

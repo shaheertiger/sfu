@@ -7,7 +7,11 @@ keyword: reddit font generator
 ---
 ## What the Reddit Font Generator Actually Does
 
+![Illustration for the free Reddit Font Generator: Reddit Font Generator, shown as 24 styles.](/images/tools/reddit-font-generator-hero-1200x675.webp)
+
 You can't change the font on Reddit directly. Reddit shows every post and comment in its own typeface, and there's no setting that changes what other people see. What you can change is the text itself, in two ways:
+
+![What the Reddit Font Generator Actually Does, in 2 groups: What happens to your text and Reddit's built-in formatting.](/images/tools/reddit-font-generator-what-the-reddit-font-1200x675.webp)
 
 1. **Reddit's own formatting** (markdown or the formatting toolbar) gives you bold, italic, headings, strikethrough, superscript, code and spoilers inside posts and comments.
 2. **Unicode styles** from this Reddit font generator swap your letters for look-alike characters such as 𝐛𝐨𝐥𝐝, 𝓼𝓬𝓻𝓲𝓹𝓽 or 𝔤𝔬𝔱𝔥𝔦𝔠. They're plain characters, not formatting, so they also work where Reddit has no formatting at all: post titles, user flair and your profile's display name.
@@ -43,6 +47,8 @@ Inside posts and comments, Reddit's own formatting is usually the better choice:
 - **Your own reading font is a device setting.** To make Reddit look different to you, change the text size in the app, your phone's display settings or your browser zoom. That changes nothing for anyone else.
 
 ## How to Use the Reddit Font Generator
+
+![How to Use the Reddit Font Generator, in 5 steps: type or paste your text, compare the 24 styles, tap Copy, paste it into Reddit and preview before you post.](/images/tools/reddit-font-generator-how-to-1200x675.webp)
 
 1. **Type or paste your text** into the box. Keep it short: a title prefix, a flair or a few words.
 2. **Compare the 24 styles**, which all update as you type.
@@ -154,6 +160,8 @@ W̲e̲e̲k̲l̲y̲. Reddit has no underline formatting at all, so this is the on
 
 ## Where Reddit Font Generator Text Works
 
+![Where Reddit Font Generator Text Works, in 3 groups: Post titles, Comments and text posts and Flair and profile.](/images/tools/reddit-font-generator-where-reddit-font-generator-1200x675.webp)
+
 | Where on Reddit | Reddit formatting | Unicode styles |
 |---|---|---|
 | Comment | Yes | Yes |
@@ -177,6 +185,8 @@ Unicode works, but markdown is better here. Save Unicode for effects markdown ca
 User flair is where styled text is most accepted, as long as the subreddit lets you edit it. Your display name and about text in profile settings accept Unicode too. Your username can't be styled and can't be changed after sign-up.
 
 ## Best Practices for Styled Reddit Text
+
+![Best Practices for Styled Reddit Text: do keep keywords plain, follow each subreddit's rules and watch the length. Don't impersonate.](/images/tools/reddit-font-generator-best-practices-1200x675.webp)
 
 ### Prefer markdown inside posts and comments
 

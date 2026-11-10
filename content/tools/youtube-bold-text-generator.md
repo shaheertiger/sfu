@@ -7,7 +7,11 @@ keyword: youtube bold text generator
 ---
 ## Bold styles you can generate
 
+![YouTube Bold Text Generator: YouTube Bold Text Generator. Copy Unicode bold text for YouTube descriptions, channel descriptions and comments, and see where YouTube's own formatting or plain text works better.](/images/tools/youtube-bold-text-generator-hero-1200x675.webp)
+
 YouTube doesn't offer a bold button for video descriptions, and titles are plain text. Type your text above, pick one of 9 bold Unicode styles, and tap to copy it into YouTube Studio or a comment.
+
+![Key point from the YouTube Bold Text Generator page: Unicode bold isn't formatting: it swaps your letters for bold-looking characters that paste anywhere.](/images/tools/youtube-bold-text-generator-key-point-1200x675.webp)
 
 ### Bold styles included
 
@@ -22,6 +26,8 @@ Sans bold blends in with YouTube's interface and keeps descriptions readable. Se
 It swaps your letters for Unicode characters that look bold. They aren't a font or formatting, so YouTube, search engines and screen readers see them as different characters from plain letters.
 
 ## Where bold text works on YouTube
+
+![Where bold text works on YouTube, a table of Comments: try *bold* first, Video descriptions, 5,000 characters, Channel description, Video titles and Handle, 3–30 plain characters by Unicode bold.](/images/tools/youtube-bold-text-generator-where-it-works-1200x675.webp)
 
 ### Comments: use YouTube's formatting first
 
@@ -44,6 +50,8 @@ Titles allow 100 characters. Unicode bold often displays in titles, but YouTube 
 Your handle must be 3–30 characters of letters, numbers, underscores, hyphens and periods, so styled letters won't work there. Your channel name is more flexible, but YouTube may limit unusual characters, and styling it makes your channel harder to search for. If you're still choosing a name, the [YouTube name generator](/tools/youtube-name-generator) has ideas.
 
 ## Best practices for bold text on YouTube
+
+![Best practices for bold text on YouTube: do protect your searchable words, keep links and timestamps plain, mind accessibility and count characters before you paste.](/images/tools/youtube-bold-text-generator-best-practices-1200x675.webp)
 
 ### Protect your searchable words
 

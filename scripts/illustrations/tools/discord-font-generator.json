@@ -1,0 +1,85 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Discord Font Generator",
+   "question": "Discord Font Generator",
+   "answer": "30+ Free Styles",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "type",
+    "calendar"
+   ],
+   "qualifier": "Copy and paste 30+ Unicode text styles for the parts of Discord that markdown can't format: display names, nicknames, custom statuses, server, role and channel names."
+  },
+  {
+   "name": "styles-you-can-generate",
+   "type": "lists",
+   "kicker": "Discord Font Generator",
+   "title": "Styles you can generate for Discord",
+   "groups": [
+    {
+     "label": "Softer aesthetic styles",
+     "text": "Script, bold script, small caps."
+    },
+    {
+     "label": "Bold, italic and lined styles",
+     "text": "Serif and sans bold, italic and bold italic."
+    },
+    {
+     "label": "What you're actually copying",
+     "text": "These are Unicode look-alike characters, not fonts."
+    }
+   ]
+  },
+  {
+   "name": "native-markdown-or-unicode",
+   "type": "lists",
+   "kicker": "Discord Font Generator",
+   "title": "Native markdown or Unicode: which to use",
+   "groups": [
+    {
+     "label": "Use markdown in messages",
+     "text": "In chat messages, Discord's own formatting is the better choice."
+    },
+    {
+     "label": "Places Unicode won't work",
+     "text": "Your username can only use lowercase letters."
+    }
+   ]
+  },
+  {
+   "name": "where-styled-text-fits",
+   "type": "lists",
+   "kicker": "Discord Font Generator",
+   "title": "Where styled text fits on Discord",
+   "groups": [
+    {
+     "label": "Display name and server nicknames",
+     "text": "Display names allow up to 32 characters, and styled characters count toward that."
+    },
+    {
+     "label": "Custom status and About Me",
+     "text": "A custom status can be 128 characters and your About Me 190."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Discord Font Generator",
+   "title": "Best practices for Discord",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Make names easy to mention",
+     "Style labels, not information",
+     "Test on mobile",
+     "Stay within the limits"
+    ]
+   }
+  }
+ ]
+}

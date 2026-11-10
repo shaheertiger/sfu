@@ -8,6 +8,8 @@ import { abs, breadcrumbLd, faqPageLd } from '@/lib/seo-pages';
 import { organizationLd } from '@/lib/seo';
 import { pagePath as bestTimePath } from '@/lib/best-time-pages';
 import { platformBySlug as bestTimePlatform } from '@/lib/best-time';
+import Figure, { figuresLd } from '@/components/marketing/Figure';
+import { notifyFigures } from '@/lib/figures';
 
 const Pill = ({ answer }) => {
   const tone = answer === 'yes' ? { background: '#fde8e8', color: '#9b1c1c' } : answer === 'no' ? { background: '#e6f6ec', color: '#166534' } : { background: '#fff4d6', color: '#92400e' };
@@ -22,7 +24,9 @@ export default function NotifyPage({ platform, action }) {
   const crumbs = [{ name: 'Home', href: '/' }, { name: 'Does it notify?', href: NOTIFY_ROOT }, { name: platform.name, href: notifyPath(platform.slug) }, { name: action.short.replace(/^\w/, (c) => c.toUpperCase()), href: path }];
   const siblings = notifyActionsFor(platform.slug).filter((a) => a.slug !== action.slug);
   const others = notifyPlatformsFor(action.slug).filter((p) => p.slug !== platform.slug);
-  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'WebPage', '@id': `${abs(path)}#webpage`, url: abs(path), name: copy.title, description: copy.description, inLanguage: 'en', dateModified: NOTIFY_VERIFIED }, breadcrumbLd(crumbs), faqPageLd(faq)] };
+  const [heroFig, matrixFig] = notifyFigures(platform.slug, action.slug);
+  const img = figuresLd([heroFig, matrixFig].filter(Boolean));
+  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'WebPage', '@id': `${abs(path)}#webpage`, url: abs(path), name: copy.title, description: copy.description, inLanguage: 'en', dateModified: NOTIFY_VERIFIED, ...img.primary }, ...img.nodes, breadcrumbLd(crumbs), faqPageLd(faq)] };
   return (
     <MarketingPage>
       <JsonLd data={ld} />
@@ -32,6 +36,7 @@ export default function NotifyPage({ platform, action }) {
           <span className={m.eyebrow}>{platform.name} privacy · verified {NOTIFY_VERIFIED}</span>
           <h1 className={m.h1}>{copy.h1}</h1>
           <p className={m.lead}><strong>{entry.rule}</strong> {entry.detail}</p>
+          <Figure fig={heroFig} priority />
           <div className={m.toolArea}>
             <div className={s.answer} style={{ gridTemplateColumns: '1fr' }}>
               <div className={s.slot}>
@@ -64,6 +69,7 @@ export default function NotifyPage({ platform, action }) {
           {others.length > 0 && (
             <section className={m.section}>
               <h2 id="compare">Same Action on Other Platforms</h2>
+              <Figure fig={matrixFig} />
               <div className="table-wrap">
                 <table><thead><tr><th>Platform</th><th>Notifies?</th><th>Rule</th></tr></thead><tbody>
                   <tr><td><strong>{platform.name}</strong></td><td><Pill answer={entry.answer} /></td><td>{entry.rule}</td></tr>

@@ -7,7 +7,11 @@ keyword: telegram character counter
 ---
 ## Why You Need a Telegram Character Counter
 
+![Telegram Character Counter: 4,096 Message & 1,024 Caption Limit. Paste a Telegram message, caption, channel description or bio to see how many characters you've used and how many are left for each limit.](/images/tools/telegram-character-counter-hero-1200x675.webp)
+
 Telegram's limits are generous for messages but surprisingly tight everywhere else. A channel post with a photo has a quarter of the room of a text post, a bio fits about one sentence, and you often only find out you're over when the app splits your message, refuses to save your bio, or moves your caption into a separate message.
+
+![Why You Need a Telegram Character Counter, a table of Message, Media caption, Channel description, Bio and Bio with Telegram Premium by Limit at the time of writing and In the counter.](/images/tools/telegram-character-counter-table-1200x675.webp)
 
 This Telegram character counter checks your text against five limits at once, as you type:
 
@@ -92,6 +96,8 @@ Names, usernames, group and channel titles, poll options, and bot command descri
 
 ## How to Use the Telegram Character Counter
 
+![How to Use the Telegram Character Counter, in 4 steps: paste or write your text, read the limit rows, check the stats and trim or split.](/images/tools/telegram-character-counter-how-to-1200x675.webp)
+
 1. **Paste or write your text** in the box.
 2. **Read the limit rows.** Message, Media caption, Channel description, Bio and Bio with Premium each show characters left or over. Look at the one that matches what you're writing.
 3. **Check the stats**: characters, words and lines update as you type.
@@ -136,6 +142,8 @@ Write the channel description here so it fits 255 characters and reads well in p
 Pinned rules, welcome messages and FAQs get edited over time. Counting while you draft keeps a long rules message from being split when someone adds a new rule.
 
 ## Best Practices for Writing Within Telegram's Limits
+
+![Best Practices for Writing Within Telegram's Limits: do write for the caption, then expand, use formatting instead of decoration, split on purpose and keep links short.](/images/tools/telegram-character-counter-best-practices-1200x675.webp)
 
 ### Write for the caption, then expand
 

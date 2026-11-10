@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import JsonLd from '@/components/JsonLd';
+import Figure, { figuresLd } from '@/components/marketing/Figure';
+import { bestTimeFigures } from '@/lib/figures';
 import BestTimeHeatmap from '@/components/marketing/BestTimeHeatmap';
 import BestTimeNow from '@/components/marketing/BestTimeNow';
 import { AnswerBanner, NearbySection, PlaceSection, StudiesSection, Table, TimezoneSection } from '@/components/marketing/BestTimeCountry';
@@ -63,11 +65,16 @@ export default function BestTimePage({ page, segment }) {
   const tools = TOOLS.filter((t) => t.platform === platform.id).slice(0, 4);
   const guides = [...(BLOG_GUIDES[platform.slug] || []), DAYS_GUIDE];
   const updated = data.computedAt ? new Date(data.computedAt).toISOString().slice(0, 10) : null;
+  // The figure is drawn from the committed Trends data (lib/figures.js), so it is shown only while
+  // the page itself shows that source; once measured data takes over the live heatmap stands alone.
+  const figs = data.source === 'trends' || data.source === 'baseline' ? bestTimeFigures(platform.slug, segment) : [];
+  const img = figuresLd(figs);
   const ld = {
     '@context': 'https://schema.org',
     '@graph': [
       organizationLd(),
-      { '@type': 'WebPage', '@id': `${abs(path)}#webpage`, url: abs(path), name: copy.title, description: copy.description, isPartOf: { '@id': `${abs('/')}#website` }, inLanguage: 'en', ...(updated ? { dateModified: updated } : {}) },
+      { '@type': 'WebPage', '@id': `${abs(path)}#webpage`, url: abs(path), name: copy.title, description: copy.description, isPartOf: { '@id': `${abs('/')}#website` }, inLanguage: 'en', ...(updated ? { dateModified: updated } : {}), ...img.primary },
+      ...img.nodes,
       { '@type': 'Dataset', name: `${platform.name} posting times by weekday and hour${local ? ` in ${local.name}` : ''}`, description: copy.description, url: abs(path), creator: { '@type': 'Organization', name: 'Schedule For You' }, temporalCoverage: 'P90D', ...(data.source === 'trends' ? { isBasedOn: ['https://trends.google.com/', 'https://wikimedia.org/api/rest_v1/'], variableMeasured: ['search interest per hour', 'online activity per hour'] } : { variableMeasured: ['posts per hour', 'link clicks per post'] }), ...(local ? { spatialCoverage: { '@type': 'Place', name: local.name.replace(/^the /, '') } } : {}) },
       breadcrumbLd(crumbs),
       faqPageLd(faq),
@@ -112,6 +119,7 @@ export default function BestTimePage({ page, segment }) {
         </section>
 
         <article className={`${m.narrow} ${m.prose}`}>
+          <Figure fig={figs[0]} priority />
           {seg.kind !== 'weekday' && (
             <section className={m.section}>
               <h2 id="answer">When Is the Best Time to Post on {platform.name}{local ? ` in ${local.name}` : ''}?</h2>

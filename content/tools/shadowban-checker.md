@@ -6,7 +6,12 @@ lead: Pick a platform, run a few quick tests anyone can do, and answer yes or no
 keyword: shadow ban checker
 ---
 ## Why this shadow ban checker is a guided test
+
+![Shadow Ban Checker: Shadow Ban Checker. Pick a platform, run a few quick tests anyone can do, and answer yes or no.](/images/tools/shadowban-checker-hero-1200x675.webp)
+
 No website can see inside X, Instagram, TikTok, YouTube, Facebook or Reddit's ranking systems. Platforms don't publish an API that says "this account's reach is limited," so any site that claims to detect a shadowban automatically is guessing from public search results, which change constantly. This shadow ban checker is upfront about that. Instead of pretending to scan your account, it walks you through the tests that actually tell you something, then scores your answers.
+
+![Key point from the Shadow Ban Checker page: No website can see inside X, Instagram, TikTok, YouTube, Facebook or Reddit's ranking systems.](/images/tools/shadowban-checker-key-point-1200x675.webp)
 
 ### What it does
 - Lists 3 to 5 tests for the platform you pick, each with a short note on how to run it
@@ -18,6 +23,9 @@ No website can see inside X, Instagram, TikTok, YouTube, Facebook or Reddit's ra
 It can't log in, fetch your stats or see any restriction the platform hasn't shown you. The verdict only reflects your answers. Nothing you type is sent anywhere or stored, and you never need to give it a password. Never give your password to any site that offers to check for a shadowban; that's how accounts get stolen.
 
 ## How to use the shadow ban test
+
+![How to use the shadow ban test, in 4 steps: pick your platform, add your username (optional), run each test and answer and start with the status page.](/images/tools/shadowban-checker-how-to-1200x675.webp)
+
 ### 1. Pick your platform
 Choose X (Twitter), Instagram, TikTok, YouTube, Facebook or Reddit. Each has its own set of tests, because each platform limits visibility differently.
 
@@ -31,6 +39,9 @@ Do what each test says, then answer Yes, No or Not sure. Several tests work best
 The first test on most platforms is the platform's own account or Page status screen. It counts most: if it lists a restriction, the verdict says so straight away, whatever your other answers. On Reddit, the logged-out profile test plays that role.
 
 ## What each verdict means
+
+![Shadow Ban Checker: what each verdict means, in 3 groups: Answer a few questions, No sign of a shadowban and Your reach looks limited.](/images/tools/shadowban-checker-what-each-verdict-means-1200x675.webp)
+
 ### Answer a few questions
 You haven't answered enough to say anything yet. Run the status-page test first if you can.
 
@@ -68,6 +79,9 @@ Facebook's Page status (or Account status for a profile) lists content that can'
 Reddit is the one platform with a true site-wide shadowban: your profile looks missing to everyone else while you can still post. Removals in one subreddit are moderator or AutoModerator actions instead.
 
 ## How to get unshadowbanned
+
+![How to get unshadowbanned, in 4 steps: read what the platform says, fix or delete the problem content, stop spam-like behavior and disconnect apps you don't trust.](/images/tools/shadowban-checker-how-to-2-1200x675.webp)
+
 There's no button that lifts a shadowban, but the same steps work on every platform.
 
 ### 1. Read what the platform says

@@ -7,6 +7,8 @@ keyword: pinterest font generator
 ---
 ## Styles you can generate for Pinterest
 
+![Pinterest Font Generator: Pinterest Font Generator. Copy aesthetic Unicode text styles for Pinterest board names, your profile, pin descriptions and comments, with tips to keep your pins findable in search.](/images/tools/pinterest-font-generator-hero-1200x675.webp)
+
 Pinterest shows text in its own typeface, but it displays Unicode characters you paste in. Type a word or phrase, browse 30+ styles and tap to copy. Because Pinterest works like a search engine, the trick is deciding where styling helps and where it costs you clicks.
 
 ### Aesthetic styles
@@ -26,6 +28,8 @@ Gothic and bold gothic (𝖂𝖊𝖊𝖐𝖑𝖞), double-struck outline letters
 They aren't fonts. Each style replaces your letters with Unicode symbols that look similar. Pinterest search, screen readers and translation tools don't treat them as the letters they imitate.
 
 ## Where styled text works on Pinterest
+
+![Where styled text works on Pinterest, a table of Board names, as an accent word, About section tagline, Pin descriptions, one short line, Comments and Text on the pin image by Styled text.](/images/tools/pinterest-font-generator-where-it-works-1200x675.webp)
 
 ### Board names and descriptions
 
@@ -49,6 +53,8 @@ Text overlaid on the image itself, typically on a 1000×1500 (2:3) pin, should b
 
 ## Best practices for Pinterest
 
+![Best practices for Pinterest: do treat titles as search queries and check the grid on mobile.](/images/tools/pinterest-font-generator-best-practices-1200x675.webp)
+
 ### Treat titles as search queries
 
 Pinterest matches pin titles and descriptions to what people type in the search bar. A title written as "𝔼𝕒𝕤𝕪 𝕨𝕖𝕖𝕜𝕟𝕚𝕘𝕙𝕥 𝕕𝕚𝕟𝕟𝕖𝕣𝕤" may not match "easy weeknight dinners" at all. Keep pin titles plain.
@@ -66,6 +72,8 @@ People using screen readers rely on text to understand pins. Styled characters m
 Most pinning happens on phones. Some decorative characters show as boxes on older devices, so check your board names in the app after saving.
 
 ## Use cases
+
+![Pinterest font generator use cases, in 3 groups: Seasonal boards, Creator and shop profiles and Collaborative boards.](/images/tools/pinterest-font-generator-use-cases-1200x675.webp)
 
 ### Seasonal boards
 

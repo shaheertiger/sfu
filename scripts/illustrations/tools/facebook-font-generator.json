@@ -1,0 +1,60 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Facebook Font Generator",
+   "question": "Facebook Font Generator",
+   "answer": "30+ Free Fonts",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "send",
+    "calendar"
+   ],
+   "qualifier": "Type your text and copy it in 30+ styles that work in Facebook posts, comments, Page intros, Group posts and event descriptions."
+  },
+  {
+   "name": "where-styled-text-works",
+   "type": "lists",
+   "kicker": "Facebook Font Generator",
+   "title": "Where styled text works on Facebook",
+   "groups": [
+    {
+     "label": "Posts on your profile or Page",
+     "text": "A post can run to 63,206 characters."
+    },
+    {
+     "label": "Comments and replies",
+     "text": "Styled text pastes into comments like any other text."
+    },
+    {
+     "label": "Page intro, Group posts and events",
+     "text": "The short intro on a Page."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Facebook Font Generator",
+   "title": "Best practices for styled Facebook text",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Keep keywords in plain text",
+     "Think about screen readers",
+     "Check on a phone first",
+     "Pick one style per post"
+    ]
+   }
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Styles you can generate for Facebook",
+   "quote": "Facebook doesn't let you pick a font for a regular post, but it does display Unicode characters.",
+   "by": "Facebook Font Generator"
+  }
+ ]
+}

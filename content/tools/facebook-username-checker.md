@@ -6,7 +6,12 @@ lead: Type the Facebook username you want for your profile or Page to see whethe
 keyword: facebook username checker
 ---
 ## Facebook Username Rules at a Glance
+
+![Illustration for the free Facebook Username Checker: Facebook Username Checker, shown as 5–50 characters.](/images/tools/facebook-username-checker-hero-1200x675.webp)
+
 A Facebook username has to be 5 to 50 characters long and can only use letters, numbers and periods. It can't start or end with a period or have two periods in a row. This Facebook username checker tests a name against those rules as you type. When it passes, a button opens facebook.com/yourname so you can see whether a profile or Page already uses it.
+
+![Key point from the Facebook Username Checker page: A Facebook username has to be 5 to 50 characters long and can only use letters, numbers and periods.](/images/tools/facebook-username-checker-key-point-1200x675.webp)
 
 | Rule | What Facebook allows (at the time of writing) | Checked here |
 |---|---|---|
@@ -69,6 +74,9 @@ Facebook is the only platform here that allows periods but not underscores, and 
 | 12345 | Follows Facebook's rules | Valid, with a tip to add a letter |
 
 ## What This Facebook Name Checker Does (and What It Can't)
+
+![What This Facebook Name Checker Does, in 3 groups: It opens the facebook.com URL, It can't promise a name is free and It suggests close valid variations.](/images/tools/facebook-username-checker-what-this-facebook-name-1200x675.webp)
+
 ### It checks the format Facebook accepts
 The checker removes a leading @ and spaces around the name, counts the characters, and lists every rule the name breaks. A valid name shows "Follows Facebook's rules"; an invalid one shows "Not allowed" with each reason.
 
@@ -91,6 +99,9 @@ A name made only of numbers and periods, like 12345, is allowed by the format bu
 Nothing you type is sent to a server or saved, and the button is an ordinary link to facebook.com. You don't sign in to anything.
 
 ## How to Check if a Facebook Username Is Available
+
+![How to Check if a Facebook Username Is Available, in 4 steps: type the username you want, read the result, open the URL and check the version without periods.](/images/tools/facebook-username-checker-how-to-1200x675.webp)
+
 1. **Type the username you want.** Paste it with or without the @; the checker removes it.
 2. **Read the result.** "Follows Facebook's rules" means the format is valid. "Not allowed" tells you why, such as an underscore or a period at the end.
 3. **Open the URL.** Tap the **Open facebook.com/…** button. A profile or Page means the name is taken.
@@ -118,6 +129,9 @@ Paste every name the client is considering into **Check a list**, copy the valid
 If your profile still uses an old nickname or a number-based URL, test a cleaner version of your name here first. Your old link stops working once you change it, so update it anywhere you've shared it.
 
 ## Best Practices for Picking a Facebook Username
+
+![Best Practices for Picking a Facebook Username: do match the name people already know, use periods only where they help, shorter is easier and think about the Page name too.](/images/tools/facebook-username-checker-best-practices-1200x675.webp)
+
 ### Match the name people already know
 For a Page, the username should match the business name on your sign, website and other profiles. If you need a modifier, use the same one everywhere, like riversidebakery on X and riverside.bakery on Facebook.
 

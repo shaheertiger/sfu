@@ -6,7 +6,12 @@ lead: Use this Instagram username checker to test a handle against Instagram's r
 keyword: instagram username checker
 ---
 ## What this Instagram username checker can and can't tell you
+
+![Instagram Username Checker: Test Handles & Get Valid Ideas. Use this Instagram username checker to test a handle against Instagram's rules, get close valid alternatives, check a whole list at once, and open the matching profile URL to see whether an account already uses it.](/images/tools/instagram-handle-checker-hero-1200x675.webp)
+
 This Instagram username checker tells you whether a handle follows Instagram's username rules and lets you open instagram.com/yourhandle in one tap. It **cannot** confirm that a handle is free. Instagram doesn't offer a public way to check Instagram username availability, and deactivated or restricted accounts can still hold names that look unused. The only reliable test is typing the name into Edit profile in the Instagram app. Think of it as an Instagram handle checker for the format, plus a shortcut to the profile, not an Instagram username availability checker with a guaranteed answer.
+
+![What this Instagram username checker can and can't tell you, in 3 groups: What it checks, Check a list of names at once and What the profile button shows.](/images/tools/instagram-handle-checker-what-this-instagram-username-1200x675.webp)
 
 ### What it checks
 - Length between 1 and 30 characters
@@ -26,6 +31,9 @@ The profile button opens instagram.com/ followed by your handle in a new tab. If
 Nothing you type is sent to a server or stored; the profile link is just a normal link to Instagram.
 
 ## What is an Instagram handle?
+
+![What is an Instagram handle?, in 2 groups: Where to find your handle and Handle vs. display name.](/images/tools/instagram-handle-checker-what-is-an-instagram-1200x675.webp)
+
 Your Instagram handle is your username: the name after the @ that people use to tag and mention you, and the last part of your profile URL (instagram.com/yourhandle). "IG handle," "handle on Instagram" and "Instagram username" all mean the same thing, so an IG handle checker and an IG username checker do the same job.
 
 ### Where to find your handle
@@ -38,6 +46,9 @@ Your username is the @handle in your profile URL, and no two accounts can share 
 Go to your profile, tap **Edit profile**, then tap the **Username** field and type the new handle. Instagram checks the name as you type and won't let you save one that's taken. Once you change it, your old profile URL no longer leads to you, so update the link in your other bios.
 
 ## How to check Instagram username availability
+
+![How to check Instagram username availability, in 4 steps: type the handle you want, read the result, try a suggested variation and claim it in the app.](/images/tools/instagram-handle-checker-how-to-1200x675.webp)
+
 ### 1. Type the handle you want
 Enter it without the @. Instagram usernames aren't case-sensitive, so typing in lowercase shows you the handle the way it will actually appear.
 
@@ -61,6 +72,9 @@ A handle can be up to 30 characters. Very short handles are valid but rarely fre
 A handle that people can spell after hearing it once is easier to share on a podcast, a business card or a shop sign. Mixing periods and underscores ("the_bloom.studio") is valid but tends to get mistyped.
 
 ## Finding Instagram usernames that are available
+
+![Finding Instagram usernames that are available, in 3 groups: Add a meaningful modifier, Brainstorm, then check the list and Match your other profiles.](/images/tools/instagram-handle-checker-finding-instagram-usernames-that-1200x675.webp)
+
 Instagram doesn't publish a list of available usernames, so the practical way to get an Instagram name you like is to generate options, check them in bulk, and try the best in the app.
 
 ### Add a meaningful modifier

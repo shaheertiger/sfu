@@ -1,0 +1,89 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "X Character Counter",
+   "question": "X Character Counter",
+   "answer": "Free 280 Limit & Tweet Length Checker",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "eye",
+    "send"
+   ],
+   "qualifier": "Paste a draft to see how X will count it, with links scored as 23 and most emoji as 2, plus a Premium toggle for long posts."
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "X Character Counter",
+   "what": "X character limits at a glance: Long post (X Premium)",
+   "value": "25,000",
+   "unit": "characters",
+   "others": [
+    {
+     "value": "160",
+     "label": "Bio"
+    },
+    {
+     "value": "50",
+     "label": "Display name"
+    },
+    {
+     "value": "4–15",
+     "label": "@handle"
+    }
+   ]
+  },
+  {
+   "name": "how-x-counts-characters",
+   "type": "lists",
+   "kicker": "X Character Counter",
+   "title": "How X counts characters",
+   "groups": [
+    {
+     "label": "Links always count as 23",
+     "text": "Every URL in a post is wrapped by X's link shortener."
+    },
+    {
+     "label": "Spaces and line breaks count too",
+     "text": "Each space and each line break uses one character."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "X Character Counter",
+   "title": "How to use the counter",
+   "steps": [
+    {
+     "title": "Type or paste your draft",
+     "text": "Paste the post into the box."
+    },
+    {
+     "title": "Switch the Premium toggle on or off",
+     "text": ""
+    },
+    {
+     "title": "Check profile text the same way",
+     "text": "Drafting a new bio or display name?"
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "X Character Counter",
+   "title": "Best practices for posts that fit",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Put the point in the first line",
+     "Count the link as part of the budget"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,89 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "TikTok Comment Generator",
+   "question": "Free Comment Ideas to Personalize",
+   "answer": "TikTok Comment Generator",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "video",
+    "calendar"
+   ],
+   "qualifier": "Describe a TikTok video, pick a tone, and get 12 comment ideas to rewrite in your own words, whether you're replying to your audience or cheering on a creator."
+  },
+  {
+   "name": "what-makes-a-good",
+   "type": "lists",
+   "kicker": "TikTok Comment Generator",
+   "title": "What makes a good TikTok comment",
+   "groups": [
+    {
+     "label": "It reacts to a specific moment",
+     "text": "Mentioning the exact beat that made you laugh."
+    },
+    {
+     "label": "It's quick to read",
+     "text": "Viewers skim comments while the video loops."
+    },
+    {
+     "label": "It asks for what comes next",
+     "text": "On TikTok, \"part 2?\" style requests and questions about a recipe."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "TikTok Comment Generator",
+   "title": "How to use the TikTok comment generator",
+   "steps": [
+    {
+     "title": "Describe the video",
+     "text": ""
+    },
+    {
+     "title": "Pick a tone",
+     "text": ""
+    },
+    {
+     "title": "Personalize before posting",
+     "text": "You'll see 12 ideas."
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "TikTok Comment Generator",
+   "title": "TikTok comment ideas by situation",
+   "groups": [
+    {
+     "label": "Replying to your own audience",
+     "text": "\"Recipe's in the next video."
+    },
+    {
+     "label": "Supporting a creator you follow",
+     "text": "\"Day 1 to day 30 is genuinely impressive."
+    },
+    {
+     "label": "Engaging with peers in your niche",
+     "text": "\"Fellow candle maker here."
+    },
+    {
+     "label": "Brand accounts",
+     "text": "\"Love seeing it in your space."
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "TikTok comment features and rules",
+   "quote": "TikTok gives creators several tools for managing the comment section.",
+   "by": "TikTok Comment Generator"
+  }
+ ]
+}

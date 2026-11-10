@@ -7,6 +7,8 @@ keyword: strikethrough text generator
 ---
 ## Line styles you can generate
 
+![Strikethrough Text Generator: Free Copy & Paste. Cross out or underline text with five Unicode styles and paste it into Instagram, X, Facebook, LinkedIn, TikTok and other apps that have no strikethrough button.](/images/tools/strikethrough-text-generator-hero-1200x675.webp)
+
 Type your text and this generator adds a line through or under every character. Tap a result to copy it, then paste it into any app that shows plain text. It works where there's no strikethrough option, such as Instagram captions, X posts and LinkedIn updates.
 
 ### The five styles
@@ -28,6 +30,8 @@ Unlike bold or cursive styles, these don't replace your letters. They keep each 
 For bold, cursive, bubble and more, use the [font generator](/tools/font-generator), which also includes these line styles alongside 25-plus others.
 
 ## Where strikethrough text works
+
+![Where strikethrough text works, comparing needs the Unicode version (Instagram, Facebook and X, LinkedIn, TikTok and Threads and Bluesky and Pinterest) with has built-in strikethrough (Discord and Reddit: ~~text~~, YouTube comments: -text- and Slack and WhatsApp: ~text~).](/images/tools/strikethrough-text-generator-where-it-works-1200x675.webp)
 
 ### Platforms that need the Unicode version
 
@@ -51,6 +55,8 @@ Usernames, hashtags, @mentions, links and search fields need plain characters. A
 
 ## Best practices
 
+![Strikethrough Text Generator: best practices: do mind the character count and expect small rendering differences.](/images/tools/strikethrough-text-generator-best-practices-1200x675.webp)
+
 ### Mind the character count
 
 Because each letter carries a hidden mark, crossing out 20 characters uses about 40. On X, with a 280-character limit, that adds up quickly. Paste your draft into the [X character counter](/tools/x-character-counter) before posting.
@@ -68,6 +74,8 @@ Some fonts draw the line slightly too high, too low or with gaps between letters
 A line through one letter often looks like a rendering glitch. Strike complete words or phrases so the intent is obvious.
 
 ## Use cases
+
+![Strikethrough text use cases, in 4 groups: Price drops and sales, Jokes and self-corrections, Checklists and updates and Underlined emphasis.](/images/tools/strikethrough-text-generator-use-cases-1200x675.webp)
 
 ### Price drops and sales
 

@@ -6,7 +6,12 @@ lead: Type what the post is about, pick a tone, and copy a comment idea to edit 
 keyword: linkedin comment generator
 ---
 ## What the LinkedIn Comment Generator Does
+
+![LinkedIn Comment Generator: 12 Free Ideas in 5 Tones, Edit & Post. Type what the post is about, pick a tone, and copy a comment idea to edit in your own words before you post it on LinkedIn.](/images/tools/linkedin-comment-generator-hero-1200x675.webp)
+
 This free LinkedIn comment generator gives you 12 comment ideas for a post, in the tone you choose. Type the post's topic in a few words, pick supportive, curious question, funny, professional or hype, and copy the idea that's closest to what you want to say. Then edit it so it's yours, and post it on LinkedIn yourself.
+
+![What the LinkedIn Comment Generator Does, in 2 groups: How it works and What it never does.](/images/tools/linkedin-comment-generator-what-the-linkedin-comment-1200x675.webp)
 
 It's built for the moment everyone knows: a colleague shares a promotion, a client posts a long reflection, a peer writes about something you have opinions on, and you stare at the comment box. A starting point gets you past the blank box, and you add the part only you can: a detail, an example or your actual opinion.
 
@@ -17,6 +22,9 @@ The ideas come from hand-written templates for each tone, with your topic filled
 The tool never posts, likes or comments on your behalf, and it doesn't connect to your LinkedIn account. It shows text you can copy. That's deliberate: comments that sound pasted do more harm than no comment, and automated commenting breaks LinkedIn's rules.
 
 ## LinkedIn Comment Types You Can Generate
+
+![LinkedIn Comment Types You Can Generate, in 3 groups: Supportive comments, Curious question comments and Professional comments.](/images/tools/linkedin-comment-generator-linkedin-comment-types-you-1200x675.webp)
+
 Below, each tone shows real output from the generator for a sample topic, so you know what to expect. Your results use your own topic.
 
 ### Supportive comments
@@ -57,6 +65,9 @@ Big, enthusiastic congratulations, for launches, wins and milestones. For "the l
 As the second example shows, hype templates are short and blunt, and they read best with a short noun as the topic. They're also the tone that most needs a specific detail added, such as the feature you liked or the result you noticed.
 
 ## LinkedIn Comment Best Practices the Generator Bakes In
+
+![LinkedIn Comment Best Practices the Generator Bakes In: do one clear intent per comment, short enough to read in the feed, questions that invite a reply and professional language by default.](/images/tools/linkedin-comment-generator-best-practices-1200x675.webp)
+
 ### Comments are starting points, not finished text
 The tool's own note says it: edit each one so it's genuinely yours, and never post the same comment in bulk. Every idea is short on purpose, leaving room for your specific detail.
 
@@ -73,6 +84,9 @@ The curious question tone uses open questions, such as "what", "how" and "would 
 LinkedIn-specific templates avoid slang and emoji, and use phrases that fit a work context, such as "on our team" and "our next planning session". The generator doesn't add hashtags or emoji to comments.
 
 ## How to Use the LinkedIn Comment Generator
+
+![How to Use the LinkedIn Comment Generator, in 4 steps: describe the post in a few words, pick a tone, read the 12 ideas and copy the closest one.](/images/tools/linkedin-comment-generator-how-to-1200x675.webp)
+
 1. **Describe the post in a few words.** Type what it's about in the box, up to 80 characters. A short noun phrase works best: "customer interviews", "remote onboarding", "the launch". Full sentences such as "hiring your first salesperson" can produce awkward grammar in some templates.
 2. **Pick a tone.** Supportive, curious question, funny, professional or hype.
 3. **Read the 12 ideas.** Each one has a copy button. If none fits, press **More ideas**.
@@ -109,6 +123,9 @@ Congratulate candidates and connections on new roles and milestones, then make e
 If you write LinkedIn comments in your second language, the ideas give you natural phrasing to adapt. Change the details and keep the structure.
 
 ## How to Get the Most Out of Your Comments
+
+![LinkedIn Comment Generator: how to Get the Most Out of Your Comments, in 4 steps: add one specific detail, never paste the same comment twice, match the post's mood and comment where you have something to add.](/images/tools/linkedin-comment-generator-how-to-2-1200x675.webp)
+
 ### Add one specific detail
 A name, a number, a short example or a disagreement turns a template into a comment people reply to. Without it, generic praise looks automated.
 

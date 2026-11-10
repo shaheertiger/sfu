@@ -1,0 +1,65 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "YouTube Tag Generator",
+   "question": "YouTube Tag Generator",
+   "answer": "Free Tag Ideas Within the 500 Limit",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "video",
+    "calendar"
+   ],
+   "qualifier": "Enter your video's topic and any extra keywords to get a tidy list of tag ideas, trimmed to fit YouTube's 500-character tag limit and ready to copy."
+  },
+  {
+   "name": "how-the-youtube-tag",
+   "type": "lists",
+   "kicker": "YouTube Tag Generator",
+   "title": "How the YouTube tag generator works",
+   "groups": [
+    {
+     "label": "Remove what doesn't fit",
+     "text": "Not every template makes sense for every topic."
+    },
+    {
+     "label": "Stay under 500 characters",
+     "text": "YouTube limits the tag field to 500 characters in total."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "YouTube Tag Generator",
+   "title": "How to use it",
+   "steps": [
+    {
+     "title": "Enter a focused topic",
+     "text": ""
+    },
+    {
+     "title": "Add a few extra keywords",
+     "text": ""
+    },
+    {
+     "title": "Prune the list",
+     "text": ""
+    },
+    {
+     "title": "Copy and paste into YouTube Studio",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "What YouTube tags actually do",
+   "quote": "Tags are optional keywords you can add to a video in YouTube Studio, and this YouTube tag generator fills that field with sensible ideas in seconds.",
+   "by": "YouTube Tag Generator"
+  }
+ ]
+}

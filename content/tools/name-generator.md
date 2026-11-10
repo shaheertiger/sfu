@@ -6,7 +6,12 @@ lead: Enter a word you like, pick a style, and get 30 username ideas you can use
 keyword: social media name generator
 ---
 ## What makes a good social media username
+
+![Social Media Name Generator: 30 Free Username Ideas. Enter a word you like, pick a style, and get 30 username ideas you can use as one consistent handle across your social accounts.](/images/tools/name-generator-hero-1200x675.webp)
+
 The best username is one you can use everywhere: short, easy to spell, and free of characters that some networks reject. This generator gives you 30 ideas at a time from a keyword and a style, so you can find a handle that works on more than one platform.
+
+![Key point from the Social Media Name Generator page: The best username is one you can use everywhere: short, easy to spell, and free of characters that some networks reject.](/images/tools/name-generator-key-point-1200x675.webp)
 
 ### One handle, every platform
 When your name is the same on Instagram, TikTok, X and YouTube, people who find you in one place can find you in the others without guessing. It also makes your handle easier to print on a business card, a podcast outro or a product label.
@@ -18,6 +23,9 @@ Every extra letter is another chance for a typo when someone tags you. Aim for s
 Periods, hyphens and capital letters are each allowed on some networks and rejected on others. A name built from lowercase letters, numbers and at most one underscore is the safest bet if you want the same handle everywhere.
 
 ## How the name generator works
+
+![Social Media Name Generator: how the name generator works, in 3 groups: Step by step, What it can't do and Need a platform-specific list?](/images/tools/name-generator-how-the-name-generator-1200x675.webp)
+
 The generator is template-based. It combines your keyword with word lists and patterns tuned to the style you choose, then keeps only results that fit common username rules.
 
 ### Step by step
@@ -33,6 +41,9 @@ It cannot check whether a name is taken. Before you fall for a handle, search fo
 Try the dedicated tools for [Instagram](/tools/instagram-name-generator), [TikTok](/tools/tiktok-name-generator), [YouTube](/tools/youtube-name-generator), [X](/tools/x-name-generator), [Discord](/tools/discord-name-generator), [Reddit](/tools/reddit-name-generator) or [Telegram](/tools/telegram-name-generator).
 
 ## Username rules and limits by platform
+
+![Social Media Name Generator: username rules and limits by platform, in 2 groups: The cross-platform sweet spot and When the perfect handle is taken.](/images/tools/name-generator-username-rules-and-limits-1200x675.webp)
+
 Each network sets its own rules. The table compares username or handle limits on the major platforms (values at the time of writing).
 
 | Platform | Length | Allowed characters |
@@ -52,6 +63,9 @@ Put the rows together and a pattern appears: **5 to 15 characters, lowercase let
 Add a short, meaningful word rather than random digits. Endings like "studio", "hq", "makes" or "irl", or a prefix like "hey" or "its", keep the name readable. Use the same fallback on every platform so your identity stays consistent.
 
 ## Ideas by style
+
+![Social Media Name Generator: ideas by style, in 3 groups: Sample names for "maple", As an aesthetic username generator and Check the fit before you pick.](/images/tools/name-generator-use-cases-1200x675.webp)
+
 The same keyword produces a very different feel in each style.
 
 ### Sample names for "maple"

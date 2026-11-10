@@ -6,7 +6,12 @@ lead: Resize any image to the right Pinterest pic size for Pins, profile photos 
 keyword: pinterest pic size
 ---
 ## Pinterest image sizes at a glance
+
+![Pinterest Photo Resizer: Pin, Long Pin, Video & Profile Sizes. Resize any image to the right Pinterest pic size for Pins, profile photos and covers.](/images/tools/pinterest-photo-resizer-hero-1200x675.webp)
+
 The standard Pinterest Pin size is 1000×1500 pixels, a 2:3 vertical image. Square Pins (1000×1000) and long Pins (1000×2100) also work, and video Pins look best at 1080×1920. Upload profile photos at 280×280 or larger and profile covers at 1600×900. Values are at the time of writing and can change.
+
+![Pinterest image sizes at a glance: Standard Pin, shown as 1000 × 1500 px, with Square Pin 1000 × 1000, Long Pin 1000 × 2100 and Video / Idea Pin 1080 × 1920 for comparison.](/images/tools/pinterest-photo-resizer-specs-1200x675.webp)
 
 | Preset | Size | Ratio | Best for |
 |---|---|---|---|
@@ -27,6 +32,9 @@ Pins taller than 2:3 are allowed, but Pinterest can trim very tall ones in the f
 Your profile photo shows as a small circle next to every Pin you save and every board you share. A 280×280 upload gives Pinterest a sharp source to scale down from. Keep your face or logo in the middle so the circle doesn't clip it.
 
 ## How to resize an image for Pinterest
+
+![How to resize an image for Pinterest, in 4 steps: upload the image, pick the preset, choose fill or fit and download and pin.](/images/tools/pinterest-photo-resizer-how-to-1200x675.webp)
+
 ### 1. Upload the image
 Choose a PNG or JPG from your phone or computer. Nothing is uploaded to a server; the resizing happens in your browser.
 
@@ -40,6 +48,9 @@ Select Standard Pin, Square Pin, Long Pin, Video / Idea Pin, Profile photo or Pr
 Save as JPG for photos or PNG for graphics with text. Then upload it to Pinterest, or to your scheduler.
 
 ## Tips for Pinterest images that get saved
+
+![Tips for Pinterest images that get saved: do make text readable on a phone, lead with the subject and use one style across your Pins.](/images/tools/pinterest-photo-resizer-best-practices-1200x675.webp)
+
 ### Make text readable on a phone
 Most pinning happens on phones, where a Pin is only a few centimeters wide in the grid. Use a short headline in a large, plain font with strong contrast against the background. If you can't read it at arm's length, make it bigger.
 
@@ -53,6 +64,9 @@ People scroll the grid quickly. Put the dish, product or finished project front 
 A consistent font, color and layout helps people recognize your Pins before they see your name. If you want a matching profile icon, the [Pinterest logo generator](/tools/pinterest-logo-generator) makes a simple letter or emoji icon.
 
 ## Use cases
+
+![Pinterest Photo Resizer: use cases, in 2 groups: Turning blog photos into Pins and Updating your profile.](/images/tools/pinterest-photo-resizer-use-cases-1200x675.webp)
+
 ### Turning blog photos into Pins
 Resize a landscape blog photo to 1000×1500 with fit, add your headline in the empty space with your image editor, and you have a Pin that links back to the post.
 

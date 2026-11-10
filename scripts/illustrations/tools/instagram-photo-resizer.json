@@ -1,0 +1,79 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Instagram Photo Resizer",
+   "question": "Instagram Photo Resizer",
+   "answer": "Square, Portrait, Story & Profile",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "image",
+    "calendar"
+   ],
+   "qualifier": "Resize any photo to Instagram's feed, story and profile sizes without awkward auto-crops. Pick a preset, choose crop or fit, and download."
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "Instagram Photo Resizer",
+   "what": "Instagram image sizes at a glance: Square",
+   "value": "1080 × 1080",
+   "unit": "px",
+   "others": [
+    {
+     "value": "1080 × 1350",
+     "label": "Portrait"
+    },
+    {
+     "value": "1080 × 566",
+     "label": "Landscape"
+    },
+    {
+     "value": "1080 × 1920",
+     "label": "Story / Reel"
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Instagram Photo Resizer",
+   "title": "How to resize a photo for Instagram",
+   "steps": [
+    {
+     "title": "Upload the photo",
+     "text": "Choose a PNG or JPG from your phone or computer."
+    },
+    {
+     "title": "Pick the preset",
+     "text": "Select square, portrait, landscape, story/reel or profile photo."
+    },
+    {
+     "title": "Decide between fill and fit",
+     "text": ""
+    },
+    {
+     "title": "Download and post",
+     "text": "Save as JPG for photos or PNG for graphics with text."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Instagram Photo Resizer",
+   "title": "Tips for sharp Instagram photos",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Keep one format per carousel",
+     "Keep text away from story edges",
+     "Check the profile grid crop",
+     "Fix blurry uploads at the source"
+    ]
+   }
+  }
+ ]
+}

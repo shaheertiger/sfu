@@ -6,6 +6,9 @@ lead: Paste a channel link, @handle, channel ID or video link to get the channel
 keyword: youtube pfp downloader
 ---
 ## What the YouTube PFP downloader does
+
+![YouTube PFP Downloader: Profile Picture & YT DP in HD, Free. Paste a channel link, @handle, channel ID or video link to get the channel's profile picture in every size, plus its banner.](/images/tools/youtube-pfp-downloader-hero-1200x675.webp)
+
 The YouTube PFP downloader finds a channel's profile picture (its "PFP", avatar or "DP") and gives it to you as a full-size image file instead of the small circle YouTube shows next to videos. Paste almost any YouTube link and you get the picture in three fixed sizes, the original upload, and the channel banner when the channel has one.
 
 On YouTube itself there's no download button for a profile picture. Right-clicking the circle on a computer usually gets you a small, low-resolution copy, and on a phone you can't right-click at all. The downloader skips that: it reads the channel's public page the same way your browser would, finds the address of the picture on YouTube's image servers, and requests it at the size you choose.
@@ -23,6 +26,9 @@ On YouTube itself there's no download button for a profile picture. Right-clicki
 A channel's profile picture and banner belong to the channel owner. Use what you download for reference, research, commentary or with the owner's permission. Don't use it to pose as the channel, run a look-alike account, or put someone else's branding on your own content. There's more on this under best practices below.
 
 ## Available Image Types
+
+![Key point from the YouTube PFP Downloader page: Each lookup returns two kinds of image from the same channel.](/images/tools/youtube-pfp-downloader-key-point-1200x675.webp)
+
 Each lookup returns two kinds of image from the same channel.
 
 ### Profile picture (PFP, avatar, DP)
@@ -60,6 +66,9 @@ Banners always download at their original size. No smaller banner sizes are offe
 The file type is whatever YouTube serves for that picture: usually JPEG, sometimes PNG or WebP. The downloader names the file after the channel and the size, such as `channel-name-pfp-800.jpg`, `channel-name-pfp-original.png` or `channel-name-banner.jpg`, so a folder of downloads stays easy to sort.
 
 ## Profile Picture Downloader Features
+
+![YouTube PFP Downloader: profile Picture Downloader Features, in 3 groups: Paste almost any YouTube link, Type just the @handle and Paste a channel ID.](/images/tools/youtube-pfp-downloader-profile-picture-downloader-features-1200x675.webp)
+
 ### Paste almost any YouTube link
 The input box accepts most of the ways people share a channel. You don't need to tidy the link first: extra parameters, `m.youtube.com` mobile links and `music.youtube.com` links are all handled.
 
@@ -136,6 +145,9 @@ Fans use a creator's picture as a reference for drawings, birthday edits and fan
 When someone reports an account copying a creator's look, moderators need the original picture to compare. The downloader gives you the real file and the channel link, both useful in a report to YouTube.
 
 ## Best Practices and Caveats
+
+![YouTube PFP Downloader: best Practices and Caveats: do use the pictures fairly, download fresh before you present and check the corners and the safe area. Never impersonate a channel.](/images/tools/youtube-pfp-downloader-best-practices-1200x675.webp)
+
 ### Use the pictures fairly
 The image is someone else's work and often their face. Saving it for reference is one thing; publishing it is another. Before you post a downloaded picture anywhere, ask whether you'd be comfortable if the creator saw how you used it. If not, ask permission or don't use it. Copyright and personality rights differ by country, and this page isn't legal advice.
 
@@ -157,6 +169,9 @@ Because the profile picture is a square shown as a circle, and the banner is a w
 You don't need an account. Your lookup goes to our server, which reads the public YouTube page and sends back the image addresses. To keep the tool free, lookups are capped for each visitor every day, counted with an anonymous code that changes daily rather than with your name or account.
 
 ## Related Free YouTube Tools
+
+![Related Free YouTube Tools, in 3 groups: YouTube video ID finder, YouTube handle checker and YouTube name generator.](/images/tools/youtube-pfp-downloader-related-free-youtube-tools-1200x675.webp)
+
 ### YouTube video ID finder
 Paste any watch, youtu.be, Shorts or live link to copy the video ID, playlist ID and start time, get clean short and embed links, and open the video's thumbnails. [Find a video ID](/tools/youtube-video-id-finder).
 

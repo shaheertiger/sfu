@@ -1,0 +1,78 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "Instagram Carousel Splitter",
+   "what": "Instagram carousel splitter: equal slides from one wide image",
+   "value": "2–10",
+   "unit": "slides",
+   "unitNote": "cut evenly, numbered in order",
+   "others": [
+    {
+     "value": "1080 × 1440",
+     "label": "3:4, the tallest"
+    },
+    {
+     "value": "1080 × 1350",
+     "label": "Portrait, 4:5"
+    },
+    {
+     "value": "1080 × 1080",
+     "label": "Square, 1:1"
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Instagram Carousel Splitter",
+   "title": "How to split an image for an Instagram carousel",
+   "steps": [
+    {
+     "title": "Pick or design a wide image",
+     "text": ""
+    },
+    {
+     "title": "Choose the number of slides",
+     "text": ""
+    },
+    {
+     "title": "Choose the slide shape and framing",
+     "text": "Match the shape to your image."
+    },
+    {
+     "title": "Download and keep the order",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Designing a carousel that swipes smoothly",
+   "quote": "A road, a shoreline or a line of text that crosses from one slide into the next nudges people to keep swiping.",
+   "by": "Instagram Carousel Splitter"
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Instagram Carousel Splitter",
+   "title": "Instagram carousel splitter **use cases**",
+   "groups": [
+    {
+     "label": "Travel and landscape photos",
+     "text": "Show a mountain range or city skyline at a size a single post can't match."
+    },
+    {
+     "label": "Step-by-step graphics",
+     "text": "Each step lands on its own slide, with the connecting line carrying through."
+    },
+    {
+     "label": "Product lineups",
+     "text": "Lay products side by side so every item gets a full-size slide."
+    }
+   ]
+  }
+ ]
+}

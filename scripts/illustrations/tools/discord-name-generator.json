@@ -1,0 +1,104 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Discord Name Generator",
+   "question": "Discord Name Generator",
+   "answer": "30 Free Username & Server Name Ideas",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "user-plus",
+    "calendar"
+   ],
+   "qualifier": "Get 30 ideas for a Discord username, display name or server name. Username ideas follow Discord's lowercase rules, so you can paste them straight in."
+  },
+  {
+   "name": "what-makes-a-good",
+   "type": "lists",
+   "kicker": "Discord Name Generator",
+   "title": "What makes a good Discord name",
+   "groups": [
+    {
+     "label": "Usernames are unique now",
+     "text": "Discord retired the old \"name#1234\" tags."
+    },
+    {
+     "label": "Display names do the talking",
+     "text": "In servers, most people see your display name rather than your username."
+    },
+    {
+     "label": "Server names set expectations",
+     "text": "A server name appears in invites."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Discord Name Generator",
+   "title": "How to use the Discord name generator",
+   "steps": [
+    {
+     "title": "Type a keyword",
+     "text": ""
+    },
+    {
+     "title": "Pick a style",
+     "text": ""
+    },
+    {
+     "title": "Copy usernames",
+     "text": ""
+    },
+    {
+     "title": "Use the rest as display or server names",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "Discord Name Generator",
+   "what": "Discord name rules and limits: Username",
+   "value": "2–32",
+   "unit": "characters",
+   "others": [
+    {
+     "value": "32",
+     "label": "Display name"
+    },
+    {
+     "value": "2–100",
+     "label": "Server name"
+    },
+    {
+     "value": "190",
+     "label": "About Me"
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Discord Name Generator",
+   "title": "Discord name ideas",
+   "groups": [
+    {
+     "label": "Usernames and display names",
+     "text": "Gaming usernames: crit.chance."
+    },
+    {
+     "label": "Server names by theme",
+     "text": "Survival game group: Ember Hollow SMP."
+    },
+    {
+     "label": "Give your server a matching look",
+     "text": "Once you've named it, the Discord logo generator makes a simple server icon."
+    }
+   ]
+  }
+ ]
+}

@@ -6,7 +6,12 @@ lead: Make a clean server icon for your Discord community from letters or an emo
 keyword: discord logo generator
 ---
 ## What the Discord logo generator makes
+
+![Discord Logo Generator, shown as 512 × 512 px.](/images/tools/discord-logo-generator-hero-1200x675.webp)
+
 This tool creates a simple icon for your own Discord server: one to three letters, or a single emoji, on a colored background. It exports a 512×512 PNG, the size Discord uses for server icons. It doesn't produce Discord's own logo and isn't affiliated with Discord.
+
+![What the Discord logo generator makes, in 2 groups: Built for a small circle and Your icon, not Discord's branding.](/images/tools/discord-logo-generator-what-the-discord-logo-1200x675.webp)
 
 | Option | Choices |
 |---|---|
@@ -26,6 +31,9 @@ Server icons appear as small circles in the left-hand server list. Short text, b
 Don't recreate Discord's logo, its mascot or its exact brand colors in your icon. Using a platform's branding can confuse members into thinking your server is official, and it may break Discord's brand guidelines and community rules.
 
 ## How to make a Discord server icon
+
+![How to make a Discord server icon, in 4 steps: enter letters or choose an emoji, pick a shape, set the colors and download and upload.](/images/tools/discord-logo-generator-how-to-1200x675.webp)
+
 ### 1. Enter letters or choose an emoji
 Type up to three letters, such as the initials of your server or an abbreviation of your community's name. Or pick one emoji that sums up the server's topic.
 
@@ -39,6 +47,9 @@ Choose a solid or gradient background and a text color. Keep the letters clearly
 Download the 512×512 PNG, then open Server Settings in Discord and upload it as the server icon. The image is generated in your browser and isn't sent anywhere.
 
 ## Design tips for server icons
+
+![Discord Logo Generator: design tips for server icons: do two letters beat three, test against dark and light themes and match the rest of your server.](/images/tools/discord-logo-generator-best-practices-1200x675.webp)
+
 ### Two letters beat three
 Three letters can work, but each one gets smaller. If your server name has a natural two-letter abbreviation, it'll be more legible at list size.
 

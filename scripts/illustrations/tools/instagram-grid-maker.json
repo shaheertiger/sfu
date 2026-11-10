@@ -1,0 +1,64 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Instagram Grid Maker",
+   "question": "Instagram Grid Maker",
+   "answer": "3x3 & 3x4 Puzzle Grids from One Photo",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "image",
+    "calendar"
+   ],
+   "qualifier": "Upload one image, choose a grid size and tile shape, drag and zoom to frame it, and download numbered tiles that form one large picture across your Instagram profile."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Instagram Grid Maker",
+   "title": "How to make an Instagram grid",
+   "steps": [
+    {
+     "title": "Upload a high-resolution image",
+     "text": ""
+    },
+    {
+     "title": "Choose the grid and tile shape",
+     "text": "Pick the number of rows and the tile shape: 4:5, 3:4 or square."
+    },
+    {
+     "title": "Frame the picture",
+     "text": ""
+    },
+    {
+     "title": "Download the numbered tiles",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Instagram Grid Maker",
+   "title": "Getting a clean result on your profile",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Mind the 3:4 grid crop",
+     "Make each tile work alone",
+     "Watch pinned posts",
+     "Pair it with a carousel"
+    ]
+   }
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "What the grid maker does",
+   "quote": "The Instagram grid maker cuts one image into a set of tiles that, posted in the right order, rebuild the full picture on your Instagram profile.",
+   "by": "Instagram Grid Maker"
+  }
+ ]
+}

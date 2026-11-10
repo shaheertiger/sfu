@@ -1,0 +1,85 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Tier List Maker",
+   "question": "Tier List Maker",
+   "answer": "Rank Text & Images, Save as an Image",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "type",
+    "bookmark"
+   ],
+   "qualifier": "Make a tier list in your browser: add text or images, drag them into tiers, rename and recolor the tiers, then save the result as an image for your next ranking post."
+  },
+  {
+   "name": "make-a-tier-list",
+   "type": "lists",
+   "kicker": "Tier List Maker",
+   "title": "Make a tier list in your browser",
+   "groups": [
+    {
+     "label": "Add text and images",
+     "text": "Type an item into Add text and press Enter (or tap +)."
+    },
+    {
+     "label": "Drag or tap to rank",
+     "text": "Drag an item with your finger or mouse and drop it into any tier."
+    },
+    {
+     "label": "Rename and recolor tiers",
+     "text": "Tap any tier label to rename it, up to 24 characters."
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Tier List Maker",
+   "title": "Tier list template ideas",
+   "groups": [
+    {
+     "label": "The classic S to D template",
+     "text": "The default five tiers are the format most people recognize instantly."
+    },
+    {
+     "label": "Custom tiers that fit the topic",
+     "text": "Letter grades aren't required."
+    },
+    {
+     "label": "Topics that start conversations",
+     "text": "Pick a topic your audience has opinions about and a list of 10 to 25 items."
+    }
+   ]
+  },
+  {
+   "name": "making-tier-list-content",
+   "type": "lists",
+   "kicker": "Tier List Maker",
+   "title": "Making tier list content for TikTok, Instagram and YouTube",
+   "groups": [
+    {
+     "label": "Tier list videos",
+     "text": "The most popular tier list videos show the ranking happening."
+    },
+    {
+     "label": "Instagram carousels",
+     "text": "For a reveal carousel, press Save as image after you fill each tier."
+    },
+    {
+     "label": "TikTok photo posts and YouTube",
+     "text": "TikTok photo posts look best at full-screen 9:16."
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "What is a tier list?",
+   "quote": "A tier list ranks things in groups instead of one long numbered list.",
+   "by": "Tier List Maker"
+  }
+ ]
+}

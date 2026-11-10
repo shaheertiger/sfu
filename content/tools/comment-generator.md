@@ -6,7 +6,12 @@ lead: Stuck on what to say? Describe the post, pick a tone, and get 12 comment i
 keyword: comment generator
 ---
 ## What makes a good social media comment
+
+![Comment Generator: Comment Generator. Stuck on what to say?](/images/tools/comment-generator-hero-1200x675.webp)
+
 A good comment shows you actually read or watched the post and adds something: a question, a related experience or genuine encouragement. This free comment generator gives you 12 starting points built from templates. You still choose the words that go live.
+
+![Key point from the Comment Generator page: A good comment shows you actually read or watched the post and adds something: a question, a related experience or genuine encouragement.](/images/tools/comment-generator-key-point-1200x675.webp)
 
 ### It proves you paid attention
 "Great post!" could sit under anything. "The before-and-after of the kitchen shelves is wild, how long did the sanding take?" could only sit under one post. That specificity is what the author notices.
@@ -18,6 +23,9 @@ The best comments offer a useful tip, a follow-up question, a respectful counter
 A joke that works on a friend's vacation photo can land badly on a company announcement or a post about a loss. Read the room before choosing a tone.
 
 ## How the comment generator works
+
+![How the comment generator works, in 3 groups: Describe the post, Pick a tone and Edit, then post it yourself.](/images/tools/comment-generator-how-the-comment-generator-1200x675.webp)
+
 The tool runs in your browser, needs no account and doesn't send your text anywhere.
 
 ### Describe the post
@@ -35,6 +43,9 @@ Choose from five:
 You get 12 comment ideas assembled from templates and the details you entered. Treat them as drafts: change the wording, add a detail only you would know, and post from your own account. The tool never posts anything for you.
 
 ## Commenting responsibly
+
+![Commenting responsibly: do write the final version yourself. Never post the same comment at scale and no fake engagement.](/images/tools/comment-generator-best-practices-1200x675.webp)
+
 Comment ideas are a writing aid, not a shortcut to engagement. These rules matter more than any phrasing.
 
 ### Write the final version yourself

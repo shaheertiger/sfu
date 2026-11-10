@@ -6,7 +6,12 @@ lead: Drag over a face, a license plate or a name to blur, pixelate or cover it 
 keyword: blur image
 ---
 ## Blur an image in three steps
+
+![Blur Image Online: Pixelate or Hide Faces, Plates & Text. Drag over a face, a license plate or a name to blur, pixelate or cover it with a solid bar, then download the photo at full size.](/images/tools/blur-image-hero-1200x675.webp)
+
 This blur image tool hides the parts of a photo you don't want to share. Choose a photo, drag a box over each face, number plate or name, pick **Pixelate**, **Blur** or **Solid bar**, and download the result. It works with a mouse or a finger, so you can censor a picture on your phone just before you post it.
+
+![Blur an image in three steps, in 4 steps: choose a photo, draw the areas to hide, pick an effect and download and blur the whole image.](/images/tools/blur-image-how-to-1200x675.webp)
 
 ### 1. Choose a photo
 Tap **Choose a photo or drop it here**, or drag a JPG, PNG or WebP file onto the box. The photo opens in your browser and is never uploaded. If a file can't be opened (some browsers can't read iPhone HEIC photos, for example), the tool says so; export it as a JPG first.
@@ -21,6 +26,9 @@ Under **Effect**, choose **Pixelate**, **Blur** or **Solid bar**, then set the s
 Tick **Whole image** to apply the effect to the entire photo instead of drawn areas. A heavy blur or a coarse pixelation of the whole image makes a quick background for a quote card or a teaser for an upcoming reveal.
 
 ## Pixelate image areas, blur them or use a solid bar
+
+![Pixelate image areas, blur them or use a solid bar, in 4 groups: How to pixelate an image, Blur strength, Why a solid bar is safest for text and Overlapping areas stay hidden.](/images/tools/blur-image-pixelate-image-areas-blur-1200x675.webp)
+
 All three effects hide detail. They differ in how they look and how much they hide.
 
 | Effect | What it does | Best for |
@@ -42,6 +50,9 @@ For names, number plates and other text, **Solid bar** is the safest choice: sma
 Each area is applied on top of the photo as it already is, so where two areas overlap, the second one never brings the original back. You can cover a large region with a blur and then add a solid bar over a name inside it.
 
 ## Blur faces in a photo before you post
+
+![Blur faces in a photo before you post, in 2 groups: How to blur a face in a photo and How to censor a license plate.](/images/tools/blur-image-blur-faces-in-a-1200x675.webp)
+
 Most of what people regret posting isn't the main subject. It's the detail in the corner. Before a photo goes on Instagram, TikTok, X or Facebook, check it for:
 
 - **Children's faces**, especially other people's kids at a party, school event or sports day.
@@ -60,6 +71,9 @@ Choose **Rectangle** and **Solid bar**, then drag over the plate with a small ma
 Screenshots of group chats, comments or DMs carry names, profile photos and phone numbers. Cover each with a **Solid bar** rectangle before you share the screenshot.
 
 ## Full-size download, and no hidden location data
+
+![Blur Image Online: full-size download, and no hidden location data, in 2 groups: EXIF and GPS data are removed and JPG or PNG.](/images/tools/blur-image-full-size-download-and-1200x675.webp)
+
 The download is drawn again at the photo's full resolution, not at the size of the preview, so the parts you didn't cover stay as sharp as the original. Photos up to 16 megapixels download at their original size. Larger ones are scaled to just under 16 megapixels, the largest image phone browsers can reliably draw, and a note tells you the exact size before you save.
 
 ### EXIF and GPS data are removed
