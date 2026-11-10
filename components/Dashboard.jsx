@@ -196,7 +196,8 @@ class Component extends DCLogic {
       {
         id: 'p1',
         status: 'scheduled',
-        at: a(0, 12),
+        // Today's two posts sit a little ahead of "now", so the demo never opens on posts already past due.
+        at: Math.max(a(0, 12), Component.soon()),
         caption:
           'Per-account captions are live. Write one post, then trim it for X and expand it for LinkedIn without starting over.',
         targets: T(['a1', 'a2', 'a7', 'a4'], 'scheduled'),
@@ -206,7 +207,7 @@ class Component extends DCLogic {
       {
         id: 'p2',
         status: 'scheduled',
-        at: a(0, 17, 30),
+        at: Math.max(a(0, 17, 30), Component.soon() + 4.5 * 36e5),
         caption: 'Behind the scenes of the October drop. Three days of shooting, one very patient cat.',
         targets: T(['a3', 'a5'], 'scheduled'),
         media: ['IMG', 'IMG', 'IMG'],
@@ -483,6 +484,13 @@ class Component extends DCLogic {
       badge: `${p.logo || 'none'} center/60% no-repeat, ${p.color || '#888'}`,
       badgeDisplay: url ? 'block' : 'none',
     };
+  }
+  /** What a publishing error needs from the person: 'auth' (reconnect), 'content' (edit the post) or 'temp' (retry). */
+  static errKind(txt) {
+    const e = txt || '';
+    if (/authori|token|revoked|reconnect|permission/i.test(e)) return 'auth';
+    if (/character|limit|seconds|too long|too short|format|size|aspect|required/i.test(e)) return 'content';
+    return 'temp';
   }
   static hash(str) {
     let h = 7;
@@ -1444,6 +1452,7 @@ class Component extends DCLogic {
       partial: { color: '#dc3545', bg: '#fff1f0', border: '#f4c6c2' },
       failed: { color: '#dc3545', bg: '#fff1f0', border: '#f4c6c2' },
       draft: { color: '#677184', bg: '#f4f3ef', border: '#e5e3dc' },
+      late: { color: '#8a5a00', bg: '#fff8e6', border: '#f3dfb2' },
     };
     const tabDefs = {
       upcoming: (p) => p.status === 'scheduled',
@@ -1461,6 +1470,7 @@ class Component extends DCLogic {
     };
     const queueTabs = Object.keys(tabDefs).map((k) => ({
       label: TAB_LABEL[k],
+      on: s.tab === k,
       count: s.posts.filter(tabDefs[k]).length,
       select: () => this.setState({ tab: k, selecting: false, selected: [] }),
       bg: s.tab === k ? '#141619' : 'transparent',
@@ -1480,23 +1490,19 @@ class Component extends DCLogic {
       const key = p.at ? this.dayKey(p.at) : 'none';
       let g = groups[groups.length - 1];
       if (!g || g.key !== key) {
-        const label = p.at ? this.dayLabel(p.at) : 'Drafts',
+        const label = p.at ? this.dayLabel(p.at) : 'Not scheduled',
           sub = p.at
             ? this.wsDate(p.at).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
-            : 'Not scheduled';
+            : '';
         g = { key, label, sub: label.startsWith(sub) ? '' : sub, items: [] };
         groups.push(g);
       }
       const imgs = p.media.filter((m) => m === 'IMG').length,
         vids = p.media.length - imgs;
       const errs = p.targets.filter((t) => t.error);
-      const errKind = (txt) =>
-        /authori|token|revoked|reconnect|permission/i.test(txt || '')
-          ? 'auth'
-          : /character|limit|seconds|too long|too short|format|size|aspect|required/i.test(txt || '')
-            ? 'content'
-            : 'temp';
-      const fk = errs.length ? errKind(errs[0].error) : null;
+      const fk = errs.length ? Component.errKind(errs[0].error) : null;
+      // Its time has passed but it hasn't gone out (queue paused, or the publisher hasn't picked it up yet).
+      const late = p.status === 'scheduled' && !p.publishing && p.at && p.at < Date.now() - 6e4;
       const actLabel = p.publishing
         ? ''
         : ['failed', 'partial'].includes(p.status)
@@ -1518,9 +1524,9 @@ class Component extends DCLogic {
                   : '';
       const LEAD = { 15: '15m', 30: '30m', 60: '1h', 180: '3h', 1440: '1 day' };
       g.items.push({
-        time: p.at ? this.time(p.at) : '—',
-        status: p.publishing ? 'publishing…' : p.status,
-        st: p.publishing ? ST.scheduled : ST[p.status] || ST.draft,
+        time: p.at ? this.time(p.at) : '',
+        status: p.publishing ? 'publishing…' : late ? (S0.paused ? 'held, queue paused' : 'past due') : p.status,
+        st: p.publishing ? ST.scheduled : late ? ST.late : ST[p.status] || ST.draft,
         meta: [
           `${p.targets.length} account${p.targets.length === 1 ? '' : 's'}`,
           imgs > 1 ? `carousel of ${imgs}` : imgs ? '1 image' : '',
@@ -1693,7 +1699,7 @@ class Component extends DCLogic {
         flags: [
           p.repeat && p.repeat !== 'none' ? `↻ Repeats ${p.repeat}` : '',
           p.evergreen ? 'Evergreen' : '',
-          p.status === 'scheduled' && s.remind.on && p.remind !== false
+          p.status === 'scheduled' && !late && s.remind.on && p.remind !== false
             ? `Reminder ${LEAD[s.remind.lead] || '1h'} before`
             : '',
         ].filter(Boolean),
@@ -1730,9 +1736,22 @@ class Component extends DCLogic {
       });
     }
     const rowPad = this.props.density === 'compact' ? '10px 16px' : '16px 18px';
-    const nextUp = upcoming.length
-      ? `${upcoming.length} scheduled. Next one goes out ${this.dayWords(upcoming[0].at)} at ${this.time(upcoming[0].at)}.`
-      : 'Nothing scheduled yet.';
+    // The next post that will actually go out: not one already past due, nor one still waiting for approval.
+    const nextUp = (() => {
+      if (!upcoming.length) return 'Nothing scheduled yet.';
+      const nowMs = Date.now();
+      const nx = upcoming.find((p) => p.at > nowMs && p.approval !== 'pending');
+      const late = upcoming.filter((p) => !p.publishing && p.at < nowMs - 6e4).length;
+      const waiting = upcoming.filter((p) => p.approval === 'pending').length;
+      return [
+        `${upcoming.length} scheduled.`,
+        S0.paused ? 'The queue is paused, so nothing goes out.' : nx ? `Next one goes out ${this.dayWords(nx.at)} at ${this.time(nx.at)}.` : '',
+        late ? `${late} past due.` : '',
+        waiting ? `${waiting} waiting for approval.` : '',
+      ]
+        .filter(Boolean)
+        .join(' ');
+    })();
 
     // calendar
     const [cy, cm] = s.cursor;
@@ -2546,11 +2565,9 @@ class Component extends DCLogic {
       const t = p.targets.find((x) => x.error) || {};
       const a = accById[t.acc];
       const er = t.error || 'Failed',
-        k = /authori|token|revoked/i.test(er)
-          ? 'Reconnect the account'
-          : /character|limit|seconds|too long|video/i.test(er)
-            ? 'Edit the post to fix'
-            : 'Safe to retry';
+        k = { auth: 'Reconnect the account', content: 'Edit the post to fix', temp: 'Safe to retry' }[
+          Component.errKind(er)
+        ];
       return {
         who: a ? `${P[a.platform].label} @${a.username}` : 'Post',
         when: p.at ? `${this.dayLabel(p.at)} ${this.time(p.at)}` : '',
@@ -2582,7 +2599,13 @@ class Component extends DCLogic {
       queueTabs,
       groups,
       queueEmpty: groups.length === 0,
-      emptyTitle: s.tab === 'upcoming' ? 'Nothing scheduled' : `No ${s.tab} posts`,
+      emptyTitle: {
+        upcoming: 'Nothing scheduled',
+        review: 'Nothing waiting for approval',
+        published: 'Nothing published yet',
+        drafts: 'No drafts',
+        failed: 'No failed posts',
+      }[s.tab],
       rowPad,
       nextUp,
       dows:
@@ -2985,23 +3008,17 @@ class Component extends DCLogic {
       showAlert,
       alertItems,
       ...(() => {
-        const r = failedPosts.filter((p) => {
-          const e = (p.targets.find((t) => t.error) || {}).error || '';
-          return !/authori|token|revoked|reconnect|permission|character|limit|seconds|too long|too short|format|size|aspect|required/i.test(
-            e,
-          );
-        }).length;
-        return { hasRetryable: r > 0, retryLabel: `Retry ${r}` };
+        const r = failedPosts.filter(
+          (p) => Component.errKind((p.targets.find((t) => t.error) || {}).error) === 'temp',
+        ).length;
+        // A bare "Retry 1" under "3 posts failed" reads like a wrong count: say how many of them get retried.
+        const retryLabel = r === failedPosts.length ? (r === 1 ? 'Retry' : `Retry all ${r}`) : `Retry ${r} of ${failedPosts.length}`;
+        return { hasRetryable: r > 0, retryLabel };
       })(),
       alertTitle: `${failedPosts.length} post${failedPosts.length === 1 ? '' : 's'} failed to publish`,
       retryAll: () => {
         const ids = failedPosts
-          .filter((p) => {
-            const e = (p.targets.find((t) => t.error) || {}).error || '';
-            return !/authori|token|revoked|reconnect|permission|character|limit|seconds|too long|too short|format|size|aspect|required/i.test(
-              e,
-            );
-          })
+          .filter((p) => Component.errKind((p.targets.find((t) => t.error) || {}).error) === 'temp')
           .map((p) => p.id);
         if (!ids.length)
           return this.flash(
@@ -3402,7 +3419,7 @@ class Component extends DCLogic {
           .join('  ·  ') || 'No slots set',
       ...(() => {
         const nowMs = Date.now(),
-          nx = upcoming.find((p) => p.at > nowMs);
+          nx = upcoming.find((p) => p.at > nowMs && p.approval !== 'pending');
         const z = (n) => String(n).padStart(2, '0');
         let countdown = '—';
         if (nx) {
