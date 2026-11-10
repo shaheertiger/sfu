@@ -1,0 +1,80 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "TikTok Photo Resizer",
+   "what": "TikTok Photo Resizer",
+   "value": "1080 × 1920",
+   "unit": "px",
+   "others": [
+    {
+     "value": "1080 × 1080",
+     "label": "Square"
+    },
+    {
+     "value": "200 × 200",
+     "label": "Profile photo"
+    }
+   ]
+  },
+  {
+   "name": "tiktok-image-sizes-at",
+   "type": "lists",
+   "kicker": "TikTok Photo Resizer",
+   "title": "TikTok image sizes at a glance",
+   "groups": [
+    {
+     "label": "Full-screen vertical",
+     "text": "A 1080×1920 image fills a phone screen without black bars."
+    },
+    {
+     "label": "Square images",
+     "text": "Square images can work on TikTok."
+    },
+    {
+     "label": "Profile photo",
+     "text": "TikTok recommends at least 200×200 for profile pictures at the time of writing."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "TikTok Photo Resizer",
+   "title": "How to resize a photo for TikTok",
+   "steps": [
+    {
+     "title": "Upload an image",
+     "text": "Choose a PNG or JPG."
+    },
+    {
+     "title": "Choose the preset",
+     "text": "Pick video/photo, square or profile photo."
+    },
+    {
+     "title": "Fill to crop, or fit to pad",
+     "text": "Most horizontal photos lose their sides when cropped to 9:16."
+    },
+    {
+     "title": "Download",
+     "text": "Export as JPG for photographs or PNG for graphics with text."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "TikTok Photo Resizer",
+   "title": "Tips for TikTok images that read well",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Keep text out of the overlay zones",
+     "Use the padding as a design element",
+     "Keep a slideshow consistent"
+    ]
+   }
+  }
+ ]
+}

@@ -7,7 +7,11 @@ keyword: facebook font generator
 ---
 ## Styles you can generate for Facebook
 
+![Facebook Font Generator: 30+ Free Fonts. Type your text and copy it in 30+ styles that work in Facebook posts, comments, Page intros, Group posts and event descriptions.](/images/tools/facebook-font-generator-hero-1200x675.webp)
+
 Facebook doesn't let you pick a font for a regular post, but it does display Unicode characters. That's how this Facebook font changer works: type your text once and it shows it in more than 30 look-alike styles; tap any result to copy it, then paste it into Facebook.
+
+![Key point from the Facebook Font Generator page: Facebook doesn't let you pick a font for a regular post, but it does display Unicode characters.](/images/tools/facebook-font-generator-key-point-1200x675.webp)
 
 ### Bold and italic families
 
@@ -26,6 +30,8 @@ Small caps, superscript, upside-down text, plus strikethrough, underline and sla
 None of these are fonts. Each style swaps your letters for Unicode look-alikes, mostly from the Mathematical Alphanumeric Symbols block, which is why they survive copy and paste.
 
 ## Where styled text works on Facebook
+
+![Where styled text works on Facebook, in 3 groups: Posts on your profile or Page, Comments and replies and Page intro, Group posts and events.](/images/tools/facebook-font-generator-where-styled-text-works-1200x675.webp)
 
 Facebook renders most of these characters on desktop and in the mobile apps. A few places reject or flag them, so it helps to know which is which.
 
@@ -46,6 +52,8 @@ The short intro on a Page, the description of an event and posts inside Groups a
 Facebook's rules ask that your profile name be the name you use in everyday life, and its Page name standards prohibit symbols and unusual capitalization. Don't put styled characters in either. Facebook may refuse the change or ask you to edit the name. See the official guidance at [facebook.com/help](https://www.facebook.com/help).
 
 ## Best practices for styled Facebook text
+
+![Best practices for styled Facebook text: do keep keywords in plain text, think about screen readers, check on a phone first and pick one style per post.](/images/tools/facebook-font-generator-best-practices-1200x675.webp)
 
 Unicode styles stand out in a feed, but they can make a post harder to find and harder for some people to read.
 

@@ -1,0 +1,102 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Threads Font Generator",
+   "question": "Threads Font Generator",
+   "answer": "24 Text Styles",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "send",
+    "calendar"
+   ],
+   "qualifier": "Type your Threads text below, then tap any of the 24 styles to copy it and paste it into a post, reply or bio."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Threads Font Generator",
+   "title": "How to Use the Threads Font Generator",
+   "steps": [
+    {
+     "title": "Type or paste your Threads text",
+     "text": "into the box."
+    },
+    {
+     "title": "Compare the styles",
+     "text": ""
+    },
+    {
+     "title": "Tap Copy",
+     "text": "next to the style you like."
+    },
+    {
+     "title": "Open Threads",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "where-threads-font-generator",
+   "type": "lists",
+   "kicker": "Threads Font Generator",
+   "title": "Where Threads Font Generator Text Works",
+   "groups": [
+    {
+     "label": "Posts and replies",
+     "text": "Any part of a post or reply can be styled."
+    },
+    {
+     "label": "Bio and display name",
+     "text": "Both accept Unicode."
+    },
+    {
+     "label": "Places where it doesn't work",
+     "text": "Your @username can't contain styled characters."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Threads Font Generator",
+   "title": "Best Practices for Styled Threads Text",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Keep searchable words plain",
+     "Mind the character count",
+     "Check on a second device"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Don't use fonts to impersonate"
+    ]
+   }
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Threads Font Generator",
+   "title": "Popular Use Cases by Creator Type",
+   "groups": [
+    {
+     "label": "Creators and personal brands",
+     "text": "Most creators use one styled line, not a styled post."
+    },
+    {
+     "label": "Small businesses and shops",
+     "text": "Use bold for the detail people scan for: a price, a date or an offer."
+    },
+    {
+     "label": "Writers and newsletter authors",
+     "text": "Writers often post short series or excerpts."
+    }
+   ]
+  }
+ ]
+}

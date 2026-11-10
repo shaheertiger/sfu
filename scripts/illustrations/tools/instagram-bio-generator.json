@@ -1,0 +1,93 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "Instagram Bio Generator",
+   "what": "Instagram Bio Generator",
+   "value": "150",
+   "unit": "characters",
+   "others": []
+  },
+  {
+   "name": "what-makes-a-good",
+   "type": "lists",
+   "kicker": "Instagram Bio Generator",
+   "title": "What makes a good Instagram bio",
+   "groups": [
+    {
+     "label": "It gives one clear next step",
+     "text": "Point visitors to a single action."
+    },
+    {
+     "label": "It sounds like your captions",
+     "text": "If your posts are playful, a stiff corporate bio feels off."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Instagram Bio Generator",
+   "title": "How to use the Instagram bio generator",
+   "steps": [
+    {
+     "title": "Describe yourself in a few words",
+     "text": ""
+    },
+    {
+     "title": "Pick a tone and decide on emoji",
+     "text": ""
+    },
+    {
+     "title": "Copy the one that fits",
+     "text": "You get 12 bios, each with a character count."
+    }
+   ]
+  },
+  {
+   "name": "instagram-bio-rules-and",
+   "type": "lists",
+   "kicker": "Instagram Bio Generator",
+   "title": "Instagram bio rules and limits",
+   "groups": [
+    {
+     "label": "The bio field holds 150 characters",
+     "text": "Letters, spaces, line breaks and emoji all count."
+    },
+    {
+     "label": "Your name field is separate",
+     "text": "The bold name above your bio is its own field."
+    },
+    {
+     "label": "Links, mentions and hashtags",
+     "text": "Website addresses typed into the bio text aren't clickable."
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Instagram Bio Generator",
+   "title": "Instagram bio ideas by niche",
+   "groups": [
+    {
+     "label": "Photographer",
+     "text": "Wedding + elopement photographer in the Pacific Northwest."
+    },
+    {
+     "label": "Local bakery",
+     "text": "Sourdough, croissants and too much butter."
+    },
+    {
+     "label": "Fitness coach",
+     "text": "Strength coach for busy parents."
+    },
+    {
+     "label": "Skincare brand",
+     "text": "Fragrance-free skincare for sensitive skin."
+    }
+   ]
+  }
+ ]
+}

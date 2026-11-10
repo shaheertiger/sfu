@@ -6,6 +6,9 @@ lead: Paste a title, description, tag list or comment to see how many characters
 keyword: youtube character counter
 ---
 ## YouTube character limits at a glance
+
+![Illustration for the free YouTube Character Counter: YouTube Character Counter, shown as 5,000, tags.](/images/tools/youtube-character-counter-hero-1200x675.webp)
+
 | Field | Limit (at the time of writing) | In the counter |
 |---|---|---|
 | Video title | 100 characters | Yes |
@@ -15,6 +18,8 @@ keyword: youtube character counter
 | Channel description | 1,000 characters | Reference only |
 | Channel name | Up to 50 characters | Reference only |
 | @handle | 3–30 characters | Reference only |
+
+![YouTube character limits at a glance, in 3 groups: Video title, Description and Tags.](/images/tools/youtube-character-counter-youtube-character-limits-at-1200x675.webp)
 
 The counter checks your text against all four in-tool limits at once, so you can paste anything and see straight away where it fits.
 
@@ -36,6 +41,9 @@ A YouTube comment can be up to 10,000 characters. You'll rarely need that much, 
 These live on your channel rather than on a video, so they aren't separate rows in the counter, but you can still paste text and read the character total. At the time of writing, the channel description allows 1,000 characters, channel names up to 50, and @handles 3 to 30 characters of letters, numbers, underscores, hyphens, periods and middle dots. Check a handle against those rules with the [YouTube handle checker](/tools/youtube-handle-checker).
 
 ## Why You Need a YouTube Character Counter
+
+![Key point from the YouTube Character Counter page: YouTube Studio does show a counter while you type, but only in the field you're typing in, and only once you're already in the upload flow.](/images/tools/youtube-character-counter-key-point-1200x675.webp)
+
 YouTube Studio does show a counter while you type, but only in the field you're typing in, and only once you're already in the upload flow. Most titles and descriptions get written somewhere else first: in a script document, a spreadsheet of upcoming videos, a notes app, or a message to a client for approval. By the time the text reaches YouTube Studio, a title that's 112 characters long means rewriting on the spot.
 
 The counter lets you check text where you write it. Paste a draft and you see, at once, whether it would fit as a title, a description, a tag list or a comment, plus word and line counts that help when you're aiming for something skimmable rather than just under the limit.
@@ -53,6 +61,9 @@ YouTube's own counter and this one agree for plain text. They can differ slightl
 At the time of writing, YouTube rejects the angle brackets `<` and `>` in titles and descriptions. The counter doesn't block them, so replace them with something else (an arrow emoji or a dash) before you paste.
 
 ## How to Use the YouTube Character Counter
+
+![How to Use the YouTube Character Counter, in 3 steps: checking tags, checking a description with chapters and privacy.](/images/tools/youtube-character-counter-how-to-1200x675.webp)
+
 1. Write or paste your title, description, tag list or comment into the box above.
 2. Read the three totals: characters, words and lines.
 3. Look at the limits list. Each row says how many characters you have **left** or how many you're **over** for a title, description, tags and a comment.
@@ -105,6 +116,9 @@ Episode descriptions with guest bios, show notes, timestamps and links run long 
 A pinned comment is often the place for corrections, links mentioned in the video, or a question to start discussion. The 10,000-character limit is generous, but long comments collapse after a few lines, so use the line count to keep the important part on top.
 
 ## Best Practices for YouTube Titles, Descriptions and Tags
+
+![Best Practices for YouTube Titles, Descriptions and Tags: do front-load every field, keep hashtags few and relevant and reuse a standard footer. Don't write to the limit.](/images/tools/youtube-character-counter-best-practices-1200x675.webp)
+
 ### Front-load every field
 Titles get cut off, descriptions get collapsed and comments get truncated. In each case, put the most important words first: the topic in the first half of the title, the value of the video in the first sentence of the description, the key correction in the first line of a pinned comment.
 

@@ -6,7 +6,12 @@ lead: Type a nickname, niche or vibe, pick a style, and get 30 Instagram usernam
 keyword: instagram name generator
 ---
 ## What makes a good Instagram username
+
+![Instagram Name Generator: 30 Free IG Username Ideas. Type a nickname, niche or vibe, pick a style, and get 30 Instagram username ideas that fit Instagram's 30-character handle rules.](/images/tools/instagram-name-generator-hero-1200x675.webp)
+
 A good Instagram username is short enough to remember, easy to spell after hearing it once, and clear about who you are or what you post. It's also the @handle in your profile link, in every tag and in every mention, so it does a lot of work. Enter a word above to get 30 ideas, then check your favorites against the points below.
+
+![What makes a good Instagram username, in 3 groups: People can type it from memory, It works with your display name and It still fits in a year.](/images/tools/instagram-name-generator-what-makes-a-good-1200x675.webp)
 
 ### People can type it from memory
 Followers find you by typing your handle into search or tagging you in a Story. Every extra period, underscore or swapped letter is a chance for a typo. "@goldenhourdiary" is easier to type than "@g0ldn.h0ur_d1ary".
@@ -21,6 +26,9 @@ Instagram shows two names: your **username** (the @handle) and your **name** (th
 If you're also on TikTok, YouTube or X, using one handle everywhere helps people find you across platforms. Our [social media name generator](/tools/name-generator) only suggests names that fit every major network's rules.
 
 ## How to use the Instagram name generator
+
+![How to use the Instagram name generator, in 3 steps: choose a style, copy, then check availability and when your favorite is taken.](/images/tools/instagram-name-generator-how-to-1200x675.webp)
+
 Treat the keyword as a seed. A first name ("maya"), a topic ("plants"), a place ("brooklyn") or a mood ("cozy") all work, and two words give you more combinations.
 
 ### Choose a style
@@ -39,6 +47,9 @@ Tap any of the 30 ideas to copy it, or press **More ideas** for a fresh batch. E
 Add a short, meaningful word ("studio", "daily", "eats") rather than random numbers, swap a period for an underscore, or reorder the words. Our guide on [how to check if an Instagram username is available](/blog/how-to-check-if-an-instagram-username-is-available) covers what else to try.
 
 ## Instagram username rules and limits
+
+![Instagram username rules and limits: Username (@handle), shown as 30 characters, with Name (display name) 30, Bio 150 and Caption 2,200 for comparison.](/images/tools/instagram-name-generator-specs-1200x675.webp)
+
 Values below are at the time of writing and can change.
 
 | Field | Limit | Allowed characters |
@@ -55,6 +66,9 @@ Periods are allowed in the middle of a username but not at the start or end, and
 You can change your username in **Edit profile**. Your old handle may become available to others, and links or tags that used it stop pointing to you, so pick a name you're happy to keep before printing it anywhere.
 
 ## Finsta name ideas
+
+![Key point from the Instagram Name Generator page: A finsta ("fake Instagram") is a second, usually private account for close friends, unpolished photos and inside jokes.](/images/tools/instagram-name-generator-key-point-1200x675.webp)
+
 A finsta ("fake Instagram") is a second, usually private account for close friends, unpolished photos and inside jokes. A good finsta name is recognizable to your friends but not obvious to everyone else. Pick the **Finsta** style above and type your nickname, an inside joke or a pet's name. You'll get ideas like "maya_dump", "tiny.maya" or "mayalore".
 
 A few tips:

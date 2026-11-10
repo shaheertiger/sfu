@@ -1,0 +1,131 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Aesthetic Username Generator",
+   "question": "Aesthetic Username Generator",
+   "answer": "Cute & Soft Username Ideas",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "calendar",
+    "clock"
+   ],
+   "qualifier": "Type a word you love, like moon, matcha or fern, and copy any of the 30 soft, aesthetic usernames below. Tap More ideas for another set."
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "Aesthetic Username Generator",
+   "what": "Aesthetic usernames at a glance: Length and characters",
+   "value": "3–15",
+   "unit": "characters",
+   "others": []
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Aesthetic Username Generator",
+   "title": "Aesthetic Username Ideas by Theme",
+   "groups": [
+    {
+     "label": "Celestial and dreamy",
+     "text": "Moon, star, sky and night words pair naturally with endings like glow."
+    },
+    {
+     "label": "Cottagecore and botanical",
+     "text": "Plant and countryside words sound right next to sage, petal, garden and bloom."
+    },
+    {
+     "label": "Café and sweet",
+     "text": "Food and drink words are the heart of many cute usernames."
+    }
+   ]
+  },
+  {
+   "name": "what-the-aesthetic-username",
+   "type": "lists",
+   "kicker": "Aesthetic Username Generator",
+   "title": "What the Aesthetic Username Generator Does",
+   "groups": [
+    {
+     "label": "Cute vs. aesthetic",
+     "text": "\"Cute\" and \"aesthetic\" overlap but aren't the same."
+    },
+    {
+     "label": "The other styles",
+     "text": "The chips above the results also offer Cool."
+    },
+    {
+     "label": "What it can't do",
+     "text": "It can't tell you whether a username is free."
+    }
+   ]
+  },
+  {
+   "name": "aesthetic-username-rules-for",
+   "type": "lists",
+   "kicker": "Aesthetic Username Generator",
+   "title": "Aesthetic Username Rules for Instagram, TikTok and More",
+   "groups": [
+    {
+     "label": "Aesthetic usernames for Instagram",
+     "text": "Instagram is where most people want an aesthetic username."
+    },
+    {
+     "label": "TikTok",
+     "text": "TikTok allows up to 24 characters with periods and underscores."
+    },
+    {
+     "label": "Pinterest, Discord and others",
+     "text": "Aesthetic boards and Discord servers suit the same names."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Aesthetic Username Generator",
+   "title": "How to Use the Aesthetic Username Generator",
+   "steps": [
+    {
+     "title": "Type one word that sums up your feed",
+     "text": ""
+    },
+    {
+     "title": "Keep the Aesthetic chip selected",
+     "text": "It's on by default on this page."
+    },
+    {
+     "title": "Read the 30 ideas",
+     "text": ""
+    },
+    {
+     "title": "Tap More ideas",
+     "text": "a few times."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Aesthetic Username Generator",
+   "title": "Best Practices for Aesthetic Usernames",
+   "good": {
+    "label": "Do",
+    "items": [
+     "One word, not a sentence",
+     "Read it as a link",
+     "Watch for awkward joins"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Skip random numbers"
+    ]
+   }
+  }
+ ]
+}

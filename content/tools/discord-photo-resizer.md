@@ -6,7 +6,12 @@ lead: Upload an image, pick a Discord preset such as avatar, server icon, emoji 
 keyword: discord photo resizer
 ---
 ## Discord image sizes at a glance
+
+![Discord Photo Resizer: Avatar, Icon, Banner & Emoji Sizes. Upload an image, pick a Discord preset such as avatar, server icon, emoji or sticker, and download it at the exact size Discord expects.](/images/tools/discord-photo-resizer-hero-1200x675.webp)
+
 Discord avatars and server icons work best at 512×512, emoji at 128×128 and stickers at 320×320. Pick one of the presets below, upload your picture and the resizer outputs a file at that size, ready to upload.
+
+![Discord image sizes at a glance: Avatar, shown as 512 × 512 px, with Server icon 512 × 512, Server banner 960 × 540 and Profile banner 680 × 240 for comparison.](/images/tools/discord-photo-resizer-specs-1200x675.webp)
 
 | Preset | Size | Where it appears |
 |---|---|---|
@@ -27,6 +32,9 @@ Emoji appear at roughly the height of a line of text, and stickers aren't much b
 Profile banners require Nitro, and server banners and some other server visuals are unlocked by Server Boost levels, at the time of writing. You can still prepare the image now so it's ready when you have access.
 
 ## How to resize an image for Discord
+
+![How to resize an image for Discord, in 4 steps: upload your picture, choose a preset, pick fill or fit and download PNG or JPG.](/images/tools/discord-photo-resizer-how-to-1200x675.webp)
+
 The resizer runs entirely in your browser, and your image isn't uploaded to a server.
 
 ### 1. Upload your picture
@@ -42,6 +50,9 @@ Select avatar, server icon, server banner, profile banner, emoji or sticker. The
 PNG keeps edges crisp and is the better choice for emoji, icons and anything with text. JPG makes smaller files for photo-heavy banners.
 
 ## Tips for sharp Discord images
+
+![Tips for sharp Discord images: do keep emoji under the file limit, design for dark mode first, leave a margin around your subject and expect still images.](/images/tools/discord-photo-resizer-best-practices-1200x675.webp)
+
 ### Keep emoji under the file limit
 Custom emoji must be 256 KB or smaller. A 128×128 PNG of simple artwork is usually far below that, but a busy photo saved as PNG can creep up. Simplify the image or try JPG if the upload is refused.
 

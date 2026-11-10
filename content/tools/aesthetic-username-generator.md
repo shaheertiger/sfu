@@ -6,6 +6,9 @@ lead: Type a word you love, like moon, matcha or fern, and copy any of the 30 so
 keyword: aesthetic username generator
 ---
 ## Aesthetic usernames at a glance
+
+![Aesthetic Username Generator: Cute & Soft Username Ideas. Type a word you love, like moon, matcha or fern, and copy any of the 30 soft, aesthetic usernames below.](/images/tools/aesthetic-username-generator-hero-1200x675.webp)
+
 | What you get | Details |
 |---|---|
 | Ideas per batch | 30 aesthetic usernames, with **More ideas** for a fresh set |
@@ -15,9 +18,14 @@ keyword: aesthetic username generator
 | Length and characters | 3–15 characters: lowercase letters, numbers and underscores |
 | Cost and sign-up | Free, no account, runs in your browser |
 
+![Aesthetic usernames at a glance: Length and characters, shown as 3–15 characters.](/images/tools/aesthetic-username-generator-specs-1200x675.webp)
+
 An aesthetic username sounds like a mood rather than a label: `moon_haze` instead of `moonfan123`. The generator gets there by pairing your word with a fixed bank of soft, dreamy words and keeping numbers out of the way (only an occasional "22").
 
 ## Aesthetic Username Ideas by Theme
+
+![Aesthetic Username Ideas by Theme, in 3 groups: Celestial and dreamy, Cottagecore and botanical and Café and sweet.](/images/tools/aesthetic-username-generator-use-cases-1200x675.webp)
+
 The quickest way to an aesthetic username is to type one word that captures your feed. Here's what the generator produces for words from popular aesthetics. Every example below is a real result from the tool; check availability before you fall for one.
 
 ### Celestial and dreamy
@@ -82,6 +90,9 @@ A first name works as well as a theme word, and makes the account feel personal 
 - **angel:** angel_diary, angel_skies, dreamy_angel, golden_angel, rose_angel
 
 ## What the Aesthetic Username Generator Does
+
+![What the Aesthetic Username Generator Does, in 3 groups: Cute vs. aesthetic, The other styles and What it can't do.](/images/tools/aesthetic-username-generator-what-the-aesthetic-username-1200x675.webp)
+
 This aesthetic username generator is a template tool, not a language model. It takes up to three words you type, combines them with the aesthetic word bank in a few patterns, and keeps the first 30 results that pass the rules:
 
 - **Soft word + your word:** `velvetmia`, `golden_meadow`
@@ -101,6 +112,9 @@ The chips above the results also offer Cool, Funny, Professional, Gaming and Min
 It can't tell you whether a username is free. Paste your favourites into the [Instagram username checker](/tools/instagram-handle-checker) or the [username checker](/tools/username-checker) to test the format and open each profile link, then confirm in the app.
 
 ## Aesthetic Username Rules for Instagram, TikTok and More
+
+![Aesthetic Username Rules for Instagram, TikTok and More, in 3 groups: Aesthetic usernames for Instagram, TikTok and Pinterest, Discord and others.](/images/tools/aesthetic-username-generator-aesthetic-username-rules-for-1200x675.webp)
+
 Every result fits 3–15 characters of lowercase letters, numbers and underscores. On some platforms you can make it softer still, for example with a period. These are the rules our platform generators use, at the time of writing.
 
 | Platform | Length | Allowed characters | Aesthetic tip |
@@ -127,6 +141,9 @@ Aesthetic boards and Discord servers suit the same names. Discord accepts period
 Hearts, stars, sparkles, flowers and styled letters (♡, ✿, ✧, 𝓂𝑜𝑜𝓃) aren't allowed in usernames on any of these platforms. Put them in your display name and bio instead, where most platforms accept them. The username stays plain and searchable; the profile around it carries the decoration.
 
 ## How to Use the Aesthetic Username Generator
+
+![How to Use the Aesthetic Username Generator, in 4 steps: type one word that sums up your feed, keep the Aesthetic chip selected, read the 30 ideas and tap More ideas.](/images/tools/aesthetic-username-generator-how-to-1200x675.webp)
+
 1. **Type one word that sums up your feed.** A colour, flower, drink, season, animal, hobby or your first name: "matcha", "fern", "polaroid", "mia".
 2. **Keep the Aesthetic chip selected.** It's on by default on this page.
 3. **Read the 30 ideas** and copy your favourites into a note with the copy button.
@@ -161,6 +178,9 @@ A soft username built from an object or a mood keeps a personal account from bei
 Edits, fan pages and moodboard accounts suit the dreamy style. Build from a colour, a symbol or a theme rather than copying the name of the person you're a fan of, so your account stays clearly your own.
 
 ## Best Practices for Aesthetic Usernames
+
+![Best Practices for Aesthetic Usernames: do one word, not a sentence, read it as a link and watch for awkward joins. Skip random numbers.](/images/tools/aesthetic-username-generator-best-practices-1200x675.webp)
+
 ### One word, not a sentence
 The best aesthetic usernames are two parts at most: a soft word and your word. Three-part names like `rose_fern_diary` are pretty but harder to remember and to tag.
 

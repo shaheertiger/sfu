@@ -6,7 +6,12 @@ lead: Create a simple initials or emoji icon for your Pinterest profile, styled 
 keyword: pinterest logo generator
 ---
 ## What the Pinterest logo generator makes
+
+![Pinterest Logo Generator: Pinterest Logo Generator. Create a simple initials or emoji icon for your Pinterest profile, styled in your colors and downloaded as a 512×512 PNG.](/images/tools/pinterest-logo-generator-hero-1200x675.webp)
+
 This tool builds a profile icon for your own Pinterest account from one to three letters or a single emoji on a colored background. It downloads a 512×512 PNG, comfortably above the square size Pinterest needs. It doesn't create Pinterest's logo and has no connection to Pinterest.
+
+![What the Pinterest logo generator makes, in 3 groups: Why initials suit Pinterest, It's shown as a circle and Keep your own identity.](/images/tools/pinterest-logo-generator-what-the-pinterest-logo-1200x675.webp)
 
 | Option | Choices |
 |---|---|
@@ -26,6 +31,9 @@ Pinterest displays profile photos as circles. Upload a square of 280×280 or lar
 Don't imitate Pinterest's own logo, such as a red "P" in a circle, or design your icon to look like an official Pinterest account. Doing so can mislead people and may go against Pinterest's brand guidelines. Use your own initials and colors instead.
 
 ## How to create your Pinterest profile icon
+
+![How to create your Pinterest profile icon, in 4 steps: type your initials or pick an emoji, choose a shape, pick colors and download and upload to Pinterest.](/images/tools/pinterest-logo-generator-how-to-1200x675.webp)
+
 ### 1. Type your initials or pick an emoji
 Use your name, brand or shop initials. An emoji also works if your account has a clear theme, like baking, travel or interiors.
 
@@ -39,6 +47,9 @@ Use a solid color or a gradient for the background, then set a text color with s
 Download the PNG, open your Pinterest profile settings and upload it as your profile photo. The image is created in your browser and isn't uploaded to us.
 
 ## Design tips for a Pinterest profile icon
+
+![Design tips for a Pinterest profile icon: do let your pins do the decorating, pick colors from your best pins and two letters balance best.](/images/tools/pinterest-logo-generator-best-practices-1200x675.webp)
+
 ### Let your pins do the decorating
 Pinterest feeds are busy with photography and color. A simple, flat icon stands out against that more than another detailed image would.
 

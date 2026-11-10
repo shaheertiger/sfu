@@ -7,7 +7,11 @@ keyword: x bold text generator
 ---
 ## What the X Bold Text Generator Actually Does
 
+![X Bold Text Generator, shown as 9 styles.](/images/tools/x-bold-text-generator-hero-1200x675.webp)
+
 Regular posts on X are plain text. There's no bold button in the standard composer, and the X app shows every post in its own font. This X bold text generator gets around that by replacing your letters with bold-looking Unicode characters, so "Big news" becomes 𝐁𝐢𝐠 𝐧𝐞𝐰𝐬 or 𝗕𝗶𝗴 𝗻𝗲𝘄𝘀. X treats them as ordinary characters, so the bold survives copy and paste and shows up for everyone who reads your post.
+
+![What the X Bold Text Generator Actually Does, in 2 groups: X bold vs. X's own formatting and What happens to your text.](/images/tools/x-bold-text-generator-what-the-x-bold-1200x675.webp)
 
 The bold letters come from Unicode's Mathematical Alphanumeric Symbols block, a set of styled letters created for math and science. Phones, browsers and the X apps include fonts for them, which is why they display almost everywhere.
 
@@ -37,6 +41,8 @@ The space in the middle still counts as 1, which is why the bold versions come t
 
 ## How to Use the X Bold Text Generator
 
+![How to Use the X Bold Text Generator, in 5 steps: type or paste your text, compare the 9 bold styles, tap Copy, paste into X and mix bold and plain text.](/images/tools/x-bold-text-generator-how-to-1200x675.webp)
+
 1. **Type or paste your text** into the box. Start with just the words you want to emphasize.
 2. **Compare the 9 bold styles**, which all update as you type.
 3. **Tap Copy** next to the one you want.
@@ -46,6 +52,8 @@ The space in the middle still counts as 1, which is why the bold versions come t
 Everything runs in your browser, and nothing you type is uploaded.
 
 ## Bold Styles Supported by the X Bold Text Generator
+
+![Key point from the X Bold Text Generator page: Each style shows the sample "Big news" and a typical use on X.](/images/tools/x-bold-text-generator-key-point-1200x675.webp)
 
 Each style shows the sample "Big news" and a typical use on X.
 
@@ -125,6 +133,8 @@ Your @username can't contain bold characters. Hashtags and cashtags only link wh
 A good rule: structure a post with line breaks first, add one Unicode bold hook if you want, and avoid stacking caps, emoji and bold on the same line.
 
 ## Best Practices for Bold Text on X
+
+![Best Practices for Bold Text on X: do bold a few words, not the whole post, keep searchable words plain and budget for the double count. Never bold hashtags or cashtags and don't impersonate.](/images/tools/x-bold-text-generator-best-practices-1200x675.webp)
 
 ### Bold a few words, not the whole post
 

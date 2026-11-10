@@ -1,0 +1,89 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "Pinterest Username Checker",
+   "what": "Pinterest Username Checker",
+   "value": "3–30",
+   "unit": "characters",
+   "others": []
+  },
+  {
+   "name": "what-this-pinterest-name",
+   "type": "lists",
+   "kicker": "Pinterest Username Checker",
+   "title": "What This Pinterest Name Checker Does",
+   "groups": [
+    {
+     "label": "It can't promise a name is free",
+     "text": "Pinterest doesn't offer a public availability check."
+    },
+    {
+     "label": "It suggests close valid variations",
+     "text": "Whenever you type a name."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Pinterest Username Checker",
+   "title": "How to Check if a Pinterest Username Is Available",
+   "steps": [
+    {
+     "title": "Type the username you want",
+     "text": "Paste it with or without the @; the checker removes it."
+    },
+    {
+     "title": "Read the result",
+     "text": "\"Follows Pinterest's rules\" means the format is valid."
+    },
+    {
+     "title": "Open the profile",
+     "text": "Tap the Open pinterest.com/… button."
+    },
+    {
+     "title": "Try a variation if needed",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Pinterest Username Checker",
+   "title": "Pinterest Username Checker Use Cases by Audience",
+   "groups": [
+    {
+     "label": "Bloggers and recipe sites",
+     "text": "Pinterest sends traffic back to your site."
+    },
+    {
+     "label": "Ecommerce and Etsy sellers",
+     "text": "Shoppers who find a product Pin often tap through to the profile."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Pinterest Username Checker",
+   "title": "Best Practices for Picking a Pinterest Username",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Make it match your website or shop",
+     "Shorter is still easier",
+     "Know what the checker doesn't test"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Skip the period habit"
+    ]
+   }
+  }
+ ]
+}

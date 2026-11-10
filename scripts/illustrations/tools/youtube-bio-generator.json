@@ -1,0 +1,81 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "YouTube Bio Generator",
+   "question": "Free Channel Description Ideas",
+   "answer": "YouTube Bio Generator",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "calendar",
+    "clock"
+   ],
+   "qualifier": "Draft your YouTube channel description. Describe the channel, pick a tone, and copy one of 12 descriptions that stay inside the 1,000-character limit."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "YouTube Bio Generator",
+   "title": "How to use the YouTube bio generator",
+   "steps": [
+    {
+     "title": "Summarize your channel",
+     "text": ""
+    },
+    {
+     "title": "Choose a tone and emoji preference",
+     "text": ""
+    },
+    {
+     "title": "Copy, extend and paste",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "YouTube Bio Generator",
+   "what": "YouTube channel limits and rules: Channel name",
+   "value": "50",
+   "unit": "characters",
+   "unitNote": "at the time of writing",
+   "others": [
+    {
+     "value": "3–30",
+     "label": "Handle"
+    },
+    {
+     "value": "1,000",
+     "label": "Channel description"
+    },
+    {
+     "value": "100",
+     "label": "Video title"
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "YouTube Bio Generator",
+   "title": "Channel description ideas by niche",
+   "groups": [
+    {
+     "label": "Cooking",
+     "text": "Weeknight dinners that take 30 minutes or less."
+    },
+    {
+     "label": "Tech reviews",
+     "text": "Budget tech reviewed by a student who actually uses it."
+    },
+    {
+     "label": "Language learning",
+     "text": "Learn everyday Portuguese through short street conversations and slow."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,82 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Instagram Unfollowers Checker: See Who Doesn't Follow You Back",
+   "question": "Instagram Unfollowers Checker: See Who Doesn't Follow You Back",
+   "answer": "Instagram Unfollowers Checker: See Who Doesn't Follow You Back",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "eye",
+    "user-plus"
+   ],
+   "qualifier": "Find out who doesn't follow you back on Instagram using the followers and following files from your own data download. No login, no password, nothing uploaded."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Instagram Unfollowers Checker: See Who Doesn't Follow You Back",
+   "title": "How to download your followers and following data",
+   "steps": [
+    {
+     "title": "Open Accounts Center",
+     "text": ""
+    },
+    {
+     "title": "Find Download your information",
+     "text": ""
+    },
+    {
+     "title": "Choose only Followers and following",
+     "text": ""
+    },
+    {
+     "title": "Set the format to JSON",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "how-to-2",
+   "type": "steps",
+   "kicker": "Instagram Unfollowers Checker: See Who Doesn't Follow You Back",
+   "title": "How to use the unfollowers checker",
+   "steps": [
+    {
+     "title": "Select both files",
+     "text": ""
+    },
+    {
+     "title": "Review the lists",
+     "text": ""
+    },
+    {
+     "title": "Decide what to do yourself",
+     "text": "The checker doesn't unfollow anyone."
+    }
+   ]
+  },
+  {
+   "name": "reading-results",
+   "type": "lists",
+   "kicker": "Instagram Unfollowers Checker",
+   "title": "Reading the results **sensibly**",
+   "groups": [
+    {
+     "label": "The data is a snapshot",
+     "text": "It reflects the moment Instagram created your export."
+    },
+    {
+     "label": "Not following back isn't always personal",
+     "text": "Brands, news outlets and large creators rarely follow back."
+    },
+    {
+     "label": "Keep your export private",
+     "text": "Store it somewhere safe and delete it once you're done."
+    }
+   ]
+  }
+ ]
+}

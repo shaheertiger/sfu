@@ -1,0 +1,77 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Discord Bold Text Generator",
+   "question": "Free Tool",
+   "answer": "Discord Bold Text Generator",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "type",
+    "clock"
+   ],
+   "qualifier": "Bold your Discord display name, custom status, role or channel names with 9 Unicode bold styles, and learn when markdown is the better way to bold."
+  },
+  {
+   "name": "bold-styles-you-can",
+   "type": "lists",
+   "kicker": "Discord Bold Text Generator",
+   "title": "Bold styles you can generate",
+   "groups": [
+    {
+     "label": "The bold styles",
+     "items": [
+      "Serif bold",
+      "Serif bold italic",
+      "Sans bold italic"
+     ]
+    },
+    {
+     "label": "Why it pastes as bold",
+     "text": "Each style is a different set of Unicode characters that happen to look heavy."
+    }
+   ]
+  },
+  {
+   "name": "markdown-bold-vs-unicode",
+   "type": "lists",
+   "kicker": "Discord Bold Text Generator",
+   "title": "Markdown bold vs. Unicode bold",
+   "groups": [
+    {
+     "label": "Discord's markdown, quickly",
+     "text": "Markdown works in messages."
+    },
+    {
+     "label": "When markdown is the right choice",
+     "text": "For anything inside a message, markdown is better."
+    },
+    {
+     "label": "When you need Unicode bold",
+     "text": "Markdown isn't rendered in your display name."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Discord Bold Text Generator",
+   "title": "Best practices",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Keep names mentionable",
+     "Respect bots and filters"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Don't bold whole channel names"
+    ]
+   }
+  }
+ ]
+}

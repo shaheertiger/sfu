@@ -1,0 +1,93 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "VK Font Generator",
+   "question": "VK Font Generator",
+   "answer": "24 Fonts for VK (Latin Letters & Digits)",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "type",
+    "send"
+   ],
+   "qualifier": "Type your text, copy one of 24 Unicode styles and paste it into a VK post, status or community name. Styles change Latin letters and digits; Cyrillic stays as it is."
+  },
+  {
+   "name": "what-the-vk-font",
+   "type": "lists",
+   "kicker": "VK Font Generator",
+   "title": "What the VK Font Generator Actually Does",
+   "groups": [
+    {
+     "label": "Which styles do work on Cyrillic",
+     "items": [
+      "Strikethrough (Н̶о̶в̶о̶с̶т̶и̶)",
+      "Slash through (Н̸о̸в̸о̸с̸т̸и̸)",
+      "Underline (Н̲о̲в̲о̲с̲т̲и̲)"
+     ]
+    },
+    {
+     "label": "What else happens to your text",
+     "text": "Digits are styled in Bold (serif)."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "VK Font Generator",
+   "title": "How to Use the VK Font Generator",
+   "steps": [
+    {
+     "title": "Type or paste your text",
+     "text": ""
+    },
+    {
+     "title": "Compare the 24 styles",
+     "text": ", which update as you type."
+    },
+    {
+     "title": "Tap Copy",
+     "text": "next to the one you want."
+    },
+    {
+     "title": "Paste into VK",
+     "text": ""
+    },
+    {
+     "title": "Check the result",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "VK Font Generator",
+   "title": "Best Practices for Fonts on VK",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Be realistic about Cyrillic",
+     "Keep searchable words plain",
+     "Use one or two styles"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Don't imitate official accounts"
+    ]
+   }
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Unicode Styles Supported by the VK Font Generator",
+   "quote": "Each style shows the sample \"Weekly news digest\" and, where useful, how it handles mixed text.",
+   "by": "VK Font Generator"
+  }
+ ]
+}

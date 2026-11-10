@@ -7,6 +7,8 @@ keyword: reddit bold text
 ---
 ## What the Reddit Bold Text Generator Actually Does
 
+![Reddit Bold Text Generator: 9 Bold Styles + Markdown Bold. Type your text and copy one of 9 bold styles for a Reddit title, flair or profile.](/images/tools/reddit-bold-text-generator-hero-1200x675.webp)
+
 There are two ways to get bold text on Reddit, and they work in different places:
 
 1. **Reddit's own bold** (`**text**` in markdown, or the B button in the rich text editor) works in post bodies and comments. It's real formatting.
@@ -24,6 +26,8 @@ The bold letters come from Unicode's Mathematical Alphanumeric Symbols block, a 
 - **Punctuation, emoji, non-Latin scripts and letters like ß** stay as they are.
 
 ## How to Bold Text on Reddit With Markdown
+
+![How to Bold Text on Reddit With Markdown, in 4 steps: in the markdown editor, in the rich text editor, combine bold with other formatting and why your Reddit bold isn't working.](/images/tools/reddit-bold-text-generator-how-to-1200x675.webp)
 
 Inside a post body or comment, Reddit's own bold is the better choice: it's searchable, screen readers handle it, and it looks the same everywhere.
 
@@ -70,6 +74,8 @@ Select the words and tap the **B** button in the formatting toolbar, or press Ct
 In short: markdown wherever it works, Unicode only where it doesn't.
 
 ## How to Use the Reddit Bold Text Generator
+
+![How to Use the Reddit Bold Text Generator, in 4 steps: type or paste your text, compare the 9 bold styles, tap Copy and paste it into Reddit.](/images/tools/reddit-bold-text-generator-how-to-2-1200x675.webp)
 
 1. **Type or paste your text**, such as a title prefix, a flair or your display name.
 2. **Compare the 9 bold styles** below the box.
@@ -137,6 +143,8 @@ A bold "𝐫/" won't link to a subreddit, because Reddit only links `r/name` wri
 
 ## Where Bold Text Works on Reddit
 
+![Where Bold Text Works on Reddit, in 2 groups: Titles and Flair and profile.](/images/tools/reddit-bold-text-generator-where-bold-text-works-1200x675.webp)
+
 | Where on Reddit | Markdown bold | Unicode bold |
 |---|---|---|
 | Comment | Yes | Yes |
@@ -156,6 +164,8 @@ Titles are the main reason people look for a Reddit bold text generator. They al
 Flair and your display name are the other big uses. Only some subreddits let you edit flair, and some limit which characters you can use.
 
 ## Best Practices for Bold Text on Reddit
+
+![Best Practices for Bold Text on Reddit: do keep keywords plain, follow subreddit rules, keep an eye on length and check another device.](/images/tools/reddit-bold-text-generator-best-practices-1200x675.webp)
 
 ### Use markdown bold in posts and comments
 

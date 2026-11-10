@@ -1,0 +1,108 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "Telegram Bio Generator",
+   "what": "Telegram Bio Generator",
+   "value": "140",
+   "unit": "characters",
+   "others": [
+    {
+     "value": "70",
+     "label": "Bio (standard account)"
+    },
+    {
+     "value": "5–32",
+     "label": "Username"
+    },
+    {
+     "value": "128",
+     "label": "Channel or group name"
+    }
+   ]
+  },
+  {
+   "name": "what-makes-a-good",
+   "type": "lists",
+   "kicker": "Telegram Bio Generator",
+   "title": "What makes a good Telegram bio",
+   "groups": [
+    {
+     "label": "One idea, not three",
+     "text": "With 70 characters, trying to fit your job."
+    },
+    {
+     "label": "A signal about how to reach you",
+     "text": "If you prefer email for work requests or only reply in the evenings."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Telegram Bio Generator",
+   "title": "How to use the Telegram bio generator",
+   "steps": [
+    {
+     "title": "Describe yourself briefly",
+     "text": ""
+    },
+    {
+     "title": "Choose a tone and emoji preference",
+     "text": ""
+    },
+    {
+     "title": "Check the count, then copy",
+     "text": "Each of the 12 bios shows its character count."
+    }
+   ]
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "Telegram Bio Generator",
+   "what": "Telegram bio rules and limits: Bio (standard account)",
+   "value": "70",
+   "unit": "characters",
+   "others": [
+    {
+     "value": "140",
+     "label": "Bio (Telegram Premium)"
+    },
+    {
+     "value": "5–32",
+     "label": "Username"
+    },
+    {
+     "value": "128",
+     "label": "Channel or group name"
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Telegram Bio Generator",
+   "title": "Telegram bio ideas by use",
+   "groups": [
+    {
+     "label": "Freelancer",
+     "text": "Android dev for small apps."
+    },
+    {
+     "label": "Community admin",
+     "text": "Admin of the Lisbon Runners group."
+    },
+    {
+     "label": "Local seller",
+     "text": "Handmade candles, local pickup on Saturdays."
+    },
+    {
+     "label": "Student",
+     "text": "CS student, night owl, always up for study group invites."
+    }
+   ]
+  }
+ ]
+}

@@ -7,6 +7,8 @@ keyword: telegram font generator
 ---
 ## Styles you can generate for Telegram
 
+![Telegram Font Generator: 30+ Free Styles. Get 30+ copy-and-paste Unicode styles for the Telegram fields that don't support formatting: your name, bio, and channel or group titles.](/images/tools/telegram-font-generator-hero-1200x675.webp)
+
 Telegram can already format messages, so this generator is mainly for the fields where formatting isn't available. Type your text, choose from 30+ Unicode styles and tap to copy.
 
 ### Popular picks for channel titles
@@ -27,6 +29,8 @@ They're Unicode symbols that resemble letters, not fonts. Telegram shows them as
 
 ## Built-in formatting or Unicode?
 
+![Telegram Font Generator: built-in formatting or Unicode?, comparing use Telegram's formatting (Messages in chats, Channel and group posts and Bold, italic, spoiler and more) with use Unicode styles (Your first and last name, Your bio and Channel and group titles).](/images/tools/telegram-font-generator-formatting-or-unicode-1200x675.webp)
+
 ### Use Telegram's formatting in messages
 
 In chats, channels and groups, select text in a message you're writing and open the formatting menu to apply bold, italic, underline, strikethrough, monospace or spoiler. Many Telegram apps also convert markdown as you type, such as `**bold**`, `__italic__` and `~~strikethrough~~`. Real formatting is readable by screen readers and keeps your posts searchable, so prefer it whenever it's available.
@@ -40,6 +44,8 @@ Your first and last name, your bio, and the titles and descriptions of channels 
 Usernames (the @handle) only allow a–z, 0–9 and underscores, 5–32 characters. Styled characters aren't accepted there, and your public link depends on that handle, so keep it plain.
 
 ## Where styled text works on Telegram
+
+![Where styled text works on Telegram: do your name, bio, channel and group titles and channel descriptions.](/images/tools/telegram-font-generator-best-practices-1200x675.webp)
 
 ### Your name
 
@@ -58,6 +64,8 @@ Titles can be up to 128 characters. A styled prefix or suffix, such as "𝗗𝗮
 The "About" description of a channel or group accepts Unicode styles. A bold label like "𝐑𝐮𝐥𝐞𝐬:" or "𝐏𝐨𝐬𝐭𝐬 𝐞𝐯𝐞𝐫𝐲:" structures it without formatting.
 
 ## Best practices for Telegram
+
+![Best practices for Telegram: do keep public channels discoverable, help screen reader users and test across apps. Don't imitate official accounts.](/images/tools/telegram-font-generator-best-practices-2-1200x675.webp)
 
 ### Keep public channels discoverable
 

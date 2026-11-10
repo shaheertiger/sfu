@@ -1,0 +1,92 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Breaking News Generator",
+   "question": "Breaking News Generator",
+   "answer": "Make a Funny Breaking News Meme",
+   "tone": "neutral",
+   "mark": "calendar",
+   "icons": [
+    "send",
+    "image"
+   ],
+   "qualifier": "Type a headline, add a photo if you like, and get a TV-style breaking news image with a LIVE badge and a time stamp, ready to share as a meme. It's made for jokes, not for fooling anyone."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Breaking News Generator",
+   "title": "How to make a breaking news meme",
+   "steps": [
+    {
+     "title": "Add a photo, or use a plain background",
+     "text": "Tap Add a photo or drop it here (optional)."
+    },
+    {
+     "title": "Type the headline",
+     "text": ""
+    },
+    {
+     "title": "Adjust the look",
+     "text": ""
+    },
+    {
+     "title": "Pick a size and download",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Breaking News Generator",
+   "title": "Use the breaking news generator responsibly",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Make the joke obvious",
+     "Leave real people out of it",
+     "Label parody when you post"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Don't imitate real broadcasters",
+     "Never fake real news"
+    ]
+   }
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "Breaking News Generator",
+   "what": "Sizes for X, Instagram, Stories and TikTok: 1:1",
+   "value": "1080 × 1080",
+   "unit": "px",
+   "others": [
+    {
+     "value": "1080 × 1350",
+     "label": "4:5"
+    },
+    {
+     "value": "1080 × 1920",
+     "label": "9:16 · Stories/Reels"
+    },
+    {
+     "value": "1920 × 1080",
+     "label": "16:9"
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Fake breaking news generator ideas that stay funny",
+   "quote": "The best fake breaking news is obviously a joke the moment someone reads it.",
+   "by": "Breaking News Generator"
+  }
+ ]
+}

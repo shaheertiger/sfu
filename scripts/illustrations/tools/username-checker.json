@@ -1,0 +1,82 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Username Availability Checker",
+   "question": "Username Availability Checker",
+   "answer": "Test 9 Platforms at Once",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "type",
+    "eye"
+   ],
+   "qualifier": "Type one username to see whether it fits the rules on Instagram, TikTok, X, YouTube, Twitch, Discord, Roblox, Telegram and Reddit, with a profile link for each platform so you can check who already has it."
+  },
+  {
+   "name": "how-this-username-availability",
+   "type": "lists",
+   "kicker": "Username Availability Checker",
+   "title": "How this username availability checker works",
+   "groups": [
+    {
+     "label": "What each row tells you",
+     "text": "Fits · open profile: the name follows that platform's rules."
+    },
+    {
+     "label": "Reading the profile links",
+     "text": "A profile that opens means the name is taken on that platform."
+    },
+    {
+     "label": "Nothing leaves your browser",
+     "text": "The checks run on your device."
+    }
+   ]
+  },
+  {
+   "name": "why-no-tool-can",
+   "type": "lists",
+   "kicker": "Username Availability Checker",
+   "title": "Why no tool can guarantee a username is available",
+   "groups": [
+    {
+     "label": "Hidden accounts still hold names",
+     "text": "Deactivated, suspended and banned accounts."
+    },
+    {
+     "label": "Reserved and blocked names",
+     "text": "Platforms hold back some names."
+    },
+    {
+     "label": "Recently changed names",
+     "text": "When someone changes their username."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Username Availability Checker",
+   "title": "How to pick consistent social media handles",
+   "steps": [
+    {
+     "title": "Design for the strictest platform",
+     "text": ""
+    },
+    {
+     "title": "Skip periods and doubled symbols",
+     "text": ""
+    },
+    {
+     "title": "Have a fallback pattern ready",
+     "text": ""
+    },
+    {
+     "title": "Check the full set before you commit",
+     "text": ""
+    }
+   ]
+  }
+ ]
+}

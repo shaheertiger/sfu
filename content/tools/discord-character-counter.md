@@ -6,7 +6,12 @@ lead: Check a Discord message, About Me, display name or custom status against i
 keyword: discord character counter
 ---
 ## Discord character limits at a glance
+
+![Discord Character Counter: Discord Character Counter. Check a Discord message, About Me, display name or custom status against its limit before you hit enter, with characters left, words and lines.](/images/tools/discord-character-counter-hero-1200x675.webp)
+
 A regular Discord message can be up to 2,000 characters, or 4,000 if you have Nitro. Profile fields are much shorter. The counter checks the four fields people run into most and tells you how much room is left in each.
+
+![Discord character limits at a glance: Message, shown as 2,000 characters (4,000 with Nitro), with About Me 190, Display name 32 and Custom status 128 for comparison.](/images/tools/discord-character-counter-specs-1200x675.webp)
 
 | Field | Limit | In the counter |
 |---|---|---|
@@ -27,6 +32,9 @@ About Me is the short section on your profile card, capped at 190 characters. A 
 Your username is your unique account name and has strict character rules. Your display name is what people see in chat. It allows spaces, capitals and emoji, up to 32 characters.
 
 ## How Discord counts characters
+
+![How Discord counts characters, in 3 groups: Markdown symbols count, Line breaks and spaces count and What happens when you go over.](/images/tools/discord-character-counter-how-discord-counts-characters-1200x675.webp)
+
 Discord counts the text you actually send, which isn't always what you see on screen once a message renders.
 
 ### Markdown symbols count
@@ -42,6 +50,9 @@ Every space and every new line is a character. Long lists with blank lines betwe
 Discord won't send a message that's over the limit. Depending on your app version, it may offer to send the text as a file attachment instead, which is harder for members to read on mobile.
 
 ## How to use the counter
+
+![Discord Character Counter: how to use the counter, in 3 steps: pick the field you're writing for, paste and edit and copy it back into Discord.](/images/tools/discord-character-counter-how-to-1200x675.webp)
+
 The counter runs in your browser and nothing is uploaded.
 
 ### Pick the field you're writing for
@@ -54,6 +65,9 @@ Paste your draft and watch the characters-left figure as you trim. Word and line
 When it fits, copy the text into Discord. Styling such as bold or headings will render once it's sent.
 
 ## Best practices for Discord text
+
+![Best practices for Discord text: do split long announcements on purpose, write rules and FAQs in short blocks and keep profile text readable.](/images/tools/discord-character-counter-best-practices-1200x675.webp)
+
 ### Split long announcements on purpose
 Rather than cramming a big update into one message, break it into a short headline message and a follow-up with details. Members who skim get the point, and you avoid the file-attachment fallback.
 

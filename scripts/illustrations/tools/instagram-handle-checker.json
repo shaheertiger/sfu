@@ -1,0 +1,101 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Instagram Username Checker",
+   "question": "Instagram Username Checker",
+   "answer": "Test Handles & Get Valid Ideas",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "type",
+    "eye"
+   ],
+   "qualifier": "Use this Instagram username checker to test a handle against Instagram's rules, get close valid alternatives, check a whole list at once, and open the matching profile URL to see whether an account already uses it."
+  },
+  {
+   "name": "what-this-instagram-username",
+   "type": "lists",
+   "kicker": "Instagram Username Checker",
+   "title": "What this Instagram username checker can and can't tell you",
+   "groups": [
+    {
+     "label": "What it checks",
+     "items": [
+      "No spaces",
+      "No two periods in a row"
+     ]
+    },
+    {
+     "label": "Check a list of names at once",
+     "text": "Switch to Check a list to paste up to 200 names."
+    },
+    {
+     "label": "What the profile button shows",
+     "text": "The profile button opens instagram.com/ followed by your handle in a new tab."
+    }
+   ]
+  },
+  {
+   "name": "what-is-an-instagram",
+   "type": "lists",
+   "kicker": "Instagram Username Checker",
+   "title": "What is an Instagram handle?",
+   "groups": [
+    {
+     "label": "Where to find your handle",
+     "text": "Open the Instagram app and go to your profile."
+    },
+    {
+     "label": "Handle vs. display name",
+     "text": "Your username is the @handle in your profile URL, and no two accounts can share one."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Instagram Username Checker",
+   "title": "How to check Instagram username availability",
+   "steps": [
+    {
+     "title": "Type the handle you want",
+     "text": "Enter it without the @."
+    },
+    {
+     "title": "Read the result",
+     "text": "A pass means the format is valid."
+    },
+    {
+     "title": "Try a suggested variation",
+     "text": ""
+    },
+    {
+     "title": "Claim it in the app",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "finding-instagram-usernames-that",
+   "type": "lists",
+   "kicker": "Instagram Username Checker",
+   "title": "Finding Instagram usernames that are available",
+   "groups": [
+    {
+     "label": "Add a meaningful modifier",
+     "text": "Short single words are almost always taken."
+    },
+    {
+     "label": "Brainstorm, then check the list",
+     "text": "The Instagram name generator gives you ideas built around your topic."
+    },
+    {
+     "label": "Match your other profiles",
+     "text": "If you also post on TikTok."
+    }
+   ]
+  }
+ ]
+}

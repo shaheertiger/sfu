@@ -1,0 +1,65 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Facebook Bold Text Generator",
+   "question": "Free Tool",
+   "answer": "Facebook Bold Text Generator",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "send",
+    "video"
+   ],
+   "qualifier": "Write bold headlines and labels in Facebook posts, comments, Reels captions and Group rules. Pick one of 9 Unicode bold styles and tap to copy."
+  },
+  {
+   "name": "where-bold-text-works",
+   "type": "lists",
+   "kicker": "Facebook Bold Text Generator",
+   "title": "Where bold text works on Facebook",
+   "groups": [
+    {
+     "label": "Long posts on Pages and profiles",
+     "text": "Bold makes structure possible in a long post."
+    },
+    {
+     "label": "Group posts and Group rules",
+     "text": "Some Groups offer a formatting toolbar on desktop with real bold."
+    },
+    {
+     "label": "Reels captions and comments",
+     "text": "Short bold phrases work in Reels captions and in comments."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Facebook Bold Text Generator",
+   "title": "Best practices for bold text on Facebook",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Choose bold or caps, not both",
+     "Plan edits ahead",
+     "Watch out when cross-posting"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Skip bold in ads and names"
+    ]
+   }
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Bold styles you can generate",
+   "quote": "A normal Facebook post has no bold option, so this generator gives you bold-looking Unicode letters instead.",
+   "by": "Facebook Bold Text Generator"
+  }
+ ]
+}

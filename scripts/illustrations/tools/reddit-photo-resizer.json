@@ -1,0 +1,77 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Reddit Photo Resizer",
+   "question": "Reddit Photo Resizer",
+   "answer": "Banner, Community Icon & Avatar Sizes",
+   "tone": "neutral",
+   "mark": "block",
+   "icons": [
+    "send",
+    "image"
+   ],
+   "qualifier": "Resize images for a subreddit banner, profile banner, community icon, avatar or post. Choose a preset, crop or pad, and download the result."
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "Reddit Photo Resizer",
+   "what": "Reddit image sizes at a glance: Community banner",
+   "value": "1920 × 384",
+   "unit": "px",
+   "others": [
+    {
+     "value": "256 × 256",
+     "label": "Community icon"
+    },
+    {
+     "value": "256 × 256",
+     "label": "Avatar"
+    },
+    {
+     "value": "1000 × 300",
+     "label": "Profile banner"
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Reddit Photo Resizer",
+   "title": "How to resize an image for Reddit",
+   "steps": [
+    {
+     "title": "Upload your image",
+     "text": "Pick a PNG or JPG."
+    },
+    {
+     "title": "Select a preset",
+     "text": ""
+    },
+    {
+     "title": "Fill or fit",
+     "text": "Fill (crop) covers the frame and trims what overflows."
+    },
+    {
+     "title": "Download and upload",
+     "text": "Export as PNG for logos and text, or JPG for photos."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Reddit Photo Resizer",
+   "title": "Tips for Reddit images",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Make icons readable at small sizes",
+     "Leave room for Reddit's interface"
+    ]
+   }
+  }
+ ]
+}

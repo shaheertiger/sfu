@@ -6,7 +6,12 @@ lead: Resize any photo to Instagram's feed, story and profile sizes without awkw
 keyword: instagram photo resizer
 ---
 ## Instagram image sizes at a glance
+
+![Instagram Photo Resizer: Square, Portrait, Story & Profile. Resize any photo to Instagram's feed, story and profile sizes without awkward auto-crops.](/images/tools/instagram-photo-resizer-hero-1200x675.webp)
+
 For the Instagram feed, use 1080×1080 for square, 1080×1350 for portrait and 1080×566 for landscape. Stories and Reels use 1080×1920, and profile photos should be uploaded at 320×320. The resizer has a preset for each.
+
+![Instagram image sizes at a glance: Square, shown as 1080 × 1080 px, with Portrait 1080 × 1350, Landscape 1080 × 566 and Story / Reel 1080 × 1920 for comparison.](/images/tools/instagram-photo-resizer-specs-1200x675.webp)
 
 | Preset | Size | Ratio | Best for |
 |---|---|---|---|
@@ -26,6 +31,9 @@ A 4:5 portrait image fills more of the phone screen in the feed than a square or
 Your profile photo shows at about 110×110 and as a circle. Uploading at 320×320 gives Instagram a sharper source to scale down from.
 
 ## How to resize a photo for Instagram
+
+![How to resize a photo for Instagram, in 4 steps: upload the photo, pick the preset, decide between fill and fit and download and post.](/images/tools/instagram-photo-resizer-how-to-1200x675.webp)
+
 ### 1. Upload the photo
 Choose a PNG or JPG from your phone or computer. Nothing is uploaded to a server; the resizing happens in your browser.
 
@@ -39,6 +47,9 @@ Select square, portrait, landscape, story/reel or profile photo. The preview upd
 Save as JPG for photos or PNG for graphics with text. Then upload it to Instagram, or to your scheduler.
 
 ## Tips for sharp Instagram photos
+
+![Tips for sharp Instagram photos: do keep one format per carousel, keep text away from story edges, check the profile grid crop and fix blurry uploads at the source.](/images/tools/instagram-photo-resizer-best-practices-1200x675.webp)
+
 ### Keep one format per carousel
 Every slide in a carousel takes the shape of the first one. Resize all slides with the same preset before uploading so nothing is cropped unexpectedly.
 

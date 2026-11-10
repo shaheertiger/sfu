@@ -1,0 +1,63 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Telegram Name Generator",
+   "question": "Telegram Name Generator",
+   "answer": "30 Free Username & Channel Ideas",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "link",
+    "calendar"
+   ],
+   "qualifier": "Get 30 ideas for a Telegram username, channel or group name. Every username idea fits Telegram's rules, so it can become your t.me link."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Telegram Name Generator",
+   "title": "How to use the Telegram name generator",
+   "steps": [
+    {
+     "title": "For a personal username",
+     "text": "Enter your name, nickname or a word you like."
+    },
+    {
+     "title": "For a channel or group",
+     "text": ""
+    },
+    {
+     "title": "Copy and claim",
+     "text": ""
+    },
+    {
+     "title": "Check names for business use",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "Telegram Name Generator",
+   "what": "Telegram name rules and limits: Channel or group name",
+   "value": "128",
+   "unit": "characters",
+   "others": [
+    {
+     "value": "70",
+     "label": "Bio"
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Telegram name examples",
+   "quote": "Readable titles and short usernames work best together.",
+   "by": "Telegram Name Generator"
+  }
+ ]
+}

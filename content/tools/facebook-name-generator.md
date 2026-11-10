@@ -6,7 +6,12 @@ lead: Get 30 ideas for a Facebook nickname, a creator Page or a Group name. Your
 keyword: facebook name generator
 ---
 ## What a Facebook name generator can (and can't) help with
+
+![Facebook Name Generator: Facebook Name Generator. Get 30 ideas for a Facebook nickname, a creator Page or a Group name.](/images/tools/facebook-name-generator-hero-1200x675.webp)
+
 Facebook requires your personal profile to use the name you go by in everyday life, and this tool isn't built to help anyone get around that rule. It is useful for a **nickname** in your profile's "other names", a **Page** for your creative work, or a **Group** you're starting.
+
+![What a Facebook name generator can (and can't) help with, in 3 groups: Your profile name stays real, Nicknames live in "other names" and Pages are for your public side.](/images/tools/facebook-name-generator-what-a-facebook-name-1200x675.webp)
 
 ### Your profile name stays real
 Facebook's name standards ask for the name your friends and family know you by. Accounts that break this can be asked to confirm their name, so a made-up name doesn't belong in that field.
@@ -18,6 +23,9 @@ Your profile details can list other names, such as a nickname or maiden name, an
 If you post as a band, artist, coach or creator, a Facebook Page gives you a separate public presence with its own name, while your profile stays personal.
 
 ## How to use the Facebook name generator
+
+![How to use the Facebook name generator, in 4 steps: for a nickname, for a creator or public-figure Page, for a Group and before you settle.](/images/tools/facebook-name-generator-how-to-1200x675.webp)
+
 Pick the kind of name you need, then shape your keyword to match.
 
 ### For a nickname
@@ -33,6 +41,9 @@ Type the topic and place, such as "hiking Denver". Members find Groups through s
 Tap any of the 30 ideas to copy it, and regenerate freely. The tool can't check existing Pages or Groups, so search Facebook first, and check trademarks if the Page will sell anything.
 
 ## Facebook name rules and limits
+
+![Key point from the Facebook Name Generator page: Summary at the time of writing; see the Facebook Help Center for the full name standards.](/images/tools/facebook-name-generator-key-point-1200x675.webp)
+
 Summary at the time of writing; see the [Facebook Help Center](https://www.facebook.com/help) for the full name standards.
 
 | Name type | Main rules |

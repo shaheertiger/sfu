@@ -6,7 +6,12 @@ lead: Paste the usernames from your giveaway comments, leave out duplicates and 
 keyword: instagram giveaway picker
 ---
 ## How this Instagram giveaway picker works
+
+![Instagram Giveaway Picker: Random Comment Picker & Wheel. Paste the usernames from your giveaway comments, leave out duplicates and your own accounts, then spin the wheel to draw winners and alternates at random.](/images/tools/giveaway-picker-hero-1200x675.webp)
+
 This Instagram giveaway picker draws random winners from a list of usernames you paste in. It does **not** connect to Instagram or read your comments automatically: you copy the usernames from your comments and paste them into the box, then press **Draw**. It takes a few extra minutes, but you never log in or hand over account access, and the same giveaway picker works for TikTok, X, YouTube or anywhere else.
+
+![Key point from the Instagram Giveaway Picker page: This Instagram giveaway picker draws random winners from a list of usernames you paste in.](/images/tools/giveaway-picker-key-point-1200x675.webp)
 
 ### 1. Paste your entrants
 Put one username per line, or separate them with commas, in the **Entrants** box. A leading @ is removed, so "@alice" and "alice" are the same entrant. Below the box, a line keeps count as you paste, for example "212 entrants from 240 lines · 28 duplicates." If you paste whole comments ("@alice love this!"), tick **Pasted whole comments? Keep only the first word (the username) of each line** and each line becomes just its username. The box handles up to 20,000 lines.
@@ -27,6 +32,9 @@ Press **Draw** and the wheel spins (briefly, if your device is set to reduce mot
 Winners are picked in your browser with the Web Crypto API (crypto.getRandomValues), using a method with no bias toward any position in the list, so every entry has the same odds. Nobody, including us, can see or steer the draw.
 
 ## Why it doesn't read your comments (and why that helps)
+
+![Key point from the Instagram Giveaway Picker page: Many "Instagram comment picker" tools ask you to log in with Instagram or connect your account so they can pull comments in.](/images/tools/giveaway-picker-key-point-2-1200x675.webp)
+
 Many "Instagram comment picker" tools ask you to log in with Instagram or connect your account so they can pull comments in. This one deliberately doesn't, and that has real advantages:
 - **No login:** you never type your Instagram password into a third-party site or grant it access to your account.
 - **No API access:** there's nothing to authorize, and nothing that breaks when a platform changes its API.
@@ -45,6 +53,9 @@ Match the settings to your giveaway's rules:
 To collect names, go through the comments and copy each username into a notes app or a spreadsheet column, one per line, then paste the whole column here. While you go, skip anyone who didn't follow the rules, such as not tagging a friend; the picker can't check that for you.
 
 ## How to run a fair giveaway on Instagram, TikTok and X
+
+![How to run a fair giveaway on Instagram, TikTok and X, in 4 steps: write the rules before you post, follow each platform's promotion rules, check the law where you and your entrants are and draw in the open.](/images/tools/giveaway-picker-how-to-1200x675.webp)
+
 ### Write the rules before you post
 Put the rules in the caption or link to them: who can enter (age, country), how to enter, the deadline with a time zone, the prize, how many winners, how winners are picked and contacted, and how long they have to reply before you move to an alternate. Clear rules prevent arguments later; the [Instagram line break generator](/tools/instagram-line-break-generator) keeps a long rules caption readable.
 

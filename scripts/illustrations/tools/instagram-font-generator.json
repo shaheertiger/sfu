@@ -1,0 +1,65 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Instagram Font Generator",
+   "question": "Instagram Font Generator",
+   "answer": "30+ Free Fonts",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "type",
+    "video"
+   ],
+   "qualifier": "Type once, copy any of 30+ Unicode styles and paste them into your Instagram bio, name field, captions, Reels captions, comments and Story text."
+  },
+  {
+   "name": "where-styled-text-works",
+   "type": "lists",
+   "kicker": "Instagram Font Generator",
+   "title": "Where styled text works on Instagram",
+   "groups": [
+    {
+     "label": "Bio and name field",
+     "text": "Your bio allows 150 characters, and styled text pastes in fine."
+    },
+    {
+     "label": "Captions and Reels captions",
+     "text": "Captions can be up to 2,200 characters."
+    },
+    {
+     "label": "Stories",
+     "text": "Instagram's Story editor has its own built-in fonts."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Instagram Font Generator",
+   "title": "Best practices",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Keep the searchable parts plain",
+     "Remember screen reader users",
+     "Count characters after styling"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Never style hashtags or handles"
+    ]
+   }
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Styles you can generate for Instagram",
+   "quote": "Instagram has no font menu for bios or captions, but it shows Unicode characters exactly as you paste them.",
+   "by": "Instagram Font Generator"
+  }
+ ]
+}

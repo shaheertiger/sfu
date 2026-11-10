@@ -6,6 +6,9 @@ lead: Type the Pinterest username you want to see whether it follows Pinterest's
 keyword: pinterest username checker
 ---
 ## Pinterest Username Rules at a Glance
+
+![Illustration for the free Pinterest Username Checker: Pinterest Username Checker, shown as 3–30 characters.](/images/tools/pinterest-username-checker-hero-1200x675.webp)
+
 A Pinterest username has to be 3 to 30 characters long and can only use letters, numbers and underscores. This Pinterest username checker tests a name against those rules as you type. When it passes, a button opens pinterest.com/yourname so you can see whether a profile already uses it.
 
 | Rule | What Pinterest allows (at the time of writing) | Checked here |
@@ -62,6 +65,9 @@ Pinterest's 30 characters are generous, but its no-periods rule is stricter than
 | 123456 | Follows Pinterest's rules | Valid, with a tip to add a letter |
 
 ## What This Pinterest Name Checker Does (and What It Can't)
+
+![What This Pinterest Name Checker Does, in 2 groups: It can't promise a name is free and It suggests close valid variations.](/images/tools/pinterest-username-checker-what-this-pinterest-name-1200x675.webp)
+
 ### It checks the format Pinterest accepts
 The checker removes a leading @ and spaces around the name, counts the characters, and lists every rule the name breaks. A valid name shows "Follows Pinterest's rules"; an invalid one shows "Not allowed" with each reason.
 
@@ -84,6 +90,9 @@ A name made only of numbers and underscores, like 123456, is valid but hard to f
 Nothing you type is sent to a server or saved. The profile button is an ordinary link to pinterest.com, and you don't sign in to anything.
 
 ## How to Check if a Pinterest Username Is Available
+
+![How to Check if a Pinterest Username Is Available, in 4 steps: type the username you want, read the result, open the profile and try a variation if needed.](/images/tools/pinterest-username-checker-how-to-1200x675.webp)
+
 1. **Type the username you want.** Paste it with or without the @; the checker removes it.
 2. **Read the result.** "Follows Pinterest's rules" means the format is valid. "Not allowed" tells you why, such as a period or a 31st character.
 3. **Open the profile.** Tap the **Open pinterest.com/…** button. A profile means the name is taken; a missing page means it may be free.
@@ -92,6 +101,9 @@ Nothing you type is sent to a server or saved. The profile button is an ordinary
 6. **Update your links.** Your profile URL changes with your username, so update it on your website, in your other bios and anywhere you've shared it.
 
 ## Pinterest Username Checker Use Cases by Audience
+
+![Pinterest Username Checker Use Cases by Audience, in 2 groups: Bloggers and recipe sites and Ecommerce and Etsy sellers.](/images/tools/pinterest-username-checker-use-cases-1200x675.webp)
+
 ### Bloggers and recipe sites
 Pinterest sends traffic back to your site, so your username should match your blog name or domain. If the exact name is taken, add a word that fits your topic, like recipes, eats or kitchen, and check the variations in one list.
 
@@ -111,6 +123,9 @@ When you set up Pinterest for a client, check it alongside their other handles. 
 If you're moving a personal account to a business name, test the new username here first. Your old profile URL stops leading to you once you change it.
 
 ## Best Practices for Picking a Pinterest Username
+
+![Best Practices for Picking a Pinterest Username: do make it match your website or shop, shorter is still easier and know what the checker doesn't test. Skip the period habit.](/images/tools/pinterest-username-checker-best-practices-1200x675.webp)
+
 ### Make it match your website or shop
 Pinterest is about sending people somewhere. A username that matches your domain or shop name builds trust when someone taps from a Pin to your profile and on to your site.
 

@@ -7,6 +7,8 @@ keyword: threads font generator
 ---
 ## What the Threads Font Generator Actually Does
 
+![Threads Font Generator: 24 Text Styles. Type your Threads text below, then tap any of the 24 styles to copy it and paste it into a post, reply or bio.](/images/tools/threads-font-generator-hero-1200x675.webp)
+
 Threads doesn't let you choose a typeface. Every post, reply and bio is shown in the app's own font, and there's no font menu to change it. This Threads font generator works around that by replacing your letters with look-alike Unicode characters: 𝐛𝐨𝐥𝐝, 𝑖𝑡𝑎𝑙𝑖𝑐, 𝓼𝓬𝓻𝓲𝓹𝓽, 𝔤𝔬𝔱𝔥𝔦𝔠, ⓑⓤⓑⓑⓛⓔ and 19 more. Because they're characters rather than formatting, they survive copy and paste, and everyone who reads your post sees the same thing you do.
 
 The characters come mostly from Unicode's Mathematical Alphanumeric Symbols block, which was created so that scientists could write 𝐁 and 𝔅 as distinct symbols. Phones and browsers include fonts for them, which is why they display almost everywhere. Threads treats them as ordinary text, exactly like emoji.
@@ -26,6 +28,8 @@ The characters come mostly from Unicode's Mathematical Alphanumeric Symbols bloc
 - **A recognizable series.** A recurring post such as "𝔉𝔯𝔦𝔡𝔞𝔶 𝔣𝔦𝔫𝔡𝔰" is easy to spot when it looks the same every week.
 
 ## How to Use the Threads Font Generator
+
+![How to Use the Threads Font Generator, in 4 steps: type or paste your Threads text, compare the styles, tap Copy and open Threads.](/images/tools/threads-font-generator-how-to-1200x675.webp)
 
 1. **Type or paste your Threads text** into the box. A short phrase works best; styling a whole post rarely does.
 2. **Compare the styles.** All 24 update as you type, so you can see them side by side.
@@ -137,6 +141,8 @@ H̲o̲t̲ t̲a̲k̲e̲. A line under each character. Threads has no underline op
 
 ## Where Threads Font Generator Text Works
 
+![Where Threads Font Generator Text Works, in 3 groups: Posts and replies, Bio and display name and Places where it doesn't work.](/images/tools/threads-font-generator-where-threads-font-generator-1200x675.webp)
+
 | Place on Threads | Fonts work? | Notes |
 |---|---|---|
 | Post text | Yes | Up to 500 characters at the time of writing |
@@ -160,6 +166,8 @@ Both accept Unicode. A styled word in your bio ("𝘊𝘰𝘧𝘧𝘦𝘦 𝘳�
 Your @username can't contain styled characters. Topic tags and links need plain text to be recognized, so style the words around them, not the tag or link itself.
 
 ## Best Practices for Styled Threads Text
+
+![Best Practices for Styled Threads Text: do keep searchable words plain, mind the character count and check on a second device. Don't use fonts to impersonate.](/images/tools/threads-font-generator-best-practices-1200x675.webp)
 
 ### Style a few words, not the whole post
 
@@ -202,6 +210,8 @@ Styled names can make an account look official or like someone else's. Pretendin
 Fonts are the garnish. A clear first line and good spacing do most of the work, and they help every reader.
 
 ## Popular Use Cases by Creator Type
+
+![Threads Font Generator: popular Use Cases by Creator Type, in 3 groups: Creators and personal brands, Small businesses and shops and Writers and newsletter authors.](/images/tools/threads-font-generator-use-cases-1200x675.webp)
 
 ### Creators and personal brands
 

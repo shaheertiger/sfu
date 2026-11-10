@@ -7,7 +7,11 @@ keyword: telegram bold text generator
 ---
 ## Bold styles you can generate
 
+![Telegram Bold Text Generator: Telegram Bold Text Generator. Bold your Telegram name, channel title, group topics or bot buttons with 9 Unicode styles, and learn the built-in ways to bold text inside messages.](/images/tools/telegram-bold-text-generator-hero-1200x675.webp)
+
 Telegram messages already support real bold, so this tool is for the labels and names that don't. Type your text, choose from 9 bold Unicode styles and tap to copy.
+
+![Key point from the Telegram Bold Text Generator page: Telegram messages already support real bold, so this tool is for the labels and names that don't.](/images/tools/telegram-bold-text-generator-key-point-1200x675.webp)
 
 ### Styles included
 
@@ -18,6 +22,8 @@ Sans bold (𝗡𝗲𝘄 𝗽𝗼𝘀𝘁), serif bold (𝐍𝐞𝐰 𝐩𝐨𝐬
 These are Unicode characters designed for math and symbols that resemble bold letters. Telegram shows them as plain text, so they appear bold even in fields where formatting is off.
 
 ## How to bold text in Telegram messages
+
+![How to bold text in Telegram messages, in 3 steps: on mobile, on desktop and in bots and automations.](/images/tools/telegram-bold-text-generator-how-to-1200x675.webp)
 
 If you're writing a message or channel post, use Telegram's own formatting. It's real bold, so it stays searchable and accessible.
 
@@ -52,6 +58,8 @@ Your first and last name and your bio (70 characters, 140 with Premium) don't su
 Inline and reply keyboard buttons display plain text only, so a bold label like "𝗦𝘂𝗯𝘀𝗰𝗿𝗶𝗯𝗲" can draw attention to the main action. Some people also style the names of their own chat folders, which only they will see.
 
 ## Best practices
+
+![Telegram Bold Text Generator: best practices: do keep public titles searchable and check the result in several clients. Don't impersonate.](/images/tools/telegram-bold-text-generator-best-practices-1200x675.webp)
 
 ### Prefer native bold whenever it exists
 

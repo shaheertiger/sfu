@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import JsonLd from '@/components/JsonLd';
+import Figure, { figuresLd } from '@/components/marketing/Figure';
+import { specHubFigures } from '@/lib/figures';
 import { Breadcrumbs, MarketingPage } from '@/components/marketing/Chrome';
 import m from '@/components/marketing/marketing.module.css';
 import { SPECS_ROOT, SPECS_VERIFIED, SPEC_PLATFORMS, specPath, specPlatformBySlug } from '@/lib/specs';
@@ -23,13 +25,15 @@ export default async function Page({ params }) {
   if (!p) notFound();
   const path = specPath(platform); const c = copy(p);
   const crumbs = [{ name: 'Home', href: '/' }, { name: 'Specs & limits', href: SPECS_ROOT }, { name: p.name, href: path }];
-  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'CollectionPage', '@id': `${abs(path)}#webpage`, url: abs(path), name: c.title, description: c.description, inLanguage: 'en', dateModified: SPECS_VERIFIED }, breadcrumbLd(crumbs)] };
+  const figs = specHubFigures(p.slug);
+  const img = figuresLd(figs);
+  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'CollectionPage', '@id': `${abs(path)}#webpage`, url: abs(path), name: c.title, description: c.description, inLanguage: 'en', dateModified: SPECS_VERIFIED, ...img.primary }, ...img.nodes, breadcrumbLd(crumbs)] };
   return (
     <MarketingPage>
       <JsonLd data={ld} />
       <div className={m.container}>
         <Breadcrumbs items={crumbs} />
-        <section className={m.hero}><span className={m.eyebrow}>Verified {SPECS_VERIFIED}</span><h1 className={m.h1}>{p.name} sizes and limits</h1><p className={m.lead}>Every {p.name} image size, video spec and character limit, with the values Schedule For You checks before publishing.</p></section>
+        <section className={m.hero}><span className={m.eyebrow}>Verified {SPECS_VERIFIED}</span><h1 className={m.h1}>{p.name} sizes and limits</h1><p className={m.lead}>Every {p.name} image size, video spec and character limit, with the values Schedule For You checks before publishing.</p><Figure fig={figs[0]} priority /></section>
         <article className={`${m.narrow} ${m.prose}`}>
           <div className="table-wrap"><table><thead><tr><th>Spec</th><th>Value</th></tr></thead><tbody>
             {p.specs.map((s) => <tr key={s.slug}><td><Link href={specPath(platform, s.slug)}>{s.h1.replace(`${p.name} `, '')}</Link></td><td>{s.answer}</td></tr>)}

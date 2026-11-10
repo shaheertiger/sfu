@@ -6,7 +6,12 @@ lead: Check a Telegram username against Telegram's format rules, get close valid
 keyword: telegram username availability checker
 ---
 ## What this Telegram username availability checker can tell you
+
+![Telegram Username Availability Checker: Rules & t.me Test. Check a Telegram username against Telegram's format rules, get close valid alternatives, and open t.me/name to see whether a profile, channel, group or bot already uses it.](/images/tools/telegram-username-checker-hero-1200x675.webp)
+
 This Telegram username availability checker does two things: it tests a name against Telegram's username rules (5 to 32 characters, letters, numbers and underscores, starting with a letter and not ending with an underscore), and it opens t.me/yourname so you can see whether something already uses it. It **can't** guarantee a name is free. Telegram has no public availability lookup, and some names are held by accounts or chats you can't see. The username field in Telegram's settings has the final word.
+
+![What this Telegram username availability checker can tell you, in 3 groups: The rules it tests, What the t.me link shows and It runs in your browser.](/images/tools/telegram-username-checker-what-this-telegram-username-1200x675.webp)
 
 ### The rules it tests
 - Length between 5 and 32 characters
@@ -24,6 +29,9 @@ Every Telegram username has a public link at t.me/ followed by the name. When th
 Nothing you type is sent to Telegram or to us, and nothing is stored. The t.me button is an ordinary link.
 
 ## How to check a Telegram username
+
+![How to check a Telegram username, in 4 steps: type the name you want, fix what's flagged, open the t.me link and confirm in Telegram.](/images/tools/telegram-username-checker-how-to-1200x675.webp)
+
 ### 1. Type the name you want
 Enter it without the @. If you'd normally separate words with a space, hyphen or period, use an underscore instead: "market_notes," not "market-notes."
 
@@ -40,6 +48,9 @@ Open Telegram, go to Settings, edit your profile and tap Username. Telegram chec
 Switch to **Check a list** to paste up to 200 ideas, one per line. The checker marks which ones follow Telegram's rules, links each valid one to its t.me page and lets you copy just the valid names.
 
 ## Usernames for accounts, channels, groups and bots
+
+![Telegram Username Availability Checker: usernames for accounts, channels, groups and bots, in 3 groups: One shared pool of names, Personal accounts and Public channels and groups.](/images/tools/telegram-username-checker-usernames-for-accounts-channels-1200x675.webp)
+
 ### One shared pool of names
 Personal accounts, public channels, public groups and bots all draw usernames from the same pool. A channel called t.me/marketnotes means no personal account or bot can be @marketnotes. If the name you want is taken, the t.me preview shows you what kind of chat holds it.
 
@@ -53,6 +64,9 @@ A channel or group becomes public when you give it a username, which becomes its
 Bot usernames follow the same rules with one addition: they must end in "bot," such as weather_bot or WeatherBot. You choose it when you create the bot with BotFather. This checker tests the general username rules only, so add the "bot" ending yourself before you check a bot name.
 
 ## Tips for a Telegram username that's likely to be open
+
+![Tips for a Telegram username that's likely to be open: do go a little longer, match your other profiles and brainstorm, then write the bio.](/images/tools/telegram-username-checker-best-practices-1200x675.webp)
+
 ### Go a little longer
 Five is the minimum, and most short, common words were claimed years ago. Adding a topic or place ("notes," "daily," "nyc") gives you a better chance and tells people what to expect.
 

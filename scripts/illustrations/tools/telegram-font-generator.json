@@ -1,0 +1,77 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Telegram Font Generator",
+   "question": "Telegram Font Generator",
+   "answer": "30+ Free Styles",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "type",
+    "calendar"
+   ],
+   "qualifier": "Get 30+ copy-and-paste Unicode styles for the Telegram fields that don't support formatting: your name, bio, and channel or group titles."
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Telegram Font Generator",
+   "title": "Where styled text works on Telegram",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Your name",
+     "Bio",
+     "Channel and group titles",
+     "Channel descriptions"
+    ]
+   }
+  },
+  {
+   "name": "best-practices-2",
+   "type": "checklist",
+   "kicker": "Telegram Font Generator",
+   "title": "Best practices for Telegram",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Keep public channels discoverable",
+     "Help screen reader users",
+     "Test across apps"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Don't imitate official accounts"
+    ]
+   }
+  },
+  {
+   "name": "formatting-or-unicode",
+   "type": "versus",
+   "kicker": "Telegram Font Generator",
+   "title": "Built-in formatting **or Unicode?**",
+   "left": {
+    "label": "Use Telegram's formatting",
+    "tone": "good",
+    "items": [
+     "Messages in chats",
+     "Channel and group posts",
+     "Bold, italic, spoiler and more"
+    ]
+   },
+   "right": {
+    "label": "Use Unicode styles",
+    "tone": "neutral",
+    "items": [
+     "Your first and last name",
+     "Your bio",
+     "Channel and group titles"
+    ]
+   }
+  }
+ ]
+}

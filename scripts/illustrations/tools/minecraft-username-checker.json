@@ -1,0 +1,65 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "Minecraft Name Availability Checker",
+   "what": "Minecraft Name Availability Checker",
+   "value": "3–16",
+   "unit": "characters",
+   "others": []
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Minecraft Name Availability Checker",
+   "title": "How to Check if a Minecraft Username Is Taken",
+   "steps": [
+    {
+     "title": "Type the name you want",
+     "text": ""
+    },
+    {
+     "title": "Read the result",
+     "text": "\"Follows Minecraft's rules\" means the format is valid."
+    },
+    {
+     "title": "Search NameMC",
+     "text": "Tap the Open namemc.com/search… button."
+    },
+    {
+     "title": "Try a variation if needed",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Minecraft Name Availability Checker",
+   "title": "Best Practices for Picking a Minecraft Username",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Keep it readable in chat",
+     "Watch for lookalike letters",
+     "Plan for the long term"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Avoid personal details",
+     "Never give your login to a \"checker\""
+    ]
+   }
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Minecraft Username Rules at a Glance",
+   "quote": "A Minecraft Java Edition username has to be 3 to 16 characters long and can only use letters, numbers and underscores.",
+   "by": "Minecraft Name Availability Checker"
+  }
+ ]
+}

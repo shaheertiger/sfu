@@ -6,7 +6,12 @@ lead: Enter your video's topic and any extra keywords to get a tidy list of tag 
 keyword: youtube tag generator
 ---
 ## What YouTube tags actually do
+
+![YouTube Tag Generator: Free Tag Ideas Within the 500 Limit. Enter your video's topic and any extra keywords to get a tidy list of tag ideas, trimmed to fit YouTube's 500-character tag limit and ready to copy.](/images/tools/youtube-tag-generator-hero-1200x675.webp)
+
 Tags are optional keywords you can add to a video in YouTube Studio, and this YouTube tag generator fills that field with sensible ideas in seconds. YouTube's [help center](https://support.google.com/youtube) says tags play a "minimal role" in helping viewers find your video, and are mainly useful when your content is commonly misspelled. Your title, thumbnail and description matter far more. So get the tags done quickly and spend your effort where it counts.
+
+![Key point from the YouTube Tag Generator page: Tags are optional keywords you can add to a video in YouTube Studio, and this YouTube tag generator fills that field with sensible ideas in seconds.](/images/tools/youtube-tag-generator-key-point-1200x675.webp)
 
 ### When tags are worth adding
 - Your topic has common misspellings ("ukulele" vs. "ukelele")
@@ -17,6 +22,9 @@ Tags are optional keywords you can add to a video in YouTube Studio, and this Yo
 Adding dozens of loosely related tags won't push a video into search results it doesn't match. Misleading tags, such as the names of other creators or unrelated trending topics, can also break YouTube's policies on spam and deceptive practices.
 
 ## How the YouTube tag generator works
+
+![How the YouTube tag generator works, in 2 groups: Remove what doesn't fit and Stay under 500 characters.](/images/tools/youtube-tag-generator-how-the-youtube-tag-1200x675.webp)
+
 The generator builds tags from simple templates around your topic, so you can see exactly where each idea came from. It doesn't use AI or search data.
 
 ### Where the YouTube tag ideas come from
@@ -38,6 +46,9 @@ Not every template makes sense for every topic. "Best sourdough bread" suits a r
 YouTube limits the tag field to 500 characters in total. The live count shows how much of that you're using, and the generator keeps the list inside the limit. When you're done, copy everything as a comma-separated list and paste it into the Tags field in YouTube Studio.
 
 ## How to use it
+
+![YouTube Tag Generator: how to use it, in 4 steps: enter a focused topic, add a few extra keywords, prune the list and copy and paste into YouTube Studio.](/images/tools/youtube-tag-generator-how-to-1200x675.webp)
+
 ### 1. Enter a focused topic
 Use the phrase a viewer would type, not your video's full title. "Standing desk setup" works better than "My Home Office Tour After Two Years of Remote Work."
 

@@ -1,0 +1,59 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Instagram Line Break Generator",
+   "question": "Instagram Line Break Generator",
+   "answer": "Keep Spacing in Captions",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "block",
+    "calendar"
+   ],
+   "qualifier": "Paste a caption or bio, and the tool keeps your blank lines in place so Instagram shows the spacing you typed instead of one solid block."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Instagram Line Break Generator",
+   "title": "How to use the generator",
+   "steps": [
+    {
+     "title": "Write or paste your caption",
+     "text": ""
+    },
+    {
+     "title": "Copy the converted text",
+     "text": "Press the copy button."
+    },
+    {
+     "title": "Paste into Instagram and preview",
+     "text": "Paste into the caption or bio field."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Instagram Line Break Generator",
+   "title": "Tips for readable captions",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Put the hook before the cut-off",
+     "Keep hashtags tidy",
+     "Bios need extra care"
+    ]
+   }
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Why Instagram removes your line breaks",
+   "quote": "Instagram often collapses empty lines in captions and bios, so a nicely spaced caption turns into one dense paragraph after you post.",
+   "by": "Instagram Line Break Generator"
+  }
+ ]
+}

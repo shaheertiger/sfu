@@ -1,0 +1,77 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "Discord Bio Generator",
+   "what": "Discord Bio Generator",
+   "value": "190",
+   "unit": "characters",
+   "others": [
+    {
+     "value": "32",
+     "label": "Display name"
+    },
+    {
+     "value": "2–32",
+     "label": "Username"
+    },
+    {
+     "value": "128",
+     "label": "Custom status"
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Discord Bio Generator",
+   "title": "How to use the Discord bio generator",
+   "steps": [
+    {
+     "title": "Describe yourself",
+     "text": ""
+    },
+    {
+     "title": "Pick a tone and emoji setting",
+     "text": ""
+    },
+    {
+     "title": "Copy, paste and format",
+     "text": "Each of the 12 bios shows its length."
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Discord Bio Generator",
+   "title": "Discord About Me ideas",
+   "groups": [
+    {
+     "label": "Gamer",
+     "text": "Diamond in Apex, Silver in patience."
+    },
+    {
+     "label": "Artist taking commissions",
+     "text": "Commissions open ✏️ Character sheets and emotes."
+    },
+    {
+     "label": "Developer",
+     "text": "I build small Discord bots for fun."
+    },
+    {
+     "label": "Moderator",
+     "text": "Mod for this server."
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "What makes a good Discord About Me",
+   "quote": "Your About Me appears when someone clicks your name in a server or DM, and Discord gives you 190 characters for it.",
+   "by": "Discord Bio Generator"
+  }
+ ]
+}

@@ -6,7 +6,12 @@ lead: Upload one image, choose a grid size and tile shape, drag and zoom to fram
 keyword: instagram grid maker
 ---
 ## What the grid maker does
+
+![Instagram Grid Maker: 3x3 & 3x4 Puzzle Grids from One Photo. Upload one image, choose a grid size and tile shape, drag and zoom to frame it, and download numbered tiles that form one large picture across your Instagram profile.](/images/tools/instagram-grid-maker-hero-1200x675.webp)
+
 The Instagram grid maker cuts one image into a set of tiles that, posted in the right order, rebuild the full picture on your Instagram profile. Choose a 3×1, 3×2, 3×3 or 3×4 grid, pick 4:5, 3:4 or square tiles, drag and zoom the image to frame it, then download every tile numbered in the order to post them, in one ZIP or one at a time.
+
+![Key point from the Instagram Grid Maker page: The Instagram grid maker cuts one image into a set of tiles that, posted in the right order, rebuild the full picture on your Instagram profile.](/images/tools/instagram-grid-maker-key-point-1200x675.webp)
 
 ### Grid sizes, from 3x1 to a 3x4 grid
 | Grid | Posts | Good for |
@@ -23,6 +28,9 @@ Each tile is exported at 1080×1350 (4:5 portrait, the default), 1080×1440 (3:4
 The Instagram grid maker splits your image in the browser. Nothing is uploaded and there's no account to create.
 
 ## How to make an Instagram grid
+
+![How to make an Instagram grid, in 4 steps: upload a high-resolution image, choose the grid and tile shape, frame the picture and download the numbered tiles.](/images/tools/instagram-grid-maker-how-to-1200x675.webp)
+
 ### 1. Upload a high-resolution image
 A 3×3 grid of portrait tiles needs a source that's 3,240 pixels wide to keep each tile at full 1080-pixel width. Smaller images work but may look soft.
 
@@ -39,6 +47,9 @@ Save every tile at once as a ZIP, or one at a time if your phone handles single 
 Publish the tiles one after another without other posts in between. If anything else lands in the middle, every following tile shifts by one place and the picture breaks.
 
 ## Getting a clean result on your profile
+
+![Instagram Grid Maker: getting a clean result on your profile: do mind the 3:4 grid crop, make each tile work alone, watch pinned posts and pair it with a carousel.](/images/tools/instagram-grid-maker-best-practices-1200x675.webp)
+
 ### Mind the 3:4 grid crop
 At the time of writing, Instagram's profile grid shows each post cropped to 3:4, which trims a little from the sides of 4:5 tiles and more from square ones, leaving small breaks at the seams. Choosing 3:4 tiles avoids that crop if you post from the Instagram app. With 4:5 or square tiles, keep faces, text and logos away from tile edges.
 

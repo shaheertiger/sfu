@@ -6,7 +6,12 @@ lead: Turn any wide image into a Discord server banner, profile banner or invite
 keyword: discord banner resizer
 ---
 ## Discord banner sizes at a glance
+
+![Discord Banner Resizer: Server, Profile & Invite Banners. Turn any wide image into a Discord server banner, profile banner or invite background at the right size, cropped or padded the way you want.](/images/tools/discord-banner-resizer-hero-1200x675.webp)
+
 Discord server banners use 960×540, profile banners use 680×240 and invite backgrounds use 1920×1080. Each has a different shape, so the same picture needs a different crop for each one. The resizer gives you all three presets.
+
+![Discord banner sizes at a glance: Server banner, shown as 960 × 540 px, with Profile banner 680 × 240 and Invite background 1920 × 1080 for comparison.](/images/tools/discord-banner-resizer-specs-1200x675.webp)
 
 | Preset | Size | Shape | Where it shows |
 |---|---|---|---|
@@ -27,6 +32,9 @@ The invite background, sometimes called an invite splash, fills the background o
 At the time of writing, profile banners need Nitro, and server banners and invite backgrounds are Server Boost perks at different boost levels. Check [Discord's support site](https://support.discord.com) for the current requirements.
 
 ## How to resize a Discord banner
+
+![How to resize a Discord banner, in 4 steps: start with a wide image, choose the banner type, crop with fill, or pad with fit and download and upload to Discord.](/images/tools/discord-banner-resizer-how-to-1200x675.webp)
+
 ### 1. Start with a wide image
 Upload a landscape photo or artwork. A 1920-pixel-wide source covers every preset without upscaling.
 
@@ -40,6 +48,9 @@ Pick server banner, profile banner or invite background. The preview frame chang
 Save as PNG for artwork and text, or JPG for photographs. Then upload it from your profile or server settings. Nothing leaves your browser during resizing.
 
 ## Tips for banners that look right
+
+![Discord Banner Resizer: tips for banners that look right: do mind the safe area on each format, use little or no text, match your avatar and server icon and choose a pad color that blends in.](/images/tools/discord-banner-resizer-best-practices-1200x675.webp)
+
 ### Mind the safe area on each format
 For server banners, keep text and faces within the middle of the frame, since the sidebar shows a narrower slice. For profile banners, keep the lower-left clear for your avatar. A quick check in the preview saves a re-upload.
 

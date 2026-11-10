@@ -6,7 +6,12 @@ lead: Check a Roblox username against Roblox's format rules, get close valid alt
 keyword: roblox username checker
 ---
 ## What the Roblox username checker does
+
+![Roblox Username Checker: Test Rules & Search the Name. Check a Roblox username against Roblox's format rules, get close valid alternatives, and open Roblox's user search to see whether someone already has it.](/images/tools/roblox-username-checker-hero-1200x675.webp)
+
 This Roblox username checker tells you whether a name follows Roblox's username rules: 3 to 20 characters, letters and numbers, and at most one underscore that isn't at the start or end. When a name passes, one tap opens Roblox's user search so you can see whether an account already uses it. It **can't** promise a name is free. Roblox has no public availability check, and banned or hidden accounts can still hold names, so the Roblox sign-up form (or your account settings) always has the final word.
+
+![What the Roblox username checker does, in 3 groups: The rules it tests, What the search button shows and Nothing is sent anywhere.](/images/tools/roblox-username-checker-what-the-roblox-username-1200x675.webp)
 
 ### The rules it tests
 - Length between 3 and 20 characters
@@ -23,6 +28,9 @@ Roblox doesn't have a profile address built from the username, so the button ope
 The check runs in your browser. The names you type aren't sent to Roblox or to us, and nothing is saved. You never need to sign in to use it.
 
 ## How to check a Roblox username
+
+![How to check a Roblox username, in 4 steps: type the name you want, fix what's flagged, search Roblox for an exact match and confirm on Roblox.](/images/tools/roblox-username-checker-how-to-1200x675.webp)
+
 ### 1. Type the name you want
 Enter it the way you want it to look. Capital letters are allowed and show as you type them, so "BlockBuilder" is easier to read than "blockbuilder."
 
@@ -39,6 +47,9 @@ If you're making a new account, the Roblox sign-up form tells you straight away 
 Switch to **Check a list** to paste up to 200 names, one per line. The checker marks which ones follow Roblox's rules and lets you copy just the valid ones. It checks the rules only, not whether the names are taken.
 
 ## Username vs. display name on Roblox
+
+![Username vs. display name on Roblox, in 2 groups: Your username is unique and Roblox's filter has a say too.](/images/tools/roblox-username-checker-username-vs-display-name-1200x675.webp)
+
 ### Your username is unique
 Your username is the name tied to your account, shown with an @ in front. No one else can have the same one, and as far as availability goes, Roblox treats names that differ only in capital letters as the same username. That's the name this checker tests.
 
@@ -49,6 +60,9 @@ Your display name is the name other players see first in games and on your profi
 Roblox also blocks names its filter considers inappropriate, or that look like they contain personal information. This checker can't predict that filter, which is another reason the sign-up form gets the final answer.
 
 ## Stay safe when picking a Roblox username
+
+![Stay safe when picking a Roblox username, in 2 groups: Keep personal details out of it and Use the same safe name elsewhere.](/images/tools/roblox-username-checker-stay-safe-when-picking-1200x675.webp)
+
 ### Keep personal details out of it
 Your username is public, so leave out your real name, last name, birth year, age, school, city or anything else that tells strangers who you are. "SkyPilot_9" is fine; "EmmaJones2014" tells everyone your name and roughly how old you are.
 

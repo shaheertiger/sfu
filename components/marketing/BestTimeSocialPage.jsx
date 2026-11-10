@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import JsonLd from '@/components/JsonLd';
+import Figure, { figuresLd } from '@/components/marketing/Figure';
+import { SOCIAL } from '@/lib/best-time-pages';
+import { bestTimeFigures } from '@/lib/figures';
 import BestTimeHeatmap from '@/components/marketing/BestTimeHeatmap';
 import BestTimeNow from '@/components/marketing/BestTimeNow';
 import { AnswerBanner, NearbySection, PlaceSection, StudiesSection, Table, TimezoneSection } from '@/components/marketing/BestTimeCountry';
@@ -45,11 +48,15 @@ export default function BestTimeSocialPage({ page }) {
     { name: 'Best time to post', href: BEST_TIME_ROOT },
     { name: `Social media in ${local.short}`, href: path },
   ];
+  // Drawn from the committed Trends data: shown only while no platform here has measured data.
+  const figs = live === 0 ? bestTimeFigures(SOCIAL, `in-${local.slug}`) : [];
+  const img = figuresLd(figs);
   const ld = {
     '@context': 'https://schema.org',
     '@graph': [
       organizationLd(),
-      { '@type': 'WebPage', '@id': `${abs(path)}#webpage`, url: abs(path), name: copy.title, description: copy.description, isPartOf: { '@id': `${abs('/')}#website` }, inLanguage: 'en' },
+      { '@type': 'WebPage', '@id': `${abs(path)}#webpage`, url: abs(path), name: copy.title, description: copy.description, isPartOf: { '@id': `${abs('/')}#website` }, inLanguage: 'en', ...img.primary },
+      ...img.nodes,
       { '@type': 'Dataset', name: `Social media posting times by weekday and hour in ${local.name.replace(/^the /, '')}`, description: copy.description, url: abs(path), creator: { '@type': 'Organization', name: 'Schedule For You' }, temporalCoverage: 'P90D', ...(fromTrends ? { isBasedOn: ['https://trends.google.com/', 'https://wikimedia.org/api/rest_v1/'] } : {}), spatialCoverage: { '@type': 'Place', name: local.name.replace(/^the /, '') }, variableMeasured: ['posts per hour', 'link clicks per post'] },
       breadcrumbLd(crumbs),
       faqPageLd(faq),
@@ -95,6 +102,7 @@ export default function BestTimeSocialPage({ page }) {
         </section>
 
         <article className={`${m.narrow} ${m.prose}`}>
+          <Figure fig={figs[0]} priority />
           <section className={m.section}>
             <h2 id="answer">When Is the Best Time to Post on Social Media in {local.name}?</h2>
             <p>Across every platform combined, {WEEKDAY_NAMES[best[0].weekday]} at {both(best[0].hour)} {abbr} is the strongest slot in {local.name}, and {WEEKDAY_NAMES[bestDay]} is the best day. That single answer is a compromise, though: work networks peak in the morning, entertainment apps at night.</p>

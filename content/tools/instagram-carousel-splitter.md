@@ -6,6 +6,9 @@ lead: A carousel post cutter for Instagram: turn a panorama or wide design into 
 keyword: instagram carousel splitter
 ---
 ## What the carousel splitter does
+
+![Instagram carousel splitter: equal slides from one wide image, shown as 2–10 slides (cut evenly, numbered in order), with 3:4, the tallest 1080 × 1440, Portrait, 4:5 1080 × 1350 and Square, 1:1 1080 × 1080 for comparison.](/images/tools/instagram-carousel-splitter-hero-1200x675.webp)
+
 Upload a wide image to the Instagram carousel splitter, choose how many slides you want (from 2 to 10) and their shape (3:4, 4:5 or square), and the splitter cuts it into equal pieces. Each slide is exported at 1080×1440, 1080×1350 or 1080×1080 and numbered in order. Post them as one carousel and the image flows from one slide to the next as followers swipe.
 
 ### Slide shapes
@@ -20,6 +23,9 @@ A seamless carousel only works if every slide is exactly the same size and the c
 With the Instagram carousel splitter, the image never leaves your device. Splitting happens in the browser and the slides download directly.
 
 ## How to split an image for an Instagram carousel
+
+![How to split an image for an Instagram carousel, in 4 steps: pick or design a wide image, choose the number of slides, choose the slide shape and framing and download and keep the order.](/images/tools/instagram-carousel-splitter-how-to-1200x675.webp)
+
 ### 1. Pick or design a wide image
 Phone panoramas, landscape photos and wide graphics designed for a carousel all work. For full sharpness, the source should be about 1,080 pixels wide per slide, so five portrait slides want an image around 5,400 pixels wide.
 
@@ -33,6 +39,9 @@ Match the shape to your image. A tall-enough scene benefits from 3:4 or 4:5; a v
 Save all slides as one ZIP, or one at a time, and keep the numbering. When you upload, add them in order from slide 1 so the picture runs left to right.
 
 ## Designing a carousel that swipes smoothly
+
+![Key point from the Instagram Carousel Splitter page: A road, a shoreline or a line of text that crosses from one slide into the next nudges people to keep swiping.](/images/tools/instagram-carousel-splitter-key-point-1200x675.webp)
+
 ### Put something across the seams
 A road, a shoreline or a line of text that crosses from one slide into the next nudges people to keep swiping. If every slide ends on empty sky, the carousel can feel like separate photos.
 
@@ -46,6 +55,9 @@ Instagram shows every slide in a carousel at the same shape, so mixing sizes lea
 The splitter goes up to 10 slides, which is also the most Schedule For You publishes in one carousel. For how many slides Instagram itself allows in different situations, see the [Instagram carousel limit](/blog/instagram-carousel-limit) guide.
 
 ## Instagram carousel splitter use cases
+
+![Instagram carousel splitter use cases, in 3 groups: Travel and landscape photos, Step-by-step graphics and Product lineups.](/images/tools/instagram-carousel-splitter-use-cases-1200x675.webp)
+
 ### Travel and landscape photos
 Show a mountain range or city skyline at a size a single post can't match, with each swipe revealing more of the view.
 

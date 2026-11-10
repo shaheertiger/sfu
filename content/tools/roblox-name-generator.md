@@ -6,7 +6,12 @@ lead: Type a word you like, pick a style, and get 30 Roblox username ideas that 
 keyword: roblox username generator
 ---
 ## How the Roblox username generator works
+
+![Roblox Username Generator: 30 Free Roblox Name Ideas. Type a word you like, pick a style, and get 30 Roblox username ideas that follow Roblox's rules: 3 to 20 characters, letters and numbers, and at most one underscore.](/images/tools/roblox-name-generator-hero-1200x675.webp)
+
 This Roblox username generator mixes a word you choose with short word lists for each style, then keeps only the ideas that fit Roblox's username format. Every idea is 3 to 20 characters long, uses only letters and numbers, and has no more than one underscore, never at the start or end. Capital letters are kept, so you get readable names like "PixelGarden" instead of "pixelgarden."
+
+![How the Roblox username generator works, in 3 groups: 1. Type a word, 2. Pick a style and 3. Copy and check.](/images/tools/roblox-name-generator-how-the-roblox-username-1200x675.webp)
 
 ### 1. Type a word
 Use something you like rather than something about you: an animal ("fox"), a thing ("rocket"), a mood ("cozy"), a color ("lilac") or a game style ("ninja"). Two words give you more combinations. Accents are removed, so "café" becomes "cafe."
@@ -23,6 +28,9 @@ Use something you like rather than something about you: an animal ("fox"), a thi
 Tap any of the 30 ideas to copy it, or press **More ideas** for a new batch. The generator can't see Roblox's accounts, so it doesn't know whether a name is taken. Paste your favorite into the [Roblox username checker](/tools/roblox-username-checker) to confirm the format and search Roblox for an exact match, then try it on the Roblox sign-up form, which gives the final answer.
 
 ## Roblox name ideas by style
+
+![Roblox name ideas by style, in 3 groups: Cool Roblox usernames, Aesthetic Roblox names and Funny Roblox usernames.](/images/tools/roblox-name-generator-use-cases-1200x675.webp)
+
 All of these were made up for this page and follow Roblox's username rules. Someone may already have them, so treat them as starting points: change a word, add a number that means nothing personal, or swap where the underscore goes.
 
 ### Cool Roblox usernames
@@ -53,6 +61,9 @@ Same here: pick whatever you like, whoever you are.
 BlockTitan, Rocket_Rex, DinoStrike, TurboShark, Iron_Falcon, CosmicCraft, ThunderBlox, LavaKnight, Robo_Builder, JetPilot9
 
 ## Tips for picking a Roblox username
+
+![Tips for picking a Roblox username: do make it easy to read and type, use the underscore wisely, your display name can be friendlier and check that it passes the rules.](/images/tools/roblox-name-generator-best-practices-1200x675.webp)
+
 ### Make it easy to read and type
 Friends add you by typing your name. Capitals at the start of each word ("LavaKnight") make it readable, and Roblox treats names that differ only in capitals as the same username when it checks availability. Swapping letters for numbers ("L4v4Kn1ght") makes a name harder to share.
 
@@ -66,6 +77,9 @@ Your username is unique and shown with an @ in front. Your display name is what 
 For the exact rules, common mistakes and a bulk check of a whole list of ideas, use the [Roblox username checker](/tools/roblox-username-checker).
 
 ## Keep your Roblox name safe
+
+![Key point from the Roblox Username Generator page: Roblox is popular with kids, and a username is public.](/images/tools/roblox-name-generator-key-point-1200x675.webp)
+
 Roblox is popular with kids, and a username is public. These rules matter more than finding the perfect name.
 
 ### Leave out personal details

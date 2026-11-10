@@ -6,7 +6,12 @@ lead: Resize images for TikTok photo posts, video covers and your profile pictur
 keyword: tiktok photo resizer
 ---
 ## TikTok image sizes at a glance
+
+![TikTok Photo Resizer, shown as 1080 × 1920 px, with Square 1080 × 1080 and Profile photo 200 × 200 for comparison.](/images/tools/tiktok-photo-resizer-hero-1200x675.webp)
+
 TikTok is built around full-screen vertical content, so 1080×1920 (9:16) is the size to use for photo posts and slideshow images. The resizer also includes a square preset and a 200×200 profile photo preset.
+
+![TikTok image sizes at a glance, in 3 groups: Full-screen vertical, Square images and Profile photo.](/images/tools/tiktok-photo-resizer-tiktok-image-sizes-at-1200x675.webp)
 
 | Preset | Size | Ratio | Use it for |
 |---|---|---|---|
@@ -24,6 +29,9 @@ Square images can work on TikTok, but they leave empty space above and below on 
 TikTok recommends at least 200×200 for profile pictures at the time of writing. The image is shown as a small circle, so a simple, centered subject reads best.
 
 ## How to resize a photo for TikTok
+
+![How to resize a photo for TikTok, in 4 steps: upload an image, choose the preset, fill to crop, or fit to pad and download.](/images/tools/tiktok-photo-resizer-how-to-1200x675.webp)
+
 ### 1. Upload an image
 Choose a PNG or JPG. It never leaves your browser.
 
@@ -37,6 +45,9 @@ Most horizontal photos lose their sides when cropped to 9:16. **Fill (crop)** zo
 Export as JPG for photographs or PNG for graphics with text. Then add it to a photo post in TikTok or upload it to your scheduler.
 
 ## Tips for TikTok images that read well
+
+![Tips for TikTok images that read well: do keep text out of the overlay zones, use the padding as a design element and keep a slideshow consistent.](/images/tools/tiktok-photo-resizer-best-practices-1200x675.webp)
+
 ### Keep text out of the overlay zones
 TikTok places buttons down the right side and the caption, username and sounds along the bottom. Text in those areas gets covered. Keep key words in the upper-middle of the frame and away from the right edge.
 

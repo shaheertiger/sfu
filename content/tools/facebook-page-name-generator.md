@@ -6,7 +6,12 @@ lead: Describe your business or community in a word or two and get 30 Facebook P
 keyword: facebook page name generator
 ---
 ## What makes a good Facebook Page name
+
+![Facebook Page Name Generator: 30 Free Business Name Ideas. Describe your business or community in a word or two and get 30 Facebook Page name ideas you can copy, compare and check before you create the Page.](/images/tools/facebook-page-name-generator-hero-1200x675.webp)
+
 A strong Facebook Page name matches the name customers already use for you, says what you do when that isn't obvious, and follows Facebook's Page name standards so it's approved without a fight. Type a keyword above to get 30 ideas, then use these guidelines to narrow them down.
+
+![What makes a good Facebook Page name, in 2 groups: It matches your real-world name and It looks like a real organization.](/images/tools/facebook-page-name-generator-what-makes-a-good-1200x675.webp)
 
 ### It matches your real-world name
 If your shop sign says "Harbor Street Bakery", your Page should too. People search Facebook for the name they saw on a receipt or a storefront, so a creative variation can make you harder to find.
@@ -18,6 +23,9 @@ If your shop sign says "Harbor Street Bakery", your Page should too. People sear
 Facebook's standards reject names that are all capitals, packed with symbols, or that use a generic word on its own (like just "Coffee"). Clean, normally capitalized names get approved faster and look more trustworthy.
 
 ## How to use the Facebook Page name generator
+
+![How to use the Facebook Page name generator, in 4 steps: pick a keyword that describes you, choose a style for your audience, copy, compare, regenerate and check before you create the Page.](/images/tools/facebook-page-name-generator-how-to-1200x675.webp)
+
 Four quick steps take you from a keyword to a shortlist.
 
 ### Pick a keyword that describes you
@@ -33,6 +41,9 @@ Tap any of the 30 ideas to copy it, compare a few side by side, and regenerate i
 The tool can't see existing Pages. Search Facebook for each finalist, check your local business registry, and run a trademark search. A clash found now costs nothing; one found after a year of posting costs you recognition.
 
 ## Facebook Page name rules and limits
+
+![Facebook Page name rules and limits, in 2 groups: Page name versus Page username and Changing a Page name later.](/images/tools/facebook-page-name-generator-facebook-page-name-rules-1200x675.webp)
+
 Facebook reviews Page names against its Page name standards. Key points at the time of writing are below; see the [Facebook Help Center](https://www.facebook.com/help) for the full list.
 
 | Rule | What it means |
@@ -50,6 +61,9 @@ Your Page name is the display name. The Page username is the short @name in your
 Admins can request a name change, which Facebook reviews. A completely different name may be questioned if it doesn't reflect the same organization, so treat the name as long-term.
 
 ## Page name ideas by business type
+
+![Facebook Page Name Generator: page name ideas by business type, in 2 groups: Sample Page names and Add a location only if it helps.](/images/tools/facebook-page-name-generator-use-cases-1200x675.webp)
+
 Style choice matters as much as the keyword.
 
 ### Sample Page names

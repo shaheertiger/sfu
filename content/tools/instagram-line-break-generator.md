@@ -6,7 +6,12 @@ lead: Paste a caption or bio, and the tool keeps your blank lines in place so In
 keyword: instagram line break generator
 ---
 ## Why Instagram removes your line breaks
+
+![Instagram Line Break Generator: Keep Spacing in Captions. Paste a caption or bio, and the tool keeps your blank lines in place so Instagram shows the spacing you typed instead of one solid block.](/images/tools/instagram-line-break-generator-hero-1200x675.webp)
+
 Instagram often collapses empty lines in captions and bios, so a nicely spaced caption turns into one dense paragraph after you post. This generator fixes that by putting an invisible character on each empty line, which Instagram treats as content and keeps.
+
+![Key point from the Instagram Line Break Generator page: Instagram often collapses empty lines in captions and bios, so a nicely spaced caption turns into one dense paragraph after you post.](/images/tools/instagram-line-break-generator-key-point-1200x675.webp)
 
 ### Blank lines get merged
 When a line has nothing on it, Instagram may decide it isn't needed and join the paragraphs either side. The result is that two or three short paragraphs become one block of text, especially when the caption was written in another app and pasted in.
@@ -30,6 +35,9 @@ Any spaces sitting at the end of a line are removed so they can't interfere with
 Nothing else is rewritten. Emoji, mentions, hashtags and links are passed through untouched. The tool runs in your browser, so your caption isn't uploaded anywhere.
 
 ## How to use the generator
+
+![Instagram Line Break Generator: how to use the generator, in 3 steps: write or paste your caption, copy the converted text and paste into Instagram and preview.](/images/tools/instagram-line-break-generator-how-to-1200x675.webp)
+
 ### 1. Write or paste your caption
 Type straight into the box or paste a draft from your notes app. Lay it out the way you want it to look, blank lines included.
 
@@ -40,6 +48,9 @@ Press the copy button. The copied version contains the invisible characters, so 
 Paste into the caption or bio field. Before you share, scroll through the preview to confirm the spacing. If one break still collapses, look for a stray space or an extra empty line you added after pasting.
 
 ## Tips for readable captions
+
+![Instagram Line Break Generator: tips for readable captions: do put the hook before the cut-off, keep hashtags tidy and bios need extra care.](/images/tools/instagram-line-break-generator-best-practices-1200x675.webp)
+
 ### Use spacing to separate ideas, not every sentence
 A blank line between a hook, the main point and a call to action makes a caption easy to scan. A blank line after every sentence makes people scroll past it.
 

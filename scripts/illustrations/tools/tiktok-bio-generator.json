@@ -1,0 +1,73 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "TikTok Bio Generator",
+   "what": "TikTok Bio Generator",
+   "value": "80",
+   "unit": "characters",
+   "others": [
+    {
+     "value": "24",
+     "label": "Username"
+    },
+    {
+     "value": "4,000",
+     "label": "Video caption"
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "TikTok Bio Generator",
+   "title": "How to use the TikTok bio generator",
+   "steps": [
+    {
+     "title": "Say what you make",
+     "text": ""
+    },
+    {
+     "title": "Choose a tone",
+     "text": ""
+    },
+    {
+     "title": "Copy and paste",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "TikTok Bio Generator",
+   "title": "TikTok bio ideas by niche",
+   "groups": [
+    {
+     "label": "Food",
+     "text": "Sourdough for beginners."
+    },
+    {
+     "label": "Education",
+     "text": "Daily 60-second Spanish lessons."
+    },
+    {
+     "label": "Fitness",
+     "text": "Home workouts for small spaces."
+    },
+    {
+     "label": "Small business",
+     "text": "Handmade earrings, packed live on Fridays 📦"
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "What makes a good TikTok bio",
+   "quote": "A TikTok bio is limited to 80 characters, which is about a dozen words.",
+   "by": "TikTok Bio Generator"
+  }
+ ]
+}

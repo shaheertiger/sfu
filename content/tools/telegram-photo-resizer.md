@@ -6,7 +6,12 @@ lead: Upload a picture, pick a Telegram preset such as profile photo, sticker or
 keyword: telegram profile photo
 ---
 ## Telegram Profile Picture Size and Image Sizes at a Glance
+
+![Telegram Profile Photo Resizer, shown as 640 × 640 px, with Sticker 512 × 512, Channel post 1280 × 720 and Custom emoji 100 × 100 for comparison.](/images/tools/telegram-photo-resizer-hero-1200x675.webp)
+
 A Telegram profile photo works well as a square 640×640 image, which Telegram crops to a circle. Static stickers are 512×512, custom emoji are 100×100, and a 1280×720 image fills a channel post neatly. This resizer has a preset for each, so you can turn any photo into the right shape in a few seconds.
+
+![Key point from the Telegram Profile Photo Resizer page: A Telegram profile photo works well as a square 640×640 image, which Telegram crops to a circle.](/images/tools/telegram-photo-resizer-key-point-1200x675.webp)
 
 | Preset | Size | Shape | Where it's used |
 |---|---|---|---|
@@ -53,6 +58,9 @@ Everything happens in your browser. The image is drawn on a canvas on your devic
 It's a resizer, not an editor: it won't remove backgrounds, add outlines or move the crop off-center. For text on an image, use the [add text to image tool](/tools/add-text-to-image) first, then resize the result here.
 
 ## Supported Formats
+
+![Telegram Profile Photo Resizer: supported Formats, in 3 groups: What you can upload, What you can download and File size.](/images/tools/telegram-photo-resizer-supported-formats-1200x675.webp)
+
 ### What you can upload
 The resizer opens any image your browser can read:
 
@@ -75,6 +83,9 @@ Telegram's sticker bot asks for PNG or WEBP at the time of writing, so download 
 There's no upload limit in the resizer, because nothing is uploaded: the image stays in your browser. A 512×512 PNG sticker made from simple artwork is small, and a 640×640 profile photo is small in either format. If a large photo is slow to load on an older phone, give it a moment.
 
 ## How to Use the Telegram Photo Resizer
+
+![How to Use the Telegram Photo Resizer, in 4 steps: choose your image, pick a preset, choose fill or fit and pick a format.](/images/tools/telegram-photo-resizer-how-to-1200x675.webp)
+
 1. **Choose your image.** Click the upload area or drop a JPG, PNG, WebP or GIF on it. Animated GIFs come out as a single still frame.
 2. **Pick a preset.** Choose profile photo, sticker, channel post or custom emoji. The preview updates immediately, and the profile photo preset is shown as a circle.
 3. **Choose fill or fit.** **Fill (crop)** covers the whole frame and trims the edges, keeping the center. **Fit (add background)** keeps the entire image and fills the gap with a color you pick.
@@ -113,6 +124,9 @@ Group avatars are tiny in chat lists. A single bold symbol or two letters on a s
 Bots also have a profile picture, set through @BotFather. A square 640×640 image with a simple icon makes a bot easy to recognize in a chat list.
 
 ## Best Practices for Telegram Images
+
+![Best Practices for Telegram Images: do center everything that matters, design for small sizes, use PNG for stickers, logos and text and start from the original file.](/images/tools/telegram-photo-resizer-best-practices-1200x675.webp)
+
 ### Center everything that matters
 Circles cut off the corners of every avatar. Keep faces and logos in the middle two-thirds of the square.
 

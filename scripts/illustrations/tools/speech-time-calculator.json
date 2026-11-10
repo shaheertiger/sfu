@@ -1,0 +1,105 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Speech Time Calculator",
+   "question": "Speech Time Calculator",
+   "answer": "Words to Minutes for Scripts & Talks",
+   "tone": "neutral",
+   "mark": "clock",
+   "icons": [
+    "clock",
+    "video"
+   ],
+   "qualifier": "Paste a script, voiceover or talk to see how long it takes to say out loud and to read, then check it against a Reels, TikTok, Shorts or speech length."
+  },
+  {
+   "name": "words-per-minute-calculator",
+   "type": "lists",
+   "kicker": "Speech Time Calculator",
+   "title": "Words per minute calculator: find your own pace",
+   "groups": [
+    {
+     "label": "Match the preset to your result",
+     "text": "If you land under 140 words a minute."
+    },
+    {
+     "label": "What counts as a good pace?",
+     "text": "There's no single right speed."
+    }
+   ]
+  },
+  {
+   "name": "timing-scripts-for-reels",
+   "type": "lists",
+   "kicker": "Speech Time Calculator",
+   "title": "Timing scripts for Reels, TikTok, Shorts and YouTube voiceovers",
+   "groups": [
+    {
+     "label": "Front-load the hook",
+     "text": "The first two or three seconds decide whether people keep watching."
+    },
+    {
+     "label": "Write the caption and title too",
+     "text": "A tight script deserves a caption that matches."
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "How the speech time calculator works",
+   "quote": "This speech time calculator turns the words in your script into minutes and seconds.",
+   "by": "Speech Time Calculator"
+  },
+  {
+   "name": "table",
+   "type": "matrix",
+   "kicker": "Speech Time Calculator",
+   "title": "How long is a 3 minute speech?",
+   "corner": "Speech length",
+   "cols": [
+    "Words at a normal pace"
+   ],
+   "rows": [
+    {
+     "label": "1 minute",
+     "cells": [
+      "150"
+     ]
+    },
+    {
+     "label": "2 minutes",
+     "cells": [
+      "300"
+     ]
+    },
+    {
+     "label": "3 minutes",
+     "cells": [
+      "450"
+     ]
+    },
+    {
+     "label": "5 minutes",
+     "cells": [
+      "750"
+     ]
+    },
+    {
+     "label": "10 minutes",
+     "cells": [
+      "1,500"
+     ]
+    },
+    {
+     "label": "20 minutes",
+     "cells": [
+      "3,000"
+     ]
+    }
+   ]
+  }
+ ]
+}

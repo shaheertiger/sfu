@@ -1,0 +1,124 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Add Text to Image",
+   "question": "Free Text on Photo Maker, No Sign-up",
+   "answer": "Add Text to Image",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "image",
+    "calendar"
+   ],
+   "qualifier": "Add a photo or pick a background color, type your text, choose a style and download a finished image sized for Instagram, Stories, TikTok or X. Nothing is uploaded."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Add Text to Image",
+   "title": "How to add text to an image",
+   "steps": [
+    {
+     "title": "Add a photo, or don't",
+     "text": "Tap Add a photo or drop it here (optional)."
+    },
+    {
+     "title": "Type your text",
+     "text": "Line breaks you type are kept, and long lines wrap on their own."
+    },
+    {
+     "title": "Pick a style",
+     "text": "Plain, Band, Outline or Breaking news (more on each below)."
+    },
+    {
+     "title": "Set the type",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "add-text-to-image",
+   "type": "lists",
+   "kicker": "Add Text to Image",
+   "title": "Add text to image styles: plain, band and outline",
+   "groups": [
+    {
+     "label": "Plain",
+     "text": "Text in any color you pick with Text color."
+    },
+    {
+     "label": "Band",
+     "text": "A semi-transparent strip runs across the full width behind your text."
+    },
+    {
+     "label": "Outline",
+     "text": "Each letter gets a thick outline in black or white."
+    }
+   ]
+  },
+  {
+   "name": "text-on-photo-or",
+   "type": "lists",
+   "kicker": "Add Text to Image",
+   "title": "Text on photo or on a plain background",
+   "groups": [
+    {
+     "label": "Use your own photo",
+     "text": "When you add a photo, the output size switches to Original."
+    },
+    {
+     "label": "Quote images on a solid color",
+     "text": "Without a photo, pick one of eight swatches or any color with the picker."
+    },
+    {
+     "label": "Long text and line breaks",
+     "text": "Text wraps to fit the margins."
+    }
+   ]
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "Add Text to Image",
+   "what": "Sizes for Instagram, Stories, TikTok and X: 1:1",
+   "value": "1080 × 1080",
+   "unit": "px",
+   "others": [
+    {
+     "value": "1080 × 1350",
+     "label": "4:5"
+    },
+    {
+     "value": "1080 × 1920",
+     "label": "9:16 · Stories/Reels"
+    },
+    {
+     "value": "1920 × 1080",
+     "label": "16:9"
+    }
+   ]
+  },
+  {
+   "name": "ideas-for-text-on",
+   "type": "lists",
+   "kicker": "Add Text to Image",
+   "title": "Ideas for text on photo posts",
+   "groups": [
+    {
+     "label": "Reels and TikTok covers",
+     "text": "Use 9:16 with the Band style at Top or Middle."
+    },
+    {
+     "label": "Quote images and tips",
+     "text": "Use 1:1 or 4:5 with Plain text on a solid color."
+    },
+    {
+     "label": "Stories announcements",
+     "text": "\"Sale ends tonight\", \"New episode out now\"."
+    }
+   ]
+  }
+ ]
+}

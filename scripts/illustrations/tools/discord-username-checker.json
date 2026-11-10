@@ -1,0 +1,61 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Discord Username Checker",
+   "question": "Discord Username Checker",
+   "answer": "Test Names Against Discord's Rules",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "eye",
+    "calendar"
+   ],
+   "qualifier": "Check a Discord username against Discord's format rules, get close valid alternatives, or paste a list of up to 200 names to see which ones Discord would accept."
+  },
+  {
+   "name": "discord-username-rules-in",
+   "type": "lists",
+   "kicker": "Discord Username Checker",
+   "title": "Discord username rules in detail",
+   "groups": [
+    {
+     "label": "What happened to the #1234 tags",
+     "text": "Discord used to let many people share the same name by adding a four-digit tag."
+    },
+    {
+     "label": "Periods and underscores",
+     "text": "Both are allowed anywhere in the name, and underscores can repeat."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Discord Username Checker",
+   "title": "How to check and claim a Discord username",
+   "steps": [
+    {
+     "title": "Shortlist names that pass",
+     "text": ""
+    },
+    {
+     "title": "Do the Discord username check in the app",
+     "text": ""
+    },
+    {
+     "title": "Keep your other profiles in line",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Check many Discord usernames at once",
+   "quote": "Switch to Check a list to test a batch of ideas in one go.",
+   "by": "Discord Username Checker"
+  }
+ ]
+}

@@ -1,0 +1,79 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Discord Photo Resizer",
+   "question": "Discord Photo Resizer",
+   "answer": "Avatar, Icon, Banner & Emoji Sizes",
+   "tone": "neutral",
+   "mark": "block",
+   "icons": [
+    "calendar",
+    "clock"
+   ],
+   "qualifier": "Upload an image, pick a Discord preset such as avatar, server icon, emoji or sticker, and download it at the exact size Discord expects."
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "Discord Photo Resizer",
+   "what": "Discord image sizes at a glance: Avatar",
+   "value": "512 × 512",
+   "unit": "px",
+   "others": [
+    {
+     "value": "512 × 512",
+     "label": "Server icon"
+    },
+    {
+     "value": "960 × 540",
+     "label": "Server banner"
+    },
+    {
+     "value": "680 × 240",
+     "label": "Profile banner"
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Discord Photo Resizer",
+   "title": "How to resize an image for Discord",
+   "steps": [
+    {
+     "title": "Upload your picture",
+     "text": "Choose a PNG or JPG from your device."
+    },
+    {
+     "title": "Choose a preset",
+     "text": ""
+    },
+    {
+     "title": "Pick fill or fit",
+     "text": ""
+    },
+    {
+     "title": "Download PNG or JPG",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Discord Photo Resizer",
+   "title": "Tips for sharp Discord images",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Keep emoji under the file limit",
+     "Design for dark mode first",
+     "Leave a margin around your subject",
+     "Expect still images"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,69 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Facebook Name Generator",
+   "question": "Free Nickname, Page & Group Ideas",
+   "answer": "Facebook Name Generator",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "calendar",
+    "clock"
+   ],
+   "qualifier": "Get 30 ideas for a Facebook nickname, a creator Page or a Group name. Your personal profile still uses your real name, as Facebook requires."
+  },
+  {
+   "name": "what-a-facebook-name",
+   "type": "lists",
+   "kicker": "Facebook Name Generator",
+   "title": "What a Facebook name generator can (and can't) help with",
+   "groups": [
+    {
+     "label": "Your profile name stays real",
+     "text": "Facebook's name standards ask for the name your friends and family know you by."
+    },
+    {
+     "label": "Nicknames live in \"other names\"",
+     "text": "Your profile details can list other names."
+    },
+    {
+     "label": "Pages are for your public side",
+     "text": "If you post as a band, artist."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Facebook Name Generator",
+   "title": "How to use the Facebook name generator",
+   "steps": [
+    {
+     "title": "For a nickname",
+     "text": ""
+    },
+    {
+     "title": "For a creator or public-figure Page",
+     "text": ""
+    },
+    {
+     "title": "For a Group",
+     "text": ""
+    },
+    {
+     "title": "Before you settle",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Facebook name rules and limits",
+   "quote": "Summary at the time of writing; see the Facebook Help Center for the full name standards.",
+   "by": "Facebook Name Generator"
+  }
+ ]
+}

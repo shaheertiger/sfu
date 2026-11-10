@@ -1,0 +1,71 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Instagram Bold Text Generator",
+   "question": "Free Tool",
+   "answer": "Instagram Bold Text Generator",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "calendar",
+    "clock"
+   ],
+   "qualifier": "Instagram has no bold button. Type your text, pick one of 9 bold Unicode styles and paste bold words into your captions, bio and comments."
+  },
+  {
+   "name": "bold-styles-you-can",
+   "type": "lists",
+   "kicker": "Instagram Bold Text Generator",
+   "title": "Bold styles you can generate",
+   "groups": [
+    {
+     "label": "The 9 bold styles at a glance",
+     "text": "Unicode only includes matching digits for some styles."
+    },
+    {
+     "label": "Which bold looks most natural",
+     "text": "Sans bold is the closest match to Instagram's own interface font."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Instagram Bold Text Generator",
+   "title": "Best practices for bold text on Instagram",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Bold less, not more",
+     "Watch your character count"
+    ]
+   }
+  },
+  {
+   "name": "where-it-helps",
+   "type": "lists",
+   "kicker": "Instagram Bold Text Generator",
+   "title": "Where bold text **helps on Instagram**",
+   "groups": [
+    {
+     "label": "The first line of a caption",
+     "text": "The feed shows only a line or two before “more.”"
+    },
+    {
+     "label": "Headings in long captions",
+     "text": "Bold labels for tutorials, recipes and carousels."
+    },
+    {
+     "label": "Your bio",
+     "text": "One bold line of the 150 characters, like your role."
+    },
+    {
+     "label": "Pinned comments",
+     "text": "Answer the question everyone keeps asking."
+    }
+   ]
+  }
+ ]
+}

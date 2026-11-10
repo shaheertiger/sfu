@@ -1,0 +1,87 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "X Page Name Generator",
+   "question": "X Page Name Generator",
+   "answer": "30 Free Brand Account Name Ideas",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "type",
+    "video"
+   ],
+   "qualifier": "Get 30 name and handle ideas for a brand or business account on X, all short enough for X's 15-character handle limit."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "X Page Name Generator",
+   "title": "How to use the X page name generator",
+   "steps": [
+    {
+     "title": "Enter your brand or product word",
+     "text": ""
+    },
+    {
+     "title": "Choose a style",
+     "text": ""
+    },
+    {
+     "title": "Copy from 30 ideas",
+     "text": ""
+    },
+    {
+     "title": "Regenerate or rephrase",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "X Page Name Generator",
+   "what": "X name rules and limits for brand accounts: Display name",
+   "value": "50",
+   "unit": "characters",
+   "others": [
+    {
+     "value": "4–15",
+     "label": "Handle (@username)"
+    },
+    {
+     "value": "160",
+     "label": "Bio"
+    },
+    {
+     "value": "280",
+     "label": "Standard post"
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "X Page Name Generator",
+   "title": "Brand account name examples",
+   "groups": [
+    {
+     "label": "Sample brand accounts",
+     "text": "Invented for this page; check them on X and with a trademark search before use."
+    },
+    {
+     "label": "Test it in a sentence",
+     "text": "Draft a post that mentions it."
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "What makes a good brand name on X",
+   "quote": "On X (formerly Twitter), a business account has two names to get right: a display name of up to 50 characters and an @handle of only 4 to 15.",
+   "by": "X Page Name Generator"
+  }
+ ]
+}

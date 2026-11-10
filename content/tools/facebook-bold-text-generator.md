@@ -7,7 +7,11 @@ keyword: facebook bold text generator
 ---
 ## Bold styles you can generate
 
+![Facebook Bold Text Generator: Facebook Bold Text Generator. Write bold headlines and labels in Facebook posts, comments, Reels captions and Group rules.](/images/tools/facebook-bold-text-generator-hero-1200x675.webp)
+
 A normal Facebook post has no bold option, so this generator gives you bold-looking Unicode letters instead. Type your text, choose one of 9 styles, and tap to copy.
+
+![Key point from the Facebook Bold Text Generator page: A normal Facebook post has no bold option, so this generator gives you bold-looking Unicode letters instead.](/images/tools/facebook-bold-text-generator-key-point-1200x675.webp)
 
 ### Pick a bold that fits the post
 
@@ -27,6 +31,8 @@ What you copy is a string of Unicode symbols that look like heavy letters. Faceb
 
 ## Where bold text works on Facebook
 
+![Where bold text works on Facebook, in 3 groups: Long posts on Pages and profiles, Group posts and Group rules and Reels captions and comments.](/images/tools/facebook-bold-text-generator-where-bold-text-works-1200x675.webp)
+
 ### Long posts on Pages and profiles
 
 Bold makes structure possible in a long post. A simple pattern: a bold headline, a short plain paragraph, then bold labels such as "𝗪𝗵𝗲𝗻," "𝗪𝗵𝗲𝗿𝗲" and "𝗛𝗼𝘄 𝘁𝗼 𝗷𝗼𝗶𝗻," each followed by a line of plain text.
@@ -44,6 +50,8 @@ Short bold phrases work in Reels captions and in comments. In a long comment thr
 Event details and fundraiser descriptions accept Unicode bold. Use it for the date, the venue label or the goal so the essentials stand out, and repeat critical details in plain text.
 
 ## Best practices for bold text on Facebook
+
+![Best practices for bold text on Facebook: do choose bold or caps, not both, plan edits ahead and watch out when cross-posting. Skip bold in ads and names.](/images/tools/facebook-bold-text-generator-best-practices-1200x675.webp)
 
 ### Choose bold or caps, not both
 

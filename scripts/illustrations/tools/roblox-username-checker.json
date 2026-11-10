@@ -1,0 +1,94 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Roblox Username Checker",
+   "question": "Roblox Username Checker",
+   "answer": "Test Rules & Search the Name",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "eye",
+    "calendar"
+   ],
+   "qualifier": "Check a Roblox username against Roblox's format rules, get close valid alternatives, and open Roblox's user search to see whether someone already has it."
+  },
+  {
+   "name": "what-the-roblox-username",
+   "type": "lists",
+   "kicker": "Roblox Username Checker",
+   "title": "What the Roblox username checker does",
+   "groups": [
+    {
+     "label": "The rules it tests",
+     "text": "Length between 3 and 20 characters Only letters and numbers."
+    },
+    {
+     "label": "What the search button shows",
+     "text": "Roblox doesn't have a profile address built from the username."
+    },
+    {
+     "label": "Nothing is sent anywhere",
+     "text": "The check runs in your browser."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Roblox Username Checker",
+   "title": "How to check a Roblox username",
+   "steps": [
+    {
+     "title": "Type the name you want",
+     "text": "Enter it the way you want it to look."
+    },
+    {
+     "title": "Fix what's flagged",
+     "text": ""
+    },
+    {
+     "title": "Search Roblox for an exact match",
+     "text": "Tap the button to open Roblox's user search."
+    },
+    {
+     "title": "Confirm on Roblox",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "username-vs-display-name",
+   "type": "lists",
+   "kicker": "Roblox Username Checker",
+   "title": "Username vs. display name on Roblox",
+   "groups": [
+    {
+     "label": "Your username is unique",
+     "text": "Your username is the name tied to your account, shown with an @ in front."
+    },
+    {
+     "label": "Roblox's filter has a say too",
+     "text": "Roblox also blocks names its filter considers inappropriate."
+    }
+   ]
+  },
+  {
+   "name": "stay-safe-when-picking",
+   "type": "lists",
+   "kicker": "Roblox Username Checker",
+   "title": "Stay safe when picking a Roblox username",
+   "groups": [
+    {
+     "label": "Keep personal details out of it",
+     "text": "Your username is public, so leave out your real name."
+    },
+    {
+     "label": "Use the same safe name elsewhere",
+     "text": "If you also post Roblox clips on YouTube or TikTok."
+    }
+   ]
+  }
+ ]
+}

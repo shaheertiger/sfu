@@ -6,7 +6,12 @@ lead: Paste a script, voiceover or talk to see how long it takes to say out loud
 keyword: speech time calculator
 ---
 ## How the speech time calculator works
+
+![Speech Time Calculator: Words to Minutes for Scripts & Talks. Paste a script, voiceover or talk to see how long it takes to say out loud and to read, then check it against a Reels, TikTok, Shorts or speech length.](/images/tools/speech-time-calculator-hero-1200x675.webp)
+
 This speech time calculator turns the words in your script into minutes and seconds. At a normal speaking pace of about 150 words per minute, 150 words take one minute, a 3-minute speech is about 450 words, and 1,000 words take about 6 minutes 40 seconds. Paste your text into **Your script or caption** and the result updates as you type, so you can trim a line and watch the time drop.
+
+![Key point from the Speech Time Calculator page: This speech time calculator turns the words in your script into minutes and seconds.](/images/tools/speech-time-calculator-key-point-1200x675.webp)
 
 ### What you see
 - **Speaking time**: how long the script takes to say out loud at the pace you picked.
@@ -50,6 +55,9 @@ To convert words to minutes, divide the word count by your speaking rate: minute
 These are estimates for continuous speech. Real talks run longer once you add pauses, audience laughter, slide changes or a demo, so leave about 10% of slack in anything with a hard time limit.
 
 ## How long is a 3 minute speech?
+
+![How long is a 3 minute speech?, a table of 1 minute, 2 minutes, 3 minutes, 5 minutes, 10 minutes and 20 minutes by Words at a normal pace.](/images/tools/speech-time-calculator-table-1200x675.webp)
+
 A 3-minute speech is about 450 words at a normal pace of 150 words per minute. If you speak slowly, plan on about 390 words; if you talk fast, about 510. The same rule scales to other lengths:
 
 | Speech length | Words at a normal pace |
@@ -65,6 +73,9 @@ A 3-minute speech is about 450 words at a normal pace of 150 words per minute. I
 Spend about 30 seconds (75 words) on the opening, two minutes (300 words) on two or three main points, and 30 seconds on the close. Write it out, paste it in, set the target to **3 min**, and cut until the verdict turns green. Then read it out loud once with a timer: nerves usually speed people up, so if you rush on the day you'll still finish on time.
 
 ## Words per minute calculator: find your own pace
+
+![Speech Time Calculator: words per minute calculator: find your own pace, in 2 groups: Match the preset to your result and What counts as a good pace?](/images/tools/speech-time-calculator-words-per-minute-calculator-1200x675.webp)
+
 The calculator times your script at one of three preset paces; it doesn't listen to you or measure your speed. To work out your own words per minute, paste a script you know, read it out loud as you would on camera, and time it with your phone's stopwatch. Divide the word count by the minutes it took. For example, 420 words in 3 minutes is 140 words per minute.
 
 ### Match the preset to your result
@@ -74,6 +85,9 @@ If you land under 140 words a minute, use **Slow**; between 140 and 160, **Norma
 There's no single right speed. Around 150 words a minute sounds conversational and is easy to follow. Faster delivery can work for punchy short videos, but if viewers keep rewinding or turning on captions to keep up, slow down or cut words instead of talking faster.
 
 ## Timing scripts for Reels, TikTok, Shorts and YouTube voiceovers
+
+![Speech Time Calculator: timing scripts for Reels, TikTok, Shorts and YouTube voiceovers, in 2 groups: Front-load the hook and Write the caption and title too.](/images/tools/speech-time-calculator-timing-scripts-for-reels-1200x675.webp)
+
 Short videos leave no room for filler, so knowing your word budget before you film saves retakes. At a normal pace, here's how much fits:
 
 | Video length | English words | Japanese characters |

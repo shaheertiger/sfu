@@ -1,0 +1,70 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Font Generator",
+   "question": "Font Generator",
+   "answer": "30+ Free Text Styles",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "calendar",
+    "clock"
+   ],
+   "qualifier": "Type any text and copy it in 30+ Unicode styles that paste into almost any social app, bio, caption or chat. No sign-up, nothing uploaded."
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Font Generator",
+   "title": "Where styled text works",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Platform guides",
+     "Places styled text usually fails",
+     "Places with better options"
+    ]
+   }
+  },
+  {
+   "name": "best-practices-2",
+   "type": "checklist",
+   "kicker": "Font Generator",
+   "title": "Best practices",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Style a few words, not everything",
+     "Keep keywords and names searchable",
+     "Consider accessibility",
+     "Test on more than one device"
+    ]
+   }
+  },
+  {
+   "name": "not-a-font",
+   "type": "versus",
+   "kicker": "Font Generator",
+   "title": "Why it **isn't really a font**",
+   "left": {
+    "label": "A font",
+    "tone": "neutral",
+    "items": [
+     "Changes how the same letters are drawn",
+     "Lost when text is copied"
+    ]
+   },
+   "right": {
+    "label": "This generator",
+    "tone": "good",
+    "items": [
+     "Changes which characters you send",
+     "Survives copy and paste",
+     "Read as different characters by search"
+    ]
+   }
+  }
+ ]
+}

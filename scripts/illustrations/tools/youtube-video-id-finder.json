@@ -1,0 +1,70 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "YouTube Video ID Finder",
+   "question": "YouTube Video ID Finder",
+   "answer": "Get Video, Channel & Playlist IDs",
+   "tone": "neutral",
+   "mark": "video",
+   "icons": [
+    "clock",
+    "image"
+   ],
+   "qualifier": "Paste a YouTube link to get its video ID, plus any channel ID, @handle, playlist ID and start time, with short and embed links and thumbnails."
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "YouTube Video ID Finder",
+   "what": "YouTube Link IDs at a Glance: Channel ID",
+   "value": "24",
+   "unit": "characters",
+   "unitNote": "24 characters",
+   "others": []
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "YouTube Video ID Finder",
+   "title": "How to Find a YouTube Video ID",
+   "steps": [
+    {
+     "title": "With the finder",
+     "text": "Open the video on YouTube and copy its link."
+    },
+    {
+     "title": "By hand",
+     "text": ""
+    },
+    {
+     "title": "Finding a channel ID",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "YouTube Video ID Finder",
+   "title": "Tips and Limits",
+   "good": {
+    "label": "Do",
+    "items": [
+     "IDs outlive titles, not deletions",
+     "The finder reads links, not YouTube",
+     "Custom and legacy channel links",
+     "Clean links before you share"
+    ]
+   }
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "What the Video ID Finder Does",
+   "quote": "The video ID finder pulls the video ID out of any YouTube link you paste, along with the other IDs a link can carry, and gives each one a copy button.",
+   "by": "YouTube Video ID Finder"
+  }
+ ]
+}

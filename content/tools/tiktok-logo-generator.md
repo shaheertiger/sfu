@@ -6,6 +6,9 @@ lead: Design a bold letter or emoji profile picture for your TikTok account and 
 keyword: tiktok logo generator
 ---
 ## What the TikTok logo generator makes
+
+![TikTok Logo Generator, shown as 512 × 512 px.](/images/tools/tiktok-logo-generator-hero-1200x675.webp)
+
 This tool makes a profile picture for your own TikTok account: up to three letters or one emoji on a solid or gradient background, downloaded as a 512×512 PNG. That's well above TikTok's recommended minimum of 200×200. It doesn't make TikTok's logo, and it isn't connected to TikTok.
 
 | Option | Choices |
@@ -26,6 +29,9 @@ Plenty of accounts don't show a face: tutorials, page accounts, clip channels, s
 Don't recreate TikTok's music-note logo or its distinctive cyan-and-red style in your icon. It can make people think your account is official, and it may break TikTok's brand rules. Use your own letters, colors and emoji.
 
 ## How to make your TikTok profile icon
+
+![How to make your TikTok profile icon, in 4 steps: choose letters or an emoji, pick a shape, style the background and text and download and set it on TikTok.](/images/tools/tiktok-logo-generator-how-to-1200x675.webp)
+
 ### 1. Choose letters or an emoji
 Type the initials of your username or brand, or pick one emoji that fits your content.
 
@@ -39,6 +45,9 @@ Try a gradient for a punchy look or a solid color for something cleaner. Set a t
 Download the PNG, then go to Edit profile in the TikTok app and change your photo. The icon is generated in your browser and never uploaded.
 
 ## Design tips for TikTok profile icons
+
+![Design tips for TikTok profile icons: do choose a signature color, keep the emoji or letters centered and match your username.](/images/tools/tiktok-logo-generator-best-practices-1200x675.webp)
+
 ### Contrast matters more than color choice
 TikTok shows your icon over moving video. High contrast between the letters and background keeps it readable whatever is playing behind it.
 
@@ -52,6 +61,9 @@ Because the picture is cropped into a circle, anything near the corners disappea
 If your handle is long, use its first one or two letters. Your username can be up to 24 characters, but your icon should be readable at a glance. For handle ideas, try the [TikTok name generator](/tools/tiktok-name-generator).
 
 ## Ideas by content type
+
+![TikTok profile icon ideas by content type, in 4 groups: Educational and how-to, Comedy and entertainment, Small businesses and Fan and niche pages.](/images/tools/tiktok-logo-generator-ideas-1200x675.webp)
+
 ### Educational and how-to accounts
 Use two initials on a calm solid background, such as navy or deep green, with white text. It signals a focused, trustworthy account.
 

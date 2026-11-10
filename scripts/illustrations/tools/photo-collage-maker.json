@@ -1,0 +1,95 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Photo Collage Maker",
+   "question": "Free Instagram Collage & Photo Grid",
+   "answer": "Photo Collage Maker",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "send",
+    "image"
+   ],
+   "qualifier": "Add 2 to 9 photos, pick a layout and a size for Instagram posts or Stories, drag each photo into place, and download one finished collage. It all happens in your browser."
+  },
+  {
+   "name": "what-this-photo-collage",
+   "type": "lists",
+   "kicker": "Photo Collage Maker",
+   "title": "What this photo collage maker does",
+   "groups": [
+    {
+     "label": "Your photos stay on your device",
+     "text": "The collage is drawn in your browser."
+    },
+    {
+     "label": "Files it accepts",
+     "text": "JPG, PNG, WebP and GIF images, up to 9 at a time."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Photo Collage Maker",
+   "title": "How to make a photo collage",
+   "steps": [
+    {
+     "title": "Add your photos",
+     "text": ""
+    },
+    {
+     "title": "Put them in order",
+     "text": ""
+    },
+    {
+     "title": "Choose a layout and output size",
+     "text": ""
+    },
+    {
+     "title": "Frame each photo",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "Photo Collage Maker",
+   "what": "Instagram collage sizes for posts, Stories and Reels: 1:1",
+   "value": "1080 × 1080",
+   "unit": "px",
+   "others": [
+    {
+     "value": "1080 × 1350",
+     "label": "4:5"
+    },
+    {
+     "value": "1080 × 1440",
+     "label": "3:4"
+    },
+    {
+     "value": "1080 × 1920",
+     "label": "9:16 · Stories/Reels"
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Photo Collage Maker",
+   "title": "Tips for a photo grid collage that reads on a phone",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Use fewer, bigger photos",
+     "Match photo shape to cell shape",
+     "Make the gap part of the design",
+     "Add a headline afterwards"
+    ]
+   }
+  }
+ ]
+}

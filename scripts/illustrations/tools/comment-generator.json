@@ -1,0 +1,64 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Comment Generator",
+   "question": "Free Social Media Comment Ideas to Edit",
+   "answer": "Comment Generator",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "send",
+    "calendar"
+   ],
+   "qualifier": "Stuck on what to say? Describe the post, pick a tone, and get 12 comment ideas you can personalize before posting them yourself."
+  },
+  {
+   "name": "how-the-comment-generator",
+   "type": "lists",
+   "kicker": "Comment Generator",
+   "title": "How the comment generator works",
+   "groups": [
+    {
+     "label": "Describe the post",
+     "text": "Paste a short excerpt or write a one-line summary."
+    },
+    {
+     "label": "Pick a tone",
+     "text": "Choose from five: Supportive."
+    },
+    {
+     "label": "Edit, then post it yourself",
+     "text": "You get 12 comment ideas assembled from templates and the details you entered."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Comment Generator",
+   "title": "Commenting responsibly",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Write the final version yourself"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Never post the same comment at scale",
+     "No fake engagement"
+    ]
+   }
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "What makes a good social media comment",
+   "quote": "A good comment shows you actually read or watched the post and adds something: a question, a related experience or genuine encouragement.",
+   "by": "Comment Generator"
+  }
+ ]
+}

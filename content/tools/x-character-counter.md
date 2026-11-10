@@ -6,7 +6,12 @@ lead: Paste a draft to see how X will count it, with links scored as 23 and most
 keyword: x character counter
 ---
 ## X character limits at a glance
+
+![X Character Counter: Free 280 Limit & Tweet Length Checker. Paste a draft to see how X will count it, with links scored as 23 and most emoji as 2, plus a Premium toggle for long posts.](/images/tools/x-character-counter-hero-1200x675.webp)
+
 A standard post on X (formerly Twitter) can be 280 characters, but X does not count every character as one, so a plain letter count can tell you a post fits when it doesn't. The counter above applies X's own weighting and shows how many characters you have left.
+
+![X character limits at a glance: Long post (X Premium), shown as 25,000 characters, with Bio 160, Display name 50 and @handle 4–15 for comparison.](/images/tools/x-character-counter-specs-1200x675.webp)
 
 | Field | Limit |
 |---|---|
@@ -24,6 +29,9 @@ Free accounts are capped at 280 weighted characters per post. Subscribers to X P
 Your bio, display name and handle are counted separately from posts. The display name is the bold name above your handle and can include spaces and emoji. The handle is stricter: only letters, numbers and underscores, between 4 and 15 characters.
 
 ## How X counts characters
+
+![How X counts characters, in 2 groups: Links always count as 23 and Spaces and line breaks count too.](/images/tools/x-character-counter-how-x-counts-characters-1200x675.webp)
+
 X uses a weighted count rather than a simple tally of letters. Most of the surprises come from three things.
 
 ### Links always count as 23
@@ -39,6 +47,9 @@ Each space and each line break uses one character. If you lay a post out with bl
 A word processor or a generic counter will count a 90-character URL as 90 and an emoji as 1 or 2 depending on how it handles Unicode. Neither matches X. That's why a post can look fine in a notes app and still show a negative number in X's composer.
 
 ## How to use the counter
+
+![X Character Counter: how to use the counter, in 3 steps: type or paste your draft, switch the Premium toggle on or off and check profile text the same way.](/images/tools/x-character-counter-how-to-1200x675.webp)
+
 The tool runs in your browser. Nothing you type is uploaded or stored.
 
 ### Type or paste your draft
@@ -51,6 +62,9 @@ Leave Premium off to check against the 280 limit. Turn it on if you're writing a
 Drafting a new bio or display name? Paste it in and compare the count with the table above. If you need ideas first, try the [X bio generator](/tools/x-bio-generator) or the [X name generator](/tools/x-name-generator).
 
 ## Best practices for posts that fit
+
+![X Character Counter: best practices for posts that fit: do put the point in the first line and count the link as part of the budget.](/images/tools/x-character-counter-best-practices-1200x675.webp)
+
 ### Put the point in the first line
 Even with Premium, the timeline typically shows only the opening of a long post with a "Show more" link. Treat the first 280 characters as the part most people will actually read.
 

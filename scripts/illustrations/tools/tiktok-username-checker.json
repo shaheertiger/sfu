@@ -1,0 +1,101 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "TikTok Username Checker",
+   "question": "TikTok Username Checker",
+   "answer": "Validate Rules & Open the Profile",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "eye",
+    "calendar"
+   ],
+   "qualifier": "Check a TikTok username against the platform's format rules, get valid alternatives if it fails, test a whole list at once, and open tiktok.com/@name to see whether someone already has it."
+  },
+  {
+   "name": "what-the-tiktok-username",
+   "type": "lists",
+   "kicker": "TikTok Username Checker",
+   "title": "What the TikTok username checker can and can't confirm",
+   "groups": [
+    {
+     "label": "The rules it tests",
+     "items": [
+      "2 to 24 characters",
+      "No spaces or other symbols",
+      "Doesn't end with a period"
+     ]
+    },
+    {
+     "label": "Check a list of usernames",
+     "text": "Switch to Check a list to paste up to 200 names."
+    },
+    {
+     "label": "Reading the profile link",
+     "text": "Tapping the profile button opens tiktok.com/@ and your name in a new tab."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "TikTok Username Checker",
+   "title": "How to check if a TikTok username is available",
+   "steps": [
+    {
+     "title": "Type the name you want",
+     "text": ""
+    },
+    {
+     "title": "Fix what's flagged",
+     "text": ""
+    },
+    {
+     "title": "Open the profile link",
+     "text": "If the name passes, tap the profile button."
+    },
+    {
+     "title": "Compare the suggestions",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "tiktok-username-rules-vs",
+   "type": "lists",
+   "kicker": "TikTok Username Checker",
+   "title": "TikTok username rules vs. other platforms",
+   "groups": [
+    {
+     "label": "TikTok is shorter than Instagram",
+     "text": "TikTok caps usernames at 24 characters, while Instagram allows 30."
+    },
+    {
+     "label": "Username vs. name",
+     "text": "Your username is the @ handle in your profile link and the one people tag."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "TikTok Username Checker",
+   "title": "Tips for a TikTok username that sticks",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Say what you post",
+     "Line up your bio and handle"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Avoid look-alike characters"
+    ]
+   }
+  }
+ ]
+}

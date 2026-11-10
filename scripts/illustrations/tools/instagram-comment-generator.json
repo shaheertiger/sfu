@@ -1,0 +1,65 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Instagram Comment Generator",
+   "question": "Free Ideas to Personalize",
+   "answer": "Instagram Comment Generator",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "send",
+    "video"
+   ],
+   "qualifier": "Describe an Instagram post or Reel, pick a tone, and get 12 comment ideas to make your own, for your audience, your peers or your brand's community."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Instagram Comment Generator",
+   "title": "How to use the Instagram comment generator",
+   "steps": [
+    {
+     "title": "Describe the post",
+     "text": ""
+    },
+    {
+     "title": "Pick a tone",
+     "text": ""
+    },
+    {
+     "title": "Edit and post from the app",
+     "text": "You get 12 ideas."
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Instagram Comment Generator",
+   "title": "Instagram comment ideas by post type",
+   "groups": [
+    {
+     "label": "Carousel",
+     "text": "\"Slide five is my favorite, the way the frosting matches the flowers is so clever.\""
+    },
+    {
+     "label": "Reel",
+     "text": "\"The transition at the door got me."
+    },
+    {
+     "label": "Product launch from a peer",
+     "text": "\"Congrats on the launch!"
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "What makes a good Instagram comment",
+   "quote": "A good Instagram comment goes beyond a heart emoji: it names something in the photo, slide or Reel and says something the author will want to answer.",
+   "by": "Instagram Comment Generator"
+  }
+ ]
+}

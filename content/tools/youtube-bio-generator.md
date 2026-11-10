@@ -6,6 +6,9 @@ lead: Draft your YouTube channel description. Describe the channel, pick a tone,
 keyword: youtube bio generator
 ---
 ## What makes a good YouTube channel description
+
+![YouTube Bio Generator: YouTube Bio Generator. Draft your YouTube channel description.](/images/tools/youtube-bio-generator-hero-1200x675.webp)
+
 On YouTube, your "bio" is the channel description: up to 1,000 characters that tell viewers what the channel covers, who it's for and when new videos arrive. This free generator writes 12 drafts from a short summary. Each one leaves room for your own details.
 
 ### The first sentence carries the most weight
@@ -21,6 +24,9 @@ A line about your upload rhythm, like "New videos every Thursday," gives viewers
 Brands and other creators look for a contact route. Say where business inquiries should go, and never paste a personal phone number.
 
 ## How to use the YouTube bio generator
+
+![How to use the YouTube bio generator, in 3 steps: summarize your channel, choose a tone and emoji preference and copy, extend and paste.](/images/tools/youtube-bio-generator-how-to-1200x675.webp)
+
 The tool runs in your browser, with no sign-up and no uploads.
 
 ### Summarize your channel
@@ -33,6 +39,9 @@ Pick friendly, professional, funny, minimal or aesthetic, and toggle emoji on or
 You get 12 descriptions, each with a character count. Most come in well under 1,000 characters, so add a sentence about your upload schedule, playlists or a recurring series. Then open **YouTube Studio > Customization > Basic info** and paste it into the Description field.
 
 ## YouTube channel limits and rules
+
+![YouTube channel limits and rules: Channel name, shown as 50 characters (at the time of writing), with Handle 3–30, Channel description 1,000 and Video title 100 for comparison.](/images/tools/youtube-bio-generator-specs-1200x675.webp)
+
 The channel description is only one of several text fields, and they're easy to mix up.
 
 | Field | Limit |
@@ -53,6 +62,9 @@ Basic info includes a Links section for your website and social profiles. Adding
 Still deciding what to call the channel? Try the [YouTube name generator](/tools/youtube-name-generator), or the [YouTube page name generator](/tools/youtube-page-name-generator) for brand channels.
 
 ## Channel description ideas by niche
+
+![YouTube Bio Generator: channel description ideas by niche, in 3 groups: Cooking, Tech reviews and Language learning.](/images/tools/youtube-bio-generator-use-cases-1200x675.webp)
+
 ### Cooking
 Weeknight dinners that take 30 minutes or less, made with ingredients from an ordinary supermarket. New recipes every Tuesday, plus a pantry-clean-out episode at the end of each month.
 

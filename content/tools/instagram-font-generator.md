@@ -7,7 +7,11 @@ keyword: instagram font generator
 ---
 ## Styles you can generate for Instagram
 
+![Instagram Font Generator: 30+ Free Fonts. Type once, copy any of 30+ Unicode styles and paste them into your Instagram bio, name field, captions, Reels captions, comments and Story text.](/images/tools/instagram-font-generator-hero-1200x675.webp)
+
 Instagram has no font menu for bios or captions, but it shows Unicode characters exactly as you paste them. Enter your text above, browse 30+ styles, and tap the one you want to copy it.
+
+![Key point from the Instagram Font Generator page: Instagram has no font menu for bios or captions, but it shows Unicode characters exactly as you paste them.](/images/tools/instagram-font-generator-key-point-1200x675.webp)
 
 ### Clean styles for captions
 
@@ -27,6 +31,8 @@ Every style is a set of Unicode characters that resemble letters, not a font fil
 
 ## Where styled text works on Instagram
 
+![Where styled text works on Instagram, in 3 groups: Bio and name field, Captions and Reels captions and Stories.](/images/tools/instagram-font-generator-where-styled-text-works-1200x675.webp)
+
 ### Bio and name field
 
 Your bio allows 150 characters, and styled text pastes in fine. Your name field (the bold line above your bio) also accepts most styles, but Instagram uses that field in search, so styling it can make you harder to find. Your username is different: it only allows letters, numbers, periods and underscores, so styled characters won't be accepted there.
@@ -44,6 +50,8 @@ Styled text works in comments and replies, in Notes, and in the names of your St
 Instagram's Story editor has its own built-in fonts, which are real fonts and the better choice for on-image text. Pasting Unicode styles into a Story text box usually works, but the result can look different from the generator's preview.
 
 ## Best practices
+
+![Instagram Font Generator: best practices: do keep the searchable parts plain, remember screen reader users and count characters after styling. Never style hashtags or handles.](/images/tools/instagram-font-generator-best-practices-1200x675.webp)
 
 ### Never style hashtags or handles
 

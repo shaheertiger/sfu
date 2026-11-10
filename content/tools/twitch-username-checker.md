@@ -6,7 +6,12 @@ lead: Check a Twitch username against the platform's format rules, get close val
 keyword: twitch username checker
 ---
 ## What the Twitch username checker tells you
+
+![Twitch Username Checker: Test Name Rules & Open the Channel. Check a Twitch username against the platform's format rules, get close valid alternatives, and open twitch.tv/name to see whether a channel already uses it.](/images/tools/twitch-username-checker-hero-1200x675.webp)
+
 The Twitch username checker tests a name against Twitch's format rules and links to twitch.tv/yourname, so you can see in one click whether a channel already has it. It can't guarantee the name is free: Twitch has no public availability lookup, and names can stay attached to banned, closed or recently renamed accounts. The final answer comes from Twitch's sign-up form or the username field in your settings.
+
+![What the Twitch username checker tells you, in 3 groups: The rules it tests, Check a list of names and Reading the channel link.](/images/tools/twitch-username-checker-what-the-twitch-username-1200x675.webp)
 
 ### The rules it tests
 - 4 to 25 characters
@@ -22,6 +27,9 @@ Switch to **Check a list** to paste up to 200 names, one per line or separated b
 The button opens twitch.tv/ followed by your name in lowercase. If a channel loads, the name is taken. If Twitch says the channel doesn't exist, the name may be free, but a suspended or closed account may still hold it. Treat it as "worth trying," then confirm on Twitch.
 
 ## How to do a Twitch username check
+
+![How to do a Twitch username check, in 4 steps: type the name you want, fix what's flagged, open the channel link and confirm on Twitch.](/images/tools/twitch-username-checker-how-to-1200x675.webp)
+
 ### 1. Type the name you want
 Enter it without spaces. If you'd normally separate words, use an underscore ("pixel_raider"), just not as the first character.
 
@@ -45,6 +53,9 @@ Your display name is what viewers see in chat and on your channel. On Twitch it 
 Twitch lets you change your username, but it limits how often you can do it, and your old name isn't necessarily released to someone else right away. Check Twitch's help page for the current rules before you change it, and update links to your channel afterward.
 
 ## Tips for a Twitch name that works off Twitch too
+
+![Tips for a Twitch name that works off Twitch too: do keep it short enough for X, make it easy to say on stream and match your Discord and YouTube.](/images/tools/twitch-username-checker-best-practices-1200x675.webp)
+
 ### Keep it short enough for X
 Streamers promote their streams on other platforms. X caps usernames at 15 characters, so a 22-character Twitch name won't carry over. Test the same name on nine platforms at once with the [username availability checker](/tools/username-checker).
 

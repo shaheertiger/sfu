@@ -1,0 +1,56 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Instagram Giveaway Picker",
+   "question": "Instagram Giveaway Picker",
+   "answer": "Random Comment Picker & Wheel",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "type",
+    "calendar"
+   ],
+   "qualifier": "Paste the usernames from your giveaway comments, leave out duplicates and your own accounts, then spin the wheel to draw winners and alternates at random. No login, nothing uploaded."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Instagram Giveaway Picker",
+   "title": "How to run a fair giveaway on Instagram, TikTok and X",
+   "steps": [
+    {
+     "title": "Write the rules before you post",
+     "text": ""
+    },
+    {
+     "title": "Follow each platform's promotion rules",
+     "text": ""
+    },
+    {
+     "title": "Check the law where you and your entrants are",
+     "text": ""
+    },
+    {
+     "title": "Draw in the open",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "How this Instagram giveaway picker works",
+   "quote": "This Instagram giveaway picker draws random winners from a list of usernames you paste in.",
+   "by": "Instagram Giveaway Picker"
+  },
+  {
+   "name": "key-point-2",
+   "type": "callout",
+   "kicker": "Why it doesn't read your comments",
+   "quote": "Many \"Instagram comment picker\" tools ask you to log in with Instagram or connect your account so they can pull comments in.",
+   "by": "Instagram Giveaway Picker"
+  }
+ ]
+}

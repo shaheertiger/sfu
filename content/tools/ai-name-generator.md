@@ -6,7 +6,12 @@ lead: Looking for an AI username generator? Type a word, pick a style and get 30
 keyword: ai name generator
 ---
 ## A faster alternative to AI name generators
+
+![AI Name Generator Alternative: AI Name Generator Alternative. Looking for an AI username generator?](/images/tools/ai-name-generator-hero-1200x675.webp)
+
 Most people searching for an AI name generator want the same thing: a handful of good username ideas, quickly, without thinking too hard. This tool gives you that. It isn't a language model. It combines your word with curated word lists and patterns, then keeps only names that work as a handle on Instagram, TikTok, X, YouTube, Discord, Telegram and Reddit.
+
+![A faster alternative to AI name generators, in 3 groups: Every idea is a valid handle, Instant, with no prompt to write and Free, private and no sign-up.](/images/tools/ai-name-generator-a-faster-alternative-to-1200x675.webp)
 
 ### Every idea is a valid handle
 Chatbots and AI name tools write freely, so they often suggest names with spaces, hyphens, periods or 20+ characters. Those look fine in a list and get rejected when you try to claim them. Every idea here is 3 to 15 characters long and uses only lowercase letters, numbers and underscores, the set every major platform accepts. Telegram also needs at least 5 characters, so skip the shortest ideas if you plan to use it.
@@ -36,6 +41,9 @@ A chatbot can take a long description ("I bake sourdough in a tiny Paris flat an
 Once you have a word you like, this generator turns it into many short, valid handles in one go, in six different styles. You get options you can copy and claim, not a list you have to edit by hand.
 
 ## How to use a chatbot and this tool together
+
+![AI Name Generator Alternative: how to use a chatbot and this tool together, in 4 steps: brainstorm keywords with a chatbot, run your favorite words here, shortlist and say each one out loud and check the format and availability.](/images/tools/ai-name-generator-how-to-1200x675.webp)
+
 You don't have to choose. The two work well as steps in one process.
 
 ### 1. Brainstorm keywords with a chatbot
@@ -51,6 +59,9 @@ Pick three to five ideas. Read each in a sentence like "Follow @nova_drift for m
 Paste your shortlist into the [Instagram handle checker](/tools/instagram-handle-checker) or the [TikTok username checker](/tools/tiktok-username-checker) to confirm the format and open the profile link. Then search for the name on each platform you plan to use.
 
 ## Sample names for "nova"
+
+![Key point from the AI Name Generator Alternative page: These came from the generator with the keyword "nova".](/images/tools/ai-name-generator-key-point-1200x675.webp)
+
 These came from the generator with the keyword "nova". Your results change each time you press **More ideas**, so treat these as examples and check availability before you use one.
 
 - **Cool:** nova_drift, prime_nova, novaloop

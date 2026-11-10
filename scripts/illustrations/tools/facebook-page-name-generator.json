@@ -1,0 +1,90 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Facebook Page Name Generator",
+   "question": "Facebook Page Name Generator",
+   "answer": "30 Free Business Name Ideas",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "calendar",
+    "clock"
+   ],
+   "qualifier": "Describe your business or community in a word or two and get 30 Facebook Page name ideas you can copy, compare and check before you create the Page."
+  },
+  {
+   "name": "what-makes-a-good",
+   "type": "lists",
+   "kicker": "Facebook Page Name Generator",
+   "title": "What makes a good Facebook Page name",
+   "groups": [
+    {
+     "label": "It matches your real-world name",
+     "text": "If your shop sign says \"Harbor Street Bakery\", your Page should too."
+    },
+    {
+     "label": "It looks like a real organization",
+     "text": "Facebook's standards reject names that are all capitals."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Facebook Page Name Generator",
+   "title": "How to use the Facebook Page name generator",
+   "steps": [
+    {
+     "title": "Pick a keyword that describes you",
+     "text": ""
+    },
+    {
+     "title": "Choose a style for your audience",
+     "text": ""
+    },
+    {
+     "title": "Copy, compare, regenerate",
+     "text": ""
+    },
+    {
+     "title": "Check before you create the Page",
+     "text": "The tool can't see existing Pages."
+    }
+   ]
+  },
+  {
+   "name": "facebook-page-name-rules",
+   "type": "lists",
+   "kicker": "Facebook Page Name Generator",
+   "title": "Facebook Page name rules and limits",
+   "groups": [
+    {
+     "label": "Page name versus Page username",
+     "text": "Your Page name is the display name."
+    },
+    {
+     "label": "Changing a Page name later",
+     "text": "Admins can request a name change, which Facebook reviews."
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Facebook Page Name Generator",
+   "title": "Page name ideas by business type",
+   "groups": [
+    {
+     "label": "Sample Page names",
+     "text": "Made up for this page; search and check trademarks before using any."
+    },
+    {
+     "label": "Add a location only if it helps",
+     "text": "A location tag helps a single-site business stand out from similar names."
+    }
+   ]
+  }
+ ]
+}

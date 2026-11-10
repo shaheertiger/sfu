@@ -6,7 +6,12 @@ lead: Check a TikTok username against the platform's format rules, get valid alt
 keyword: tiktok username checker
 ---
 ## What the TikTok username checker can and can't confirm
+
+![TikTok Username Checker: Validate Rules & Open the Profile. Check a TikTok username against the platform's format rules, get valid alternatives if it fails, test a whole list at once, and open tiktok.com/@name to see whether someone already has it.](/images/tools/tiktok-username-checker-hero-1200x675.webp)
+
 The TikTok username checker confirms whether a username follows TikTok's format rules and gives you a one-tap link to tiktok.com/@yourname. It can't tell you for certain that a name is free, because TikTok has no public availability lookup and names can stay attached to accounts you can't see. To know for sure, try the name in TikTok under Edit profile, where the app tells you if it's taken.
+
+![What the TikTok username checker can and can't confirm, in 3 groups: The rules it tests, Check a list of usernames and Reading the profile link.](/images/tools/tiktok-username-checker-what-the-tiktok-username-1200x675.webp)
 
 ### The rules it tests
 - 2 to 24 characters
@@ -23,6 +28,9 @@ Switch to **Check a list** to paste up to 200 names, one per line or separated b
 Tapping the profile button opens tiktok.com/@ and your name in a new tab. A profile with videos or a bio means the name is in use. A "couldn't find this account" message is encouraging but not proof: banned, deactivated or otherwise hidden accounts may still be holding it.
 
 ## How to check if a TikTok username is available
+
+![How to check if a TikTok username is available, in 4 steps: type the name you want, fix what's flagged, open the profile link and compare the suggestions.](/images/tools/tiktok-username-checker-how-to-1200x675.webp)
+
 Checking takes two steps: make sure the name follows TikTok's rules and isn't already on a visible profile, then confirm in the app, which is the only place that gives a definite answer.
 
 ### 1. Type the name you want
@@ -41,6 +49,9 @@ If your first choice fails or is clearly taken, scan the suggested variations, o
 Open TikTok, go to Profile, tap Edit profile, then Username. Enter the name and TikTok shows whether you can use it. If it's available, save it before someone else does. You can't swap usernames freely: at the time of writing TikTok only lets you change it once every 30 days, so it's worth getting right.
 
 ## TikTok username rules vs. other platforms
+
+![TikTok username rules vs. other platforms, in 2 groups: TikTok is shorter than Instagram and Username vs. name.](/images/tools/tiktok-username-checker-tiktok-username-rules-vs-1200x675.webp)
+
 ### TikTok is shorter than Instagram
 TikTok caps usernames at 24 characters, while Instagram allows 30. If you want the same handle everywhere, design it for TikTok's limit first, then check it with the [Instagram handle checker](/tools/instagram-handle-checker).
 
@@ -51,6 +62,9 @@ TikTok rejects a username that ends with a period. Underscores are allowed anywh
 Your username is the @ handle in your profile link and the one people tag. Your name is the display text above it, which can include spaces and is set separately in Edit profile. Viewers searching TikTok can find you by either.
 
 ## Tips for a TikTok username that sticks
+
+![Tips for a TikTok username that sticks: do say what you post and line up your bio and handle. Avoid look-alike characters.](/images/tools/tiktok-username-checker-best-practices-1200x675.webp)
+
 ### Say what you post
 Viewers often decide to follow from a single video. A username that hints at your topic ("@fixit.with.dana" rather than "@dana8841") tells them what more of your videos will be about.
 

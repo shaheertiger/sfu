@@ -8,6 +8,7 @@ import { BEST_TIME_ROOT, allBestTimePages, pagePath as bestTimePath } from '@/li
 import { SPECS_ROOT, SPEC_PLATFORMS, allSpecPages, specPath } from '@/lib/specs';
 import { NOTIFY_PLATFORMS, NOTIFY_ROOT, allNotifyPages, notifyPath } from '@/lib/notify';
 import { INDUSTRIES, POST_IDEAS_ROOT, allPostIdeaPages, postIdeasPath } from '@/lib/post-ideas';
+import { allProgrammaticFigures, markdownImages } from '@/lib/figures';
 
 /** Public pages worth indexing. Signed-in pages, previews and utility pages are left out on purpose. */
 export default function sitemap() {
@@ -19,6 +20,11 @@ export default function sitemap() {
     const map = hreflangMap(kind, slug);
     return map ? { alternates: { languages: Object.fromEntries(Object.entries(map).map(([l, p]) => [l, `${base}${p}`])) } } : {};
   };
+  // Image sitemap entries: the cards on each page, on our own domain (see lib/figure-url.js).
+  const img = (p) => `${base}${p}`;
+  const figs = new Map(allProgrammaticFigures().map((x) => [x.page, x.figures.map((f) => img(f.src))]));
+  const images = (pagePath) => { const list = figs.get(pagePath); return list && list.length ? { images: list } : {}; };
+  const mdImages = (dir, slug) => { const list = markdownImages(dir, slug).map(img); return list.length ? { images: list } : {}; };
   return [
     { url: `${base}/`, changeFrequency: 'weekly', priority: 1 },
     { url: `${base}/signup`, changeFrequency: 'monthly', priority: 0.8 },
@@ -29,18 +35,18 @@ export default function sitemap() {
     { url: `${base}/tools`, changeFrequency: 'weekly', priority: 0.8 },
     ...getToolPages()
       .filter((p) => toolBySlug(p.slug))
-      .map((p) => ({ url: `${base}/tools/${p.slug}`, changeFrequency: 'monthly', priority: 0.7, ...alternates('tools', p.slug) })),
+      .map((p) => ({ url: `${base}/tools/${p.slug}`, changeFrequency: 'monthly', priority: 0.7, ...alternates('tools', p.slug), ...mdImages('tools', p.slug) })),
     ...allLocalizedPages().map((p) => ({ url: `${base}${p.path}`, changeFrequency: 'monthly', priority: p.kind === 'platforms' ? 0.8 : 0.7, ...alternates(p.kind, p.slug) })),
     { url: `${base}/blog`, lastModified: latest(posts), changeFrequency: 'weekly', priority: 0.7 },
-    ...posts.map((p) => ({ url: `${base}/blog/${p.slug}`, lastModified: p.updated || p.date, changeFrequency: 'monthly', priority: 0.6, ...alternates('blog', p.slug) })),
-    { url: `${base}${BEST_TIME_ROOT}`, changeFrequency: 'daily', priority: 0.8 },
-    ...allBestTimePages().map((p) => ({ url: `${base}${bestTimePath(p.platform, p.segment)}`, changeFrequency: 'daily', priority: p.segment ? 0.6 : 0.8 })),
-    { url: `${base}${SPECS_ROOT}`, changeFrequency: 'monthly', priority: 0.7 },
-    ...SPEC_PLATFORMS.map((p) => ({ url: `${base}${specPath(p.slug)}`, changeFrequency: 'monthly', priority: 0.7 })),
-    ...allSpecPages().map((p) => ({ url: `${base}${specPath(p.platform, p.spec)}`, changeFrequency: 'monthly', priority: 0.6 })),
-    { url: `${base}${NOTIFY_ROOT}`, changeFrequency: 'monthly', priority: 0.7 },
-    ...NOTIFY_PLATFORMS.map((p) => ({ url: `${base}${notifyPath(p.slug)}`, changeFrequency: 'monthly', priority: 0.7 })),
-    ...allNotifyPages().map((p) => ({ url: `${base}${notifyPath(p.platform, p.action)}`, changeFrequency: 'monthly', priority: 0.6 })),
+    ...posts.map((p) => ({ url: `${base}/blog/${p.slug}`, lastModified: p.updated || p.date, changeFrequency: 'monthly', priority: 0.6, ...alternates('blog', p.slug), ...mdImages('blog', p.slug) })),
+    { url: `${base}${BEST_TIME_ROOT}`, changeFrequency: 'daily', priority: 0.8, ...images(BEST_TIME_ROOT) },
+    ...allBestTimePages().map((p) => ({ url: `${base}${bestTimePath(p.platform, p.segment)}`, changeFrequency: 'daily', priority: p.segment ? 0.6 : 0.8, ...images(bestTimePath(p.platform, p.segment)) })),
+    { url: `${base}${SPECS_ROOT}`, changeFrequency: 'monthly', priority: 0.7, ...images(SPECS_ROOT) },
+    ...SPEC_PLATFORMS.map((p) => ({ url: `${base}${specPath(p.slug)}`, changeFrequency: 'monthly', priority: 0.7, ...images(specPath(p.slug)) })),
+    ...allSpecPages().map((p) => ({ url: `${base}${specPath(p.platform, p.spec)}`, changeFrequency: 'monthly', priority: 0.6, ...images(specPath(p.platform, p.spec)) })),
+    { url: `${base}${NOTIFY_ROOT}`, changeFrequency: 'monthly', priority: 0.7, ...images(NOTIFY_ROOT) },
+    ...NOTIFY_PLATFORMS.map((p) => ({ url: `${base}${notifyPath(p.slug)}`, changeFrequency: 'monthly', priority: 0.7, ...images(notifyPath(p.slug)) })),
+    ...allNotifyPages().map((p) => ({ url: `${base}${notifyPath(p.platform, p.action)}`, changeFrequency: 'monthly', priority: 0.6, ...images(notifyPath(p.platform, p.action)) })),
     { url: `${base}${POST_IDEAS_ROOT}`, changeFrequency: 'monthly', priority: 0.7 },
     ...allPostIdeaPages().map((p) => ({ url: `${base}${postIdeasPath(p.industry, p.weekday)}`, changeFrequency: 'monthly', priority: p.weekday ? 0.5 : 0.6 })),
     { url: `${base}/compare`, changeFrequency: 'monthly', priority: 0.5 },

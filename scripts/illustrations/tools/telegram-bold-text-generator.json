@@ -1,0 +1,64 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Telegram Bold Text Generator",
+   "question": "Free Tool",
+   "answer": "Telegram Bold Text Generator",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "type",
+    "send"
+   ],
+   "qualifier": "Bold your Telegram name, channel title, group topics or bot buttons with 9 Unicode styles, and learn the built-in ways to bold text inside messages."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Telegram Bold Text Generator",
+   "title": "How to bold text in Telegram messages",
+   "steps": [
+    {
+     "title": "On mobile",
+     "text": ""
+    },
+    {
+     "title": "On desktop",
+     "text": ""
+    },
+    {
+     "title": "In bots and automations",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Telegram Bold Text Generator",
+   "title": "Best practices",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Keep public titles searchable",
+     "Check the result in several clients"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Don't impersonate"
+    ]
+   }
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Bold styles you can generate",
+   "quote": "Telegram messages already support real bold, so this tool is for the labels and names that don't.",
+   "by": "Telegram Bold Text Generator"
+  }
+ ]
+}

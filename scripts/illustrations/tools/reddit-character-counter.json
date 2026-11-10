@@ -1,0 +1,115 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Reddit Character Counter",
+   "question": "Reddit Character Counter",
+   "answer": "300 Title, 40,000 Post, 10,000 Comment",
+   "tone": "neutral",
+   "mark": "type",
+   "icons": [
+    "eye",
+    "send"
+   ],
+   "qualifier": "Paste your Reddit title, post or comment to see how many characters you've used and how many are left for each limit."
+  },
+  {
+   "name": "reddit-character-limits-by",
+   "type": "lists",
+   "kicker": "Reddit Character Counter",
+   "title": "Reddit Character Limits by Surface",
+   "groups": [
+    {
+     "label": "Post title limit",
+     "text": "Every Reddit post needs a title."
+    },
+    {
+     "label": "Text post body limit",
+     "text": "A text post body can hold up to 40,000 characters."
+    },
+    {
+     "label": "Comment limit",
+     "text": "A comment can be up to 10,000 characters, about 1,500 words."
+    },
+    {
+     "label": "What counts toward each limit",
+     "text": "Every character you type, including spaces and punctuation."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Reddit Character Counter",
+   "title": "How to Use the Reddit Character Counter",
+   "steps": [
+    {
+     "title": "Write or paste your text",
+     "text": "into the box."
+    },
+    {
+     "title": "Read the three limit rows",
+     "text": ""
+    },
+    {
+     "title": "Check the stats",
+     "text": "Characters, words and lines update as you type."
+    },
+    {
+     "title": "Trim if you're over",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Reddit Character Counter",
+   "title": "Best Practices for Writing Within Reddit's Limits",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Front-load your titles",
+     "Use markdown, but count it",
+     "Keep links short and readable",
+     "Split long content on purpose"
+    ]
+   }
+  },
+  {
+   "name": "table",
+   "type": "matrix",
+   "kicker": "Reddit Character Counter",
+   "title": "Why You Need a Reddit Character Counter",
+   "corner": "Where on Reddit",
+   "cols": [
+    "Limit at the time of writing",
+    "In the counter"
+   ],
+   "rows": [
+    {
+     "label": "Post title",
+     "cells": [
+      "300 characters",
+      "yes"
+     ]
+    },
+    {
+     "label": "Comment",
+     "cells": [
+      "10,000 characters",
+      "yes"
+     ]
+    },
+    {
+     "label": "Text post body",
+     "cells": [
+      "40,000 characters",
+      "yes"
+     ]
+    }
+   ]
+  }
+ ]
+}

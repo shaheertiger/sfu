@@ -1,0 +1,80 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "YouTube Character Counter",
+   "what": "YouTube Character Counter",
+   "value": "5,000,",
+   "unit": "tags",
+   "others": []
+  },
+  {
+   "name": "youtube-character-limits-at",
+   "type": "lists",
+   "kicker": "YouTube Character Counter",
+   "title": "YouTube character limits at a glance",
+   "groups": [
+    {
+     "label": "Video title",
+     "text": "YouTube won't let you save a title longer than 100 characters."
+    },
+    {
+     "label": "Description",
+     "text": "The description field takes up to 5,000 characters."
+    },
+    {
+     "label": "Tags",
+     "text": "Tags have one shared budget of 500 characters across all of them."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "YouTube Character Counter",
+   "title": "How to Use the YouTube Character Counter",
+   "steps": [
+    {
+     "title": "Checking tags",
+     "text": ""
+    },
+    {
+     "title": "Checking a description with chapters",
+     "text": ""
+    },
+    {
+     "title": "Privacy",
+     "text": "The counter runs in your browser."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "YouTube Character Counter",
+   "title": "Best Practices for YouTube Titles, Descriptions and Tags",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Front-load every field",
+     "Keep hashtags few and relevant",
+     "Reuse a standard footer"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Don't write to the limit"
+    ]
+   }
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "Why You Need a YouTube Character Counter",
+   "quote": "YouTube Studio does show a counter while you type, but only in the field you're typing in, and only once you're already in the upload flow.",
+   "by": "YouTube Character Counter"
+  }
+ ]
+}

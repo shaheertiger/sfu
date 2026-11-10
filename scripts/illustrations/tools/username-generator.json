@@ -1,0 +1,122 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "Username Generator",
+   "what": "Username Generator",
+   "value": "6",
+   "unit": "styles",
+   "others": []
+  },
+  {
+   "name": "username-styles-you-can",
+   "type": "lists",
+   "kicker": "Username Generator",
+   "title": "Username Styles You Can Generate",
+   "groups": [
+    {
+     "label": "Cool",
+     "text": "Short, confident words with a bit of tech or space-age edge."
+    },
+    {
+     "label": "Aesthetic",
+     "text": "Soft, dreamy words: velvet."
+    },
+    {
+     "label": "Funny",
+     "text": "Self-aware and a little chaotic."
+    },
+    {
+     "label": "Professional",
+     "text": "Clean names that read like a business or a personal brand."
+    }
+   ]
+  },
+  {
+   "name": "username-rules-by-platform",
+   "type": "lists",
+   "kicker": "Username Generator",
+   "title": "Username Rules by Platform",
+   "groups": [
+    {
+     "label": "X: the strictest length",
+     "text": "X's 15-character ceiling is why this generator stops at 15."
+    },
+    {
+     "label": "Telegram: the 5-character minimum",
+     "text": "Telegram usernames must be at least 5 characters."
+    },
+    {
+     "label": "Roblox: one underscore",
+     "text": "Roblox allows only one underscore, and not at the start or end."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Username Generator",
+   "title": "How to Use the Username Generator",
+   "steps": [
+    {
+     "title": "Type a word you'd be happy to see every day",
+     "text": ""
+    },
+    {
+     "title": "Pick a style chip",
+     "text": ""
+    },
+    {
+     "title": "Read the 30 ideas",
+     "text": ""
+    },
+    {
+     "title": "Tap More ideas",
+     "text": "for another 30."
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Username Generator",
+   "title": "Who the Username Generator Is For",
+   "groups": [
+    {
+     "label": "New creators",
+     "text": "Starting on TikTok, YouTube or Instagram."
+    },
+    {
+     "label": "Gamers and streamers",
+     "text": "A gamer tag gets typed into friend lists."
+    },
+    {
+     "label": "Small businesses and freelancers",
+     "text": "Your business name is often taken as a bare handle."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Username Generator",
+   "title": "Username Best Practices",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Say it out loud once",
+     "Choose numbers on purpose",
+     "One name, everywhere"
+    ]
+   },
+   "bad": {
+    "label": "Avoid",
+    "items": [
+     "Avoid personal details",
+     "Don't copy someone else's name"
+    ]
+   }
+  }
+ ]
+}

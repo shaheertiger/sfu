@@ -7,7 +7,11 @@ keyword: discord font generator
 ---
 ## Styles you can generate for Discord
 
+![Discord Font Generator: 30+ Free Styles. Copy and paste 30+ Unicode text styles for the parts of Discord that markdown can't format: display names, nicknames, custom statuses, server, role and channel names.](/images/tools/discord-font-generator-hero-1200x675.webp)
+
 Discord already formats messages with markdown, so you only need Unicode styles where markdown doesn't reach: names, statuses, server and channel labels. Type your text, pick from 30+ styles, and tap to copy.
+
+![Styles you can generate for Discord, in 3 groups: Softer aesthetic styles, Bold, italic and lined styles and What you're actually copying.](/images/tools/discord-font-generator-styles-you-can-generate-1200x675.webp)
 
 ### Styles that suit gaming and community servers
 
@@ -39,6 +43,8 @@ Styled text from this generator isn't a font, so Discord doesn't need to support
 
 ## Native markdown or Unicode: which to use
 
+![Discord Font Generator: native markdown or Unicode: which to use, in 2 groups: Use markdown in messages and Places Unicode won't work.](/images/tools/discord-font-generator-native-markdown-or-unicode-1200x675.webp)
+
 ### Use markdown in messages
 
 In chat messages, Discord's own formatting is the better choice. Wrap text in `**double asterisks**` for bold, `*single asterisks*` for italic, `__double underscores__` for underline, `~~tildes~~` for strikethrough and backticks for `code`. Recent versions also support headings with `#`. Markdown stays searchable and readable by screen readers. See Discord's [markdown guide](https://support.discord.com/hc/en-us/articles/210298617).
@@ -53,6 +59,8 @@ Your username can only use lowercase letters, numbers, underscores and periods (
 
 ## Where styled text fits on Discord
 
+![Where styled text fits on Discord, in 2 groups: Display name and server nicknames and Custom status and About Me.](/images/tools/discord-font-generator-where-styled-text-fits-1200x675.webp)
+
 ### Display name and server nicknames
 
 Display names allow up to 32 characters, and styled characters count toward that. Server nicknames let you use a different look in each server.
@@ -66,6 +74,8 @@ A custom status can be 128 characters and your About Me 190. A short styled tagl
 Server names run 2–100 characters. Styled category headers like "𝕀ℕ𝔽𝕆" or role names like "🅼🅾🅳" help members scan the sidebar. Some channel name styles may be altered by Discord, so check the result after saving.
 
 ## Best practices for Discord
+
+![Best practices for Discord: do make names easy to mention, style labels, not information, test on mobile and stay within the limits.](/images/tools/discord-font-generator-best-practices-1200x675.webp)
 
 ### Make names easy to mention
 

@@ -1,0 +1,76 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Pinterest Logo Generator",
+   "question": "Free Profile Picture Icon Maker",
+   "answer": "Pinterest Logo Generator",
+   "tone": "neutral",
+   "mark": "image",
+   "icons": [
+    "clock",
+    "send"
+   ],
+   "qualifier": "Create a simple initials or emoji icon for your Pinterest profile, styled in your colors and downloaded as a 512×512 PNG."
+  },
+  {
+   "name": "what-the-pinterest-logo",
+   "type": "lists",
+   "kicker": "Pinterest Logo Generator",
+   "title": "What the Pinterest logo generator makes",
+   "groups": [
+    {
+     "label": "Why initials suit Pinterest",
+     "text": "Pinterest is a visual search engine."
+    },
+    {
+     "label": "It's shown as a circle",
+     "text": "Pinterest displays profile photos as circles."
+    },
+    {
+     "label": "Keep your own identity",
+     "text": "Don't imitate Pinterest's own logo."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Pinterest Logo Generator",
+   "title": "How to create your Pinterest profile icon",
+   "steps": [
+    {
+     "title": "Type your initials or pick an emoji",
+     "text": "Use your name, brand or shop initials."
+    },
+    {
+     "title": "Choose a shape",
+     "text": ""
+    },
+    {
+     "title": "Pick colors",
+     "text": ""
+    },
+    {
+     "title": "Download and upload to Pinterest",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Pinterest Logo Generator",
+   "title": "Design tips for a Pinterest profile icon",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Let your pins do the decorating",
+     "Pick colors from your best pins",
+     "Two letters balance best"
+    ]
+   }
+  }
+ ]
+}

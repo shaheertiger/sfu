@@ -7,7 +7,11 @@ keyword: vk fonts
 ---
 ## What the VK Font Generator Actually Does
 
+![VK Font Generator: 24 Fonts for VK (Latin Letters & Digits). Type your text, copy one of 24 Unicode styles and paste it into a VK post, status or community name.](/images/tools/vk-font-generator-hero-1200x675.webp)
+
 VK (VKontakte) doesn't let you pick a font for your posts, status or community name. Everything is shown in VK's own typeface. This VK font generator gets around that by swapping your letters for look-alike Unicode characters, such as 𝐛𝐨𝐥𝐝, 𝓼𝓬𝓻𝓲𝓹𝓽, 𝔤𝔬𝔱𝔥𝔦𝔠 or ⓑⓤⓑⓑⓛⓔ. Because they're characters rather than formatting, VK displays them like any other text, and they look the same to everyone.
+
+![What the VK Font Generator Actually Does, in 2 groups: Which styles do work on Cyrillic and What else happens to your text.](/images/tools/vk-font-generator-what-the-vk-font-1200x675.webp)
 
 ### The honest limitation: Cyrillic isn't styled
 
@@ -49,6 +53,8 @@ So the VK font generator is most useful for Latin text: brand names, English wor
 
 ## How to Use the VK Font Generator
 
+![How to Use the VK Font Generator, in 5 steps: type or paste your text, compare the 24 styles, tap Copy, paste into VK and check the result.](/images/tools/vk-font-generator-how-to-1200x675.webp)
+
 1. **Type or paste your text.** Mixed text is fine: Cyrillic stays as it is and the Latin parts get styled.
 2. **Compare the 24 styles**, which update as you type.
 3. **Tap Copy** next to the one you want.
@@ -58,6 +64,8 @@ So the VK font generator is most useful for Latin text: brand names, English wor
 The generator runs in your browser. Nothing you type is sent to a server.
 
 ## Unicode Styles Supported by the VK Font Generator
+
+![Key point from the VK Font Generator page: Each style shows the sample "Weekly news digest" and, where useful, how it handles mixed text.](/images/tools/vk-font-generator-key-point-1200x675.webp)
 
 Each style shows the sample "Weekly news digest" and, where useful, how it handles mixed text.
 
@@ -184,6 +192,8 @@ A short status or a community status line is where styled text is most visible. 
 VK expects personal names to look like real names and may reject or reset decorative ones. Short addresses only accept plain Latin letters, digits and a few punctuation marks, so no fonts there.
 
 ## Best Practices for Fonts on VK
+
+![Best Practices for Fonts on VK: do be realistic about Cyrillic, keep searchable words plain and use one or two styles. Don't imitate official accounts.](/images/tools/vk-font-generator-best-practices-1200x675.webp)
 
 ### Be realistic about Cyrillic
 

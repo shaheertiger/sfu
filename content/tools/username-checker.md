@@ -6,7 +6,12 @@ lead: Type one username to see whether it fits the rules on Instagram, TikTok, X
 keyword: username availability checker
 ---
 ## How this username availability checker works
+
+![Username Availability Checker: Test 9 Platforms at Once. Type one username to see whether it fits the rules on Instagram, TikTok, X, YouTube, Twitch, Discord, Roblox, Telegram and Reddit, with a profile link for each platform so you can check who already has it.](/images/tools/username-checker-hero-1200x675.webp)
+
 Type a name once and the username availability checker tests it against the format rules of nine platforms: Instagram, TikTok, X, YouTube, Twitch, Discord, Roblox, Telegram and Reddit. For every platform where the name fits, you get a link to the matching public profile, so you can see in one click whether an account already uses it. It's the fastest way to check username availability across your social media handles before you sign up anywhere.
+
+![How this username availability checker works, in 3 groups: What each row tells you, Reading the profile links and Nothing leaves your browser.](/images/tools/username-checker-how-this-username-availability-1200x675.webp)
 
 ### What each row tells you
 - **Fits · open profile**: the name follows that platform's rules. The link opens the profile URL (or, for Roblox, Roblox's user search) in a new tab.
@@ -39,6 +44,9 @@ These are the rules the checker tests. If a name is made only of numbers and sym
 Platforms change their rules from time to time, so treat this as the state at the time of writing. For a closer look at one platform, with close valid variations and a "Check a list" mode for up to 200 names, use the single-platform checkers: [Instagram](/tools/instagram-handle-checker), [TikTok](/tools/tiktok-username-checker), [YouTube](/tools/youtube-handle-checker), [Twitch](/tools/twitch-username-checker), [Discord](/tools/discord-username-checker), [Roblox](/tools/roblox-username-checker) and [Telegram](/tools/telegram-username-checker).
 
 ## Why no tool can guarantee a username is available
+
+![Why no tool can guarantee a username is available, in 3 groups: Hidden accounts still hold names, Reserved and blocked names and Recently changed names.](/images/tools/username-checker-why-no-tool-can-1200x675.webp)
+
 Any site that promises to tell you a username is definitely free is guessing. None of these platforms offers a public availability check, so every username search tool, including this one, is working from the outside.
 
 ### Hidden accounts still hold names
@@ -54,6 +62,9 @@ When someone changes their username, the old one isn't always released straight 
 The only definitive answer comes from the platform itself: the sign-up form for a new account, or the username field in settings for an existing one. Use this checker to narrow the list to names that are valid and look unused, then try your favorite there.
 
 ## How to pick consistent social media handles
+
+![Username Availability Checker: how to pick consistent social media handles, in 4 steps: design for the strictest platform, skip periods and doubled symbols, have a fallback pattern ready and check the full set before you commit.](/images/tools/username-checker-how-to-1200x675.webp)
+
 Using the same handle everywhere makes you easier to find, tag and recommend. People who follow you on one app can search the same name on another and know it's you.
 
 ### Design for the strictest platform

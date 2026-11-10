@@ -6,7 +6,12 @@ lead: Make a tier list in your browser: add text or images, drag them into tiers
 keyword: tier list maker
 ---
 ## Make a tier list in your browser
+
+![Tier List Maker: Rank Text & Images, Save as an Image. Make a tier list in your browser: add text or images, drag them into tiers, rename and recolor the tiers, then save the result as an image for your next ranking post.](/images/tools/tier-list-maker-hero-1200x675.webp)
+
 This tier list maker starts you off with the classic S, A, B, C and D tiers. Add items as text or images, drag each one into a tier, and press **Save as image** to download a PNG you can post anywhere. There's nothing to install and no account to create, and your list is kept in this browser so you can come back and finish it later.
+
+![Make a tier list in your browser, in 3 groups: Add text and images, Drag or tap to rank and Rename and recolor tiers.](/images/tools/tier-list-maker-make-a-tier-list-1200x675.webp)
 
 ### Add text and images
 Type an item into **Add text** and press Enter (or tap **+**). Each text item can be up to 60 characters, which is plenty for "Gas station sushi" or "The season 2 finale." Use **Add images** to pick one or several pictures at once: each one becomes a square tile, cropped from the center, so put the subject in the middle before you add it. New items land in **Unranked** until you place them. A list can hold up to 300 items.
@@ -24,11 +29,17 @@ Tap any tier label to rename it, up to 24 characters. "S" can become "GOAT" and 
 The list is saved in this browser's local storage, and images never leave your device. Clearing your browser data, switching browsers or using another phone means starting fresh. **Reset** clears everything, but only after you tap it a second time to confirm.
 
 ## What is a tier list?
+
+![Key point from the Tier List Maker page: A tier list ranks things in groups instead of one long numbered list.](/images/tools/tier-list-maker-key-point-1200x675.webp)
+
 A tier list ranks things in groups instead of one long numbered list. The top tier, usually S, holds the very best; then A, B, C and D work down to the ones you'd skip. The S-tier label is widely used in gaming and is often traced to letter-grade systems where S sits above A.
 
 Grouping is what makes the format work on social media. It's quicker to read than a top 50, it shows an opinion at a glance, and it gives viewers something to argue about. Nearly everyone who disagrees with your placements has a reason to comment, and comments are exactly what ranking content is designed to get.
 
 ## Tier list template ideas
+
+![Tier list template ideas, in 3 groups: The classic S to D template, Custom tiers that fit the topic and Topics that start conversations.](/images/tools/tier-list-maker-use-cases-1200x675.webp)
+
 ### The classic S to D template
 The default five tiers are the format most people recognize instantly. Keep them for games, characters, movies and anything where you want the post to read as a tier list without explanation.
 
@@ -46,6 +57,9 @@ Letter grades aren't required. Some tier sets that work well:
 Pick a topic your audience has opinions about and a list of 10 to 25 items: snacks from one store, coffee shops in your city, editing apps, workout classes, album tracks, anime openings, or hairstyles you've tried. Fewer items keep a video short; more items make a dense image people zoom in on.
 
 ## Making tier list content for TikTok, Instagram and YouTube
+
+![Making tier list content for TikTok, Instagram and YouTube, in 3 groups: Tier list videos, Instagram carousels and TikTok photo posts and YouTube.](/images/tools/tier-list-maker-making-tier-list-content-1200x675.webp)
+
 ### Tier list videos
 The most popular tier list videos show the ranking happening. Start your phone's screen recording, place items one by one, and talk through each decision. Write your commentary first and run it through the [speech time calculator](/tools/speech-time-calculator) so a 60-second video doesn't turn into three minutes.
 

@@ -1,0 +1,79 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Twitch Username Checker",
+   "question": "Twitch Username Checker",
+   "answer": "Test Name Rules & Open the Channel",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "eye",
+    "calendar"
+   ],
+   "qualifier": "Check a Twitch username against the platform's format rules, get close valid alternatives, and open twitch.tv/name to see whether a channel already uses it."
+  },
+  {
+   "name": "what-the-twitch-username",
+   "type": "lists",
+   "kicker": "Twitch Username Checker",
+   "title": "What the Twitch username checker tells you",
+   "groups": [
+    {
+     "label": "The rules it tests",
+     "items": [
+      "4 to 25 characters",
+      "Can't start with an underscore"
+     ]
+    },
+    {
+     "label": "Check a list of names",
+     "text": "Switch to Check a list to paste up to 200 names."
+    },
+    {
+     "label": "Reading the channel link",
+     "text": "The button opens twitch.tv/ followed by your name in lowercase."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Twitch Username Checker",
+   "title": "How to do a Twitch username check",
+   "steps": [
+    {
+     "title": "Type the name you want",
+     "text": "Enter it without spaces."
+    },
+    {
+     "title": "Fix what's flagged",
+     "text": ""
+    },
+    {
+     "title": "Open the channel link",
+     "text": ""
+    },
+    {
+     "title": "Confirm on Twitch",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Twitch Username Checker",
+   "title": "Tips for a Twitch name that works off Twitch too",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Keep it short enough for X",
+     "Make it easy to say on stream",
+     "Match your Discord and YouTube"
+    ]
+   }
+  }
+ ]
+}

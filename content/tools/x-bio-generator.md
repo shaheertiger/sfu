@@ -6,7 +6,12 @@ lead: Get 12 profile bios that fit X's 160-character limit. Pick a tone, tap one
 keyword: x bio generator
 ---
 ## What makes a good X bio
+
+![X Bio Generator, shown as 160 characters, with Display name 50, @handle 4–15 and Standard post 280 for comparison.](/images/tools/x-bio-generator-hero-1200x675.webp)
+
 Your X (formerly Twitter) bio has 160 characters to convince someone who just read one of your replies that your other posts are worth following. This free X bio generator gives you 12 options inside that limit, each with a character count.
+
+![Key point from the X Bio Generator page: Your X (formerly Twitter) bio has 160 characters to convince someone who just read one of your replies that your other posts are worth following.](/images/tools/x-bio-generator-key-point-1200x675.webp)
 
 ### It answers "why follow?" in one read
 People usually reach your profile from a reply, a quote post or a repost. They want to know what they'll get. "Posts about API design and the mistakes I've made with it" answers that faster than a list of job titles.
@@ -21,6 +26,9 @@ The bio says what you're about; the pinned post shows it. Keep the bio short and
 Generic phrases like "thought leader" or "passionate about everything" use characters without telling anyone anything. A concrete detail, such as a city, a specialty or a current project, is more memorable.
 
 ## How to use the X bio generator
+
+![How to use the X bio generator, in 3 steps: describe what you post about, pick a tone and emoji setting and copy it into your profile.](/images/tools/x-bio-generator-how-to-1200x675.webp)
+
 The tool runs in your browser. No sign-up is needed, and nothing you type is sent anywhere.
 
 ### Describe what you post about
@@ -52,6 +60,9 @@ Your city and your link have dedicated fields. Moving them out of the bio frees 
 If you're rethinking your name too, the [X name generator](/tools/x-name-generator) suggests personal handles and the [X page name generator](/tools/x-page-name-generator) works for brand accounts. Whatever you pick, X's rules on [help.x.com](https://help.x.com) don't allow impersonation and require parody, commentary and fan accounts to say so clearly.
 
 ## X bio ideas by niche
+
+![X bio ideas by niche, in 4 groups: Developer, Journalist, Founder and Sports fan account.](/images/tools/x-bio-generator-use-cases-1200x675.webp)
+
 ### Developer
 - Frontend dev at @acmeapp. I post about accessibility, CSS and the bugs that cost me a weekend.
 - Building tiny open-source tools in public. Weekly progress threads, honest failure reports.

@@ -1,0 +1,125 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "spec",
+   "kicker": "YouTube Image Resizer",
+   "what": "YouTube Image Resizer",
+   "value": "800 × 800",
+   "unit": "px",
+   "others": [
+    {
+     "value": "2560 × 1440",
+     "label": "Channel banner"
+    },
+    {
+     "value": "1280 × 720",
+     "label": "Video thumbnail"
+    },
+    {
+     "value": "1080 × 1920",
+     "label": "Shorts / vertical"
+    }
+   ]
+  },
+  {
+   "name": "current-youtube-image-sizes",
+   "type": "lists",
+   "kicker": "YouTube Image Resizer",
+   "title": "Current YouTube Image Sizes and Specs",
+   "groups": [
+    {
+     "label": "Profile picture: 800×800",
+     "text": "YouTube recommends uploading a square profile picture at 800×800 pixels."
+    },
+    {
+     "label": "Channel banner: 2560×1440",
+     "text": "The banner preset outputs 2560×1440, the size YouTube asks for."
+    },
+    {
+     "label": "Video thumbnail: 1280×720",
+     "text": "Custom thumbnails should be 1280×720 (16:9)."
+    }
+   ]
+  },
+  {
+   "name": "supported-formats",
+   "type": "lists",
+   "kicker": "YouTube Image Resizer",
+   "title": "Supported Formats",
+   "groups": [
+    {
+     "label": "What you can upload",
+     "text": "The resizer opens any image your browser can read."
+    },
+    {
+     "label": "What you can download",
+     "text": "Every preset downloads as PNG or JPG, your choice."
+    },
+    {
+     "label": "File size",
+     "text": "The resizer has no upload limit of its own, because nothing is uploaded."
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "YouTube Image Resizer",
+   "title": "How to Use the YouTube Image Resizer",
+   "steps": [
+    {
+     "title": "Choose your image",
+     "text": "Click the upload area or drop a JPG, PNG, WebP or GIF onto it."
+    },
+    {
+     "title": "Pick a preset",
+     "text": ""
+    },
+    {
+     "title": "Choose fill or fit",
+     "text": ""
+    },
+    {
+     "title": "Pick a format",
+     "text": "PNG is lossless and best for logos, text and flat graphics."
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "YouTube Image Resizer",
+   "title": "Who the YouTube Image Resizer Is For",
+   "groups": [
+    {
+     "label": "New YouTubers setting up a channel",
+     "text": "Starting a channel means making a profile picture."
+    },
+    {
+     "label": "Creators who upload every week",
+     "text": "If you make thumbnails in a design app at the wrong size."
+    },
+    {
+     "label": "Small businesses and local shops",
+     "text": "A bakery, salon or gym often uses its existing logo as the profile picture."
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "YouTube Image Resizer",
+   "title": "Best Practices for YouTube Images",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Use the banner's safe area",
+     "Keep thumbnails honest and readable",
+     "Pick the right format",
+     "Start from a big source image"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,67 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "YouTube Page Name Generator",
+   "question": "YouTube Page Name Generator",
+   "answer": "30 Free Brand Channel Ideas",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "calendar",
+    "clock"
+   ],
+   "qualifier": "Naming a YouTube channel for a company, shop or nonprofit? Get 30 brand channel name ideas, then check the handle and trademark before you launch."
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "YouTube Page Name Generator",
+   "title": "How to use the YouTube page name generator",
+   "steps": [
+    {
+     "title": "Enter your brand or what you sell",
+     "text": ""
+    },
+    {
+     "title": "Pick a style that matches your voice",
+     "text": ""
+    },
+    {
+     "title": "Shortlist channel names and handles",
+     "text": "Tap to copy any of the 30 ideas."
+    },
+    {
+     "title": "Run the business checks",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "YouTube Page Name Generator",
+   "what": "YouTube name rules and limits for brands: Channel name",
+   "value": "50",
+   "unit": "characters",
+   "others": [
+    {
+     "value": "3–30",
+     "label": "Handle"
+    },
+    {
+     "value": "1,000",
+     "label": "Channel description"
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "What makes a good YouTube brand channel name",
+   "quote": "For a business, the safest YouTube channel name is usually your company name, with a short descriptor only when it adds something people search for.",
+   "by": "YouTube Page Name Generator"
+  }
+ ]
+}

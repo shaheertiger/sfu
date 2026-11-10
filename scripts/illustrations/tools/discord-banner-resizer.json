@@ -1,0 +1,75 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Discord Banner Resizer",
+   "question": "Discord Banner Resizer",
+   "answer": "Server, Profile & Invite Banners",
+   "tone": "neutral",
+   "mark": "block",
+   "icons": [
+    "image",
+    "calendar"
+   ],
+   "qualifier": "Turn any wide image into a Discord server banner, profile banner or invite background at the right size, cropped or padded the way you want."
+  },
+  {
+   "name": "specs",
+   "type": "spec",
+   "kicker": "Discord Banner Resizer",
+   "what": "Discord banner sizes at a glance: Server banner",
+   "value": "960 × 540",
+   "unit": "px",
+   "others": [
+    {
+     "value": "680 × 240",
+     "label": "Profile banner"
+    },
+    {
+     "value": "1920 × 1080",
+     "label": "Invite background"
+    }
+   ]
+  },
+  {
+   "name": "how-to",
+   "type": "steps",
+   "kicker": "Discord Banner Resizer",
+   "title": "How to resize a Discord banner",
+   "steps": [
+    {
+     "title": "Start with a wide image",
+     "text": "Upload a landscape photo or artwork."
+    },
+    {
+     "title": "Choose the banner type",
+     "text": ""
+    },
+    {
+     "title": "Crop with fill, or pad with fit",
+     "text": ""
+    },
+    {
+     "title": "Download and upload to Discord",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "name": "best-practices",
+   "type": "checklist",
+   "kicker": "Discord Banner Resizer",
+   "title": "Tips for banners that look right",
+   "good": {
+    "label": "Do",
+    "items": [
+     "Mind the safe area on each format",
+     "Use little or no text",
+     "Match your avatar and server icon",
+     "Choose a pad color that blends in"
+    ]
+   }
+  }
+ ]
+}

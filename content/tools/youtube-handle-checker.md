@@ -6,7 +6,12 @@ lead: Check a YouTube handle against the platform's rules, get close valid alter
 keyword: youtube name checker
 ---
 ## What this YouTube name checker does
+
+![YouTube Name Checker: Test Your @Handle & Open the Channel. Check a YouTube handle against the platform's rules, get close valid alternatives, and open youtube.com/@name to see whether a channel already uses it.](/images/tools/youtube-handle-checker-hero-1200x675.webp)
+
 The YouTube name checker tests your @handle against YouTube's format rules and gives you a one-tap link to youtube.com/@yourname, so you can see whether a channel already has it. It can't promise the handle is free: YouTube has no public availability lookup, and handles can be held by channels you can't see. The final answer comes from YouTube Studio, where YouTube tells you straight away whether a handle is available.
+
+![What this YouTube name checker does, in 3 groups: The rules it tests, Check a list of handles and Reading the channel link.](/images/tools/youtube-handle-checker-what-this-youtube-name-1200x675.webp)
 
 ### The rules it tests
 - 3 to 30 characters
@@ -21,6 +26,9 @@ Switch to **Check a list** to paste up to 200 handles, one per line or separated
 The button opens youtube.com/@ followed by your handle in a new tab. If a channel loads, the handle is taken. If YouTube says the page isn't available, the handle may be free, or it may belong to a channel that's been terminated, hidden or recently renamed. Treat it as "worth trying," not "yours."
 
 ## YouTube handle vs. channel name
+
+![Key point from the YouTube Name Checker page: YouTube gives every channel two names, and people looking for a YouTube channel name checker usually mean the handle.](/images/tools/youtube-handle-checker-key-point-1200x675.webp)
+
 YouTube gives every channel two names, and people looking for a YouTube channel name checker usually mean the handle. Only one of the two has to be unique.
 
 ### Your handle is unique
@@ -33,6 +41,9 @@ Your channel name is the display name shown on your channel page and next to you
 A channel called "Weeknight Dinners" with the handle @weeknightdinners is easy to find and easy to say. If the exact handle is taken, add a short, meaningful modifier ("@weeknightdinnershq," "@weeknightdinners.tv") rather than random numbers.
 
 ## How to check YouTube channel name availability
+
+![How to check YouTube channel name availability, in 4 steps: type the handle you want, fix anything that's flagged, open the channel link and claim it in YouTube Studio.](/images/tools/youtube-handle-checker-how-to-1200x675.webp)
+
 ### 1. Type the handle you want
 Enter it without the @. If you'd normally separate words with a space, try a period, an underscore or a hyphen instead.
 

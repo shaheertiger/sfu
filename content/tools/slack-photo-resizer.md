@@ -6,7 +6,12 @@ lead: Make Slack custom emoji, profile photos and workspace icons at the right s
 keyword: slack photo resizer
 ---
 ## Slack image sizes at a glance
+
+![Slack Photo Resizer: Custom Emoji, Profile & Workspace Icon. Make Slack custom emoji, profile photos and workspace icons at the right size.](/images/tools/slack-photo-resizer-hero-1200x675.webp)
+
 Slack custom emoji should be 128×128 and under 128 KB, while profile photos and workspace icons work well at 512×512. Square images work best everywhere in Slack, and the resizer outputs square files for all three presets.
+
+![Slack image sizes at a glance: Custom emoji, shown as 128 × 128 px, with Profile photo 512 × 512 and Workspace icon 512 × 512 for comparison.](/images/tools/slack-photo-resizer-specs-1200x675.webp)
 
 | Preset | Size | Notes |
 |---|---|---|
@@ -24,6 +29,9 @@ Your profile photo shows next to every message you send, in DMs and in search re
 The workspace icon helps people who belong to several workspaces tell them apart in the switcher. A bold initial or simple mark tends to work better than a detailed logo at that size.
 
 ## How to resize an image for Slack
+
+![How to resize an image for Slack, in 4 steps: upload your image, choose emoji, profile photo or workspace icon, crop or pad and download.](/images/tools/slack-photo-resizer-how-to-1200x675.webp)
+
 ### 1. Upload your image
 Choose a PNG or JPG. The file stays on your device; the resizer works in your browser.
 
@@ -37,6 +45,9 @@ The canvas switches to the right square size for the preset.
 Pick PNG for emoji and icons with crisp edges, or JPG for photos. Then upload through Slack's emoji settings, your profile, or your workspace settings, depending on your permissions.
 
 ## Tips for crisp Slack images
+
+![Tips for crisp Slack images: do stay under 128 KB for emoji, zoom in on the important part and use a real photo for your profile.](/images/tools/slack-photo-resizer-best-practices-1200x675.webp)
+
 ### Stay under 128 KB for emoji
 A 128×128 PNG of a simple graphic is usually well under the limit. If Slack rejects your file, simplify the artwork, reduce the number of colors, or try exporting as JPG.
 

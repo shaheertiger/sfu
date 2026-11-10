@@ -1,0 +1,81 @@
+{
+ "cards": [
+  {
+   "name": "hero",
+   "type": "answer",
+   "kicker": "Social Media Name Generator",
+   "question": "Social Media Name Generator",
+   "answer": "30 Free Username Ideas",
+   "tone": "neutral",
+   "mark": "at",
+   "icons": [
+    "calendar",
+    "clock"
+   ],
+   "qualifier": "Enter a word you like, pick a style, and get 30 username ideas you can use as one consistent handle across your social accounts."
+  },
+  {
+   "name": "how-the-name-generator",
+   "type": "lists",
+   "kicker": "Social Media Name Generator",
+   "title": "How the name generator works",
+   "groups": [
+    {
+     "label": "Step by step",
+     "text": "Type a keyword: a hobby, a nickname."
+    },
+    {
+     "label": "What it can't do",
+     "text": "It cannot check whether a name is taken."
+    },
+    {
+     "label": "Need a platform-specific list?",
+     "text": "Try the dedicated tools for Instagram."
+    }
+   ]
+  },
+  {
+   "name": "username-rules-and-limits",
+   "type": "lists",
+   "kicker": "Social Media Name Generator",
+   "title": "Username rules and limits by platform",
+   "groups": [
+    {
+     "label": "The cross-platform sweet spot",
+     "text": "Put the rows together and a pattern appears."
+    },
+    {
+     "label": "When the perfect handle is taken",
+     "text": "Add a short, meaningful word rather than random digits."
+    }
+   ]
+  },
+  {
+   "name": "use-cases",
+   "type": "lists",
+   "kicker": "Social Media Name Generator",
+   "title": "Ideas by style",
+   "groups": [
+    {
+     "label": "Sample names for \"maple\"",
+     "text": "Made up for this page; check availability before using any."
+    },
+    {
+     "label": "As an aesthetic username generator",
+     "text": "Pick the Aesthetic style and the generator pairs your word with soft."
+    },
+    {
+     "label": "Check the fit before you pick",
+     "text": "Look at each idea in a sentence."
+    }
+   ]
+  },
+  {
+   "name": "key-point",
+   "type": "callout",
+   "kicker": "What makes a good social media username",
+   "quote": "The best username is one you can use everywhere: short, easy to spell, and free of characters that some networks reject.",
+   "by": "Social Media Name Generator"
+  }
+ ]
+}

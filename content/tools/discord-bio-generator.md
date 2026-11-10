@@ -6,7 +6,12 @@ lead: Write your Discord About Me in seconds. Describe yourself, choose a tone, 
 keyword: discord bio generator
 ---
 ## What makes a good Discord About Me
+
+![Discord Bio Generator, shown as 190 characters, with Display name 32, Username 2–32 and Custom status 128 for comparison.](/images/tools/discord-bio-generator-hero-1200x675.webp)
+
 Your About Me appears when someone clicks your name in a server or DM, and Discord gives you 190 characters for it. This free Discord bio generator turns a short description into 12 bios that fit, so you can grab one and personalize it.
+
+![Key point from the Discord Bio Generator page: Your About Me appears when someone clicks your name in a server or DM, and Discord gives you 190 characters for it.](/images/tools/discord-bio-generator-key-point-1200x675.webp)
 
 ### It answers what server-mates wonder
 People open your profile to see who they're talking to. Your games, what you make, your time zone or when you're around for voice chat beat a vague quote.
@@ -21,6 +26,9 @@ A bio that suits a competitive gaming server may feel odd in a study group. If y
 Your profile is visible to people across every server you share. Leave out your school, address, full name or anything that would help a stranger locate you.
 
 ## How to use the Discord bio generator
+
+![How to use the Discord bio generator, in 3 steps: describe yourself, pick a tone and emoji setting and copy, paste and format.](/images/tools/discord-bio-generator-how-to-1200x675.webp)
+
 The generator works in your browser. You don't need to log in, and nothing is sent to a server.
 
 ### Describe yourself
@@ -53,6 +61,9 @@ A matching banner and avatar make the bio feel complete. The [Discord banner res
 Your About Me must follow Discord's Community Guidelines, and individual servers may have stricter rules about self-promotion.
 
 ## Discord About Me ideas
+
+![Discord About Me ideas, in 4 groups: Gamer, Artist taking commissions, Developer and Moderator.](/images/tools/discord-bio-generator-use-cases-1200x675.webp)
+
 Swap in your own games, tools and time zone.
 
 ### Gamer
