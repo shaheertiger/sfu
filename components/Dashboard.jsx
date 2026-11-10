@@ -4,6 +4,22 @@ import React from 'react';
 import { renderDashboard, css } from './DashboardView';
 
 const DCLogic = React.Component;
+
+/** "2h 10m 05s" until `at`. It re-renders itself every second, so the rest of the dashboard doesn't have to. */
+function Countdown({ at }) {
+  const [now, setNow] = React.useState(() => Date.now());
+  React.useEffect(() => {
+    const iv = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(iv);
+  }, []);
+  const z = (n) => String(n).padStart(2, '0');
+  const sec = Math.max(0, Math.floor((at - now) / 1000)),
+    d = Math.floor(sec / 86400),
+    h = Math.floor((sec % 86400) / 3600),
+    m = Math.floor((sec % 3600) / 60),
+    ss = sec % 60;
+  return <span className="sc-interp">{d ? `${d}d ${h}h ${z(m)}m` : h ? `${h}h ${z(m)}m ${z(ss)}s` : `${m}m ${z(ss)}s`}</span>;
+}
 class Component extends DCLogic {
   static P = {
     bluesky: {
@@ -142,33 +158,49 @@ class Component extends DCLogic {
   /* Timezones: the workspace zone (Component._tz) can differ from the browser's. */
   static _tz = null;
   static localTz() {
+    if (Component._localTz) return Component._localTz;
     try {
-      return Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+      return (Component._localTz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC');
     } catch {
       return 'UTC';
     }
   }
+  // Building an Intl formatter is slow, and this runs for every date on every render, so both the
+  // formatter (per zone) and the answer (per zone and minute; offsets only change on a minute) are cached.
+  static _tzFmt = new Map();
+  static _tzMemo = new Map();
   static tzOff(tz, ms) {
+    const key = `${tz}|${Math.floor(ms / 6e4)}`;
+    const hit = Component._tzMemo.get(key);
+    if (hit !== undefined) return hit;
+    let off = 0;
     try {
-      const p = new Intl.DateTimeFormat('en-US', {
-        timeZone: tz,
-        hourCycle: 'h23',
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-      }).formatToParts(new Date(ms));
+      let f = Component._tzFmt.get(tz);
+      if (!f) {
+        f = new Intl.DateTimeFormat('en-US', {
+          timeZone: tz,
+          hourCycle: 'h23',
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        });
+        Component._tzFmt.set(tz, f);
+      }
+      const p = f.formatToParts(new Date(ms));
       const g = (k) => Number(p.find((x) => x.type === k).value);
-      return (
+      off =
         (Date.UTC(g('year'), g('month') - 1, g('day'), g('hour'), g('minute'), g('second')) -
           Math.floor(ms / 1000) * 1000) /
-        6e4
-      );
+        6e4;
     } catch {
-      return 0;
+      off = 0;
     }
+    if (Component._tzMemo.size > 5000) Component._tzMemo.clear();
+    Component._tzMemo.set(key, off);
+    return off;
   }
   /** Milliseconds to add so a browser-local Date shows the wall clock of the workspace timezone. */
   static shift(ms = Date.now(), tz = Component._tz) {
@@ -485,10 +517,14 @@ class Component extends DCLogic {
       badgeDisplay: url ? 'block' : 'none',
     };
   }
-  /** What a publishing error needs from the person: 'auth' (reconnect), 'content' (edit the post) or 'temp' (retry). */
+  /**
+   * What a publishing error needs from the person: 'auth' (the account: reconnect it, or sort out a platform
+   * restriction), 'content' (edit the post) or 'temp' (retry). A restricted or suspended account is never
+   * "safe to retry": the platform refuses every post until the person fixes it there.
+   */
   static errKind(txt) {
     const e = txt || '';
-    if (/authori|token|revoked|reconnect|permission/i.test(e)) return 'auth';
+    if (/authori|token|revoked|reconnect|permission|restricted|suspended|disabled|banned|checkpoint/i.test(e)) return 'auth';
     if (/character|limit|seconds|too long|too short|format|size|aspect|required/i.test(e)) return 'content';
     return 'temp';
   }
@@ -675,10 +711,23 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this._alive = true;
-    this._rs = () => this.forceUpdate();
+    // Resizing fires dozens of events a second: redraw at most once per frame.
+    this._rs = () => {
+      if (this._rsF) return;
+      this._rsF = requestAnimationFrame(() => {
+        this._rsF = 0;
+        this.forceUpdate();
+      });
+    };
     window.addEventListener('resize', this._rs);
     this._t0 = Date.now();
-    this._iv = setInterval(() => this.setState({ tick: Date.now() }), 1000);
+    // A full redraw is expensive. The countdown ticks on its own (Countdown), so the rest of the screen
+    // (now line, "past due", relative times) only needs refreshing every 30 seconds, and only while visible.
+    this._iv = setInterval(() => {
+      if (document.visibilityState === 'visible') this.setState({ tick: Date.now() });
+    }, 30_000);
+    this._vis = () => document.visibilityState === 'visible' && this.setState({ tick: Date.now() });
+    document.addEventListener('visibilitychange', this._vis);
     this._key = (e) => {
       if (e.key === 'Escape' && this.closeTopLayer()) {
         e.preventDefault();
@@ -736,6 +785,8 @@ class Component extends DCLogic {
   componentWillUnmount() {
     this._alive = false;
     window.removeEventListener('resize', this._rs);
+    cancelAnimationFrame(this._rsF);
+    document.removeEventListener('visibilitychange', this._vis);
     clearInterval(this._iv);
     window.removeEventListener('keydown', this._key);
     clearTimeout(this._tt);
@@ -1288,7 +1339,8 @@ class Component extends DCLogic {
     return [t.getFullYear(), t.getMonth()];
   }
   time(ms) {
-    return new Date(ms + this.tzShift(ms)).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+    Component._timeFmt ||= new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: '2-digit' });
+    return Component._timeFmt.format(new Date(ms + this.tzShift(ms)));
   }
   /** The calendar's visible range [from, to) in epoch ms, using the workspace's days. */
   calRange() {
@@ -1365,13 +1417,14 @@ class Component extends DCLogic {
     if (diff === 1) return 'Tomorrow';
     if (diff === -1) return 'Yesterday';
     // A weekday name alone is only clear within the coming week; further out, show the date.
-    if (diff > 1 && diff < 7) return a.toLocaleDateString('en-US', { weekday: 'long' });
-    return a.toLocaleDateString('en-US', {
-      weekday: 'short',
-      month: 'short',
-      day: 'numeric',
-      ...(a.getFullYear() !== b.getFullYear() ? { year: 'numeric' } : {}),
+    // Cached formatters: toLocaleDateString builds a new one on every call, and this runs for every post.
+    const F = (Component._dayFmt ||= {
+      long: new Intl.DateTimeFormat('en-US', { weekday: 'long' }),
+      short: new Intl.DateTimeFormat('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
+      year: new Intl.DateTimeFormat('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' }),
     });
+    if (diff > 1 && diff < 7) return F.long.format(a);
+    return (a.getFullYear() !== b.getFullYear() ? F.year : F.short).format(a);
   }
 
   renderVals() {
@@ -1507,7 +1560,7 @@ class Component extends DCLogic {
         ? ''
         : ['failed', 'partial'].includes(p.status)
           ? fk === 'auth'
-            ? 'Reconnect account'
+            ? 'Check account'
             : fk === 'content'
               ? 'Edit to fix'
               : 'Retry'
@@ -1584,7 +1637,7 @@ class Component extends DCLogic {
           (fk === 'content'
             ? 'Content error, edit before retrying. '
             : fk === 'auth'
-              ? 'Account needs reconnecting. '
+              ? 'Account needs attention: reconnect it, or check it on the platform. '
               : 'Temporary error, safe to retry. ') +
           errs.map((t) => `${accById[t.acc]?.username || '?'}: ${t.error}`).join(' · '),
         canEdit: !['published'].includes(p.status),
@@ -2565,7 +2618,7 @@ class Component extends DCLogic {
       const t = p.targets.find((x) => x.error) || {};
       const a = accById[t.acc];
       const er = t.error || 'Failed',
-        k = { auth: 'Reconnect the account', content: 'Edit the post to fix', temp: 'Safe to retry' }[
+        k = { auth: 'Reconnect or check the account', content: 'Edit the post to fix', temp: 'Safe to retry' }[
           Component.errKind(er)
         ];
       return {
@@ -3420,16 +3473,7 @@ class Component extends DCLogic {
       ...(() => {
         const nowMs = Date.now(),
           nx = upcoming.find((p) => p.at > nowMs && p.approval !== 'pending');
-        const z = (n) => String(n).padStart(2, '0');
-        let countdown = '—';
-        if (nx) {
-          const sec = Math.floor((nx.at - nowMs) / 1000),
-            d = Math.floor(sec / 86400),
-            h = Math.floor((sec % 86400) / 3600),
-            m = Math.floor((sec % 3600) / 60),
-            ss = sec % 60;
-          countdown = d ? `${d}d ${h}h ${z(m)}m` : h ? `${h}h ${z(m)}m ${z(ss)}s` : `${m}m ${z(ss)}s`;
-        }
+        const countdown = nx ? <Countdown key={nx.id} at={nx.at} /> : '—';
         const day0 = this.wsAt(0, 0);
         const H0 = 6,
           H1 = 24;
@@ -3986,11 +4030,7 @@ class Component extends DCLogic {
             body: `${t.error || 'Failed'}. "${(p.caption || '').slice(0, 70)}${p.caption.length > 70 ? '…' : ''}"`,
             actions: (() => {
               const e = t.error || '';
-              const kind = /authori|token|revoked/i.test(e)
-                ? 'auth'
-                : /character|limit|too long|seconds|video/i.test(e)
-                  ? 'content'
-                  : 'temp';
+              const kind = Component.errKind(e);
               if (kind === 'auth')
                 return [
                   {
