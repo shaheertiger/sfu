@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from 'react';
  * the speaker button unmutes. Formats the browser can't decode (HEVC .mov from iPhones, mostly)
  * get a plain note instead of a black box.
  *
- * Props: account { name, handle, avatar, platform } | null, caption, media [{ kind: 'IMG'|'VIDEO', url }],
+ * Props: account { name, handle, avatar, platform } | null, caption, media [{ kind: 'IMG'|'VIDEO', url, poster? }],
  *        format 'Post' | 'Reel' | 'Story', when (e.g. "Sat, Oct 31 5:00 PM").
  */
 
@@ -52,6 +52,10 @@ function Media({ item, fit = 'cover', controlsTop = 10, onFail }) {
     return <div style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', background: 'linear-gradient(160deg,#9a7a58,#5d4a36)', color: '#f3e9d8', font: "600 12px 'Geist Mono', monospace" }}>{item?.kind === 'VIDEO' ? '▶ VIDEO' : 'IMAGE'}</div>;
   }
   if (item.kind !== 'VIDEO') return <img src={item.url} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: fit, background: '#000' }} />;
+  if (bad && item.poster) {
+    // It decoded when uploaded (that's where the still came from), so this is a loading problem: show the still.
+    return <img src={item.poster} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: fit, background: '#000' }} />;
+  }
   if (bad) {
     return (
       <div style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', background: '#111', color: '#d9dbe0', textAlign: 'center', padding: 18, fontSize: 12, lineHeight: 1.45 }}>
@@ -65,6 +69,7 @@ function Media({ item, fit = 'cover', controlsTop = 10, onFail }) {
       <video
         ref={ref}
         src={item.url}
+        poster={item.poster || undefined}
         autoPlay
         muted={muted}
         loop

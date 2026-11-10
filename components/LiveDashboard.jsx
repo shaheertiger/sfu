@@ -1145,7 +1145,12 @@ export default class LiveDashboard extends Base {
       const pa = sel.find((a) => a.id === d.previewId) || sel[0] || null;
       const meta = pa && (pa.platform === 'instagram' || pa.platform === 'facebook');
       const format = meta ? (d.ov[pa.id]?.opts || {}).format || d.postAs || 'Post' : pa ? 'Post' : d.postAs || 'Post';
-      const media = d.media.map((kind, i) => { const m = libById.get((d.mediaIds || [])[i]); return { kind, url: m ? m.url || m.videoUrl || '' : '' }; });
+      // For a video, `url` is its poster still (a JPEG) when it has one: play `videoUrl`, show the still as the poster.
+      const media = d.media.map((kind, i) => {
+        const m = libById.get((d.mediaIds || [])[i]);
+        if (!m) return { kind, url: '' };
+        return m.videoUrl ? { kind, url: m.videoUrl, poster: m.url || '' } : { kind, url: m.url || '' };
+      });
       const at = d.mode === 'schedule' ? Base.fromLocal(d.when) : null;
       const when = d.mode === 'now' ? 'Just now' : at ? `${this.dayLabel(at)} ${this.time(at)}` : d.mode === 'queue' ? 'Next open slot' : 'Draft';
       v.pvClassic = false;
