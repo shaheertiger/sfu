@@ -1,5 +1,5 @@
 ---
-title: "How to Delete Comments on TikTok: Press and Hold (Up to 100 at Once)"
+title: "How to Delete Comments on TikTok: Press and Hold (100 at Once)"
 description: Delete comments on TikTok by pressing and holding, remove up to 100 at once on your videos, find your comment history, pin a comment and see what folded means.
 h1: "How to Delete Comments on TikTok: Press and Hold (Up to 100 at Once)"
 category: TikTok

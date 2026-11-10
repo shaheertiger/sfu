@@ -1,5 +1,5 @@
 ---
-title: "How to Post a YouTube Video on Instagram: You Can't Embed It (4 Ways)"
+title: "How to Post a YouTube Video on Instagram: 4 Ways (No Embeds)"
 description: How to post a YouTube video on Instagram: upload your own file as a Reel, post a teaser, share the link in Stories or your bio, and cross-post Shorts the right way.
 h1: "How to Post a YouTube Video on Instagram: You Can't Embed It, So Use These 4 Ways"
 category: Instagram

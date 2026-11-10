@@ -1,5 +1,5 @@
 ---
-title: "Can You Get Paid to Scroll on TikTok? Mostly No (and 5 Scam Signs)"
+title: Can You Get Paid to Scroll on TikTok? Mostly No (5 Scam Signs)
 description: "Can you get paid for scrolling TikTok? What TikTok Lite rewards really paid, where they stopped, 5 signs of a paid-to-scroll scam, and how creators actually earn."
 h1: "Can You Get Paid to Scroll on TikTok? Mostly No (and 5 Scam Signs)"
 category: TikTok

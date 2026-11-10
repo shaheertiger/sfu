@@ -1,5 +1,5 @@
 ---
-title: "Social Media API: What 10 Platforms Let You Automate (and One API for All)"
+title: "Social Media API: What 10 Platforms Let You Automate"
 description: What each social media API lets you automate, from X and Instagram to TikTok and Bluesky, what approval and limits apply, and how one scheduling API covers ten networks.
 h1: "Social Media API: What 10 Platforms Let You Automate, and When One API Beats Ten"
 category: Guides

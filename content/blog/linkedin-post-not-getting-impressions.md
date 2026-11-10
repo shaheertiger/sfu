@@ -1,5 +1,5 @@
 ---
-title: "LinkedIn Post Not Getting Impressions? 9 Causes (Most Are Fixable)"
+title: LinkedIn Post Not Getting Impressions? 9 Fixable Causes
 description: LinkedIn post not getting impressions? Check the usual causes, from external links and posting time to weak hooks, slow early engagement and spam signals.
 h1: "LinkedIn Post Not Getting Impressions? 9 Causes, and Most Are Fixable"
 category: LinkedIn

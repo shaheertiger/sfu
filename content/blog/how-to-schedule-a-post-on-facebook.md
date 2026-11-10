@@ -1,5 +1,5 @@
 ---
-title: "How to Schedule a Post on Facebook: 6 Steps (Pages Only, Not Profiles)"
+title: "How to Schedule a Post on Facebook: 6 Steps (Pages Only)"
 description: How to schedule a post on a Facebook Page in Meta Business Suite or with a scheduler, where scheduled posts live, and how to edit, reschedule or cancel one.
 h1: "How to Schedule a Post on Facebook: 6 Steps (Pages Only, Not Profiles)"
 category: Facebook

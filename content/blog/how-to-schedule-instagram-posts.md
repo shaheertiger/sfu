@@ -1,5 +1,5 @@
 ---
-title: "How to Schedule Instagram Posts: 3 Ways (and the Free One Most People Miss)"
+title: "How to Schedule Instagram Posts: 3 Ways (One Is Free)"
 description: Schedule Instagram posts, Reels and carousels in the Instagram app, Meta Business Suite or a scheduler, with the limits of each, a comparison table and fixes.
 h1: "How to Schedule Instagram Posts: 3 Ways (and the Free One Most People Miss)"
 category: Instagram

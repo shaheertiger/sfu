@@ -1,5 +1,5 @@
 ---
-title: "What Type of Content Works Best on Facebook in 2026? Original Beats Viral"
+title: What Type of Content Works Best on Facebook? Original (2026)
 description: "What type of content works best on Facebook in 2026: original Reels, photos, multi-photo posts, Lives and Groups, plus a weekly content mix and how to measure it."
 h1: "What Type of Content Works Best on Facebook in 2026? Original Beats Viral"
 category: Facebook

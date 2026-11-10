@@ -1,5 +1,5 @@
 ---
-title: "Instagram Reel Size 2026: 1080×1920 (9:16), Plus the 3:4 Cover Crop"
+title: "Instagram Reel Size 2026: 1080×1920 (9:16), 3:4 Cover Crop"
 description: The right Instagram Reel size is 1080×1920 pixels at 9:16. See how the cover crops to 3:4 on your grid, where the safe zones are and how to export sharp Reels.
 h1: "Instagram Reel Size 2026: 1080×1920 (9:16), Plus the 3:4 Cover Crop"
 category: Instagram

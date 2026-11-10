@@ -1,5 +1,5 @@
 ---
-title: "How to Schedule Pins on Pinterest: 30 Days and 100 Pins, Then What?"
+title: "How to Schedule Pins on Pinterest: 30 Days, 100 Pins Max"
 description: How to schedule pins on Pinterest with the built-in scheduler (up to 30 days ahead), its limits, when a Pinterest scheduler tool is worth it and the best time to pin.
 h1: "How to Schedule Pins on Pinterest: The 30-Day, 100-Pin Limit and How to Get Past It"
 category: Pinterest

@@ -1,5 +1,5 @@
 ---
-title: "How to Delete a TikTok Video (or Hide It Without Losing Your Views)"
+title: How to Delete a TikTok Video (or Hide It and Keep the Views)
 description: How to delete a TikTok video in a few taps, how to unpost by setting it to Only me instead, what you lose for good, and how to stop needing to delete posts at all.
 h1: "How to Delete a TikTok Video (or Hide It Without Losing Your Views)"
 category: TikTok

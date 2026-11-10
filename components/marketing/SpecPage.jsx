@@ -1,3 +1,4 @@
+import { fitTitle, shortPlatform } from '@/lib/fit-title';
 import Link from 'next/link';
 import JsonLd from '@/components/JsonLd';
 import { Breadcrumbs, MarketingPage, TrialCta } from '@/components/marketing/Chrome';
@@ -17,7 +18,12 @@ export function specCopy(platform, spec) {
   const year = new Date().getUTCFullYear();
   const isText = spec.kind === 'text';
   return {
-    title: `${spec.h1} (${year}): ${spec.answer}${spec.rows[1] ? ` [${spec.rows[1][0]} ${spec.rows[1][1]}]` : ''}`,
+    title: fitTitle(
+      `${spec.h1} (${year}): ${spec.answer}${spec.rows[1] ? ` [${spec.rows[1][0]} ${spec.rows[1][1]}]` : ''}`,
+      `${spec.h1} (${year}): ${spec.answer}`,
+      `${spec.h1.replace(platform.name, shortPlatform(platform.name))} (${year}): ${spec.answer}`,
+      `${spec.h1.replace(platform.name, shortPlatform(platform.name))}: ${spec.answer}`,
+    ),
     description: `${spec.h1.replace(/^\w/, (c) => c.toUpperCase())} is ${spec.answer}. ${spec.detail} Every ${platform.name} ${isText ? 'limit' : 'size'} in one table, verified ${SPECS_VERIFIED}.`,
     keyword: spec.h1.toLowerCase(),
   };

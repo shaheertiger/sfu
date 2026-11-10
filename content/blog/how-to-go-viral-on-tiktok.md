@@ -1,5 +1,5 @@
 ---
-title: "How to Go Viral on TikTok: The First 2 Seconds Beat #FYP Every Time"
+title: "How to Go Viral on TikTok: The First 2 Seconds Beat #FYP"
 description: How to go viral on TikTok in 2026. What counts as viral, how the For You feed picks videos, what FYP means, how to reset your FYP, and a routine that raises your odds.
 h1: "How to Go Viral on TikTok: The First 2 Seconds Beat #FYP Every Time"
 category: TikTok

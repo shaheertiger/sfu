@@ -1,5 +1,5 @@
 ---
-title: "What Is t.co? X's Link Shortener (Why Every Link Counts as 23 Characters)"
+title: What Is t.co? X's Link Shortener (Why Links Count as 23)
 description: What is t.co? It's X's (Twitter's) link shortener. Why every link on X becomes t.co, how it counts toward 280 characters, if it's safe, and why it shows in analytics.
 h1: "What Is t.co? X's Link Shortener (Why Every Link Counts as 23 Characters)"
 category: X

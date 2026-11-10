@@ -1,5 +1,5 @@
 ---
-title: "What Does \"Shared With You\" Mean on TikTok? (It's Not What You Think)"
+title: What Does "Shared With You" Mean on TikTok? (Not What You Think)
 description: "\"Shared with you\" on TikTok usually means a video was sent to you, or that you've swapped videos with that person in messages. What it means and how to hide it."
 h1: "What Does \"Shared With You\" Mean on TikTok? (It's Not What You Think)"
 category: TikTok

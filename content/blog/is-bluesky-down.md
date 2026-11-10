@@ -1,5 +1,5 @@
 ---
-title: "Is Bluesky Down Today? Check status.bsky.app First, Then Try 6 Fixes"
+title: Is Bluesky Down Today? Check status.bsky.app, Then 6 Fixes
 description: Is there a problem with Bluesky today? How to check Bluesky's status page, fix feeds that won't load, and why Bluesky signed you out or a connected app stopped working.
 h1: "Is Bluesky Down Today? Check status.bsky.app First, Then Try These 6 Fixes"
 category: Bluesky

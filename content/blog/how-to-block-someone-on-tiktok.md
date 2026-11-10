@@ -1,5 +1,5 @@
 ---
-title: "How to Block Someone on TikTok: 3 Taps, Plus Bulk Blocking up to 100"
+title: "How to Block Someone on TikTok: 3 Taps (Bulk Block up to 100)"
 description: How to block someone on TikTok from their profile, a comment or a chat, block up to 100 commenters at once, unblock people, and block the TikTok app on an iPhone.
 h1: "How to Block Someone on TikTok: 3 Taps, Plus Bulk Blocking up to 100"
 category: TikTok

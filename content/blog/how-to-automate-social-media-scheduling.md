@@ -1,5 +1,5 @@
 ---
-title: "How to Automate Social Media Scheduling: 6 Methods (and 5 Things Not to Automate)"
+title: "How to Automate Social Media Scheduling: 6 Methods"
 description: How to automate social media scheduling with time slots, evergreen posts, RSS auto-post, bulk CSV uploads, webhooks and an API, plus what never to automate.
 h1: "How to Automate Social Media Scheduling: 6 Methods, Step by Step (and What Not to Automate)"
 category: Strategy

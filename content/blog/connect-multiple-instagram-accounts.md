@@ -1,5 +1,5 @@
 ---
-title: "How to Connect Multiple Instagram Accounts: One Meta Login, Every Account"
+title: How to Connect Multiple Instagram Accounts With One Meta Login
 description: Connect multiple Instagram accounts to one scheduler in a single Meta login. Requirements, steps, plan limits, workspaces per client and fixes for missing accounts.
 h1: "How to Connect Multiple Instagram Accounts: One Meta Login, Every Account"
 category: Guides

@@ -1,5 +1,5 @@
 ---
-title: "How to Change Your Profile Picture on TikTok: 6 Taps (and Why It Won't Update)"
+title: "How to Change Your Profile Picture on TikTok: 6 Taps"
 description: Change your TikTok profile picture in a few taps on iPhone, Android or a computer, with the best size and format, and fixes for when your new photo isn't showing.
 h1: "How to Change Your Profile Picture on TikTok: 6 Taps (and Why It Won't Update)"
 category: TikTok

@@ -1,5 +1,5 @@
 ---
-title: "Why Can't I Follow People on TikTok? 8 Causes (Usually a 24-Hour Limit)"
+title: Why Can't I Follow People on TikTok? 8 Causes (Often 24 Hours)
 description: Why TikTok won't let you follow people, including on a new account. Follow limits, the 10,000 cap, temporary blocks, private accounts, age limits and how to fix each.
 h1: "Why Can't I Follow People on TikTok? 8 Causes and Fixes (Most Lift Within a Day)"
 category: TikTok

@@ -1,5 +1,5 @@
 ---
-title: "Who Has the Most Followers on TikTok? Khaby Lame, About 163M (2026)"
+title: Who Has the Most Followers on TikTok? Khaby Lame, ~163M (2026)
 description: Khaby Lame has the most followers on TikTok, about 163 million in October 2026, ahead of Charli D'Amelio and MrBeast. The top accounts and what they have in common.
 h1: "Who Has the Most Followers on TikTok? Khaby Lame, About 163M (2026)"
 category: TikTok

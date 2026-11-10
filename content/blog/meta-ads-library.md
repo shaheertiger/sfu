@@ -1,5 +1,5 @@
 ---
-title: "Meta Ad Library: See Any Brand's Facebook and Instagram Ads Free (No Login)"
+title: "Meta Ad Library: See Any Brand's Facebook and Instagram Ads"
 description: The Meta Ad Library is a free, public database of Facebook and Instagram ads. Search it by advertiser or keyword, use the filters, and research competitors fairly.
 h1: "Meta Ad Library: See Any Brand's Facebook and Instagram Ads Free (No Login)"
 category: Facebook

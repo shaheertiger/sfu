@@ -1,5 +1,5 @@
 ---
-title: "How to Watch TikTok Without the App: Use tiktok.com (No Account Needed)"
+title: "How to Watch TikTok Without the App: Use tiktok.com"
 description: Watch TikTok without the app at tiktok.com in any browser. What works logged out vs logged in, how embeds and shared links work, and the limits to expect.
 h1: "How to Watch TikTok Without the App: Just Open tiktok.com (No Account Needed)"
 category: TikTok

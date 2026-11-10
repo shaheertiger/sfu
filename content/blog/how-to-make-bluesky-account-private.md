@@ -1,5 +1,5 @@
 ---
-title: "How to Make Your Bluesky Account Private? You Can't (6 Settings That Help)"
+title: How to Make Your Bluesky Account Private? You Can't (6 Fixes)
 description: Bluesky has no private accounts. 6 settings help instead, from logged-out visibility and reply controls to blocks, mute lists, DM settings and a second account.
 h1: "How to Make Your Bluesky Account Private? You Can't, but These 6 Settings Help"
 category: Bluesky

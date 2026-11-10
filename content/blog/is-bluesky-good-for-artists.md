@@ -1,5 +1,5 @@
 ---
-title: "Is Bluesky Good for Artists? Yes, With 5 Trade-Offs to Know (2026)"
+title: Is Bluesky Good for Artists? Yes, With 5 Trade-Offs (2026)
 description: Is Bluesky good for artists in 2026? How art gets seen through feeds and starter packs, image quality, Bluesky's AI training stance, content labels and how to post.
 h1: "Is Bluesky Good for Artists? Yes, With 5 Trade-Offs to Know (2026)"
 category: Bluesky

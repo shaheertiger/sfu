@@ -1,5 +1,5 @@
 ---
-title: "TikTok Slang Meanings: PMO, ASL, IB, TS, Moots, LMR and 15 More Decoded"
+title: "TikTok Slang Meanings: PMO, ASL, IB, TS, Moots and 16 More"
 description: What PMO, ASL, IB, OAT, SYFM, TS, moots, LMR, OD, bop, BMF, HB, MYF, SSA, WLW, pink font and FYP mean on TikTok, with examples of how each one is used.
 h1: "TikTok Slang Meanings: PMO, ASL, IB, TS, Moots, LMR and 15 More Decoded"
 category: TikTok

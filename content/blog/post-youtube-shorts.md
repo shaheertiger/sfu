@@ -1,5 +1,5 @@
 ---
-title: "How to Post a Video to YouTube as a Short: No Shorts Button Needed"
+title: How to Post a Video to YouTube as a Short (No Shorts Button)
 description: Post a video to YouTube as a Short - upload a vertical or square video up to 3 minutes, set the title and privacy, schedule it, and let YouTube classify it as a Short.
 h1: "How to Post a Video to YouTube as a Short: No Shorts Button Needed"
 category: Guides

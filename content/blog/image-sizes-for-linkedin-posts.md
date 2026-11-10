@@ -1,5 +1,5 @@
 ---
-title: "Image Sizes for LinkedIn Posts: 1080×1350 Beats 1200×627 on Mobile (2026 Cheat Sheet)"
+title: "Image Sizes for LinkedIn Posts: 1080×1350 Wins on Mobile (2026)"
 description: The right image sizes for LinkedIn posts in 2026, plus profile photos, banners, company pages, document carousels and article covers, with tips to keep images sharp.
 h1: "Image Sizes for LinkedIn Posts: 1080×1350 Beats 1200×627 on Mobile (2026 Cheat Sheet)"
 category: LinkedIn

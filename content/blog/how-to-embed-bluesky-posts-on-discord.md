@@ -1,5 +1,5 @@
 ---
-title: "How to Embed Bluesky Posts on Discord: Change One Word in the Link"
+title: "How to Embed Bluesky Posts on Discord: Change One Word"
 description: Embed Bluesky posts on Discord with images, video and quotes by changing bsky.app to fxbsky.app in the link. Plus fixes for missing previews and website embeds.
 h1: "How to Embed Bluesky Posts on Discord: Change One Word in the Link"
 category: Bluesky

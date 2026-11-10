@@ -1,5 +1,5 @@
 ---
-title: "When Did TikTok Come Out? September 2017, Not 2018 (Full Timeline)"
+title: When Did TikTok Come Out? September 2017 (Full Timeline)
 description: When did TikTok come out? Douyin launched in China in 2016, TikTok launched worldwide in 2017 and merged with Musical.ly in 2018. Key dates through 2026.
 h1: "When Did TikTok Come Out? September 2017, Not 2018 (Full Timeline to 2026)"
 category: TikTok

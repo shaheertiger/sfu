@@ -1,5 +1,5 @@
 ---
-title: "How to Start a YouTube Channel for Kids: 2 Safe Setups (and the Setting You Can't Skip)"
+title: "How to Start a YouTube Channel for Kids: 2 Safe Setups"
 description: How to start a YouTube channel for kids, whether you're making videos for children or helping your child create. Covers made for kids, age rules and privacy.
 h1: "How to Start a YouTube Channel for Kids: 2 Safe Setups (and the Setting You Can't Skip)"
 category: YouTube

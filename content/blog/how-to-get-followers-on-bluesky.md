@@ -1,5 +1,5 @@
 ---
-title: "How to Get Followers on Bluesky: 5 Ways That Work Without an Algorithm"
+title: "How to Get Followers on Bluesky: 5 Ways Without an Algorithm"
 description: How to get followers on Bluesky with starter packs, custom feeds, good replies, a clear profile and a steady posting rhythm, plus how to find who to follow.
 h1: "How to Get Followers on Bluesky: 5 Ways That Work Without an Algorithm"
 category: Bluesky

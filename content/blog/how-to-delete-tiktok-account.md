@@ -1,5 +1,5 @@
 ---
-title: "How to Delete Your TikTok Account: 7 Steps (Save These 5 Things First)"
+title: "How to Delete Your TikTok Account: 7 Steps (Save 5 Things First)"
 description: How to delete a TikTok account permanently in 7 steps, what the 30-day window means, how to deactivate instead, and the 5 things to download before you go.
 h1: "How to Delete Your TikTok Account in 7 Steps (Save These 5 Things First)"
 category: TikTok

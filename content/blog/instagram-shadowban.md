@@ -1,5 +1,5 @@
 ---
-title: "Am I Shadowbanned on Instagram? Check Account Status First (5 Tests)"
+title: Am I Shadowbanned on Instagram? 5 Tests (Check Status First)
 description: Am I shadowbanned on Instagram? Check Account Status and recommendation eligibility, run a hashtag and reach test, find the cause and request a review.
 h1: "Am I Shadowbanned on Instagram? Check Account Status First, Then Run 5 Tests"
 category: Instagram

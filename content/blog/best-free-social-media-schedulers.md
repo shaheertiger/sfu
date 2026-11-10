@@ -1,5 +1,5 @@
 ---
-title: "Best Free Social Media Schedulers: 10 Native Tools Compared (2026)"
+title: "Best Free Social Media Schedulers: 10 Native Tools (2026)"
 description: The best free social media schedulers are built into each platform. Compare native schedulers for Instagram, TikTok, X, LinkedIn and YouTube, and where they fall short.
 h1: "Best Free Social Media Schedulers: 10 Native Tools Compared (and Their Limits)"
 category: Strategy

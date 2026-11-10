@@ -135,7 +135,9 @@ test('social media country pages combine every platform and answer in local time
   assert.equal(Math.max(...combined.flat()), 100);
   const best = topSlots(combined, 5);
   const copy = socialCopy({ country: 'singapore', best, bestDay: bestWeekday(combined) });
-  assert.match(copy!.title, /^Best Time to Post on Social Media in Singapore \(\d{4}\): [A-Z][a-z]{2} \d+ [AP]M SGT$/);
+  // The local time zone is shown when it fits; the year (a data page) wins when there's room for only one.
+  assert.match(copy!.title, /^Best Time to Post on Social Media in Singapore \(\d{4}\): [A-Z][a-z]{2} \d+ [AP]M( SGT)?$/);
+  assert.ok(copy!.title.length <= 65, copy!.title);
   assert.match(copy!.h1, /^Best Time to Post on Social Media in Singapore/);
   assert.equal(copy!.keyword, 'best time to post on social media in singapore');
   const perPlatform = ['instagram', 'tiktok', 'linkedin'].map((id, i) => ({ platform: { id, name: id }, best: topSlots(grids[i], 1)[0] }));

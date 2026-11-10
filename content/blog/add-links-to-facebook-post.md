@@ -1,5 +1,5 @@
 ---
-title: "How to Add Links to a Facebook Post: Paste the Full URL, Not the Words"
+title: "How to Add Links to a Facebook Post: Paste the Full URL"
 description: Add a clickable link to any Facebook post, Page post, Story or comment, fix a wrong link preview, and decide when a first-comment link is worth testing.
 h1: "How to Add Links to a Facebook Post: Paste the Full URL, Not the Words"
 category: Facebook

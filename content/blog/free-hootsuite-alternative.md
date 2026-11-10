@@ -1,5 +1,5 @@
 ---
-title: "Free Hootsuite Alternative: 3 Real Options (and What “Free” Hides)"
+title: "Free Hootsuite Alternative: 3 Real Options (What “Free” Hides)"
 description: Looking for a free Hootsuite alternative? Compare native schedulers, open-source tools and low-cost schedulers, see what free tiers limit, and switch safely.
 h1: "Free Hootsuite Alternative: 3 Real Options (and What “Free” Hides)"
 category: Strategy

@@ -1,5 +1,5 @@
 ---
-title: "Can You Change Your Bluesky Handle? Yes, Free (But Old Links Break)"
+title: Can You Change Your Bluesky Handle? Yes, Free (Links Break)
 description: Yes, you can change your Bluesky handle any time, free. Steps for a new .bsky.social name or your own domain, what happens to mentions and links, and display names.
 h1: "Can You Change Your Bluesky Handle? Yes, Any Time, but Old Links Break"
 category: Bluesky

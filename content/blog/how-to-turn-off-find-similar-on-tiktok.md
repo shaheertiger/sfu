@@ -1,5 +1,5 @@
 ---
-title: "How to Turn Off Find Similar on TikTok: There's No Switch, but This Works"
+title: "How to Turn Off Find Similar on TikTok: No Switch (Do This)"
 description: Can you turn off Find Similar on TikTok? What the button does, the setting that hides it on many versions, and how to clear or reduce You May Like suggestions.
 h1: "How to Turn Off Find Similar on TikTok: There's No Switch, but This Hides It"
 category: TikTok

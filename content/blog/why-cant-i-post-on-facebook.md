@@ -1,5 +1,5 @@
 ---
-title: "Why Can't I Post on Facebook (FB)? 9 Causes, Matched to What You See"
+title: Why Can't I Post on Facebook? 9 Causes, Matched to the Error
 description: Why can't I post on FB? Match what you see to the cause, from app glitches and account restrictions to Page roles, Group rules, spam limits, blocked links and outages.
 h1: "Why Can't I Post on Facebook (FB)? 9 Causes, Matched to What You See"
 category: Facebook

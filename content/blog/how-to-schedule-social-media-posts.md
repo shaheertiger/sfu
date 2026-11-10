@@ -1,5 +1,5 @@
 ---
-title: "How to Schedule Social Media Posts: 10 Platforms, 1 Queue (Free First)"
+title: "How to Schedule Social Media Posts: 10 Platforms, 1 Queue"
 description: How to schedule social media posts on Instagram, Facebook, X, LinkedIn, TikTok, YouTube, Pinterest, Threads and Bluesky, and when one shared queue saves time.
 h1: "How to Schedule Social Media Posts: Every Platform's Free Scheduler, Then One Queue for All 10"
 category: Guides

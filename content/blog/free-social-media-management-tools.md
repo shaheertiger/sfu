@@ -1,5 +1,5 @@
 ---
-title: "Free Social Media Management Tools: 7 Options That Actually Cost Nothing"
+title: "Free Social Media Management Tools: 7 That Really Cost $0"
 description: The truly free social media management tools are native schedulers, open-source software and browser utilities. See what each does and where the limits start.
 h1: "Free Social Media Management Tools: 7 Options That Actually Cost Nothing"
 category: Strategy

@@ -1,5 +1,5 @@
 ---
-title: "Instagram Carousel Limit: 20 Slides in the App, 10 When Scheduled (2026)"
+title: "Instagram Carousel Limit: 20 in the App, 10 Scheduled (2026)"
 description: The Instagram carousel limit is up to 20 slides in the app but 10 for scheduled posts. Why the numbers differ, how to order slides and which aspect ratios to use.
 h1: "Instagram Carousel Limit: 20 Slides in the App, but Only 10 When You Schedule (2026)"
 category: Guides

@@ -1,5 +1,5 @@
 ---
-title: "TikTok Video Size and Ratio (2026): 1080×1920 at 9:16, or You Get Black Bars"
+title: "TikTok Video Size and Ratio (2026): 1080×1920 at 9:16"
 description: The best TikTok video size is 1080×1920 pixels at a 9:16 aspect ratio. See supported ratios, length and file limits, safe zones and export settings.
 h1: "TikTok Video Size and Ratio (2026): 1080×1920 at 9:16, or You Get Black Bars"
 category: TikTok

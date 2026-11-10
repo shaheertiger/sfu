@@ -1,5 +1,5 @@
 ---
-title: "How to Make a Slideshow on TikTok: Up to 35 Photos (Don't Miss Photo Mode)"
+title: "How to Make a Slideshow on TikTok: Up to 35 Photos"
 description: Make a TikTok slideshow with photo mode or a template, add music and text, avoid the video-mode trap that catches most people, and schedule photo posts ahead.
 h1: "How to Make a Slideshow on TikTok: Up to 35 Photos (Don't Miss Photo Mode)"
 category: TikTok

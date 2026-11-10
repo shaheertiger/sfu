@@ -1,5 +1,5 @@
 ---
-title: "How to Catch Released Instagram Usernames: The 14-Day Rule (No Bots)"
+title: "How to Catch Released Instagram Usernames: The 14-Day Rule"
 description: "When do Instagram usernames get released? The 14-day hold after a name change, how to check a name properly, why bots and sellers backfire, and better options."
 h1: "How to Catch Released Instagram Usernames: The 14-Day Rule (No Bots)"
 category: Instagram

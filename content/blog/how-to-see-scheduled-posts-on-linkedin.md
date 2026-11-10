@@ -1,5 +1,5 @@
 ---
-title: "How to See Scheduled Posts on LinkedIn: It's Behind the Clock Icon"
+title: "How to See Scheduled Posts on LinkedIn: Tap the Clock Icon"
 description: "Where LinkedIn keeps scheduled posts for your profile and company pages, how to edit, reschedule or cancel one, and how to see every scheduled post in one calendar."
 h1: "How to See Scheduled Posts on LinkedIn: It's Behind the Clock Icon"
 category: LinkedIn

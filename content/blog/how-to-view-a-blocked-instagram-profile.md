@@ -1,5 +1,5 @@
 ---
-title: "How to View a Blocked Instagram Profile: 3 Ways That Work (Viewers Don't)"
+title: "How to View a Blocked Instagram Profile: 3 Ways That Work"
 description: Can you view an Instagram profile that blocked you? What a block hides, the legitimate ways to see public posts, why viewer sites are scams, and what to do instead.
 h1: "How to View a Blocked Instagram Profile: 3 Ways That Work, and Why Viewer Sites Don't"
 category: Instagram

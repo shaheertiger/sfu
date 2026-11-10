@@ -1,5 +1,5 @@
 ---
-title: "How to See Dislikes on YouTube: Creators Can, Viewers Only Get Estimates"
+title: "How to See Dislikes on YouTube: Creators Can, Viewers Estimate"
 description: How to see dislikes on YouTube - creators get exact counts in YouTube Studio - why public counts were hidden in 2021, and what dislike extensions really show.
 h1: "How to See Dislikes on YouTube: Creators Can, Viewers Only Get Estimates"
 category: YouTube

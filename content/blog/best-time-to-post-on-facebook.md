@@ -1,5 +1,5 @@
 ---
-title: "Best Time to Post on Facebook: 7–10 AM Weekdays (Day-by-Day, 2026)"
+title: "Best Time to Post on Facebook: 7–10 AM Weekdays (2026)"
 description: The best time to post on Facebook is weekday mornings, 7 to 10 AM, with mid-week strongest. See times for every day, the worst slots and how to find your own.
 h1: "Best Time to Post on Facebook: 7–10 AM Weekdays (Day-by-Day, 2026)"
 category: Facebook
