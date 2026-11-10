@@ -2652,6 +2652,8 @@ class Component extends DCLogic {
       queueTabs,
       groups,
       queueEmpty: groups.length === 0,
+      // Plan badge on the Team card (the live dashboard sets the workspace's real plan).
+      teamPlan: 'Solo plan',
       emptyTitle: {
         upcoming: 'Nothing scheduled',
         review: 'Nothing waiting for approval',
@@ -4164,15 +4166,9 @@ class Component extends DCLogic {
         attention.sort((a, b) => rank(a) - rank(b));
         const icon = (n) => `url(/icons/${n}.svg)`;
         const range = this.calRange();
-        if (screen === 'home' && this._lastScreen !== 'home') this._homeT0 = Date.now();
-        this._lastScreen = screen;
-        const pr = Math.min(1, (Date.now() - (this._homeT0 || 0)) / 900),
-          ease = 1 - Math.pow(1 - pr, 3);
-        if (screen === 'home' && pr < 1)
-          requestAnimationFrame(() => {
-            if (this._alive) this.forceUpdate();
-          });
-        const cu = (v) => Math.round(v * ease);
+        // Stat numbers show their value straight away. (They used to count up by redrawing the whole
+        // dashboard every frame for ~0.9 s, which made opening Overview stutter.)
+        const cu = (v) => v;
         const mon = new Date(this.wsMonday());
         let wkTotal = 0,
           wkSent = 0;
@@ -4388,7 +4384,7 @@ class Component extends DCLogic {
           })(),
           attentionShown: S0.allIssues ? attention : attention.slice(0, 3),
           hasMoreIssues: attention.length > 3,
-          issuesLabel: S0.allIssues ? 'Show fewer' : `View all ${attention.length} issues`,
+          issuesLabel: S0.allIssues ? 'Show fewer' : `View all ${attention.length}`,
           toggleIssues: () => this.setState((st) => ({ allIssues: !st.allIssues })),
           qAcc: S0.qAcc || '',
           qPlat: S0.qPlat || '',
@@ -4438,7 +4434,13 @@ class Component extends DCLogic {
           ],
           attention,
           attnEmpty: attention.length === 0,
-          attnCount: attention.length ? `${attention.length} item${attention.length === 1 ? '' : 's'}` : '',
+          // Same count as the headline and the "Needs attention" tile; approvals are counted on their own.
+          attnCount: [
+            needN ? `${needN} issue${needN === 1 ? '' : 's'}` : '',
+            pending.length ? `${pending.length} to approve` : '',
+          ]
+            .filter(Boolean)
+            .join(' · '),
           healthRows: s.accounts
             .map((a) => {
               const h = HL(a);

@@ -1056,6 +1056,7 @@ export default class LiveDashboard extends Base {
       { name: 'Sign out', sub: this.userEmail || '', tone: '#2a2e34', mark: '', bg: 'transparent', pick: () => this.signOut() },
     ].map((w) => ({ ...w, pick: () => { super.setState({ drawer: false }); w.pick(); } })); // On phones the menu sits in the drawer: any choice closes it.
     v.wsName = cur?.name || 'Workspace';
+    v.teamPlan = this.isFree() ? 'Free plan' : s.billing?.state === 'trial' ? `${planName(s.billing.plan)} trial` : `${planName(s.billing?.enabled ? s.billing.plan : s.plan)} plan`;
     v.wsSub = this.isFree()
       ? `Free · ${s.accounts.length}/${s.billing.accountLimit ?? FREE_PLAN.accountLimit} accounts`
       : `${s.billing?.enabled ? stateName(s.billing) : planName(s.plan)} · ${s.accounts.length} account${s.accounts.length === 1 ? '' : 's'}`;

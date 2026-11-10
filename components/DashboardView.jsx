@@ -7971,7 +7971,7 @@ export function renderDashboard($v) {
                         border: '1px solid #e5e3dc',
                       }}
                     >
-                      {'Studio plan'}
+                      {$t($v['teamPlan'])}
                     </span>{' '}
                   </div>{' '}
                   {$arr($v['members']).map((m, $index) => (
