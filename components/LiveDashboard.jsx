@@ -1272,17 +1272,18 @@ export default class LiveDashboard extends Base {
 
     // Extra Home attention items: a frequent poster wants to know before the queue runs dry, and
     // about drafts that have quietly piled up. Added after the design's own items; counters follow.
+    // These are tips, not problems: they're listed with the issues but never counted as issues, so the
+    // headline, the "Needs attention" tile and the panel all show the same number.
+    let tips = 0;
+    const baseCount = v.attnCount || '';
     const addAttention = (item) => {
+      tips++;
       v.attention = [...(v.attention || []), item];
       v.attentionShown = s.allIssues ? v.attention : v.attention.slice(0, 3);
       v.hasMoreIssues = v.attention.length > 3;
-      v.issuesLabel = s.allIssues ? 'Show fewer' : `View all ${v.attention.length} issues`;
+      v.issuesLabel = s.allIssues ? 'Show fewer' : `View all ${v.attention.length}`;
       v.attnEmpty = false;
-      v.attnCount = `${v.attention.length} item${v.attention.length === 1 ? '' : 's'}`;
-      const n = v.attention.length;
-      v.needText = `${n} item${n === 1 ? '' : 's'} that need attention`;
-      v.needColor = '#a1281f';
-      v.needBg = 'linear-gradient(transparent 62%,#fdd9d5 62%)';
+      v.attnCount = [baseCount, `${tips} tip${tips === 1 ? '' : 's'}`].filter(Boolean).join(' · ');
     };
     if (s.screen === 'home' && (s.slots || []).length && (s.slotDays || []).length) {
       const weekEnd = Date.now() + 7 * 864e5;

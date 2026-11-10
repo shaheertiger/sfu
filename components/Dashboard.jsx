@@ -4020,19 +4020,54 @@ class Component extends DCLogic {
         const conflictIds = Object.keys(conflictMap),
           seen = new Set();
         const attention = [];
+        let failShown = 0;
         for (const p of failedPosts) {
           const t = p.targets.find((x) => x.error) || {},
             a = accById[t.acc];
+          // Its account was just disconnected: the server has already dropped that target (the next load shows it).
+          if (t.acc && !a) continue;
+          failShown++;
+          const deletePost = {
+            label: 'Delete post',
+            go: () =>
+              this.setState({
+                confirm: {
+                  title: 'Delete this post?',
+                  body: (p.caption || '').slice(0, 90),
+                  cta: 'Delete post',
+                  go: () => {
+                    const snap = p;
+                    this.setState((st) => ({ posts: st.posts.filter((x) => x.id !== p.id) }));
+                    this.flash('Post deleted', false, () => this.setState((st) => ({ posts: [...st.posts, snap] })));
+                  },
+                },
+              }),
+            bg: '#fff',
+            color: '#141619',
+            border: '#e7e5df',
+          };
           attention.push({
             icon: '!',
             iconBg: '#fde8e6',
             iconFg: '#dc3545',
             title: `${a ? P[a.platform].label : 'Post'} post couldn't publish`,
             when: p.at ? this.dayLabel(p.at) : '',
-            body: `${t.error || 'Failed'}. "${(p.caption || '').slice(0, 70)}${p.caption.length > 70 ? '…' : ''}"`,
-            actions: (() => {
+            body: `${(t.error || 'Failed').replace(/[.\s]+$/, '')}. "${(p.caption || '').slice(0, 70)}${(p.caption || '').length > 70 ? '…' : ''}"`,
+            actions: [
+              ...(() => {
               const e = t.error || '';
               const kind = Component.errKind(e);
+              // A restricted or suspended account is fixed on the platform; reconnecting doesn't help.
+              if (kind === 'auth' && /restricted|suspended|disabled|banned|checkpoint/i.test(e))
+                return [
+                  {
+                    label: 'Open account',
+                    go: () => this.setState({ screen: 'accounts' }),
+                    bg: '#141619',
+                    color: '#fff',
+                    border: '#141619',
+                  },
+                ];
               if (kind === 'auth')
                 return [
                   {
@@ -4072,6 +4107,9 @@ class Component extends DCLogic {
                 { label: 'Edit post', go: () => this.editPost(p), bg: '#fff', color: '#141619', border: '#e7e5df' },
               ];
             })(),
+              // Always a way to clear it: a failure nobody will retry shouldn't sit on Overview forever.
+              deletePost,
+            ],
           });
         }
         for (const a of sick) {
@@ -4219,7 +4257,7 @@ class Component extends DCLogic {
         const wkPlats = [
           ...new Set(thisWeek.flatMap((p) => p.targets.map((t) => accById[t.acc]?.platform)).filter(Boolean)),
         ];
-        const needN = failedPosts.length + sick.length + seen.size;
+        const needN = failShown + sick.length + seen.size;
         const tones = [
           'linear-gradient(160deg,#9a7a58,#5d4a36)',
           'linear-gradient(160deg,#6e7b5a,#3e4a33)',
@@ -4394,7 +4432,7 @@ class Component extends DCLogic {
           weekSum: `${wkSent} of ${wkTotal} sent`,
           isHome: screen === 'home',
           greeting: `${hr < 12 ? 'Good morning' : hr < 18 ? 'Good afternoon' : 'Good evening'}, ${WS === 'maya' ? 'Maya' : (Component.WS.find((w) => w[0] === WS) || [])[1]}`,
-          homeSub: `${upcoming.length} scheduled · ${pub7} published this week · ${failedPosts.length + sick.length + seen.size ? failedPosts.length + sick.length + seen.size + ' need attention' : 'nothing needs attention'} · ${pending.length} awaiting approval`,
+          homeSub: `${upcoming.length} scheduled · ${pub7} published this week · ${needN ? needN + ' need attention' : 'nothing needs attention'} · ${pending.length} awaiting approval`,
           homeStats: [
             {
               label: 'Scheduled',
@@ -4414,9 +4452,9 @@ class Component extends DCLogic {
             },
             {
               label: 'Needs attention',
-              value: cu(failedPosts.length + sick.length + seen.size),
+              value: cu(needN),
               cta: 'Below ↓',
-              color: failedPosts.length + sick.length + seen.size ? '#dc3545' : '#141619',
+              color: needN ? '#dc3545' : '#141619',
               icon: icon('alert'),
               go: () => {
                 const el = document.getElementById('attn');
