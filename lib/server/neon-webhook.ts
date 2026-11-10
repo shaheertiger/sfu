@@ -6,8 +6,8 @@ import { siteUrl } from '../site';
 
 /**
  * Receiver for Neon Auth (Managed Better Auth) webhooks: https://neon.com/docs/auth/guides/webhooks
- * Subscribed to `send.magic_link`, so Neon skips its own email and we send a branded one through Resend
- * (password reset, email confirmation, magic sign-in link).
+ * Subscribed to `send.magic_link` and `send.otp`, so Neon skips its own email and we send a branded one through
+ * Resend (password reset, email confirmation code or link, magic sign-in link, sign-in code).
  *
  * Signature: Ed25519 detached JWS in X-Neon-Signature (`header..signature`), key picked by X-Neon-Signature-Kid
  * from `<NEON_AUTH_BASE_URL>/.well-known/jwks.json`. Signed bytes:
@@ -169,6 +169,12 @@ type MagicLinkPayload = {
   user?: { email?: string; name?: string };
   event_data?: { link_type?: string; link_url?: string; token?: string; expires_at?: string };
 };
+type OtpPayload = {
+  event_id?: string;
+  event_type?: string;
+  user?: { email?: string; name?: string };
+  event_data?: { otp_code?: string; otp_type?: string; delivery_preference?: string; expires_at?: string };
+};
 
 /** "15 minutes", "1 hour", "3 days"; null when unknown or already past. */
 export function expiresIn(expiresAt: string | undefined, nowMs: number): string | null {
@@ -234,6 +240,50 @@ export function magicLinkEmail(payload: MagicLinkPayload, base: string, nowMs: n
   return { to, subject, html, text };
 }
 
+/** Builds the branded email for a send.otp event (a 6-digit code), or null for a type we don't handle. */
+export function otpEmail(payload: OtpPayload, nowMs: number): Email | null {
+  const data = payload.event_data || {};
+  // SMS codes come from the Phone Number plugin, which we don't use.
+  if (data.delivery_preference && data.delivery_preference !== 'email') return null;
+  const to = String(payload.user?.email || '').trim();
+  if (!to) throw new WebhookError(400, 'send.otp without user.email');
+  const code = String(data.otp_code || '').trim();
+  if (!/^[0-9A-Za-z]{4,12}$/.test(code)) throw new WebhookError(400, 'send.otp without a valid otp_code');
+  const name = String(payload.user?.name || '').trim();
+  const hi = name ? `Hi ${name},` : 'Hi,';
+  const left = expiresIn(data.expires_at, nowMs);
+
+  let subject: string, title: string, intro: string, footer: string;
+  switch (data.otp_type) {
+    case 'email-verification':
+      subject = `${code} is your Schedule For You confirmation code`;
+      title = 'Confirm your email';
+      intro = `Enter this code to confirm ${to} and finish setting up your Schedule For You account.`;
+      footer = "You got this email because this address was used to sign up for Schedule For You. If it wasn't you, ignore it.";
+      break;
+    case 'sign-in':
+      subject = `${code} is your Schedule For You sign-in code`;
+      title = 'Your sign-in code';
+      intro = `Enter this code to sign in to Schedule For You as ${to}.`;
+      footer = "You got this email because someone asked to sign in to Schedule For You with this address. If it wasn't you, ignore it.";
+      break;
+    case 'forget-password':
+      subject = `${code} is your Schedule For You password reset code`;
+      title = 'Reset your password';
+      intro = `Enter this code to choose a new password for the Schedule For You account ${to}.`;
+      footer = "You got this email because someone asked to reset the password for this address. If it wasn't you, ignore it and your password stays the same.";
+      break;
+    default:
+      return null;
+  }
+
+  const expiry = left ? `The code expires in ${left}.` : 'The code expires soon.';
+  const codeBlock = `<p style="margin:8px 0 16px;font-size:32px;font-weight:700;letter-spacing:8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#15171a">${esc(code)}</p>`;
+  const html = layout(title, P(esc(hi)) + P(esc(intro)) + codeBlock + P(esc(expiry)) + SMALL("Don't share this code with anyone. We'll never ask you for it."), undefined, { footer });
+  const text = [hi, '', intro, '', code, '', expiry, "Don't share this code with anyone.", '', '— Schedule For You', '', footer].join('\n');
+  return { to, subject, html, text };
+}
+
 // ---------- Handler ----------
 
 let defaults: WebhookDeps | null = null;
@@ -261,7 +311,7 @@ export async function handleNeonAuthWebhook(rawBody: string, headers: Headers, o
     if (Buffer.byteLength(rawBody) > MAX_BODY_BYTES) throw new WebhookError(413, 'Payload too large');
     await verifyNeonSignature(rawBody, headers, deps.resolveKey, deps.now());
 
-    let payload: MagicLinkPayload;
+    let payload: MagicLinkPayload & OtpPayload;
     try {
       payload = JSON.parse(rawBody);
     } catch {
@@ -271,7 +321,7 @@ export async function handleNeonAuthWebhook(rawBody: string, headers: Headers, o
     // The body's event_id is covered by the signature; the header is the fallback.
     const id = String(payload?.event_id || headers.get('x-neon-event-id') || '');
 
-    if (type !== 'send.magic_link') {
+    if (type !== 'send.magic_link' && type !== 'send.otp') {
       console.log(`[neon-auth webhook] ignored event ${type || '(none)'} ${id}`);
       return { status: 200, body: { ok: true, ignored: true } };
     }
@@ -280,7 +330,7 @@ export async function handleNeonAuthWebhook(rawBody: string, headers: Headers, o
     // A retry reaching this instance while the first attempt is still sending waits for that attempt.
     const running = inflight.get(id);
     if (running) return await running;
-    const work = deliverMagicLink(id, payload, deps);
+    const work = deliver(id, type, payload, deps);
     inflight.set(id, work);
     try {
       return await work;
@@ -297,14 +347,16 @@ export async function handleNeonAuthWebhook(rawBody: string, headers: Headers, o
   }
 }
 
-async function deliverMagicLink(id: string, payload: MagicLinkPayload, deps: WebhookDeps): Promise<WebhookResult> {
+async function deliver(id: string, type: string, payload: MagicLinkPayload & OtpPayload, deps: WebhookDeps): Promise<WebhookResult> {
   if (await deps.store.seen(id)) {
     console.log(`[neon-auth webhook] duplicate ${id}, already sent`);
     return { status: 200, body: { ok: true, duplicate: true } };
   }
-  const mail = magicLinkEmail(payload, deps.siteUrl(), deps.now());
+  const otp = type === 'send.otp';
+  const kind = String((otp ? payload.event_data?.otp_type : payload.event_data?.link_type) || '(none)');
+  const mail = otp ? otpEmail(payload, deps.now()) : magicLinkEmail(payload, deps.siteUrl(), deps.now());
   if (!mail) {
-    console.log(`[neon-auth webhook] ignored link type ${payload.event_data?.link_type || '(none)'} ${id}`);
+    console.log(`[neon-auth webhook] ignored ${type} ${kind} ${id}`);
     return { status: 200, body: { ok: true, ignored: true } };
   }
   if (!deps.emailReady()) {
@@ -316,7 +368,7 @@ async function deliverMagicLink(id: string, payload: MagicLinkPayload, deps: Web
   } catch (e: any) {
     throw new WebhookError(502, `Email send failed: ${e?.message || e}`);
   }
-  await deps.store.mark(id, `send.magic_link:${payload.event_data?.link_type}`);
-  console.log(`[neon-auth webhook] sent ${payload.event_data?.link_type} email for ${id}`);
+  await deps.store.mark(id, `${type}:${kind}`);
+  console.log(`[neon-auth webhook] sent ${type} ${kind} email for ${id}`);
   return { status: 200, body: { ok: true } };
 }

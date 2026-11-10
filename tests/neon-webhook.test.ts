@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
-import { expiresIn, handleNeonAuthWebhook, jwksKeyResolver, memoryEventStore, type WebhookDeps } from '../lib/server/neon-webhook.ts';
+import { expiresIn, handleNeonAuthWebhook, otpEmail, jwksKeyResolver, memoryEventStore, type WebhookDeps } from '../lib/server/neon-webhook.ts';
 import { layout, type Email } from '../lib/server/email.ts';
 
 const NOW = Date.parse('2026-10-23T12:00:00.000Z');
@@ -162,6 +162,51 @@ test('other events and unknown link types are acknowledged and ignored', async (
   const r = await handleNeonAuthWebhook(odd, neonHeaders(odd), d);
   assert.equal(r.status, 200);
   assert.equal(r.body.ignored, true);
+  assert.equal(sent.length, 0);
+});
+
+function otpEvent(otpType: string, overrides: Record<string, unknown> = {}, data: Record<string, unknown> = {}) {
+  return JSON.stringify({
+    event_id: 'otp-1',
+    event_type: 'send.otp',
+    timestamp: new Date(NOW).toISOString(),
+    user: { id: 'u1', email: 'jane@example.com', name: 'Jane <b>Smith</b>', email_verified: false },
+    event_data: { otp_code: '482913', otp_type: otpType, expires_at: new Date(NOW + 15 * 60_000).toISOString(), ...data },
+    ...overrides,
+  });
+}
+
+test('send.otp email-verification: branded code email through Resend', async () => {
+  const { d, sent } = deps();
+  const body = otpEvent('email-verification');
+  const r = await handleNeonAuthWebhook(body, neonHeaders(body, { eventId: 'otp-1' }), d);
+  assert.equal(r.status, 200);
+  assert.equal(sent.length, 1);
+  assert.equal(sent[0].to, 'jane@example.com');
+  assert.match(sent[0].subject, /^482913 is your Schedule For You confirmation code$/);
+  assert.match(sent[0].html, />482913</);
+  assert.match(sent[0].html, /Jane &lt;b&gt;Smith&lt;\/b&gt;/);
+  assert.match(sent[0].text, /482913/);
+  assert.match(sent[0].text, /expires in 15 minutes/);
+  // A retry of the same event doesn't send a second email.
+  await handleNeonAuthWebhook(body, neonHeaders(body, { eventId: 'otp-1' }), d);
+  assert.equal(sent.length, 1);
+});
+
+test('send.otp sign-in and forget-password codes are delivered too', async () => {
+  for (const [type, re] of [['sign-in', /sign-in code/], ['forget-password', /password reset code/]] as const) {
+    const mail = otpEmail(JSON.parse(otpEvent(type)), NOW);
+    assert.ok(mail);
+    assert.match(mail!.subject, re);
+  }
+});
+
+test('send.otp: SMS and unknown types are ignored, a missing code is rejected', async () => {
+  assert.equal(otpEmail(JSON.parse(otpEvent('email-verification', {}, { delivery_preference: 'sms' })), NOW), null);
+  assert.equal(otpEmail(JSON.parse(otpEvent('something-new')), NOW), null);
+  const { d, sent } = deps();
+  const bad = otpEvent('email-verification', { event_id: 'otp-2' }, { otp_code: '' });
+  assert.equal((await handleNeonAuthWebhook(bad, neonHeaders(bad), d)).status, 400);
   assert.equal(sent.length, 0);
 });
 

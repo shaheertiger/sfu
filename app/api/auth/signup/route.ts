@@ -24,8 +24,9 @@ export async function POST(req: Request) {
     // Came here from someone's referral link? Their workspace gets the credit when this one first pays.
     const ref = readRefCookie(req.headers.get('cookie'));
     if (ref && profile.active_workspace_id) await attributeSignup(profile.active_workspace_id, data.user.id, ref).catch(() => null);
-    // No token means Neon Auth is set to verify emails before the first sign-in.
-    if (!data.token) return json({ ok: true, verify: true, message: 'Check your email to confirm your address, then sign in.' });
+    // No token means Neon Auth requires a confirmed email before the first sign-in. It has emailed a
+    // 6-digit code (through our webhook); the form asks for it and /api/auth/confirm-email signs them in.
+    if (!data.token) return json({ ok: true, verify: true, email: email.toLowerCase(), message: `We sent a 6-digit code to ${email.toLowerCase()}. Enter it to finish creating your account.` });
     await setSignedInHint(true);
     return json({ ok: true });
   } catch (e) {
