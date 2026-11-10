@@ -63,3 +63,13 @@ Tool pages copy the layout of the top-ranking free-tool pages (see `research/com
 Dashboard screenshots come from the `/demo` page (sample data, no account needed) at 1440×900, saved as WebP in `public/images/blog/` and named `name-<width>x<height>.webp`. The size in the name becomes the image's `width` and `height`, so the page doesn't shift while it loads. Reference them as `![Alt text](/images/blog/name-1440x900.webp)`.
 
 We don't have screenshots of other apps (TikTok, LinkedIn, Instagram…). Don't invent or describe screenshots we don't have; write the native steps as a numbered list and note that menu labels change between app versions.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
