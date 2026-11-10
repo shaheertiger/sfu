@@ -25,7 +25,13 @@ const nextConfig = {
   async rewrites() {
     if (!CDN.base) return [];
     const base = CDN.base.replace(/\/$/, '');
-    return { afterFiles: [{ source: '/images/:dir(blog|tools|figures)/:file([\\w.-]+-(?:1200|720)x\\d+\\.webp)', destination: `${base}/images/:dir/:file` }] };
+    const file = ':file([\\w.-]+-(?:1200|720)x\\d+\\.webp)';
+    return {
+      afterFiles: [
+        { source: `/images/:dir(blog|tools)/${file}`, destination: `${base}/images/:dir/:file` },
+        { source: `/images/figures/:family([\\w-]+)/${file}`, destination: `${base}/images/figures/:family/:file` },
+      ],
+    };
   },
   async headers() {
     return [
