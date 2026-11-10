@@ -1,5 +1,5 @@
 ---
-title: "Why Does My Instagram Story Look Blurry? 8 Causes (and the Setting Most Miss)"
+title: Why Does My Instagram Story Look Blurry? 8 Causes and Fixes
 description: Blurry Instagram Stories usually come from compression, the wrong size, data saver settings or HDR footage. Here's how to find the cause and fix it fast.
 h1: "Why Does My Instagram Story Look Blurry? 8 Causes (and the Setting Most Miss)"
 category: Instagram

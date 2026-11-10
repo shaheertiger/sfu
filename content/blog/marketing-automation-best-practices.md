@@ -1,5 +1,5 @@
 ---
-title: "Marketing Automation Best Practices: 7 Rules (Automate Busywork, Not Voice)"
+title: "Marketing Automation Best Practices: 7 Rules (Keep Your Voice)"
 description: Practical marketing automation best practices for social media: what to automate, what to keep human, and how to set up scheduling, RSS, webhooks and approvals.
 h1: "Marketing Automation Best Practices: 7 Rules to Automate the Busywork, Never the Voice"
 category: Strategy

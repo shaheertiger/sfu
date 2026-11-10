@@ -1,5 +1,5 @@
 ---
-title: "Suspended Instagram Account? Watch the Countdown and Do This First"
+title: Suspended Instagram Account? Watch the Countdown, Then Act
 description: "Got a “we suspended your account” screen? How suspension differs from disabled, restricted and hacked accounts, how to disagree in time and what to do while you wait."
 h1: "Suspended Instagram Account? Watch the Countdown and Do This First"
 category: Instagram

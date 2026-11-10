@@ -1,5 +1,5 @@
 ---
-title: "How to Play TikTok Videos in Reverse: 6 Taps (and Why the Sound Won't Flip)"
+title: "How to Play TikTok Videos in Reverse: 6 Taps (Sound Won't Flip)"
 description: How to reverse a TikTok video with the Reverse time effect, how to play someone else's TikTok in reverse, and why the sound doesn't reverse with the picture.
 h1: "How to Play TikTok Videos in Reverse: 6 Taps (and Why the Sound Won't Flip)"
 category: TikTok

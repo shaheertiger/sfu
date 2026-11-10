@@ -1,5 +1,5 @@
 ---
-title: "How Do I Post a Video to Twitter (X)? 6 Taps, Plus Scheduled Threads"
+title: How Do I Post a Video to Twitter (X)? 6 Taps, Plus Threads
 description: How do I post a video to Twitter? Step-by-step for the X app, the web and a scheduler, plus how to schedule a full thread on X, Threads or Bluesky.
 h1: "How Do I Post a Video to Twitter (X)? 6 Taps in the App, Plus How to Schedule a Whole Thread"
 category: Guides

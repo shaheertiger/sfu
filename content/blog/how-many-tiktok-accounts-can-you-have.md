@@ -1,5 +1,5 @@
 ---
-title: "How Many TikTok Accounts Can You Have? No Cap, but a Switcher Limit"
+title: How Many TikTok Accounts Can You Have? No Cap, One Catch
 description: How many TikTok accounts you can have and switch between, how to create a second account, switch, log out, and log someone else out of yours.
 h1: "How Many TikTok Accounts Can You Have? No Cap, but a Switcher Limit"
 category: TikTok

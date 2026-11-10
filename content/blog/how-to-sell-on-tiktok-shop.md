@@ -1,5 +1,5 @@
 ---
-title: "How to Sell on TikTok Shop: 7-Step Setup, ~6% Fees and LIVE Selling (2026)"
+title: "How to Sell on TikTok Shop: 7-Step Setup, ~6% Fees (2026)"
 description: How to sell on TikTok Shop in 2026, step by step. What you need to sign up, what TikTok takes per sale including on LIVE, what GMV means, and how to get first orders.
 h1: "How to Sell on TikTok Shop: 7-Step Setup, ~6% Fees and LIVE Selling (2026)"
 category: TikTok

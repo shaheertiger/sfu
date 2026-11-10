@@ -1,5 +1,5 @@
 ---
-title: "TikTok Caption Character Limit: 4,000 in the App, 2,200 via Schedulers (2026)"
+title: "TikTok Caption Character Limit: 4,000 in App, 2,200 Scheduled"
 description: TikTok's caption limit is 4,000 characters in the app but 2,200 through schedulers. Where captions truncate, bio and comment limits, and how to write them.
 h1: "TikTok Caption Character Limit: 4,000 Characters in the App, 2,200 Through Schedulers (2026)"
 category: TikTok

@@ -1,5 +1,5 @@
 ---
-title: "What Does 67 Mean on TikTok? Six Seven Means Nothing (That's the Joke)"
+title: What Does 67 Mean on TikTok? Nothing (That's the Joke)
 description: What 67 (six seven) means on TikTok, where it came from, why kids yell it with a hand gesture, and how brands and creators can use it without looking out of touch.
 h1: "What Does 67 Mean on TikTok? \"Six Seven\" Means Nothing, and That's the Joke"
 category: TikTok

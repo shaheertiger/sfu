@@ -1,5 +1,5 @@
 ---
-title: "How to Change Your Profile Picture (DP) on Instagram: 6 Taps, No Blur"
+title: "How to Change Your Profile Picture on Instagram: 6 Taps"
 description: How to change your DP on Instagram in the app or on desktop, the best profile picture size, why your photo looks blurry or won't update, and how to remove it.
 h1: "How to Change Your Profile Picture (DP) on Instagram: 6 Taps, and How to Stop It Looking Blurry"
 category: Instagram

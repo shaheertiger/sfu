@@ -1,5 +1,5 @@
 ---
-title: "How to Schedule TikTok Posts: TikTok Studio Stops at 10 Days (Here's the Fix)"
+title: "How to Schedule TikTok Posts: Past the 10-Day Studio Limit"
 description: Schedule TikTok posts in TikTok Studio, see its 10-day and desktop-only limits, compare it with scheduling tools, and schedule TikTok alongside Reels and Shorts.
 h1: "How to Schedule TikTok Posts: TikTok Studio Stops at 10 Days (Here's the Fix)"
 category: TikTok

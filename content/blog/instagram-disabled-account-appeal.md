@@ -1,5 +1,5 @@
 ---
-title: "How Long Does an Instagram Appeal Take? No Fixed Time, So Do This First"
+title: How Long Does an Instagram Appeal Take? No Set Time, Do This
 description: How long does an Instagram appeal take? What a disabled account means, how to appeal in the app or at login, ID and selfie checks, and the recovery scams to avoid.
 h1: "How Long Does an Instagram Appeal Take? No Fixed Time, So Do This First"
 category: Instagram

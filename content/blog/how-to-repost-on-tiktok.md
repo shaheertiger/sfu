@@ -1,5 +1,5 @@
 ---
-title: "How to Repost on TikTok: 2 Taps (and Why the Button Sometimes Vanishes)"
+title: "How to Repost on TikTok: 2 Taps (When the Button Vanishes)"
 description: How to repost a TikTok video in two taps, add a comment, find and undo your reposts, what "reposted" means, and why the Repost button is sometimes missing.
 h1: "How to Repost on TikTok: 2 Taps (and Why the Button Sometimes Vanishes)"
 category: TikTok

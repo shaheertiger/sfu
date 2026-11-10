@@ -1,5 +1,5 @@
 ---
-title: "How to Cross Post to Multiple Platforms: 3 Caption Lengths, Not One"
+title: "How to Cross Post to Multiple Platforms: 3 Caption Lengths"
 description: How to cross post to multiple platforms. Adapt captions to each limit, size media once for every feed, time posts well and avoid the copy-paste look.
 h1: "How to Cross Post to Multiple Platforms: Write 3 Caption Lengths, Not One"
 category: Strategy

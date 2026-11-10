@@ -1,5 +1,5 @@
 ---
-title: "When Does YouTube Start Paying You? 1–2 Months After YPP, From $100 (2026)"
+title: When Does YouTube Start Paying You? 1–2 Months After YPP
 description: When does YouTube start paying you? The Partner Program requirements, how AdSense pays, the monthly cycle, the $100 US threshold and why a first payout can be late.
 h1: "When Does YouTube Start Paying You? 1–2 Months After YPP, From $100 (2026)"
 category: YouTube

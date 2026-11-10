@@ -1,5 +1,5 @@
 ---
-title: "What Does Blue Sky Mean? The Phrase, the App's Name and the Butterfly"
+title: What Does Blue Sky Mean? The Phrase, the App and the Butterfly
 description: What does blue sky mean? The idiom (blue-sky thinking, blue-sky research), where the Bluesky social app got its name and butterfly logo, and how to pronounce Bluesky.
 h1: "What Does Blue Sky Mean? The Phrase, the App's Name and the Butterfly"
 category: Bluesky

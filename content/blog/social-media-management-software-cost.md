@@ -1,5 +1,5 @@
 ---
-title: "Social Media Management Software Cost (2026): $0 to $400+ Per User a Month"
+title: "Social Media Management Software Cost (2026): $0 to $400+"
 description: How much does social media management software cost? Typical price tiers, entry prices for 8 real tools, what drives cost and the hidden fees small businesses miss.
 h1: "Social Media Management Software Cost (2026): $0 to $400+ Per User a Month"
 category: Strategy

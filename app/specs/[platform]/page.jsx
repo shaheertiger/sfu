@@ -1,3 +1,4 @@
+import { fitTitle } from '@/lib/fit-title';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import JsonLd from '@/components/JsonLd';
@@ -12,7 +13,7 @@ import { organizationLd } from '@/lib/seo';
 export const dynamicParams = false;
 export function generateStaticParams() { return SPEC_PLATFORMS.map((p) => ({ platform: p.slug })); }
 
-const copy = (p) => ({ title: `${p.name} Image Sizes & Character Limits (${new Date().getUTCFullYear()}): Every Spec in One Table`, description: `All ${p.name} sizes and limits: ${p.specs.map((s) => s.h1.replace(`${p.name} `, '')).slice(0, 5).join(', ')} and more, verified ${SPECS_VERIFIED}.` });
+const copy = (p) => ({ title: fitTitle(`${p.name} Image Sizes & Character Limits (${new Date().getUTCFullYear()}): Every Spec in One Table`, `${p.name} Image Sizes & Character Limits (${new Date().getUTCFullYear()}): One Table`, `${p.name} Image Sizes & Limits (${new Date().getUTCFullYear()}): Every Spec`), description: `All ${p.name} sizes and limits: ${p.specs.map((s) => s.h1.replace(`${p.name} `, '')).slice(0, 5).join(', ')} and more, verified ${SPECS_VERIFIED}.` });
 
 export async function generateMetadata({ params }) {
   const { platform } = await params; const p = specPlatformBySlug(platform);

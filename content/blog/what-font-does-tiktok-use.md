@@ -1,5 +1,5 @@
 ---
-title: "What Font Does TikTok Use? TikTok Sans (Free Since 2025) and Text Styles"
+title: What Font Does TikTok Use? TikTok Sans (Free Since 2025)
 description: TikTok uses TikTok Sans, its own open-source typeface, for the app and text on videos. Where to download it, the in-app text styles, and fonts for your bio and captions.
 h1: "What Font Does TikTok Use? TikTok Sans, and It's Free to Download"
 category: TikTok

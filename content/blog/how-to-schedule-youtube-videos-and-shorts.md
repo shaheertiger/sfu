@@ -1,5 +1,5 @@
 ---
-title: "How to Schedule a Video on YouTube or Shorts: The Pinned Comment Catch"
+title: "How to Schedule a Video on YouTube or Shorts: The Comment Catch"
 description: How to schedule a YouTube video or Short in YouTube Studio or the app, why you can't pin a comment before it goes live, and how to schedule a batch of Shorts at once.
 h1: "How to Schedule a Video on YouTube or Shorts: The Pinned Comment Catch"
 category: YouTube

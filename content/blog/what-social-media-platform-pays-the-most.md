@@ -1,5 +1,5 @@
 ---
-title: "Which Social Media Platform Pays the Most? YouTube's 55% Split Leads (2026)"
+title: Which Social Media Platform Pays the Most? YouTube (2026)
 description: Which social media platform pays the most? Compare how YouTube, TikTok, Facebook, Instagram and X pay creators, and why your format and niche decide.
 h1: "Which Social Media Platform Pays the Most? YouTube's 55% Split Leads (2026)"
 category: Strategy

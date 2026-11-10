@@ -1,5 +1,5 @@
 ---
-title: "How to Link Instagram to Facebook: 2 Links That Do Different Things"
+title: "How to Link Instagram to Facebook: 2 Links, 2 Different Jobs"
 description: How to link Instagram to Facebook in Accounts Center or connect Instagram to a Facebook Page, why the Page link matters for scheduling, and how to fix it.
 h1: "How to Link Instagram to Facebook: 2 Different Links (and Which One You Need)"
 category: Instagram

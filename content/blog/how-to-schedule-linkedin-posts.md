@@ -1,5 +1,5 @@
 ---
-title: "How to Schedule LinkedIn Posts: Free Native Way (and When It Breaks)"
+title: "How to Schedule LinkedIn Posts: The Free Native Way"
 description: How to schedule LinkedIn posts on a profile or company page with LinkedIn's free scheduler, its 3-month limit, and how to schedule several profiles from one calendar.
 h1: "How to Schedule LinkedIn Posts: The Free Native Way, and Where It Breaks for Teams"
 category: LinkedIn

@@ -1,5 +1,5 @@
 ---
-title: "How to Change Email on TikTok in 7 Taps (Even Without the Old One)"
+title: How to Change Email on TikTok in 7 Taps (No Old Email Needed)
 description: How to change the email address on your TikTok account in the app or on desktop, what to do if the code never arrives, and how to add an email after a phone sign-up.
 h1: "How to Change Your Email on TikTok in 7 Taps (Even Without the Old Inbox)"
 category: TikTok

@@ -1,5 +1,5 @@
 ---
-title: "How to Remove Reposts on TikTok (No Delete-All Button, Here's the Fix)"
+title: How to Remove Reposts on TikTok (No Delete-All Button)
 description: How to undo a repost on TikTok, clear all your reposts without a select-all button, make reposts more private, and stop other people reposting your videos.
 h1: "How to Remove Reposts on TikTok: There's No Delete-All, So Do This Instead"
 category: TikTok

@@ -1,5 +1,5 @@
 ---
-title: "Is Bluesky Safe? Yes, With 2 Catches: Almost Everything's Public, DMs Aren't Encrypted"
+title: Is Bluesky Safe? Yes, but Posts Are Public and DMs Unencrypted
 description: Is Bluesky safe? What's public, how moderation and blocking work, whether DMs are private, account security, scams to watch for, and whether Bluesky suits teens.
 h1: "Is Bluesky Safe? Yes, With 2 Catches: Almost Everything's Public, DMs Aren't Encrypted"
 category: Bluesky

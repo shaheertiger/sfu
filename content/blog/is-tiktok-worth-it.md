@@ -1,5 +1,5 @@
 ---
-title: "Is TikTok Worth It in 2026? Yes, If You Can Post 3–5 Videos a Week"
+title: Is TikTok Worth It in 2026? Yes, at 3–5 Videos a Week
 description: Is TikTok worth it for your business or as a creator in 2026? Audience size, the real time cost, who does well, who should skip it, and a cheap 60-day test.
 h1: "Is TikTok Worth It in 2026? Yes, If You Can Post 3–5 Videos a Week"
 category: TikTok

@@ -1,5 +1,5 @@
 ---
-title: "How Do I Get Rid of Friends on Facebook? Unfriend Quietly (+5 Options)"
+title: How Do I Get Rid of Friends on Facebook? Unfriend Quietly
 description: How to remove friends on Facebook in the app or on desktop, clear several at once, and quieter options like unfollow, snooze, Restricted, Take a break and block.
 h1: "How Do I Get Rid of Friends on Facebook? Unfriend Quietly, or Pick a Gentler Option"
 category: Facebook

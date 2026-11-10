@@ -1,5 +1,5 @@
 ---
-title: "How to See Your YouTube Subscribers: Exact Count, Names (and Who's Hidden)"
+title: "How to See Your YouTube Subscribers: Exact Count and Names"
 description: How to see your YouTube subscribers in Studio: check your exact count, see who subscribed, track gains and losses in Analytics, and why some never show up.
 h1: "How to See Your YouTube Subscribers: Your Exact Count, Their Names, and Why Some Stay Hidden"
 category: YouTube

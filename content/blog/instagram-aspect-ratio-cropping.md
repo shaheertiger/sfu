@@ -1,5 +1,5 @@
 ---
-title: "Why Instagram Crops Photos: The 4:5 to 1.91:1 Rule (and How to Stop It)"
+title: "Why Instagram Crops Photos: The 4:5 to 1.91:1 Rule (Fix It)"
 description: Instagram crops photos outside its 4:5 to 1.91:1 feed range and trims your profile grid to 3:4. See the right sizes and how to avoid failed scheduled posts.
 h1: "Why Instagram Crops Photos: The 4:5 to 1.91:1 Rule (and How to Stop It)"
 category: Guides

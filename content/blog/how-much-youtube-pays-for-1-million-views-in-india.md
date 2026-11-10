@@ -1,5 +1,5 @@
 ---
-title: "YouTube View Price in India (2026): 1 Million Views = 1,000 × Your RPM"
+title: "YouTube View Price in India (2026): 1M Views = 1,000 × RPM"
 description: There's no fixed YouTube view price in India. See how RPM, audience country and Shorts vs long-form shape what 1 million views earn, with hypothetical examples.
 h1: "YouTube View Price in India (2026): 1 Million Views = 1,000 × Your RPM"
 category: YouTube

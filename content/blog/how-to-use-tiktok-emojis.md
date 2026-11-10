@@ -1,5 +1,5 @@
 ---
-title: "How to Use TikTok Emojis: 46 Secret Codes Like [smile] (Comments Only)"
+title: "How to Use TikTok Emojis: 46 Secret Codes Like [smile]"
 description: TikTok has hidden emojis you type as codes in square brackets, like [smile] or [cool]. The full method, 46 codes that work, and why some don't show up in captions.
 h1: "How to Use TikTok's Secret Emojis: 46 Codes Like [smile], and Why They Only Work in Comments"
 category: TikTok

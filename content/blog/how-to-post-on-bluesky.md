@@ -1,5 +1,5 @@
 ---
-title: "How to Post on Bluesky: 7 Steps, Plus GIFs, Threads and Scheduling"
+title: "How to Post on Bluesky: 7 Steps, Plus GIFs and Threads"
 description: How to post on Bluesky step by step, on the app and the web. Add images, video and GIFs, write threads, set reply controls, and schedule Bluesky posts ahead.
 h1: "How to Post on Bluesky: 7 Steps, Plus GIFs, Threads and the One Thing the App Can't Do"
 category: Bluesky

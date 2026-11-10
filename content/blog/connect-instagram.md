@@ -1,5 +1,5 @@
 ---
-title: "How to Connect Instagram to a Scheduler: 3 Steps (Most Errors Are the Page)"
+title: "How to Connect Instagram to a Scheduler: 3 Steps (Check the Page)"
 description: How to connect Instagram to a scheduler in 3 steps: switch to a professional account, link a Facebook Page, approve Meta's permissions, and fix common errors.
 h1: "How to Connect Instagram to a Scheduler: 3 Steps (and Why Most Errors Are the Facebook Page)"
 category: Guides

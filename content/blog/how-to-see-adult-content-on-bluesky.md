@@ -1,5 +1,5 @@
 ---
-title: "How to See Adult Content on Bluesky: Why the Toggle Is Missing on iPhone"
+title: How to See Adult Content on Bluesky (Missing Toggle on iPhone)
 description: How to see adult content on Bluesky. Where the setting lives, why it's missing in the iPhone app, age verification, how labels work, and what Bluesky allows.
 h1: "How to See Adult Content on Bluesky (and Why the Toggle Is Missing on iPhone)"
 category: Bluesky

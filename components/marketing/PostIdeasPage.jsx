@@ -1,3 +1,4 @@
+import { fitTitle, titleCase } from '@/lib/fit-title';
 import Link from 'next/link';
 import JsonLd from '@/components/JsonLd';
 import { Breadcrumbs, MarketingPage, TrialCta } from '@/components/marketing/Chrome';
@@ -14,11 +15,13 @@ export function postIdeasCopy(ind, weekday) {
   const year = new Date().getUTCFullYear();
   if (!weekday) {
     const n = ideasFor(ind).length;
-    return { title: `${n} Social Media Post Ideas for ${cap(ind.name === 'small business' ? 'a Small Business' : ind.name.replace(/s$/, '') + 's')} (${year}) — Ready to Schedule`, description: `${n} post ideas for a ${ind.name}: behind the scenes, proof, education, offers and engagement prompts, each written for ${ind.people}. Schedule the week in one sitting.`, h1: `Social media post ideas for ${ind.name === 'small business' ? 'a small business' : `${ind.name}s`}`, keyword: `${ind.name} social media post ideas` };
+    const who = ind.name === 'small business' ? 'a Small Business' : titleCase(ind.name.replace(/s$/, '') + 's');
+    return { title: fitTitle(`${n} Social Media Post Ideas for ${who} (${year}) — Ready to Schedule`, `${n} Social Media Post Ideas for ${who} (${year})`, `${n} Post Ideas for ${who} (${year})`), description: `${n} post ideas for a ${ind.name}: behind the scenes, proof, education, offers and engagement prompts, each written for ${ind.people}. Schedule the week in one sitting.`, h1: `Social media post ideas for ${ind.name === 'small business' ? 'a small business' : `${ind.name}s`}`, keyword: `${ind.name} social media post ideas` };
   }
   const { angle, ideas } = ideasForDay(ind, weekday);
   const day = WEEKDAY_NAMES[WEEKDAYS.indexOf(weekday)];
-  return { title: `${day} Post Ideas for ${cap(ind.name)}s: ${angle.hook} (${ideas.length} prompts)`, description: `${day} social media post ideas for a ${ind.name}: ${angle.note.toLowerCase()} ${ideas.length} prompts you can schedule now.`, h1: `${day} post ideas for ${ind.name}s`, keyword: `${weekday} post ideas ${ind.name}` };
+  const who = titleCase(`${ind.name}s`), hook = titleCase(angle.hook);
+  return { title: fitTitle(`${day} Post Ideas for ${who}: ${hook} (${ideas.length} Prompts)`, `${ideas.length} ${day} Post Ideas for ${who}: ${hook}`, `${ideas.length} ${day} Post Ideas for ${who} (${year})`, `${ideas.length} ${day} Post Ideas for ${who}`), description: `${day} social media post ideas for a ${ind.name}: ${angle.note.toLowerCase()} ${ideas.length} prompts you can schedule now.`, h1: `${day} post ideas for ${ind.name}s`, keyword: `${weekday} post ideas ${ind.name}` };
 }
 
 export function postIdeasFaq(ind, weekday) {

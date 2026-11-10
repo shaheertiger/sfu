@@ -1,5 +1,5 @@
 ---
-title: "How to Get Verified on TikTok: Followers Won't Do It (6 Real Criteria)"
+title: "How to Get Verified on TikTok: 6 Real Criteria (Not Followers)"
 description: How to get the blue check on TikTok. What TikTok looks for, how to apply in the app, how long review takes, why requests get denied and what to do if you're turned down.
 h1: "How to Get Verified on TikTok: Followers Won't Do It (6 Criteria That Do)"
 category: TikTok

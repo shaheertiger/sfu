@@ -1,5 +1,5 @@
 ---
-title: "Content Performance Analysis: A 4-Step Scoring Framework (No Data Team Needed)"
+title: "Content Performance Analysis: A 4-Step Scoring Framework"
 description: How to analyze social media content performance with the right metrics, a simple 4-step scoring framework, a spreadsheet workflow and a plan for next month.
 h1: "Content Performance Analysis: A 4-Step Scoring Framework (No Data Team Needed)"
 category: Strategy

@@ -1,5 +1,5 @@
 ---
-title: "Social Media Posting Bots: Allowed or Banned? The 1 Test That Decides"
+title: "Social Media Posting Bots: Allowed or Banned? The 1 Test"
 description: Social media posting bots range from legitimate schedulers to spam tools that get accounts banned. Learn the automation rules for X, Instagram and Reddit.
 h1: "Social Media Posting Bots: Allowed or Banned? The One Test That Decides (X, Instagram, Reddit)"
 category: Strategy

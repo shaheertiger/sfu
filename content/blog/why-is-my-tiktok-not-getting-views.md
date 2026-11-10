@@ -1,5 +1,5 @@
 ---
-title: "Why Is My TikTok Not Getting Views? 12 Causes (Check Privacy First)"
+title: Why Is My TikTok Not Getting Views? 12 Causes (Privacy First)
 description: Why is your TikTok not getting views? Check privacy, account status and For You eligibility first, then fix the hook, length, originality, audio and keywords.
 h1: "Why Is My TikTok Not Getting Views? 12 Causes, Starting With the Boring Ones"
 category: TikTok

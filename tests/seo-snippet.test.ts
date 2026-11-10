@@ -28,3 +28,19 @@ test('the brand suffix is added only when the whole title still fits', () => {
   const long = 'Is Bluesky Safe? Yes, With 2 Catches: Almost Everything Is Public';
   assert.deepEqual(pageMetadata({ title: long, description: 'x', path: '/blog/x' } as any).title, { absolute: long });
 });
+
+test('fitTitle takes the first version that fits, and Title Case keeps small words small', async () => {
+  const { fitTitle, titleCase, TITLE_MAX } = await import('../lib/fit-title.js');
+  assert.equal(fitTitle('x'.repeat(TITLE_MAX + 1), 'short one', 'shorter'), 'short one');
+  assert.equal(fitTitle('x'.repeat(80), 'y'.repeat(70)), 'y'.repeat(70));
+  assert.equal(titleCase('accounting firms'), 'Accounting Firms');
+  assert.equal(titleCase('weekend and community'), 'Weekend and Community');
+});
+
+test('every blog post title fits in a search result', async () => {
+  const { readdirSync, readFileSync } = await import('node:fs');
+  for (const f of readdirSync('content/blog').filter((n) => n.endsWith('.md'))) {
+    const title = (readFileSync(`content/blog/${f}`, 'utf8').match(/^title:\s*["']?(.+?)["']?\s*$/m) || [])[1] || '';
+    assert.ok(Array.from(title).length <= 65, `${f}: ${title.length} characters`);
+  }
+});

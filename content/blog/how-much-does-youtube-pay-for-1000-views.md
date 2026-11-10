@@ -1,5 +1,5 @@
 ---
-title: "How Much Does YouTube Pay for 1,000 Views? RPM Math + 55/45 Split (2026)"
+title: How Much Does YouTube Pay for 1,000 Views? RPM Math (2026)
 description: There's no fixed YouTube rate per 1,000 views. Learn how RPM, CPM and the 55% and 45% revenue shares decide your earnings, with worked examples for 2026.
 h1: "How Much Does YouTube Pay for 1,000 Views? RPM Math and the 55/45 Split (2026)"
 category: YouTube

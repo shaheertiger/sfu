@@ -1,5 +1,5 @@
 ---
-title: "Social Media Content Calendar: Build One That Publishes, Not Just Plans (Free Template)"
+title: "Social Media Content Calendar: Build One That Publishes"
 description: Build a social media content calendar that publishes, not just plans. A free template, a worked example week, and how to move it from a spreadsheet into a queue.
 h1: "Social Media Content Calendar: Build One That Publishes, Not Just Plans (Free Template)"
 category: Strategy

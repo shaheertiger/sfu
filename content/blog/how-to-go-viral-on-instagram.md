@@ -1,5 +1,5 @@
 ---
-title: "How to Go Viral on Instagram: 7 Ways to Raise Your Odds (No Hacks)"
+title: "How to Go Viral on Instagram: 7 Ways to Raise Your Odds"
 description: How to go viral on Instagram without hacks, using strong hooks, shareable and saveable posts, original content and consistency, plus what to do after a Reel takes off.
 h1: "How to Go Viral on Instagram: 7 Ways to Raise Your Odds (No Hacks)"
 category: Instagram

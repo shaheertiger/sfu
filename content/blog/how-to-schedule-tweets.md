@@ -1,5 +1,5 @@
 ---
-title: "How to Schedule Tweets on X: Website Only, Not the App (Plus the Phone Fix)"
+title: "How to Schedule Tweets on X: Website Only (Plus the Phone Fix)"
 description: How to schedule tweets on X from the website, why the mobile app can't, where scheduled posts hide, and how to schedule X posts and threads alongside other platforms.
 h1: "How to Schedule Tweets on X: Website Only, Not the App (Plus the Phone Fix)"
 category: X

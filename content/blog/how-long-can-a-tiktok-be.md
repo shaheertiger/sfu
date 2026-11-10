@@ -1,5 +1,5 @@
 ---
-title: "How Long Can a TikTok Be? 10 Minutes Recorded, Up to 60 Uploaded (2026)"
+title: How Long Can a TikTok Be? Up to 60 Minutes Uploaded (2026)
 description: How long a TikTok can be in 2026, at the time of writing - 10 minutes recorded in the app, up to 60 uploaded on many accounts - plus Stories, LIVE and best length.
 h1: "How Long Can a TikTok Be? 10 Minutes Recorded, Up to 60 Uploaded (2026)"
 category: TikTok

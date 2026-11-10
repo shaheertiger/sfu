@@ -1,5 +1,5 @@
 ---
-title: "How to Turn Off Profile Views on TikTok: 4 Taps (and It Works Both Ways)"
+title: "How to Turn Off Profile Views on TikTok: 4 Taps (Both Ways)"
 description: Turn off TikTok profile view history in Settings and privacy. What viewers can see, whether private browsing hides your visits, reposts, likes and hidden following lists.
 h1: "How to Turn Off Profile Views on TikTok: 4 Taps (and It Works Both Ways)"
 category: TikTok

@@ -1,5 +1,5 @@
 ---
-title: "Instagram Post Size 2026: 1080×1350 Wins (Every Dimension in One Table)"
+title: "Instagram Post Size 2026: 1080×1350 Wins (Every Dimension)"
 description: "Instagram post sizes for 2026: 1080×1350 (4:5) for feed posts, 1080×1080 square, 1080×566 landscape, 1080×1920 for Reels and Stories, and the 3:4 grid."
 h1: "Instagram Post Size 2026: 1080×1350 Wins (Every Dimension in One Table)"
 category: Instagram

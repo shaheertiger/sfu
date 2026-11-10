@@ -1,5 +1,5 @@
 ---
-title: "Shadow Ban on Facebook? Check Page Status First (Most Drops Aren't Bans)"
+title: Shadow Ban on Facebook? Check Page Status First
 description: Think you have a shadow ban on Facebook? See what Meta actually limits, check Page status and Account status, and follow a 6-step plan to request a review and recover.
 h1: "Shadow Ban on Facebook? Check Page Status First (Most Drops Aren't Bans)"
 category: Facebook

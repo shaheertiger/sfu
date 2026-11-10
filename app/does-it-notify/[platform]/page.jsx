@@ -1,3 +1,4 @@
+import { fitTitle, shortPlatform } from '@/lib/fit-title';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import JsonLd from '@/components/JsonLd';
@@ -16,7 +17,7 @@ const copy = (p) => {
   const acts = notifyActionsFor(p.slug);
   const yes = acts.filter((a) => notifyEntry(p.slug, a.slug).answer === 'yes').length;
   return {
-    title: `What Does ${p.name} Notify People About? ${yes} of ${acts.length} Actions Do (${new Date().getUTCFullYear()})`,
+    title: fitTitle(`What Does ${p.name} Notify People About? ${yes} of ${acts.length} Actions Do (${new Date().getUTCFullYear()})`, `What Does ${p.name} Notify About? ${yes} of ${acts.length} Actions Do (${new Date().getUTCFullYear()})`, `What Does ${shortPlatform(p.name)} Notify About? ${yes} of ${acts.length} Actions Do (${new Date().getUTCFullYear()})`),
     description: `Screenshots, story views, unfollows, blocks, saves and ${acts.length - 5} more ${p.name} actions, each with a yes/no answer and what the other person sees. Verified ${NOTIFY_VERIFIED}.`,
     yes,
     acts,

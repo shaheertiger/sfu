@@ -1,5 +1,5 @@
 ---
-title: "How to Unfollow on TikTok: One Tap, No Notification (and No Mass Unfollow)"
+title: "How to Unfollow on TikTok: One Tap, No Notification"
 description: Unfollow someone on TikTok from their profile or your Following list, see why there's no unfollow-all button, how to unfriend, and what the other person sees.
 h1: "How to Unfollow on TikTok: One Tap, No Notification (and No Mass Unfollow)"
 category: TikTok

@@ -1,5 +1,5 @@
 ---
-title: "LinkedIn Post Character Limit: 3,000 (Only ~210 Show Before See More, 2026)"
+title: "LinkedIn Post Character Limit: 3,000 (~210 Before See More)"
 description: LinkedIn's post limit is 3,000 characters, but only about 210 show before "see more". Every LinkedIn limit for 2026 and how to write within them.
 h1: "LinkedIn Post Character Limit: 3,000 Characters, but Only About 210 Show (2026)"
 category: LinkedIn
