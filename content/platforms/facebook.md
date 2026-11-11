@@ -1,6 +1,6 @@
 ---
 title: "Facebook Page Scheduler: Plan Text, Photo and Video Posts"
-description: Schedule posts to your Facebook Page from one queue and calendar. Publish text, up to 10 images or a video, tailored for Facebook and nine other networks.
+description: Schedule posts to your Facebook Page from one queue and calendar. Publish text, up to 10 images or a video, tailored for Facebook and eight other networks.
 h1: Schedule posts to your Facebook Page
 lead: Plan your Facebook Page updates alongside every other channel, tailor the Facebook version, and let Schedule For You publish on time.
 keyword: facebook page scheduler

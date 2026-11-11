@@ -159,7 +159,7 @@ Once Instagram is connected, the real time saving comes from posting everywhere 
 
 ![The Schedule For You Accounts screen with Instagram and other platforms connected](/images/blog/social-accounts-1440x900.webp)
 
-Take Maya, who runs a two-person flower shop. Every week she posts 3 photos to Instagram, the same 3 to her Facebook Page, and an update to her Google Business Profile so locals see her weekend specials. That's 7 posts a week across three apps, each typed out on her phone between customers.
+Take Maya, who runs a two-person flower shop. Every week she posts 3 photos to Instagram, the same 3 to her Facebook Page, and her best bouquet of the week to Pinterest, where people plan weddings and gifts. That's 7 posts a week across three apps, each typed out on her phone between customers.
 
 She connects all three in Schedule For You, which fits the Free plan's 3 accounts. On Monday morning she writes the week once, tailors each caption, and schedules the posts. The Free plan holds up to 10 scheduled posts at a time, so a week of 7 fits with room to spare.
 
@@ -171,7 +171,7 @@ She connects all three in Schedule For You, which fits the Free plan's 3 account
 | X, LinkedIn, TikTok, Bluesky and others | No | Varies | Yes |
 | Cost | Free | Varies | Free for 3 accounts and up to 10 scheduled posts at a time, no card. Paid from $19 a month |
 
-Where we're not the best fit: if you only post to Instagram and Facebook, Meta Business Suite covers both for free, and if you need Story stickers, polls or music, post that Story in the Instagram app. Schedule For You makes sense when the same post also goes to Google Business Profile, LinkedIn, TikTok or other platforms.
+Where we're not the best fit: if you only post to Instagram and Facebook, Meta Business Suite covers both for free, and if you need Story stickers, polls or music, post that Story in the Instagram app. Schedule For You makes sense when the same post also goes to LinkedIn, TikTok, Pinterest or other platforms.
 
 Maya writes once and adjusts each version in the composer:
 

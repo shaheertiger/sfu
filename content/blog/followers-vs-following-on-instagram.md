@@ -158,7 +158,7 @@ Take Sam, who opened an Instagram account for a new plant shop and followed 600 
 | Instagram feed posts, Reels, carousels | Yes | Yes | Yes, carousels of up to 10 photos or videos |
 | Instagram and Facebook Stories | Yes, with stickers and music | Yes, with some stickers | Yes, one 9:16 image or video, no caption, stickers, polls or music |
 | First comment | Typed by hand | Varies by version | Yes, added right after the post publishes |
-| TikTok, Pinterest, Google Business Profile and others | Separate apps | No | Yes, from one composer |
+| TikTok, Pinterest, LinkedIn and others | Separate apps | No | Yes, from one composer |
 | Shows or changes your followers and following | Yes, in the app | No | No, use the app and our [unfollowers checker](/tools/instagram-unfollowers-checker) |
 | Cost | Free | Free | Free plan for 3 accounts and 10 scheduled posts, no card. Paid plans from $19 a month |
 

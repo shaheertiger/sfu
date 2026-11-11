@@ -40,7 +40,7 @@ export default function CompareIndex() {
         </ul>
         <div className={m.narrow}>
           <TrialCta heading="Looking for a simpler scheduler?">
-            <p>Schedule For You publishes to ten platforms from one queue, with per-platform captions, approvals and client preview links. Solo is $19/month and Studio is $59/month.</p>
+            <p>Schedule For You publishes to nine platforms from one queue (Google Business Profile coming soon), with per-platform captions, approvals and client preview links. Solo is $19/month and Studio is $59/month.</p>
           </TrialCta>
         </div>
       </div>

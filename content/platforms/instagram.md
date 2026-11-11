@@ -58,7 +58,7 @@ Between 2 and 10 images or videos, and you can mix the two in one carousel.
 No, it publishes the image as you uploaded it. If the aspect ratio is outside what Instagram accepts for the feed, resize it before you schedule.
 
 ### Can I post the same content to Facebook and other platforms?
-Yes. Select several accounts when you write the post, then tailor each platform's version. Schedule For You publishes to 10 platforms, including Facebook Pages, Threads and TikTok.
+Yes. Select several accounts when you write the post, then tailor each platform's version. Schedule For You publishes to 9 platforms, including Facebook Pages, Threads and TikTok, with Google Business Profile coming soon.
 
 ### What happens if a post fails?
 You're alerted straight away. The most common cause is an expired connection, which you fix by reconnecting the account from the Accounts screen and retrying the post.

@@ -116,9 +116,9 @@ Because profiles can't schedule, some browser extensions and apps promise to pos
 
 ## Scheduling Facebook Posts Alongside Your Other Platforms
 
-Business Suite covers Facebook and Instagram. If you also post to X, LinkedIn, TikTok, Threads, Bluesky, YouTube, Pinterest or a Google Business Profile, you end up scheduling the same post in three or four places.
+Business Suite covers Facebook and Instagram. If you also post to X, LinkedIn, TikTok, Threads, Bluesky, YouTube or Pinterest, you end up scheduling the same post in three or four places.
 
-Take Rosa, who runs a garden centre's Facebook Page, Instagram, Pinterest and Google Business Profile. She posts four times a week on each: sixteen posts. In Business Suite she could schedule Facebook and Instagram, but Pinterest and Google meant two more tools every Sunday evening.
+Take Rosa, who runs a garden centre's Facebook Page, Instagram, Pinterest and TikTok. She posts four times a week on each: sixteen posts. In Business Suite she could schedule Facebook and Instagram, but Pinterest and TikTok meant two more tools every Sunday evening.
 
 In Schedule For You, Rosa connects her Page through Meta's own login, writes each post once, picks the Facebook Page plus her other accounts, and tailors the Facebook wording. Edits to one platform's caption never touch the others. She attaches up to 10 images or a video, and chooses a time or uses **Add to queue** to take the next open posting slot.
 
@@ -133,7 +133,7 @@ Everything lands on one drag-and-drop calendar, and a failed post sends her an a
 | Facebook Pages | Yes | Varies | Yes |
 | Personal profiles and Groups | No | Claims to, risky | No |
 | Instagram | Yes | Varies | Yes |
-| X, LinkedIn, TikTok, Pinterest, Google Business Profile and more | No | Rarely | Yes |
+| X, LinkedIn, TikTok, Pinterest and more | No | Rarely | Yes |
 | Cost | Free | Varies | Free for 3 accounts and up to 10 scheduled posts; paid plans from $19 a month |
 
 Where we're not the best fit: if you only post to Facebook and Instagram, Business Suite is free and also schedules Stories. We don't post to personal profiles or Groups. The [Facebook Page scheduler page](/facebook) lists exactly what's supported.

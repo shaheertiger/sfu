@@ -179,6 +179,6 @@ Yes. Switch to **Check a list** and paste up to 200 names. The checker marks whi
 No. It runs in your browser and nothing is uploaded or stored.
 
 ## Promote Your Snapchat with Schedule For You on Other Platforms
-Schedule For You doesn't post to Snapchat. If you send people to your Snapchat from other networks, it can schedule those posts to Instagram (including Stories), Facebook Pages (including Stories), TikTok, YouTube, X, Threads, Bluesky, LinkedIn, Pinterest and Google Business Profile from one queue, with a separate caption for each. See [how to schedule Instagram and Facebook Stories](/blog/schedule-instagram-and-facebook-stories) for the vertical, short-lived format closest to a Snap.
+Schedule For You doesn't post to Snapchat. If you send people to your Snapchat from other networks, it can schedule those posts to Instagram (including Stories), Facebook Pages (including Stories), TikTok, YouTube, X, Threads, Bluesky, LinkedIn and Pinterest from one queue, with a separate caption for each. See [how to schedule Instagram and Facebook Stories](/blog/schedule-instagram-and-facebook-stories) for the vertical, short-lived format closest to a Snap.
 
 The Free plan connects 3 accounts and holds up to 10 scheduled posts at a time, with no card. Solo ($19/month) and Studio ($59/month) add more accounts and features, with a 7-day trial that needs a card. [Start free](/signup).

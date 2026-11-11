@@ -158,7 +158,7 @@ To see every platform side by side for one country, use our country pages, such 
 
 Finding your best days is half the job. Actually posting on them, every week, is where most plans fall apart.
 
-Take Priya, who runs a small bakery. Her test showed three clear winners: LinkedIn on Tuesday morning for catering clients, Instagram on Sunday evening for weekend regulars, and her Google Business Profile on Thursday before the weekend rush. That's 3 posts a week on 3 different days, and Sunday evening is exactly when she doesn't want to be on her phone.
+Take Priya, who runs a small bakery. Her test showed three clear winners: LinkedIn on Tuesday morning for catering clients, Instagram on Sunday evening for weekend regulars, and her Facebook Page on Thursday before the weekend rush. That's 3 posts a week on 3 different days, and Sunday evening is exactly when she doesn't want to be on her phone.
 
 Posting live means remembering three slots across three apps. Scheduling the week on Monday takes about 15 minutes.
 

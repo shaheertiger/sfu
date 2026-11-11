@@ -3,7 +3,7 @@ title: "Later Alternatives: What to Check and How to Switch"
 description: Comparing Later alternatives? See what to check, how Schedule For You compares on platforms and workflow, where Later may suit you better, and how to switch.
 h1: Looking for Later Alternatives? What to Consider Before You Switch
 category: Comparisons
-excerpt: Later is strong at visual Instagram planning and link-in-bio. If you need one queue for 10 platforms with per-platform captions, here's how to compare and switch.
+excerpt: Later is strong at visual Instagram planning and link-in-bio. If you need one queue for 9 platforms with per-platform captions, here's how to compare and switch.
 keyword: later alternatives
 date: 2026-10-23
 ---
@@ -54,7 +54,7 @@ Schedule For You is one of several Later alternatives, built around one idea: wr
 
 | Capability | Schedule For You | Later |
 |---|---|---|
-| Platforms | 10: Instagram, Facebook Pages, X, LinkedIn, Threads, Bluesky, TikTok, YouTube, Pinterest, Google Business Profile | Instagram, Facebook, TikTok, Pinterest, LinkedIn, X and YouTube; check for others |
+| Platforms | 9: Instagram, Facebook Pages, X, LinkedIn, Threads, Bluesky, TikTok, YouTube, Pinterest (Google Business Profile coming soon) | Instagram, Facebook, TikTok, Pinterest, LinkedIn, X and YouTube; check for others |
 | Visual Instagram grid planner | No | Yes |
 | Link-in-bio page | No | Yes |
 | Instagram Stories | Yes (one image or video, no stickers) | Yes |
@@ -120,7 +120,7 @@ Yes. It publishes Instagram Stories (one image or video, 9:16, no caption) as we
 No. If you rely on a link-in-bio page, keep your existing one or choose a dedicated tool before you move.
 
 ### Which platforms does Schedule For You support that matter for Later users?
-All 10: Instagram, Facebook Pages, X, LinkedIn, Threads, Bluesky, TikTok, YouTube, Pinterest and Google Business Profile. Check Later's site for its current list if you need to compare network by network.
+All 9: Instagram, Facebook Pages, X, LinkedIn, Threads, Bluesky, TikTok, YouTube and Pinterest, with Google Business Profile coming soon. Check Later's site for its current list if you need to compare network by network.
 
 ### Can my clients approve posts without an account?
 Yes. Client preview links let clients approve or comment on posts in the browser without signing up.

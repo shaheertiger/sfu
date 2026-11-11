@@ -13,7 +13,7 @@ Schedule For You has three plans. Free costs nothing and connects 3 accounts wit
 Free is for trying the habit of planning ahead. You get the composer with a tailored caption for each platform, the queue with posting slots, the calendar, first comments, threads, Stories and the media library, on up to 3 connected accounts. Up to 10 posts can be scheduled at a time; drafts and posts you publish right away don't count. No card is needed. Posts published from a Free workspace end with a short "Scheduled with Schedule For You" line and a link back to us, added only when it fits the platform's character limit.
 
 ### Solo: $19 a month
-Solo suits a creator, freelancer or small business running its own channels. You get 15 connected accounts, which covers one profile on each of the 10 supported platforms with room for a second brand or a few extra profiles, plus unlimited scheduling, bulk upload, automation and client tools. Posts go out exactly as you wrote them.
+Solo suits a creator, freelancer or small business running its own channels. You get 15 connected accounts, which covers one profile on each of the 9 supported platforms with room for a second brand or a few extra profiles, plus unlimited scheduling, bulk upload, automation and client tools. Posts go out exactly as you wrote them.
 
 ### Studio: $59 a month
 Studio is for agencies, in-house teams and anyone managing many brands. It raises the limit to 100 connected accounts, lets you invite team members to work alongside you, and adds priority support.
@@ -50,8 +50,8 @@ Most people move to a paid plan for one of four reasons: the queue fills up (10 
 ## What's included on Solo and Studio
 The paid plans differ only in account limits, team members and support. Everything below comes with both.
 
-### Unlimited posts on all 10 platforms
-Publish as often as you like to X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile, with no monthly post caps.
+### Unlimited posts on all 9 platforms
+Publish as often as you like to X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages and Pinterest, with no monthly post caps. Google Business Profile is coming soon.
 
 ### Planning tools
 - **Per-platform captions:** write once, then edit each platform's version on its own, with live character-limit checks.
@@ -74,7 +74,7 @@ A connected account is one profile, Page or channel you've linked so Schedule Fo
 ### Examples
 - One Instagram Business or Creator account counts as one.
 - One Facebook Page counts as one.
-- One YouTube channel, one Pinterest profile or one Google Business Profile each count as one.
+- One YouTube channel or one Pinterest profile each count as one.
 
 ### Several accounts on the same platform
 Each account counts on its own. Three Instagram accounts use three of your connected accounts, which is how agencies [post to multiple Instagram accounts](/post-to-multiple-instagram-accounts) from one place.

@@ -753,7 +753,7 @@ export function renderLanding($v) {
           {' '}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '22px' }}>
             {' '}
-            <span style={{ fontSize: '15px', color: '#a7abb2' }}>{'Posts to ten platforms'}</span>{' '}
+            <span style={{ fontSize: '15px', color: '#a7abb2' }}>{'Posts to nine platforms, Google Business coming soon'}</span>{' '}
             <div
               style={{
                 width: '100%',
@@ -813,7 +813,23 @@ export function renderLanding($v) {
                           }}
                         />
                       </span>
-                      {$t(p?.label)}{' '}
+                      {$t(p?.label)}
+                      {p?.soon && (
+                        <span
+                          style={{
+                            marginLeft: '-4px',
+                            padding: '3px 8px',
+                            borderRadius: '999px',
+                            background: '#22252a',
+                            color: '#dcff2e',
+                            fontSize: '11px',
+                            fontWeight: '600',
+                            letterSpacing: '0.02em',
+                          }}
+                        >
+                          {'Coming soon'}
+                        </span>
+                      )}{' '}
                     </span>{' '}
                   </Fragment>
                 ))}{' '}
@@ -845,7 +861,7 @@ export function renderLanding($v) {
                   textWrap: 'balance',
                 }}
               >
-                {'Ten platforms out.'}
+                {'Nine platforms out.'}
               </h2>{' '}
               <p style={{ margin: '0', maxWidth: '520px', color: '#a7abb2', textWrap: 'pretty' }}>
                 {'Images, videos, carousels and plain text all go out at once, each formatted for where it lands.'}
@@ -927,7 +943,7 @@ export function renderLanding($v) {
                       whiteSpace: 'nowrap',
                     }}
                   >
-                    {'10 accounts'}
+                    {'9 accounts'}
                   </span>{' '}
                 </div>{' '}
                 <span style={{ fontSize: 'clamp(9px,1.1vw,14px)', lineHeight: '1.45', textWrap: 'pretty' }}>
@@ -1056,7 +1072,7 @@ export function renderLanding($v) {
                       whiteSpace: 'nowrap',
                     }}
                   >
-                    {'10 accounts'}
+                    {'9 accounts'}
                   </span>{' '}
                 </div>{' '}
                 <span style={{ fontSize: '15px', lineHeight: '1.5' }}>
@@ -2813,7 +2829,7 @@ export function renderLanding($v) {
                 {'Pinterest'}
               </a>
               <a href="/google-business-profile" style={{ color: '#6b7079' }}>
-                {'Google Business Profile'}
+                {'Google Business Profile (soon)'}
               </a>
             </nav>{' '}
           </div>{' '}

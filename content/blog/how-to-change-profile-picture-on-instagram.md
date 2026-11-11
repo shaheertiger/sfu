@@ -144,21 +144,21 @@ A consistent picture helps people recognize you when they see you on TikTok, Thr
 
 ![Writing one rebrand announcement for Instagram and other platforms in the Schedule For You composer](/images/blog/composer-four-platforms-1440x900.webp)
 
-Take Lena, who runs a small bakery and has just had a new logo designed. She changes her profile picture on Instagram, her Facebook Page and her Google Business Profile on Friday. Then she wants a "new look, same bread" announcement to go out on all three at 9 AM on Monday, followed by 3 posts that week showing the new packaging. That's 4 posts on each of 3 platforms, 12 in all, and she'll be at the oven every one of those mornings.
+Take Lena, who runs a small bakery and has just had a new logo designed. She changes her profile picture on Instagram, her Facebook Page and her Google Business Profile on Friday. Then she wants a "new look, same bread" announcement to go out at 9 AM on Monday, followed by 3 posts that week showing the new packaging. On Instagram and her Facebook Page that's 4 posts each, 8 in all, and she'll be at the oven every one of those mornings. Google Business Profile publishing is coming soon in Schedule For You, so she adds the Monday announcement there herself, in Google's own dashboard.
 
 Changing the pictures is manual on every platform; no scheduler does that for you. But the posts can be written once on Friday afternoon and scheduled.
 
 | | Posting in each app | Meta Business Suite | Schedule For You |
 | --- | --- | --- | --- |
 | Schedule the announcement to Instagram and Facebook | One app at a time | Yes | Yes |
-| Google Business Profile, LinkedIn, TikTok and others | Separately in each app | No | Yes, with a caption for each platform |
+| LinkedIn, TikTok, Pinterest and others | Separately in each app | No | Yes, with a caption for each platform |
 | Cost | Free | Free | Free for 3 accounts and up to 10 scheduled posts at a time, no card. Paid from $19 a month |
 
-Where we're not the best fit: if you only use Instagram and Facebook, Meta Business Suite covers both for free. And Lena's 12 posts are more than the Free plan's 10 scheduled at a time, so she'd schedule the first half of the week, or try Solo, which has a 7-day trial that needs a card.
+Where we're not the best fit: if you only use Instagram and Facebook, Meta Business Suite covers both for free. Lena's 8 posts fit the Free plan's 10 scheduled at a time; a longer campaign would need Solo, which has a 7-day trial that needs a card.
 
 On the calendar, the whole rebrand week sits in one view:
 
-![The Schedule For You calendar with a week of rebrand posts across Instagram, Facebook and Google Business Profile](/images/blog/calendar-month-1440x900.webp)
+![The Schedule For You calendar with a week of rebrand posts across Instagram and Facebook](/images/blog/calendar-month-1440x900.webp)
 
 Schedule For You publishes Instagram feed posts, Reels, carousels and Stories, so the announcement can go out as a post and a Story together. See the [Instagram scheduler](/instagram) for what you can schedule, and our guide on [how to schedule Instagram posts](/blog/how-to-schedule-instagram-posts) for the full walkthrough.
 

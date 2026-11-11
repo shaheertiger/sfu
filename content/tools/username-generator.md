@@ -221,6 +221,6 @@ Yes. Leave the box empty and the generator uses a placeholder word so you can br
 No. The generator combines your word with curated word lists and patterns, which keeps results fast, predictable and always within the rules.
 
 ## Use Your New Username Everywhere with Schedule For You
-Once you've claimed the same username on every platform, keep those accounts active from one place. Schedule For You publishes to Instagram (including Stories and first comments), TikTok, YouTube, X, Facebook Pages, LinkedIn personal profiles, Threads, Bluesky, Pinterest and Google Business Profile, so a single calendar covers every profile that carries your new name.
+Once you've claimed the same username on every platform, keep those accounts active from one place. Schedule For You publishes to Instagram (including Stories and first comments), TikTok, YouTube, X, Facebook Pages, LinkedIn personal profiles, Threads, Bluesky and Pinterest, with Google Business Profile coming soon, so a single calendar covers every profile that carries your new name.
 
 The Free plan covers 3 accounts and up to 10 scheduled posts at a time, with no card needed. [Start free](/signup) and schedule your first post under your new handle.

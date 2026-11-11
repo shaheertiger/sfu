@@ -1,7 +1,7 @@
 ---
-title: "How to Schedule Social Media Posts: 10 Platforms, 1 Queue"
+title: "How to Schedule Social Media Posts: 9 Platforms, 1 Queue"
 description: How to schedule social media posts on Instagram, Facebook, X, LinkedIn, TikTok, YouTube, Pinterest, Threads and Bluesky, and when one shared queue saves time.
-h1: "How to Schedule Social Media Posts: Every Platform's Free Scheduler, Then One Queue for All 10"
+h1: "How to Schedule Social Media Posts: Every Platform's Free Scheduler, Then One Queue for Nine"
 category: Guides
 excerpt: Write the post, choose Schedule instead of Publish, and pick a time. Here's where that button lives on each platform, how far ahead each allows, and when one shared queue is easier.
 keyword: how to schedule social media posts
@@ -136,7 +136,7 @@ Click **Create post**, tick the accounts, and write the caption. Each platform g
 
 Then choose:
 
-- **Schedule** for an exact date and time, in your workspace's timezone. Bluesky and Google Business Profile included.
+- **Schedule** for an exact date and time, in your workspace's timezone. Bluesky included; Google Business Profile is coming soon.
 - **Add to queue** to drop it into the next open posting slot.
 - **Publish now** or **Save draft**.
 

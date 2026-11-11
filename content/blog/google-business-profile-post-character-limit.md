@@ -1,9 +1,9 @@
 ---
 title: "Google Business Profile Post Limit: 1,500, But Only ~100 Show"
-description: Google Business Profile posts allow 1,500 characters, but only about 100 show before the reader taps. Image sizes, post types, rejections and how to schedule posts.
+description: Google Business Profile posts allow 1,500 characters, but only about 100 show before the reader taps. Image sizes, post types, rejections and a weekly posting routine.
 h1: "Google Business Profile Post Character Limit: 1,500, But Only ~100 Show"
 category: Google Business
-excerpt: A Google Business Profile post allows 1,500 characters and one image, but the first 100 or so do the work. Here are the sizes, post types, what Google rejects, and how to schedule.
+excerpt: A Google Business Profile post allows 1,500 characters and one image, but the first 100 or so do the work. Here are the sizes, post types, what Google rejects, and how to post every week.
 keyword: google business profile post character limit
 date: 2026-10-26
 updated: 2026-11-04
@@ -14,7 +14,9 @@ You've written an update for your Google Business Profile and you're not sure ho
 
 So the real limit that matters is closer to 100 characters. That's what a customer sees while deciding whether to call, book or keep scrolling. And Google's own interface publishes immediately, with no scheduler at the time of writing.
 
-This guide covers every post limit in one table, the three post types, why Google rejects posts, what to write in those first 100 characters, and how to schedule updates so your profile stays active.
+> **Coming soon:** Schedule For You doesn't publish to Google Business Profile yet. Publishing there is coming soon, with no date promised, so for now post your updates directly in Google Business Profile.
+
+This guide covers every post limit in one table, the three post types, why Google rejects posts, what to write in those first 100 characters, and how to keep a weekly routine so your profile stays active.
 
 ## Why Only the First 100 Characters Matter (What Customers Actually See)
 
@@ -132,7 +134,7 @@ Many businesses hand their Business Profile to an agency or a posting tool. That
 
 > **Bottom line:** Give the least access that gets the job done, through Google's own sign-in, and keep ownership in your own hands.
 
-## Schedule Google Business Profile Posts Every Week (Schedule For You)
+## Keep Google Business Profile Posts Coming Every Week (Plus Schedule For You)
 
 The hard part of Business Profile posts isn't writing one. It's remembering to post every week, because Google has no scheduling of its own.
 
@@ -140,32 +142,32 @@ Take Luca, who runs a pizzeria. His busiest nights are Friday and Saturday, so h
 
 | | Google's own interface | Other schedulers | Schedule For You |
 |---|---|---|---|
-| Schedule an update for later | No, publishes immediately | Some support Business Profile | Yes |
-| 1,500-character check | No live counter | Varies | Yes, live |
-| Image and button link | Yes | Varies | One image and an optional Learn more button link |
-| Offers and events | Yes | Varies | No, standard updates only |
+| Schedule a Google update for later | No, publishes immediately | Some support Business Profile | Coming soon |
+| 1,500-character check | No live counter | Varies | Coming soon |
+| Image and button link | Yes | Varies | Coming soon |
+| Offers and events | Yes | Varies | No |
 | Same post on Instagram and Facebook | No | Often | Yes, with a separate caption for each |
-| Weekly repeat | No | Varies | Yes, on Solo and Studio |
+| Weekly repeat of social posts | No | Varies | Yes, on Solo and Studio |
 | Cost | Free | Varies | Free plan for 3 accounts and up to 10 scheduled posts at a time, no card |
 
-Where we're not the best fit: Schedule For You posts standard updates with an optional Learn more button. If you need offer posts with coupon codes or event posts with dates, create those in Google's own interface.
+Where we're not the best fit: Schedule For You doesn't publish to Google Business Profile yet. If Google is your only channel, its own interface is free and covers updates, offers and events today.
 
-In Schedule For You, Luca connects his profile with Google's sign-in (he needs to be an owner or manager of a verified profile), then writes Thursday's update once and tailors the Instagram and Facebook versions:
+Luca writes Thursday's special once in Schedule For You and tailors the Instagram and Facebook versions. Two accounts fit the Free plan:
 
 ![Writing one post for several platforms in the Schedule For You composer, with a character counter for each](/images/blog/composer-four-platforms-1440x900.webp)
 
-He adds one photo sized to 1200×900 and the order link as the button, then picks Thursday at 3 p.m. On a paid plan he can set it to repeat weekly so his profile never goes quiet. On the Free plan, he schedules up to 10 posts at a time and adds the next batch every couple of weeks. The queue shows what's going out:
+He schedules both for Thursday at 3 p.m. On a paid plan he can set them to repeat weekly. On the Free plan, he schedules up to 10 posts at a time and adds the next batch every couple of weeks. Then, with a Thursday reminder on his phone, he pastes a shortened version into Google Business Profile, adds one photo sized to 1200×900 and the order link as the button, and publishes. That's one Google update by hand instead of three platforms. The queue shows the social posts going out:
 
-![The Schedule For You queue showing scheduled posts and the next post due](/images/blog/queue-1440x900.webp)
+![The Schedule For You queue showing scheduled social media posts and the next post due](/images/blog/queue-1440x900.webp)
 
-The [Google Business Profile scheduler page](/google-business-profile) lists what's supported, and our guide to [connecting a Google Business Profile](/blog/connect-google-business-profile) covers the sign-in.
+The [Google Business Profile page](/google-business-profile) explains what's coming, and our guide to [connecting a Google Business Profile](/blog/connect-google-business-profile) covers what to do now.
 
 ## What to Do Next: A Weekly Posting Routine
 
 1. **Pick one posting day**, a day or two before your busiest days.
 2. **Take five real photos** this week: food, products, your team, the space.
 3. **Write five first lines**, each under 100 characters, each about something specific.
-4. **Schedule them**, one a week, with a button that matches each post.
+4. **Post them**, one a week on your chosen day, with a button that matches each post. A calendar reminder helps.
 5. **Check the profile** after each post goes live, and resubmit if one was rejected.
 
 ## Frequently Asked Questions
@@ -184,7 +186,7 @@ No, not to updates at the time of writing. Each post takes one image.
 
 ### Can you schedule Google Business Profile posts?
 
-Not in Google's own interface, which publishes immediately. A scheduler that connects through the Business Profile API, such as Schedule For You, can schedule them.
+Not in Google's own interface, which publishes immediately. Some third-party schedulers that connect through the Business Profile API can. Schedule For You support is coming soon.
 
 ### Why can't I put a phone number in a Google Business Profile post?
 
@@ -209,6 +211,6 @@ Once a week is a sensible rhythm for most local businesses, timed a day or two b
 - **The limit:** 1,500 characters, one image, one optional button.
 - **What counts:** the first 100 characters, because that's what most people read.
 - **Rejections:** usually a phone number, a flagged phrase, a text-heavy image or a redirecting link.
-- **Consistency:** a weekly update, scheduled ahead, keeps the profile fresh.
+- **Consistency:** a weekly update, on the same day each week, keeps the profile fresh.
 
 Next up: [how to connect a Google Business Profile](/blog/connect-google-business-profile). For more free tools, try the [blur image](/tools/blur-image) tool for customers' faces, the [aspect ratio calculator](/tools/aspect-ratio-calculator) for 4:3 images, and the [remove EXIF data](/tools/remove-exif-data) tool before you upload photos.

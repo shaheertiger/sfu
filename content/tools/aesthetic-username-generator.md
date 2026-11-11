@@ -225,6 +225,6 @@ It starts on the Aesthetic style and this page focuses on soft and cute ideas by
 Yes. Type your first name or nickname and the generator pairs it with soft words, like `velvetmia` or `zoe_skies`. Avoid adding your surname, birth year or town if you want to stay private.
 
 ## Build an Aesthetic Feed with Schedule For You
-A soft username deserves a feed that keeps the same calm rhythm. Schedule For You lets you plan and publish to Instagram (including Stories and first comments), TikTok, Pinterest, Threads, Facebook Pages, X, Bluesky, YouTube, LinkedIn personal profiles and Google Business Profile from one calendar, so your posts go out on time while you work on the next batch.
+A soft username deserves a feed that keeps the same calm rhythm. Schedule For You lets you plan and publish to Instagram (including Stories and first comments), TikTok, Pinterest, Threads, Facebook Pages, X, Bluesky, YouTube and LinkedIn personal profiles from one calendar, so your posts go out on time while you work on the next batch.
 
 The Free plan covers 3 accounts and up to 10 scheduled posts at a time, with no card needed. [Start free](/signup) and schedule your first post under your new name.

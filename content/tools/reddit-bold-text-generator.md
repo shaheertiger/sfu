@@ -253,6 +253,6 @@ Yes. It's free, needs no account and runs in your browser.
 
 ## Schedule For You Doesn't Post to Reddit, but It Runs Your Other Channels
 
-Schedule For You doesn't post to Reddit. If you also share your work on [Instagram](/instagram), [X](/x), [Threads](/threads), Bluesky, LinkedIn, TikTok, YouTube, Pinterest, Facebook Pages or Google Business Profile, you can write each post once, tailor it per platform with live character checks, and schedule it from one calendar.
+Schedule For You doesn't post to Reddit. If you also share your work on [Instagram](/instagram), [X](/x), [Threads](/threads), Bluesky, LinkedIn, TikTok, YouTube, Pinterest or Facebook Pages, you can write each post once, tailor it per platform with live character checks, and schedule it from one calendar.
 
 [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo ($19/month) and Studio ($59/month) add more accounts and unlimited scheduling, with a 7-day trial that requires a card.

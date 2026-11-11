@@ -152,9 +152,10 @@ With Schedule For You, Priya writes each post once, adjusts the caption for each
 
 | | Native schedulers | Other multi-platform tools | Schedule For You |
 |---|---|---|---|
-| Platforms per post | One | Several; check which | X, Bluesky, Instagram, LinkedIn (personal profiles), Threads, TikTok, YouTube, Facebook Pages, Pinterest, Google Business Profile |
+| Platforms per post | One | Several; check which | X, Bluesky, Instagram, LinkedIn (personal profiles), Threads, TikTok, YouTube, Facebook Pages, Pinterest (Google Business Profile coming soon) |
 | Per-platform captions | Not applicable | Varies | Yes |
-| Bluesky and Google Business Profile | No native scheduling | Varies | Yes |
+| Bluesky | No native scheduling | Varies | Yes |
+| Google Business Profile | No native scheduling | Varies | Coming soon |
 | Free option | Free | Varies by vendor | Free plan: 3 accounts, up to 10 scheduled posts at a time, no card |
 | Paid | — | Varies | Solo $19/month, Studio $59/month, 7-day trial with a card |
 

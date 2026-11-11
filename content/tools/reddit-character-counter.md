@@ -213,6 +213,6 @@ No. The Reddit character counter runs in your browser and your text never leaves
 
 ## Schedule For You Doesn't Post to Reddit, but It Checks Limits Everywhere You Do Schedule
 
-Schedule For You doesn't post to Reddit. It does publish to Instagram, Facebook Pages, [X](/x), LinkedIn, [Threads](/threads), Bluesky, TikTok, YouTube, Pinterest and Google Business Profile, and its composer checks each platform's character limit as you write, from X's weighted 280 to Threads' 500. Write once, tailor each version, and schedule from one calendar.
+Schedule For You doesn't post to Reddit. It does publish to Instagram, Facebook Pages, [X](/x), LinkedIn, [Threads](/threads), Bluesky, TikTok, YouTube and Pinterest, and its composer checks each platform's character limit as you write, from X's weighted 280 to Threads' 500. Write once, tailor each version, and schedule from one calendar.
 
 [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo ($19/month) and Studio ($59/month) add more accounts and unlimited scheduling, with a 7-day trial that requires a card.

@@ -63,7 +63,7 @@ const FOOTER = [
   },
   {
     title: 'Platforms',
-    links: PLATFORM_PAGES.map((p) => [`/${p.slug}`, p.name]),
+    links: PLATFORM_PAGES.map((p) => [`/${p.slug}`, p.comingSoon ? `${p.name} (soon)` : p.name]),
   },
   {
     title: 'Product',
@@ -73,7 +73,7 @@ const FOOTER = [
       ...LANDING_PAGES.filter((p) => p.group === 'Product' && p.slug !== 'pricing').map((p) => [`/${p.slug}`, p.name]),
       ['/docs', 'API reference'],
       ['/blog/connect-facebook-page', 'Connect a Facebook Page'],
-      ['/blog/connect-google-business-profile', 'Connect Google Business'],
+      ['/blog/connect-google-business-profile', 'Google Business (coming soon)'],
       ['/signup', 'Start free'],
       ['/login', 'Sign in'],
     ],

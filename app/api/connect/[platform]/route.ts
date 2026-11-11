@@ -6,6 +6,7 @@ import { adapterFor } from '@/lib/server/adapters';
 import { pkceChallenge } from '@/lib/server/adapters/types';
 import { PLATFORMS, platformConfigured } from '@/lib/server/platforms';
 import { appUrl } from '@/lib/server/url';
+import { isComingSoon } from '@/lib/coming-soon';
 
 /** Starts an OAuth connection: redirects to the platform's consent screen. */
 export async function GET(req: Request, { params }: { params: Promise<{ platform: string }> }) {
@@ -14,7 +15,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ platform
   const back = (msg: string) => NextResponse.redirect(`${base}/app?screen=accounts&error=${encodeURIComponent(msg)}`);
   const meta = PLATFORMS[platform as keyof typeof PLATFORMS];
   if (!meta || meta.authMode !== 'oauth') return back('Unknown platform');
-  if (!platformConfigured(meta)) return back(`${meta.label} isn't available yet.`);
+  if (!platformConfigured(meta)) return back(isComingSoon(meta.id) ? `${meta.label} is coming soon.` : `${meta.label} isn't available yet.`);
   let workspace;
   try { ({ workspace } = await requireWorkspace()); } catch { return NextResponse.redirect(`${base}/login?next=/app`); }
   if (!['owner', 'editor'].includes(workspace.role)) return back('Only the workspace owner or an editor can connect accounts.');

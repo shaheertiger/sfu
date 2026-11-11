@@ -205,6 +205,6 @@ No. The Telegram character counter runs in your browser and your text never leav
 
 ## Schedule For You Doesn't Post to Telegram, but It Covers Your Other Channels
 
-Schedule For You doesn't post to Telegram. If you also publish on Instagram, Facebook Pages, [X](/x), LinkedIn, [Threads](/threads), Bluesky, TikTok, YouTube, Pinterest or Google Business Profile, it lets you write one post, tailor it per platform with live character checks, and schedule everything from one calendar, so your Telegram channel isn't the only place you're consistent.
+Schedule For You doesn't post to Telegram. If you also publish on Instagram, Facebook Pages, [X](/x), LinkedIn, [Threads](/threads), Bluesky, TikTok, YouTube or Pinterest, it lets you write one post, tailor it per platform with live character checks, and schedule everything from one calendar, so your Telegram channel isn't the only place you're consistent.
 
 [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo ($19/month) and Studio ($59/month) add more accounts and unlimited scheduling, with a 7-day trial that requires a card.

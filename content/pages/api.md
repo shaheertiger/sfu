@@ -1,7 +1,7 @@
 ---
 layout: feature
 title: "Social Media Scheduling API: REST, Webhooks and RSS"
-description: "A social media scheduling API for 10 platforms: create, schedule and retry posts over REST, receive signed webhooks and auto-post from RSS. On Solo and Studio."
+description: "A social media scheduling API for 9 platforms: create, schedule and retry posts over REST, receive signed webhooks and auto-post from RSS. On Solo and Studio."
 h1: Social media scheduling API
 lead: Schedule posts via API to X, Instagram, LinkedIn, TikTok and six more platforms from your own code, and get a signed webhook when each post publishes or fails.
 keyword: social media scheduling api
@@ -9,8 +9,8 @@ keyword: social media scheduling api
 ## What the social media scheduling API does
 Schedule For You includes a social media scheduling API that lets your own code do what the composer does: create posts, schedule them for one or many accounts, publish on demand and retry failures. It's a plain REST API with JSON in and out, and it comes with both paid plans, Solo and Studio.
 
-### One API for 10 platforms
-Posts can go to X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile. You send one request; Schedule For You handles each platform's publishing.
+### One API for 9 platforms
+Posts can go to X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages and Pinterest, with Google Business Profile coming soon. You send one request; Schedule For You handles each platform's publishing.
 
 ### The same rules as the composer
 The API checks every target against its platform's limits before accepting a post. If something breaks a rule, such as a caption that's too long for X or a Pinterest post without an image, you get a `422` response with a list of errors instead of a post that fails later.

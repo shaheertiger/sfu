@@ -96,4 +96,4 @@ No. The resizer exports a still PNG or JPG, which works for every banner type.
 No. All resizing happens locally in your browser.
 
 ## Keep your other channels in sync with Schedule For You
-Schedule For You doesn't publish to Discord, but it can carry your event or launch announcement to Instagram, X, TikTok, Facebook Pages, YouTube and the rest of its 10 supported networks. Write it once, adjust each version, and schedule everything from one calendar. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.
+Schedule For You doesn't publish to Discord, but it can carry your event or launch announcement to Instagram, X, TikTok, Facebook Pages, YouTube and the rest of its 9 supported networks. Write it once, adjust each version, and schedule everything from one calendar. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

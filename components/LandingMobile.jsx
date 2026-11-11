@@ -124,7 +124,7 @@ class Component extends DCLogic {
     const faqs = [
       [
         'Which platforms can I post to?',
-        'X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook, Pinterest and Google Business Profile.',
+        'X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook and Pinterest. Google Business Profile is coming soon.',
       ],
       [
         'Can I change a post for one platform?',
@@ -155,7 +155,6 @@ class Component extends DCLogic {
       'threads',
       'bluesky',
       'pinterest',
-      'googlemybusiness',
     ];
     const nPick = s.picks.length,
       accN = s.accTouched ? s.accN : Math.max(s.accN, nPick || 0);
@@ -254,7 +253,7 @@ class Component extends DCLogic {
         [
           '1',
           'Connect your accounts',
-          'Link accounts across ten platforms: 3 on Free, up to 100 on paid plans. Several per platform is fine.',
+          'Link accounts across nine platforms: 3 on Free, up to 100 on paid plans. Several per platform is fine.',
           '#dcff2e',
           '#15171a',
           '#dcff2e',

@@ -129,7 +129,7 @@ Before Instagram's website could post, people used browser extensions or switche
 
 ## Posting From Desktop to Instagram and Everywhere Else
 
-Take Nadia, a wedding photographer who edits on her laptop and posts three carousels a week to Instagram, plus the same images to Facebook, Pinterest and her Google Business Profile. Posting from instagram.com, then Business Suite, then Pinterest, then Google meant four uploads and four captions per post: twelve uploads a week.
+Take Nadia, a wedding photographer who edits on her laptop and posts three carousels a week to Instagram, plus the same images to Facebook, Pinterest and her LinkedIn profile. Posting from instagram.com, then Business Suite, then Pinterest, then LinkedIn meant four uploads and four captions per post: twelve uploads a week.
 
 In Schedule For You, she drops each carousel in once, writes a caption for each platform, and schedules the week on Monday morning.
 
@@ -144,7 +144,7 @@ The queue shows the week's posts for every account in one list:
 | Photos, carousels (up to 10) and Reels | Yes | Yes | Yes |
 | Schedule for later | No | Yes | Yes, with a queue and calendar |
 | Stories | No, at the time of writing | Yes | Yes, one 9:16 image or video, no caption or stickers |
-| Pinterest, Google Business Profile, X, LinkedIn and more | No | No (Facebook only) | Yes |
+| Pinterest, X, LinkedIn and more | No | No (Facebook only) | Yes |
 | Account type | Any | Professional | Business or Creator linked to a Page |
 | Cost | Free | Free | Free for 3 accounts and up to 10 scheduled posts; paid plans from $19 a month |
 

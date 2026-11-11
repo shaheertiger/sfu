@@ -179,7 +179,7 @@ On Friday, ask: *"Did this week's posts all go out?"* Claude calls `list_posts` 
 
 | | Copy-paste from Claude | Single-network MCP servers | Schedule For You MCP |
 |---|---|---|---|
-| Networks from one setup | Any, by hand | One per server | X, LinkedIn personal profiles, Bluesky, Threads, Instagram, TikTok, YouTube, Facebook Pages, Pinterest, Google Business Profile |
+| Networks from one setup | Any, by hand | One per server | X, LinkedIn personal profiles, Bluesky, Threads, Instagram, TikTok, YouTube, Facebook Pages, Pinterest (Google Business Profile coming soon) |
 | Drafts and a review queue | Your scheduler, if you use one | Rarely | Yes |
 | Character checks per network | You | Varies | Yes, on every post |
 | Replies, DMs, analytics | No | Some | No |
@@ -202,7 +202,7 @@ It's a server that speaks the Model Context Protocol and exposes social media ac
 
 ### Can Claude post to social media?
 
-Not on its own. Connected to an MCP server with posting tools, it can create, schedule and publish posts through that service. With Schedule For You that covers X, Bluesky, Instagram, LinkedIn personal profiles, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile.
+Not on its own. Connected to an MCP server with posting tools, it can create, schedule and publish posts through that service. With Schedule For You that covers X, Bluesky, Instagram, LinkedIn personal profiles, Threads, TikTok, YouTube, Facebook Pages and Pinterest, with Google Business Profile coming soon.
 
 ### Will Claude publish something without my approval?
 

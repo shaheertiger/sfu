@@ -144,7 +144,7 @@ Search for free schedulers and you'll also find browser extensions and small app
 
 ## Where Schedule For You Fits (and Where It Doesn't)
 
-Here's the situation most people searching this are in. Tom runs a small landscaping business. He posts three times a week to a Facebook Page, an Instagram account and a Google Business Profile, about nine posts a week. With native tools that's two separate apps, because Meta Business Suite covers Facebook and Instagram but not Google Business Profile. A large suite would cover all three, but he'd pay for team and reporting features he doesn't use.
+Here's the situation most people searching this are in. Tom runs a small landscaping business. He posts three times a week to a Facebook Page, an Instagram account and a TikTok account, about nine posts a week. With native tools that's two separate apps, because Meta Business Suite covers Facebook and Instagram but not TikTok. A large suite would cover all three, but he'd pay for team and reporting features he doesn't use.
 
 On Schedule For You's Free plan, Tom connects all three accounts, writes each post once, adjusts the caption per platform, and keeps a few days of posts in the queue. Free holds up to 10 scheduled posts at a time, so he plans about a week ahead. If he wanted a whole month loaded at once, that's when a paid plan makes sense.
 
@@ -153,7 +153,7 @@ On Schedule For You's Free plan, Tom connects all three accounts, writes each po
 | | Native schedulers | Self-hosted open source | Large all-in-one suites | Schedule For You |
 | --- | --- | --- | --- | --- |
 | Cost | Free | Free software, paid hosting | Paid; check their pricing pages | Free for 3 accounts and 10 scheduled posts, no card. Solo $19/month, Studio $59/month |
-| Networks from one place | One each | Depends on setup | Many | 10: X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest, Google Business Profile |
+| Networks from one place | One each | Depends on setup | Many | 9: X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest (Google Business Profile coming soon) |
 | Setup | None | Servers and developer apps | Account setup | Connect accounts with each platform's login |
 | Built-in analytics reports | Yes, per platform | Varies | Often | No, use each platform's insights |
 | Social inbox for replies | Some | Varies | Often | No |

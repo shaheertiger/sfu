@@ -132,7 +132,7 @@ You need a straightforward scheduler for the major networks with a calendar, bul
 
 If neither fits, Schedule For You sits between the two. It's a straightforward scheduler: write one post, tailor the caption for each platform with live character-limit checks, and publish from a queue and drag-and-drop calendar.
 
-It publishes to 10 platforms: X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile. It includes repeating and evergreen posts, posting time slots, bulk scheduling from CSV with media, approvals, and client preview links that let clients approve or comment without creating an account. Workspaces keep brands and clients separate, and there's RSS auto-posting, webhooks for Zapier, Make and n8n, a REST API and an MCP server.
+It publishes to 9 platforms: X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages and Pinterest, with Google Business Profile coming soon. It includes repeating and evergreen posts, posting time slots, bulk scheduling from CSV with media, approvals, and client preview links that let clients approve or comment without creating an account. Workspaces keep brands and clients separate, and there's RSS auto-posting, webhooks for Zapier, Make and n8n, a REST API and an MCP server.
 
 There are two plans: Solo at $19/month with 15 connected accounts, and Studio at $59/month with 100 connected accounts, team members and priority support. Posts are unlimited on both. There's a 7-day free trial (card required, cancel anytime, not charged until day 8); both plans are paid.
 

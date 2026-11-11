@@ -172,7 +172,7 @@ Take Grace, who runs a small hair salon. Her four-week test showed Reels of fini
 | Facebook Page Stories | Yes | Varies | Yes, one image or video each |
 | First comment (for example a link) | Varies | Some | Yes, posted right after the post |
 | Lives and Group posts | Lives in Facebook | Rarely | No, do those in Facebook |
-| Same post to TikTok, YouTube and others | Instagram only | Varies | Yes, 10 platforms, a caption for each |
+| Same post to TikTok, YouTube and others | Instagram only | Varies | Yes, 9 platforms, a caption for each |
 | Cost | Free | Varies | Free plan for 3 accounts and up to 10 scheduled posts at a time, no card |
 
 Where we're not the best fit: if you only post to Facebook and Instagram, Meta Business Suite is free and covers both. Schedule For You doesn't run Lives or post to Groups or personal profiles, and it doesn't read your Insights, so use Meta's tools to measure.

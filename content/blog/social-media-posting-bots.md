@@ -138,12 +138,12 @@ Take Elena, who runs social for a small bookshop. She used a "growth" app that a
 
 ![The Schedule For You social accounts screen with each platform connected through its official sign-in](/images/blog/social-accounts-1440x900.webp)
 
-Schedule For You publishes to X, Bluesky, Instagram, LinkedIn (personal profiles), Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile through each platform's official connection: Meta's login for Instagram and Facebook, an app password for Bluesky, and the platforms' own sign-in pages for the rest. It publishes posts you wrote and scheduled. It doesn't follow, like, comment or send DMs for you. When a platform revokes access, for example after you change your password, you get a failed-post alert and can reconnect the account.
+Schedule For You publishes to X, Bluesky, Instagram, LinkedIn (personal profiles), Threads, TikTok, YouTube, Facebook Pages and Pinterest (Google Business Profile is coming soon) through each platform's official connection: Meta's login for Instagram and Facebook, an app password for Bluesky, and the platforms' own sign-in pages for the rest. It publishes posts you wrote and scheduled. It doesn't follow, like, comment or send DMs for you. When a platform revokes access, for example after you change your password, you get a failed-post alert and can reconnect the account.
 
 | | Growth and engagement bots | Native schedulers | Schedule For You |
 |---|---|---|---|
 | Connects through official login | Often not | Yes | Yes |
-| Publishes your own posts | Sometimes | Yes, one platform each | Yes, 10 platforms |
+| Publishes your own posts | Sometimes | Yes, one platform each | Yes, 9 platforms |
 | Likes, follows, comments for you | Yes, against the rules | No | No, never |
 | Cost | Usually paid | Free | Free: 3 accounts, 10 scheduled posts at a time, no card. Paid from $19/month |
 

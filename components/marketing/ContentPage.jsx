@@ -18,8 +18,8 @@ export function contentMetadata(slug) {
 }
 
 const PLAN_FEATURES = {
-  free: [`${FREE.accounts} connected accounts`, `Up to ${FREE.queue} scheduled posts at a time`, 'All 10 platforms', 'Queue, calendar and per-platform captions', 'No card needed', 'A short link back to us on each post'],
-  solo: ['15 connected accounts', 'Unlimited posts', 'All 10 platforms', 'Queue, calendar and bulk CSV', 'Approvals and client preview links', 'RSS, webhooks and REST API'],
+  free: [`${FREE.accounts} connected accounts`, `Up to ${FREE.queue} scheduled posts at a time`, 'All 9 platforms', 'Queue, calendar and per-platform captions', 'No card needed', 'A short link back to us on each post'],
+  solo: ['15 connected accounts', 'Unlimited posts', 'All 9 platforms', 'Queue, calendar and bulk CSV', 'Approvals and client preview links', 'RSS, webhooks and REST API'],
   studio: ['100 connected accounts', 'Team members', 'Priority support', 'Everything in Solo'],
 };
 

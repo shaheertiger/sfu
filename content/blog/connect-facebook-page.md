@@ -147,7 +147,7 @@ It's common for a freelancer or agency to connect a client's Page with their own
 
 ## Why Connect at All? One Composer for Facebook and Everything Else
 
-Take Dan, who runs social for a two-location café. Every week he posts the same five updates to the café's Facebook Page, its Instagram account and Google Business Profile. Doing that app by app takes him about 40 minutes a week, mostly retyping and reformatting the same text.
+Take Dan, who runs social for a two-location café. Every week he posts the same five updates to the café's Facebook Page, its Instagram account and its TikTok. Doing that app by app takes him about 40 minutes a week, mostly retyping and reformatting the same text.
 
 Once the Page is connected, he writes each update once, trims the caption for each platform and schedules the week in one sitting.
 
@@ -155,7 +155,7 @@ Once the Page is connected, he writes each update once, trims the caption for ea
 |---|---|---|---|
 | Schedule Facebook Page posts | Yes | Yes | Yes, up to 10 photos or a video |
 | Instagram in the same post | Yes | Usually | Yes |
-| Google Business Profile, LinkedIn, TikTok and others | No | Varies by tool | Yes, from one composer |
+| LinkedIn, TikTok, Pinterest and others | No | Varies by tool | Yes, from one composer |
 | Personal profiles and Groups | Posting by hand only | Generally no | No, Pages only |
 | Cost | Free | Varies | Free plan for 3 accounts and 10 scheduled posts, no card. Paid plans from $19 a month |
 
@@ -163,7 +163,7 @@ Where we're not the best fit: if you only post to Facebook and Instagram, Meta B
 
 ![The Schedule For You Accounts screen with connected social accounts, including a Facebook Page](/images/blog/social-accounts-1440x900.webp)
 
-With the Page, the Instagram account and the Business Profile connected, Dan's three accounts fit the Free plan. He selects all three in the composer and tailors each caption.
+With the Page, the Instagram account and the TikTok connected, Dan's three accounts fit the Free plan. He selects all three in the composer and tailors each caption.
 
 ![The Schedule For You composer with several platforms selected for one post](/images/blog/composer-four-platforms-1440x900.webp)
 

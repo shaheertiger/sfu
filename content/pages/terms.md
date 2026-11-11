@@ -1,7 +1,7 @@
 ---
 layout: legal
 title: Terms of Service
-description: The terms that apply when you use Schedule For You to schedule and publish posts to Facebook, Instagram, YouTube, Google Business Profile and other social platforms.
+description: The terms that apply when you use Schedule For You to schedule and publish posts to Facebook, Instagram, YouTube and other social platforms.
 h1: Terms of Service
 lead: The rules for using Schedule For You, in plain language.
 updated: 2026-11-10
@@ -12,7 +12,7 @@ Questions about these Terms? Email **[support@scheduleforyou.com](mailto:support
 
 ## 1. What Schedule For You does
 
-Schedule For You lets you write posts once, schedule them, and publish them to the social accounts you connect, including Facebook Pages, Instagram professional accounts, Threads, X, LinkedIn personal profiles, TikTok, YouTube, Google Business Profile, Pinterest and Bluesky. Features depend on your plan and on what each platform allows through its API.
+Schedule For You lets you write posts once, schedule them, and publish them to the social accounts you connect, including Facebook Pages, Instagram professional accounts, Threads, X, LinkedIn personal profiles, TikTok, YouTube, Pinterest and Bluesky. Features depend on your plan and on what each platform allows through its API.
 
 ## 2. Your account
 

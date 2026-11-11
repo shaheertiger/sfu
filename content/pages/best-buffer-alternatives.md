@@ -25,7 +25,7 @@ If you post to two or three channels on your own, Buffer's free plan or Essentia
 
 ## Where per-channel pricing starts to hurt
 
-Take Priya, a freelance social media manager with three clients: a café, a dental practice and a yoga studio. Each client posts to Instagram, a Facebook Page, TikTok and Google Business Profile, so she manages 12 profiles. Her clients want to approve posts before they go out.
+Take Priya, a freelance social media manager with three clients: a café, a dental practice and a yoga studio. Each client posts to Instagram, a Facebook Page, TikTok and Threads, so she manages 12 profiles. Her clients want to approve posts before they go out.
 
 On Buffer Essentials, 12 channels cost about $72 a month. Approvals are on the Team plan, which takes that to about $144 a month, and every new client adds four more channels. She also has to keep three brands apart in one queue, and send screenshots to clients who don't have Buffer logins.
 
@@ -62,7 +62,7 @@ Here's the same scenario in Schedule For You, with screenshots from the live das
 
 ![The Social accounts screen showing seven connected accounts across TikTok, YouTube, Bluesky, X, Instagram, LinkedIn and Threads, with Connected, Expires soon and Reconnect needed statuses](/images/blog/social-accounts-1440x900.webp)
 
-**One draft, tailored per platform.** She writes the café's weekend post once, then edits the Instagram, Facebook, TikTok and Google Business Profile tabs separately. Counters show every platform's limit at once, and the composer flags problems before scheduling, such as a TikTok post with no video.
+**One draft, tailored per platform.** She writes the café's weekend post once, then edits the Instagram, Facebook, TikTok and Threads tabs separately. Counters show every platform's limit at once, and the composer flags problems before scheduling, such as a TikTok post with no video.
 
 ![The New post screen with four accounts selected, a tab per platform, character counters for each limit and a warning to fix before publishing](/images/blog/composer-four-platforms-1440x900.webp)
 
@@ -102,7 +102,7 @@ Scheduling plus analytics and client reports, including ads data. Counts brands 
 Meta Business Suite, YouTube Studio, LinkedIn and TikTok all schedule posts for free and support their own formats best. Each covers one network (Business Suite covers two), so you upload and write every post separately.
 
 ### Schedule For You
-A cross-posting scheduler for 10 platforms: Instagram (posts, Reels, carousels and Stories), Facebook Pages, X, LinkedIn personal profiles, Threads, Bluesky, TikTok, YouTube, Pinterest and Google Business Profile. One draft with a tailored version per platform, a queue and drag-and-drop calendar, bulk scheduling and CSV import, first comments, repeating and evergreen posts, approvals, client preview links, RSS auto-post, webhooks, a REST API and an MCP server. Solo is $19 a month for 15 accounts and Studio $59 for 100 accounts with team members; there's also a Free plan (3 accounts, up to 10 scheduled posts at a time, no card), and the paid plans' 7-day trial needs a card. Our [Buffer alternative](/buffer-alternative) page compares the two directly.
+A cross-posting scheduler for 9 platforms: Instagram (posts, Reels, carousels and Stories), Facebook Pages, X, LinkedIn personal profiles, Threads, Bluesky, TikTok, YouTube and Pinterest, with Google Business Profile coming soon. One draft with a tailored version per platform, a queue and drag-and-drop calendar, bulk scheduling and CSV import, first comments, repeating and evergreen posts, approvals, client preview links, RSS auto-post, webhooks, a REST API and an MCP server. Solo is $19 a month for 15 accounts and Studio $59 for 100 accounts with team members; there's also a Free plan (3 accounts, up to 10 scheduled posts at a time, no card), and the paid plans' 7-day trial needs a card. Our [Buffer alternative](/buffer-alternative) page compares the two directly.
 
 ## How to choose by need
 

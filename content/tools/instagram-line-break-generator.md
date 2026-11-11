@@ -86,4 +86,4 @@ Screen readers generally skip blank characters or read them as a pause. Keep the
 No. Everything happens in your browser, and nothing is stored once you close the page.
 
 ## Schedule spaced-out Instagram captions with Schedule For You
-Schedule For You publishes to Instagram and nine other networks. You can paste your formatted caption, check it against Instagram's 2,200-character limit in the composer, attach media from your library and drop the post into your calendar. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.
+Schedule For You publishes to Instagram and eight other networks. You can paste your formatted caption, check it against Instagram's 2,200-character limit in the composer, attach media from your library and drop the post into your calendar. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

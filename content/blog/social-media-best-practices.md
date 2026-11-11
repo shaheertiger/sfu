@@ -175,12 +175,12 @@ Of the eight areas, cadence is the one that slips first. A busy week, a sick day
 
 Take Jo, who runs a yoga studio. She aims for 3 posts a week on Instagram, her Facebook Page and her Google Business Profile: a class highlight, a tip and a timetable update. In a normal week she manages it. In a busy week, nothing goes out, and her Google Business Profile hasn't had an update in a month.
 
-So every Sunday she writes the week's 3 posts once, adapts each one per platform (a longer caption for Instagram, a short update with a booking button for Google Business Profile), and schedules all 9. Three accounts and 9 scheduled posts fit the Free plan.
+So every Sunday she writes the week's 3 posts once, adapts each one per platform (a longer caption for Instagram, a shorter one for Facebook), and schedules the 6 Instagram and Facebook posts. Two accounts and 6 scheduled posts fit the Free plan. Google Business Profile publishing is coming soon, so for now she saves a short version with a booking button for each Google update and posts it in Google's own dashboard on the day.
 
 | | Each platform's own app | Meta Business Suite | Other schedulers | Schedule For You |
 | --- | --- | --- | --- | --- |
 | One caption version per platform | Yes, written separately | Instagram and Facebook | Varies | Yes, with live character-limit checks |
-| Google Business Profile | Its own dashboard, no scheduler | No | Some | Yes |
+| Google Business Profile | Its own dashboard, no scheduler | No | Some | Coming soon |
 | Posting slots that keep the cadence | No | No | Usually | Yes |
 | Analytics and replies | Yes, in each app | Yes | Some | No: use each platform's own tools |
 | Cost | Free | Free | Varies | Free for 3 accounts and up to 10 scheduled posts at a time, no card. Paid from $19 a month |
@@ -189,7 +189,7 @@ Where we're not the best fit: Schedule For You handles publishing, not replies o
 
 Jo's month on the calendar shows the gaps before they happen:
 
-![The Schedule For You calendar with a month of posts for Instagram, Facebook and Google Business Profile](/images/blog/calendar-month-1440x900.webp)
+![The Schedule For You calendar with a month of posts for Instagram and Facebook](/images/blog/calendar-month-1440x900.webp)
 
 Our guide on [how to schedule social media posts](/blog/how-to-schedule-social-media-posts) covers the setup.
 

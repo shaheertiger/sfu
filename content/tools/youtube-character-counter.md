@@ -160,6 +160,6 @@ The channel description (the "About" text) can be up to 1,000 characters at the 
 No. The counter works in your browser and doesn't upload or keep what you paste.
 
 ## Schedule Your YouTube Uploads with Schedule For You
-Schedule For You uploads your videos to YouTube at the time you choose, with the title taken from the title field (or your caption's first line) and checked against the 100-character limit, a description of up to 5,000 characters, and a public, unlisted or private setting. The same calendar holds the posts that promote each video on Instagram, TikTok, Facebook Pages, X, LinkedIn, Threads, Bluesky, Pinterest and Google Business Profile.
+Schedule For You uploads your videos to YouTube at the time you choose, with the title taken from the title field (or your caption's first line) and checked against the 100-character limit, a description of up to 5,000 characters, and a public, unlisted or private setting. The same calendar holds the posts that promote each video on Instagram, TikTok, Facebook Pages, X, LinkedIn, Threads, Bluesky and Pinterest.
 
 The Free plan covers 3 accounts and up to 10 scheduled posts at a time, with no card needed. [Start free](/signup), or read [how to schedule YouTube videos and Shorts](/blog/how-to-schedule-youtube-videos-and-shorts) first.

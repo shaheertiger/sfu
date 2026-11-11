@@ -119,7 +119,7 @@ The usual workaround is for one person, often an assistant or ghostwriter, to lo
 | --- | --- | --- | --- | --- | --- |
 | LinkedIn's built-in scheduler | Yes | Yes | No | No | Free |
 | Shared spreadsheet + everyone schedules natively | Yes | Yes | Plan only; publishing is still manual | Plan only | Free |
-| Schedule For You | Yes, each person connects their own | **No** (use LinkedIn's scheduler for pages) | Yes: queue, calendar, approvals | 10 platforms | Free plan for 3 accounts and 10 scheduled posts; paid plans from $19/month |
+| Schedule For You | Yes, each person connects their own | **No** (use LinkedIn's scheduler for pages) | Yes: queue, calendar, approvals | 9 platforms | Free plan for 3 accounts and 10 scheduled posts; paid plans from $19/month |
 | Other paid schedulers | Usually | Usually | Usually | Usually | Varies, often per user or per account |
 
 Where we're not the best fit: if you mainly post as a company page, LinkedIn's own scheduler or a tool that supports pages is the better choice. Schedule For You publishes to personal profiles only. It fits founders, consultants, ghostwriters and teams whose people post under their own names.

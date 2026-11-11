@@ -173,7 +173,7 @@ Some tools promise to automate the human side too: auto-likes, auto-follows, aut
 
 ## A Real Setup: One Hour a Month Instead of an Hour a Day
 
-Take Ines, who runs marketing for a bike shop with Instagram, Facebook, Pinterest and Google Business Profile accounts. She posts once a day, every day. Done by hand, that's around 30 posting sessions a month across four apps.
+Take Ines, who runs marketing for a bike shop with Instagram, Facebook, Pinterest and TikTok accounts. She posts once a day, every day. Done by hand, that's around 30 posting sessions a month across four apps.
 
 Her automated setup: one spreadsheet of 30 posts imported by CSV on the first of the month, a weekday and weekend posting slot, five evergreen tips that refill empty slots, and RSS auto-post for the shop's blog. A failed-post alert is the only thing that interrupts her.
 

@@ -216,6 +216,6 @@ It works for any channel with a public channel page, in any desktop or mobile br
 Yes, each visitor gets 60 lookups a day at the time of writing, resetting at midnight UTC. One lookup returns every size and the banner, so each channel uses only one.
 
 ## Put Your Profile Picture to Work with Schedule For You
-Once your profile picture and banner match across platforms, keep your posting just as consistent. Schedule For You uploads your videos to YouTube with a title, description and privacy setting, and publishes the clips and posts that promote them to Instagram, TikTok, Facebook Pages, X, LinkedIn, Threads, Bluesky, Pinterest and Google Business Profile, all from one calendar.
+Once your profile picture and banner match across platforms, keep your posting just as consistent. Schedule For You uploads your videos to YouTube with a title, description and privacy setting, and publishes the clips and posts that promote them to Instagram, TikTok, Facebook Pages, X, LinkedIn, Threads, Bluesky and Pinterest, all from one calendar.
 
 The Free plan covers 3 accounts and up to 10 scheduled posts at a time, with no card needed. [Start free](/signup), and see our guide on [how to schedule YouTube videos and Shorts](/blog/how-to-schedule-youtube-videos-and-shorts).

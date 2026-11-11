@@ -96,4 +96,4 @@ Yes. It's free, needs no account and runs in your browser.
 Yes. The PNG is your own design, so you can use it on Instagram, YouTube or anywhere else. The square shape option is handy for platforms that don't crop to a circle.
 
 ## Post to TikTok on a schedule with Schedule For You
-Schedule For You publishes to TikTok and nine other networks, including Instagram, YouTube and X. Write your caption once, adjust it per platform with live character checks, and schedule videos from one calendar. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.
+Schedule For You publishes to TikTok and eight other networks, including Instagram, YouTube and X. Write your caption once, adjust it per platform with live character checks, and schedule videos from one calendar. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.
