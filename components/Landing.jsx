@@ -2,6 +2,7 @@
 // Logic ported from the Claude Design prototype "Landing Page.dc.html".
 import React from 'react';
 import { renderLanding, css } from './LandingView';
+import { COMING_SOON_SLUGS } from '@/lib/coming-soon';
 
 const DCLogic = React.Component;
 const CAP = 'The Fall field kit is live. Waxed canvas, brass hardware, built to take a beating. Ships this week →';
@@ -68,7 +69,9 @@ const PLATFORMS = [
   ['threads', 'Threads'],
   ['pinterest', 'Pinterest'],
   ['googlemybusiness', 'Google Business'],
-].map(([slug, label]) => ({ slug, label, logo: LOGO(slug), tile: TILE[slug] }));
+].map(([slug, label]) => ({ slug, label, logo: LOGO(slug), tile: TILE[slug], soon: COMING_SOON_SLUGS.includes(slug) }));
+/** Platforms people can actually post to today (the fan-out shows these; the marquee also shows the "soon" ones). */
+const LIVE = PLATFORMS.filter((p) => !p.soon);
 const FLOAT = [
   ['instagram', '6%', '90px', 84, '-10deg', 6.5, 0],
   ['x', '12%', '330px', 64, '8deg', 7, 1.2],
@@ -77,7 +80,7 @@ const FLOAT = [
   ['linkedin', '80%', '320px', 62, '-8deg', 6.2, 1.6],
   ['bluesky', '90%', '540px', 70, '6deg', 7.8, 0.9],
 ].map(([s, left, top, size, rot, dur, delay]) => ({ logo: LOGO(s), tile: TILE[s], left, top, size, rot, dur, delay }));
-const FAN = PLATFORMS.map((p, i) => ({ ...p, left: 75, top: 8 + i * (84 / 9), delay: (i * 0.17).toFixed(2) }));
+const FAN = LIVE.map((p, i) => ({ ...p, left: 75, top: 8 + i * (84 / (LIVE.length - 1)), delay: (i * 0.17).toFixed(2) }));
 const FAN_FMT = [
   { slug: 'pinterest', ratio: 2 / 3, fmt: 'Pin · 2:3', max: '500', tone: '#8a5a3c' },
   { slug: 'tiktok', ratio: 9 / 16, fmt: 'Video · 9:16', max: '2,200', tone: '#5d4a36' },
@@ -88,7 +91,6 @@ const FAN_FMT = [
   { slug: 'bluesky', ratio: 16 / 9, fmt: 'Post · 16:9', max: '300', tone: '#6a543e' },
   { slug: 'linkedin', ratio: 1.91, fmt: 'Post · 1.91:1', max: '3,000', tone: '#806650' },
   { slug: 'youtube', ratio: 9 / 16, fmt: 'Short · 9:16', max: '5,000', tone: '#4f3f2e' },
-  { slug: 'googlemybusiness', ratio: 4 / 3, fmt: 'Update · 4:3', max: '1,500', tone: '#76604a' },
 ];
 const C = { x: '#f6f5f1', bsky: '#1185fe', li: '#3b8ee0', ig: '#e1306c', th: '#a7abb2', yt: '#ff3b30', tt: '#f6f5f1' };
 const WI = (...a) => a.map((x) => LOGO(x));

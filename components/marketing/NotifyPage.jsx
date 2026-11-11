@@ -90,7 +90,7 @@ export default function NotifyPage({ platform, action }) {
           {bestTimePlatform(platform.slug) ? (
             <TrialCta heading={`Plan your ${platform.name} posts from one calendar`}><p>Schedule For You plans and publishes your {platform.name} posts from one calendar. Free plan: 3 accounts, up to 10 scheduled posts at a time, no card. See also the <Link href={bestTimePath(platform.slug)} style={{ color: 'inherit' }}>best time to post on {platform.name}</Link>.</p></TrialCta>
           ) : (
-            <TrialCta heading="Plan your social posts from one calendar"><p>Schedule For You publishes to Instagram, TikTok, Facebook, LinkedIn, X, Threads, YouTube, Pinterest, Bluesky and Google Business Profile from one calendar. Free plan: 3 accounts, up to 10 scheduled posts at a time, no card.</p></TrialCta>
+            <TrialCta heading="Plan your social posts from one calendar"><p>Schedule For You publishes to Instagram, TikTok, Facebook, LinkedIn, X, Threads, YouTube, Pinterest and Bluesky from one calendar, with Google Business Profile coming soon. Free plan: 3 accounts, up to 10 scheduled posts at a time, no card.</p></TrialCta>
           )}
         </article>
       </div>

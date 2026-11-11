@@ -8,7 +8,7 @@ import StickyCtaBar from './StickyCtaBar';
  * scrolled away. Every line here must stay true of the Free plan (lib/plan-limits.js).
  */
 const POINTS = [
-  'Schedule to 10 platforms from one composer',
+  'Schedule to 9 platforms from one composer',
   'A different caption for each platform',
   'Calendar and queue for the whole week',
   'Free for 3 accounts, no card',
@@ -33,5 +33,5 @@ export function GrowCard() {
 
 /** `watch` is the id of the element (the tool) the phone bar waits to scroll past. */
 export function GrowBar({ watch }) {
-  return <StickyCtaBar watch={watch} text="Post to 10 platforms from one place" button="Start free" href="/signup" />;
+  return <StickyCtaBar watch={watch} text="Post to 9 platforms from one place" button="Start free" href="/signup" />;
 }

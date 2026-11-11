@@ -53,7 +53,7 @@ export default async function PlatformPage({ params }) {
       <div className={m.container}>
         <Breadcrumbs items={crumbs} />
         <section className={m.hero}>
-          <span className={m.eyebrow}>{meta.name} scheduler</span>
+          <span className={m.eyebrow}>{meta.name} scheduler{meta.comingSoon ? ' · Coming soon' : ''}</span>
           <h1 className={m.h1}>{page.h1}</h1>
           {page.lead && <p className={m.lead}>{page.lead}</p>}
           <div className={m.ctaRow} style={{ justifyContent: 'center', marginTop: 22 }}>
@@ -118,7 +118,7 @@ export default async function PlatformPage({ params }) {
               <ul className={m.linkGrid}>
                 {others.map((p) => (
                   <li key={p.slug}>
-                    <Link href={`/${p.slug}`} className={m.linkCard}>{p.name} scheduler</Link>
+                    <Link href={`/${p.slug}`} className={m.linkCard}>{p.name} scheduler{p.comingSoon && <span>Coming soon</span>}</Link>
                   </li>
                 ))}
               </ul>

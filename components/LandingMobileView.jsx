@@ -95,7 +95,7 @@ export function renderLandingMobile($v) {
                 ))}{' '}
               </span>{' '}
               <span style={{ fontSize: '14px', color: '#a7abb2', marginLeft: '8px' }}>
-                {'Posts to 10 platforms at once'}
+                {'Posts to 9 platforms at once'}
               </span>{' '}
             </div>{' '}
             <h1
@@ -1047,7 +1047,7 @@ export function renderLandingMobile($v) {
                 {'Pinterest'}
               </a>
               <a href="/google-business-profile" style={{ color: '#a7abb2', padding: '10px 0' }}>
-                {'Google Business'}
+                {'Google Business (soon)'}
               </a>
             </nav>{' '}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>

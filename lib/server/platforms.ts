@@ -1,4 +1,5 @@
 import { readEnv } from './env';
+import { isComingSoon } from '../coming-soon';
 
 export type PlatformId =
   | 'bluesky' | 'x' | 'instagram' | 'linkedin' | 'facebook'
@@ -98,6 +99,8 @@ export const PLATFORMS: Record<PlatformId, PlatformMeta> = {
 
 export const PLATFORM_LIST = Object.values(PLATFORMS);
 
-export function platformConfigured(p: PlatformMeta) {
+/** Ready to connect: keys are set and the platform isn't marked "coming soon" (lib/coming-soon.js). */
+export function platformConfigured(p: Pick<PlatformMeta, 'id' | 'envKeys'>) {
+  if (isComingSoon(p.id)) return false;
   return p.envKeys.every((k) => !!readEnv(k));
 }

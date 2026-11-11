@@ -50,7 +50,7 @@ export default function ToolsIndex() {
         })}
         <div className={m.narrow}>
           <TrialCta heading="Schedule your posts with Schedule For You">
-            <p>Write one post, tailor it for each platform and publish to X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile from one queue.</p>
+            <p>Write one post, tailor it for each platform and publish to X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages and Pinterest from one queue. Google Business Profile is coming soon.</p>
           </TrialCta>
         </div>
       </div>

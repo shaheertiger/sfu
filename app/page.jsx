@@ -5,7 +5,7 @@ import { DESCRIPTION, META_DESCRIPTION, TAGLINE, landingLd } from '../lib/seo';
 import { agentMetadata } from '../lib/seo-pages';
 
 export const metadata = {
-  title: { absolute: `Schedule For You · Social media scheduler for ten platforms` },
+  title: { absolute: `Schedule For You · Social media scheduler for nine platforms` },
   description: META_DESCRIPTION,
   alternates: { canonical: '/', ...agentMetadata('/', DESCRIPTION).alternates },
   other: agentMetadata('/', DESCRIPTION).other,

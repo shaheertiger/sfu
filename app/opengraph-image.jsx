@@ -5,7 +5,7 @@ export const alt = 'Schedule For You: write it once, post it everywhere.';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-const PLATFORMS = ['X', 'Bluesky', 'Instagram', 'LinkedIn', 'Threads', 'TikTok', 'YouTube', 'Facebook', 'Pinterest', 'Google Business'];
+const PLATFORMS = ['X', 'Bluesky', 'Instagram', 'LinkedIn', 'Threads', 'TikTok', 'YouTube', 'Facebook', 'Pinterest'];
 
 export default function Image() {
   return new ImageResponse(
