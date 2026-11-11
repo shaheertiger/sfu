@@ -160,7 +160,7 @@ Some tools ask you to type each Instagram username and password into their own f
 
 ## One Login, 6 Accounts: What Connecting Them Actually Saves
 
-Take Sofia, a freelance social media manager with two clients: a florist with a main Instagram account and a wedding account, and a café with an Instagram account, a Facebook Page, a TikTok and a Google Business Profile. That's six accounts. Logging in and out of each in the apps to post three times a week means 18 separate posting sessions a week, plus the risk of posting the florist's wedding photo to the café.
+Take Sofia, a freelance social media manager with two clients: a florist with a main Instagram account and a wedding account, and a café with an Instagram account, a Facebook Page, a TikTok and a Threads account. That's six accounts. Logging in and out of each in the apps to post three times a week means 18 separate posting sessions a week, plus the risk of posting the florist's wedding photo to the café.
 
 In Schedule For You she connects both Instagram accounts and the florist's Page in one Meta login, then the café's accounts in their own workspace. Each week she writes the posts once, adjusts the caption for each account and lets them publish on schedule.
 
@@ -170,7 +170,7 @@ In Schedule For You she connects both Instagram accounts and the florist's Page 
 |---|---|---|---|
 | Several Instagram accounts | Yes, switch one at a time | Yes, Page by Page | Yes, select many in one post |
 | A caption per account | Retyped | Yes | Yes |
-| TikTok, LinkedIn, Google Business Profile and others | No | No | Yes |
+| TikTok, LinkedIn, Pinterest and others | No | No | Yes |
 | Instagram Stories | Yes | Yes | Yes, one image or video; no stickers, polls or music |
 | Separate spaces per client | No | Business portfolios | Workspaces |
 | Cost | Free | Free | Free for 3 accounts and 10 scheduled posts, no card. Paid from $19 a month |

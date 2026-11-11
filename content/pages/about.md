@@ -1,8 +1,8 @@
 ---
 title: About Schedule For You
-description: Schedule For You is a social media scheduler for creators, small businesses and agencies. Write once, tailor each platform's version and publish to 10 networks.
+description: Schedule For You is a social media scheduler for creators, small businesses and agencies. Write once, tailor each platform's version and publish to 9 networks.
 h1: A simpler way to plan and publish your social posts
-lead: Schedule For You helps you write a post once, tailor it for each platform, and publish it on time to the 10 networks it supports.
+lead: Schedule For You helps you write a post once, tailor it for each platform, and publish it on time to the 9 networks it supports.
 ---
 ## What we make
 Schedule For You is a social media scheduler. You write a post, adjust the version for each platform you're sending it to, and choose when it goes out. Everything sits in one queue and one drag-and-drop calendar, so you can see the week ahead at a glance and move things around when plans change.
@@ -14,7 +14,7 @@ Around that core are the tools that make regular posting practical: posting time
 If you post the same idea to several networks, you shouldn't have to rewrite it from scratch in five apps. Batch your content when you have time, then let the queue publish it while you get on with making the next thing.
 
 ### Small businesses
-Owners and small marketing teams need their Facebook Page, Instagram and Google Business Profile to stay current without daily logins. A few minutes of planning each week covers the essentials.
+Owners and small marketing teams need their Facebook Page, Instagram and other profiles to stay current without daily logins (Google Business Profile publishing is coming soon). A few minutes of planning each week covers the essentials.
 
 ### Agencies and freelancers managing clients
 Each client can get a workspace with its own accounts, queue, media and plan. Client preview links let them approve or comment on posts without creating an account, and the Studio plan adds team members so colleagues can work in the same space.
@@ -53,7 +53,7 @@ Webhooks connect to Zapier, Make or n8n. There's a REST API and an MCP server if
 The Free plan needs no card; posts published from it end with a short "Scheduled with Schedule For You" link when it fits. Solo and Studio start with a 7-day free trial: a card is required to start, you aren't charged until day 8, and you can cancel anytime. See full details on the [pricing page](/pricing).
 
 ## The platforms we publish to
-Schedule For You publishes to 10 platforms:
+Schedule For You publishes to 9 platforms:
 
 - [Instagram](/instagram) (Business and Creator accounts)
 - [Facebook Pages](/facebook)
@@ -64,7 +64,8 @@ Schedule For You publishes to 10 platforms:
 - [TikTok](/tiktok)
 - [YouTube](/youtube)
 - [Pinterest](/pinterest)
-- [Google Business Profile](/google-business-profile)
+
+Google Business Profile is coming soon; see the [Google Business Profile](/google-business-profile) page for what's planned.
 
 We don't publish to other networks, such as Discord, Telegram, Reddit, Slack or Snapchat.
 

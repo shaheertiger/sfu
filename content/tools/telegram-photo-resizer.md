@@ -181,6 +181,6 @@ No. The image is resized in your browser and never leaves your device.
 No. The tool exports a single still frame as PNG or JPG. Telegram's video avatars have to be made in Telegram or a video editor.
 
 ## Use Telegram, and Schedule Your Other Channels With Schedule For You
-Schedule For You doesn't post to Telegram. If Telegram is one of several places you share updates, we handle the rest: Instagram (including Stories and first comments), Facebook Pages, X, LinkedIn personal profiles, Threads, Bluesky, TikTok, YouTube, Pinterest and Google Business Profile, all from one calendar. Write the update once, tailor each version, and set a time.
+Schedule For You doesn't post to Telegram. If Telegram is one of several places you share updates, we handle the rest: Instagram (including Stories and first comments), Facebook Pages, X, LinkedIn personal profiles, Threads, Bluesky, TikTok, YouTube and Pinterest, all from one calendar, with Google Business Profile coming soon. Write the update once, tailor each version, and set a time.
 
 The Free plan includes 3 accounts and up to 10 scheduled posts at a time, with no card. Paid plans, Solo at $19/month and Studio at $59/month, come with a 7-day trial that needs a card. [Start free](/signup).

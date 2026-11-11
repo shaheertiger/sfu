@@ -55,7 +55,7 @@ Native options are free and support every format the platform offers. The limit 
 Tools fall into a few broad groups. Examples are well-known names, not endorsements, and each changes its features over time, so check details before you buy.
 
 ### Cross-posting schedulers
-Focused tools built around one queue and one calendar for many networks. Buffer is known for simple queue-based scheduling, Publer for a wide set of publishing features, and Schedule For You for per-platform versions with live limit checks across 10 networks. They usually skip social inboxes and listening in exchange for a simpler interface.
+Focused tools built around one queue and one calendar for many networks. Buffer is known for simple queue-based scheduling, Publer for a wide set of publishing features, and Schedule For You for per-platform versions with live limit checks across 9 networks. They usually skip social inboxes and listening in exchange for a simpler interface.
 
 ### All-in-one suites
 Hootsuite and Sprout Social combine publishing with social inboxes, analytics and team workflows. They cross-post well but are built for marketing teams, and you pay for the extras.
@@ -67,7 +67,7 @@ Metricool pairs scheduling with reporting. Later is known for visual Instagram p
 Zapier, Make and n8n connect apps with triggers, such as "when a new blog post appears, share it". They're flexible for automated cross-posting from a feed or spreadsheet, but tailoring each network's version is up to you. Many schedulers, including Schedule For You, offer webhooks or an API that plugs into these tools. See [how to automate social media scheduling](/blog/how-to-automate-social-media-scheduling) for patterns.
 
 ## Where Schedule For You fits
-Schedule For You is a cross-posting scheduler. One post can go to many accounts and platforms at once, each with its own caption version and live limit checks, and any target that fails alerts you so you can retry it. It publishes to Instagram, Facebook Pages, X, LinkedIn, Threads, Bluesky, TikTok, YouTube, Pinterest and Google Business Profile, with a queue, drag-and-drop calendar, bulk CSV scheduling, RSS auto-post and a REST API. The [cross-posting](/cross-posting) page shows how it works.
+Schedule For You is a cross-posting scheduler. One post can go to many accounts and platforms at once, each with its own caption version and live limit checks, and any target that fails alerts you so you can retry it. It publishes to Instagram, Facebook Pages, X, LinkedIn, Threads, Bluesky, TikTok, YouTube and Pinterest (Google Business Profile is coming soon), with a queue, drag-and-drop calendar, bulk CSV scheduling, RSS auto-post and a REST API. The [cross-posting](/cross-posting) page shows how it works.
 
 Be clear on the limits too. It doesn't post TikTok Stories, doesn't crop images, posts to personal LinkedIn profiles only (not company pages), and has no engagement analytics or AI writing. Its Free plan covers 3 accounts and up to 10 scheduled posts at a time; bulk CSV scheduling, RSS and the API are on the paid plans, Solo at $19 a month and Studio at $59 a month, with a 7-day free trial that needs a card.
 

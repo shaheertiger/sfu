@@ -41,7 +41,7 @@ Instagram en Meta Business Suite hebben zelf ook een optie om posts in te planne
 
 Een planner als Schedule For You wordt interessant zodra je meer doet:
 
-- **Meerdere platforms tegelijk.** Eén post, met een eigen caption per platform, naar Instagram, Facebook, LinkedIn, TikTok, Threads, X, Bluesky, YouTube, Pinterest en Google Bedrijfsprofiel.
+- **Meerdere platforms tegelijk.** Eén post, met een eigen caption per platform, naar Instagram, Facebook, LinkedIn, TikTok, Threads, X, Bluesky, YouTube en Pinterest. Google Bedrijfsprofiel volgt binnenkort.
 - **Een vaste wachtrij.** Je stelt je tijdsloten één keer in en vult ze aan wanneer het jou uitkomt.
 - **Werken voor klanten.** Klanten keuren posts goed via een previewlink, zonder eigen account.
 - **Veel content in één keer.** Een maand aan posts plan je in met één CSV-bestand.

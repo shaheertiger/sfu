@@ -125,7 +125,7 @@ Every program has thresholds, and services sell followers, views and watch hours
 
 Take Ana, who makes 5-minute cooking videos. To see where they pay best, she posts each one to YouTube, a 90-second cut to TikTok, and the same cut as an Instagram Reel, three times a week for three months. By hand, that's nine uploads a week at about 10 minutes each, an hour and a half a week.
 
-With Schedule For You, Ana uploads each version once, writes a caption per platform, and schedules the week on one calendar. Schedule For You publishes to TikTok, YouTube, Instagram, Facebook Pages, X, Threads, Bluesky, LinkedIn, Pinterest and Google Business Profile.
+With Schedule For You, Ana uploads each version once, writes a caption per platform, and schedules the week on one calendar. Schedule For You publishes to TikTok, YouTube, Instagram, Facebook Pages, X, Threads, Bluesky, LinkedIn and Pinterest, with Google Business Profile coming soon.
 
 | | Each app by hand | Schedule For You |
 | --- | --- | --- |

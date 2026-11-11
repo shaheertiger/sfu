@@ -1,10 +1,10 @@
 ---
 layout: article
-title: "Buffer Alternative: Simple Scheduling for 10 Platforms"
+title: "Buffer Alternative: Simple Scheduling for 9 Platforms"
 description: Looking for a Buffer alternative? See what to check, how Schedule For You compares on pricing and workflow, where Buffer may suit you better, and how to switch.
 h1: Looking for a Buffer Alternative? What to Compare Before You Switch
 category: Comparisons
-excerpt: Buffer is known for simple scheduling and per-channel pricing. If you want flat plans, client approvals and automation for 10 platforms, here's how to compare and switch.
+excerpt: Buffer is known for simple scheduling and per-channel pricing. If you want flat plans, client approvals and automation for 9 platforms, here's how to compare and switch.
 keyword: buffer alternative
 date: 2026-10-23
 ---
@@ -54,7 +54,7 @@ Schedule For You is built around one workflow: write once, tailor each platform'
 
 | Capability | Schedule For You | Buffer |
 |---|---|---|
-| Platforms | 10: Instagram, Facebook Pages, X, LinkedIn, Threads, Bluesky, TikTok, YouTube, Pinterest, Google Business Profile | Most major networks, including some Schedule For You doesn't support, such as Mastodon; check its current list |
+| Platforms | 9: Instagram, Facebook Pages, X, LinkedIn, Threads, Bluesky, TikTok, YouTube, Pinterest (Google Business Profile coming soon) | Most major networks, including some Schedule For You doesn't support, such as Mastodon; check its current list |
 | Free plan | Yes: 3 accounts, up to 10 scheduled posts at a time | Historically yes, for a few channels; check |
 | Pricing model | Flat plans: 15 or 100 connected accounts | Typically per channel; check |
 | Link-in-bio page | No | Yes (Start Page) |
@@ -90,7 +90,7 @@ Buffer may be the better choice if:
 - **You need more on a free plan.** Schedule For You's Free plan covers 3 accounts and 10 scheduled posts at a time; if you need more channels without paying, compare Buffer's current free tier.
 - **You rely on Start Page.** Schedule For You doesn't offer a link-in-bio or landing page.
 - **You want analytics in the same tool.** Schedule For You focuses on planning and publishing and leaves reporting to each platform's own insights.
-- **You post to a network Schedule For You doesn't cover.** It publishes to 10 platforms only. If Mastodon or another network is central for you, check Buffer's list.
+- **You post to a network Schedule For You doesn't cover.** It publishes to 9 platforms only, with Google Business Profile coming soon. If Mastodon or another network is central for you, check Buffer's list.
 - **You only manage one or two channels.** Per-channel pricing can work out simpler when your channel count is small.
 
 If Buffer's simplicity is exactly what you value and your account count is small, staying put may be the right call.

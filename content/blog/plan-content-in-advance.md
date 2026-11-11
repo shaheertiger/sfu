@@ -134,7 +134,7 @@ Planning ahead is good. Planning ahead and never looking again isn't.
 
 Take Sofia, who runs a café and posts to Instagram, Facebook and Google Business Profile. Posting on the day, she spent about 20 minutes a post, four posts a week across three accounts: over an hour, spread across her busiest mornings, and Google Business Profile updates were the ones that got skipped.
 
-Now Sofia plans on Monday afternoons. She sets posting slots once, writes the week's four posts with a caption per platform, and adds them to the queue. The calendar shows the whole month, and she drags posts around when plans change.
+Now Sofia plans on Monday afternoons. She sets posting slots once, writes the week's four posts with a caption for Instagram and Facebook, and adds them to the queue. Google Business Profile publishing is coming soon, so for now she pastes the Google version into Google's own dashboard in the same sitting. The calendar shows the whole month, and she drags posts around when plans change.
 
 | | Spreadsheet plus native apps | Schedule For You Free | Solo and Studio |
 | --- | --- | --- | --- |

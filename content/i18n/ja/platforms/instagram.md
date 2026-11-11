@@ -133,7 +133,7 @@ Soloプランは月額19ドルで15アカウント、Studioプランは月額59�
 
 ### インスタと同じ投稿を、ほかのSNSにも予約できますか？
 
-はい。投稿を作るときに複数のアカウントを選び、SNSごとに内容を調整できます。Schedule For Youは、FacebookページやThreads、TikTokなど10のSNSに対応しています。
+はい。投稿を作るときに複数のアカウントを選び、SNSごとに内容を調整できます。Schedule For Youは、FacebookページやThreads、TikTokなど9つのSNSに対応しています（Google Business Profileは近日対応予定）。
 
 ### 予約した投稿が失敗したらどうなりますか？
 

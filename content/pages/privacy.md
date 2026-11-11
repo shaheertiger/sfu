@@ -63,7 +63,7 @@ You choose which accounts to connect. For each platform, we request only the per
 | LinkedIn | Name, profile picture and member ID from LinkedIn sign-in, and permission to post (`openid`, `profile`, `w_member_social`) | Publishing posts to your personal LinkedIn profile |
 | TikTok | Basic profile info and permission to upload and publish videos and photos (`user.info.basic`, `video.upload`, `video.publish`) | Publishing your videos and photo posts with the privacy setting you choose |
 | YouTube | Channel ID, name and thumbnail, and permission to upload videos (`youtube.upload`, `youtube.readonly`) | Uploading your videos with the title, description and privacy you set |
-| Google Business Profile | Business accounts and locations you manage and permission to post updates (`business.manage`) | Publishing your updates to the locations you choose |
+| Google Business Profile | Coming soon. Once available: business accounts and locations you manage and permission to post updates (`business.manage`) | Publishing your updates to the locations you choose, once this integration is live |
 | Pinterest | Account info, boards and permission to create pins (`user_accounts:read`, `boards:read`, `pins:read`, `pins:write`) | Listing your boards and publishing your pins |
 | Bluesky | Your handle and an app password you create in Bluesky | Signing in to Bluesky to publish your posts |
 

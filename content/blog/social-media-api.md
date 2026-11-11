@@ -1,18 +1,18 @@
 ---
 title: "Social Media API: What 10 Platforms Let You Automate"
-description: What each social media API lets you automate, from X and Instagram to TikTok and Bluesky, what approval and limits apply, and how one scheduling API covers ten networks.
+description: What each social media API lets you automate, from X and Instagram to TikTok and Bluesky, what approval and limits apply, and how one scheduling API covers nine of them.
 h1: "Social Media API: What 10 Platforms Let You Automate, and When One API Beats Ten"
 category: Guides
-excerpt: Every network has its own API, with its own app review, sign-in and limits. Here's what each one lets you automate, where building on all of them gets painful, and how one scheduling API with real requests replaces ten integrations.
+excerpt: Every network has its own API, with its own app review, sign-in and limits. Here's what each one lets you automate, where building on all of them gets painful, and how one scheduling API with real requests replaces nine integrations.
 keyword: social media api
 date: 2026-10-28
 updated: 2026-11-04
 ---
 You've been asked to make release notes post themselves to every social account, and you're staring at ten developer portals. A social media API is a programming interface that lets your code do what you'd otherwise do in an app: publish posts, upload images and video, read comments and pull stats. Every major network has one, but each has its own sign-in flow, app review, media upload process and rate limits.
 
-![Social media APIs compared: each platform's own API, app reviews and limits, versus one scheduling API for ten networks](/images/blog/social-media-api-hero-1200x675.webp)
+![Social media APIs compared: each platform's own API, app reviews and limits, versus one scheduling API for many networks](/images/blog/social-media-api-hero-1200x675.webp)
 
-If you only need to publish to one network, use its API directly. If you need to publish to several, a unified scheduling API that has already been through each platform's review lets you send one request instead of building and maintaining ten integrations.
+If you only need to publish to one network, use its API directly. If you need to publish to several, a unified scheduling API that has already been through each platform's review lets you send one request instead of building and maintaining nine integrations.
 
 This guide covers what each platform's API allows, what it takes to get access, a concrete case where going direct becomes a burden, a fair comparison of the options, the unofficial APIs to avoid, and working requests against the Schedule For You API.
 
@@ -131,7 +131,7 @@ Schedule For You's REST API comes with the paid plans, Solo and Studio. You conn
 
 | | Each platform's API | Zapier, Make or n8n | Schedule For You API |
 |---|---|---|---|
-| Platforms you can publish to | One per integration | Each step separately | X, Instagram, Facebook Pages, LinkedIn (personal profiles), Threads, Bluesky, TikTok, YouTube, Pinterest, Google Business Profile |
+| Platforms you can publish to | One per integration | Each step separately | X, Instagram, Facebook Pages, LinkedIn (personal profiles), Threads, Bluesky, TikTok, YouTube, Pinterest (Google Business Profile coming soon) |
 | App reviews to pass | Yours | Done by the tool | Done by us |
 | Caption checks before scheduling | Build them | Limited | Yes, a `422` with every problem listed |
 | Webhooks for published and failed posts | Build them | Yes | Yes, signed |
@@ -286,7 +286,7 @@ Check whether the post exists before retrying. In Schedule For You, a target the
 
 - **Each platform's own API:** best for one network or for analytics, replies and ads; budget weeks for review.
 - **No-code tools:** fine for light flows without a developer.
-- **A unified scheduling API:** one request, ten networks, reviews already done.
+- **A unified scheduling API:** one request, many networks, reviews already done.
 - **Unofficial APIs:** fast to start, risky to keep.
 
 Pick by how many networks you publish to and what you need back from them. For more free tools, try the [X character counter](/tools/x-character-counter), the [aspect ratio calculator](/tools/aspect-ratio-calculator) and the [remove EXIF data tool](/tools/remove-exif-data). Next up: [social media MCP](/blog/social-media-mcp).

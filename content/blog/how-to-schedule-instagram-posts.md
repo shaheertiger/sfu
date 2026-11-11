@@ -12,7 +12,7 @@ You've finished a post at 11 PM and you'd rather it went out at 9 AM, when peopl
 
 ![How to schedule Instagram posts: in the Instagram app, in Meta Business Suite, or with a scheduler for several platforms](/images/blog/how-to-schedule-instagram-posts-hero-1200x675.webp)
 
-On a computer, use **Meta Business Suite**, which also schedules Facebook posts. If you post the same content to TikTok, LinkedIn, X or other networks as well, a scheduler like Schedule For You publishes to Instagram and nine other platforms from one queue.
+On a computer, use **Meta Business Suite**, which also schedules Facebook posts. If you post the same content to TikTok, LinkedIn, X or other networks as well, a scheduler like Schedule For You publishes to Instagram and eight other platforms from one queue.
 
 This guide covers all three methods, the limits of each, a fair comparison, and how to fix the most common scheduling errors.
 
@@ -88,7 +88,7 @@ Take Lena, who runs a bakery and launches a pumpkin loaf every October. Her Frid
 | Reels | Yes | Yes | Yes |
 | Stories | No (most accounts) | Yes, with limited stickers | Yes, one 9:16 image or video, no caption or stickers |
 | Music, collabs, product and location tags | Yes | Partly | No |
-| Other platforms | No | Facebook | Facebook Pages, X, Bluesky, LinkedIn, Threads, TikTok, YouTube, Pinterest, Google Business Profile |
+| Other platforms | No | Facebook | Facebook Pages, X, Bluesky, LinkedIn, Threads, TikTok, YouTube, Pinterest (Google Business Profile coming soon) |
 | Calendar | Scheduled content list | Planner | Queue and drag-and-drop calendar |
 | Failed-post alerts | App notifications | Notifications | Email with the reason, dashboard alert, one-click retry |
 | Cost | Free | Free | Free plan for 3 accounts and 10 scheduled posts, no card. Paid plans from $19 a month |
@@ -105,7 +105,7 @@ Your Instagram account must be a **Business or Creator account linked to a Faceb
 
 ### 2. Write Once, Then Tailor Each Platform
 
-Click **Create post**, tick the accounts and write the main caption. Each platform gets its own tab, so Lena keeps the full story for Instagram (2,200 characters) and trims the X version to 280 without touching the others. The composer refuses to schedule a post that breaks a platform rule, such as an Instagram post with no image or video.
+Click **Create post**, tick the accounts and write the main caption. Each platform gets its own tab, so Lena keeps the full story for Instagram (2,200 characters) and trims the X version to 280 without touching the others. Google Business Profile publishing is coming soon, so for now she adds that update in Google's own post editor. The composer refuses to schedule a post that breaks a platform rule, such as an Instagram post with no image or video.
 
 ![The New post screen with Bluesky, X, Instagram and LinkedIn selected, a tab for each platform, character counters for each limit and a warning that Instagram posts need an image or video](/images/blog/composer-four-platforms-1440x900.webp)
 
@@ -203,7 +203,7 @@ Most often the account needs reconnecting after a password change, or the media 
 
 - **Instagram app:** free, under Advanced settings. Best if Instagram is all you post to.
 - **Meta Business Suite:** free, covers Instagram, Facebook and Stories.
-- **Schedule For You:** one draft and one calendar for Instagram and nine other platforms.
+- **Schedule For You:** one draft and one calendar for Instagram and eight other platforms.
 - **Password-based apps:** not worth the risk.
 
 Start with the free option that covers your platforms, and move to a scheduler when one idea has to go to more than Instagram and Facebook. For more free tools, try the [Instagram photo resizer](/tools/instagram-photo-resizer), the [Instagram grid maker](/tools/instagram-grid-maker) and the [Instagram carousel splitter](/tools/instagram-carousel-splitter). Next up: [the best time to post on Instagram](/blog/best-time-to-post-on-instagram).

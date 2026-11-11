@@ -133,17 +133,17 @@ A stack of free tools works well when you post to one or two platforms and do th
 
 Take Rosa, who runs a garden centre and posts three times a week to Instagram, Facebook, Google Business Profile and Pinterest. With native tools, that's Meta Business Suite for two of them, then logging in to the other two separately: about 20 minutes a post, or an hour a week, and Google Business Profile updates are the ones that get forgotten.
 
-To be clear about our own product: Schedule For You has a Free plan with limits (3 connected accounts, up to 10 scheduled posts at a time, and a short link back to us on each post when it fits, no card needed). The paid plans start at $19 a month for 15 connected accounts with unlimited posts, after a 7-day free trial that requires a card (you aren't charged until day 8 and can cancel before then). It publishes to X, Bluesky, Instagram, LinkedIn (personal profiles), Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile from one queue and calendar.
+To be clear about our own product: Schedule For You has a Free plan with limits (3 connected accounts, up to 10 scheduled posts at a time, and a short link back to us on each post when it fits, no card needed). The paid plans start at $19 a month for 15 connected accounts with unlimited posts, after a 7-day free trial that requires a card (you aren't charged until day 8 and can cancel before then). It publishes to X, Bluesky, Instagram, LinkedIn (personal profiles), Threads, TikTok, YouTube, Facebook Pages and Pinterest from one queue and calendar, with Google Business Profile coming soon.
 
 | | Native tools | Self-hosted open source | Schedule For You |
 | --- | --- | --- | --- |
-| Platforms from one place | One (two with Meta Business Suite) | Several, once approved | 10 |
+| Platforms from one place | One (two with Meta Business Suite) | Several, once approved | 9 |
 | Setup time | Minutes | Days to weeks | Minutes |
 | Analytics and inbox | Yes, built in | Varies | No, keep using native insights |
 | Bulk upload and approvals | No | Varies | Paid plans only |
 | Cost | Free | Hosting plus your time | Free for 3 accounts and 10 scheduled posts; paid from $19 a month |
 
-Where we're not the best fit: if you're only on Facebook and Instagram, Meta Business Suite is free and adds an inbox and insights we don't have. Rosa's four accounts are one over the Free plan's three, so she'd either keep one in its native app or move to Solo.
+Where we're not the best fit: if you're only on Facebook and Instagram, Meta Business Suite is free and adds an inbox and insights we don't have. Rosa's Instagram, Facebook and Pinterest fit the Free plan's three accounts. Google Business Profile publishing is coming soon, so for now she keeps posting those updates in Google's own dashboard.
 
 ![A month of scheduled posts across several platforms in the Schedule For You calendar](/images/blog/calendar-month-1440x900.webp)
 

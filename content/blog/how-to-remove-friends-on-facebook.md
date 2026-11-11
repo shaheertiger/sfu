@@ -130,12 +130,12 @@ A Facebook Page fixes both problems. A Page doesn't have friends; it has followe
 | Friends limit | 5,000 | Not applicable to Pages | Not applicable to Pages |
 | Scheduling tools can publish here | No | Pages | Pages only |
 | Instagram in the same post | No | Yes | Yes |
-| Google Business Profile, TikTok and others | No | No | Yes |
+| TikTok, Pinterest and others | No | No | Yes |
 | Cost | Free | Free | Free plan for 3 accounts and 10 scheduled posts, no card. Paid plans from $19 a month |
 
 Where we're not the best fit: we can't post to personal profiles or Groups, and we can't unfriend anyone for you. If Lena only posts to Facebook and Instagram, Meta Business Suite is free and does the job.
 
-Lena creates a Page, connects it along with her Instagram and Google Business Profile, and schedules her openings for the week on Sunday night. Her personal profile goes back to being personal.
+Lena creates a Page, connects it along with her Instagram and TikTok, and schedules her openings for the week on Sunday night. Her personal profile goes back to being personal.
 
 ![A month of scheduled posts in the Schedule For You calendar](/images/blog/calendar-month-1440x900.webp)
 

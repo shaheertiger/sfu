@@ -115,7 +115,7 @@ The image was too small or heavily compressed. Upload a square image of at least
 
 ## Changing Your Look Everywhere? Announce It Once, Not Five Times
 
-A new profile picture is often part of something bigger: a rebrand, a new logo, a name change. Take Ana, who runs a small candle brand on TikTok, Instagram, Facebook, Pinterest and Google Business Profile. Changing the picture takes a minute on each, but she also wants to tell people about the new look on all five, with a post that suits each platform. Done by hand, that's five apps and five versions of the same announcement, and she wants them out on the same morning.
+A new profile picture is often part of something bigger: a rebrand, a new logo, a name change. Take Ana, who runs a small candle brand on TikTok, Instagram, Facebook, Pinterest and YouTube. Changing the picture takes a minute on each, but she also wants to tell people about the new look on all five, with a post that suits each platform. Done by hand, that's five apps and five versions of the same announcement, and she wants them out on the same morning.
 
 Schedule For You doesn't change profile pictures; you still do that in each app. What it does is publish the announcement. Ana writes one post with the new logo, adjusts the caption for each platform, and schedules it for 9 AM the day after she updates her pictures. Each connected account shows its own profile picture in Schedule For You, so after the rebrand she can see at a glance which account a post is going to.
 
@@ -125,7 +125,7 @@ Schedule For You doesn't change profile pictures; you still do that in each app.
 | --- | --- | --- | --- |
 | Change your profile picture | Yes, in each app | No | No, do it in each app |
 | One announcement to several platforms | Five separate posts | Yes | Yes, one composer with a caption per platform |
-| TikTok, Instagram, Facebook Pages, Pinterest, Google Business Profile | Yes | Varies | Yes |
+| TikTok, Instagram, Facebook Pages, Pinterest, YouTube | Yes | Varies | Yes |
 | Cost | Free | Usually paid | Free for 3 accounts and 10 scheduled posts, no card. Paid from $19 a month |
 
 Where we're not the best fit: if you only want to change your picture and don't plan to post about it, you don't need a scheduler at all. And Ana's five accounts are more than the Free plan's three, so she'd need a paid plan to post to all of them from one place.

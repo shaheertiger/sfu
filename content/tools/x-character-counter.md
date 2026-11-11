@@ -94,4 +94,4 @@ Your bio can be up to 160 characters and your display name up to 50. Your @handl
 No. The count is calculated in your browser and nothing is sent to a server.
 
 ## Check every platform's limit as you write in Schedule For You
-Schedule For You publishes to X and nine other networks from one queue, with live character-limit checks for each platform in the composer, so a caption that fits Instagram but not X gets flagged before it's scheduled. You can tailor the X version, pick a time slot and move on. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.
+Schedule For You publishes to X and eight other networks from one queue, with live character-limit checks for each platform in the composer, so a caption that fits Instagram but not X gets flagged before it's scheduled. You can tailor the X version, pick a time slot and move on. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

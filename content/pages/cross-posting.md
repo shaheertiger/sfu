@@ -9,7 +9,7 @@ keyword: cross-posting tool
 ## How to post to all social media at once
 To post to all your social media at once, use a cross-posting tool: write the post once, select every account it should go to, adjust the version for each platform, and schedule it. The tool publishes to each account at the same time. Built-in options only cover part of the job: Meta Business Suite posts to a Facebook Page and Instagram together, and Instagram and Facebook can share some posts to Threads, but no native tool reaches X, LinkedIn, TikTok, Bluesky, YouTube and Pinterest in one go.
 
-Schedule For You is a cross-posting tool for 10 platforms: X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile. Each platform gets its own editable version of the post, checked against that platform's limits before anything is published.
+Schedule For You is a cross-posting tool for 9 platforms: X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages and Pinterest, with Google Business Profile coming soon. Each platform gets its own editable version of the post, checked against that platform's limits before anything is published.
 
 ## The manual way, and the native shortcuts
 ### Posting in each app
@@ -43,7 +43,7 @@ Each option has a place. This is how they compare for posting to many platforms 
 
 | | Posting in each app | Meta Business Suite and Threads sharing | A shared queue (Schedule For You) |
 |---|---|---|---|
-| Platforms covered | All, one at a time | Facebook and Instagram, plus Threads for some posts | 10 platforms in one post |
+| Platforms covered | All, one at a time | Facebook and Instagram, plus Threads for some posts | 9 platforms in one post |
 | Cost | Free | Free | From $19 a month for 15 accounts |
 | Different caption per platform | Yes, by retyping | Facebook and Instagram only | Yes, a tab for each platform |
 | Limit checks before posting | No | For Facebook and Instagram | For every selected platform |
@@ -55,7 +55,7 @@ If you only post to Facebook and Instagram, Business Suite is enough and costs n
 
 ## How Schedule For You handles the launch
 ### One draft, a tab for each platform
-Write the main caption, attach the photo and the video, and select the accounts. Each selected platform gets its own tab: edit the X version down to 280 characters, expand the LinkedIn version, and add the local call to action for Google Business Profile. Changing one version never touches the others, and the counters under the caption show where each version stands against its limit.
+Write the main caption, attach the photo and the video, and select the accounts. Each selected platform gets its own tab: edit the X version down to 280 characters and expand the LinkedIn version. Publishing to Google Business Profile is coming soon, so for now the roaster posts that local update in Google's own dashboard. Changing one version never touches the others, and the counters under the caption show where each version stands against its limit.
 
 ![The New post screen with Bluesky, X, Instagram and LinkedIn selected, a tab for each platform, character counters for each one and a warning that Instagram needs an image or video](/images/blog/composer-four-platforms-1440x900.webp)
 
@@ -123,7 +123,7 @@ Yes. You can select multiple accounts on one platform, such as several Instagram
 The queue shows the failed account and the reason, and you get an email. Fix the cause, often a reconnect or a caption that's too long, then retry; only the failed accounts are published again.
 
 ### Which platforms can I cross-post to?
-X, Bluesky, Instagram, LinkedIn (personal profiles), Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile.
+X, Bluesky, Instagram, LinkedIn (personal profiles), Threads, TikTok, YouTube, Facebook Pages and Pinterest. Google Business Profile is coming soon.
 
 ## Cross-post smarter with Schedule For You
 One post, tailored for each platform, checked against every limit and published on time, with a retry for any account that fails. Paid plans start at $19 a month with unlimited posts. [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo and Studio add more accounts and features, with a 7-day free trial.

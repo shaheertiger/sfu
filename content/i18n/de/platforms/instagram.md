@@ -88,7 +88,7 @@ Nein, das Bild wird so veröffentlicht, wie du es hochgeladen hast. Liegt das Se
 
 ### Kann ich dieselben Inhalte auch auf Facebook und anderen Plattformen posten?
 
-Ja. Wähl beim Schreiben mehrere Accounts aus und pass dann jede Plattform-Version an. Schedule For You veröffentlicht auf 10 Plattformen, darunter Facebook-Seiten, Threads und TikTok.
+Ja. Wähl beim Schreiben mehrere Accounts aus und pass dann jede Plattform-Version an. Schedule For You veröffentlicht auf 9 Plattformen, darunter Facebook-Seiten, Threads und TikTok. Google Business Profile folgt bald.
 
 ### Ist Schedule For You auf Deutsch verfügbar?
 

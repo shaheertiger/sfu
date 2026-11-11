@@ -17,14 +17,14 @@ Most apps let you add a few accounts and switch between them. Instagram and TikT
 It gets harder when the accounts span platforms and brands. Each app has its own switcher, its own drafts and its own schedule, so there's no single view of what's going out this week, and the account you posted from last is the one the app opens next time.
 
 ## Where it breaks down: three brands, eleven accounts
-Picture a freelancer managing a bakery, a dental clinic and their own consultancy. That's 11 accounts: Instagram, Facebook and Google Business Profile for the bakery; Facebook, Instagram, Google Business Profile and LinkedIn for the clinic; and LinkedIn, X, Bluesky and Threads for themselves.
+Picture a freelancer managing a bakery, a dental clinic and their own consultancy. That's 11 accounts: Instagram, Facebook and TikTok for the bakery; Facebook, Instagram, LinkedIn and YouTube for the clinic; and LinkedIn, X, Bluesky and Threads for themselves.
 
 On Monday they plan the week. The bakery's Thursday special needs to reach three accounts, the clinic's holiday hours need four, and their own article goes to four more. Working in each app means 11 logins, no shared calendar, and one real risk: the bakery's croissant photo going out on the clinic's Instagram because that was the account still selected in the app. It also means the clinic manager can't see what's planned without asking.
 
 ## Switching apps, native tools or one scheduler
 | | Each app's account switcher | Meta Business Suite | One scheduler (Schedule For You) |
 |---|---|---|---|
-| Platforms | One per app | Facebook and Instagram | 10 platforms |
+| Platforms | One per app | Facebook and Instagram | 9 platforms |
 | Several accounts per platform | Yes, a few | Yes, for Pages and linked Instagram accounts | Yes, up to 15 or 100 accounts per workspace |
 | Separation between brands | None beyond the switcher | By business portfolio | A workspace per brand or client |
 | One calendar for everything | No | Facebook and Instagram only | Yes |
@@ -45,7 +45,7 @@ Add each profile from the Accounts screen. You can connect several accounts on t
 ![The Accounts screen showing 7 of 15 accounts connected, each with its platform, status (Connected, Expires soon or Reconnect needed) and number of queued posts, plus cards to connect another platform](/images/blog/social-accounts-1440x900.webp)
 
 ### 3. Save account groups
-In the composer, select the accounts you usually post to together and choose **Save as group**, for example "Bakery" for its Instagram, Facebook and Google Business Profile. Next time, one click on the group selects exactly those accounts, which is much harder to get wrong than ticking boxes from a long list. A search box finds a single account by name.
+In the composer, select the accounts you usually post to together and choose **Save as group**, for example "Bakery" for its Instagram, Facebook and TikTok. Next time, one click on the group selects exactly those accounts, which is much harder to get wrong than ticking boxes from a long list. A search box finds a single account by name.
 
 ### 4. Choose accounts and check each preview
 When you write a post, select a group or individual accounts. Each platform gets its own tab for its version of the caption, and the preview shows the post under the actual account name and handle, so you can confirm it's going to the right profile before you schedule. Rules are checked for every selected account: an Instagram account without an image or video, for instance, is flagged before the post can be scheduled.
@@ -67,7 +67,7 @@ If a platform revokes access or a token is about to expire, the account shows **
 On the Studio plan you can invite teammates to a workspace. Owners manage billing and settings, editors can also change automations such as webhooks and RSS feeds, and members create, schedule and publish posts. Writers, designers and account managers work from the same queue instead of passing drafts around in chat, and the calendar can be filtered by account, platform or status.
 
 ## How many accounts you can manage
-Solo connects up to 15 accounts and Studio up to 100 per workspace, across X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile. Every profile, Page or channel counts as one account, and both plans include unlimited posts; see [pricing](/pricing) for details. LinkedIn accounts are personal profiles; company pages aren't supported.
+Solo connects up to 15 accounts and Studio up to 100 per workspace, across X, Bluesky, Instagram, LinkedIn, Threads, TikTok, YouTube, Facebook Pages and Pinterest, with Google Business Profile coming soon. Every profile, Page or channel counts as one account, and both plans include unlimited posts; see [pricing](/pricing) for details. LinkedIn accounts are personal profiles; company pages aren't supported.
 
 To fill several calendars quickly, bulk-schedule from a folder of media or a CSV, or set up repeating and evergreen posts for content that stays relevant. The guide to [planning content in advance](/blog/plan-content-in-advance) has more on batching.
 

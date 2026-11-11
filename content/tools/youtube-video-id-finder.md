@@ -196,6 +196,6 @@ The grey image means the video has no 1280 × 720 thumbnail, which happens when 
 No. The finder works entirely in your browser and doesn't contact YouTube or our servers.
 
 ## Schedule Your YouTube Uploads with Schedule For You
-Once you're managing videos by ID, you're probably publishing on a schedule too. Schedule For You uploads your videos to YouTube at the time you choose, with a title of up to 100 characters, a description of up to 5,000 and a public, unlisted or private setting, and it plans the posts that promote them on Instagram, TikTok, Facebook Pages, X, LinkedIn, Threads, Bluesky, Pinterest and Google Business Profile from the same calendar.
+Once you're managing videos by ID, you're probably publishing on a schedule too. Schedule For You uploads your videos to YouTube at the time you choose, with a title of up to 100 characters, a description of up to 5,000 and a public, unlisted or private setting, and it plans the posts that promote them on Instagram, TikTok, Facebook Pages, X, LinkedIn, Threads, Bluesky and Pinterest from the same calendar.
 
 The Free plan covers 3 accounts and up to 10 scheduled posts at a time, with no card needed. [Start free](/signup), and read [how to schedule YouTube videos and Shorts](/blog/how-to-schedule-youtube-videos-and-shorts) to see how it works.

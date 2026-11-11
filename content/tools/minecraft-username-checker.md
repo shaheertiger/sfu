@@ -171,6 +171,6 @@ Yes. Switch to **Check a list** and paste up to 200 names. It marks which follow
 No. It runs in your browser and nothing is uploaded or stored.
 
 ## Schedule Your Minecraft Videos with Schedule For You
-Schedule For You doesn't post to Minecraft. If you share Minecraft builds, clips or let's plays, it can schedule them to YouTube (videos and Shorts), TikTok, Instagram, Facebook Pages, X, Threads, Bluesky, LinkedIn, Pinterest and Google Business Profile from one queue, with a separate caption for each platform. See [how to schedule YouTube videos and Shorts](/blog/how-to-schedule-youtube-videos-and-shorts) for the details.
+Schedule For You doesn't post to Minecraft. If you share Minecraft builds, clips or let's plays, it can schedule them to YouTube (videos and Shorts), TikTok, Instagram, Facebook Pages, X, Threads, Bluesky, LinkedIn and Pinterest from one queue, with a separate caption for each platform. See [how to schedule YouTube videos and Shorts](/blog/how-to-schedule-youtube-videos-and-shorts) for the details.
 
 The Free plan connects 3 accounts and holds up to 10 scheduled posts at a time, with no card. Solo ($19/month) and Studio ($59/month) add more accounts and features, with a 7-day trial that needs a card. [Start free](/signup).

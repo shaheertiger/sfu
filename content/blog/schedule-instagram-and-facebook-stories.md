@@ -84,9 +84,9 @@ The Story appears there, where you can change or delete it before it goes live.
 |---|---|---|---|---|---|
 | Instagram or Facebook app | Post live only | Post live only | No | All of them | Free |
 | Meta Business Suite | Yes | Yes | No | Some, at the time of writing | Free |
-| Schedule For You | Yes | Yes | 8 more, from the same queue | None (the file is posted as is) | Free plan for 3 accounts and 10 scheduled posts, no card; paid plans from $19 a month |
+| Schedule For You | Yes | Yes | 7 more, from the same queue | None (the file is posted as is) | Free plan for 3 accounts and 10 scheduled posts, no card; paid plans from $19 a month |
 
-If Instagram and Facebook are your only channels, or your Stories rely on polls, links or music, Meta Business Suite is the better fit. A scheduler earns its place when Stories are one part of a plan that also covers TikTok, YouTube, X, LinkedIn or Google Business Profile.
+If Instagram and Facebook are your only channels, or your Stories rely on polls, links or music, Meta Business Suite is the better fit. A scheduler earns its place when Stories are one part of a plan that also covers TikTok, YouTube, X or LinkedIn.
 
 ## Where the Native Method Gets Awkward: a Café's Friday
 
@@ -112,7 +112,7 @@ Then the noon posts: create a second post with the longer video, select the Inst
 
 ![The Schedule For You queue showing scheduled posts by time, with failed posts listed with reasons and a Retry button](/images/blog/queue-1440x900.webp)
 
-Where we're not the best fit: Stories go out exactly as uploaded, so add text in your editor first. Interactive stickers (polls, questions, links) and music from Instagram's library aren't available through Meta's publishing API, so post those Stories live from the app. And if you only use Instagram and Facebook, Meta Business Suite is free and offers some stickers. The café's Instagram, Facebook Page and TikTok fit the Free plan's 3 accounts; adding YouTube and Google Business Profile needs Solo.
+Where we're not the best fit: Stories go out exactly as uploaded, so add text in your editor first. Interactive stickers (polls, questions, links) and music from Instagram's library aren't available through Meta's publishing API, so post those Stories live from the app. And if you only use Instagram and Facebook, Meta Business Suite is free and offers some stickers. The café's Instagram, Facebook Page and TikTok fit the Free plan's 3 accounts; adding YouTube needs Solo. Google Business Profile publishing is coming soon, so the noon photo still goes out from Google's own dashboard for now.
 
 ## Tips for Stories People Actually Watch
 
@@ -127,7 +127,7 @@ Where we're not the best fit: Stories go out exactly as uploaded, so add text in
 
 1. **Only Instagram and Facebook, with stickers:** schedule in Meta Business Suite.
 2. **Polls, quizzes or music:** post live from the app.
-3. **Stories plus TikTok, YouTube or Google Business Profile:** put everything in one scheduler queue.
+3. **Stories plus TikTok, YouTube or X:** put everything in one scheduler queue.
 4. **A multi-frame sequence in a scheduler:** schedule each frame a minute or two apart.
 
 Schedule these:

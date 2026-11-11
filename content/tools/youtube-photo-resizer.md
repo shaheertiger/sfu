@@ -182,6 +182,6 @@ Yes, in fill mode with PNG output: transparent parts of a transparent PNG stay t
 Yes. It works in mobile browsers: tap the upload area, choose a photo from your library, pick a preset and tap download.
 
 ## Schedule Your YouTube Uploads With Schedule For You
-Once your channel art and thumbnails are ready, Schedule For You can upload your videos to YouTube at the time you choose, with the title, description and privacy setting you set. Vertical videos within YouTube's Shorts length are usually treated as Shorts. The same calendar also publishes the posts that promote each video on Instagram, TikTok, Facebook Pages, X, LinkedIn, Threads, Bluesky, Pinterest and Google Business Profile. Our guide on [scheduling YouTube videos and Shorts](/blog/how-to-schedule-youtube-videos-and-shorts) shows how it works.
+Once your channel art and thumbnails are ready, Schedule For You can upload your videos to YouTube at the time you choose, with the title, description and privacy setting you set. Vertical videos within YouTube's Shorts length are usually treated as Shorts. The same calendar also publishes the posts that promote each video on Instagram, TikTok, Facebook Pages, X, LinkedIn, Threads, Bluesky and Pinterest. Our guide on [scheduling YouTube videos and Shorts](/blog/how-to-schedule-youtube-videos-and-shorts) shows how it works.
 
 The Free plan covers 3 accounts and up to 10 scheduled posts at a time, with no card needed. Solo ($19/month) and Studio ($59/month) add more, with a 7-day trial that needs a card. [Start free](/signup).

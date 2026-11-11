@@ -41,7 +41,7 @@ Instagram permet déjà de programmer des publications depuis l’appli pour les
 
 Un outil comme Schedule For You devient intéressant quand :
 
-- **vous publiez sur plusieurs réseaux** : Instagram, mais aussi LinkedIn, TikTok, YouTube, Threads, X, Bluesky, Pinterest ou Google Business Profile, avec une légende adaptée à chacun ;
+- **vous publiez sur plusieurs réseaux** : Instagram, mais aussi LinkedIn, TikTok, YouTube, Threads, X, Bluesky ou Pinterest, avec une légende adaptée à chacun ;
 - **vous voulez une file d’attente** qui remplit automatiquement vos créneaux de la semaine ;
 - **vous préparez un mois d’un coup** grâce à l’import CSV ;
 - **vous travaillez pour des clients** qui doivent valider les publications avant leur mise en ligne.
@@ -95,7 +95,7 @@ Non, l’image est publiée telle que vous l’avez importée. Si son format sor
 
 ### Puis-je publier le même contenu sur Facebook et d’autres réseaux ?
 
-Oui. Sélectionnez plusieurs comptes en rédigeant la publication, puis adaptez la version de chaque réseau. Schedule For You publie sur 10 plateformes, dont les Pages Facebook, Threads et TikTok.
+Oui. Sélectionnez plusieurs comptes en rédigeant la publication, puis adaptez la version de chaque réseau. Schedule For You publie sur 9 plateformes, dont les Pages Facebook, Threads et TikTok. Google Business Profile arrive bientôt.
 
 ### L’application Schedule For You est-elle en français ?
 

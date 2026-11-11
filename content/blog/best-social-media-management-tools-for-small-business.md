@@ -143,7 +143,7 @@ Not always, and the best social media management tools for small business includ
 
 Take Priya, who owns a neighbourhood bakery. She posts to a Facebook Page, an Instagram account, a TikTok and her Google Business Profile: four accounts, about three posts a week on each, so roughly 12 posts a week. Doing that in four different apps meant four logins every evening, and the Google updates were usually the ones she forgot.
 
-Schedule For You is one of the low-cost cross-platform schedulers. It publishes to X, Bluesky, Instagram, LinkedIn (personal profiles), Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile. Priya writes a post once, adjusts the caption for each platform with live character-limit checks, and drops it into her posting slots.
+Schedule For You is one of the low-cost cross-platform schedulers. It publishes to X, Bluesky, Instagram, LinkedIn (personal profiles), Threads, TikTok, YouTube, Facebook Pages and Pinterest. Google Business Profile publishing is coming soon, so for now Priya keeps posting her Google updates in Google's own dashboard. For the other three accounts, she writes a post once, adjusts the caption for each platform with live character-limit checks, and drops it into her posting slots.
 
 ![Writing one post for Facebook, Instagram and other platforms with a caption for each in the Schedule For You composer](/images/blog/composer-four-platforms-1440x900.webp)
 
@@ -153,15 +153,16 @@ On Sunday she fills the week, then checks it on the calendar:
 
 | | Native tools | All-in-one suite | Schedule For You |
 | --- | --- | --- | --- |
-| Facebook + Instagram + TikTok + Google Business Profile in one calendar | No, separate apps | Depends on the tool and plan | Yes |
+| Facebook + Instagram + TikTok in one calendar | No, separate apps | Depends on the tool and plan | Yes |
+| Google Business Profile | Its own dashboard | Depends on the tool and plan | Coming soon |
 | Shared inbox and engagement analytics | Per platform | Yes | No |
 | LinkedIn company pages | Yes, in LinkedIn | Usually | No, personal profiles only |
 | Approvals and client preview links | No | Usually on team plans | Yes, on paid plans |
-| Cost for Priya's 4 accounts | Free | Check team pricing | Solo, $19 a month (Free covers 3 accounts) |
+| Cost for Priya's 3 social accounts | Free | Check team pricing | Free plan (3 accounts, up to 10 scheduled posts at a time); Solo is $19 a month for more |
 
 Where we're not the best fit: we have no social inbox or engagement analytics, and we don't post to LinkedIn company pages. If those are must-haves, an all-in-one suite will suit you better. If you only use Facebook and Instagram, Meta Business Suite is free.
 
-On pricing: the Free plan connects 3 accounts with up to 10 scheduled posts at a time and needs no card (posts from Free end with a short link back to us when it fits). Solo is $19 a month for 15 accounts and Studio is $59 a month for 100 accounts plus team members, both with unlimited scheduling, bulk CSV upload, approvals and client preview links, after a 7-day free trial that needs a card. See [pricing](/pricing) or read how to [connect a Google Business Profile](/blog/connect-google-business-profile).
+On pricing: the Free plan connects 3 accounts with up to 10 scheduled posts at a time and needs no card (posts from Free end with a short link back to us when it fits). Solo is $19 a month for 15 accounts and Studio is $59 a month for 100 accounts plus team members, both with unlimited scheduling, bulk CSV upload, approvals and client preview links, after a 7-day free trial that needs a card. See [pricing](/pricing), or read [what to do about Google Business Profile](/blog/connect-google-business-profile) until publishing there arrives.
 
 ## What to Do Next: 3 Quick Scenarios
 
@@ -188,7 +189,7 @@ Free native tools cost nothing, and simple or low-cost schedulers are usually th
 
 ### Which social media tools post to Google Business Profile?
 
-Some do and some don't, and support can depend on the plan. Check each tool's list of supported networks. Schedule For You publishes text updates with one image and an optional button link to Google Business Profile.
+Some do and some don't, and support can depend on the plan. Check each tool's list of supported networks. Schedule For You doesn't publish to Google Business Profile yet; it's coming soon.
 
 ### How many social media accounts does a small business need?
 

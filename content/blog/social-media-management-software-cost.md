@@ -139,19 +139,19 @@ Yearly billing usually saves money, often around two months free or a percentage
 
 ![The Schedule For You composer with several platforms selected and a separate caption for each](/images/blog/composer-four-platforms-1440x900.webp)
 
-Take Grace, a florist posting to Instagram, Facebook, Pinterest, Google Business Profile, TikTok and LinkedIn, on her own. Posting in each app took about 20 minutes a post, three times a week, three hours a week across six platforms. She priced her six accounts on four tools, as in the table above, and trialled two with a real week of posts.
+Take Grace, a florist posting to Instagram, Facebook, Pinterest, Threads, TikTok and LinkedIn, on her own. Posting in each app took about 20 minutes a post, three times a week, three hours a week across six platforms. She priced her six accounts on four tools, as in the table above, and trialled two with a real week of posts.
 
 Schedule For You has a Free plan and two paid plans. Free connects 3 accounts and holds up to 10 scheduled posts at a time, with no card needed. Solo costs $19 a month for 15 connected accounts, and Studio costs $59 a month for 100 connected accounts, team members and priority support. Both include unlimited posts, and yearly billing costs the same as 10 months ($190 or $590 a year). The paid plans have a 7-day free trial; a card is required and you aren't charged until day 8.
 
 | | Native tools | All-in-one suites | Schedule For You |
 | --- | --- | --- | --- |
-| Platforms from one place | One each | Many | 10 |
+| Platforms from one place | One each | Many | 9 |
 | Analytics and social inbox | Yes, per platform | Yes | No |
 | Approvals and client preview links | No | Usually on higher tiers | Solo and Studio |
 | REST API, MCP server, RSS auto-posting | No | Varies | Solo and Studio |
 | Cost | Free | From about $79–99 per user a month | Free for 3 accounts; $19 or $59 a month |
 
-It publishes to X, Bluesky, Instagram, LinkedIn (personal profiles), Threads, TikTok, YouTube, Facebook Pages, Pinterest and Google Business Profile, with per-platform captions.
+It publishes to X, Bluesky, Instagram, LinkedIn (personal profiles), Threads, TikTok, YouTube, Facebook Pages and Pinterest, with per-platform captions. Google Business Profile is coming soon.
 
 Where we're not the best fit: it doesn't include analytics or a social inbox, so if those are must-haves, a suite may suit you better. And if you need LinkedIn company pages, we only publish to personal profiles.
 

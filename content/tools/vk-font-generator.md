@@ -294,6 +294,6 @@ Yes. It's free, needs no account and runs in your browser. For a general version
 
 ## Schedule For You Doesn't Post to VK, but It Can Run Your Other Channels
 
-Schedule For You doesn't post to VK. If your brand or community is also on [Instagram](/instagram), [X](/x), [Threads](/threads), Bluesky, LinkedIn, TikTok, YouTube, Pinterest, Facebook Pages or Google Business Profile, you can write each post once, tailor it per platform with live character checks and schedule everything from one calendar.
+Schedule For You doesn't post to VK. If your brand or community is also on [Instagram](/instagram), [X](/x), [Threads](/threads), Bluesky, LinkedIn, TikTok, YouTube, Pinterest or Facebook Pages, you can write each post once, tailor it per platform with live character checks and schedule everything from one calendar.
 
 [Start free](/signup) with 3 accounts and up to 10 scheduled posts at a time, no card needed. Solo ($19/month) and Studio ($59/month) add more accounts and unlimited scheduling, with a 7-day trial that requires a card.

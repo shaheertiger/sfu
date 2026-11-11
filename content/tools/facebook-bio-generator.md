@@ -186,6 +186,6 @@ Often, yes, with small changes. Each platform has its own limit: our generators 
 Update it whenever something in it stops being true, such as a new job, city or main interest. Otherwise, a quick check every few months is plenty.
 
 ## Write Your Bio, Then Run Your Facebook Page With Schedule For You
-A good bio makes people curious; regular posts keep them around. Schedule For You publishes to Facebook Pages (not personal profiles), including Stories and an optional first comment, and to Instagram, X, LinkedIn personal profiles, Threads, Bluesky, TikTok, YouTube, Pinterest and Google Business Profile, all from one calendar. Our guide on [how to schedule a post on Facebook](/blog/how-to-schedule-a-post-on-facebook) shows how it works.
+A good bio makes people curious; regular posts keep them around. Schedule For You publishes to Facebook Pages (not personal profiles), including Stories and an optional first comment, and to Instagram, X, LinkedIn personal profiles, Threads, Bluesky, TikTok, YouTube and Pinterest, all from one calendar, with Google Business Profile coming soon. Our guide on [how to schedule a post on Facebook](/blog/how-to-schedule-a-post-on-facebook) shows how it works.
 
 The Free plan includes 3 accounts and up to 10 scheduled posts at a time, with no card required. Solo ($19/month) and Studio ($59/month) come with a 7-day trial that needs a card. [Start free](/signup).

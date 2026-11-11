@@ -71,7 +71,7 @@ Schedule For You posts to **personal LinkedIn profiles only, not company pages**
 | SocialBee | Check | Check | Content categories and recycling |
 | Metricool | Check | Check | Scheduling plus reporting |
 | Later | Check | Check | Visual planning, Instagram roots |
-| Schedule For You | Yes | No | Per-platform versions across 10 networks |
+| Schedule For You | Yes | No | Per-platform versions across 9 networks |
 
 ## Where Schedule For You fits for LinkedIn
 Schedule For You suits creators, consultants and founders who post from a personal LinkedIn profile and also publish to other networks. You write a post once, tailor the LinkedIn version, and schedule it through a queue with posting time slots or a drag-and-drop calendar. Agencies and ghostwriters can connect several people's profiles and keep each client in a separate workspace, with client preview links for approval.

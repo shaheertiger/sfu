@@ -122,9 +122,9 @@ Change your password right away (and on any other accounts that used it), and tu
 
 A disabled Instagram account doesn't just stop your posts. If you plan content ahead, it can quietly break your schedule.
 
-Take Ines, who runs a bakery's Instagram, Facebook Page and Google Business Profile, with about ten posts scheduled across them each week. When her Instagram was disabled after a login from an unfamiliar device, her Instagram posts started failing.
+Take Ines, who runs a bakery's Instagram, Facebook Page and TikTok, with about ten posts scheduled across them each week. When her Instagram was disabled after a login from an unfamiliar device, her Instagram posts started failing.
 
-In Schedule For You, each of those showed up as a failed-post alert, so nothing went out silently and she knew exactly which posts missed their slot. Her Facebook and Google Business Profile posts kept going as planned, so customers still saw the week's specials. When the appeal came back and her account was restored, she reconnected Instagram from the Accounts screen and rescheduled the posts that had missed their slot.
+In Schedule For You, each of those showed up as a failed-post alert, so nothing went out silently and she knew exactly which posts missed their slot. Her Facebook and TikTok posts kept going as planned, so customers still saw the week's specials. When the appeal came back and her account was restored, she reconnected Instagram from the Accounts screen and rescheduled the posts that had missed their slot.
 
 ![The Schedule For You accounts screen, where you reconnect an Instagram account after it is restored](/images/blog/social-accounts-1440x900.webp)
 
@@ -132,7 +132,7 @@ In Schedule For You, each of those showed up as a failed-post alert, so nothing 
 | --- | --- | --- | --- |
 | Speeds up Instagram's review | No | No, and often a scam | No |
 | Tells you which scheduled posts failed | No | No | Yes, with failed-post alerts |
-| Keeps Facebook, Google Business Profile and others posting | Only if you do it | No | Yes |
+| Keeps Facebook, TikTok and others posting | Only if you do it | No | Yes |
 | Reconnect once restored | Not needed | No | Yes, from the Accounts screen |
 | Cost | Free | Paid, with risk | Free for 3 accounts and up to 10 scheduled posts; paid plans from $19 a month |
 

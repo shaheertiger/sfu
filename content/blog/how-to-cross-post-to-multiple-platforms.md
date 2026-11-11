@@ -139,7 +139,7 @@ Take Ama, who runs a yoga studio. Every Monday she films one short class clip an
 2. **Create a post and choose its targets.** Select every account the post should go to.
 3. **Write the master caption.** Every platform starts from this version.
 4. **Edit each platform's version.** Switch to a platform and adjust its caption without changing the others. Live character-limit checks show when a version is too long.
-5. **Add media and platform settings.** A title and privacy setting for YouTube, a privacy setting for TikTok, a board for Pinterest, and an optional button link for Google Business Profile.
+5. **Add media and platform settings.** A title and privacy setting for YouTube, a privacy setting for TikTok, and a board for Pinterest.
 6. **Schedule it.** Drop the post into your next queue slot, pick a time on the calendar, or publish now.
 7. **Check the results.** If a target fails, for example because a platform revoked access after a password change, you get an alert and can retry that target without reposting to the others.
 
@@ -147,7 +147,7 @@ Take Ama, who runs a yoga studio. Every Monday she films one short class clip an
 
 | | Each native app | Other cross-posting tools | Schedule For You |
 |---|---|---|---|
-| One post to many platforms | No | Yes; check which platforms | X, Bluesky, Threads, Instagram, Facebook Pages, LinkedIn, TikTok, YouTube, Pinterest, Google Business Profile |
+| One post to many platforms | No | Yes; check which platforms | X, Bluesky, Threads, Instagram, Facebook Pages, LinkedIn, TikTok, YouTube, Pinterest (Google Business Profile coming soon) |
 | Separate caption per platform | Not applicable | Varies | Yes, with live limit checks |
 | Retry one failed platform | Not applicable | Varies | Yes |
 | Cost | Free | Varies | Free: 3 accounts, 10 scheduled posts at a time, no card. Solo $19/month, Studio $59/month |

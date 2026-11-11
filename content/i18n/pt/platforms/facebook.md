@@ -1,6 +1,6 @@
 ---
 title: Auto post Facebook: agende posts na sua Página do Facebook
-description: Auto post no Facebook com o Schedule For You: agende textos, até 10 fotos ou um vídeo na sua Página, junto com outras nove redes, numa fila e num calendário só.
+description: Auto post no Facebook com o Schedule For You: agende textos, até 10 fotos ou um vídeo na sua Página, junto com outras oito redes, numa fila e num calendário só.
 h1: Auto post no Facebook: agende os posts da sua Página
 lead: Programe os posts da sua Página do Facebook junto com as outras redes, ajuste a versão do Facebook e deixe o Schedule For You publicar na hora certa.
 keyword: auto post facebook
