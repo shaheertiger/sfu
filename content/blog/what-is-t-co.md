@@ -173,4 +173,4 @@ No. The t.co wrapper keeps them, and they don't cost extra characters.
 - **Safety:** t.co is legitimate; check where each link goes.
 - **Analytics:** t.co means X; UTM tags tell posts apart.
 
-Post the full tagged link and let t.co do the rest. Next up: [am I shadowbanned on X?](/blog/am-i-shadowbanned-twitter) Free tools that help: the [X character counter](/tools/x-character-counter), [X bio generator](/tools/x-bio-generator) and [X page name generator](/tools/x-page-name-generator).
+Post the full tagged link and let t.co do the rest. Next up: [am I shadowbanned on X?](/blog/am-i-shadowbanned-twitter) Free tools that help: the [X character counter](/tools/x-character-counter), [X bio generator](/tools/x-bio-generator) and [X name generator](/tools/x-name-generator).

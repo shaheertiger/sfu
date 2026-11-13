@@ -8,7 +8,7 @@ export function generateStaticParams() { return INDUSTRIES.map((i) => ({ industr
 export async function generateMetadata({ params }) {
   const { industry } = await params; const ind = industryBySlug(industry);
   if (!ind) return {};
-  const c = postIdeasCopy(ind, '');
+  const c = postIdeasCopy(ind);
   return pageMetadata({ title: c.title, description: c.description, path: postIdeasPath(industry), absolute: true, keyword: c.keyword });
 }
 export default async function Page({ params }) {

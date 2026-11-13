@@ -102,7 +102,7 @@ Scheduling plus analytics and client reports, including ads data. Counts brands 
 Meta Business Suite, YouTube Studio, LinkedIn and TikTok all schedule posts for free and support their own formats best. Each covers one network (Business Suite covers two), so you upload and write every post separately.
 
 ### Schedule For You
-A cross-posting scheduler for 9 platforms: Instagram (posts, Reels, carousels and Stories), Facebook Pages, X, LinkedIn personal profiles, Threads, Bluesky, TikTok, YouTube and Pinterest, with Google Business Profile coming soon. One draft with a tailored version per platform, a queue and drag-and-drop calendar, bulk scheduling and CSV import, first comments, repeating and evergreen posts, approvals, client preview links, RSS auto-post, webhooks, a REST API and an MCP server. Solo is $19 a month for 15 accounts and Studio $59 for 100 accounts with team members; there's also a Free plan (3 accounts, up to 10 scheduled posts at a time, no card), and the paid plans' 7-day trial needs a card. Our [Buffer alternative](/buffer-alternative) page compares the two directly.
+A cross-posting scheduler for 9 platforms: Instagram (posts, Reels, carousels and Stories), Facebook Pages, X, LinkedIn personal profiles, Threads, Bluesky, TikTok, YouTube and Pinterest, with Google Business Profile coming soon. One draft with a tailored version per platform, a queue and drag-and-drop calendar, bulk scheduling and CSV import, first comments, repeating and evergreen posts, approvals, client preview links, RSS auto-post, webhooks, a REST API and an MCP server. Solo is $19 a month for 15 accounts and Studio $59 for 100 accounts with team members; there's also a Free plan (3 accounts, up to 10 scheduled posts at a time, no card), and the paid plans' 7-day trial needs a card.
 
 ## How to choose by need
 
@@ -141,4 +141,4 @@ They're a different kind of tool. Both are full suites with inboxes, listening a
 Buffer, Hootsuite, Sprout Social and most suites do; check each tool's current LinkedIn support. Schedule For You posts to personal LinkedIn profiles only, so use LinkedIn's own scheduler for company pages.
 
 ### What should I read next?
-See how the two compare head to head on our [Buffer alternative](/buffer-alternative) page, or read [how to cross-post to multiple platforms](/blog/how-to-cross-post-to-multiple-platforms) to plan your workflow.
+See what each plan includes on our [pricing](/pricing) page, or read [how to cross-post to multiple platforms](/blog/how-to-cross-post-to-multiple-platforms) to plan your workflow.

@@ -6,13 +6,15 @@ category: Facebook
 excerpt: Weekday mornings, especially Wednesday and Thursday, are the safest starting point on Facebook, and afternoons and Saturday are usually weakest. Here are times for every day and a 4-week test to find your own.
 keyword: best time to post on facebook
 date: 2026-10-26
-updated: 2026-11-04
+updated: 2026-11-13
 ---
 You've written a good Facebook post and you don't want it to vanish into a quiet feed. For most Pages, the best time to post on Facebook is **weekday mornings, roughly 7 to 10 AM in your audience's time zone**, and the best days are usually **Tuesday to Thursday**. Afternoons tend to be weaker, and **Saturday is usually the weakest day**.
 
 ![Best time to post on Facebook: weekday mornings from 7 to 10 AM, with Tuesday to Thursday strongest and Saturday weakest](/images/blog/best-time-to-post-on-facebook-hero-1200x675.webp)
 
 Those times are a starting point, not a rule. Studies published by social media tools disagree on exact hours, and your own audience may keep different habits from the average.
+
+Our [hour-by-hour Facebook heatmap](/best-time-to-post/facebook) often peaks somewhere else, such as an evening or the weekend. The two answers measure different things: the heatmap tracks when people are active on Facebook, while the weekday-morning advice comes from engagement studies, which also reflect how crowded the feed is. Test one slot from each and keep the one that wins for your Page.
 
 This guide gives you a time for every day of the week, the slots to avoid, a simple four-week test to find your own best time in Insights, and a way to post at those times without setting an alarm.
 

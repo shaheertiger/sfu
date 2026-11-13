@@ -9,7 +9,7 @@ import m from '@/components/marketing/marketing.module.css';
 import s from '@/components/marketing/best-time.module.css';
 import { getBestTimeAllPlatforms } from '@/lib/server/best-time';
 import { TRENDS_META } from '@/lib/best-time-trends';
-import { BEST_TIME_PLATFORMS, WEEKDAY_NAMES, bestWeekday, combineScores, countryBySlug, formatHour, scoreGrid, topSlots } from '@/lib/best-time';
+import { BEST_TIME_PLATFORMS, WEEKDAY_NAMES, bestWeekday, combineScores, countryBySlug, formatHour, scoreGrid, topHoursOfDay, topSlots } from '@/lib/best-time';
 import { REGIONS, formatHour24, formatOffset, offsetMinutes } from '@/lib/best-time-countries';
 import { BEST_TIME_ROOT, BLOG_GUIDES, DAYS_GUIDE, both, pagePath, socialPath } from '@/lib/best-time-pages';
 import { abs, breadcrumbLd, faqPageLd, pageMetadata } from '@/lib/seo-pages';
@@ -19,7 +19,7 @@ export const revalidate = 86400;
 
 const year = () => new Date().getUTCFullYear();
 const TITLE = () => `Best Time to Post on Social Media in ${year()} (By Platform & Country)`;
-const DESCRIPTION = 'The best times to post on Instagram, TikTok, Facebook, LinkedIn, X and 5 more, hour by hour for every weekday and 25 countries, from Google Trends and real scheduling data.';
+const DESCRIPTION = 'The best times to post on Instagram, TikTok, Facebook, LinkedIn, X and 5 more, hour by hour for every weekday and 25 countries, built from Google Trends and Wikipedia activity data.';
 
 export function generateMetadata() {
   return pageMetadata({ title: TITLE(), description: DESCRIPTION, path: BEST_TIME_ROOT, absolute: true, keyword: 'best time to post on social media' });
@@ -35,12 +35,14 @@ export default async function BestTimeIndex() {
   const best = topSlots(scores, 3);
   const bestDay = bestWeekday(scores);
   const at = Date.now();
+  // True once any platform shows posts scheduled through Schedule For You instead of Trends or the baseline.
+  const measured = Object.values(all).some((d) => d.source !== 'trends' && d.source !== 'baseline');
   const faq = [
     { q: 'What is the best time to post on social media?', a: `Across all ${rows.length} platforms combined, ${WEEKDAY_NAMES[best[0].weekday]} at ${formatHour(best[0].hour)} local time scores highest, and ${WEEKDAY_NAMES[bestDay]} is the strongest day. Each platform has its own peak, listed in the table on this page.` },
     { q: 'What is the best day to post on social media?', a: `${WEEKDAY_NAMES[bestDay]}, when all platforms are combined. Work networks such as LinkedIn favour weekdays, while TikTok, Instagram and YouTube stay strong into the evening and the weekend.` },
     { q: 'Are these times in my time zone?', a: 'Yes. Every slot is local time: 9 AM means 9 AM wherever your audience is. If your followers are in another country, open that country\'s page, which lists the times in its own clock and converts them to other zones.' },
     { q: 'Which country pages are there?', a: `${REGIONS.reduce((n, r) => n + r.countries.length, 0)} countries, grouped by region below. Each has a page for social media overall and one for each of the ${rows.length} platforms.` },
-    { q: 'How is the data collected?', a: `Two sources. Where enough posts are scheduled through Schedule For You, each post is counted in the hour and weekday it went out, in the account's own time zone, lifted by the link clicks it earned; only counts are kept. Everywhere else the pages use Google Trends: hourly search interest in each platform from each country, weighted by hourly Wikipedia traffic (Wikimedia) so the hours reflect how many people are online. The Trends data was refreshed ${TRENDS_META.fetchedAt}. Each page says which source it shows.` },
+    { q: 'How is the data collected?', a: `Two sources. Where enough posts are scheduled through Schedule For You, each post is counted in the hour and weekday it went out, in the account's own time zone, lifted by the link clicks it earned; only counts are kept. Everywhere else the pages use Google Trends: hourly search interest in each platform, read directly in ${TRENDS_META.countryCount} countries and weighted by hourly Wikipedia traffic (Wikimedia) so the hours reflect how many people are online. ${TRENDS_META.estimatedCount} more countries are estimated from their own Wikipedia traffic and the measured pattern, and ${TRENDS_META.baselineCount} show a starting baseline until there is data. The Trends data was refreshed ${TRENDS_META.fetchedAt}. Each page says which source it shows, and our methodology page explains each one.` },
     { q: 'How often should I check my best time?', a: 'Every few months, or after a big change in your audience. The pages here are rebuilt daily from the last 90 days, and your own insights will tell you when your followers shift.' },
   ];
   const crumbs = [{ name: 'Home', href: '/' }, { name: 'Best time to post', href: BEST_TIME_ROOT }];
@@ -54,10 +56,10 @@ export default async function BestTimeIndex() {
       <div className={m.container}>
         <Breadcrumbs items={crumbs} />
         <section className={m.hero}>
-          <span className={m.eyebrow}>{`Google Trends + scheduling data · refreshed ${TRENDS_META.fetchedAt} · local time`}</span>
+          <span className={m.eyebrow}>{`${measured ? 'Google Trends + scheduling data' : 'Google Trends + Wikipedia activity'} · refreshed ${TRENDS_META.fetchedAt} · local time`}</span>
           <h1 className={m.h1}>Best Time to Post on Social Media in {year()}</h1>
           <AnswerBanner>The best time to post on social media is {WEEKDAY_NAMES[best[0].weekday]} at {both(best[0].hour)}, local time.</AnswerBanner>
-          <p className={m.lead}>That's the strongest slot with all {rows.length} platforms combined, but each network peaks at its own hour. Pick a platform for a full-week heatmap, or pick the country your audience is in for times in its own time zone. Built from Google Trends search data for each country and posts scheduled through Schedule For You, not a survey.</p>
+          <p className={m.lead}>That's the strongest slot with all {rows.length} platforms combined, but each network peaks at its own hour. Pick a platform for a full-week heatmap, or pick the country your audience is in for times in its own time zone. {measured ? 'Built from Google Trends search data and posts scheduled through Schedule For You, not a survey.' : `Built from Google Trends search data, read directly in ${TRENDS_META.countryCount} countries and estimated for the rest, not a survey.`} <Link href="/methodology">How we collect this data</Link>.</p>
           <div className={m.toolArea}>
             <BestTimeHeatmap scores={scores} caption={`All ${rows.length} platforms combined: how strong each hour is, 0–100, in your local time.`} />
           </div>
@@ -92,10 +94,14 @@ export default async function BestTimeIndex() {
 
           <section className={m.section}>
             <h2 id="by-day">Best Time to Post by Day of the Week</h2>
-            <p>Every platform also has a page per weekday with all 24 hours ranked. Start with the platform you post to most:</p>
-            <ul className={s.chips}>
-              {BEST_TIME_PLATFORMS.slice(0, 4).flatMap((p) => WEEKDAY_NAMES.slice(1, 6).map((d) => <li key={`${p.slug}-${d}`}><Link href={pagePath(p.slug, d.toLowerCase())} className={s.chip}>{p.name} on {d}</Link></li>))}
-            </ul>
+            <p>The three strongest hours for each day with all {rows.length} platforms combined, in your local time. Each platform's page has the same table for that platform alone, for example <Link href={`${pagePath('instagram')}#by-day`}>Instagram by day</Link> or <Link href={`${pagePath('linkedin')}#by-day`}>LinkedIn by day</Link>.</p>
+            <Table
+              head={['Day', 'Best time', '24-hour', 'Also good']}
+              rows={WEEKDAY_NAMES.map((name, d) => {
+                const hours = topHoursOfDay(scores, d, 3);
+                return [`${name}${d === bestDay ? ' (best day)' : ''}`, formatHour(hours[0].hour), formatHour24(hours[0].hour), hours.slice(1).map((h) => formatHour(h.hour)).join(', ')];
+              })}
+            />
           </section>
 
           <section className={m.section}>

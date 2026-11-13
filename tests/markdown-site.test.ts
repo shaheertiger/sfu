@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { ROUTES, SKIPPED, listMarkdownRoutes, renderPath, resolve } from '../lib/md/registry.js';
-import { PRIVATE_PATHS, ROBOTS_DISALLOW } from '../lib/md/identity.js';
+import { PRIVATE_PATHS, ROBOTS_DISALLOW, robotsDisallowRules } from '../lib/md/identity.js';
 import { markdownResponse, notFoundMarkdown } from '../lib/md/http.js';
 
 const APP = path.join(process.cwd(), 'app');
@@ -150,7 +150,14 @@ test('robots.txt keeps search engines off the markdown twins and lets AI crawler
   }).filter(([a]) => a));
   for (const bot of ['Googlebot', 'Bingbot']) {
     assert.ok(groups[bot]?.includes('/*.md$'), `${bot} may crawl .md twins`);
-    for (const p of ROBOTS_DISALLOW) assert.ok(groups[bot].includes(p), `${bot} group is missing ${p}`);
+    for (const p of robotsDisallowRules()) assert.ok(groups[bot].includes(p), `${bot} group is missing ${p}`);
   }
   for (const bot of ['*', 'OAI-SearchBot', 'Claude-SearchBot', 'PerplexityBot']) assert.ok(!groups[bot]?.includes('/*.md$'), `${bot} is blocked from .md twins`);
+  // The logo in every page's JSON-LD and the apple-touch icon must stay crawlable.
+  const blocks = (path: string) => groups['*'].some((rule: string) => {
+    const re = new RegExp(`^${rule.replace(/[.?+()[\]{}|\\^]/g, '\\$&').replace(/\*/g, '.*')}`);
+    return re.test(path);
+  });
+  for (const path of ['/brand/logo-512.png', '/apple-icon.png']) assert.ok(!blocks(path), `robots.txt blocks ${path}`);
+  for (const path of ['/app', '/app/automations', '/app?share=1', '/brand', '/api/posts']) assert.ok(blocks(path), `robots.txt allows ${path}`);
 });

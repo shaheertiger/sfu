@@ -3,9 +3,10 @@ import BestTimePage, { loadBestTimePage } from '@/components/marketing/BestTimeP
 import BestTimeSocialPage, { loadSocialPage } from '@/components/marketing/BestTimeSocialPage';
 import { SOCIAL, allBestTimePages, pagePath } from '@/lib/best-time-pages';
 import { pageMetadata } from '@/lib/seo-pages';
+import { bestTimeIndexable } from '@/lib/best-time-trends';
 
 /**
- * /best-time-to-post/instagram/monday, /best-time-to-post/instagram/in-india and
+ * /best-time-to-post/instagram/in-india (one platform in one country) and
  * /best-time-to-post/social-media/in-india (every platform in one country).
  */
 export const revalidate = 86400;
@@ -22,7 +23,8 @@ export async function generateMetadata({ params }) {
   const country = social(platform, segment);
   const page = country ? await loadSocialPage(country) : await loadBestTimePage(platform, segment);
   if (!page) return {};
-  return pageMetadata({ title: page.copy.title, description: page.copy.description, path: pagePath(platform, segment), absolute: true, keyword: page.copy.keyword });
+  const meta = pageMetadata({ title: page.copy.title, description: page.copy.description, path: pagePath(platform, segment), absolute: true, keyword: page.copy.keyword });
+  return bestTimeIndexable(platform, segment) ? meta : { ...meta, robots: { index: false, follow: true, googleBot: { index: false, follow: true } } };
 }
 
 export default async function Page({ params }) {

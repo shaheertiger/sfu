@@ -10,7 +10,7 @@ import m from '@/components/marketing/marketing.module.css';
 import s from '@/components/marketing/best-time.module.css';
 import { getBestTime, getBestTimeAllCountries, getBestTimeAllPlatforms } from '@/lib/server/best-time';
 import { TRENDS_META } from '@/lib/best-time-trends';
-import { BEST_TIME_PLATFORMS, COUNTRIES, WEEKDAY_NAMES, bestWeekday, formatHour, formatRange, platformBySlug, quietSlots, scoreGrid, topHoursOfDay, topSlots } from '@/lib/best-time';
+import { BEST_TIME_PLATFORMS, COUNTRIES, WEEKDAY_NAMES, bestWeekday, formatHour, platformBySlug, quietSlots, scoreGrid, topHoursOfDay, topSlots } from '@/lib/best-time';
 import { REGIONS, countryLocal, currentAbbr, formatHour24 } from '@/lib/best-time-countries';
 import { BEST_TIME_ROOT, BLOG_GUIDES, DAYS_GUIDE, both, pageCopy, pageFaq, pagePath, parseSegment, siblingLinks, socialPath } from '@/lib/best-time-pages';
 import { abs, breadcrumbLd, faqPageLd } from '@/lib/seo-pages';
@@ -42,7 +42,7 @@ export async function loadBestTimePage(platformSlug, segment = '') {
   }
   const scores = scoreGrid(data.grid);
   const bestDay = bestWeekday(scores);
-  const best = seg.kind === 'weekday' ? topHoursOfDay(scores, seg.weekday, 5).map((h) => ({ ...h, weekday: seg.weekday })) : topSlots(scores, 5);
+  const best = topSlots(scores, 5);
   const quiet = quietSlots(scores, 3);
   const trendsMeta = { trendsKind: data.source === 'trends' ? data.trendsKind : null, fetchedAt: TRENDS_META.fetchedAt, countryCount: TRENDS_META.countryCount };
   const copy = pageCopy({ platform: platformSlug, segment, best, bestDay, source: data.source, posts: data.posts, ...trendsMeta, at });
@@ -80,7 +80,7 @@ export default function BestTimePage({ page, segment }) {
       faqPageLd(faq),
     ],
   };
-  const slotLabel = (b) => (seg.kind === 'weekday' ? formatRange(b.hour) : `${WEEKDAY_NAMES[b.weekday]} ${formatHour(b.hour)}`);
+  const slotLabel = (b) => `${WEEKDAY_NAMES[b.weekday]} ${formatHour(b.hour)}`;
   const where = local ? ` in ${local.name}` : '';
 
   return (
@@ -98,30 +98,30 @@ export default function BestTimePage({ page, segment }) {
               {best.slice(0, 3).map((b, i) => (
                 <div key={i} className={s.slot}>
                   <div className={s.slotRank}>{i === 0 ? 'Best slot' : `#${i + 1}`}</div>
-                  <div className={s.slotTime}>{seg.kind === 'weekday' ? formatRange(b.hour) : formatHour(b.hour)}</div>
-                  <div className={s.slotDay}>{seg.kind === 'weekday' ? WEEKDAY_NAMES[seg.weekday] : WEEKDAY_NAMES[b.weekday]}</div>
+                  <div className={s.slotTime}>{formatHour(b.hour)}</div>
+                  <div className={s.slotDay}>{WEEKDAY_NAMES[b.weekday]}</div>
                   <div className={s.slotScore}>Score {b.score}/100 · {local ? `${abbr} (${formatHour24(b.hour)})` : 'local time'}</div>
                 </div>
               ))}
             </div>
             <BestTimeNow scores={scores} tz={local ? local.tz : null} place={local ? local.name : null} platform={platform.name} />
-            <BestTimeHeatmap scores={scores} highlightDay={seg.kind === 'weekday' ? seg.weekday : null} caption={`${platform.name}${where}: how strong each hour is, 0–100, in ${local ? `${local.adj} time (${abbr})` : 'your local time'}. ${updated ? `Updated ${updated}.` : ''}`} />
+            <BestTimeHeatmap scores={scores} caption={`${platform.name}${where}: how strong each hour is, 0–100, in ${local ? `${local.adj} time (${abbr})` : 'your local time'}. ${updated ? `Updated ${updated}.` : ''}`} />
             {data.source === 'trends' ? (
               data.trendsKind === 'activity' ? (
                 <p className={s.source}>Source: hourly Wikipedia traffic from {local.name}'s local-language Wikipedia (Wikimedia, CC0, past 28 days), showing when people there are online, combined with {platform.name}'s hourly search pattern from Google Trends in the {TRENDS_META.countryCount} countries we measure directly. Local time. Refreshed {TRENDS_META.fetchedAt}; direct Google Trends data, then our own scheduling data, replace it automatically.</p>
               ) : <p className={s.source}>Source: Google Trends hourly search interest in {platform.name}{local ? ` from ${local.name}` : `, averaged across the ${TRENDS_META.countryCount} countries we have Trends data for so far`}{data.trendsKind === 'country' ? ' (country average: too few searches for this platform alone)' : ''}, weighted by hourly Wikipedia traffic (Wikimedia, CC0) so the hours reflect how many people are online. Local time. Refreshed {TRENDS_META.fetchedAt}; our own scheduling data replaces it automatically once there is enough of it.</p>
             ) : data.source === 'baseline' ? (
-              <p className={s.source}>Source: our published baseline (weekday mornings and lunch strongest, evenings next, weekends later and flatter), shown until Google Trends data or enough posts scheduled through Schedule For You are available{local ? ` for ${local.name}` : ''}. It switches automatically.</p>
+              <p className={s.source}>Source: a starting baseline, not measured data (weekday mornings and lunch strongest, evenings next, weekends later and flatter), shown until Google Trends data or enough posts scheduled through Schedule For You are available{local ? ` for ${local.name}` : ''}. It switches automatically. Treat these times as a first test, not a finding.</p>
             ) : (
               <p className={s.source}>Source: posts scheduled through Schedule For You, counted per local weekday and hour; the busiest slots with the best link clicks per post score highest. No individual account data is shown. <Link href="/privacy">How we handle data</Link>.</p>
             )}
+            <p className={s.source}><Link href="/methodology#best-time">How we collect and check this data</Link></p>
           </div>
         </section>
 
         <article className={`${m.narrow} ${m.prose}`}>
           <Figure fig={figs[0]} priority />
-          {seg.kind !== 'weekday' && (
-            <section className={m.section}>
+          <section className={m.section}>
               <h2 id="answer">When Is the Best Time to Post on {platform.name}{local ? ` in ${local.name}` : ''}?</h2>
               <p>
                 {WEEKDAY_NAMES[best[0].weekday]} at {both(best[0].hour)}{local ? ` ${abbr}` : ' local time'} is the strongest slot, and {WEEKDAY_NAMES[bestDay]} is the best day overall.
@@ -133,33 +133,20 @@ export default function BestTimePage({ page, segment }) {
               />
               <blockquote><p><strong>Key point:</strong> treat these as starting points. Post in the top two or three slots for three weeks, then keep the one your own {platform.name} insights say works best for your followers.</p></blockquote>
             </section>
-          )}
 
           <section className={m.section}>
-            <h2 id="by-day">{seg.kind === 'weekday' ? `Every Hour on ${WEEKDAY_NAMES[seg.weekday]}, Ranked` : `Best Time to Post on ${platform.name}${where} by Day of the Week`}</h2>
-            {seg.kind === 'weekday' ? (
-              <>
-                <p>The ten strongest hours on {WEEKDAY_NAMES[seg.weekday]}, in your local time. The heatmap above shows the rest.</p>
-                <Table head={['Rank', 'Hour', '24-hour', 'Score']} rows={topHoursOfDay(scores, seg.weekday, 10).map((h, i) => [`#${i + 1}`, formatRange(h.hour), formatHour24(h.hour), `${h.score}/100`])} />
-              </>
-            ) : (
-              <>
-                <p>The three strongest hours for each day{local ? `, in ${local.adj} time (${abbr})` : ', in your local time'}.</p>
-                <Table
-                  head={['Day', 'Best time', '24-hour', 'Also good']}
-                  rows={WEEKDAY_NAMES.map((name, d) => {
-                    const hours = topHoursOfDay(scores, d, 3);
-                    return [
-                      local ? <>{name}{d === bestDay ? ' (best day)' : ''}</> : <><Link href={pagePath(platform.slug, name.toLowerCase())}>{name}</Link>{d === bestDay ? ' (best day)' : ''}</>,
-                      formatHour(hours[0].hour), formatHour24(hours[0].hour), hours.slice(1).map((h) => formatHour(h.hour)).join(', '),
-                    ];
-                  })}
-                />
-              </>
-            )}
-            <ul className={s.chips}>
-              {links.days.map((d) => <li key={d.href}><Link href={d.href} className={`${s.chip} ${d.current ? s.chipOn : ''}`}>{platform.name} on {d.label}</Link></li>)}
-            </ul>
+            <h2 id="by-day">Best Time to Post on {platform.name}{where} by Day of the Week</h2>
+            <p>The three strongest hours for each day{local ? `, in ${local.adj} time (${abbr})` : ', in your local time'}.</p>
+            <Table
+              head={['Day', 'Best time', '24-hour', 'Also good']}
+              rows={WEEKDAY_NAMES.map((name, d) => {
+                const hours = topHoursOfDay(scores, d, 3);
+                return [
+                  <span key={name} id={local ? undefined : name.toLowerCase()}>{name}{d === bestDay ? ' (best day)' : ''}</span>,
+                  formatHour(hours[0].hour), formatHour24(hours[0].hour), hours.slice(1).map((h) => formatHour(h.hour)).join(', '),
+                ];
+              })}
+            />
           </section>
 
           {local && <TimezoneSection local={local} best={best} at={at} />}
@@ -185,16 +172,6 @@ export default function BestTimePage({ page, segment }) {
                   return [<Link key={country.slug} href={pagePath(platform.slug, `in-${country.slug}`)}>{platform.name} in {country.short}</Link>, `${WEEKDAY_NAMES[b.weekday]} ${formatHour(b.hour)}`, currentAbbr(l, at)];
                 })}
               />
-            </section>
-          )}
-
-          {seg.kind !== 'hub' && !local && (
-            <section className={m.section}>
-              <h2 id="by-country">Best Time to Post on {platform.name} by Country</h2>
-              <p>Audiences are local. Pick the country most of your followers are in; each page is in that country's own time, with time zone conversions and local tips.</p>
-              <ul className={s.chips}>
-                {links.countries.map((c) => <li key={c.href}><Link href={c.href} className={`${s.chip} ${c.current ? s.chipOn : ''}`}>{c.label}</Link></li>)}
-              </ul>
             </section>
           )}
 
@@ -243,7 +220,7 @@ export default function BestTimePage({ page, segment }) {
               </section>
             ) : (
               <section>
-                <h3>Other platforms{seg.kind === 'weekday' ? ` on ${WEEKDAY_NAMES[seg.weekday]}` : ''}</h3>
+                <h3>Other platforms</h3>
                 <ul className={m.linkGrid}>
                   {links.platforms.map((p) => <li key={p.href}><Link href={p.href} className={m.linkCard}>{p.label}</Link></li>)}
                 </ul>

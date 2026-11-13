@@ -6,13 +6,15 @@ category: TikTok
 excerpt: Start with early evening in your audience's time zone, plus a morning slot on weekdays. Here are day-by-day windows, US time zone conversions and how to read your own follower activity.
 keyword: best time to post on tiktok
 date: 2026-10-26
-updated: 2026-11-04
+updated: 2026-11-13
 ---
 You film a video you're proud of, post it on your lunch break, and it stalls at a few hundred views. The best time to post on TikTok for most accounts is **early evening, around 6 to 9 PM in your audience's time zone**, with a second window **on weekday mornings (7 to 9 AM)** and **late morning on weekends**.
 
 ![Best time to post on TikTok: start with 6 to 9 PM in your audience's time zone, then check your own follower activity](/images/blog/best-time-to-post-on-tiktok-hero-1200x675.webp)
 
 Those are the hours people usually have time to scroll. But your exact best time is in TikTok's own analytics, under your followers' most active times, and it can differ a lot from any general list, including this one.
+
+Our [hour-by-hour TikTok heatmap](/best-time-to-post/tiktok) tracks when people are active on TikTok, and it often peaks later in the evening or at the weekend. Treat 6 to 9 PM and the heatmap's peak as two slots to test, not as rival answers.
 
 This guide gives you day-by-day starting times, US time zone conversions, the steps to read your own data in TikTok Studio, and a four-week test to settle it for your account.
 
