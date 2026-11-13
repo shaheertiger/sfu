@@ -4,6 +4,7 @@ import { Breadcrumbs, LanguageLinks, MarketingPage, TrialCta } from './Chrome';
 import m from './marketing.module.css';
 import { articleLd } from '@/lib/seo-pages';
 import { pageString } from '@/lib/i18n';
+import { signupHref } from '@/lib/cta';
 
 const dateLabel = (d, locale = 'en') => {
   const t = new Date(`${d}T12:00:00Z`);
@@ -38,7 +39,7 @@ export default function Article({ post, path, crumbs, related = [], tools = [], 
               <aside className={m.inlineCta} aria-label="Schedule For You">
                 <strong>{t('inlineCtaTitle')}</strong>
                 <p>{t('inlineCtaText')}</p>
-                <Link href="/signup" className={`${m.btn} ${m.btnPrimary}`}>{t('trial')}</Link>
+                <Link href={signupHref('blog-inline', path)} className={`${m.btn} ${m.btnPrimary}`}>{t('trial')}</Link>
               </aside>
             )}
             <div dangerouslySetInnerHTML={{ __html: post.htmlAfter }} />
@@ -57,7 +58,7 @@ export default function Article({ post, path, crumbs, related = [], tools = [], 
           )}
         </div>
         <div className={m.narrow} style={{ marginLeft: 0 }}>
-          <TrialCta heading={t('articleCtaTitle')} locale={locale}>
+          <TrialCta heading={t('articleCtaTitle')} locale={locale} placement="blog-end" from={path}>
             <p>{t('articleCtaText')}</p>
           </TrialCta>
           <LanguageLinks current={locale} links={languages} />

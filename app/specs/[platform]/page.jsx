@@ -7,7 +7,7 @@ import { specHubFigures } from '@/lib/figures';
 import { Breadcrumbs, MarketingPage } from '@/components/marketing/Chrome';
 import m from '@/components/marketing/marketing.module.css';
 import { SPECS_ROOT, SPECS_VERIFIED, SPEC_PLATFORMS, specPath, specPlatformBySlug } from '@/lib/specs';
-import { abs, breadcrumbLd, pageMetadata } from '@/lib/seo-pages';
+import { abs, breadcrumbLd, datasetLd, itemListLd, pageMetadata } from '@/lib/seo-pages';
 import { organizationLd } from '@/lib/seo';
 
 export const dynamicParams = false;
@@ -28,7 +28,7 @@ export default async function Page({ params }) {
   const crumbs = [{ name: 'Home', href: '/' }, { name: 'Specs & limits', href: SPECS_ROOT }, { name: p.name, href: path }];
   const figs = specHubFigures(p.slug);
   const img = figuresLd(figs);
-  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'CollectionPage', '@id': `${abs(path)}#webpage`, url: abs(path), name: c.title, description: c.description, inLanguage: 'en', dateModified: SPECS_VERIFIED, ...img.primary }, ...img.nodes, breadcrumbLd(crumbs)] };
+  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'CollectionPage', '@id': `${abs(path)}#webpage`, url: abs(path), name: c.title, description: c.description, inLanguage: 'en', dateModified: SPECS_VERIFIED, ...img.primary }, ...img.nodes, datasetLd({ name: `${p.name} image sizes and character limits`, description: c.description, path, dateModified: SPECS_VERIFIED, variables: p.specs.map((x) => x.h1) }), itemListLd(`${p.name} sizes and limits`, p.specs.map((x) => ({ name: x.h1, path: specPath(p.slug, x.slug) }))), breadcrumbLd(crumbs)] };
   return (
     <MarketingPage>
       <JsonLd data={ld} />

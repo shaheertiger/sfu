@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import m from './marketing.module.css';
 import StickyCtaBar from './StickyCtaBar';
+import { signupHref } from '@/lib/cta';
 
 /**
  * The sign-up card that sits beside a tool page's long-form copy on wide screens (sticky, so it
@@ -14,7 +15,7 @@ const POINTS = [
   'Free for 3 accounts, no card',
 ];
 
-export function GrowCard() {
+export function GrowCard({ from = '' }) {
   return (
     <aside className={m.growAside} aria-label="Schedule For You">
       <div className={m.growCard}>
@@ -24,7 +25,7 @@ export function GrowCard() {
         <ul className={m.growList}>
           {POINTS.map((p) => <li key={p}>{p}</li>)}
         </ul>
-        <Link href="/signup" className={m.growBtn}>Start free</Link>
+        <Link href={signupHref('tool-card', from)} className={m.growBtn}>Start free</Link>
         <Link href="/demo" className={m.growLink}>See the dashboard first →</Link>
       </div>
     </aside>
@@ -32,6 +33,6 @@ export function GrowCard() {
 }
 
 /** `watch` is the id of the element (the tool) the phone bar waits to scroll past. */
-export function GrowBar({ watch }) {
-  return <StickyCtaBar watch={watch} text="Post to 9 platforms from one place" button="Start free" href="/signup" />;
+export function GrowBar({ watch, from = '' }) {
+  return <StickyCtaBar watch={watch} text="Post to 9 platforms from one place" button="Start free" href={signupHref('sticky-bar', from)} />;
 }

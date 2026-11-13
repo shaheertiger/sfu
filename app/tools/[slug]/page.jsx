@@ -10,6 +10,7 @@ import { PLATFORM_NAMES, relatedTools, samePlatformTools, toolBySlug } from '@/l
 import { postsForPlatform } from '@/lib/related';
 import { pageMetadata, toolPageLd } from '@/lib/seo-pages';
 import { hreflangMap, translationsOf } from '@/lib/i18n-pages';
+import { markdownImages } from '@/lib/figures';
 
 export const dynamicParams = false;
 
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }) {
   const page = getToolPage(slug);
   if (!page) return {};
   const path = `/tools/${slug}`;
-  return pageMetadata({ title: page.title, description: page.description, path, absolute: true, keyword: page.keyword, languages: hreflangMap('tools', slug) });
+  return pageMetadata({ title: page.title, description: page.description, path, absolute: true, keyword: page.keyword, languages: hreflangMap('tools', slug), image: markdownImages('tools', slug)[0] });
 }
 
 const titleOf = (slug) => getToolPage(slug)?.h1 || slug;
@@ -79,7 +80,7 @@ export default async function ToolPage({ params }) {
             </section>
           )}
 
-          {page.cta && <TrialCta heading={page.cta.heading} html={page.cta.html} />}
+          {page.cta && <TrialCta heading={page.cta.heading} html={page.cta.html} from={`/tools/${slug}`} />}
           <LanguageLinks links={translationsOf('tools', slug)} />
 
           <div className={m.more}>
@@ -118,10 +119,10 @@ export default async function ToolPage({ params }) {
             )}
           </div>
         </article>
-        <GrowCard />
+        <GrowCard from={`/tools/${slug}`} />
         </div>
       </div>
-      <GrowBar watch="tool" />
+      <GrowBar watch="tool" from={`/tools/${slug}`} />
     </MarketingPage>
   );
 }

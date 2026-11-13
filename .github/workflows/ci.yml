@@ -27,3 +27,25 @@ jobs:
       - run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: '1'
+
+  indexnow:
+    # After a green push to main, tell Bing and the other IndexNow engines which pages changed
+    # (scripts/indexnow.mjs --since). It never fails the build: a missed ping only delays a recrawl.
+    name: IndexNow (changed pages)
+    needs: check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.event.before != '0000000000000000000000000000000000000000'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # Give the Vercel production deploy of this commit a head start before engines are pinged.
+      - run: sleep 90
+      - run: node scripts/indexnow.mjs --since ${{ github.event.before }}
+        env:
+          APP_URL: https://scheduleforyou.com

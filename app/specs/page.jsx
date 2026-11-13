@@ -5,7 +5,7 @@ import { specIndexFigures } from '@/lib/figures';
 import { Breadcrumbs, MarketingPage } from '@/components/marketing/Chrome';
 import m from '@/components/marketing/marketing.module.css';
 import { SPECS_ROOT, SPECS_VERIFIED, SPEC_PLATFORMS, specPath } from '@/lib/specs';
-import { abs, breadcrumbLd, pageMetadata } from '@/lib/seo-pages';
+import { abs, breadcrumbLd, itemListLd, pageMetadata } from '@/lib/seo-pages';
 import { organizationLd } from '@/lib/seo';
 
 const TITLE = `Social Media Image Sizes & Character Limits (${new Date().getUTCFullYear()}): All Platforms`;
@@ -16,7 +16,7 @@ export default function SpecsIndex() {
   const crumbs = [{ name: 'Home', href: '/' }, { name: 'Specs & limits', href: SPECS_ROOT }];
   const figs = specIndexFigures();
   const img = figuresLd(figs);
-  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'CollectionPage', '@id': `${abs(SPECS_ROOT)}#webpage`, url: abs(SPECS_ROOT), name: TITLE, description: DESCRIPTION, inLanguage: 'en', ...img.primary }, ...img.nodes, breadcrumbLd(crumbs)] };
+  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'CollectionPage', '@id': `${abs(SPECS_ROOT)}#webpage`, url: abs(SPECS_ROOT), name: TITLE, description: DESCRIPTION, inLanguage: 'en', ...img.primary }, ...img.nodes, itemListLd('Sizes and limits by platform', SPEC_PLATFORMS.map((p) => ({ name: `${p.name} sizes and limits`, path: specPath(p.slug) }))), breadcrumbLd(crumbs)] };
   return (
     <MarketingPage>
       <JsonLd data={ld} />

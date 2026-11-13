@@ -5,6 +5,7 @@ import { LANDING_PAGES } from '@/lib/landing-pages';
 import NavAuth from './NavAuth';
 import { pageString } from '@/lib/i18n';
 import { CONTACT_EMAIL } from '@/lib/md/identity';
+import { signupHref } from '@/lib/cta';
 
 /** Header, footer and breadcrumbs shared by the tools, blog and comparison pages. Server components. */
 
@@ -76,7 +77,7 @@ const FOOTER = [
       ['/docs', 'API reference'],
       ['/blog/connect-facebook-page', 'Connect a Facebook Page'],
       ['/blog/connect-google-business-profile', 'Google Business (coming soon)'],
-      ['/signup', 'Start free'],
+      [signupHref('footer'), 'Start free'],
       ['/login', 'Sign in'],
     ],
   },
@@ -127,13 +128,13 @@ export function Breadcrumbs({ items }) {
 }
 
 /** `locale` translates the buttons on localized pages (the sign-up flow itself is in English). */
-export function TrialCta({ heading, html, children, locale = 'en' }) {
+export function TrialCta({ heading, html, children, locale = 'en', placement = 'page-end', from = '' }) {
   return (
     <section className={m.cta} aria-labelledby="cta-heading">
       <h2 id="cta-heading">{heading}</h2>
       {html ? <div dangerouslySetInnerHTML={{ __html: html }} /> : children}
       <div className={m.ctaRow}>
-        <Link href="/signup" className={`${m.btn} ${m.btnPrimary}`}>{pageString(locale, 'trial')}</Link>
+        <Link href={signupHref(placement, from)} className={`${m.btn} ${m.btnPrimary}`}>{pageString(locale, 'trial')}</Link>
         <Link href="/pricing" className={m.btn}>{pageString(locale, 'pricing')}</Link>
       </div>
       <p className={m.ctaNote}>{pageString(locale, 'trialNote')}</p>

@@ -6,7 +6,7 @@ import m from '@/components/marketing/marketing.module.css';
 import s from '@/components/marketing/best-time.module.css';
 import { SPECS_ROOT, SPECS_VERIFIED, SPEC_PLATFORMS, equivalentSpec, sizePresetFor, specPath } from '@/lib/specs';
 import { TOOLS } from '@/lib/tools/registry';
-import { abs, breadcrumbLd, faqPageLd } from '@/lib/seo-pages';
+import { abs, breadcrumbLd, datasetLd, faqPageLd } from '@/lib/seo-pages';
 import { organizationLd } from '@/lib/seo';
 import { pagePath as bestTimePath } from '@/lib/best-time-pages';
 import Figure, { figuresLd } from '@/components/marketing/Figure';
@@ -50,7 +50,7 @@ export default function SpecPage({ platform, spec }) {
   const others = SPEC_PLATFORMS.filter((p) => p.slug !== platform.slug).map((p) => ({ p, s: equivalentSpec(p, spec) })).filter((x) => x.s);
   const figs = specFigures(platform.slug, spec.slug);
   const img = figuresLd(figs);
-  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'WebPage', '@id': `${abs(path)}#webpage`, url: abs(path), name: copy.title, description: copy.description, inLanguage: 'en', dateModified: SPECS_VERIFIED, ...img.primary }, ...img.nodes, breadcrumbLd(crumbs), faqPageLd(faq)] };
+  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'WebPage', '@id': `${abs(path)}#webpage`, url: abs(path), name: copy.title, description: copy.description, inLanguage: 'en', dateModified: SPECS_VERIFIED, ...img.primary }, ...img.nodes, datasetLd({ name: `${spec.h1.replace(/^\w/, (ch) => ch.toUpperCase())}`, description: copy.description, path, dateModified: SPECS_VERIFIED, variables: spec.rows.map((r) => r[0]) }), breadcrumbLd(crumbs), faqPageLd(faq)] };
   return (
     <MarketingPage>
       <JsonLd data={ld} />

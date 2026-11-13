@@ -10,6 +10,7 @@ import { TOOLS } from '@/lib/tools/registry';
 import { abs, breadcrumbLd, faqPageLd, pageMetadata } from '@/lib/seo-pages';
 import { organizationLd } from '@/lib/seo';
 import { hreflangMap, translationsOf } from '@/lib/i18n-pages';
+import { signupHref } from '@/lib/cta';
 
 /** Landing pages for each platform we publish to: /instagram, /facebook, /x, … */
 export const dynamicParams = false;
@@ -57,7 +58,7 @@ export default async function PlatformPage({ params }) {
           <h1 className={m.h1}>{page.h1}</h1>
           {page.lead && <p className={m.lead}>{page.lead}</p>}
           <div className={m.ctaRow} style={{ justifyContent: 'center', marginTop: 22 }}>
-            <Link href="/signup" className={`${m.btn} ${m.btnPrimary}`}>Start your 7-day free trial</Link>
+            <Link href={signupHref('hero', `/${platform}`)} className={`${m.btn} ${m.btnPrimary}`}>Start your 7-day free trial</Link>
             <Link href="/pricing" className={m.btn}>See pricing</Link>
           </div>
           <p className={m.meta}>Card required. Not charged until day 8. Cancel anytime.</p>
@@ -93,7 +94,7 @@ export default async function PlatformPage({ params }) {
               ))}
             </section>
           )}
-          {page.cta && <TrialCta heading={page.cta.heading} html={page.cta.html} />}
+          {page.cta && <TrialCta heading={page.cta.heading} html={page.cta.html} from={`/${platform}`} />}
           <LanguageLinks links={translationsOf('platforms', platform)} />
           <div className={m.more}>
             {(tools.length > 0 || posts.length > 0) && (

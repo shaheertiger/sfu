@@ -44,3 +44,22 @@ test('best-time country pages with only the baseline, or for low-demand platform
   const indexed = allBestTimePages().filter((p: any) => bestTimeIndexable(p.platform, p.segment)).length;
   assert.ok(indexed < allBestTimePages().length && indexed > 100, `${indexed} indexed`);
 });
+
+test('the sitemap is split by family and language, with no utility pages and honest lastmod', async () => {
+  process.env.APP_URL = 'https://scheduleforyou.com';
+  const { sitemapFamilies, familyXml, indexXml } = await import('../lib/sitemap.js');
+  const fam = sitemapFamilies();
+  for (const name of ['core', 'tools', 'blog', 'best-time', 'specs', 'does-it-notify', 'post-ideas']) assert.ok(fam[name]?.length, `${name} family`);
+  assert.ok(Object.keys(fam).some((k) => k.startsWith('lang-')), 'one file per language');
+  const all = Object.values(fam).flat() as any[];
+  assert.equal(new Set(all.map((e) => e.url)).size, all.length, 'no URL in two families');
+  for (const bad of ['/signup', '/demo', '/login']) assert.ok(!all.some((e) => e.url.endsWith(bad)), `${bad} is listed`);
+  assert.ok(fam.specs.every((e: any) => e.lastModified), 'specs carry their verified date');
+  assert.ok(fam['best-time'].every((e: any) => e.changeFrequency !== 'daily'));
+  const index = indexXml(fam);
+  for (const name of Object.keys(fam)) assert.match(index, new RegExp(`/sitemaps/${name}\\.xml</loc>`));
+  const xml = familyXml(fam.blog);
+  assert.match(xml, /^<\?xml/);
+  assert.match(xml, /<image:image><image:loc>https:\/\/scheduleforyou\.com\/images\/blog\//);
+  assert.doesNotMatch(xml, /&(?!amp;|lt;|gt;|quot;)/);
+});
