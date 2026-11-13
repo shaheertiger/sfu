@@ -48,7 +48,7 @@ test('best-time country pages with only the baseline, or for low-demand platform
 test('the sitemap is split by family and language, with no utility pages and honest lastmod', async () => {
   process.env.APP_URL = 'https://scheduleforyou.com';
   const { sitemapFamilies, familyXml, indexXml } = await import('../lib/sitemap.js');
-  const fam = sitemapFamilies();
+  const fam: Record<string, any[]> = sitemapFamilies();
   for (const name of ['core', 'tools', 'blog', 'best-time', 'specs', 'does-it-notify', 'post-ideas']) assert.ok(fam[name]?.length, `${name} family`);
   assert.ok(Object.keys(fam).some((k) => k.startsWith('lang-')), 'one file per language');
   const all = Object.values(fam).flat() as any[];
