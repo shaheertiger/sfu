@@ -17,7 +17,7 @@ export async function generateMetadata({ params }) {
   const post = getPost(slug);
   if (!post) return {};
   const path = `/blog/${slug}`;
-  return pageMetadata({ title: post.title, description: post.description, path, type: 'article', keyword: post.keyword, publishedTime: post.date, section: post.category, languages: hreflangMap('blog', slug) });
+  return pageMetadata({ title: post.title, description: post.description, path, type: 'article', keyword: post.keyword, publishedTime: post.date, section: post.category, languages: hreflangMap('blog', slug), image: post.hero });
 }
 
 export default async function BlogPost({ params }) {

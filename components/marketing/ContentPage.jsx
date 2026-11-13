@@ -8,6 +8,7 @@ import { getComparisons, getContentPage, renderMarkdown } from '@/lib/content';
 import { LANDING_PAGES } from '@/lib/landing-pages';
 import { FREE, PLANS, organizationLd, softwareLd } from '@/lib/seo';
 import { abs, breadcrumbLd, faqPageLd, pageMetadata } from '@/lib/seo-pages';
+import { signupHref } from '@/lib/cta';
 
 /** Metadata for a standalone page in content/pages. */
 export function contentMetadata(slug) {
@@ -85,7 +86,7 @@ function FeaturePage({ slug, page }) {
           <h1 className={m.h1}>{page.h1}</h1>
           {page.lead && <p className={m.lead}>{page.lead}</p>}
           <div className={m.ctaRow} style={{ justifyContent: 'center', marginTop: 22 }}>
-            <Link href="/signup" className={`${m.btn} ${m.btnPrimary}`}>Start free</Link>
+            <Link href={signupHref('hero')} className={`${m.btn} ${m.btnPrimary}`}>Start free</Link>
             {slug === 'api' && <Link href="/docs" className={m.btn}>Read the API reference</Link>}
             {slug !== 'pricing' && <Link href="/pricing" className={m.btn}>See pricing</Link>}
           </div>

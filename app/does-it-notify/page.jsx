@@ -5,7 +5,7 @@ import { notifyIndexFigures } from '@/lib/figures';
 import { Breadcrumbs, MarketingPage } from '@/components/marketing/Chrome';
 import m from '@/components/marketing/marketing.module.css';
 import { NOTIFY_ACTIONS, NOTIFY_PLATFORMS, NOTIFY_ROOT, NOTIFY_VERIFIED, allNotifyPages, answerLabel, notifyEntry, notifyPath } from '@/lib/notify';
-import { abs, breadcrumbLd, pageMetadata } from '@/lib/seo-pages';
+import { abs, breadcrumbLd, itemListLd, pageMetadata } from '@/lib/seo-pages';
 import { organizationLd } from '@/lib/seo';
 
 const total = allNotifyPages().length;
@@ -17,7 +17,7 @@ export default function NotifyIndex() {
   const crumbs = [{ name: 'Home', href: '/' }, { name: 'Does it notify?', href: NOTIFY_ROOT }];
   const figs = notifyIndexFigures();
   const img = figuresLd(figs);
-  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'CollectionPage', '@id': `${abs(NOTIFY_ROOT)}#webpage`, url: abs(NOTIFY_ROOT), name: TITLE, description: DESCRIPTION, inLanguage: 'en', dateModified: NOTIFY_VERIFIED, ...img.primary }, ...img.nodes, breadcrumbLd(crumbs)] };
+  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'CollectionPage', '@id': `${abs(NOTIFY_ROOT)}#webpage`, url: abs(NOTIFY_ROOT), name: TITLE, description: DESCRIPTION, inLanguage: 'en', dateModified: NOTIFY_VERIFIED, ...img.primary }, ...img.nodes, itemListLd('Does it notify? by platform', NOTIFY_PLATFORMS.map((p) => ({ name: `What does ${p.name} notify people about?`, path: notifyPath(p.slug) }))), breadcrumbLd(crumbs)] };
   const actions = [...NOTIFY_ACTIONS].sort((a, b) => a.order - b.order);
   return (
     <MarketingPage>

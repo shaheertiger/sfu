@@ -4,12 +4,16 @@ import JsonLd from '../components/JsonLd';
 import { DESCRIPTION, META_DESCRIPTION, TAGLINE, landingLd } from '../lib/seo';
 import { agentMetadata } from '../lib/seo-pages';
 
+const TITLE = 'Schedule For You · Social media scheduler for nine platforms';
+
 export const metadata = {
-  title: { absolute: `Schedule For You · Social media scheduler for nine platforms` },
+  title: { absolute: TITLE },
   description: META_DESCRIPTION,
   alternates: { canonical: '/', ...agentMetadata('/', DESCRIPTION).alternates },
   other: agentMetadata('/', DESCRIPTION).other,
-  openGraph: { title: TAGLINE, description: DESCRIPTION, url: '/' },
+  // Social previews use the same title as search results (the tagline stays the page's headline).
+  openGraph: { title: TITLE, description: META_DESCRIPTION, url: '/' },
+  twitter: { card: 'summary_large_image', title: TITLE, description: META_DESCRIPTION },
 };
 
 // Phones (by user agent) get the mobile design, everything else the full one. Both are rendered

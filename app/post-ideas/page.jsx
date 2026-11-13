@@ -3,7 +3,7 @@ import JsonLd from '@/components/JsonLd';
 import { Breadcrumbs, MarketingPage } from '@/components/marketing/Chrome';
 import m from '@/components/marketing/marketing.module.css';
 import { INDUSTRIES, POST_IDEAS_ROOT, WEEKDAY_ANGLES, WEEKDAYS, WEEKDAY_NAMES, postIdeasPath } from '@/lib/post-ideas';
-import { abs, breadcrumbLd, pageMetadata } from '@/lib/seo-pages';
+import { abs, breadcrumbLd, itemListLd, pageMetadata } from '@/lib/seo-pages';
 import { organizationLd } from '@/lib/seo';
 
 const TITLE = `Social Media Post Ideas by Industry (${new Date().getUTCFullYear()}): 30 Each, Ready to Schedule`;
@@ -13,7 +13,7 @@ const cap = (t) => t.charAt(0).toUpperCase() + t.slice(1);
 
 export default function PostIdeasIndex() {
   const crumbs = [{ name: 'Home', href: '/' }, { name: 'Post ideas', href: POST_IDEAS_ROOT }];
-  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'CollectionPage', '@id': `${abs(POST_IDEAS_ROOT)}#webpage`, url: abs(POST_IDEAS_ROOT), name: TITLE, description: DESCRIPTION, inLanguage: 'en' }, breadcrumbLd(crumbs)] };
+  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'CollectionPage', '@id': `${abs(POST_IDEAS_ROOT)}#webpage`, url: abs(POST_IDEAS_ROOT), name: TITLE, description: DESCRIPTION, inLanguage: 'en' }, itemListLd('Post ideas by business', INDUSTRIES.map((i) => ({ name: `Post ideas for ${cap(i.name)}`, path: postIdeasPath(i.slug) }))), breadcrumbLd(crumbs)] };
   return (
     <MarketingPage>
       <JsonLd data={ld} />

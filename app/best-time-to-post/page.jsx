@@ -12,7 +12,7 @@ import { TRENDS_META } from '@/lib/best-time-trends';
 import { BEST_TIME_PLATFORMS, WEEKDAY_NAMES, bestWeekday, combineScores, countryBySlug, formatHour, scoreGrid, topHoursOfDay, topSlots } from '@/lib/best-time';
 import { REGIONS, formatHour24, formatOffset, offsetMinutes } from '@/lib/best-time-countries';
 import { BEST_TIME_ROOT, BLOG_GUIDES, DAYS_GUIDE, both, pagePath, socialPath } from '@/lib/best-time-pages';
-import { abs, breadcrumbLd, faqPageLd, pageMetadata } from '@/lib/seo-pages';
+import { abs, breadcrumbLd, faqPageLd, itemListLd, pageMetadata } from '@/lib/seo-pages';
 import { organizationLd } from '@/lib/seo';
 
 export const revalidate = 86400;
@@ -49,7 +49,7 @@ export default async function BestTimeIndex() {
   // Drawn from the committed Trends data: shown only while no platform has measured data worldwide.
   const figs = Object.values(all).every((d) => d.source === 'trends' || d.source === 'baseline') ? bestTimeIndexFigures() : [];
   const img = figuresLd(figs);
-  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'CollectionPage', '@id': `${abs(BEST_TIME_ROOT)}#webpage`, url: abs(BEST_TIME_ROOT), name: TITLE(), description: DESCRIPTION, inLanguage: 'en', ...img.primary }, ...img.nodes, breadcrumbLd(crumbs), faqPageLd(faq)] };
+  const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'CollectionPage', '@id': `${abs(BEST_TIME_ROOT)}#webpage`, url: abs(BEST_TIME_ROOT), name: TITLE(), description: DESCRIPTION, inLanguage: 'en', ...img.primary }, ...img.nodes, itemListLd('Best time to post by platform', BEST_TIME_PLATFORMS.map((p) => ({ name: `Best time to post on ${p.name}`, path: pagePath(p.slug) }))), breadcrumbLd(crumbs), faqPageLd(faq)] };
   return (
     <MarketingPage>
       <JsonLd data={ld} />

@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { hasSignedInHint } from '@/lib/signed-in-hint';
+import { signupHref } from '@/lib/cta';
 
 /** "Sign in" and "Start free", or "Open dashboard" for people who are already signed in. */
 export default function NavAuth({ className, hideClass, ctaClass }) {
@@ -11,7 +12,7 @@ export default function NavAuth({ className, hideClass, ctaClass }) {
   return (
     <>
       <Link href="/login" className={hideClass}>Sign in</Link>
-      <Link href="/signup" className={ctaClass}>Start free</Link>
+      <Link href={signupHref('nav')} className={ctaClass}>Start free</Link>
     </>
   );
 }

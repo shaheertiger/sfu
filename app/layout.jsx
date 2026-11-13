@@ -21,7 +21,8 @@ export const metadata = {
   icons: { icon: '/logos/schedule-for-you.svg', apple: '/apple-icon.png' },
   openGraph: { type: 'website', siteName: SITE_NAME, locale: 'en_US', title: TAGLINE, description: DESCRIPTION, url: '/' },
   twitter: { card: 'summary_large_image', title: TAGLINE, description: DESCRIPTION },
-  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
+  // max-image-preview on the generic tag too: Bing reads `robots`, not `googlebot`.
+  robots: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
   formatDetection: { telephone: false },
   verification: verification(),
 };

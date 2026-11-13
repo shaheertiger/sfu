@@ -12,6 +12,7 @@ import { PLATFORM_NAMES, relatedTools, toolBySlug } from '@/lib/tools/registry';
 import { abs, breadcrumbLd, faqPageLd, pageMetadata, toolPageLd } from '@/lib/seo-pages';
 import Article from '@/components/marketing/Article';
 import { organizationLd } from '@/lib/seo';
+import { signupHref } from '@/lib/cta';
 
 /**
  * Localized tool pages (/de/tools/<slug>) and platform pages (/de/instagram). The route files in
@@ -196,7 +197,7 @@ export function localizedPlatformRoute(locale) {
             <h1 className={m.h1}>{page.h1}</h1>
             {page.lead && <p className={m.lead}>{page.lead}</p>}
             <div className={m.ctaRow} style={{ justifyContent: 'center', marginTop: 22 }}>
-              <Link href="/signup" className={`${m.btn} ${m.btnPrimary}`}>{pageString(locale, 'trial')}</Link>
+              <Link href={signupHref('hero')} className={`${m.btn} ${m.btnPrimary}`}>{pageString(locale, 'trial')}</Link>
               <Link href="/pricing" className={m.btn}>{pageString(locale, 'pricing')}</Link>
             </div>
             <p className={m.meta}>{pageString(locale, 'trialNote')}</p>
