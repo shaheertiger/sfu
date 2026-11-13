@@ -57,7 +57,7 @@ In posts, X counts most emoji and CJK characters as two and every URL as 23. Our
 Your city and your link have dedicated fields. Moving them out of the bio frees space for a sentence about what you post.
 
 ### Handles and display names
-If you're rethinking your name too, the [X name generator](/tools/x-name-generator) suggests personal handles and the [X page name generator](/tools/x-page-name-generator) works for brand accounts. Whatever you pick, X's rules on [help.x.com](https://help.x.com) don't allow impersonation and require parody, commentary and fan accounts to say so clearly.
+If you're rethinking your name too, the [X name generator](/tools/x-name-generator) suggests handles and display names that fit X's username rules. Whatever you pick, X's rules on [help.x.com](https://help.x.com) don't allow impersonation and require parody, commentary and fan accounts to say so clearly.
 
 ## X bio ideas by niche
 

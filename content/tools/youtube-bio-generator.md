@@ -59,7 +59,7 @@ The channel description introduces the whole channel and rarely changes. Video d
 Basic info includes a Links section for your website and social profiles. Adding them there keeps your description focused on what the channel is about.
 
 ### Names and handles
-Still deciding what to call the channel? Try the [YouTube name generator](/tools/youtube-name-generator), or the [YouTube page name generator](/tools/youtube-page-name-generator) for brand channels.
+Still deciding what to call the channel? Try the [YouTube name generator](/tools/youtube-name-generator).
 
 ## Channel description ideas by niche
 

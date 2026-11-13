@@ -9,6 +9,33 @@ What was **not** available:
 
 Every count below comes from the code or the rendered HTML. Traffic impact is estimated from the playbook's case studies, not measured on our site.
 
+## Status (updated 13 Nov 2026)
+
+- **Week one: done.** The robots.txt fix, network count, post-ideas grammar, specs sibling links, the 8 fact conflicts, honest best-time copy, /methodology, visible "Updated" dates and Organization contact facts.
+- **Weeks 2–4 pruning: done.** The sitemap went from 1,234 to 722 URLs:
+  - **280 post-ideas weekday pages** now redirect (308) to `/post-ideas/{industry}#days`. Each industry page has a Monday-to-Sunday plan table instead.
+  - **25 post-ideas industries without clear demand** redirect to `/post-ideas`. The 15 kept are small business, real estate, restaurants, gyms, salons, nail salons, dentists, coffee shops, bakeries, boutiques, photographers, churches, nonprofits, ecommerce and personal trainers. This was a judgment call made without Search Console data; edit `RETIRED_INDUSTRIES` in `lib/retired-pages.mjs` to change it.
+  - **70 best-time weekday pages** redirect to `/best-time-to-post/{platform}#by-day`. The hub's by-day table already covers every day.
+  - **135 best-time country pages are noindexed (follow) and out of the sitemap:**
+    - the 5 countries that only have the starting baseline, on every platform
+    - Bluesky, Threads, Pinterest and Google Business in every country
+
+    The rule is `bestTimeIndexable()` in `lib/best-time-trends.js`.
+  - **Duplicate intents redirected:**
+    - `/buffer-alternative` → `/best-buffer-alternatives`
+    - `/tools/youtube-page-name-generator` → `/tools/youtube-name-generator`
+    - `/tools/x-page-name-generator` → `/tools/x-name-generator`
+
+    `name-generator` and `username-generator` were left alone: name-generator has es/fr translations and 19 inbound links.
+- **Still open from weeks 2–4:**
+  - the commercial pages rebuilt on the Slo template
+  - per-family sitemaps with honest lastmod
+  - IndexNow on deploy
+  - UTM on signup CTAs
+  - blog best-time retitles
+  - the specs-vs-blog owner decisions
+  - merging the Instagram followers posts
+
 ## Verdict in one paragraph
 
 The site gets the **page-level** mechanics mostly right. Titles carry the answer on the programmatic pages, every page has a FAQ in FAQPage schema, the answers are in the server HTML, the breadcrumbs work, every page is within 3 clicks of home, and canonicals are clean.

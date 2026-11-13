@@ -7,7 +7,7 @@ import { TRENDS_META, staticGrid, trendsCountries, trendsGlobalGrid, trendsGrid 
 import { STUDIES, studiesFor } from '../lib/best-time-countries.js';
 import { REGIONS, convertSlot, countryLocal, dstInfo, formatOffset, nearbyCountries, offsetMinutes } from '../lib/best-time-countries.js';
 import { SPEC_PLATFORMS, allSpecPages, specBySlug } from '../lib/specs.js';
-import { INDUSTRIES, TEMPLATES, allPostIdeaPages, fill, ideasFor, ideasForDay } from '../lib/post-ideas.js';
+import { INDUSTRIES, RETIRED_INDUSTRIES, TEMPLATES, allPostIdeaPages, fill, ideasFor, weekPlan } from '../lib/post-ideas.js';
 import { anonKey, nextUtcMidnight, utcDay } from '../lib/server/anon-cap.ts';
 
 test('timezones map to countries and unknown zones to nothing', () => {
@@ -40,11 +40,11 @@ test('pickGrid prefers region, then global, then baseline, by sample size', () =
   assert.equal(formatHour(13), '1 PM');
 });
 
-test('best-time pages: every platform × weekday × country, with copy that names the slot', () => {
+test('best-time pages: every platform × country, with copy that names the slot', () => {
   const pages = allBestTimePages();
-  assert.equal(pages.length, 10 * (1 + 7 + COUNTRIES.length) + COUNTRIES.length);
+  assert.equal(pages.length, 10 * (1 + COUNTRIES.length) + COUNTRIES.length);
   assert.ok(pages.some((p) => p.platform === 'social-media' && p.segment === 'in-singapore'));
-  assert.deepEqual(parseSegment('monday'), { kind: 'weekday', weekday: 1 });
+  assert.equal(parseSegment('monday'), null, 'weekday pages were folded into the platform hub');
   assert.equal(parseSegment('in-india')?.kind, 'country');
   assert.equal(parseSegment('in-nowhere'), null);
   const s = scoreGrid(baselineGrid('instagram'));
@@ -57,7 +57,7 @@ test('best-time pages: every platform × weekday × country, with copy that name
   assert.ok(faq.length >= 8, 'country pages get country questions on top of the general ones');
   assert.ok(faq.some((f) => /time zone/.test(f.q) && /UTC\+5:30 all year/.test(f.a)));
   assert.ok(pageFaq({ platform: 'instagram', segment: '' }).length >= 4);
-  assert.equal(siblingLinks('instagram', 'monday').days[1].current, true);
+  assert.equal(siblingLinks('instagram', 'in-india').countries.find((c: any) => c.current)?.label, 'India');
   assert.equal(pageCopy({ platform: 'nope', segment: '', best, bestDay: 0, source: 'baseline', posts: 0 }), null);
 });
 
@@ -79,10 +79,12 @@ test('post ideas: every template placeholder is filled for every industry', () =
     for (const t of TEMPLATES) assert.doesNotMatch(fill(t.text, ind), /\{\w+\}/, `${ind.slug}: ${t.text}`);
     assert.equal(ideasFor(ind).length, TEMPLATES.length);
   }
-  const day = ideasForDay(INDUSTRIES[0], 'tuesday');
-  assert.equal(day.angle.hook, 'Tip Tuesday');
-  assert.ok(day.angle.types.includes(day.ideas[0].type), 'weekday types come first');
-  assert.equal(allPostIdeaPages().length, INDUSTRIES.length * 8);
+  const plan = weekPlan(INDUSTRIES[0]);
+  assert.equal(plan.length, 7);
+  assert.equal(plan[2].angle.hook, 'Tip Tuesday');
+  assert.ok(plan.every((d) => d.idea && d.angle.types[0] === d.idea.type), 'each day suggests a post of its first type');
+  assert.equal(allPostIdeaPages().length, INDUSTRIES.length, 'one page per industry; weekday pages redirect');
+  assert.ok(!INDUSTRIES.some((i) => RETIRED_INDUSTRIES.includes(i.slug)));
 });
 
 test('anonymous cap keys change with visitor, tool and day and never contain the IP', () => {

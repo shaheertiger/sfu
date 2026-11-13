@@ -157,7 +157,7 @@ Where we're not the best fit: it doesn't include analytics or a social inbox, so
 
 ![Bulk scheduling in Schedule For You, where a batch of media files or a CSV becomes posts on the paid plans](/images/blog/bulk-schedule-1440x900.webp)
 
-See [pricing](/pricing) for details, or compare it as a [Buffer alternative](/buffer-alternative), [Later alternative](/later-alternative) or [Postiz alternative](/postiz-alternative).
+See [pricing](/pricing) for details, or compare it with the [best Buffer alternatives](/best-buffer-alternatives), [Later alternative](/later-alternative) or [Postiz alternative](/postiz-alternative).
 
 ## How to Choose for a Small Business (5 Steps)
 

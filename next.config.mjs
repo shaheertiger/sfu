@@ -1,4 +1,5 @@
 import CDN from './lib/figures-cdn.json' with { type: 'json' };
+import { RETIRED_REDIRECTS } from './lib/retired-pages.mjs';
 
 /** @type {import('next').NextConfig} */
 const securityHeaders = [
@@ -32,6 +33,10 @@ const nextConfig = {
         { source: `/images/figures/:family([\\w-]+)/${file}`, destination: `${base}/images/figures/:family/:file` },
       ],
     };
+  },
+  // Pages folded into others by the November 2026 SEO pruning (lib/retired-pages.mjs). 308, permanent.
+  async redirects() {
+    return RETIRED_REDIRECTS.map((r) => ({ ...r, permanent: true }));
   },
   async headers() {
     return [

@@ -9,7 +9,7 @@ import m from '@/components/marketing/marketing.module.css';
 import s from '@/components/marketing/best-time.module.css';
 import { getBestTimeAllPlatforms } from '@/lib/server/best-time';
 import { TRENDS_META } from '@/lib/best-time-trends';
-import { BEST_TIME_PLATFORMS, WEEKDAY_NAMES, bestWeekday, combineScores, countryBySlug, formatHour, scoreGrid, topSlots } from '@/lib/best-time';
+import { BEST_TIME_PLATFORMS, WEEKDAY_NAMES, bestWeekday, combineScores, countryBySlug, formatHour, scoreGrid, topHoursOfDay, topSlots } from '@/lib/best-time';
 import { REGIONS, formatHour24, formatOffset, offsetMinutes } from '@/lib/best-time-countries';
 import { BEST_TIME_ROOT, BLOG_GUIDES, DAYS_GUIDE, both, pagePath, socialPath } from '@/lib/best-time-pages';
 import { abs, breadcrumbLd, faqPageLd, pageMetadata } from '@/lib/seo-pages';
@@ -94,10 +94,14 @@ export default async function BestTimeIndex() {
 
           <section className={m.section}>
             <h2 id="by-day">Best Time to Post by Day of the Week</h2>
-            <p>Every platform also has a page per weekday with all 24 hours ranked. Start with the platform you post to most:</p>
-            <ul className={s.chips}>
-              {BEST_TIME_PLATFORMS.slice(0, 4).flatMap((p) => WEEKDAY_NAMES.slice(1, 6).map((d) => <li key={`${p.slug}-${d}`}><Link href={pagePath(p.slug, d.toLowerCase())} className={s.chip}>{p.name} on {d}</Link></li>))}
-            </ul>
+            <p>The three strongest hours for each day with all {rows.length} platforms combined, in your local time. Each platform's page has the same table for that platform alone, for example <Link href={`${pagePath('instagram')}#by-day`}>Instagram by day</Link> or <Link href={`${pagePath('linkedin')}#by-day`}>LinkedIn by day</Link>.</p>
+            <Table
+              head={['Day', 'Best time', '24-hour', 'Also good']}
+              rows={WEEKDAY_NAMES.map((name, d) => {
+                const hours = topHoursOfDay(scores, d, 3);
+                return [`${name}${d === bestDay ? ' (best day)' : ''}`, formatHour(hours[0].hour), formatHour24(hours[0].hour), hours.slice(1).map((h) => formatHour(h.hour)).join(', ')];
+              })}
+            />
           </section>
 
           <section className={m.section}>

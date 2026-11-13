@@ -233,7 +233,7 @@ test('every image referenced in content, components or the figure inventory exis
 
 test('every programmatic page has its figures, with full-sentence alt text and sizes in the file name', () => {
   const pages = allProgrammaticFigures();
-  assert.ok(pages.length > 500);
+  assert.ok(pages.length > 400, `only ${pages.length} pages`);
   for (const { page, figures } of pages) {
     assert.ok(figures.length >= 1, `${page}: no figure`);
     for (const f of figures) {

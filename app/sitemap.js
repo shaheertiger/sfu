@@ -7,8 +7,9 @@ import { allLocalizedPages, hreflangMap } from '@/lib/i18n-pages';
 import { BEST_TIME_ROOT, allBestTimePages, pagePath as bestTimePath } from '@/lib/best-time-pages';
 import { SPECS_ROOT, SPEC_PLATFORMS, allSpecPages, specPath } from '@/lib/specs';
 import { NOTIFY_PLATFORMS, NOTIFY_ROOT, allNotifyPages, notifyPath } from '@/lib/notify';
-import { INDUSTRIES, POST_IDEAS_ROOT, allPostIdeaPages, postIdeasPath } from '@/lib/post-ideas';
+import { POST_IDEAS_ROOT, allPostIdeaPages, postIdeasPath } from '@/lib/post-ideas';
 import { allProgrammaticFigures, markdownImages } from '@/lib/figures';
+import { bestTimeIndexable } from '@/lib/best-time-trends';
 
 /** Public pages worth indexing. Signed-in pages, previews and utility pages are left out on purpose. */
 export default function sitemap() {
@@ -41,7 +42,7 @@ export default function sitemap() {
     { url: `${base}/blog`, lastModified: latest(posts), changeFrequency: 'weekly', priority: 0.7 },
     ...posts.map((p) => ({ url: `${base}/blog/${p.slug}`, lastModified: p.updated || p.date, changeFrequency: 'monthly', priority: 0.6, ...alternates('blog', p.slug), ...mdImages('blog', p.slug) })),
     { url: `${base}${BEST_TIME_ROOT}`, changeFrequency: 'daily', priority: 0.8, ...images(BEST_TIME_ROOT) },
-    ...allBestTimePages().map((p) => ({ url: `${base}${bestTimePath(p.platform, p.segment)}`, changeFrequency: 'daily', priority: p.segment ? 0.6 : 0.8, ...images(bestTimePath(p.platform, p.segment)) })),
+    ...allBestTimePages().filter((p) => bestTimeIndexable(p.platform, p.segment)).map((p) => ({ url: `${base}${bestTimePath(p.platform, p.segment)}`, changeFrequency: 'daily', priority: p.segment ? 0.6 : 0.8, ...images(bestTimePath(p.platform, p.segment)) })),
     { url: `${base}${SPECS_ROOT}`, changeFrequency: 'monthly', priority: 0.7, ...images(SPECS_ROOT) },
     ...SPEC_PLATFORMS.map((p) => ({ url: `${base}${specPath(p.slug)}`, changeFrequency: 'monthly', priority: 0.7, ...images(specPath(p.slug)) })),
     ...allSpecPages().map((p) => ({ url: `${base}${specPath(p.platform, p.spec)}`, changeFrequency: 'monthly', priority: 0.6, ...images(specPath(p.platform, p.spec)) })),
@@ -49,7 +50,7 @@ export default function sitemap() {
     ...NOTIFY_PLATFORMS.map((p) => ({ url: `${base}${notifyPath(p.slug)}`, changeFrequency: 'monthly', priority: 0.7, ...images(notifyPath(p.slug)) })),
     ...allNotifyPages().map((p) => ({ url: `${base}${notifyPath(p.platform, p.action)}`, changeFrequency: 'monthly', priority: 0.6, ...images(notifyPath(p.platform, p.action)) })),
     { url: `${base}${POST_IDEAS_ROOT}`, changeFrequency: 'monthly', priority: 0.7 },
-    ...allPostIdeaPages().map((p) => ({ url: `${base}${postIdeasPath(p.industry, p.weekday)}`, changeFrequency: 'monthly', priority: p.weekday ? 0.5 : 0.6 })),
+    ...allPostIdeaPages().map((p) => ({ url: `${base}${postIdeasPath(p.industry)}`, changeFrequency: 'monthly', priority: 0.6 })),
     { url: `${base}/compare`, changeFrequency: 'monthly', priority: 0.5 },
     ...getComparisons().map((c) => ({ url: `${base}/compare/${c.aSlug}/${c.bSlug}`, lastModified: c.updated || c.date, changeFrequency: 'monthly', priority: 0.6 })),
   ];
