@@ -1,12 +1,12 @@
 ---
-title: "How to Schedule LinkedIn Posts: The Free Native Way"
+title: "Schedule LinkedIn Posts Free, Up to 3 Months Ahead"
 description: How to schedule LinkedIn posts on a profile or company page with LinkedIn's free scheduler, its 3-month limit, and how to schedule several profiles from one calendar.
-h1: "How to Schedule LinkedIn Posts: The Free Native Way, and Where It Breaks for Teams"
+h1: "How to Schedule LinkedIn Posts: Free, Up to 3 Months Ahead, and Where It Breaks for Teams"
 category: LinkedIn
 excerpt: LinkedIn has a free built-in scheduler for profiles and company pages, up to about three months ahead. How to use it, where it gets awkward with several people, and how to plan a team's posts in one place.
 keyword: how to schedule linkedin posts
 date: 2026-10-28
-updated: 2026-11-04
+updated: 2026-11-13
 ---
 You've written a strong LinkedIn post at 10 p.m. and you'd rather it went out at 8 tomorrow morning. To schedule a LinkedIn post, click **Start a post**, write it, click the **clock icon** next to the Post button, pick a date and time, click **Next** and then **Schedule**. It works on your profile and any company page you manage, up to about three months ahead at the time of writing.
 

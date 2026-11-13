@@ -7,6 +7,7 @@ excerpt: TikTok came out internationally in September 2017, a year after its Chi
 keyword: when did tiktok come out
 date: 2026-10-28
 updated: 2026-11-04
+noindex: true
 ---
 You remember TikTok arriving around 2018, but you've seen 2016 and 2017 quoted too. TikTok came out in **September 2017**, when ByteDance launched it outside China. **ByteDance** had launched the Chinese version, **Douyin**, a year earlier in September 2016.
 

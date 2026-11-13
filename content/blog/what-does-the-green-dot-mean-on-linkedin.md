@@ -7,6 +7,7 @@ excerpt: A solid green dot on LinkedIn means the person is active right now. Wha
 keyword: what does the green dot mean on linkedin
 date: 2026-10-23
 updated: 2026-11-04
+noindex: true
 ---
 You sent a message, the person has a green dot on their photo, and there's no reply. A solid green dot on LinkedIn means the person is **active on LinkedIn right now**. It's part of LinkedIn's **Active Status** feature, which shows who's online so you know when a message is likely to get a quick reply. A hollow green circle generally means they aren't active at the moment but can still be reached, often on the mobile app.
 

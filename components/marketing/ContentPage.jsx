@@ -7,7 +7,7 @@ import m from './marketing.module.css';
 import { getComparisons, getContentPage, renderMarkdown } from '@/lib/content';
 import { LANDING_PAGES } from '@/lib/landing-pages';
 import { FREE, PLANS, organizationLd, softwareLd } from '@/lib/seo';
-import { abs, breadcrumbLd, faqPageLd, pageMetadata } from '@/lib/seo-pages';
+import { abs, breadcrumbLd, faqPageLd, listItemsLd, pageMetadata } from '@/lib/seo-pages';
 import { signupHref } from '@/lib/cta';
 
 /** Metadata for a standalone page in content/pages. */
@@ -144,7 +144,7 @@ function LegalPage({ slug, page }) {
   ];
   return (
     <MarketingPage>
-      <JsonLd data={{ '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'WebPage', url: abs(path), name: page.title, description: page.description, inLanguage: 'en', ...(page.updated ? { dateModified: page.updated } : {}) }, breadcrumbLd(crumbs)] }} />
+      <JsonLd data={{ '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'WebPage', url: abs(path), name: page.title, description: page.description, inLanguage: 'en', ...(page.updated ? { dateModified: page.updated } : {}) }, ...(page.listItems?.length >= 3 ? [listItemsLd(page)] : []), breadcrumbLd(crumbs)] }} />
       <div className={m.container}>
         <Breadcrumbs items={crumbs} />
         <header className={m.hero} style={{ textAlign: 'left', maxWidth: 760, margin: '0 auto' }}>

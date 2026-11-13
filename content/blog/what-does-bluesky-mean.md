@@ -7,6 +7,7 @@ excerpt: "Blue sky" means open, unconstrained or speculative, as in blue-sky thi
 keyword: what does blue sky mean
 date: 2026-10-28
 updated: 2026-11-04
+noindex: true
 ---
 You've heard someone call an idea "blue sky", or you've seen friends move to an app called Bluesky, and you want to know what the words actually mean.
 

@@ -12,6 +12,8 @@ You need to manage a few social accounts and you'd rather not pay for it. The fr
 
 ![Free social media management tools in three groups: native schedulers, open-source software and browser utilities](/images/blog/free-social-media-management-tools-hero-1200x675.webp)
 
+> **Disclosure:** we make Schedule For You, one of the tools on this page. We hold it to the same test as the others and say where another tool is the better fit.
+
 Free plans of commercial tools exist too, but their limits change often, so treat them as a fourth, less predictable option. The catch with every free route is the same: each one covers only part of the job, and the gaps cost time.
 
 This guide walks through all seven options, what each does well, the risky "free" apps to avoid, and the point where a free setup starts costing you more in time than a paid tool would.

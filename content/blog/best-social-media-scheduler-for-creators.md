@@ -14,6 +14,8 @@ The best social media scheduler for creators is the one that publishes your vide
 
 ![The best social media scheduler for creators publishes video natively, tailors captions and alerts you when a post fails](/images/blog/best-social-media-scheduler-for-creators-hero-1200x675.webp)
 
+> **Disclosure:** we make Schedule For You, one of the tools on this page. We hold it to the same test as the others and say where another tool is the better fit.
+
 The hard part is that most schedulers look identical on their pricing pages. The differences show up in the details: whether a "scheduled" Reel really posts itself, and what happens when a connection expires.
 
 This guide covers what creators need from a scheduler, the five checks to run before paying, the main types of tools, and how to match one to the way you work.

@@ -1,12 +1,12 @@
 ---
-title: If I Unarchive a Post, Does It Notify Tagged People?
+title: "If I Unarchive a Post, Does It Notify Anyone? No (Read First)"
 description: If you unarchive an Instagram post, does it notify tagged people? How to archive and unarchive posts, where the Archive lives, and how to stay quiet about it.
-h1: "If I Unarchive a Post, Does It Notify Tagged People? Do This First"
+h1: "If I Unarchive a Post, Does It Notify Anyone? No, but Do This First"
 category: Instagram
 excerpt: Archiving hides a post without deleting it, and unarchiving puts it back in its original spot. Here's how both work, who sees what, and the one step that keeps tagged people out of it.
 keyword: if i unarchive a post does it notify tagged
 date: 2026-10-23
-updated: 2026-11-04
+updated: 2026-11-13
 ---
 You archived an old Instagram post, maybe one with an ex, a former colleague or a client, and now you want it back without anyone noticing. When you unarchive a post, it returns to its original place on your profile, by its original date, and at the time of writing Instagram doesn't send your followers a new notification about it.
 

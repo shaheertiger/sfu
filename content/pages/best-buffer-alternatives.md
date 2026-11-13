@@ -10,6 +10,8 @@ date: 2026-10-28
 ---
 The best Buffer alternative depends on why you're leaving. If Buffer's per-channel price is the problem, a flat plan such as SocialBee, Later or Schedule For You costs less once you pass about five accounts. If you need a social inbox, listening and reporting for a team, Hootsuite and Sprout Social are built for that and cost far more. For visual Instagram planning, look at Later; for evergreen recycling, SocialBee; for scheduling plus client reports, Metricool.
 
+> **Disclosure:** we make Schedule For You, one of the tools on this page. We hold it to the same test as the others and say where another tool is the better fit.
+
 *Prices checked October 2026 from vendors' published plans and recent pricing reviews. They change often, are in US dollars before tax, and some vendors only publish annual rates, so confirm on each vendor's pricing page before you buy.*
 
 ## What Buffer costs, and when it's still the right tool

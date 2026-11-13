@@ -1,12 +1,12 @@
 ---
-title: "How to Go Live on TikTok: 5 Taps, If You Meet 3 Rules"
+title: "Go Live on TikTok: 1,000 Followers, 18+, Then 5 Taps"
 description: How to go live on TikTok from your phone or computer, how many followers you need, the age rules, streaming from a PS5, ending a LIVE on PC, and LIVE rules.
-h1: "How to Go Live on TikTok: 5 Taps, If You Meet 3 Rules (Followers, Age, Standing)"
+h1: "How to Go Live on TikTok: 1,000 Followers, Age 18+, Then 5 Taps"
 category: TikTok
 excerpt: Tap +, swipe to LIVE, add a title and tap Go LIVE. Most accounts need about 1,000 followers and must be 18 or older, and you can also stream from a computer or console.
 keyword: how to go live on tiktok
 date: 2026-10-28
-updated: 2026-11-04
+updated: 2026-11-13
 ---
 You've planned your first stream, opened TikTok, and there's no LIVE button anywhere. To go live on TikTok, tap **+** at the bottom of the app, swipe along the bottom menu to **LIVE**, add a title and a cover, and tap **Go LIVE**. At the time of writing, most accounts need about **1,000 followers** and must be **18 or older** to see the LIVE option, and the account has to be in good standing.
 

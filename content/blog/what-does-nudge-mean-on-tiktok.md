@@ -7,6 +7,7 @@ excerpt: A nudge is TikTok's version of a poke. In messages it reminds someone t
 keyword: what does nudge mean on tiktok
 date: 2026-10-28
 updated: 2026-11-04
+noindex: true
 ---
 A pointing-finger emoji just appeared in one of your TikTok chats, or a notification says someone "nudged" you, and you're not sure whether you're meant to reply.
 

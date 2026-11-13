@@ -12,6 +12,8 @@ You want your posts to go out on time without paying for another subscription. T
 
 ![The best free social media schedulers are built into each platform, but each one only schedules to itself](/images/blog/best-free-social-media-schedulers-hero-1200x675.webp)
 
+> **Disclosure:** we make Schedule For You, one of the tools on this page. We hold it to the same test as the others and say where another tool is the better fit.
+
 The catch is that each one only schedules to its own platform. Post to five networks and you schedule the same post five times, in five tools.
 
 This guide covers what each native scheduler can do, the gaps they all share, a weekly routine that makes the free route work, and when a multi-platform tool starts to save you time. If you want the wider picture of free inboxes and utilities, see our guide to [free social media management tools](/blog/free-social-media-management-tools).

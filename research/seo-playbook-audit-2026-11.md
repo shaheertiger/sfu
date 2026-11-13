@@ -27,14 +27,27 @@ Every count below comes from the code or the rendered HTML. Traffic impact is es
     - `/tools/x-page-name-generator` → `/tools/x-name-generator`
 
     `name-generator` and `username-generator` were left alone: name-generator has es/fr translations and 19 inbound links.
-- **Still open from weeks 2–4:**
-  - the commercial pages rebuilt on the Slo template
-  - per-family sitemaps with honest lastmod
-  - IndexNow on deploy
-  - UTM on signup CTAs
-  - blog best-time retitles
-  - the specs-vs-blog owner decisions
-  - merging the Instagram followers posts
+- **Technical batch: done** in [shaheertiger/sfu#87](https://github.com/shaheertiger/sfu/pull/87).
+  - Sitemaps are split per family and per language, with honest lastmod.
+  - IndexNow runs on every green push to main, sending only changed pages.
+  - New structured data: Dataset on specs pages, ItemList on hubs, HowTo on 57 tool pages.
+  - The hero card is the article image and og:image, and loads eagerly.
+  - Homepage og:title is fixed, `max-image-preview` is on the generic robots tag, and /demo is noindex.
+  - Sign-up links carry UTM placement tags.
+- **Content batch: done.**
+  - 9 fact posts are retitled answer-first.
+  - The unfollowers tool has its own title, so it no longer competes with the blog post.
+  - 9 off-product trivia posts are `noindex: true` and out of the sitemap.
+  - 20 guide ↔ reference pairs link both ways (`lib/guide-links.js`): specs and notify pages show "Full guide", and blog posts show "Quick reference".
+  - `/specs` is rebuilt as the "Social Media Image Sizes" hub: a quick answer, an all-platform table, one question H2 per platform, and Dataset data.
+  - All 8 "best X" pages have an ownership disclosure and ItemList data.
+- **Still open, and why:**
+  - **Rebuilding the "best X" pages on the full Slo template.** This needs competitor prices checked and dated by hand.
+  - **The best-time blog vs hub owner decision.** It needs Search Console data on which page ranks today.
+  - **Merging the 6 downloader posts and fact-checking the 31 "2026" titles.** Both are editorial work.
+  - **Varying the repeated house headings.** This would mean rewriting 187 posts.
+  - **Per-locale `<html lang>`.** The root layout would have to be split per locale.
+  - **The legal company name and the people on the About page.** These facts aren't in the repo.
 
 ## Verdict in one paragraph
 

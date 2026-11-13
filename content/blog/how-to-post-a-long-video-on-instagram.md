@@ -1,12 +1,12 @@
 ---
-title: "How to Post a Long Video on Instagram: 4 Ways Past the Reel Limit"
+title: "Long Video on Instagram: 3-Minute Reel Limit, 4 Workarounds"
 description: How to post a long video on Instagram when it's over the Reel limit: trim it, split it into parts, use a carousel, or post a teaser and link the full version.
-h1: "How to Post a Long Video on Instagram: 4 Ways Past the Reel Limit"
+h1: "How to Post a Long Video on Instagram: The 3-Minute Reel Limit and 4 Ways Past It"
 category: Instagram
 excerpt: Instagram caps Reel length, so long videos need a plan: trim to fit, split into numbered parts, use a carousel, or post a teaser and link to the full version on YouTube.
 keyword: how to post a long video on instagram
 date: 2026-10-23
-updated: 2026-11-04
+updated: 2026-11-13
 ---
 You've got a 10-minute tutorial and Instagram keeps opening the trim bar. To post a long video on Instagram, first check whether it fits the current Reel limit: at the time of writing, most accounts can upload Reels of up to 3 minutes in the app. If your video is longer, you have four practical options: trim it, split it into numbered parts, use a carousel of short clips, or post a teaser and send people to the full version on YouTube.
 
