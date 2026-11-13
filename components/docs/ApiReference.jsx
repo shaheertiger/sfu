@@ -224,7 +224,7 @@ export default function ApiReference({ crumbs }) {
           <header className={s.header}>
             <span className={s.eyebrow}>API reference · v1</span>
             <h1 className={s.h1}>Schedule For You API</h1>
-            <p className={s.lead}>Create, schedule and publish posts to ten social platforms from your own code, upload media, and get a signed webhook when each post goes out.</p>
+            <p className={s.lead}>Create, schedule and publish posts to nine social platforms from your own code, upload media, and get a signed webhook when each post goes out.</p>
           </header>
 
           <section id="introduction" className={s.section}>

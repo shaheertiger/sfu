@@ -1,5 +1,5 @@
 import { siteUrl } from '@/lib/site';
-import { ROBOTS_DISALLOW } from '@/lib/md/identity';
+import { robotsDisallowRules } from '@/lib/md/identity';
 
 export const dynamic = 'force-static';
 
@@ -21,7 +21,7 @@ const MARKDOWN_TWINS = '/*.md$';
 
 function build() {
   const base = siteUrl();
-  const rules = (agent, extra = []) => [`User-Agent: ${agent}`, 'Allow: /', ...[...ROBOTS_DISALLOW, ...extra].map((p) => `Disallow: ${p}`), ''];
+  const rules = (agent, extra = []) => [`User-Agent: ${agent}`, 'Allow: /', ...[...robotsDisallowRules(), ...extra].map((p) => `Disallow: ${p}`), ''];
   return [
     '# robots.txt for scheduleforyou.com. Keep in sync with /llms.txt and /ai.txt (lib/md/identity.js).',
     `# Site map for language models: ${base}/llms.txt`,

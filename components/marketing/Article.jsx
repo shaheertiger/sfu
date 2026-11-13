@@ -26,7 +26,9 @@ export default function Article({ post, path, crumbs, related = [], tools = [], 
           <h1 className={m.h1}>{post.h1}</h1>
           {post.excerpt && <p className={m.lead}>{post.excerpt}</p>}
           <p className={m.meta}>
-            <time dateTime={post.date}>{dateLabel(post.date, locale)}</time> · {t('readMinutes', { n: post.readingMinutes })} · {t('byTeam')}
+            {post.updated && post.updated > post.date
+              ? <>{t('updated', { date: '' })}<time dateTime={post.updated}>{dateLabel(post.updated, locale)}</time></>
+              : <time dateTime={post.date}>{dateLabel(post.date, locale)}</time>} · {t('readMinutes', { n: post.readingMinutes })} · {t('byTeam')}
           </p>
         </header>
         <div className={m.articleGrid}>

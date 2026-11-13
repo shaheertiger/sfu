@@ -111,10 +111,11 @@ export default function BestTimePage({ page, segment }) {
                 <p className={s.source}>Source: hourly Wikipedia traffic from {local.name}'s local-language Wikipedia (Wikimedia, CC0, past 28 days), showing when people there are online, combined with {platform.name}'s hourly search pattern from Google Trends in the {TRENDS_META.countryCount} countries we measure directly. Local time. Refreshed {TRENDS_META.fetchedAt}; direct Google Trends data, then our own scheduling data, replace it automatically.</p>
               ) : <p className={s.source}>Source: Google Trends hourly search interest in {platform.name}{local ? ` from ${local.name}` : `, averaged across the ${TRENDS_META.countryCount} countries we have Trends data for so far`}{data.trendsKind === 'country' ? ' (country average: too few searches for this platform alone)' : ''}, weighted by hourly Wikipedia traffic (Wikimedia, CC0) so the hours reflect how many people are online. Local time. Refreshed {TRENDS_META.fetchedAt}; our own scheduling data replaces it automatically once there is enough of it.</p>
             ) : data.source === 'baseline' ? (
-              <p className={s.source}>Source: our published baseline (weekday mornings and lunch strongest, evenings next, weekends later and flatter), shown until Google Trends data or enough posts scheduled through Schedule For You are available{local ? ` for ${local.name}` : ''}. It switches automatically.</p>
+              <p className={s.source}>Source: a starting baseline, not measured data (weekday mornings and lunch strongest, evenings next, weekends later and flatter), shown until Google Trends data or enough posts scheduled through Schedule For You are available{local ? ` for ${local.name}` : ''}. It switches automatically. Treat these times as a first test, not a finding.</p>
             ) : (
               <p className={s.source}>Source: posts scheduled through Schedule For You, counted per local weekday and hour; the busiest slots with the best link clicks per post score highest. No individual account data is shown. <Link href="/privacy">How we handle data</Link>.</p>
             )}
+            <p className={s.source}><Link href="/methodology#best-time">How we collect and check this data</Link></p>
           </div>
         </section>
 

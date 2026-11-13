@@ -4,6 +4,7 @@ import { PLATFORM_PAGES } from '@/lib/platform-pages';
 import { LANDING_PAGES } from '@/lib/landing-pages';
 import NavAuth from './NavAuth';
 import { pageString } from '@/lib/i18n';
+import { CONTACT_EMAIL } from '@/lib/md/identity';
 
 /** Header, footer and breadcrumbs shared by the tools, blog and comparison pages. Server components. */
 
@@ -69,6 +70,7 @@ const FOOTER = [
     title: 'Product',
     links: [
       ['/about', 'About'],
+      ['/methodology', 'How we check our data'],
       ['/pricing', 'Pricing'],
       ...LANDING_PAGES.filter((p) => p.group === 'Product' && p.slug !== 'pricing').map((p) => [`/${p.slug}`, p.name]),
       ['/docs', 'API reference'],
@@ -90,7 +92,7 @@ export function SiteFooter() {
               <img src="/logos/schedule-for-you-glyph.svg" alt="" width="22" height="22" />
               <span>schedule for you</span>
             </Link>
-            <p style={{ marginTop: 12, lineHeight: 1.55 }}>Write one post, tailor it per platform and publish to ten networks from one queue.</p>
+            <p style={{ marginTop: 12, lineHeight: 1.55 }}>Write one post, tailor it per platform and publish to nine networks from one queue.</p>
           </div>
           {FOOTER.map((col) => (
             <div key={col.title}>
@@ -105,7 +107,7 @@ export function SiteFooter() {
             </div>
           ))}
         </div>
-        <p className={m.footNote}>© 2026 Schedule For You · <Link href="/privacy">Privacy Policy</Link> · <Link href="/terms">Terms of Service</Link> · <Link href="/data-deletion">Data deletion</Link>. Platform names are trademarks of their owners; Schedule For You is not affiliated with them.</p>
+        <p className={m.footNote}>© 2026 Schedule For You, operated from Ontario, Canada · <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> · <Link href="/privacy">Privacy Policy</Link> · <Link href="/terms">Terms of Service</Link> · <Link href="/data-deletion">Data deletion</Link>. Platform names are trademarks of their owners; Schedule For You is not affiliated with them.</p>
       </div>
     </footer>
   );

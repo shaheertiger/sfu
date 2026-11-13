@@ -4,7 +4,7 @@ import JsonLd from '@/components/JsonLd';
 import { Breadcrumbs, MarketingPage, TrialCta } from '@/components/marketing/Chrome';
 import m from '@/components/marketing/marketing.module.css';
 import s from '@/components/marketing/best-time.module.css';
-import { SPECS_ROOT, SPECS_VERIFIED, SPEC_PLATFORMS, sizePresetFor, specPath } from '@/lib/specs';
+import { SPECS_ROOT, SPECS_VERIFIED, SPEC_PLATFORMS, equivalentSpec, sizePresetFor, specPath } from '@/lib/specs';
 import { TOOLS } from '@/lib/tools/registry';
 import { abs, breadcrumbLd, faqPageLd } from '@/lib/seo-pages';
 import { organizationLd } from '@/lib/seo';
@@ -47,7 +47,7 @@ export default function SpecPage({ platform, spec }) {
   const resizer = TOOLS.find((t) => t.kind === 'resizer' && t.platform === platform.id);
   const counter = TOOLS.find((t) => t.kind === 'counter' && t.platform === platform.id);
   const siblings = platform.specs.filter((x) => x.slug !== spec.slug);
-  const others = SPEC_PLATFORMS.filter((p) => p.slug !== platform.slug).map((p) => ({ p, s: p.specs.find((x) => x.kind === spec.kind) })).filter((x) => x.s);
+  const others = SPEC_PLATFORMS.filter((p) => p.slug !== platform.slug).map((p) => ({ p, s: equivalentSpec(p, spec) })).filter((x) => x.s);
   const figs = specFigures(platform.slug, spec.slug);
   const img = figuresLd(figs);
   const ld = { '@context': 'https://schema.org', '@graph': [organizationLd(), { '@type': 'WebPage', '@id': `${abs(path)}#webpage`, url: abs(path), name: copy.title, description: copy.description, inLanguage: 'en', dateModified: SPECS_VERIFIED, ...img.primary }, ...img.nodes, breadcrumbLd(crumbs), faqPageLd(faq)] };
@@ -79,7 +79,7 @@ export default function SpecPage({ platform, spec }) {
                 {spec.rows.map((r) => <tr key={r[0]}><td>{r[0]}</td><td>{r[1]}{r[2] ? ` ${r[2]}` : ''}</td></tr>)}
               </tbody></table>
             </div>
-            <p>Source: {platform.name} help pages and the limits Schedule For You applies when publishing. Last verified {SPECS_VERIFIED}. <Link href="/docs">Report a change</Link>.</p>
+            <p>Source: {platform.name} help pages and the limits Schedule For You applies when publishing. Last verified {SPECS_VERIFIED}. <Link href="/methodology#specs">How we check</Link> · <Link href="/docs">Report a change</Link>.</p>
           </section>
           {(preset || resizer || counter) && (
             <section className={m.section}>

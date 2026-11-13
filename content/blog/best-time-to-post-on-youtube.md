@@ -6,13 +6,15 @@ category: YouTube
 excerpt: Publish YouTube videos two to three hours before your audience's peak, usually early afternoon on weekdays and mornings at weekends. Here's the pattern by day, the Shorts difference, and how to find your own time.
 keyword: best time to post on youtube
 date: 2026-10-26
-updated: 2026-11-04
+updated: 2026-11-13
 ---
 You've finished the edit, the thumbnail is ready, and now you're hovering over the Publish button wondering if 9 PM on a Tuesday is a mistake. The best time to post on YouTube is **two to three hours before your audience's peak viewing time**. For most channels that means **early afternoon on weekdays (around 1 to 4 PM in your audience's time zone)** and **mornings on Saturday and Sunday**.
 
 ![Best time to post on YouTube: two to three hours before your viewers peak, weekday afternoons and weekend mornings for most channels](/images/blog/best-time-to-post-on-youtube-hero-1200x675.webp)
 
 The lead time matters because YouTube needs a little while to process a new video and start recommending it, so publishing just before the peak catches the wave instead of chasing it.
+
+Our [hour-by-hour YouTube heatmap](/best-time-to-post/youtube) shows when viewing activity peaks. Use it the same way: publish two to three hours before the peak it shows, not at the peak itself.
 
 General charts only get you close. The precise answer for your channel is in YouTube Studio, and this guide shows where to find it, how Shorts differ, and how to keep a schedule once you've picked a slot.
 

@@ -56,7 +56,7 @@ export default function NotifyPage({ platform, action }) {
                 <tr><td>Do they get a notification?</td><td><Pill answer={entry.answer} /></td></tr>
                 <tr><td>What is visible to them</td><td>{entry.sees}</td></tr>
                 <tr><td>How to be sure</td><td>{entry.sure}</td></tr>
-                <tr><td>Last checked</td><td>{NOTIFY_VERIFIED}</td></tr>
+                <tr><td>Last checked</td><td>{NOTIFY_VERIFIED} against {platform.name}'s help center (<Link href="/methodology#does-it-notify">how we check</Link>)</td></tr>
               </tbody></table>
             </div>
           </section>

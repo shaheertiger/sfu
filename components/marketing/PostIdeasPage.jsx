@@ -4,7 +4,7 @@ import JsonLd from '@/components/JsonLd';
 import { Breadcrumbs, MarketingPage, TrialCta } from '@/components/marketing/Chrome';
 import m from '@/components/marketing/marketing.module.css';
 import s from '@/components/marketing/best-time.module.css';
-import { INDUSTRIES, POST_IDEAS_ROOT, WEEKDAYS, WEEKDAY_NAMES, ideasFor, ideasForDay, postIdeasPath } from '@/lib/post-ideas';
+import { INDUSTRIES, POST_IDEAS_ROOT, WEEKDAYS, WEEKDAY_NAMES, ideasFor, ideasForDay, industryOne, industryPlural, postIdeasPath } from '@/lib/post-ideas';
 import { abs, breadcrumbLd, faqPageLd } from '@/lib/seo-pages';
 import { organizationLd } from '@/lib/seo';
 import { pagePath as bestTimePath } from '@/lib/best-time-pages';
@@ -15,18 +15,18 @@ export function postIdeasCopy(ind, weekday) {
   const year = new Date().getUTCFullYear();
   if (!weekday) {
     const n = ideasFor(ind).length;
-    const who = ind.name === 'small business' ? 'a Small Business' : titleCase(ind.name.replace(/s$/, '') + 's');
-    return { title: fitTitle(`${n} Social Media Post Ideas for ${who} (${year}) — Ready to Schedule`, `${n} Social Media Post Ideas for ${who} (${year})`, `${n} Post Ideas for ${who} (${year})`), description: `${n} post ideas for a ${ind.name}: behind the scenes, proof, education, offers and engagement prompts, each written for ${ind.people}. Schedule the week in one sitting.`, h1: `Social media post ideas for ${ind.name === 'small business' ? 'a small business' : `${ind.name}s`}`, keyword: `${ind.name} social media post ideas` };
+    const who = ind.name === 'small business' ? 'a Small Business' : titleCase(industryPlural(ind));
+    return { title: fitTitle(`${n} Social Media Post Ideas for ${who} (${year}) — Ready to Schedule`, `${n} Social Media Post Ideas for ${who} (${year})`, `${n} Post Ideas for ${who} (${year})`), description: `${n} post ideas for ${industryOne(ind)}: behind the scenes, proof, education, offers and engagement prompts, each written for ${ind.people}. Schedule the week in one sitting.`, h1: `Social media post ideas for ${ind.name === 'small business' ? 'a small business' : industryPlural(ind)}`, keyword: `${ind.name} social media post ideas` };
   }
   const { angle, ideas } = ideasForDay(ind, weekday);
   const day = WEEKDAY_NAMES[WEEKDAYS.indexOf(weekday)];
-  const who = titleCase(`${ind.name}s`), hook = titleCase(angle.hook);
-  return { title: fitTitle(`${day} Post Ideas for ${who}: ${hook} (${ideas.length} Prompts)`, `${ideas.length} ${day} Post Ideas for ${who}: ${hook}`, `${ideas.length} ${day} Post Ideas for ${who} (${year})`, `${ideas.length} ${day} Post Ideas for ${who}`), description: `${day} social media post ideas for a ${ind.name}: ${angle.note.toLowerCase()} ${ideas.length} prompts you can schedule now.`, h1: `${day} post ideas for ${ind.name}s`, keyword: `${weekday} post ideas ${ind.name}` };
+  const who = titleCase(industryPlural(ind)), hook = titleCase(angle.hook);
+  return { title: fitTitle(`${day} Post Ideas for ${who}: ${hook} (${ideas.length} Prompts)`, `${ideas.length} ${day} Post Ideas for ${who}: ${hook}`, `${ideas.length} ${day} Post Ideas for ${who} (${year})`, `${ideas.length} ${day} Post Ideas for ${who}`), description: `${day} social media post ideas for ${industryOne(ind)}: ${angle.note.toLowerCase()} ${ideas.length} prompts you can schedule now.`, h1: `${day} post ideas for ${industryPlural(ind)}`, keyword: `${weekday} post ideas ${ind.name}` };
 }
 
 export function postIdeasFaq(ind, weekday) {
   return [
-    { q: `How often should a ${ind.name} post?`, a: 'Three to five posts a week is enough for most small accounts, as long as they go out consistently. Pick the days, set posting slots, and fill them a week ahead.' },
+    { q: `How often should ${industryOne(ind)} post?`, a: 'Three to five posts a week is enough for most small accounts, as long as they go out consistently. Pick the days, set posting slots, and fill them a week ahead.' },
     { q: 'Which of these ideas works best?', a: `Proof posts (${ind.proof}) and short educational posts earn the most saves and shares for local businesses. Offers work when they are rare and have a deadline.` },
     { q: 'Can I schedule these to several platforms at once?', a: 'Yes. Write the post once, tailor the caption per platform, and Schedule For You publishes it to each account from one queue. The Free plan covers 3 accounts and up to 10 scheduled posts at a time, no card needed.' },
     ...(weekday ? [{ q: `Why ${WEEKDAY_NAMES[WEEKDAYS.indexOf(weekday)]} for these?`, a: ideasForDay(ind, weekday).angle.note }] : []),
@@ -50,12 +50,12 @@ export default function PostIdeasPage({ ind, weekday = '' }) {
         <section className={m.hero}>
           <span className={m.eyebrow}>{ideas.length} prompts · {weekday ? angle.hook : 'all week'}</span>
           <h1 className={m.h1}>{copy.h1}</h1>
-          <p className={m.lead}>{weekday ? `${angle.note} Each prompt below is written for a ${ind.name} talking to ${ind.people}.` : `${ideas.length} posts written for a ${ind.name} talking to ${ind.people}: show the ${ind.place}, share ${ind.proof}, teach one thing, and ask a question. Pick five, schedule the week.`}</p>
+          <p className={m.lead}>{weekday ? `${angle.note} Each prompt below is written for ${industryOne(ind)} talking to ${ind.people}.` : `${ideas.length} posts written for ${industryOne(ind)} talking to ${ind.people}: show the ${ind.place}, share ${ind.proof}, teach one thing, and ask a question. Pick five, schedule the week.`}</p>
         </section>
         <article className={`${m.narrow} ${m.prose}`}>
           {types.map((t) => (
             <section key={t} className={m.section}>
-              <h2 id={t.toLowerCase().replace(/\s+/g, '-')}>{t} posts for a {ind.name}</h2>
+              <h2 id={t.toLowerCase().replace(/\s+/g, '-')}>{t} posts for {industryOne(ind)}</h2>
               <ol>{ideas.filter((i) => i.type === t).map((i) => <li key={i.text}>{i.text}</li>)}</ol>
             </section>
           ))}
