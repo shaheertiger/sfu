@@ -7,6 +7,7 @@ excerpt: A plain-English glossary of the TikTok slang people search for most, fr
 keyword: tiktok slang meanings
 date: 2026-10-28
 updated: 2026-11-04
+noindex: true
 ---
 You're reading the comments under a video and half of them are letters: "ts pmo", "ib @someone", "moots only". TikTok slang moves fast, and most of it is short because comments and captions are short. The terms people search for most are **PMO** (put me on, or pisses me off), **ASL** (as hell), **IB** (inspired by), **TS** (this sh\*t), **moots** (mutual followers), **LMR** (like my recent) and **FYP** (For You page).
 

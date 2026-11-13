@@ -63,3 +63,14 @@ test('the sitemap is split by family and language, with no utility pages and hon
   assert.match(xml, /<image:image><image:loc>https:\/\/scheduleforyou\.com\/images\/blog\//);
   assert.doesNotMatch(xml, /&(?!amp;|lt;|gt;|quot;)/);
 });
+
+test('every guide ↔ reference pair points at pages that exist', async () => {
+  const { allGuideLinks } = await import('../lib/guide-links.js');
+  const { specBySlug } = await import('../lib/specs.js');
+  const { notifyEntry } = await import('../lib/notify.js');
+  const { getPost } = await import('../lib/content.js');
+  for (const l of allGuideLinks() as any[]) {
+    assert.ok(getPost(l.guide.replace('/blog/', '')), `${l.guide} missing`);
+    assert.ok(l.kind === 'specs' ? specBySlug(l.platform, l.page) : notifyEntry(l.platform, l.page), `${l.ref} missing`);
+  }
+});

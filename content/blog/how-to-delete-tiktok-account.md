@@ -1,12 +1,12 @@
 ---
-title: "How to Delete Your TikTok Account: 7 Steps (Save 5 Things First)"
+title: "Delete Your TikTok Account: 7 Steps, Gone After 30 Days"
 description: How to delete a TikTok account permanently in 7 steps, what the 30-day window means, how to deactivate instead, and the 5 things to download before you go.
-h1: "How to Delete Your TikTok Account in 7 Steps (Save These 5 Things First)"
+h1: "How to Delete Your TikTok Account: 7 Steps, Gone After 30 Days (Save 5 Things First)"
 category: TikTok
 excerpt: Go to Settings and privacy, then Account, then Deactivate or delete account, and choose Delete account permanently. You have 30 days to change your mind before it's gone.
 keyword: how to delete tiktok account
 date: 2026-10-28
-updated: 2026-11-04
+updated: 2026-11-13
 ---
 You've decided you're done with TikTok, or at least done with this account. To delete it, go to your **Profile**, tap the **menu** (three lines), then **Settings and privacy**, **Account**, **Deactivate or delete account**, and choose **Delete account permanently**. TikTok deactivates it straight away and deletes it for good after **30 days**, unless you log back in.
 

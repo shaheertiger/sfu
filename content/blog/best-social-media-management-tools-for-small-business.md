@@ -14,6 +14,8 @@ The best social media management tools for small business are the ones that cove
 
 ![Best social media management tools for small business: four tests to run before you pay for any tool](/images/blog/best-social-media-management-tools-for-small-business-hero-1200x675.webp)
 
+> **Disclosure:** we make Schedule For You, one of the tools on this page. We hold it to the same test as the others and say where another tool is the better fit.
+
 There's no single winner because tools price and count things differently, and the headline price rarely matches what you'll pay. This guide gives you the four tests that decide most purchases, the six types of tools with well-known examples, a five-step way to choose, and where a low-cost scheduler like ours fits (and where it doesn't). Features and prices change, so check each vendor's own site before you buy.
 
 ## Why the "Best Tool" Depends on How Many Accounts You Run

@@ -11,6 +11,8 @@ import { organizationLd } from '@/lib/seo';
 import { pagePath as bestTimePath } from '@/lib/best-time-pages';
 import Figure, { figuresLd } from '@/components/marketing/Figure';
 import { specFigures } from '@/lib/figures';
+import { guideForReference } from '@/lib/guide-links';
+import { getPost } from '@/lib/content';
 
 const KIND_LABEL = { image: 'Image sizes', video: 'Video specs', text: 'Character limits', media: 'Media limits' };
 
@@ -47,6 +49,8 @@ export default function SpecPage({ platform, spec }) {
   const resizer = TOOLS.find((t) => t.kind === 'resizer' && t.platform === platform.id);
   const counter = TOOLS.find((t) => t.kind === 'counter' && t.platform === platform.id);
   const siblings = platform.specs.filter((x) => x.slug !== spec.slug);
+  const guideHref = guideForReference(path);
+  const guide = guideHref ? { href: guideHref, name: `Full guide: ${getPost(guideHref.replace('/blog/', ''))?.h1 || 'read more'}` } : null;
   const others = SPEC_PLATFORMS.filter((p) => p.slug !== platform.slug).map((p) => ({ p, s: equivalentSpec(p, spec) })).filter((x) => x.s);
   const figs = specFigures(platform.slug, spec.slug);
   const img = figuresLd(figs);
@@ -79,7 +83,7 @@ export default function SpecPage({ platform, spec }) {
                 {spec.rows.map((r) => <tr key={r[0]}><td>{r[0]}</td><td>{r[1]}{r[2] ? ` ${r[2]}` : ''}</td></tr>)}
               </tbody></table>
             </div>
-            <p>Source: {platform.name} help pages and the limits Schedule For You applies when publishing. Last verified {SPECS_VERIFIED}. <Link href="/methodology#specs">How we check</Link> · <Link href="/docs">Report a change</Link>.</p>
+            <p>Source: {platform.name} help pages and the limits Schedule For You applies when publishing. Last verified {SPECS_VERIFIED}. {guide && <><Link href={guide.href}>{guide.name}</Link> · </>}<Link href="/methodology#specs">How we check</Link> · <Link href="/docs">Report a change</Link>.</p>
           </section>
           {(preset || resizer || counter) && (
             <section className={m.section}>

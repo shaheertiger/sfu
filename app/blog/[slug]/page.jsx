@@ -5,6 +5,7 @@ import { platformOfPost, relatedPosts } from '@/lib/related';
 import { TOOLS } from '@/lib/tools/registry';
 import { pageMetadata } from '@/lib/seo-pages';
 import { hreflangMap, translationsOf } from '@/lib/i18n-pages';
+import { referencesForGuide } from '@/lib/guide-links';
 
 export const dynamicParams = false;
 
@@ -17,7 +18,9 @@ export async function generateMetadata({ params }) {
   const post = getPost(slug);
   if (!post) return {};
   const path = `/blog/${slug}`;
-  return pageMetadata({ title: post.title, description: post.description, path, type: 'article', keyword: post.keyword, publishedTime: post.date, section: post.category, languages: hreflangMap('blog', slug), image: post.hero });
+  const meta = pageMetadata({ title: post.title, description: post.description, path, type: 'article', keyword: post.keyword, publishedTime: post.date, section: post.category, languages: hreflangMap('blog', slug), image: post.hero });
+  // `noindex: true` in the frontmatter keeps a post readable and linked but out of search results.
+  return String(post.noindex) === 'true' ? { ...meta, robots: { index: false, follow: true, googleBot: { index: false, follow: true } } } : meta;
 }
 
 export default async function BlogPost({ params }) {
@@ -35,5 +38,5 @@ export default async function BlogPost({ params }) {
   const tools = TOOLS.filter((t) => (platform === 'all' ? t.platform === 'all' : t.platform === platform))
     .slice(0, 4)
     .map((t) => ({ href: `/tools/${t.slug}`, name: getToolPage(t.slug)?.h1 || t.slug }));
-  return <Article post={post} path={path} crumbs={crumbs} related={related} tools={tools} languages={translationsOf('blog', slug)} />;
+  return <Article post={post} path={path} crumbs={crumbs} related={related} tools={tools} references={referencesForGuide(slug)} languages={translationsOf('blog', slug)} />;
 }

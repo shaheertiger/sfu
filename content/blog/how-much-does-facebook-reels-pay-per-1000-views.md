@@ -1,12 +1,12 @@
 ---
-title: "Facebook Reels Pay per 1,000 Views: No Fixed Rate (2026 Range)"
+title: "Facebook Reels Pay per 1,000 Views: No Fixed Rate (2026)"
 description: How much does Facebook pay for 1,000 views on Reels? There's no fixed rate in 2026. How Meta's payouts work, what moves them, and how to work out your own rate.
-h1: "Facebook Reels Pay per 1,000 Views: No Fixed Rate (2026 Range)"
+h1: "Facebook Reels Pay per 1,000 Views: No Fixed Rate, So Here's How to Find Yours (2026)"
 category: Facebook
 excerpt: Facebook doesn't pay a fixed rate per 1,000 views. How Meta's performance-based creator payouts work, why monetized views matter, and how to calculate your own rate.
 keyword: how much does fb pay for 1000 views
 date: 2026-10-23
-updated: 2026-11-04
+updated: 2026-11-13
 ---
 Your Reel just passed 100,000 views and you want to know what that's worth. How much does Facebook pay for 1,000 views? There's no fixed amount. Eligible creators earn through Meta's monetization programs, which pay based on how content performs and on the ads shown with it, so the rate per 1,000 views varies widely by country, audience, niche and engagement.
 

@@ -1,12 +1,12 @@
 ---
-title: "How to Edit Scheduled Instagram Posts (Where They Hide + Music)"
+title: "Edit Scheduled Instagram Posts: They're in Scheduled Content"
 description: Where scheduled Instagram posts live in the app and Meta Business Suite, how to edit, reschedule or cancel them, and whether you can add music to a scheduled post.
-h1: "How to Edit Scheduled Instagram Posts: Where They Hide, and the Music Catch"
+h1: "How to Edit Scheduled Instagram Posts: They're Under Scheduled Content (and the Music Catch)"
 category: Instagram
 excerpt: Scheduled Instagram posts hide in the app's Scheduled content screen or in Business Suite's Planner. Here's how to find, edit or cancel them, and the truth about music on scheduled posts.
 keyword: how to edit scheduled posts on instagram
 date: 2026-10-26
-updated: 2026-11-04
+updated: 2026-11-13
 ---
 You scheduled a post, spotted a typo an hour later, and now you can't find it anywhere on your profile. Scheduled Instagram posts don't appear on your profile until they publish. In the Instagram app they live under **Scheduled content** in your profile menu; in Meta Business Suite they're in **Planner** and **Content → Scheduled**. From either place you can edit the caption, change the time, publish now or delete the post.
 

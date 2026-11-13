@@ -7,6 +7,7 @@ excerpt: The meme 67, said "six seven", doesn't really mean anything, and that's
 keyword: what does 67 mean tiktok
 date: 2026-10-28
 updated: 2026-11-04
+noindex: true
 ---
 Your kid, your students or half the comments on TikTok keep shouting "six seven", and you can't work out what it means. "67" on TikTok, said **"six seven"** and never "sixty-seven", is a meme phrase with no fixed meaning. People say it, comment it or shout it with a hand gesture, palms up and moving like a scale, whenever the numbers 6 and 7 come up, or just at random.
 

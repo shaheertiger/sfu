@@ -10,6 +10,8 @@ import { pagePath as bestTimePath } from '@/lib/best-time-pages';
 import { platformBySlug as bestTimePlatform } from '@/lib/best-time';
 import Figure, { figuresLd } from '@/components/marketing/Figure';
 import { notifyFigures } from '@/lib/figures';
+import { guideForReference } from '@/lib/guide-links';
+import { getPost } from '@/lib/content';
 
 const Pill = ({ answer }) => {
   const tone = answer === 'yes' ? { background: '#fde8e8', color: '#9b1c1c' } : answer === 'no' ? { background: '#e6f6ec', color: '#166534' } : { background: '#fff4d6', color: '#92400e' };
@@ -20,6 +22,8 @@ export default function NotifyPage({ platform, action }) {
   const entry = notifyEntry(platform.slug, action.slug);
   const path = notifyPath(platform.slug, action.slug);
   const copy = notifyCopy(platform, action, entry);
+  const guideHref = guideForReference(path);
+  const guidePost = guideHref ? getPost(guideHref.replace('/blog/', '')) : null;
   const faq = notifyFaq(platform, action, entry);
   const crumbs = [{ name: 'Home', href: '/' }, { name: 'Does it notify?', href: NOTIFY_ROOT }, { name: platform.name, href: notifyPath(platform.slug) }, { name: action.short.replace(/^\w/, (c) => c.toUpperCase()), href: path }];
   const siblings = notifyActionsFor(platform.slug).filter((a) => a.slug !== action.slug);
@@ -57,6 +61,7 @@ export default function NotifyPage({ platform, action }) {
                 <tr><td>What is visible to them</td><td>{entry.sees}</td></tr>
                 <tr><td>How to be sure</td><td>{entry.sure}</td></tr>
                 <tr><td>Last checked</td><td>{NOTIFY_VERIFIED} against {platform.name}'s help center (<Link href="/methodology#does-it-notify">how we check</Link>)</td></tr>
+                {guidePost && <tr><td>Full guide</td><td><Link href={guideHref}>{guidePost.h1}</Link></td></tr>}
               </tbody></table>
             </div>
           </section>

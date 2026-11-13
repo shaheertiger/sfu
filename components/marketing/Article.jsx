@@ -15,7 +15,7 @@ const dateLabel = (d, locale = 'en') => {
  * A long-form page (blog post or comparison): hero, body with a mid-article CTA, contents, related
  * links. `locale` translates the page chrome on localized posts; `languages` lists other versions.
  */
-export default function Article({ post, path, crumbs, related = [], tools = [], locale = 'en', languages }) {
+export default function Article({ post, path, crumbs, related = [], tools = [], references = [], locale = 'en', languages }) {
   const t = (key, vars) => pageString(locale, key, vars);
   return (
     <MarketingPage lang={locale === 'en' ? undefined : locale}>
@@ -62,8 +62,16 @@ export default function Article({ post, path, crumbs, related = [], tools = [], 
             <p>{t('articleCtaText')}</p>
           </TrialCta>
           <LanguageLinks current={locale} links={languages} />
-          {(related.length > 0 || tools.length > 0) && (
+          {(related.length > 0 || tools.length > 0 || references.length > 0) && (
             <div className={m.more}>
+              {references.length > 0 && (
+                <section>
+                  <h3>{t('quickReference')}</h3>
+                  <ul className={m.linkGrid}>
+                    {references.map((r) => <li key={r.href}><Link href={r.href} className={m.linkCard}>{r.name}</Link></li>)}
+                  </ul>
+                </section>
+              )}
               {related.length > 0 && (
                 <section>
                   <h3>{t('relatedPosts')}</h3>

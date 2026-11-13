@@ -10,6 +10,8 @@ date: 2026-10-23
 ---
 The best LinkedIn scheduling tools depend on one question first: are you posting from a personal profile, a company page, or both? LinkedIn's own scheduler is free and may be all you need for one profile. If you also post to other networks, a multi-network scheduler saves time, and if you run a brand's company page with a team, check company page support before anything else.
 
+> **Disclosure:** we make Schedule For You, one of the tools on this page. We hold it to the same test as the others and say where another tool is the better fit.
+
 *Last reviewed: October 2026. Features and prices change; check each vendor's site before buying.*
 
 Below: what LinkedIn offers natively, what to look for in a LinkedIn post scheduler, the main tools by type, and an honest note on where Schedule For You fits. It's not a ranking.

@@ -1,7 +1,7 @@
 ---
-title: What Does Follow Back Mean on Instagram? (And When Not To)
+title: "What Does Follow Back Mean on Instagram? Following Them Back"
 description: What "follow back" means on Instagram, why you see a Follow Back button, how to tell who follows you, and why follow-for-follow schemes can hurt your account.
-h1: What Does Follow Back Mean on Instagram? (And When Not To)
+h1: "What Does Follow Back Mean on Instagram? Following Someone Who Follows You"
 category: Instagram
 excerpt: Following back means following someone who already follows you. Here's what the Follow Back button and the Follows you label mean, and why follow-for-follow is a bad trade.
 keyword: follow back instagram

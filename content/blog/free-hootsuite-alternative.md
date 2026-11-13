@@ -12,6 +12,8 @@ You're paying for, or pricing up, a social media suite, and most of its features
 
 ![Three kinds of free Hootsuite alternative: native schedulers, self-hosted open-source tools, and low-cost schedulers with free tiers](/images/blog/free-hootsuite-alternative-hero-1200x675.webp)
 
+> **Disclosure:** we make Schedule For You, one of the tools on this page. We hold it to the same test as the others and say where another tool is the better fit.
+
 If you want one tool for many networks without running a server, a low-cost scheduler, often with a limited free tier, is the practical middle ground.
 
 Hootsuite is a long-established tool with a broad feature set, and for some teams it's the right fit. But solo creators, small businesses and small agencies may not need everything it offers. This guide compares the three kinds of alternative, shows what "free" usually leaves out, and explains how to switch without losing scheduled posts. For Hootsuite's current plans, check the pricing page on its website, since plans and prices change.

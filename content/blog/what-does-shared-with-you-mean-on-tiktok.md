@@ -1,12 +1,12 @@
 ---
-title: What Does "Shared With You" Mean on TikTok? (Not What You Think)
+title: "\"Shared With You\" on TikTok: Someone Sent You That Video"
 description: "\"Shared with you\" on TikTok usually means a video was sent to you, or that you've swapped videos with that person in messages. What it means and how to hide it."
-h1: "What Does \"Shared With You\" Mean on TikTok? (It's Not What You Think)"
+h1: "What Does \"Shared With You\" Mean on TikTok? Someone Sent You That Video"
 category: TikTok
 excerpt: "\"Shared with you\" usually means someone sent you that video, or that you and that account have shared videos in messages before. TikTok hasn't fully explained the label, but here's what it points to and how to cut down the suggestions."
 keyword: what does shared with you mean on tiktok
 date: 2026-10-28
-updated: 2026-11-04
+updated: 2026-11-13
 ---
 You open TikTok and see "Shared with you" under a video, or under the name of someone you barely remember. **"Shared with you" on TikTok usually means someone sent that video to you, or, when it appears on an account, that you and that person have shared videos with each other** in direct messages. TikTok uses the label to explain why it's showing you something.
 

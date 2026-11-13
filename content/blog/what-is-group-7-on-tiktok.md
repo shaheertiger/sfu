@@ -7,6 +7,7 @@ excerpt: Group 7 is a TikTok inside joke. Singer Sophia James posted seven near-
 keyword: what is group 7 tiktok
 date: 2026-10-28
 updated: 2026-11-04
+noindex: true
 ---
 You keep seeing "Group 7" in TikTok comments, sometimes under videos that have nothing to do with each other, and you're not sure if you're missing something. "Group 7" on TikTok is **an inside joke with no fixed meaning**. It started in October 2025, when singer Sophia James posted **seven near-identical videos** promoting her song "So Unfair" as an experiment to see which one the algorithm would push.
 

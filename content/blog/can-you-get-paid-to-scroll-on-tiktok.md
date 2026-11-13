@@ -7,6 +7,7 @@ excerpt: Not in any meaningful way. TikTok Lite once paid small rewards for watc
 keyword: can you get paid for scrolling on tiktok
 date: 2026-10-28
 updated: 2026-11-04
+noindex: true
 ---
 You spend an hour a day on TikTok anyway, and an ad says you could earn money for it. It sounds too easy, and it mostly is.
 

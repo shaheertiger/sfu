@@ -10,6 +10,8 @@ date: 2026-10-23
 ---
 The best cross-posting tools let you write one post, adjust a separate version for each network, check every version against that platform's limits, and publish the right media in the right format. Tools that simply copy one caption everywhere save time on day one, then cost you reach and fixes later. Below are the requirements that matter, the main types of cross-posting software with examples, and the free native options.
 
+> **Disclosure:** we make Schedule For You, one of the tools on this page. We hold it to the same test as the others and say where another tool is the better fit.
+
 *Last reviewed: October 2026. Features and prices change; check each vendor's site before buying.*
 
 ## What a cross-posting app needs to do well

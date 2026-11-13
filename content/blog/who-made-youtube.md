@@ -7,6 +7,7 @@ excerpt: Chad Hurley, Steve Chen and Jawed Karim, three former PayPal employees,
 keyword: who made youtube
 date: 2026-10-28
 updated: 2026-11-04
+noindex: true
 ---
 You use YouTube every day and suddenly wonder who actually built it. YouTube was made by **Chad Hurley, Steve Chen and Jawed Karim**, three former PayPal employees, in 2005. **Google** bought it in late 2006 for **$1.65 billion** in stock, and today it's run by CEO **Neal Mohan**.
 
